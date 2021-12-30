@@ -29,7 +29,35 @@ export default function Home() {
 				<div className="container">
 					<div className={styles.login}>
 						<div className={styles.content}>
-							<div className={styles.InputSection}></div>
+							<div className={styles.InputSection}>
+								<div className={styles.content}>
+									<h1>Login</h1>
+									<form action="" className={styles.inputBox}>
+										<h5>UserID</h5>
+										<input
+											type="text"
+											id="userID"
+											name="username"
+											value="usernameID"
+										></input>
+										<br></br>
+										<br></br>
+										<h5>Password</h5>
+										<input
+											type="text"
+											id="userID"
+											name="password"
+											value="password"
+										></input>
+										{/* Submit Button */}
+										<input
+											type="submit"
+											value="Submit"
+											className={styles.submitButton}
+										></input>
+									</form>
+								</div>
+							</div>
 							<div className={styles.ImageSection}>
 								{/* <Image
 									src="/otherImages/nike-just-do-it.jpg"
