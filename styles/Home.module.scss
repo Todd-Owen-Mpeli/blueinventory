@@ -73,6 +73,30 @@
 
 						input {
 							width: 20rem;
+							border: none;
+							font-weight: 100;
+							margin-top: 0.5rem;
+							line-height: 1.25rem;
+							font-size: $fontSize_xSmall;
+							color: $baseColor_lightGrey3;
+							font-family: $fontStyle_header;
+							border-bottom: $baseColor_lightGrey2 0.12rem solid;
+						}
+
+						select {
+							width: 20rem;
+							border: none;
+							font-weight: 100;
+							margin-top: 0.5rem;
+							line-height: 1.25rem;
+							font-size: $fontSize_xSmall;
+							color: $baseColor_lightGrey3;
+							font-family: $fontStyle_header;
+							border-bottom: $baseColor_lightGrey2 0.12rem solid;
+
+							option {
+								color: $baseColor_black;
+							}
 						}
 
 						.submitButton {

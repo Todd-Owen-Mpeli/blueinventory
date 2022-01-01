@@ -45,7 +45,7 @@ export default function Home() {
 											value="usernameID"
 										></input>
 										<br></br>
-										<br></br>
+										{/* Submit Button */}
 										<h5>Password</h5>
 										<input
 											type="text"
@@ -53,6 +53,13 @@ export default function Home() {
 											name="password"
 											value="password"
 										></input>
+										<br></br>
+										{/* Submit Button */}
+										<h5>Role</h5>
+										<select name="accountRoles" id="cars">
+											<option value="admin">Admin</option>
+											<option value="employee">Employee</option>
+										</select>
 										{/* Submit Button */}
 										<input
 											type="submit"
