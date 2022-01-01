@@ -8,36 +8,92 @@
 	height: 100vh;
 	display: flex;
 	align-items: center;
+	background-color: $secondary_blue;
 
 	//  <========== LOGIN FORM ==========>
 	.login {
-		padding: 2.5rem;
-		border-radius: 5px;
-		border: #111 0.15rem solid;
-		background-color: $backgroundColor_White;
+		padding: 2rem;
+		border-radius: 35px;
 		box-shadow: $box-shadow-6;
+		background-color: $backgroundColor_White;
 
 		.content {
 			display: grid;
 			grid-template-columns: repeat(2, 1fr);
 
 			.InputSection {
+				padding: 4rem;
+
 				.content {
 					display: flex;
 					flex-direction: column;
 
-					.inputBox {
+					.title {
+						font-weight: 600;
+						margin-bottom: 3rem;
+						color: $baseColor_black;
+						font-size: $fontSize_medium;
+						font-family: $fontStyle_header;
+					}
+
+					h2 {
+						font-weight: 600;
+						color: $baseColor_black;
+						font-size: $fontSize_large-0;
+						font-family: $fontStyle_header;
+					}
+
+					h5 {
+						line-height: 1.2rem;
+						font-size: $fontSize_xSmall;
+						color: $baseColor_lightGrey3;
+						font-family: $fontStyle_header;
+
+						span {
+							color: $baseColor_black;
+							text-decoration: underline;
+						}
+
+						span:hover {
+							transition: all 0.1s ease-in-out;
+							color: $secondary_orange;
+						}
+					}
+
+					form {
 						display: flex;
 						margin-top: 2rem;
 						flex-direction: column;
+
+						h5 {
+							color: $baseColor_black;
+							font-size: $fontSize_small;
+							font-family: $fontStyle_header;
+						}
 
 						input {
 							width: 20rem;
 						}
 
 						.submitButton {
+							border: none;
 							margin-top: 2.5rem;
+							border-radius: 15px;
+							padding: 1rem 1.5rem;
+							color: $baseColor_white;
+							font-size: $fontSize_small;
+							font-family: $fontStyle_header;
+							background-color: $secondary_yellow;
 						}
+
+						.submitButton:hover {
+							transition: all 0.5s ease-in-out;
+							background-color: $secondary_orange;
+						}
+					}
+
+					.termsAgreement {
+						margin-top: 3.5rem;
 					}
 				}
 			}

@@ -31,7 +31,11 @@ export default function Home() {
 						<div className={styles.content}>
 							<div className={styles.InputSection}>
 								<div className={styles.content}>
-									<h1>Login</h1>
+									<h2 className={styles.title}>Blue Inventory</h2>
+									<h2>Get Started</h2>
+									<h5>
+										Already have an account? <span>Sign in</span>
+									</h5>
 									<form action="" className={styles.inputBox}>
 										<h5>UserID</h5>
 										<input
@@ -56,6 +60,10 @@ export default function Home() {
 											className={styles.submitButton}
 										></input>
 									</form>
+									<h5 className={styles.termsAgreement}>
+										By signing up, I agree to the <span>Terms of Service </span>
+										and <span>Privacy Policy</span>
+									</h5>
 								</div>
 							</div>
 							<div className={styles.ImageSection}>
