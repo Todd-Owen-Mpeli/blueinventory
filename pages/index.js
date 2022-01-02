@@ -69,18 +69,18 @@ export default function Home() {
 									</form>
 									<h5 className={styles.termsAgreement}>
 										By signing up, I agree to the <span>Terms of Service </span>
-										and <span>Privacy Policy</span>
+										and <span>Privacy Policy.</span>
 									</h5>
 								</div>
 							</div>
 							<div className={styles.ImageSection}>
 								{/* <Image
-									src="/otherImages/nike-just-do-it.jpg"
+									src="/img/otherImages/fakurian.jpg"
 									alt="Picture of the author"
 									width="100%"
-									height="45%"
+									height="100%"
 									layout="responsive"
-									objectFit="contain"
+									objectFit="cover"
 								></Image> */}
 							</div>
 						</div>

@@ -5,14 +5,14 @@
 
 //  <========== LOGIN PAGE ==========>
 .main {
-	height: 100vh;
 	display: flex;
+	padding: 5rem 0;
+	min-height: 100vh;
 	align-items: center;
 	background-color: $secondary_blue;
 
 	//  <========== LOGIN FORM ==========>
 	.login {
-		padding: 2rem;
 		border-radius: 35px;
 		box-shadow: $box-shadow-6;
 		background-color: $backgroundColor_White;
@@ -72,8 +72,9 @@
 						}
 
 						input {
-							width: 20rem;
 							border: none;
+							width: 20rem;
+							outline: none;
 							font-weight: 100;
 							margin-top: 0.5rem;
 							line-height: 1.25rem;
@@ -84,8 +85,8 @@
 						}
 
 						select {
-							width: 20rem;
 							border: none;
+							width: 20rem;
 							font-weight: 100;
 							margin-top: 0.5rem;
 							line-height: 1.25rem;
@@ -123,6 +124,7 @@
 			}
 
 			.ImageSection {
+				// border: $secondary_orange 0.15rem solid;
 			}
 		}
 	}
