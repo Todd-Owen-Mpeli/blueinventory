@@ -4,6 +4,7 @@ import Image from "next/image";
 import {motion} from "framer-motion";
 import styles from "../styles/Home.module.scss";
 import LogoSlider from "../components/LogoSlider";
+import Hero from "../components/Hero";
 
 export default function Home() {
 	return (
@@ -17,7 +18,10 @@ export default function Home() {
 
 			<main className={styles.main}>
 				<div className="container mx-auto">
-					{/*Time Limit */}
+					{/*Hero Section */}
+					<Hero />
+
+					{/*Company Logos */}
 					<LogoSlider />
 				</div>
 			</main>
