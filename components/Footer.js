@@ -1,10 +1,10 @@
 import Link from "next/link";
-import "../components/Footer.module.scss";
+import styles from "../components/Footer.module.scss";
 
 const Footer = () => {
 	const borderRadius = "24px 34px 34px 0px";
 	return (
-		<section className="footerSection">
+		<section className={styles.footerSection}>
 			<div className="topSection bg-[#0d172a] text-white rounded-[0px] lg:rounded-t-[125px]">
 				<div className="py-20 bg-gray-900 radius-for-skewed">
 					<div className="container mx-auto px-4">
@@ -23,7 +23,7 @@ const Footer = () => {
 								Tanzania succeeding with BlueInventory.
 							</p>
 							<a
-								className="inline-block mt-6 py-2 px-6 bg-limeGreen hover:bg-limeGreen hover:ease-in-out hover:duration-200 text-white text-xl font-bold roundel-xl roundet-xl"
+								className="inline-block mt-6 py-2 px-6 bg-limeGreen hover:bg-blue hover:ease-in-out hover:duration-200 text-white text-xl font-bold hover:text-white rounded-xl rounded-xl"
 								href="#"
 							>
 								Get Started

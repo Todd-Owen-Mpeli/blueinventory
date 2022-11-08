@@ -1,9 +1,21 @@
+// Imports
+@import "../styles/colors";
+
 .footerSection {
 	.bottomSection {
 		ul {
 			a {
 				width: fit-content;
 			}
+		}
+	}
+}
+
+.footerSection {
+	a {
+		&:hover {
+			transition: all 0.1s ease-in-out;
+			color: $baseColor_lightGrey;
 		}
 	}
 }
