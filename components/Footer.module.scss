@@ -2,7 +2,16 @@
 @import "../styles/colors";
 
 .footerSection {
-	.bottomSection {
+	a {
+		&:hover {
+			transition: all 0.1s ease-in-out;
+			color: $baseColor_lightGrey;
+		}
+	}
+}
+
+.footerSection {
+	.content {
 		ul {
 			a {
 				width: fit-content;
@@ -11,11 +20,11 @@
 	}
 }
 
-.footerSection {
+.socialMediaIcons {
 	a {
 		&:hover {
 			transition: all 0.1s ease-in-out;
-			color: $baseColor_lightGrey;
+			color: $secondary_blue;
 		}
 	}
 }
