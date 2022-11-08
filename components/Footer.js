@@ -1,35 +1,49 @@
 import Link from "next/link";
+import Image from "next/image";
 import styles from "../components/Footer.module.scss";
 
 const Footer = () => {
 	const borderRadius = "24px 34px 34px 0px";
 	return (
 		<section className={styles.footerSection}>
-			<div className="topSection bg-[#0d172a] text-white rounded-[0px] lg:rounded-t-[125px]">
-				<div className="py-20 bg-gray-900 radius-for-skewed">
-					<div className="container mx-auto px-4">
-						<div className="max-w-2xl mx-auto text-center">
-							<a
-								className="inline-block mb-14 mx-auto text-blue hover:text-lightBlue hover:ease-in-out hover:duration-200 text-5xl font-bold leading-none"
-								href="#"
-							>
-								BlueInventory
-							</a>
-							<h2 className="mb-4 text-white text-4xl lg:text-5xl font-bold">
-								More than just a Inventory Management Solution
-							</h2>
-							<p className="mb-6 max-w-md mx-auto text-gray-400 leading-loose">
-								Join the business, manufacturers and distributors across the
-								Tanzania succeeding with BlueInventory.
-							</p>
-							<a
-								className="inline-block mt-6 py-2 px-6 bg-limeGreen hover:bg-blue hover:ease-in-out hover:duration-200 text-white text-xl font-bold hover:text-white rounded-xl rounded-xl"
-								href="#"
-							>
-								Get Started
-							</a>
-						</div>
-					</div>
+			<div className="topSection bg-lightGrey">
+				<div className="flex justify-center p-10">
+					<a
+						className="inline-block w-10 mr-2 p-2 bg-white hover:bg-gray-50 rounded"
+						href="#"
+					>
+						<Image
+							className="mx-auto"
+							src="/svg/facebook.svg"
+							alt="Facebook Icon"
+							width="100%"
+							height="100px"
+						/>
+					</a>
+					<a
+						className="inline-block w-10 mr-2 p-2 bg-white hover:bg-gray-50 rounded"
+						href="#"
+					>
+						<Image
+							className="mx-auto"
+							src="/svg/twitter.svg"
+							alt="Twitter Icon"
+							width="100%"
+							height="100px"
+						/>
+					</a>
+					<a
+						className="inline-block w-10 p-2 bg-white hover:bg-gray-50 rounded"
+						href="#"
+					>
+						<Image
+							className="mx-auto"
+							src="/svg/instagram.svg"
+							alt="Instagram Icon"
+							width="100%"
+							height="100px"
+						/>
+					</a>
 				</div>
 			</div>
 			<div className="bottomSection bg-white">

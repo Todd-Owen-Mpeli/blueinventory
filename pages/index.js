@@ -1,10 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import Head from "next/head";
-import Image from "next/image";
-import {motion} from "framer-motion";
 import styles from "../styles/Home.module.scss";
 import LogoSlider from "../components/LogoSlider";
 import Hero from "../components/Hero";
+import CTAOne from "../components/CTAOne";
 
 export default function Home() {
 	return (
@@ -24,6 +23,9 @@ export default function Home() {
 					{/*Company Logos */}
 					<LogoSlider />
 				</div>
+
+				{/*CTA One */}
+				<CTAOne />
 			</main>
 		</>
 	);
