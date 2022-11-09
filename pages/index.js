@@ -4,6 +4,7 @@ import styles from "../styles/Home.module.scss";
 import Hero from "../components/Hero";
 import CTAOne from "../components/CTAOne";
 import TrustedBrands from "../components/TrustedBrands";
+import HowItWorks from "../components/HowItWorks";
 
 export default function Home() {
 	return (
@@ -16,13 +17,14 @@ export default function Home() {
 			</Head>
 
 			<main className={styles.main}>
-				<div className="container mx-auto">
-					{/*Hero Section */}
-					<Hero />
+				{/*Hero Section */}
+				<Hero />
 
-					{/* Trusted Brands Logos */}
-					<TrustedBrands />
-				</div>
+				{/* How It Works */}
+				<HowItWorks />
+
+				{/* Trusted Brands Logos */}
+				<TrustedBrands />
 
 				{/*CTA One */}
 				<CTAOne />

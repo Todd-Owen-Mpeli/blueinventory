@@ -12,7 +12,7 @@ const CTAOne = () => {
 								More than just a Inventory Management Solution
 							</h2>
 							<p className="mb-6 max-w-md mx-auto text-gray-400 leading-loose">
-								Join the business, manufacturers and distributors across the
+								Join the business, manufacturers and distributors across
 								Tanzania succeeding with BlueInventory.
 							</p>
 						</div>
@@ -35,7 +35,7 @@ const CTAOne = () => {
 										</div>
 										<div className="w-full md:w-auto">
 											<a
-												className="inline-block py-3 px-5 w-full leading-5 text-white bg-limeGreen hover:bg-blue hover:ease-in-out hover:duration-200 text-white font-medium text-center focus:ring-2 focus:ring-limeGreen focus:ring-opacity-50 border border-transparent rounded-md shadow-sm"
+												className="inline-block py-3 px-5 w-full leading-5 text-white bg-blue hover:bg-limeGreen hover:ease-in-out hover:duration-200 text-white font-medium text-center focus:ring-2 focus:ring-limeGreen focus:ring-opacity-50 border border-transparent rounded-md shadow-sm"
 												href="#"
 											>
 												Subscribe
