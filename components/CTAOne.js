@@ -1,10 +1,13 @@
+import Image from "next/image";
+import styles from "../components/CTAOne.module.scss";
+
 const CTAOne = () => {
 	return (
-		<section>
-			<div className="topSection bg-[#0d172a] text-white rounded-[0px] lg:rounded-t-[125px]">
+		<section className="CTAOne">
+			<div className="bg-[#0d172a] text-white rounded-[0px] lg:rounded-t-[125px]">
 				<div className="py-20 bg-gray-900 radius-for-skewed">
 					<div className="container mx-auto px-4">
-						<div className="max-w-2xl mx-auto text-center">
+						<div className="topSection max-w-2xl mx-auto text-center">
 							<h2 className="mb-4 text-white text-4xl lg:text-5xl font-bold">
 								More than just a Inventory Management Solution
 							</h2>
@@ -12,12 +15,41 @@ const CTAOne = () => {
 								Join the business, manufacturers and distributors across the
 								Tanzania succeeding with BlueInventory.
 							</p>
-							<a
-								className="inline-block mt-6 py-2 px-6 bg-limeGreen hover:bg-blue hover:ease-in-out hover:duration-200 text-white text-xl font-bold hover:text-white rounded-xl rounded-xl"
-								href="#"
-							>
-								Get Started
-							</a>
+						</div>
+						<div className={styles.bottomSection}>
+							<div className="relative z-10 mx-auto md:max-w-2xl">
+								<h3 className="mb-4 text-3xl md:text-4xl leading-tight font-bold tracking-tighter">
+									Be the first to know when we launch
+								</h3>
+								<p className="mb-8 text-lg md:text-xl text-lightGrey font-medium">
+									Stay in the loop with everything you need to know.
+								</p>
+								<div className="mx-auto md:max-w-md text-left">
+									<div className="flex flex-wrap mb-1">
+										<div className="w-full md:flex-1 mb-3 md:mb-0 md:mr-6">
+											<input
+												className="w-full py-3 px-4 text-grey leading-tight placeholder-grey focus:outline-none focus:ring-2 focus:ring-limeGreen focus:ring-opacity-50 border border-lightGrey rounded-lg shadow-xsm"
+												type="text"
+												placeholder="Enter your email"
+											/>
+										</div>
+										<div className="w-full md:w-auto">
+											<a
+												className="inline-block py-3 px-5 w-full leading-5 text-white bg-limeGreen hover:bg-blue hover:ease-in-out hover:duration-200 text-white font-medium text-center focus:ring-2 focus:ring-limeGreen focus:ring-opacity-50 border border-transparent rounded-md shadow-sm"
+												href="#"
+											>
+												Subscribe
+											</a>
+										</div>
+									</div>
+									<span className="text-xs text-lightGrey font-medium">
+										<span>We care about your data in our </span>
+										<a className="text-limeGreen hover:text-limeGreen" href="#">
+											privacy policy
+										</a>
+									</span>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
