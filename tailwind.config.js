@@ -30,6 +30,7 @@ module.exports = {
 			grey: "#686868",
 			pureBlack: "#000",
 			pinkRed: "#ff002f",
+			flatPinkRed: "#f95674",
 			limeGreen: "#a2e603",
 			flatLimeGreen: "#cfe798",
 			lightGrey: "#f7f7f7",
