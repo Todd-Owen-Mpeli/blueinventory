@@ -5,6 +5,7 @@ import Hero from "../components/Hero";
 import CTAOne from "../components/CTAOne";
 import TrustedBrands from "../components/TrustedBrands";
 import HowItWorks from "../components/HowItWorks";
+import CTATwo from "../components/CTATwo";
 
 export default function Home() {
 	return (
@@ -19,6 +20,9 @@ export default function Home() {
 			<main className={styles.main}>
 				{/*Hero Section */}
 				<Hero />
+
+				{/* CTA Two */}
+				<CTATwo />
 
 				{/* How It Works */}
 				<HowItWorks />

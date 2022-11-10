@@ -7,9 +7,11 @@ const Footer = () => {
 		<section className={styles.footerSection}>
 			<div className="content bg-white">
 				<div className="pt-24">
-					<div className="flex flex-col lg:flex-row justify-around">
-						<div className="col-6 col-mx-auto mb-8 mb-m0">
-							<h4 className="text-blue text-lg font-bold mb-12">About</h4>
+					<div className="flex flex-col px-6 lg:px-4 lg:flex-row justify-around">
+						<div className="col-6 col-mx-auto lg:mb-8 lg:mt-0 my-4">
+							<h4 className="text-blue text-lg font-bold mb-4 lg:mb-12">
+								About
+							</h4>
 							<ul className="list-unstyled flex flex-col gap-2">
 								<Link href="#" className="mb-4">
 									<a className="inline-block text-decoration-none text-black">
@@ -43,8 +45,10 @@ const Footer = () => {
 								</Link>
 							</ul>
 						</div>
-						<div className="col-6 col-mx-auto mb-8 mb-m0">
-							<h4 className="text-blue text-lg font-bold mb-12">Features</h4>
+						<div className="col-6 col-mx-auto lg:mb-8 lg:mt-0 my-4">
+							<h4 className="text-blue text-lg font-bold mb-4 lg:mb-12">
+								Features
+							</h4>
 							<ul className="list-unstyled flex flex-col gap-2">
 								<Link href="#" className="mb-4">
 									<a className="inline-block text-decoration-none text-black">
@@ -83,8 +87,10 @@ const Footer = () => {
 								</Link>
 							</ul>
 						</div>
-						<div className="col-6 col-mx-auto">
-							<h4 className="text-blue text-lg font-bold mb-12">Pricing</h4>
+						<div className="col-6 col-mx-auto lg:mb-8 lg:mt-0 my-4">
+							<h4 className="text-blue text-lg font-bold mb-4 lg:mb-12">
+								Pricing
+							</h4>
 							<ul className="list-unstyled flex flex-col gap-2">
 								<Link href="#" className="mb-4">
 									<a className="inline-block text-decoration-none text-black">
@@ -108,8 +114,10 @@ const Footer = () => {
 								</Link>
 							</ul>
 						</div>
-						<div className="col-6 col-mx-auto">
-							<h4 className="text-blue text-lg font-bold mb-12">Support</h4>
+						<div className="col-6 col-mx-auto lg:mb-8 lg:mt-0 my-4">
+							<h4 className="text-blue text-lg font-bold mb-4 lg:mb-12">
+								Support
+							</h4>
 							<ul className="list-unstyled mb-6 flex flex-col gap-2">
 								<Link href="#" className="mb-4">
 									<a className="inline-block flex justify-start items-center gap-5 text-decoration-none text-black">
@@ -237,7 +245,7 @@ const Footer = () => {
 				</div>
 				<div className="p-8 lg:py-12 lg:px-20 bg-lightGrey">
 					<div className="mw-2xl">
-						<div className="flex justify-start items-center gap-3 mb-6">
+						<div className="flex flex-col lg:flex-row justify-start items-center gap-3 mb-6">
 							<a className="inline-block font-semibold text-lg" href="#">
 								BlueInventory Group
 							</a>
