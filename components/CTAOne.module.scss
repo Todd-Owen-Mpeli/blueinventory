@@ -7,3 +7,10 @@
 	background-image: url("/flex-ui-assets/elements/pattern-white.svg");
 	background-position: center;
 }
+
+/* Small - Large mobile screen (portrait 640px) // Change to (max-device-width: 320px) when finished */
+@media screen and (max-width: 640px) {
+	.bottomSection {
+		padding: 1rem;
+	}
+}

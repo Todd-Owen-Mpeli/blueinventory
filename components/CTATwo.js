@@ -10,7 +10,7 @@ const CTATwo = () => {
 						<h2 className="mb-5 text-4xl md:text-6xl text-white text-center md:text-left font-bold tracking-px-n leading-tight">
 							Join the the pre-launch hype train
 						</h2>
-						<p className="text-white text-opacity-90 text-base md:max-w-md">
+						<p className="text-white text-center md:text-left text-opacity-90 text-base md:max-w-md">
 							Be the first to know when we launch. Stay in the loop with
 							everything you need to know.
 						</p>
