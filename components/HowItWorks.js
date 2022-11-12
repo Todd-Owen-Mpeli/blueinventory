@@ -10,7 +10,7 @@ const HowItWorks = () => {
 							<span className="text-lightBlue font-bold">
 								Our Services made simple
 							</span>
-							<h2 className="mb-6 mt-8 text-6xl md:text-8xl xl:text-10xl text-center font-bold font-heading tracking-px-n leading-none md:max-w-2xl mx-auto">
+							<h2 className="mb-6 mt-8 text-4xl md:text-6xl text-center font-bold font-heading tracking-px-n leading-none md:max-w-2xl mx-auto">
 								Connect your Inventory Without The Chaos
 							</h2>
 						</div>

@@ -5,7 +5,7 @@ const TrustedBrands = () => {
 	return (
 		<section className="pt-36 pb-28 bg-white overflow-hidden">
 			<div className="container px-4 mx-auto">
-				<h2 className="mb-6 text-6xl md:text-8xl xl:text-10xl text-center font-bold font-heading tracking-px-n leading-none md:max-w-2xl mx-auto">
+				<h2 className="mb-6 text-4xl md:text-6xl text-center font-bold font-heading tracking-px-n leading-none md:max-w-2xl mx-auto">
 					Trusted by brands
 				</h2>
 				<p className="text-lg text-gray-600 text-center font-medium leading-normal md:max-w-lg mx-auto">

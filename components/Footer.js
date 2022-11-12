@@ -167,15 +167,13 @@ const Footer = () => {
 						</div>
 					</div>
 				</div>
-				<div className="socialMediaIcons flex justify-center pt-8 pb-12">
-					<a
-						className="flex justify-center hover:text-blue items-center w-10 h-10 mr-4 bg-gray-50 rounded-full"
-						href="#"
-					>
+				<div className="socialMediaIcons flex justify-center gap-16 pt-8 pb-12">
+					<a className="flex justify-center items-center rounded-full" href="#">
 						<svg
-							width="7"
-							height="12"
-							viewbox="0 0 7 12"
+							width="30"
+							height="30"
+							viewbox="0 0 30 30"
+							className="icon hover:text-blue hover:ease-in-out hover:duration-200"
 							fill="none"
 							xmlns="http://www.w3.org/2000/svg"
 						>
@@ -187,14 +185,12 @@ const Footer = () => {
 							></path>
 						</svg>
 					</a>
-					<a
-						className="flex justify-center hover:text-blue items-center w-10 h-10 mr-4 bg-gray-50 rounded-full"
-						href="#"
-					>
+					<a className="flex justify-center items-center rounded-full" href="#">
 						<svg
-							width="13"
-							height="11"
-							viewbox="0 0 13 11"
+							width="30"
+							height="30"
+							viewbox="0 0 30 30"
+							className="icon hover:text-blue hover:ease-in-out hover:duration-200"
 							fill="none"
 							xmlns="http://www.w3.org/2000/svg"
 						>
@@ -206,14 +202,12 @@ const Footer = () => {
 							></path>
 						</svg>
 					</a>
-					<a
-						className="flex justify-center hover:text-blue items-center w-10 h-10 mr-4 bg-gray-50 rounded-full"
-						href="#"
-					>
+					<a className="flex justify-center items-center rounded-full" href="#">
 						<svg
-							width="14"
-							height="14"
-							viewbox="0 0 14 14"
+							width="30"
+							height="30"
+							viewbox="0 0 30 30"
+							className="icon hover:text-blue hover:ease-in-out hover:duration-200"
 							fill="none"
 							xmlns="http://www.w3.org/2000/svg"
 						>
@@ -225,14 +219,12 @@ const Footer = () => {
 							></path>
 						</svg>
 					</a>
-					<a
-						className="flex justify-center hover:text-blue items-center w-10 h-10 bg-gray-50 rounded-full"
-						href="#"
-					>
+					<a className="flex justify-center items-center rounded-full" href="#">
 						<svg
-							width="12"
-							height="12"
-							viewbox="0 0 12 12"
+							width="30"
+							height="30"
+							viewbox="0 0 30 30"
+							className="icon hover:text-blue hover:ease-in-out hover:duration-200"
 							fill="none"
 							xmlns="http://www.w3.org/2000/svg"
 						>
@@ -246,7 +238,10 @@ const Footer = () => {
 				<div className="p-8 lg:py-12 lg:px-20 bg-lightGrey">
 					<div className="mw-2xl">
 						<div className="flex flex-col lg:flex-row justify-start items-center gap-3 mb-6">
-							<a className="inline-block font-semibold text-lg" href="#">
+							<a
+								className="inline-block font-semibold text-lg hover:text-blue hover:ease-in-out hover:duration-200"
+								href="#"
+							>
 								BlueInventory Group
 							</a>
 							<span className="flex justify-center lg:justify-start items-center">

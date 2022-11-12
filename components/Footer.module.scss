@@ -8,9 +8,7 @@
 			color: $baseColor_lightGrey;
 		}
 	}
-}
 
-.footerSection {
 	.content {
 		ul {
 			a {
@@ -22,9 +20,11 @@
 
 .socialMediaIcons {
 	a {
-		&:hover {
-			transition: all 0.1s ease-in-out;
-			color: $secondary_blue;
+		.icon {
+			&:hover {
+				transition: all 0.1s ease-in-out;
+				color: $secondary_blue;
+			}
 		}
 	}
 }

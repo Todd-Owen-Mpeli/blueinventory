@@ -3,6 +3,7 @@ import Head from "next/head";
 import styles from "../styles/Home.module.scss";
 import Hero from "../components/Hero";
 import CTAOne from "../components/CTAOne";
+import Footer from "../components/Footer";
 import TrustedBrands from "../components/TrustedBrands";
 import HowItWorks from "../components/HowItWorks";
 import CTATwo from "../components/CTATwo";
@@ -36,3 +37,16 @@ export default function Home() {
 		</>
 	);
 }
+
+// Removes Global Navbar & Adds Custom Header and Footer Page layout Function
+Home.getLayout = function PageLayout(page) {
+	return (
+		<>
+			{/* <!--===== ONE TIME CUSTOM PAGE CONTENT =====--> */}
+			{page}
+
+			{/* <!--===== FOOTER =====--> */}
+			<Footer />
+		</>
+	);
+};
