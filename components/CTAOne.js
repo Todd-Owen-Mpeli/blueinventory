@@ -3,14 +3,14 @@ import styles from "../components/CTAOne.module.scss";
 const CTAOne = () => {
 	return (
 		<section className="CTAOne">
-			<div className="bg-[#0d172a] text-white rounded-[0px] lg:rounded-t-[125px]">
-				<div className="py-20 bg-gray-900 radius-for-skewed">
+			<div className="bg-darkBlue text-white rounded-[0px] lg:rounded-t-[125px]">
+				<div className="py-20 bg-grey-900 radius-for-skewed">
 					<div className="container mx-auto px-4">
 						<div className="topSection max-w-2xl mx-auto text-center">
 							<h2 className="mb-4 text-white text-4xl lg:text-5xl font-bold">
 								More than just a Inventory Management Solution
 							</h2>
-							<p className="mb-6 max-w-md mx-auto text-gray-400 leading-loose">
+							<p className="mb-6 max-w-md mx-auto text-white text-base leading-loose">
 								Join the business, manufacturers and distributors across
 								Tanzania succeeding with BlueInventory.
 							</p>
@@ -20,7 +20,7 @@ const CTAOne = () => {
 								<h3 className="mb-4 text-3xl md:text-4xl leading-tight font-bold tracking-tighter">
 									Be the first to know when we launch
 								</h3>
-								<p className="mb-8 text-lg md:text-xl text-lightGrey font-medium">
+								<p className="mb-8 text-base text-lightGrey font-medium">
 									Stay in the loop with everything you need to know.
 								</p>
 								<div className="mx-auto md:max-w-md text-left">

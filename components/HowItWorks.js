@@ -26,7 +26,7 @@ const HowItWorks = () => {
 								<h3 className="mb-4 text-2xl font-bold font-heading text-black">
 									Always In Control.
 								</h3>
-								<p className="text-black leading-relaxed">
+								<p className="text-black text-base text-center leading-relaxed">
 									Creating and managing inventory has never been easier. With
 									powerful tools that integrate with popular POS and e-commerce
 									systems.
@@ -42,7 +42,7 @@ const HowItWorks = () => {
 								<h3 className="mb-4 text-2xl font-bold font-heading text-black">
 									Keep updated all the time
 								</h3>
-								<p className="text-black leading-relaxed">
+								<p className="text-black text-base text-center leading-relaxed">
 									Track inventory levels across a wide variety of products and
 									calculate the costs of goods sold.
 								</p>
@@ -57,7 +57,7 @@ const HowItWorks = () => {
 								<h3 className="mb-4 text-2xl font-bold font-heading text-black">
 									Save Time And Money.
 								</h3>
-								<p className="text-black leading-relaxed">
+								<p className="text-black text-base text-center leading-relaxed">
 									BlueInventory&rsquo;s inventory tracking software helps you
 									find what is selling and what is not, saving you time and
 									money by ensuring that your inventory is not only accurate,

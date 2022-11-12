@@ -1,40 +1,230 @@
+import Image from "next/image";
 import styles from "../components/Hero.module.scss";
 
 const Hero = () => {
 	return (
 		<section className={styles.hero}>
-			<div className="video-wrapper relative z-50">
-				<video
-					autoPlay
-					muted
-					loop
-					id="heroVideo"
-					className="absolute z-40 w-full h-[100vh] object-cover"
-				>
-					<source src="/videos/Hero.mp4" type="video/mp4" />
-				</video>
-				<div className="heroContent absolute z-50 w-full h-full">
-					<div className="container p-0 mx-auto">
-						<div className="flex flex-col w-full p-6 xl:p-20">
-							<h2 className="w-full xl:w-[55%] text-4xl md:text-6xl text-white font-bold font-heading leading-normal">
+			<nav className="navigation py-1 bg-white">
+				<div className="container mx-auto px-4">
+					<div className="relative flex items-center justify-between">
+						<div className="w-auto">
+							<a className="inline-block" href="#">
+								<Image
+									src="/img/Logos/BlueInventory Logo One White.png"
+									alt=""
+									width="185px"
+									height="70px"
+									objectFit="fit-content"
+								/>
+							</a>
+						</div>
+						<div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden lg:block">
+							<ul className="flex items-center">
+								<li className="font-heading mr-12 text-base">
+									<a
+										className="hover:text-black hover:text-grey"
+										href="#"
+										contentEditable="false"
+									>
+										Features
+									</a>
+								</li>
+								<li className="font-heading mr-12 text-base">
+									<a
+										className="hover:text-black hover:text-grey"
+										href="#"
+										contentEditable="false"
+									>
+										About
+									</a>
+								</li>
+								<li className="font-heading mr-12 text-base">
+									<a
+										className="hover:text-black hover:text-grey"
+										href="#"
+										contentEditable="false"
+									>
+										Pricing
+									</a>
+								</li>
+								<li className="font-heading mr-12 text-base">
+									<a
+										className="hover:text-black hover:text-grey"
+										href="#"
+										contentEditable="false"
+									>
+										Resources
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div className="hidden lg:flex flex-row gap-6 w-auto">
+							<a
+								className="inline-block py-2 px-4 rounded-[15px] font-heading text-sm text-white border hover:ease-in-out hover:duration-200 bg-darkBlue hover:bg-blue"
+								href="#"
+							>
+								Login
+							</a>
+							<a
+								className="inline-block py-2 px-4 rounded-[15px] font-heading text-sm text-white border hover:ease-in-out hover:duration-200 bg-blue hover:bg-limeGreen"
+								href="#"
+							>
+								Sign Up
+							</a>
+						</div>
+						{/* Mobile Navigation Menu */}
+						<div className="w-auto lg:hidden">
+							<a
+								className="navbar-burger inline-flex w-14 h-14 justify-center items-center bg-blue hover:bg-blueTwo rounded-[15px]"
+								href="#"
+							>
+								<svg
+									width="20"
+									height="10"
+									viewBox="0 0 20 10"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M19 9H1M19 1H1"
+										stroke="white"
+										strokeWidth="1.5"
+										strokeLinecap="round"
+										strokeLinejoin="round"
+									></path>
+								</svg>
+							</a>
+						</div>
+					</div>
+				</div>
+			</nav>
+			<div className={styles.mainHero}>
+				<div className="pt-24 sm:pt-34 pb-8 bg-cover">
+					<div className="container px-4 mx-auto">
+						<div className="max-w-2xl xl:max-w-4xl mx-auto text-center">
+							<h1 className="font-heading text-4xl md:text-6xl font-bold font-heading tracking-px-n leading-normal text-center text-white mb-6">
 								Inventory Management Software made simple
-							</h2>
-							<p className="mb-10 w-full xl:w-[50%] text-lg text-white font-medium">
+							</h1>
+							<p className="max-w-md md:max-w-lg mx-auto text-lg leading-6 text-white mb-10">
 								BlueInventory is your powerful central inventory management
 								solution. Simpler Inventory so you’re free to grow and manage
 								your business.
 							</p>
-							<div className="mb-6 md:inline-block">
-								<button
-									className="py-4 px-6 border-none w-[fit-content] text-white rounded-xl focus:ring focus:ring-blue transition ease-in-out duration-200 bg-blue hover:bg-limeGreen"
-									type="button"
+							<div className="flex flex-col md:flex-row items-center justify-center mb-24">
+								<a
+									className="inline-block w-full md:w-[fit-content] rounded-[15px] sm:w-auto py-4 px-6 mb-4 sm:mb-0 sm:mr-4 text-center font-heading font-medium text-base text-white hover:ease-in-out hover:duration-200  bg-blue hover:bg-limeGreen"
+									href="#"
+									contentEditable="false"
 								>
-									Sign Up&nbsp;
-								</button>
+									Try BlueInventory Today
+								</a>
+								<a
+									className="inline-block w-full md:w-[fit-content] sm:w-auto py-4 px-6 text-center font-heading font-medium text-base text-white rounded-[15px] bg-darkBlue hover:text-white hover:bg-blue hover:ease-in-out hover:duration-200"
+									href="#"
+								>
+									Learn more
+								</a>
 							</div>
+							<a className="inline-block text-white" href="#">
+								<svg
+									width="26"
+									height="30"
+									viewBox="0 0 26 30"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M13 1V29M13 29L25 17M13 29L1 17"
+										stroke="currentColor"
+										strokeWidth="1.5"
+										strokeLinecap="round"
+										strokeLinejoin="round"
+									></path>
+								</svg>
+							</a>
 						</div>
 					</div>
 				</div>
+			</div>
+			<div className="hidden navbar-menu fixed top-0 left-0 bottom-0 w-5/6 max-w-sm z-50">
+				<div className="navbar-backdrop fixed inset-0 backdrop-blur-xl backdrop-filter bg-blueTwo bg-opacity-30"></div>
+				<nav className="relative pt-7 pb-8 bg-white h-full overflow-y-auto">
+					<div className="flex flex-col px-6 h-full">
+						<a className="inline-block ml-4 mb-7" href="#">
+							<Image
+								src="/img/Logos/BlueInventory Logo One White.png"
+								alt=""
+								width="250px"
+								height="100px"
+							/>
+						</a>
+						<ul className="w-full mb-auto pb-16">
+							<li>
+								<a
+									className="font-heading block text-base font-medium py-4 px-6 hover:bg-blue hover:text-white rounded-[15px]"
+									href="#"
+								>
+									Home
+								</a>
+							</li>
+							<li>
+								<a
+									className="font-heading block text-base py-4 px-6 hover:bg-blue hover:text-white rounded-[15px]"
+									href="#"
+								>
+									Features
+								</a>
+							</li>
+							<li>
+								<a
+									className="font-heading block text-base py-4 px-6 hover:bg-blue hover:text-white rounded-[15px]"
+									href="#"
+								>
+									About
+								</a>
+							</li>
+							<li>
+								<a
+									className="font-heading block text-base py-4 px-6 hover:bg-blue hover:text-white rounded-[15px]"
+									href="#"
+								>
+									Pricing
+								</a>
+							</li>
+							<li>
+								<a
+									className="font-heading block text-base py-4 px-6 hover:bg-blue hover:text-white rounded-[15px]"
+									href="#"
+								>
+									Resources
+								</a>
+							</li>
+							<li>
+								<a
+									className="font-heading block text-base py-4 px-6 hover:bg-blue hover:text-white rounded-[15px]"
+									href="#"
+								>
+									Contact Us
+								</a>
+							</li>
+						</ul>
+						<div className="w-full">
+							<a
+								className="block w-full py-4 px-4 mb-4 text-center font-heading font-medium text-base hover:text-blue border border-lightGrey hover:border-blue rounded-[15px] hover:ease-in-out hover:duration-200"
+								href="#"
+							>
+								Log in
+							</a>
+							<a
+								className="block w-full py-4 px-4 mb-8 text-center font-heading font-medium text-base text-white bg-blue hover:bg-limeGreen border border-blue hover:border-limeGreen rounded-[15px] hover:ease-in-out hover:duration-200"
+								href="#"
+							>
+								Sign up
+							</a>
+							<p className="pl-2 text-sm text-black">2022 © BlueInventory</p>
+						</div>
+					</div>
+				</nav>
 			</div>
 		</section>
 	);
