@@ -15,6 +15,24 @@ body {
 		Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+body::-webkit-scrollbar {
+	width: 0.7rem;
+	height: 0.7rem;
+}
+
+body::-webkit-scrollbar-track {
+	background: $secondary_darkBlue;
+}
+
+body::-webkit-scrollbar-thumb {
+	background: $secondary_blue;
+
+	&:hover {
+		transition: all 0.5s;
+		background-color: $secondary_limeGreen;
+	}
+}
+
 a {
 	color: inherit;
 	text-decoration: none;
