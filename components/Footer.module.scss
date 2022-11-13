@@ -23,24 +23,6 @@
 			justify-content: left;
 			align-items: center;
 		}
-
-		.socialMediaIcons {
-			gap: 4rem;
-			display: flex;
-			padding-top: 4rem;
-			flex-direction: row;
-			padding-bottom: 3rem;
-			justify-content: center;
-
-			a {
-				.icon {
-					&:hover {
-						transition: all 0.1s ease-in-out;
-						color: $secondary_blue;
-					}
-				}
-			}
-		}
 	}
 }
 
@@ -52,22 +34,6 @@
 				display: flex;
 				margin-top: 2.5rem;
 				flex-direction: column;
-			}
-
-			.socialMediaIcons {
-				display: grid;
-				padding: 2rem 1rem;
-				gap: 2.5rem 0.25rem;
-				justify-content: center;
-				align-items: center;
-				grid-template-columns: repeat(2, 1fr);
-
-				a {
-					img {
-						width: 25px;
-						height: 25px;
-					}
-				}
 			}
 		}
 	}
