@@ -59,13 +59,13 @@ const Navbar = () => {
 					</div>
 					<div className="hidden lg:flex flex-row gap-6 w-auto">
 						<a
-							className="inline-block py-2 px-4 rounded-[15px] font-heading text-sm text-white border border-darkBlue hover:ease-in-out hover:duration-200 bg-darkBlue hover:bg-blue"
+							className="inline-block py-2 px-4 rounded-[15px] font-heading text-sm text-white border border-darkBlue hover:border-blue hover:ease-in-out hover:duration-200 bg-darkBlue hover:bg-blue"
 							href="#"
 						>
 							Login
 						</a>
 						<a
-							className="inline-block py-2 px-4 rounded-[15px] font-heading text-sm text-white border  border-blue hover:ease-in-out hover:duration-200 bg-blue hover:bg-limeGreen"
+							className="inline-block py-2 px-4 rounded-[15px] font-heading text-sm text-white border border-blue hover:border-limeGreen hover:ease-in-out hover:duration-200 bg-blue hover:bg-limeGreen"
 							href="#"
 						>
 							Sign Up

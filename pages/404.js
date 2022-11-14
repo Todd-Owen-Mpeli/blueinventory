@@ -1,26 +1,27 @@
 import Image from "next/image";
 import Navbar from "../components/Navbar";
+import styles from "../styles/pages/404.module.scss";
 
 const noPageExits = () => {
 	return (
-		<section className="404Page">
-			<div className="px-10 py-44 bg-white overflow-hidden">
+		<section className={styles.noPageExitsPage}>
+			<div className="px-10 py-44 overflow-hidden">
 				<div className="container mx-auto p-0">
-					<div className="">
-						<h3 className="mb-4 text-5xl text-center font-bold font-heading leading-tight">
+					<div>
+						<h3 className="mb-4 text-5xl text-white text-center font-bold font-heading leading-tight">
 							Something went wrong
 						</h3>
-						<p className="mb-11 text-gray-600 text-center font-medium leading-relaxed md:max-w-md mx-auto">
+						<p className="mb-11 text-white text-center font-medium leading-relaxed md:max-w-md mx-auto">
 							The page you are looking for is not found! Try something else or
 							go back to homepage.
 						</p>
 						<div className="md:max-w-max mx-auto">
 							<button
-								className="inline-flex flex-wrap justify-center items-center py-4 px-6 w-full text-white font-semibold rounded-xl focus:ring focus:ring-blue bg-blue hover:bg-limeGreen transition ease-in-out duration-200"
+								className="inline-flex flex-wrap justify-center items-center py-4 px-6 w-full rounded-xl focus:ring focus:ring-blue bg-blue hover:bg-limeGreen transition ease-in-out duration-200"
 								type="button"
 							>
 								<svg
-									className="mr-2.5"
+									className="mr-2.5 text-white"
 									width="16"
 									height="16"
 									viewbox="0 0 16 16"
@@ -35,7 +36,9 @@ const noPageExits = () => {
 										strokeLinejoin="round"
 									></path>
 								</svg>
-								<span>Go Back to Homepage</span>
+								<span className="font-normal text-white">
+									Go Back to Homepage
+								</span>
 							</button>
 						</div>
 					</div>
