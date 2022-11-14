@@ -21,7 +21,7 @@ export default function Home() {
 			</Head>
 
 			<main className={styles.main}>
-				{/*Hero Section */}
+				{/* Hero Section */}
 				<Hero />
 
 				{/* CTA Two */}
@@ -33,8 +33,10 @@ export default function Home() {
 				{/* Trusted Brands Logos */}
 				<TrustedBrands />
 
-				{/*CTA One */}
+				{/* CTA One */}
 				<CTAOne />
+
+				{/* FAQ */}
 				<FAQ />
 			</main>
 		</>
