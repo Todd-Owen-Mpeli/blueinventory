@@ -1,6 +1,5 @@
 import Image from "next/image";
-import Navbar from "../components/Navbar";
-import styles from "../components/Hero.module.scss";
+import styles from "../styles/components/Hero.module.scss";
 
 const Hero = () => {
 	return (
@@ -20,7 +19,7 @@ const Hero = () => {
 							</p>
 							<div className="flex flex-col md:flex-row items-center justify-center mb-24">
 								<a
-									className="inline-block w-full md:w-[fit-content] rounded-[15px] sm:w-auto py-4 px-6 mb-4 sm:mb-0 sm:mr-4 text-center font-heading font-medium text-base text-white hover:ease-in-out hover:duration-200  bg-blue hover:bg-limeGreen"
+									className="inline-block w-full md:w-[fit-content] rounded-[15px] sm:w-auto py-4 px-6 mb-4 sm:mb-0 sm:mr-4 text-center font-heading font-medium text-base text-white hover:ease-in-out hover:duration-200 bg-blue hover:bg-limeGreen"
 									href="#"
 									contentEditable="false"
 								>

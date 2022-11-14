@@ -1,0 +1,20 @@
+.faq {
+	overflow: hidden;
+	position: relative;
+	padding: 3.5rem 3rem;
+
+	background: linear-gradient(
+		167deg,
+		rgba(247, 242, 230, 1) 0%,
+		rgba(240, 245, 255, 1) 19%,
+		rgba(234, 242, 255, 1) 54%,
+		rgba(244, 250, 255, 1) 99%
+	);
+}
+
+/* Mobile screen (portrait 640px) // Change to (max-device-width: 640px) when finished */
+@media screen and (max-width: 640px) {
+	.faq {
+		padding: 3.5rem 1rem;
+	}
+}

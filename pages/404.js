@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Navbar from "../components/Navbar";
 import styles from "../styles/pages/404.module.scss";
 
@@ -44,7 +43,6 @@ const noPageExits = () => {
 					</div>
 				</div>
 			</div>
-
 			{/* Footer Section */}
 			<footer>
 				<div className="py-8 bg-blue">

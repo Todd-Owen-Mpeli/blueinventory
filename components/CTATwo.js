@@ -1,6 +1,3 @@
-import Image from "next/image";
-import styles from "../components/CTATwo.module.scss";
-
 const CTATwo = () => {
 	return (
 		<section className="py-14 px-4 md:py-28 md:px-10 bg-blue overflow-hidden bg-gradient-to-r from-blue to-blueTwo">

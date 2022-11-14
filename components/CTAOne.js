@@ -1,4 +1,4 @@
-import styles from "../components/CTAOne.module.scss";
+import styles from "../styles/components/CTAOne.module.scss";
 
 const CTAOne = () => {
 	return (

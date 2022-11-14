@@ -1,6 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
-import styles from "../components/Footer.module.scss";
+import styles from "../styles/components/Footer.module.scss";
 
 const Footer = () => {
 	const borderRadius = "24px 34px 34px 0px";

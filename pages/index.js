@@ -8,6 +8,7 @@ import Navbar from "../components/Navbar";
 import TrustedBrands from "../components/TrustedBrands";
 import HowItWorks from "../components/HowItWorks";
 import CTATwo from "../components/CTATwo";
+import FAQ from "../components/FAQ";
 
 export default function Home() {
 	return (
@@ -34,6 +35,7 @@ export default function Home() {
 
 				{/*CTA One */}
 				<CTAOne />
+				<FAQ />
 			</main>
 		</>
 	);
