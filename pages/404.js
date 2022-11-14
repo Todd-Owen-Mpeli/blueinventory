@@ -5,12 +5,12 @@ import styles from "../styles/pages/404.module.scss";
 const noPageExits = () => {
 	return (
 		<section className={styles.noPageExitsPage}>
-			<div className="px-10 py-44 overflow-hidden">
-				<div className="container mx-auto p-0">
-					<div>
-						<h3 className="mb-4 text-5xl text-white text-center font-bold font-heading leading-tight">
-							Something went wrong
-						</h3>
+			<div className={styles.mainContent}>
+				<div className="px-10 py-44 overflow-hidden">
+					<div className="container mx-auto p-0">
+						<h1 className="mb-4 text-5xl md:text-7xl text-white text-center font-bold font-heading leading-tight">
+							Something went wrong!
+						</h1>
 						<p className="mb-11 text-white text-center font-medium leading-relaxed md:max-w-md mx-auto">
 							The page you are looking for is not found! Try something else or
 							go back to homepage.
@@ -46,7 +46,7 @@ const noPageExits = () => {
 			</div>
 
 			{/* Footer Section */}
-			<footer className="">
+			<footer>
 				<div className="py-8 bg-blue">
 					<div className="container mx-auto px-4">
 						<div className="flex flex-col md:flex-row justify-between items-center">

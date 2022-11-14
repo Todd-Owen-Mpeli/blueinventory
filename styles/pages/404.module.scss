@@ -1,11 +1,18 @@
 .noPageExitsPage {
-	background: linear-gradient(
-			0deg,
-			rgba(13, 23, 42, 0.45),
-			rgba(13, 23, 42, 0.45)
-		),
-		url("/img/pexels-pok-rie-1255372.jpg");
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
+	.mainContent {
+		height: 100vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		background: linear-gradient(
+				0deg,
+				rgba(13, 23, 42, 0.45),
+				rgba(13, 23, 42, 0.45)
+			),
+			url("/img/pexels-pok-rie-1255372.jpg");
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
 }
