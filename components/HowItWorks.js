@@ -6,7 +6,7 @@ const HowItWorks = () => {
 		<section className={styles.HowItWorks} id="HowItWorks">
 			<div className="container mx-auto px-0">
 				<div className="content">
-					<div className="py-20 md:px-10 xl:px-28">
+					<div className="py-20 px-6 md:px-10 xl:px-28">
 						<div className="mb-16 text-center mx-auto">
 							<span className="text-lightBlue font-bold">
 								Our Services made simple
