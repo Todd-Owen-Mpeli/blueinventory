@@ -22,11 +22,17 @@
 			flex-direction: row;
 			justify-content: left;
 			align-items: center;
+
+			a {
+				&:hover {
+					color: $secondary_limeGreen;
+				}
+			}
 		}
 	}
 }
 
-/* Extra Small mobile screen (portrait 320px) // Change to (max-device-width: 320px) when finished */
+/* Extra Small mobile screen (portrait 320px) */
 @media screen and (max-width: 320px) {
 	.footerSection {
 		.content {

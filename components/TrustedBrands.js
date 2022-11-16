@@ -7,7 +7,7 @@ const TrustedBrands = () => {
 				<h2 className="mb-6 text-4xl md:text-6xl text-center font-bold font-heading tracking-px-n leading-none md:max-w-2xl mx-auto">
 					Trusted by brands
 				</h2>
-				<p className="text-lg text-black text-center text-base leading-normal md:max-w-lg mx-auto">
+				<p className="text-black text-center text-base leading-normal md:max-w-lg mx-auto">
 					Making the process so simple providing unique features, solutions and
 					an effective inventory management application.
 				</p>

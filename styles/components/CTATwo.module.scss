@@ -1,0 +1,21 @@
+// Imports
+@import "../colors";
+
+.backgroundIcon {
+	z-index: -1;
+
+	.backgroundSvgOne {
+		position: absolute;
+		top: 150px;
+	}
+}
+
+/* Small - Large mobile screen (portrait 640px) */
+@media screen and (max-width: 640px) {
+	.backgroundIcon {
+		.backgroundSvgOne {
+			width: 225px;
+			height: 225px;
+		}
+	}
+}

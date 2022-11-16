@@ -1,0 +1,23 @@
+// Imports
+@import "../colors";
+
+.featuresBanner {
+	overflow: hidden;
+	padding: 5rem 0;
+	background: $baseColor_white;
+}
+
+/* Small mobile screen (portrait 375px) */
+@media screen and (max-width: 375px) {
+	.featuresBanner {
+		padding: 1rem;
+
+		.iconsWrap {
+			div {
+				display: flex;
+				text-align: center;
+				flex-direction: column;
+			}
+		}
+	}
+}

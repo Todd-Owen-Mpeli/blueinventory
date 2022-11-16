@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import styles from "../styles/components/Hero.module.scss";
 
 const Hero = () => {
@@ -18,37 +19,39 @@ const Hero = () => {
 								your business.
 							</p>
 							<div className="flex flex-col md:flex-row items-center justify-center mb-24">
-								<a
-									className="inline-block w-full md:w-[fit-content] rounded-[15px] sm:w-auto py-4 px-6 mb-4 sm:mb-0 sm:mr-4 text-center font-heading font-medium text-base text-white hover:ease-in-out hover:duration-200 bg-blue hover:bg-limeGreen"
-									href="#"
-									contentEditable="false"
-								>
-									Try BlueInventory Today
-								</a>
-								<a
-									className="inline-block w-full md:w-[fit-content] sm:w-auto py-4 px-6 text-center font-heading font-medium text-base text-white rounded-[15px] bg-darkBlue hover:text-white hover:bg-blue hover:ease-in-out hover:duration-200"
-									href="#"
-								>
-									Learn more
-								</a>
+								<Link href="#">
+									<a
+										className="inline-block w-full md:w-[fit-content] rounded-[15px] sm:w-auto py-4 px-6 mb-4 sm:mb-0 sm:mr-4 text-center font-heading font-medium text-base text-white hover:ease-in-out hover:duration-200 bg-blue hover:bg-limeGreen"
+										contentEditable="false"
+									>
+										Try BlueInventory Today
+									</a>
+								</Link>
+								<Link href="#">
+									<a className="inline-block w-full md:w-[fit-content] sm:w-auto py-4 px-6 text-center font-heading font-medium text-base text-white rounded-[15px] bg-darkBlue hover:text-white hover:bg-blue hover:ease-in-out hover:duration-200">
+										Learn more
+									</a>
+								</Link>
 							</div>
-							<a className="inline-block text-white" href="#">
-								<svg
-									width="26"
-									height="30"
-									viewBox="0 0 26 30"
-									fill="none"
-									xmlns="http://www.w3.org/2000/svg"
-								>
-									<path
-										d="M13 1V29M13 29L25 17M13 29L1 17"
-										stroke="currentColor"
-										strokeWidth="1.5"
-										strokeLinecap="round"
-										strokeLinejoin="round"
-									></path>
-								</svg>
-							</a>
+							<Link href="#HowItWorks">
+								<a className="inline-block text-white">
+									<svg
+										width="26"
+										height="30"
+										viewBox="0 0 26 30"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											d="M13 1V29M13 29L25 17M13 29L1 17"
+											stroke="currentColor"
+											strokeWidth="1.5"
+											strokeLinecap="round"
+											strokeLinejoin="round"
+										></path>
+									</svg>
+								</a>
+							</Link>
 						</div>
 					</div>
 				</div>
@@ -57,77 +60,59 @@ const Hero = () => {
 				<div className="navbar-backdrop fixed inset-0 backdrop-blur-xl backdrop-filter bg-blueTwo bg-opacity-30"></div>
 				<nav className="relative pt-7 pb-8 bg-white h-full overflow-y-auto">
 					<div className="flex flex-col px-6 h-full">
-						<a className="inline-block ml-4 mb-7" href="#">
-							<Image
-								src="/img/Logos/BlueInventory Logo One White.png"
-								alt=""
-								width="250px"
-								height="100px"
-							/>
-						</a>
+						<Link href="#">
+							<a className="inline-block ml-4 mb-7">
+								<Image
+									src="/img/Logos/BlueInventory Logo One White.png"
+									alt=""
+									width="250px"
+									height="100px"
+								/>
+							</a>
+						</Link>
 						<ul className="w-full mb-auto pb-16">
-							<li>
-								<a
-									className="font-heading block text-base font-medium py-4 px-6 hover:bg-blue hover:text-white rounded-[15px]"
-									href="#"
-								>
+							<Link href="#">
+								<a className="font-heading block text-base font-medium py-4 px-6 hover:bg-blue hover:text-white rounded-[15px]">
 									Home
 								</a>
-							</li>
-							<li>
-								<a
-									className="font-heading block text-base py-4 px-6 hover:bg-blue hover:text-white rounded-[15px]"
-									href="#"
-								>
+							</Link>
+							<Link href="#">
+								<a className="font-heading block text-base py-4 px-6 hover:bg-blue hover:text-white rounded-[15px]">
 									Features
 								</a>
-							</li>
-							<li>
-								<a
-									className="font-heading block text-base py-4 px-6 hover:bg-blue hover:text-white rounded-[15px]"
-									href="#"
-								>
+							</Link>
+							<Link href="#">
+								<a className="font-heading block text-base py-4 px-6 hover:bg-blue hover:text-white rounded-[15px]">
 									About
 								</a>
-							</li>
-							<li>
-								<a
-									className="font-heading block text-base py-4 px-6 hover:bg-blue hover:text-white rounded-[15px]"
-									href="#"
-								>
+							</Link>
+							<Link href="#">
+								<a className="font-heading block text-base py-4 px-6 hover:bg-blue hover:text-white rounded-[15px]">
 									Pricing
 								</a>
-							</li>
-							<li>
-								<a
-									className="font-heading block text-base py-4 px-6 hover:bg-blue hover:text-white rounded-[15px]"
-									href="#"
-								>
+							</Link>
+							<Link href="#">
+								<a className="font-heading block text-base py-4 px-6 hover:bg-blue hover:text-white rounded-[15px]">
 									Resources
 								</a>
-							</li>
-							<li>
-								<a
-									className="font-heading block text-base py-4 px-6 hover:bg-blue hover:text-white rounded-[15px]"
-									href="#"
-								>
+							</Link>
+							<Link href="#">
+								<a className="font-heading block text-base py-4 px-6 hover:bg-blue hover:text-white rounded-[15px]">
 									Contact Us
 								</a>
-							</li>
+							</Link>
 						</ul>
 						<div className="w-full">
-							<a
-								className="block w-full py-4 px-4 mb-4 text-center font-heading font-medium text-base hover:text-blue border border-lightGrey hover:border-blue rounded-[15px] hover:ease-in-out hover:duration-200"
-								href="#"
-							>
-								Log in
-							</a>
-							<a
-								className="block w-full py-4 px-4 mb-8 text-center font-heading font-medium text-base text-white bg-blue hover:bg-limeGreen border border-blue hover:border-limeGreen rounded-[15px] hover:ease-in-out hover:duration-200"
-								href="#"
-							>
-								Sign up
-							</a>
+							<Link href="#">
+								<a className="block w-full py-4 px-4 mb-4 text-center font-heading font-medium text-base hover:text-blue border border-lightGrey hover:border-blue rounded-[15px] hover:ease-in-out hover:duration-200">
+									Log in
+								</a>
+							</Link>
+							<Link href="#">
+								<a className="block w-full py-4 px-4 mb-8 text-center font-heading font-medium text-base text-white bg-blue hover:bg-limeGreen border border-blue hover:border-limeGreen rounded-[15px] hover:ease-in-out hover:duration-200">
+									Sign up
+								</a>
+							</Link>
 							<p className="pl-2 text-sm text-black">2022 © BlueInventory</p>
 						</div>
 					</div>

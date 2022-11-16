@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "../styles/components/CTAOne.module.scss";
 
 const CTAOne = () => {
@@ -34,7 +35,7 @@ const CTAOne = () => {
 										</div>
 										<div className="w-full md:w-auto">
 											<a
-												className="inline-block py-3 px-5 w-full leading-5 text-white bg-blue hover:bg-limeGreen hover:ease-in-out hover:duration-200 text-white font-medium text-center focus:ring-2 focus:ring-limeGreen focus:ring-opacity-50 border border-transparent rounded-md shadow-sm"
+												className="inline-block py-3 px-5 w-full leading-5 bg-blue hover:bg-limeGreen hover:ease-in-out hover:duration-200 text-white font-medium text-center focus:ring-2 focus:ring-limeGreen focus:ring-opacity-50 border border-transparent rounded-md shadow-sm"
 												href="#"
 											>
 												Subscribe
@@ -43,9 +44,11 @@ const CTAOne = () => {
 									</div>
 									<span className="text-xs text-lightGrey font-medium">
 										<span>We care about your data in our </span>
-										<a className="text-limeGreen hover:text-limeGreen" href="#">
-											privacy policy
-										</a>
+										<Link href="#">
+											<a className="text-limeGreen hover:text-limeGreen">
+												privacy policy
+											</a>
+										</Link>
 									</span>
 								</div>
 							</div>

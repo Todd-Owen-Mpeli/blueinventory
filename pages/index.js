@@ -9,8 +9,9 @@ import TrustedBrands from "../components/TrustedBrands";
 import HowItWorks from "../components/HowItWorks";
 import CTATwo from "../components/CTATwo";
 import FAQ from "../components/FAQ";
+import FeaturesBanner from "../components/FeaturesBanner";
 
-export default function Home() {
+export default function HomePage() {
 	return (
 		<>
 			<Head>
@@ -23,6 +24,9 @@ export default function Home() {
 			<main className={styles.main}>
 				{/* Hero Section */}
 				<Hero />
+
+				{/* Feature Banner Section */}
+				<FeaturesBanner />
 
 				{/* CTA Two */}
 				<CTATwo />
@@ -44,7 +48,7 @@ export default function Home() {
 }
 
 // Removes Global Navbar & Adds Custom Header and Footer Page layout Function
-Home.getLayout = function PageLayout(page) {
+HomePage.getLayout = function PageLayout(page) {
 	return (
 		<>
 			{/* <!--===== NAVBAR =====--> */}
