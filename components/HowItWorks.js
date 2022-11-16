@@ -18,12 +18,12 @@ const HowItWorks = () => {
 						<div className="flex flex-col gap-10 lg:gap-20 xl:gap-36 mt-10 lg:mt-36">
 							<div className="flex flex-col md:flex-row justify-between items-center gap-20">
 								<div className="w-full lg:w-1/2 mb-5 lg:mb-0">
-									<span className="mx-auto lg:mx-0 mb-6 lg:mb-10 flex w-16 h-16 items-center justify-center bg-flatPinkRed rounded-full text-white text-2xl">
+									<span className="mx-auto lg:mx-0 mb-6 lg:mb-10 flex w-[7rem] h-[7rem] items-center justify-center bg-flatPinkRed rounded-full text-white text-2xl">
 										<Image
 											src="/img/Icons/tv.png"
 											alt=""
-											width="150px"
-											height="150px"
+											width="75px"
+											height="75px"
 											objectFit="contain"
 										/>
 									</span>
@@ -63,12 +63,12 @@ const HowItWorks = () => {
 									/>
 								</div>
 								<div className="w-full lg:w-1/2 mb-5 lg:mb-0">
-									<span className="mx-auto lg:mx-0 mb-6 lg:mb-10 flex w-16 h-16 items-center justify-center bg-lightBlue rounded-full text-white text-2xl">
+									<span className="mx-auto lg:mx-0 mb-6 lg:mb-10 flex w-[7rem] h-[7rem] items-center justify-center bg-lightBlue rounded-full text-white text-2xl">
 										<Image
 											src="/img/Icons/electric-guitar.png"
 											alt=""
-											width="150px"
-											height="150px"
+											width="75px"
+											height="75px"
 											objectFit="contain"
 										/>
 									</span>
@@ -89,12 +89,12 @@ const HowItWorks = () => {
 							</div>
 							<div className="flex flex-col md:flex-row justify-between items-center gap-20">
 								<div className="w-full lg:w-1/2 mb-5 lg:mb-0">
-									<span className="mx-auto lg:mx-0 mb-6 lg:mb-10 flex w-16 h-16 items-center justify-center bg-limeGreen rounded-full text-white text-2xl">
+									<span className="mx-auto lg:mx-0 mb-6 lg:mb-10 flex w-[7rem] h-[7rem] items-center justify-center bg-limeGreen rounded-full text-white text-2xl">
 										<Image
 											src="/img/Icons/graph.png"
 											alt=""
-											width="150px"
-											height="150px"
+											width="75px"
+											height="75px"
 											objectFit="contain"
 										/>
 									</span>
