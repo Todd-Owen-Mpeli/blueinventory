@@ -168,38 +168,17 @@ const Footer = () => {
 						</div>
 					</div>
 				</div>
-				<div className="p-8 lg:py-12 lg:px-20 bg-lightGrey">
-					<div className="container mx-auto px-4">
-						<div className="flex flex-col lg:flex-row justify-start items-center gap-3 mb-6">
-							<Link href="#">
-								<a className="inline-block font-semibold text-lg hover:text-blue hover:ease-in-out hover:duration-200">
-									BlueInventory Group
-								</a>
-							</Link>
-						</div>
-						<p className="text-sm lg:text-tiny text-secondary w-full lg:w-[50%]">
-							Cookies are important to the proper functioning of a site. To
-							improve your experience, we use cookies to remember log-in details
-							and provide secure log-in, collect statistics to optimize site
-							functionality, and deliver content tailored to your interests...
-						</p>
-						<p className="mt-3 text-sm lg:text-tiny text-secondary w-full lg:w-[50%]">
-							By accessing and using this page you agree to the Terms and
-							Conditions
-						</p>
-					</div>
-				</div>
-				<div className="py-8 bg-blue">
+				<div className="py-8 bg-white">
 					<div className="container mx-auto px-4">
 						<div className="flex flex-col md:flex-row justify-between items-center">
-							<span className="text-lightGrey text-center md:text-left text-sm">
+							<span className="text-black text-center md:text-left text-tiny">
 								&copy; 2022 BlueInventory Group. All rights reserved.
 							</span>
 							<div className="flex order-first md:order-last mb-6 md:mb-0">
 								<Link href="#">
-									<a className="inline-flex items-center w-12 h-12 mr-4 bg-blue">
+									<a className="inline-flex items-center w-12 h-12 mr-4">
 										<svg
-											className="mx-auto text-lightGrey hover:text-limeGreen h-4 w-4"
+											className="mx-auto text-black hover:text-blue h-4 w-4"
 											viewBox="0 0 10 18"
 											fill="currentColor"
 											xmlns="http://www.w3.org/2000/svg"
@@ -213,9 +192,9 @@ const Footer = () => {
 									</a>
 								</Link>
 								<Link href="#">
-									<a className="inline-flex items-center w-12 h-12 mr-4 bg-blue">
+									<a className="inline-flex items-center w-12 h-12 mr-4">
 										<svg
-											className="mx-auto text-lightGrey hover:text-limeGreen h-4 w-4"
+											className="mx-auto text-black hover:text-blue h-4 w-4"
 											viewBox="0 0 19 16"
 											fill="currentColor"
 											xmlns="http://www.w3.org/2000/svg"
@@ -229,9 +208,9 @@ const Footer = () => {
 									</a>
 								</Link>
 								<Link href="#">
-									<a className="inline-flex items-center w-12 h-12 mr-4 bg-blue">
+									<a className="inline-flex items-center w-12 h-12 mr-4">
 										<svg
-											className="mx-auto text-lightGrey hover:text-limeGreen h-4 w-4"
+											className="mx-auto text-black hover:text-blue h-4 w-4"
 											width="14"
 											height="14"
 											viewBox="0 0 14 14"
@@ -248,9 +227,9 @@ const Footer = () => {
 									</a>
 								</Link>
 								<Link href="#">
-									<a className="inline-flex items-center w-12 h-12 bg-blue">
+									<a className="inline-flex items-center w-12 h-12">
 										<svg
-											className="mx-auto text-lightGrey hover:text-limeGreen h-4 w-4"
+											className="mx-auto text-black hover:text-blue h-4 w-4"
 											viewBox="0 0 18 18"
 											fill="currentColor"
 											xmlns="http://www.w3.org/2000/svg"
