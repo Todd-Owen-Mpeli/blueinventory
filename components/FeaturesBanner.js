@@ -20,7 +20,7 @@ const FeaturesBanner = () => {
 									</span>
 								</div>
 								<div className="flex-1 p-3">
-									<h3 className="text-lg sm:text-xl font-semibold">
+									<h3 className="text-lg sm:text-xl text-center lg:text-left font-semibold">
 										Your Supply Chain simplified for building your business
 									</h3>
 								</div>
@@ -41,7 +41,7 @@ const FeaturesBanner = () => {
 									</span>
 								</div>
 								<div className="flex-1 p-3">
-									<h3 className="text-lg sm:text-xl font-semibold">
+									<h3 className="text-lg sm:text-xl text-center lg:text-left font-semibold">
 										One-click copy &amp; paste system to make it that much
 										easier
 									</h3>
@@ -63,7 +63,7 @@ const FeaturesBanner = () => {
 									</span>
 								</div>
 								<div className="flex-1 p-3">
-									<h3 className="text-lg sm:text-xl font-semibold">
+									<h3 className="text-lg sm:text-xl text-center lg:text-left font-semibold">
 										Fully Tracked ordering low stock products
 									</h3>
 								</div>
