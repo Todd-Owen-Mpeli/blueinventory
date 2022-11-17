@@ -2,15 +2,14 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "../styles/components/Hero.module.scss";
 
-const Hero = (props) => {
+const HeroTwo = (props) => {
 	// const heroBackgroundImage = `background: linear-gradient(0deg, rgba(13, 23, 42, 0.45), rgba(13, 23, 42, 0.45)), url('${props.data.BackgroundImage}');`;
-
-	const heroBackgroundImageProperties =
-		'background: linear-gradient(0deg, rgba(13, 23, 42, 0.45), rgba(13, 23, 42, 0.45)), url("/img/pexels-kampus-production-8475203-min.jpg");';
+	const heroBackgroundImage =
+		"background: linear-gradient(0deg, rgba(13, 23, 42, 0.45), rgba(13, 23, 42, 0.45)), url('/img/pexels-kampus-production-8475203-min.jpg');";
 
 	return (
 		<section className={styles.hero}>
-			<div className={styles.mainHero} style={{heroBackgroundImageProperties}}>
+			<div className={styles.mainHero} style={{heroBackgroundImage}}>
 				<div className="pt-24 sm:pt-34 pb-8 bg-cover">
 					<div className="container px-4 mx-auto">
 						<div className="max-w-2xl xl:max-w-4xl mx-auto text-center">
@@ -23,40 +22,6 @@ const Hero = (props) => {
 								solution. Simpler Inventory so you’re free to grow and manage
 								your business.
 							</p>
-							<div className="flex flex-col md:flex-row items-center justify-center mb-24">
-								<Link href="#">
-									<a
-										className="inline-block w-full md:w-[fit-content] rounded-[15px] sm:w-auto py-4 px-6 mb-4 sm:mb-0 sm:mr-4 text-center font-heading font-medium text-base text-white hover:ease-in-out hover:duration-200 bg-blue hover:bg-limeGreen"
-										contentEditable="false"
-									>
-										Try BlueInventory Today
-									</a>
-								</Link>
-								<Link href="#">
-									<a className="inline-block w-full md:w-[fit-content] sm:w-auto py-4 px-6 text-center font-heading font-medium text-base text-white rounded-[15px] bg-darkBlue hover:text-white hover:bg-blue hover:ease-in-out hover:duration-200">
-										Learn more
-									</a>
-								</Link>
-							</div>
-							<Link href="#HowItWorks">
-								<a className="inline-block text-white">
-									<svg
-										width="26"
-										height="30"
-										viewBox="0 0 26 30"
-										fill="none"
-										xmlns="http://www.w3.org/2000/svg"
-									>
-										<path
-											d="M13 1V29M13 29L25 17M13 29L1 17"
-											stroke="currentColor"
-											strokeWidth="1.5"
-											strokeLinecap="round"
-											strokeLinejoin="round"
-										></path>
-									</svg>
-								</a>
-							</Link>
 						</div>
 					</div>
 				</div>
@@ -127,4 +92,4 @@ const Hero = (props) => {
 	);
 };
 
-export default Hero;
+export default HeroTwo;

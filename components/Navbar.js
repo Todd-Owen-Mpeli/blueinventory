@@ -7,7 +7,7 @@ const Navbar = () => {
 			<div className="container mx-auto px-4">
 				<div className="relative flex items-center justify-between">
 					<div className="w-auto">
-						<Link href="#">
+						<Link href="/">
 							<a className="inline-block">
 								<Image
 									src="/img/Logos/BlueInventory Logo One White.png"
@@ -22,7 +22,7 @@ const Navbar = () => {
 					<div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden lg:block">
 						<ul className="flex justify-between items-center gap-14">
 							<li>
-								<Link className="font-heading mr-12 text-base" href="#">
+								<Link className="font-heading mr-12 text-base" href="/features">
 									<a
 										className="text-black hover:text-grey"
 										contentEditable="false"

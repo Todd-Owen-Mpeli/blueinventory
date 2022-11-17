@@ -42,24 +42,26 @@ const HowItWorks = () => {
 								</div>
 								<div className="w-full lg:w-1/2">
 									<Image
-										class="w-full mx-auto rounded-[15px]"
 										src="/img/pexels-rodnae-productions-5915209.jpg"
+										class="w-full h-full rounded-[15px]"
 										alt="Image One"
-										width="750px"
-										height="500px"
+										width="100"
+										height="100"
 										objectFit="cover"
+										layout="responsive"
 									/>
 								</div>
 							</div>
 							<div className="flex flex-col-reverse md:flex-row justify-between items-center gap-20">
 								<div className="w-full lg:w-1/2">
 									<Image
-										class="w-full mx-auto rounded-[15px]"
 										src="/img/pexels-jopwell-2422278.jpg"
+										class="w-full h-full rounded-[15px]"
 										alt="Image One"
-										width="750px"
-										height="500px"
+										width="100"
+										height="100"
 										objectFit="cover"
+										layout="responsive"
 									/>
 								</div>
 								<div className="w-full lg:w-1/2 mb-5 lg:mb-0">
@@ -113,12 +115,13 @@ const HowItWorks = () => {
 								</div>
 								<div className="w-full lg:w-1/2 px-0">
 									<Image
-										class="w-full mx-auto rounded-[15px]"
 										src="/img/pexels-rfstudio-3811082.jpg"
+										class="w-full h-full rounded-[15px]"
 										alt="Image One"
-										width="750px"
-										height="500px"
+										width="100"
+										height="100"
 										objectFit="cover"
+										layout="responsive"
 									/>
 								</div>
 							</div>
