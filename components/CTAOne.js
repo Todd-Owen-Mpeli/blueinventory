@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import styles from "../styles/components/CTAOne.module.scss";
 
@@ -51,6 +52,16 @@ const CTAOne = () => {
 										</Link>
 									</span>
 								</div>
+							</div>
+							<div className={styles.backgroundIcon}>
+								<img
+									src="/img/Icons/spaceship.png"
+									alt=""
+									width="450px"
+									height="450px"
+									objectFit="contain"
+									className={styles.backgroundSvgOne}
+								/>
 							</div>
 						</div>
 					</div>
