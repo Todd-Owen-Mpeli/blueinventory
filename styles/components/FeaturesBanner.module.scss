@@ -7,6 +7,13 @@
 	background: $baseColor_white;
 }
 
+/* Large mobile screen (portrait 640px) */
+@media screen and (max-width: 640px) {
+	.featuresBanner {
+		padding: 1.5rem 0;
+	}
+}
+
 /* Small mobile screen (portrait 375px) */
 @media screen and (max-width: 375px) {
 	.featuresBanner {
