@@ -11,6 +11,65 @@ import CTATwo from "../components/CTATwo";
 import FAQ from "../components/FAQ";
 import FeaturesBanner from "../components/FeaturesBanner";
 
+const homePageHero = {
+	title: "Smarter Business, Simpler Inventory",
+	subtitle:
+		"BlueInventory is your powerful central inventory management solution. Simpler Inventory so you’re free to grow and manage your business.",
+	backgroundImage: "/img/pexels-kampus-production-8475203-min.jpg",
+	ButtonTextOne: "Try BlueInventory Today",
+	ButtonLinkOne: "/features",
+	ButtonTextTwo: "Learn more",
+	ButtonLinkTwo: "/features",
+};
+
+const featuresBanner = {
+	iconOne: "/img/Icons/goal.png",
+	iconTwo: "/img/Icons/idea.png",
+	iconThree: "/img/Icons/startup.png",
+	textOne: "Your Supply Chain simplified for building your business",
+	textTwo: "One-click copy & paste system to make it that much easier",
+	textThree: "Fully Tracked ordering low stock products",
+};
+
+const howItWorks = {
+	title: "Our Services made simple",
+	subtitle: "Connect your Inventory Without The Chaos",
+	titleOne: "Be Always In Control.",
+	titleTwo: "Keep updated all the time",
+	titleThree: "Save Time And Money.",
+	subtitleOne: "Create and Manage Inventory",
+	subtitleTwo: "Track Related Products",
+	subtitleThree: "Inventory Optimization",
+	imageOne: "/img/pexels-rfstudio-3811082.jpg",
+	imageTwo: "/img/pexels-jopwell-2422278.jpg",
+	imageThree: "/img/pexels-rodnae-productions-5915209.jpg",
+	textAreaOne:
+		"Creating and managing inventory has never been easier. With powerful tools that integrate with popular POS and e-commerce. No more spending hours on spreadsheets to figure out what stock you have.",
+	textAreaTwo:
+		"Track inventory levels across a wide variety of products and calculate the costs of goods sold. No more logging into multiple seller panels and software to track sales. Stop worrying about running out of stock - plan your inventory with absolute clarity",
+	textAreaThree:
+		"BlueInventory's inventory tracking software helps you find what is selling and what is not, saving you time and money by ensuring that your inventory is not only accurate, but has been prioritized.",
+};
+
+const trustedBrands = {
+	title: "Trusted by brands",
+	subtitle:
+		"Making the process so simple providing unique features, solutions and an effective inventory management application.",
+	imageOne: "/svg/Trusted Brands/jiggle-logo.svg",
+	imageTwo: "/svg/Trusted Brands/resecurb-logo.svg",
+	imageThree: "/svg/Trusted Brands/symtric-logo.svg",
+	imageFour: "/svg/Trusted Brands/welytics-logo.svg",
+	imageFive: "/svg/Trusted Brands/wishelp-logo.svg",
+};
+
+const trustedBrandsLogos = [
+	"/svg/Trusted Brands/jiggle-logo.svg",
+	"/svg/Trusted Brands/resecurb-logo.svg",
+	"/svg/Trusted Brands/symtric-logo.svg",
+	"/svg/Trusted Brands/welytics-logo.svg",
+	"/svg/Trusted Brands/wishelp-logo.svg",
+];
+
 export default function HomePage() {
 	return (
 		<>
@@ -23,19 +82,23 @@ export default function HomePage() {
 
 			<main className={styles.main}>
 				{/* Hero Section */}
-				<Hero />
+				<Hero data={homePageHero} />
 
 				{/* Feature Banner Section */}
-				<FeaturesBanner />
+				<FeaturesBanner data={featuresBanner} />
 
 				{/* CTA Two */}
 				<CTATwo />
 
 				{/* How It Works */}
-				<HowItWorks />
+				<HowItWorks title={howItWorks} data={howItWorks} />
 
 				{/* Trusted Brands Logos */}
-				<TrustedBrands />
+				<TrustedBrands
+					title={trustedBrands}
+					data={trustedBrands}
+					imagesArray={trustedBrandsLogos}
+				/>
 
 				{/* CTA One */}
 				<CTAOne />

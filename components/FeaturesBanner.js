@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from "../styles/components/FeaturesBanner.module.scss";
 
-const FeaturesBanner = () => {
+const FeaturesBanner = (props) => {
 	return (
 		<section className={styles.featuresBanner}>
 			<div className="container px-0 mx-auto">
@@ -12,7 +12,7 @@ const FeaturesBanner = () => {
 								<div className="w-auto p-3">
 									<span className="mx-auto flex w-[7rem] h-[7rem] items-center justify-center bg-flatLightBlue rounded-full text-white text-2xl">
 										<Image
-											src="/img/Icons/goal.png"
+											src={props.data.iconOne}
 											alt=""
 											width="75px"
 											height="75px"
@@ -21,7 +21,7 @@ const FeaturesBanner = () => {
 								</div>
 								<div className="flex-1 p-3">
 									<h3 className="text-lg sm:text-xl text-center lg:text-left font-semibold">
-										Your Supply Chain simplified for building your business
+										{props.data.textOne}
 									</h3>
 								</div>
 							</div>
@@ -33,7 +33,7 @@ const FeaturesBanner = () => {
 								<div className="w-auto p-3">
 									<span className="mx-auto flex w-[7rem] h-[7rem] items-center justify-center bg-blue rounded-full text-white text-2xl">
 										<Image
-											src="/img/Icons/idea.png"
+											src={props.data.iconTwo}
 											alt=""
 											width="75px"
 											height="75px"
@@ -42,8 +42,7 @@ const FeaturesBanner = () => {
 								</div>
 								<div className="flex-1 p-3">
 									<h3 className="text-lg sm:text-xl text-center lg:text-left font-semibold">
-										One-click copy &amp; paste system to make it that much
-										easier
+										{props.data.textTwo}
 									</h3>
 								</div>
 							</div>
@@ -55,7 +54,7 @@ const FeaturesBanner = () => {
 								<div className="w-auto p-3">
 									<span className="mx-auto flex w-[7rem] h-[7rem] items-center justify-center bg-darkBlue rounded-full text-white text-2xl">
 										<Image
-											src="/img/Icons/startup.png"
+											src={props.data.iconThree}
 											alt=""
 											width="75px"
 											height="75px"
@@ -64,7 +63,7 @@ const FeaturesBanner = () => {
 								</div>
 								<div className="flex-1 p-3">
 									<h3 className="text-lg sm:text-xl text-center lg:text-left font-semibold">
-										Fully Tracked ordering low stock products
+										{props.data.textThree}
 									</h3>
 								</div>
 							</div>

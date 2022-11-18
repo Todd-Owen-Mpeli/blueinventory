@@ -3,24 +3,35 @@ import Link from "next/link";
 import styles from "../styles/components/Hero.module.scss";
 
 const HeroTwo = (props) => {
-	// const heroBackgroundImage = `background: linear-gradient(0deg, rgba(13, 23, 42, 0.45), rgba(13, 23, 42, 0.45)), url('${props.data.BackgroundImage}');`;
-	const heroBackgroundImage =
-		"background: linear-gradient(0deg, rgba(13, 23, 42, 0.45), rgba(13, 23, 42, 0.45)), url('/img/pexels-kampus-production-8475203-min.jpg');";
-
 	return (
 		<section className={styles.hero}>
-			<div className={styles.mainHero} style={{heroBackgroundImage}}>
+			<div className="mainHero">
+				<style jsx>{`
+					.mainHero {
+						display: flex;
+						height: 70vh;
+						flex-direction: column;
+						justify-content: center;
+						align-items: center;
+						background: linear-gradient(
+								0deg,
+								rgba(13, 23, 42, 0.65),
+								rgba(13, 23, 42, 0.65)
+							),
+							url("${props.data.backgroundImage}");
+						background-position: center;
+						background-repeat: no-repeat;
+						background-size: cover;
+					}
+				`}</style>
 				<div className="pt-24 sm:pt-34 pb-8 bg-cover">
 					<div className="container px-4 mx-auto">
 						<div className="max-w-2xl xl:max-w-4xl mx-auto text-center">
 							<h1 className="font-heading text-[2rem] sm:text-5xl md:text-6xl font-bold font-heading leading-normal sm:leading-[4.5rem] text-center text-white mb-6">
-								Smarter Business,
-								<br /> Simpler Inventory
+								{props.data.title}
 							</h1>
 							<p className="max-w-md md:max-w-lg mx-auto text-lg leading-6 text-white mb-10">
-								BlueInventory is your powerful central inventory management
-								solution. Simpler Inventory so you’re free to grow and manage
-								your business.
+								{props.data.subtitle}
 							</p>
 						</div>
 					</div>
