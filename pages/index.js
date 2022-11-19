@@ -44,9 +44,9 @@ const howItWorks = {
 	imageTwo: "/img/pexels-jopwell-2422278.jpg",
 	imageThree: "/img/pexels-rodnae-productions-5915209.jpg",
 	textAreaOne:
-		"Creating and managing inventory has never been easier. With powerful tools that integrate with popular POS and e-commerce. No more spending hours on spreadsheets to figure out what stock you have.",
+		"Creating and managing inventory has never been easier. With powerful tools that integrate with popular devices. No more spending hours on spreadsheets to figure out what stock you have.",
 	textAreaTwo:
-		"Track inventory levels across a wide variety of products and calculate the costs of goods sold. No more logging into multiple seller panels and software to track sales. Stop worrying about running out of stock - plan your inventory with absolute clarity",
+		"Track inventory levels across a wide variety of products and calculate the costs of goods sold. Stop worrying about running out of stock - plan your inventory with absolute clarity",
 	textAreaThree:
 		"BlueInventory's inventory tracking software helps you find what is selling and what is not, saving you time and money by ensuring that your inventory is not only accurate, but has been prioritized.",
 };

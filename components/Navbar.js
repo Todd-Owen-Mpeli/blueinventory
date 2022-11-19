@@ -14,7 +14,6 @@ const Navbar = () => {
 									alt=""
 									width="185px"
 									height="70px"
-									objectFit="fit-content"
 								/>
 							</a>
 						</Link>
@@ -23,42 +22,22 @@ const Navbar = () => {
 						<ul className="flex justify-between items-center gap-14">
 							<li>
 								<Link className="font-heading mr-12 text-base" href="/features">
-									<a
-										className="text-black hover:text-grey"
-										contentEditable="false"
-									>
-										Features
-									</a>
+									<a className="text-black hover:text-grey">Features</a>
 								</Link>
 							</li>
 							<li>
 								<Link className="font-heading mr-12 text-base" href="#">
-									<a
-										className="text-black hover:text-grey"
-										contentEditable="false"
-									>
-										About
-									</a>
+									<a className="text-black hover:text-grey">About</a>
 								</Link>
 							</li>
 							<li>
 								<Link className="font-heading mr-12 text-base" href="#">
-									<a
-										className="text-black hover:text-grey"
-										contentEditable="false"
-									>
-										Pricing
-									</a>
+									<a className="text-black hover:text-grey">Pricing</a>
 								</Link>
 							</li>
 							<li>
 								<Link className="font-heading mr-12 text-base" href="#">
-									<a
-										className="text-black hover:text-grey"
-										contentEditable="false"
-									>
-										Resources
-									</a>
+									<a className="text-black hover:text-grey">Resources</a>
 								</Link>
 							</li>
 						</ul>

@@ -59,7 +59,6 @@ const CTAOne = () => {
 									alt=""
 									width="450px"
 									height="450px"
-									objectFit="contain"
 									className={styles.backgroundSvgOne}
 								/>
 							</div>

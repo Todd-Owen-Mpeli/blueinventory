@@ -13,6 +13,7 @@ const FeaturesBanner = (props) => {
 									<span className="mx-auto flex w-[7rem] h-[7rem] items-center justify-center bg-flatLightBlue rounded-full text-white text-2xl">
 										<Image
 											src={props.data.iconOne}
+											className="object-contain"
 											alt=""
 											width="75px"
 											height="75px"
@@ -34,6 +35,7 @@ const FeaturesBanner = (props) => {
 									<span className="mx-auto flex w-[7rem] h-[7rem] items-center justify-center bg-blue rounded-full text-white text-2xl">
 										<Image
 											src={props.data.iconTwo}
+											className="object-contain"
 											alt=""
 											width="75px"
 											height="75px"
@@ -55,6 +57,7 @@ const FeaturesBanner = (props) => {
 									<span className="mx-auto flex w-[7rem] h-[7rem] items-center justify-center bg-darkBlue rounded-full text-white text-2xl">
 										<Image
 											src={props.data.iconThree}
+											className="object-contain"
 											alt=""
 											width="75px"
 											height="75px"

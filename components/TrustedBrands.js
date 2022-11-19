@@ -14,7 +14,7 @@ const TrustedBrands = (props) => {
 					<div className="w-1/2 md:w-1/3 lg:w-1/5 px-4 mb-8 lg:mb-0 text-center">
 						<Image
 							src={props.data.imageOne}
-							className="mx-auto"
+							className="mx-auto object-contain"
 							alt=""
 							width="150px"
 							height="150px"
@@ -23,7 +23,7 @@ const TrustedBrands = (props) => {
 					<div className="w-1/2 md:w-1/3 lg:w-1/5 px-4 mb-8 lg:mb-0 text-center">
 						<Image
 							src={props.data.imageTwo}
-							className="mx-auto"
+							className="mx-auto object-contain"
 							alt=""
 							width="150px"
 							height="150px"
@@ -32,7 +32,7 @@ const TrustedBrands = (props) => {
 					<div className="w-1/2 md:w-1/3 lg:w-1/5 px-4 mb-8 lg:mb-0 text-center">
 						<Image
 							src={props.data.imageThree}
-							className="mx-auto"
+							className="mx-auto object-contain"
 							alt=""
 							width="150px"
 							height="150px"
@@ -41,7 +41,7 @@ const TrustedBrands = (props) => {
 					<div className="w-1/2 md:w-1/3 lg:w-1/5 px-4 mb-8 lg:mb-0 text-center">
 						<Image
 							src={props.data.imageFour}
-							className="mx-auto"
+							className="mx-auto object-contain"
 							alt=""
 							width="150px"
 							height="150px"
@@ -50,7 +50,7 @@ const TrustedBrands = (props) => {
 					<div className="w-1/2 md:w-1/3 lg:w-1/5 px-4 text-center">
 						<Image
 							src={props.data.imageFive}
-							className="mx-auto"
+							className="mx-auto object-contain"
 							alt=""
 							width="150px"
 							height="150px"

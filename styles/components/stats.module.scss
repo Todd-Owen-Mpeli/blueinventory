@@ -1,0 +1,17 @@
+// Imports
+@import "../colors";
+
+.stats {
+	overflow: hidden;
+	padding: 8.5rem 2rem;
+	background-color: $secondary_blue;
+
+	.backgroundIcon {
+		z-index: -1;
+
+		.backgroundSvgOne {
+			position: absolute;
+			// top: 150px;
+		}
+	}
+}

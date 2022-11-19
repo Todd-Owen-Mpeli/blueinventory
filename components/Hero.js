@@ -9,7 +9,7 @@ const Hero = (props) => {
 				<style jsx>{`
 					.mainHero {
 						display: flex;
-						height: 70vh;
+						min-height: 70vh;
 						flex-direction: column;
 						justify-content: center;
 						align-items: center;
@@ -33,12 +33,9 @@ const Hero = (props) => {
 							<p className="max-w-md md:max-w-lg mx-auto text-lg leading-6 text-white mb-10">
 								{props.data.subtitle}
 							</p>
-							<div className="flex flex-col md:flex-row items-center justify-center mb-24">
+							<div className="flex flex-col md:flex-row items-center justify-center mb-16">
 								<Link href={props.data.ButtonLinkTwo}>
-									<a
-										className="inline-block w-full md:w-[fit-content] rounded-[15px] sm:w-auto py-4 px-6 mb-4 sm:mb-0 sm:mr-4 text-center font-heading font-medium text-base text-white hover:ease-in-out hover:duration-200 bg-blue hover:bg-limeGreen"
-										contentEditable="false"
-									>
+									<a className="inline-block w-full md:w-[fit-content] rounded-[15px] sm:w-auto py-4 px-6 mb-4 sm:mb-0 sm:mr-4 text-center font-heading font-medium text-base text-white hover:ease-in-out hover:duration-200 bg-blue hover:bg-limeGreen">
 										{props.data.ButtonTextOne}
 									</a>
 								</Link>
@@ -49,7 +46,7 @@ const Hero = (props) => {
 								</Link>
 							</div>
 							<Link href="#HowItWorks">
-								<a className="inline-block text-white">
+								<a className="hidden lg:inline-block mb-6 text-white">
 									<svg
 										width="26"
 										height="30"

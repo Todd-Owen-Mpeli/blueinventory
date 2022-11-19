@@ -6,12 +6,12 @@ const HowItWorks = (props) => {
 		<section className={styles.HowItWorks} id="HowItWorks">
 			<div className="container mx-auto px-0">
 				<div className="content">
-					<div className="py-20 px-6 md:px-10 xl:px-28">
+					<div className="py-20 px-6 md:px-10 xl:px-12">
 						<div className="mb-16 text-center mx-auto">
 							<span className="text-lightBlue font-bold">
 								{props.title.title}
 							</span>
-							<h2 className="mb-6 mt-8 text-4xl md:text-6xl text-center font-bold font-heading tracking-px-n leading-none md:max-w-2xl mx-auto">
+							<h2 className="mb-6 mt-8 text-4xl md:text-6xl text-center font-bold font-heading tracking-px-n leading-none md:max-w-5xl mx-auto">
 								{props.title.subtitle}
 							</h2>
 						</div>
@@ -21,16 +21,16 @@ const HowItWorks = (props) => {
 									<span className="mx-auto lg:mx-0 mb-6 lg:mb-10 flex w-[7rem] h-[7rem] items-center justify-center bg-flatPinkRed rounded-full text-white text-2xl">
 										<Image
 											src="/img/Icons/analysis.png"
+											className="object-contain"
 											alt=""
 											width="75px"
 											height="75px"
-											objectFit="contain"
 										/>
 									</span>
-									<h5 className="mb-4 text-tiny uppercase font-bold text-center lg:text-left font-heading text-lightBlue">
+									<h5 className="mb-4 text-base uppercase font-bold text-center lg:text-left font-heading text-lightBlue">
 										{props.data.subtitleOne}
 									</h5>
-									<h3 className="mb-4 text-2xl font-bold font-heading text-center lg:text-left text-black">
+									<h3 className="mb-4 text-3xl font-bold font-heading text-center lg:text-left text-black">
 										{props.data.titleOne}
 									</h3>
 									<p className="text-black text-base text-center lg:text-left leading-relaxed">
@@ -40,11 +40,10 @@ const HowItWorks = (props) => {
 								<div className="w-full lg:w-1/2">
 									<Image
 										src={props.data.imageOne}
-										class="w-full h-full rounded-[15px]"
+										className="w-full h-full object-cover rounded-[15px]"
 										alt="Image One"
 										width="100"
 										height="100"
-										objectFit="cover"
 										layout="responsive"
 									/>
 								</div>
@@ -53,11 +52,10 @@ const HowItWorks = (props) => {
 								<div className="w-full lg:w-1/2">
 									<Image
 										src={props.data.imageTwo}
-										class="w-full h-full rounded-[15px]"
+										className="w-full h-full object-cover rounded-[15px]"
 										alt="Image One"
 										width="100"
 										height="100"
-										objectFit="cover"
 										layout="responsive"
 									/>
 								</div>
@@ -65,16 +63,16 @@ const HowItWorks = (props) => {
 									<span className="mx-auto lg:mx-0 mb-6 lg:mb-10 flex w-[7rem] h-[7rem] items-center justify-center bg-lightBlue rounded-full text-white text-2xl">
 										<Image
 											src="/img/Icons/bar-graph.png"
+											className="object-contain"
 											alt=""
 											width="75px"
 											height="75px"
-											objectFit="contain"
 										/>
 									</span>
-									<h5 className="mb-4 text-tiny uppercase font-bold font-heading text-center lg:text-left text-lightBlue">
+									<h5 className="mb-4 text-base uppercase font-bold font-heading text-center lg:text-left text-lightBlue">
 										{props.data.subtitleTwo}
 									</h5>
-									<h3 className="mb-4 text-2xl font-bold font-heading text-center lg:text-left text-black">
+									<h3 className="mb-4 text-3xl font-bold font-heading text-center lg:text-left text-black">
 										{props.data.titleTwo}
 									</h3>
 									<p className="text-black text-base text-center lg:text-left leading-relaxed">
@@ -87,16 +85,16 @@ const HowItWorks = (props) => {
 									<span className="mx-auto lg:mx-0 mb-6 lg:mb-10 flex w-[7rem] h-[7rem] items-center justify-center bg-limeGreen rounded-full text-white text-2xl">
 										<Image
 											src="/img/Icons/graph.png"
+											className="object-contain"
 											alt=""
 											width="75px"
 											height="75px"
-											objectFit="contain"
 										/>
 									</span>
-									<h5 className="mb-4 text-tiny uppercase font-bold font-heading text-center lg:text-left text-lightBlue">
+									<h5 className="mb-4 text-base uppercase font-bold font-heading text-center lg:text-left text-lightBlue">
 										{props.data.subtitleThree}
 									</h5>
-									<h3 className="mb-4 text-2xl font-bold font-heading text-center lg:text-left text-black">
+									<h3 className="mb-4 text-3xl font-bold font-heading text-center lg:text-left text-black">
 										{props.data.titleThree}
 									</h3>
 									<p className="text-black text-base text-center lg:text-left leading-relaxed">
@@ -106,11 +104,10 @@ const HowItWorks = (props) => {
 								<div className="w-full lg:w-1/2 px-0">
 									<Image
 										src={props.data.imageThree}
-										class="w-full h-full rounded-[15px]"
+										className="w-full h-full object-cover rounded-[15px]"
 										alt="Image One"
 										width="100"
 										height="100"
-										objectFit="cover"
 										layout="responsive"
 									/>
 								</div>

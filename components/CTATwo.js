@@ -23,7 +23,6 @@ const CTATwo = () => {
 								alt=""
 								width="450px"
 								height="450px"
-								objectFit="contain"
 								className={styles.backgroundSvgOne}
 							/>
 						</div>
@@ -35,7 +34,6 @@ const CTATwo = () => {
 								alt=""
 								width="250px"
 								height="250px"
-								objectFit="contain"
 								className={styles.backgroundSvgTwo}
 							/>
 						</div>

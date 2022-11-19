@@ -7,6 +7,9 @@ import Navbar from "../components/Navbar";
 import HowItWorks from "../components/HowItWorks";
 import CTATwo from "../components/CTATwo";
 import FeaturesBanner from "../components/FeaturesBanner";
+import JumboGrid from "../components/jumboGrid";
+import CardGrid from "../components/CardGrid";
+import Stats from "../components/stats";
 
 const homePageHero = {
 	title: "It’s All About Problem-Solving",
@@ -58,14 +61,21 @@ export default function FeaturesPage() {
 				{/* Hero Section */}
 				<HeroTwo data={homePageHero} />
 
+				{/*  */}
+				<Stats />
+
 				{/* Feature Banner Section */}
 				<FeaturesBanner data={featuresBanner} />
 
-				{/* CTA Two */}
-				<CTATwo />
+				{/*  */}
+				<CardGrid />
 
 				{/* How It Works */}
-				<HowItWorks title={howItWorks} data={howItWorks} />
+				<JumboGrid />
+				{/* <HowItWorks title={howItWorks} data={howItWorks} /> */}
+
+				{/* CTA Two */}
+				<CTATwo />
 			</main>
 		</>
 	);

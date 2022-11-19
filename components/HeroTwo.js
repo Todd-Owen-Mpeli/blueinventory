@@ -9,7 +9,7 @@ const HeroTwo = (props) => {
 				<style jsx>{`
 					.mainHero {
 						display: flex;
-						height: 70vh;
+						height: 80vh;
 						flex-direction: column;
 						justify-content: center;
 						align-items: center;
