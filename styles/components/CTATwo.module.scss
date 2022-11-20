@@ -48,18 +48,3 @@
 		}
 	}
 }
-
-/* Extra Small mobile screen (portrait 375px) */
-@media screen and (max-width: 375px) {
-	.backgroundIcon {
-		.backgroundSvgOne {
-			top: 300px;
-			left: -30px;
-		}
-
-		.backgroundSvgTwo {
-			top: -330px;
-			right: -130px;
-		}
-	}
-}

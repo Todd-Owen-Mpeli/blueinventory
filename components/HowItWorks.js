@@ -4,14 +4,23 @@ import styles from "../styles/components/CTAOne.module.scss";
 const HowItWorks = (props) => {
 	return (
 		<section className={styles.HowItWorks} id="HowItWorks">
-			<div className="container mx-auto px-0">
-				<div className="content">
-					<div className="py-20 px-6 md:px-10 xl:px-12">
+			<div className="backgroundSVG relative">
+				<img
+					src="/svg/backgroundSVG/layered-waves-haikei.svg"
+					className="absolute w-full object-cover"
+					alt=""
+					width="75px"
+					height="75px"
+				/>
+			</div>
+			<div className="container mx-auto px-0 z-50 relative">
+				<div className={styles.content}>
+					<div className="py-12 md:py-28 xl:py-28 px-6 md:px-10 xl:px-12">
 						<div className="mb-16 text-center mx-auto">
-							<span className="text-lightBlue font-bold">
+							<span className="text-white text-xl font-bold">
 								{props.title.title}
 							</span>
-							<h2 className="mb-6 mt-8 text-4xl md:text-6xl text-center font-bold font-heading tracking-px-n leading-none md:max-w-5xl mx-auto">
+							<h2 className="mb-6 mt-8 text-4xl md:text-6xl text-center text-white md:text-black lg:text-white font-bold font-heading tracking-px-n leading-none md:max-w-5xl mx-auto">
 								{props.title.subtitle}
 							</h2>
 						</div>

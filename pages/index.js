@@ -52,6 +52,8 @@ const trustedBrandsLogos = [
 ];
 
 export default function HomePage({homePageContent}) {
+	// console.log(homePageContent);
+
 	return (
 		<>
 			<Head>
@@ -93,9 +95,9 @@ export default function HomePage({homePageContent}) {
 
 				{/* Trusted Brands Logos */}
 				<TrustedBrands
-					title={trustedBrands}
 					data={trustedBrands}
-					imagesArray={trustedBrandsLogos}
+					title={homePageContent.TrustedBrandsTitle}
+					paragraph={homePageContent.TrustedBrandsParagraph}
 				/>
 
 				{/* CTA One */}
