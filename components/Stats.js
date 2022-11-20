@@ -6,7 +6,7 @@ const Stats = () => {
 		<section className={styles.stats}>
 			<div className="container mx-auto relative z-50">
 				<div className="relative z-50">
-					<h2 className="mb-5 text-6xl md:text-6xl text-white font-bold font-heading text-center tracking-px-n leading-tight">
+					<h2 className="mb-5 text-5xl md:text-6xl text-white font-bold font-heading text-center tracking-px-n leading-tight">
 						Unlock your business true potential
 					</h2>
 					<p className="mb-16 text-lg text-white text-center font-medium leading-normal md:max-w-2xl mx-auto">
@@ -21,11 +21,11 @@ const Stats = () => {
 									<p className="mb-4 text-white font-semibold leading-normal">
 										Users Hours Spent before
 									</p>
-									<h2 className="text-white mb-4 text-6xl md:text-8xl xl:text-10xl font-bold font-heading tracking-px-n leading-none">
+									<h2 className="text-orange mb-4 text-6xl md:text-8xl xl:text-10xl font-bold font-heading tracking-px-n leading-none">
 										6.7
 									</h2>
 									<p className="text-white font-medium leading-snug">
-										Average hours spent a day managing inventory before
+										Average hours spent a day managing inventory
 									</p>
 								</div>
 							</div>
@@ -37,11 +37,11 @@ const Stats = () => {
 									<p className="mb-4 text-white font-semibold leading-normal">
 										Users Hours Spent after
 									</p>
-									<h2 className="text-white mb-4 text-6xl md:text-8xl xl:text-10xl font-bold font-heading tracking-px-n leading-none">
+									<h2 className="text-limeGreen mb-4 text-6xl md:text-8xl xl:text-10xl font-bold font-heading tracking-px-n leading-none">
 										3.4
 									</h2>
 									<p className="text-white font-medium leading-snug">
-										45% average hours saved a day managing inventory
+										48% average hours saved a day managing inventory
 									</p>
 								</div>
 							</div>
@@ -50,7 +50,7 @@ const Stats = () => {
 				</div>
 				<div className={styles.backgroundIcon}>
 					<img
-						src="/img/Icons/earth.png"
+						src="/img/Icons/meteorite.png"
 						alt=""
 						width="450px"
 						height="450px"

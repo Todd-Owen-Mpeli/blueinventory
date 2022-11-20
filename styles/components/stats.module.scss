@@ -15,3 +15,53 @@
 		}
 	}
 }
+
+/* Large screen (portrait 834px) */
+@media screen and (max-width: 1024px) {
+	.stats {
+		.backgroundIcon {
+			.backgroundSvgOne {
+				top: 460px;
+			}
+		}
+	}
+}
+
+/* Small - Large mobile screen (portrait 640px) */
+@media screen and (max-width: 640px) {
+	.stats {
+		.backgroundIcon {
+			.backgroundSvgOne {
+				top: 715px;
+			}
+		}
+	}
+}
+
+/* Mobile screen (portrait 430px) */
+@media screen and (max-width: 430px) {
+	.stats {
+		.backgroundIcon {
+			.backgroundSvgOne {
+				height: 300px;
+				width: 300px;
+				top: -150px;
+				right: -75px;
+			}
+		}
+	}
+}
+
+/* Extra Small mobile screen (portrait 320px) */
+@media screen and (max-width: 320px) {
+	.stats {
+		.backgroundIcon {
+			.backgroundSvgOne {
+				top: -125px;
+				right: -55px;
+				height: 250px;
+				width: 2500px;
+			}
+		}
+	}
+}

@@ -14,7 +14,7 @@ import Stats from "../components/stats";
 const homePageHero = {
 	title: "It’s All About Problem-Solving",
 	subtitle:
-		"It's easy to end up stocked with slow-moving items and low-profit products. Identify and fix inventory problems using real-time reporting that highlights trouble-spots.",
+		"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
 	backgroundImage: "/img/pexels-tiger-lily-4487361-min.jpg",
 };
 
@@ -61,7 +61,7 @@ export default function FeaturesPage() {
 				{/* Hero Section */}
 				<HeroTwo data={homePageHero} />
 
-				{/*  */}
+				{/* Stats */}
 				<Stats />
 
 				{/* Feature Banner Section */}

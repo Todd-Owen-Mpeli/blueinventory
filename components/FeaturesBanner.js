@@ -12,7 +12,7 @@ const FeaturesBanner = (props) => {
 								<div className="w-auto p-3">
 									<span className="mx-auto flex w-[7rem] h-[7rem] items-center justify-center bg-flatLightBlue rounded-full text-white text-2xl">
 										<Image
-											src={props.data.iconOne}
+											src="/img/Icons/goal.png"
 											className="object-contain"
 											alt=""
 											width="75px"
@@ -22,7 +22,7 @@ const FeaturesBanner = (props) => {
 								</div>
 								<div className="flex-1 p-3">
 									<h3 className="text-lg sm:text-xl text-center lg:text-left font-semibold">
-										{props.data.textOne}
+										{props.textOne}
 									</h3>
 								</div>
 							</div>
@@ -34,7 +34,7 @@ const FeaturesBanner = (props) => {
 								<div className="w-auto p-3">
 									<span className="mx-auto flex w-[7rem] h-[7rem] items-center justify-center bg-blue rounded-full text-white text-2xl">
 										<Image
-											src={props.data.iconTwo}
+											src="/img/Icons/idea.png"
 											className="object-contain"
 											alt=""
 											width="75px"
@@ -44,7 +44,7 @@ const FeaturesBanner = (props) => {
 								</div>
 								<div className="flex-1 p-3">
 									<h3 className="text-lg sm:text-xl text-center lg:text-left font-semibold">
-										{props.data.textTwo}
+										{props.textTwo}
 									</h3>
 								</div>
 							</div>
@@ -56,7 +56,7 @@ const FeaturesBanner = (props) => {
 								<div className="w-auto p-3">
 									<span className="mx-auto flex w-[7rem] h-[7rem] items-center justify-center bg-darkBlue rounded-full text-white text-2xl">
 										<Image
-											src={props.data.iconThree}
+											src="/img/Icons/startup.png"
 											className="object-contain"
 											alt=""
 											width="75px"
@@ -66,7 +66,7 @@ const FeaturesBanner = (props) => {
 								</div>
 								<div className="flex-1 p-3">
 									<h3 className="text-lg sm:text-xl text-center lg:text-left font-semibold">
-										{props.data.textThree}
+										{props.textThree}
 									</h3>
 								</div>
 							</div>

@@ -35,11 +35,6 @@ const Navbar = () => {
 									<a className="text-black hover:text-grey">Pricing</a>
 								</Link>
 							</li>
-							<li>
-								<Link className="font-heading mr-12 text-base" href="#">
-									<a className="text-black hover:text-grey">Resources</a>
-								</Link>
-							</li>
 						</ul>
 					</div>
 					<div className="hidden lg:flex flex-row gap-6 w-auto">

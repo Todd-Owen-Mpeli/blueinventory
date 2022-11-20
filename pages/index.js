@@ -1,35 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
 import Head from "next/head";
-import styles from "../styles/Home.module.scss";
+import FAQ from "../components/FAQ";
 import Hero from "../components/Hero";
 import CTAOne from "../components/CTAOne";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import TrustedBrands from "../components/TrustedBrands";
-import HowItWorks from "../components/HowItWorks";
 import CTATwo from "../components/CTATwo";
-import FAQ from "../components/FAQ";
+import styles from "../styles/Home.module.scss";
+import HowItWorks from "../components/HowItWorks";
+import TrustedBrands from "../components/TrustedBrands";
 import FeaturesBanner from "../components/FeaturesBanner";
-
-const homePageHero = {
-	title: "Smarter Business, Simpler Inventory",
-	subtitle:
-		"BlueInventory is your powerful central inventory management solution. Simpler Inventory so you’re free to grow and manage your business.",
-	backgroundImage: "/img/pexels-kampus-production-8475203-min.jpg",
-	ButtonTextOne: "Try BlueInventory Today",
-	ButtonLinkOne: "/features",
-	ButtonTextTwo: "Learn more",
-	ButtonLinkTwo: "/features",
-};
-
-const featuresBanner = {
-	iconOne: "/img/Icons/goal.png",
-	iconTwo: "/img/Icons/idea.png",
-	iconThree: "/img/Icons/startup.png",
-	textOne: "Your Supply Chain simplified for building your business",
-	textTwo: "One-click copy & paste system to make it that much easier",
-	textThree: "Fully Tracked ordering low stock products",
-};
 
 const howItWorks = {
 	title: "Our Services made simple",
@@ -70,7 +50,7 @@ const trustedBrandsLogos = [
 	"/svg/Trusted Brands/wishelp-logo.svg",
 ];
 
-export default function HomePage() {
+export default function HomePage({homePageContent}) {
 	return (
 		<>
 			<Head>
@@ -82,10 +62,23 @@ export default function HomePage() {
 
 			<main className={styles.main}>
 				{/* Hero Section */}
-				<Hero data={homePageHero} />
+				{/* <Hero data={heroSectionContent} /> */}
+				<Hero
+					title={homePageContent.heroTitle}
+					subtitle={homePageContent.heroSubtitle}
+					ButtonTextOne={homePageContent.heroButtonTextOne}
+					ButtonLinkOne={homePageContent.heroButtonOneUrl}
+					ButtonTextTwo={homePageContent.heroButtonTextTwo}
+					ButtonLinkTwo={homePageContent.heroButtonTwoUrl}
+					backgroundImage={homePageContent.heroImage.fields.file.url}
+				/>
 
 				{/* Feature Banner Section */}
-				<FeaturesBanner data={featuresBanner} />
+				<FeaturesBanner
+					textOne={homePageContent.featureTextOne}
+					textTwo={homePageContent.featureTextTwo}
+					textThree={homePageContent.featureTextThree}
+				/>
 
 				{/* CTA Two */}
 				<CTATwo />
@@ -125,3 +118,19 @@ HomePage.getLayout = function PageLayout(page) {
 		</>
 	);
 };
+
+// Gets the contentful content environment
+const client = require("contentful").createClient({
+	space: process.env.CONTENTFUL_SPACE_ID,
+	accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+});
+
+export async function getStaticProps() {
+	// const content = await client.getEntries();
+	const content = await client.getEntry("190WQwlwr1Dhz9x91XNsGe");
+	return {
+		props: {
+			homePageContent: content.fields,
+		},
+	};
+}
