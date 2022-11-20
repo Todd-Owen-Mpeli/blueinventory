@@ -47,7 +47,12 @@ export default function FeaturesPage({featurePageContent}) {
 				{/* <HowItWorks title={howItWorks} data={howItWorks} /> */}
 
 				{/* CTA Two */}
-				<CTATwo />
+				<CTATwo
+					title={featurePageContent.ctaTwoBannerTitle}
+					paragraph={featurePageContent.ctaTwoBannerParagraph}
+					buttonText={featurePageContent.ctaTwoBannerButtonText}
+					buttonLink={featurePageContent.ctaTwoBannerButtonUrl}
+				/>
 			</main>
 		</>
 	);

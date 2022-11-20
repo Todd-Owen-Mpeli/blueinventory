@@ -63,7 +63,6 @@ export default function HomePage({homePageContent}) {
 
 			<main className={styles.main}>
 				{/* Hero Section */}
-				{/* <Hero data={heroSectionContent} /> */}
 				<Hero
 					title={homePageContent.heroTitle}
 					subtitle={homePageContent.heroSubtitle}
@@ -82,7 +81,12 @@ export default function HomePage({homePageContent}) {
 				/>
 
 				{/* CTA Two */}
-				<CTATwo />
+				<CTATwo
+					title={homePageContent.ctaTwoBannerTitle}
+					paragraph={homePageContent.ctaTwoBannerParagraph}
+					buttonText={homePageContent.ctaTwoBannerButtonText}
+					buttonLink={homePageContent.ctaTwoBannerButtonUrl}
+				/>
 
 				{/* How It Works */}
 				<HowItWorks title={howItWorks} data={howItWorks} />
