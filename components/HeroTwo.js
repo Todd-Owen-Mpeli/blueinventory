@@ -9,7 +9,7 @@ const HeroTwo = (props) => {
 				<style jsx>{`
 					.mainHero {
 						display: flex;
-						height: 80vh;
+						height: 90vh;
 						flex-direction: column;
 						justify-content: center;
 						align-items: center;
@@ -18,7 +18,7 @@ const HeroTwo = (props) => {
 								rgba(13, 23, 42, 0.65),
 								rgba(13, 23, 42, 0.65)
 							),
-							url("${props.data.backgroundImage}");
+							url("${props.backgroundImage}");
 						background-position: center;
 						background-repeat: no-repeat;
 						background-size: cover;
@@ -28,10 +28,10 @@ const HeroTwo = (props) => {
 					<div className="container px-4 mx-auto">
 						<div className="max-w-2xl xl:max-w-4xl mx-auto text-center">
 							<h1 className="font-heading text-[2rem] sm:text-5xl md:text-6xl font-bold font-heading leading-normal sm:leading-[4.5rem] text-center text-white mb-6">
-								{props.data.title}
+								{props.title}
 							</h1>
 							<p className="max-w-md md:max-w-lg mx-auto text-lg leading-6 text-white mb-10">
-								{props.data.subtitle}
+								{props.subtitle}
 							</p>
 						</div>
 					</div>
