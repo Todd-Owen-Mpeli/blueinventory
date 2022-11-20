@@ -6,6 +6,7 @@ import CTAOne from "../components/CTAOne";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import CTATwo from "../components/CTATwo";
+import {contentfulContent} from "./api/api";
 import styles from "../styles/Home.module.scss";
 import HowItWorks from "../components/HowItWorks";
 import TrustedBrands from "../components/TrustedBrands";
@@ -119,17 +120,12 @@ HomePage.getLayout = function PageLayout(page) {
 	);
 };
 
-// Gets the contentful content environment
-const client = require("contentful").createClient({
-	space: process.env.CONTENTFUL_SPACE_ID,
-	accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-});
-
 export async function getStaticProps() {
-	const content = await client.getEntry("190WQwlwr1Dhz9x91XNsGe");
+	const content = await contentfulContent("190WQwlwr1Dhz9x91XNsGe");
+
 	return {
 		props: {
-			homePageContent: content.fields,
+			homePageContent: content,
 		},
 	};
 }

@@ -5,51 +5,13 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import CTATwo from "../components/CTATwo";
 import HeroTwo from "../components/HeroTwo";
+import {contentfulContent} from "./api/api";
 import CardGrid from "../components/CardGrid";
 import JumboGrid from "../components/jumboGrid";
 import styles from "../styles/Home.module.scss";
 import FeaturesBanner from "../components/FeaturesBanner";
 
-const homePageHero = {
-	title: "It’s All About Problem-Solving",
-	subtitle:
-		"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-	backgroundImage: "/img/pexels-tiger-lily-4487361-min.jpg",
-};
-
-const featuresBanner = {
-	iconOne: "/img/Icons/analysis.png",
-	iconTwo: "/img/Icons/graphic-design.png",
-	iconThree: "/img/Icons/site-map.png",
-	textOne: "Multi-Channel Inventory Management",
-	textTwo: "Vendor Management organizes all your vendor information",
-	textThree: "Combine multiple products together and track the inventory",
-};
-
-const howItWorks = {
-	title: "Our Services made simple",
-	subtitle: "Connect your Inventory Without The Chaos",
-	titleOne: "Be Always In Control.",
-	titleTwo: "Keep updated all the time",
-	titleThree: "Save Time And Money.",
-	subtitleOne: "Create and Manage Inventory",
-	subtitleTwo: "Track Related Products",
-	subtitleThree: "Inventory Optimization",
-	imageOne: "/img/pexels-kampus-production-8475203-min.jpg",
-	imageTwo: "/img/pexels-rfstudio-3811082.jpg",
-	imageThree: "/img/pexels-cottonbro-studio-7018653-min.jpg",
-	textAreaOne:
-		"Creating and managing inventory has never been easier. With powerful tools that integrate with popular POS and e-commerce. No more spending hours on spreadsheets to figure out what stock you have.",
-	textAreaTwo:
-		"Track inventory levels across a wide variety of products and calculate the costs of goods sold. No more logging into multiple seller panels and software to track sales. Stop worrying about running out of stock - plan your inventory with absolute clarity",
-	textAreaThree:
-		"BlueInventory's inventory tracking software helps you find what is selling and what is not, saving you time and money by ensuring that your inventory is not only accurate, but has been prioritized.",
-};
-
 export default function FeaturesPage({featurePageContent}) {
-	console.log(featurePageContent);
-	// Features | Inventory Management Software
-
 	return (
 		<>
 			<Head>
@@ -107,17 +69,12 @@ FeaturesPage.getLayout = function PageLayout(page) {
 	);
 };
 
-// Gets the contentful content environment
-const client = require("contentful").createClient({
-	space: process.env.CONTENTFUL_SPACE_ID,
-	accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-});
-
 export async function getStaticProps() {
-	const content = await client.getEntry("3kxkBngGv6SHwjkpFJEStB");
+	const content = await contentfulContent("3kxkBngGv6SHwjkpFJEStB");
+
 	return {
 		props: {
-			featurePageContent: content.fields,
+			featurePageContent: content,
 		},
 	};
 }
