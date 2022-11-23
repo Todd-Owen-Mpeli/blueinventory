@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Image from "next/image";
 import styles from "../styles/components/FeaturesBanner.module.scss";
 
@@ -11,8 +12,8 @@ const FeaturesBanner = (props) => {
 							<div className="flex flex-col lg:flex-row items-center m-0 sm:m-3">
 								<div className="w-auto p-3">
 									<span className="mx-auto flex w-[7rem] h-[7rem] items-center justify-center bg-flatLightBlue rounded-full text-white text-2xl">
-										<Image
-											src="/img/Icons/goal.png"
+										<img
+											src={props.iconOne?.sourceUrl}
 											className="object-contain"
 											alt=""
 											width="75px"
@@ -33,8 +34,8 @@ const FeaturesBanner = (props) => {
 							<div className="flex flex-col lg:flex-row items-center m-0 sm:m-3">
 								<div className="w-auto p-3">
 									<span className="mx-auto flex w-[7rem] h-[7rem] items-center justify-center bg-blue rounded-full text-white text-2xl">
-										<Image
-											src="/img/Icons/idea.png"
+										<img
+											src={props.iconTwo?.sourceUrl}
 											className="object-contain"
 											alt=""
 											width="75px"
@@ -55,8 +56,8 @@ const FeaturesBanner = (props) => {
 							<div className="flex flex-col lg:flex-row items-center m-0 sm:m-3">
 								<div className="w-auto p-3">
 									<span className="mx-auto flex w-[7rem] h-[7rem] items-center justify-center bg-darkBlue rounded-full text-white text-2xl">
-										<Image
-											src="/img/Icons/startup.png"
+										<img
+											src={props.iconThree?.sourceUrl}
 											className="object-contain"
 											alt=""
 											width="75px"

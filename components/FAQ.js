@@ -2,16 +2,18 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "../styles/components/FAQ.module.scss";
 
-const FAQ = () => {
+const FAQ = (props) => {
+	console.log(props);
+
 	return (
 		<section className={styles.faq}>
 			<div className="relative z-10 container px-4 mx-auto">
 				<div className="md:max-w-4xl px-0 mx-auto">
 					<p className="mb-7 text-sm text-blue text-center font-semibold uppercase tracking-px">
-						Have any questions?
+						{props?.subtitle}
 					</p>
 					<h2 className="mb-16 text-4xl md:text-5xl lg:text-7xl text-center font-bold font-heading tracking-px-n leading-normal">
-						Frequently Asked Questions
+						{props?.title}
 					</h2>
 					<div className="mb-11 flex flex-wrap gap-3">
 						<div className="w-full p-1">
@@ -21,7 +23,7 @@ const FAQ = () => {
 										<div className="flex flex-wrap justify-between -m-2">
 											<div className="flex-1 p-2">
 												<h3 className="text-lg font-semibold leading-normal">
-													What is BlueInventory Management Software ?
+													What is BlueInventory Management Software?
 												</h3>
 												<p className="mt-4 text-grey font-medium">
 													BlueInventory management software is used for creating
@@ -171,10 +173,13 @@ const FAQ = () => {
 						</div>
 					</div>
 					<p className="text-grey text-center font-medium">
-						<span>Still have any questions?</span>
-						<Link href="#">
+						<span>{props?.bottomText}</span>
+						<Link
+							href={props?.buttonLink?.url}
+							target={props?.buttonLink?.target}
+						>
 							<a className="ml-2 font-semibold text-blue hover:text-limeGreen hover:ease-in-out hover:duration-200">
-								Contact us
+								{props?.buttonLink?.title}
 							</a>
 						</Link>
 					</p>

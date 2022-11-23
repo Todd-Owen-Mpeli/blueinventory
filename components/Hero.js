@@ -3,8 +3,6 @@ import Link from "next/link";
 import styles from "../styles/components/Hero.module.scss";
 
 const Hero = (props) => {
-	// console.log(props);
-
 	return (
 		<section className={styles.hero}>
 			<div className="mainHero">
@@ -36,14 +34,20 @@ const Hero = (props) => {
 								{props.subtitle}
 							</p>
 							<div className="flex flex-col md:flex-row items-center justify-center mb-16">
-								<Link href={props.ButtonLinkOne}>
+								<Link
+									href={props.ButtonOne?.url}
+									target={props.ButtonOne?.target}
+								>
 									<a className="inline-block w-full md:w-[fit-content] rounded-[15px] sm:w-auto py-4 px-6 mb-4 sm:mb-0 sm:mr-4 text-center font-heading font-medium text-base text-white hover:ease-in-out hover:duration-200 bg-blue hover:bg-limeGreen">
-										{props.ButtonTextOne}
+										{props.ButtonOne?.title}
 									</a>
 								</Link>
-								<Link href={props.ButtonLinkTwo}>
+								<Link
+									href={props.ButtonTwo?.url}
+									target={props.ButtonTwo?.target}
+								>
 									<a className="inline-block w-full md:w-[fit-content] sm:w-auto py-4 px-6 text-center font-heading font-medium text-base text-white rounded-[15px] bg-darkBlue hover:text-white hover:bg-blue hover:ease-in-out hover:duration-200">
-										{props.ButtonTextTwo}
+										{props.ButtonTwo?.title}
 									</a>
 								</Link>
 							</div>

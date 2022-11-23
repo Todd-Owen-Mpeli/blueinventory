@@ -42,9 +42,9 @@ const CTATwo = (props) => {
 									className="py-4 px-6 w-full font-medium rounded-xl shadow-6xl focus:ring focus:ring-limeGreen bg-white hover:bg-limeGreen hover:ease-in-out hover:duration-200 hover:text-white"
 									type="button"
 								>
-									<Link href={props.buttonLink}>
+									<Link href={props.button?.url} target={props.button?.target}>
 										<a className="text-lg sm:text-xl font-semibold">
-											{props.buttonText}
+											{props.button?.title}
 										</a>
 									</Link>
 								</button>

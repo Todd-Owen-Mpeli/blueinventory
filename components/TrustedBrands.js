@@ -1,4 +1,4 @@
-import Image from "next/image";
+import LogoImage from "./logoImage";
 
 const TrustedBrands = (props) => {
 	return (
@@ -11,51 +11,9 @@ const TrustedBrands = (props) => {
 					{props.paragraph}
 				</p>
 				<div className="flex flex-wrap justify-center mt-16 -mx-4">
-					<div className="w-1/2 md:w-1/3 lg:w-1/5 px-4 mb-8 lg:mb-0 text-center">
-						<Image
-							src={props.data.imageOne}
-							className="mx-auto object-contain"
-							alt=""
-							width="150px"
-							height="150px"
-						/>
-					</div>
-					<div className="w-1/2 md:w-1/3 lg:w-1/5 px-4 mb-8 lg:mb-0 text-center">
-						<Image
-							src={props.data.imageTwo}
-							className="mx-auto object-contain"
-							alt=""
-							width="150px"
-							height="150px"
-						/>
-					</div>
-					<div className="w-1/2 md:w-1/3 lg:w-1/5 px-4 mb-8 lg:mb-0 text-center">
-						<Image
-							src={props.data.imageThree}
-							className="mx-auto object-contain"
-							alt=""
-							width="150px"
-							height="150px"
-						/>
-					</div>
-					<div className="w-1/2 md:w-1/3 lg:w-1/5 px-4 mb-8 lg:mb-0 text-center">
-						<Image
-							src={props.data.imageFour}
-							className="mx-auto object-contain"
-							alt=""
-							width="150px"
-							height="150px"
-						/>
-					</div>
-					<div className="w-1/2 md:w-1/3 lg:w-1/5 px-4 text-center">
-						<Image
-							src={props.data.imageFive}
-							className="mx-auto object-contain"
-							alt=""
-							width="150px"
-							height="150px"
-						/>
-					</div>
+					{props.logos.map((keys) => (
+						<LogoImage key={keys.id} image={keys.image} />
+					))}
 				</div>
 			</div>
 		</section>
