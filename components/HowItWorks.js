@@ -8,6 +8,7 @@ const HowItWorks = (props) => {
 
 	// Calculates How many iterations and sets the Icons Background Color a different color per iteration
 	let iterationCount = 0;
+	let randomID = Math.floor(Math.random() * 10 + 1);
 
 	// const tween = KUTE.fromTo(
 	// 	"#w11",
@@ -42,7 +43,7 @@ const HowItWorks = (props) => {
 						<div className="flex flex-col gap-10 lg:gap-20 xl:gap-36 mt-10 lg:mt-36">
 							{props.content.map((keys) => (
 								<TextImage
-									key={keys.id}
+									key={randomID}
 									icon={keys?.icon}
 									image={keys?.image}
 									title={keys?.title}

@@ -18,7 +18,7 @@ import styles from "../styles/Home.module.scss";
 import ThreeContentGrid from "../components/ThreeContentGrid";
 
 export default function FeaturesPage({featurePageContent}) {
-	console.log(featurePageContent);
+	// console.log(featurePageContent);
 	return (
 		<>
 			<Head>
