@@ -115,6 +115,7 @@ export default function HomePage({homePageContent}) {
 				<FAQ
 					title={homePageContent?.faqTitle}
 					subtitle={homePageContent?.faqSubtitle}
+					accordion={homePageContent?.faq}
 					bottomText={homePageContent?.faqBottomText}
 					buttonLink={homePageContent?.faqBottomButtonLink}
 				/>
@@ -233,8 +234,6 @@ export async function getStaticProps() {
 	const response = await client.query({
 		query: getHomePageContent,
 	});
-
-	// console.log(response.data?.pages?.edges[0]?.node?.homePage);
 
 	return {
 		props: {
