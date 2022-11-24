@@ -1,4 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
+
+import {useState} from "react";
+
 const TextImage = (props) => {
 	/* Calculates How many iterations and sets the 
     Icons Background Color a different color per iteration */
@@ -23,15 +26,12 @@ const TextImage = (props) => {
 
 	/* Displays left or Right Image depending on 
     what the user selected in the dashboard */
-	let rightImageDisplay;
-	let leftImageDisplay;
+	let rightImageDisplay = "block";
+	let leftImageDisplay = "none";
 
-	if (props.displayImageLocation === "Right") {
-		leftImageDisplay = "none;";
-		rightImageDisplay = "block;";
-	} else if (props.displayImageLocation === "Left") {
-		leftImageDisplay = "block;";
-		rightImageDisplay = "none;";
+	if (props.displayImageLocation === "Left") {
+		rightImageDisplay = "none";
+		leftImageDisplay = "block";
 	}
 
 	return (
