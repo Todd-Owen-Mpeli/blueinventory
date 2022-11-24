@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Head from "next/head";
-import {client} from "../lib/apollo";
 import {gql} from "@apollo/client";
+import {client} from "../lib/apollo";
 
 // Components
 import FAQ from "../components/FAQ";
@@ -18,8 +18,6 @@ import FeaturesBanner from "../components/FeaturesBanner";
 import styles from "../styles/Home.module.scss";
 
 export default function HomePage({homePageContent}) {
-	// console.log(homePageContent);
-
 	return (
 		<>
 			<Head>

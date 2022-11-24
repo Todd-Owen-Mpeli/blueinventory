@@ -1,31 +1,29 @@
 /* eslint-disable @next/next/no-img-element */
 import styles from "../styles/components/stats.module.scss";
 
-const Stats = () => {
+const Stats = (props) => {
 	return (
 		<section className={styles.stats}>
 			<div className="container mx-auto relative z-50">
 				<div className="relative z-50">
 					<h2 className="mb-5 text-5xl md:text-6xl text-white font-bold font-heading text-center tracking-px-n leading-tight">
-						Unlock your business true potential
+						{props.title}
 					</h2>
 					<p className="mb-16 text-lg text-white text-center font-medium leading-normal md:max-w-2xl mx-auto">
-						Its easy to end up stocked with slow-moving items and low-profit
-						products. Identify and fix inventory problems using real-time
-						reporting that highlights trouble-spots.
+						{props.subtitle}
 					</p>
 					<div className="md:max-w-4xl mx-auto bg-darkBlue rounded-[15px] shadow-6xl">
 						<div className="flex flex-wrap justify-center items-center">
 							<div className="w-full md:flex-1">
 								<div className="text-center p-8 md:px-16 md:pt-9 md:pb-11">
 									<p className="mb-4 text-white font-semibold leading-normal">
-										Users Hours Spent before
+										{props.beforeTopText}
 									</p>
 									<h2 className="text-orange mb-4 text-6xl md:text-8xl xl:text-10xl font-bold font-heading tracking-px-n leading-none">
-										6.7
+										{props.beforeNumber}
 									</h2>
 									<p className="text-white font-medium leading-snug">
-										Average hours spent a day managing inventory
+										{props.beforeBottomText}
 									</p>
 								</div>
 							</div>
@@ -35,13 +33,13 @@ const Stats = () => {
 							<div className="w-full md:flex-1">
 								<div className="text-center p-8 md:px-16 md:pt-9 md:pb-11">
 									<p className="mb-4 text-white font-semibold leading-normal">
-										Users Hours Spent after
+										{props.afterTopText}
 									</p>
 									<h2 className="text-limeGreen mb-4 text-6xl md:text-8xl xl:text-10xl font-bold font-heading tracking-px-n leading-none">
-										3.4
+										{props.afterNumber}
 									</h2>
 									<p className="text-white font-medium leading-snug">
-										48% average hours saved a day managing inventory
+										{props.afterBottomText}
 									</p>
 								</div>
 							</div>

@@ -1,7 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 const TextImage = (props) => {
-	console.log(props?.iterationCount);
-
 	/* Calculates How many iterations and sets the 
     Icons Background Color a different color per iteration */
 	let iconsBackgroundColor;
@@ -85,16 +83,3 @@ const TextImage = (props) => {
 };
 
 export default TextImage;
-
-{
-	/* <TextImage
-	key={keys.id}
-	icon={keys?.icon}
-	image={keys?.image}
-	title={keys?.title}
-	subtitle={keys?.subtitle}
-	paragraph={keys?.paragraph}
-	iconsColor={props.content.length}
-	displayImageLocation={keys?.displayImageLocation}
-/>; */
-}
