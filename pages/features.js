@@ -15,9 +15,10 @@ import FeaturesBanner from "../components/FeaturesBanner";
 
 // Styling
 import styles from "../styles/Home.module.scss";
+import ThreeContentGrid from "../components/ThreeContentGrid";
 
 export default function FeaturesPage({featurePageContent}) {
-	// console.log(featurePageContent);
+	console.log(featurePageContent);
 	return (
 		<>
 			<Head>
@@ -58,6 +59,14 @@ export default function FeaturesPage({featurePageContent}) {
 					textTwo={featurePageContent?.featuresBanner[1]?.text}
 					iconThree={featurePageContent?.featuresBanner[2]?.icons}
 					textThree={featurePageContent?.featuresBanner[2]?.text}
+				/>
+
+				{/* Three Grid Content */}
+				<ThreeContentGrid
+					title={featurePageContent?.threeGridContent?.title}
+					paragraph={featurePageContent?.threeGridContent?.paragraph}
+					gridContent={featurePageContent?.threeGridContent?.gridContent}
+					buttonLink={featurePageContent?.threeGridContent?.buttonLink}
 				/>
 
 				{/*  */}
@@ -132,6 +141,22 @@ export async function getStaticProps() {
 								afterTopText
 								afterNumber
 								afterBottomText
+							}
+							threeGridContent {
+								title
+								paragraph
+								buttonLink {
+									url
+									title
+									target
+								}
+								gridContent {
+									title
+									paragraph
+									icon {
+										sourceUrl
+									}
+								}
 							}
 						}
 					}

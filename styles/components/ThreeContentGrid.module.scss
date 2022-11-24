@@ -1,0 +1,13 @@
+// Imports
+@import "../colors";
+
+.threeContentGrid {
+	padding: 4.5rem;
+}
+
+/* Large screen (portrait 1024px) */
+@media screen and (max-width: 1024px) {
+	.threeContentGrid {
+		padding: 4.5rem 1rem;
+	}
+}
