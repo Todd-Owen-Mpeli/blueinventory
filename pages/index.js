@@ -109,7 +109,12 @@ export default function HomePage({homePageContent}) {
 				/>
 
 				{/* CTA One */}
-				<CTAOne />
+				<CTAOne
+					title={homePageContent?.ctaBannerOne?.topSection?.title}
+					paragraph={homePageContent?.ctaBannerOne?.topSection?.paragraph}
+					titleTwo={homePageContent?.ctaBannerOne?.bottomSection?.title}
+					paragraphTwo={homePageContent?.ctaBannerOne?.bottomSection?.paragraph}
+				/>
 
 				{/* FAQ */}
 				<FAQ

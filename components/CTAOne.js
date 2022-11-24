@@ -2,7 +2,7 @@
 import Link from "next/link";
 import styles from "../styles/components/CTAOne.module.scss";
 
-const CTAOne = () => {
+const CTAOne = (props) => {
 	return (
 		<section className="CTAOne">
 			<div className="bg-darkBlue text-white rounded-[0px] lg:rounded-t-[125px]">
@@ -10,20 +10,19 @@ const CTAOne = () => {
 					<div className="container mx-auto px-4">
 						<div className="topSection max-w-2xl mx-auto text-center">
 							<h2 className="mb-4 text-white text-4xl lg:text-5xl font-bold">
-								More than just a Inventory Management Solution
+								{props.title}
 							</h2>
 							<p className="mb-6 max-w-md mx-auto text-white text-base leading-loose">
-								Join the business, manufacturers and distributors across
-								Tanzania succeeding with BlueInventory.
+								{props.paragraph}
 							</p>
 						</div>
 						<div className={styles.bottomSection}>
 							<div className="relative z-10 mx-auto md:max-w-2xl">
 								<h3 className="mb-4 text-3xl md:text-4xl leading-tight font-bold tracking-tighter">
-									Be the first to know when we launch
+									{props.titleTwo}
 								</h3>
 								<p className="mb-8 text-base text-lightGrey font-medium">
-									Stay in the loop with everything you need to know.
+									{props.paragraphTwo}
 								</p>
 								<div className="mx-auto md:max-w-md text-left">
 									<div className="flex flex-wrap mb-1">
