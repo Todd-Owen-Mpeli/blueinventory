@@ -17,45 +17,6 @@ import FeaturesBanner from "../components/FeaturesBanner";
 // Styling
 import styles from "../styles/Home.module.scss";
 
-const howItWorks = {
-	title: "Our Services made simple",
-	subtitle: "Connect your Inventory Without The Chaos",
-	titleOne: "Be Always In Control.",
-	titleTwo: "Keep updated all the time",
-	titleThree: "Save Time And Money.",
-	subtitleOne: "Create and Manage Inventory",
-	subtitleTwo: "Track Related Products",
-	subtitleThree: "Inventory Optimization",
-	imageOne: "/img/pexels-rfstudio-3811082.jpg",
-	imageTwo: "/img/pexels-jopwell-2422278.jpg",
-	imageThree: "/img/pexels-rodnae-productions-5915209.jpg",
-	textAreaOne:
-		"Creating and managing inventory has never been easier. With powerful tools that integrate with popular devices. No more spending hours on spreadsheets to figure out what stock you have.",
-	textAreaTwo:
-		"Track inventory levels across a wide variety of products and calculate the costs of goods sold. Stop worrying about running out of stock - plan your inventory with absolute clarity",
-	textAreaThree:
-		"BlueInventory's inventory tracking software helps you find what is selling and what is not, saving you time and money by ensuring that your inventory is not only accurate, but has been prioritized.",
-};
-
-const trustedBrands = {
-	title: "Trusted by brands",
-	subtitle:
-		"Making the process so simple providing unique features, solutions and an effective inventory management application.",
-	imageOne: "/svg/Trusted Brands/jiggle-logo.svg",
-	imageTwo: "/svg/Trusted Brands/resecurb-logo.svg",
-	imageThree: "/svg/Trusted Brands/symtric-logo.svg",
-	imageFour: "/svg/Trusted Brands/welytics-logo.svg",
-	imageFive: "/svg/Trusted Brands/wishelp-logo.svg",
-};
-
-const trustedBrandsLogos = [
-	"/svg/Trusted Brands/jiggle-logo.svg",
-	"/svg/Trusted Brands/resecurb-logo.svg",
-	"/svg/Trusted Brands/symtric-logo.svg",
-	"/svg/Trusted Brands/welytics-logo.svg",
-	"/svg/Trusted Brands/wishelp-logo.svg",
-];
-
 export default function HomePage({homePageContent}) {
 	// console.log(homePageContent);
 
@@ -99,7 +60,11 @@ export default function HomePage({homePageContent}) {
 				/>
 
 				{/* How It Works */}
-				<HowItWorks title={howItWorks} data={howItWorks} />
+				<HowItWorks
+					title={homePageContent?.ourServiceTitle}
+					subtitle={homePageContent?.ourServiceSubtitle}
+					content={homePageContent?.ourServices}
+				/>
 
 				{/* Trusted Brands Logos */}
 				<TrustedBrands
