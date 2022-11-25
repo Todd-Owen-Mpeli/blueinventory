@@ -39,7 +39,7 @@ module.exports = {
 			lightGrey: "#f7f7f7",
 			darkOrange: "#ff9900",
 			current: "currentColor",
-			orange: "rgb(255, 183, 0)",
+			orange: "#FF8300",
 			transparent: "transparent",
 			yellow: "rgb(255, 201, 21)",
 		},

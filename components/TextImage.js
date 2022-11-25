@@ -2,26 +2,25 @@
 const TextImage = (props) => {
 	/* Calculates How many iterations and sets the 
     Icons Background Color a different color per iteration */
-	let color;
+	let iconBackgroundColor;
 
 	switch (props?.iterationCount) {
 		case 0:
-			color = "#f95674";
+			iconBackgroundColor = "#f95674";
 			break;
 		case 1:
-			color = "#3d77f3";
+			iconBackgroundColor = "#77b5f8";
 			break;
 		case 2:
-			color = "#a2e603";
+			iconBackgroundColor = "#a2e603";
 			break;
 		case 3:
-			color = "rgb(255, 183, 0)";
+			iconBackgroundColor = "#FF8300";
 			break;
 	}
 
-	const iconsBackgroundColor = `background: ${color};`;
-
-	console.log(iconsBackgroundColor);
+	// Icon Background Color
+	const background = `${iconBackgroundColor}`;
 
 	/* Displays left or Right Image depending on 
     what the user selected in the dashboard */
@@ -46,7 +45,10 @@ const TextImage = (props) => {
 				/>
 			</div>
 			<div className="w-full lg:w-1/2 mb-5 lg:mb-0">
-				<span className="mx-auto lg:mx-0 mb-6 lg:mb-10 flex w-[7rem] h-[7rem] items-center justify-center rounded-full text-white text-2xl">
+				<span
+					className="mx-auto lg:mx-0 mb-6 lg:mb-10 flex w-[7rem] h-[7rem] items-center justify-center rounded-full text-white text-2xl"
+					style={{background}}
+				>
 					<img
 						src={props?.icon?.sourceUrl}
 						className="object-contain"
