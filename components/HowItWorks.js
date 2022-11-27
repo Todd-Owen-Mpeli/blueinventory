@@ -1,22 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
-import KUTE from "kute.js";
 import styles from "../styles/components/CTAOne.module.scss";
 import TextImage from "./TextImage";
 
 const HowItWorks = (props) => {
-	// console.log(props.content.length);
-
 	// Calculates How many iterations and sets the Icons Background Color a different color per iteration
 	let iterationCount = 0;
-	let randomID = Math.floor(Math.random() * 10 + 1);
-
-	// const tween = KUTE.fromTo(
-	// 	"#w11",
-	// 	{path: "#w11"},
-	// 	{path: "#w21"},
-	// 	{path: "#w31"},
-	// 	{repeat: 999, duration: 3000, yoyo: true}
-	// ).start();
 
 	return (
 		<section className={styles.HowItWorks} id="HowItWorks">
@@ -43,7 +31,7 @@ const HowItWorks = (props) => {
 						<div className="flex flex-col gap-10 lg:gap-20 xl:gap-36 mt-10 lg:mt-36">
 							{props.content.map((keys) => (
 								<TextImage
-									key={randomID}
+									key={keys.id}
 									icon={keys?.icon}
 									image={keys?.image}
 									title={keys?.title}

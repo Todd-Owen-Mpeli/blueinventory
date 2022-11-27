@@ -2,11 +2,11 @@
 @import "../colors";
 
 .cardGrid {
-	background-color: $secondary_pinkRed;
-	// background: url("/svg/backgroundSVG/backgroundBLob.svg");
-	// background-position: center;
-	// background-repeat: no-repeat;
-	// background-size: cover;
+	// background-color: $secondary_pinkRed;
+	background: url("/svg/backgroundSVG/backgroundTriangles.svg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 
 	.content {
 		padding: 5rem 2rem;
@@ -15,7 +15,7 @@
 			padding: 3rem 2.5rem;
 			background: linear-gradient(
 				135deg,
-				rgba(234, 25, 105, 0.867),
+				rgba(234, 25, 105, 0),
 				rgba(255, 255, 255, 0)
 			);
 			backdrop-filter: blur(10px);

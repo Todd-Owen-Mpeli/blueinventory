@@ -3,15 +3,7 @@ import styles from "../styles/components/CardGrid.module.scss";
 const CardGrid = () => {
 	return (
 		<section className={styles.cardGrid}>
-			<div className="backgroundSVG relative z-0">
-				<g transform="translate(486.2027401098467 277.71640813484635)">
-					<path
-						d="M152.5 -147.8C180.5 -124.5 174.2 -62.2 168 -6.2C161.7 49.7 155.5 99.5 127.5 122C99.5 144.5 49.7 139.7 -2.8 142.6C-55.4 145.4 -110.8 155.8 -141.8 133.3C-172.8 110.8 -179.4 55.4 -183.5 -4.1C-187.6 -63.6 -189.3 -127.3 -158.3 -150.6C-127.3 -173.9 -63.6 -157 -0.7 -156.3C62.2 -155.6 124.5 -171.1 152.5 -147.8"
-						fill="#BB004B"
-					></path>
-				</g>
-			</div>
-			<div className="container px-0 mx-auto z-50 relative">
+			<div className="container px-0 mx-auto">
 				<div className={styles.content}>
 					<div className="my-28">
 						<h2 className="text-white text-5xl sm:text-6xl mx-auto text-center font-bold tracking-px-n leading-none md:max-w-2xl">

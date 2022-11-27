@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-sync-scripts */
 /* eslint-disable @next/next/no-img-element */
 import Head from "next/head";
 import {gql} from "@apollo/client";
