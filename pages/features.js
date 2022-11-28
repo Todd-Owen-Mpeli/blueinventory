@@ -19,6 +19,7 @@ import styles from "../styles/Home.module.scss";
 import ThreeContentGrid from "../components/ThreeContentGrid";
 
 export default function FeaturesPage({featurePageContent, pageTitle}) {
+	// console.log(featurePageContent);
 	return (
 		<>
 			<Head>
@@ -70,7 +71,10 @@ export default function FeaturesPage({featurePageContent, pageTitle}) {
 				/>
 
 				{/*  */}
-				<CardGrid />
+				<CardGrid
+					title={featurePageContent?.featureList?.title}
+					gridContent={featurePageContent?.featureList?.gridContent}
+				/>
 
 				{/* How It Works */}
 				<JumboGrid />
@@ -168,6 +172,13 @@ export async function getStaticProps() {
 									icon {
 										sourceUrl
 									}
+								}
+							}
+							featureList {
+								title
+								gridContent {
+									title
+									paragraph
 								}
 							}
 						}
