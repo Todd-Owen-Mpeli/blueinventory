@@ -31,7 +31,7 @@ const Navbar = () => {
 								</Link>
 							</li>
 							<li>
-								<Link className="font-heading mr-12 text-base" href="#">
+								<Link className="font-heading mr-12 text-base" href="/pricing">
 									<a className="text-black hover:text-grey">Pricing</a>
 								</Link>
 							</li>

@@ -11,12 +11,11 @@ import Navbar from "../components/Navbar";
 import CTATwo from "../components/CTATwo";
 import HeroTwo from "../components/HeroTwo";
 import CardGrid from "../components/CardGrid";
-import JumboGrid from "../components/jumboGrid";
 import FeaturesBanner from "../components/FeaturesBanner";
+import ThreeContentGrid from "../components/ThreeContentGrid";
 
 // Styling
 import styles from "../styles/Home.module.scss";
-import ThreeContentGrid from "../components/ThreeContentGrid";
 
 export default function FeaturesPage({featurePageContent, pageTitle}) {
 	// console.log(featurePageContent);
@@ -70,15 +69,11 @@ export default function FeaturesPage({featurePageContent, pageTitle}) {
 					buttonLink={featurePageContent?.threeGridContent?.buttonLink}
 				/>
 
-				{/*  */}
+				{/* Feature List */}
 				<CardGrid
 					title={featurePageContent?.featureList?.title}
 					gridContent={featurePageContent?.featureList?.gridContent}
 				/>
-
-				{/* How It Works */}
-				<JumboGrid />
-				{/* <HowItWorks title={howItWorks} data={howItWorks} /> */}
 
 				{/* CTA Two */}
 				<CTATwo
