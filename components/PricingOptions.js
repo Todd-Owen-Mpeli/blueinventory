@@ -213,7 +213,7 @@ const PricingOptions = () => {
 									<h4 className="mb-2 text-2xl text-white  font-bold font-heading">
 										Enterprise
 									</h4>
-									<span className="text-6xl text-white  font-bold">£249</span>
+									<span className="text-6xl text-white  font-bold">£749</span>
 									<span className="text-white text-xs">/month</span>
 									<p className="mt-3 mb-6 text-white leading-loose">
 										Nullam diam arcu, sodales quis convallis sit amet, sagittis
