@@ -12,6 +12,7 @@ import JumboGrid from "../components/JumboGrid";
 
 // Styling
 import styles from "../styles/Home.module.scss";
+import PricingOptions from "../components/PricingOptions";
 
 const pricingPage = ({pricingPageContent, pageTitle}) => {
 	return (
@@ -33,6 +34,9 @@ const pricingPage = ({pricingPageContent, pageTitle}) => {
 						pricingPageContent?.heroSection?.backgroundImage?.sourceUrl
 					}
 				/>
+
+				{/* Pricing Options Section */}
+				<PricingOptions />
 
 				{/* Jumbo Section */}
 				<JumboGrid />
