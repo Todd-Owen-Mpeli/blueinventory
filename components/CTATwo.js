@@ -3,6 +3,19 @@ import Link from "next/link";
 import styles from "../styles/components/CTATwo.module.scss";
 
 const CTATwo = (props) => {
+	/* Check if Button One Link / content is null
+	 And Displays content if it is not */
+	function isButtonContent(isButtonContent) {
+		let contentStyling;
+		if (isButtonContent === null) {
+			contentStyling =
+				"hidden py-4 px-6 w-full font-medium rounded-xl shadow-6xl focus:ring focus:ring-limeGreen bg-white hover:bg-limeGreen hover:ease-in-out hover:duration-200 hover:text-white";
+		} else {
+			contentStyling =
+				"block py-4 px-6 w-full font-medium rounded-xl shadow-6xl focus:ring focus:ring-limeGreen bg-white hover:bg-limeGreen hover:ease-in-out hover:duration-200 hover:text-white";
+		}
+		return contentStyling;
+	}
 	return (
 		<section className="py-14 px-4 md:py-28 md:px-10 bg-blue overflow-hidden bg-gradient-to-r from-blue to-blueTwo">
 			<div className="container px-0 mx-auto">
@@ -39,7 +52,7 @@ const CTATwo = (props) => {
 						<div className="flex flex-wrap ml-auto lg:w-56 relative z-50">
 							<div className="w-full p-2">
 								<button
-									className="py-4 px-6 w-full font-medium rounded-xl shadow-6xl focus:ring focus:ring-limeGreen bg-white hover:bg-limeGreen hover:ease-in-out hover:duration-200 hover:text-white"
+									className={isButtonContent(props.button?.url)}
 									type="button"
 								>
 									<Link href={props.button?.url} target={props.button?.target}>

@@ -208,5 +208,6 @@ export async function getStaticProps() {
 		props: {
 			homePageContent: response.data?.pages?.edges[0]?.node?.homePage,
 		},
+		revalidate: 1,
 	};
 }

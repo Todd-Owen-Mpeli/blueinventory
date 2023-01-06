@@ -3,25 +3,60 @@ import Link from "next/link";
 import styles from "../styles/components/Hero.module.scss";
 
 const Hero = (props) => {
+	/* Check if Button One Link / content is null
+	 And Displays content if it is not */
+	function isButtonOneContent(isButtonOneContent) {
+		let contentStyling;
+		if (isButtonOneContent === null) {
+			contentStyling =
+				"hidden inline-block w-full md:w-[fit-content] rounded-[15px] sm:w-auto py-4 px-6 mb-4 sm:mb-0 sm:mr-4 text-center font-heading font-medium text-base text-white hover:ease-in-out hover:duration-200 bg-blue hover:bg-limeGreen";
+		} else {
+			contentStyling =
+				"block inline-block w-full md:w-[fit-content] rounded-[15px] sm:w-auto py-4 px-6 mb-4 sm:mb-0 sm:mr-4 text-center font-heading font-medium text-base text-white hover:ease-in-out hover:duration-200 bg-blue hover:bg-limeGreen";
+		}
+
+		return contentStyling;
+	}
+
+	/* Check if Button Two Link / content is null
+	 And Displays content if it is not */
+	function isButtonTwoContent(isButtonTwoContent) {
+		let contentStyling;
+		if (isButtonTwoContent === null) {
+			contentStyling =
+				"hidden inline-block w-full md:w-[fit-content] sm:w-auto py-4 px-6 text-center font-heading font-medium text-base text-white rounded-[15px] bg-darkBlue hover:text-white hover:bg-blue hover:ease-in-out hover:duration-200";
+		} else {
+			contentStyling =
+				"block inline-block w-full md:w-[fit-content] sm:w-auto py-4 px-6 text-center font-heading font-medium text-base text-white rounded-[15px] bg-darkBlue hover:text-white hover:bg-blue hover:ease-in-out hover:duration-200";
+		}
+
+		return contentStyling;
+	}
+
 	return (
 		<section className={styles.hero}>
-			<div className="mainHero">
+			<div
+				className="mainHero flex min-h-70 flex-col justify-center item-center"
+				style={{
+					// background: `linear-gradient(
+					// 			0deg,
+					// 			rgba(13, 23, 42, 0.45),
+					// 			rgba(13, 23, 42, 0.45)
+					// 		),
+					// 		url("${props.backgroundImage}");`,
+					backgroundPosition: "center",
+					backgroundRepeat: "no-repeat",
+					backgroundSize: "cover",
+				}}
+			>
 				<style jsx>{`
 					.mainHero {
-						display: flex;
-						min-height: 70vh;
-						flex-direction: column;
-						justify-content: center;
-						align-items: center;
 						background: linear-gradient(
 								0deg,
 								rgba(13, 23, 42, 0.45),
 								rgba(13, 23, 42, 0.45)
 							),
 							url("${props.backgroundImage}");
-						background-position: center;
-						background-repeat: no-repeat;
-						background-size: cover;
 					}
 				`}</style>
 				<div className="pt-24 sm:pt-34 pb-8 bg-cover">
@@ -38,7 +73,7 @@ const Hero = (props) => {
 									href={props.ButtonOne?.url}
 									target={props.ButtonOne?.target}
 								>
-									<a className="inline-block w-full md:w-[fit-content] rounded-[15px] sm:w-auto py-4 px-6 mb-4 sm:mb-0 sm:mr-4 text-center font-heading font-medium text-base text-white hover:ease-in-out hover:duration-200 bg-blue hover:bg-limeGreen">
+									<a className={isButtonOneContent(props.ButtonOne?.url)}>
 										{props.ButtonOne?.title}
 									</a>
 								</Link>
@@ -46,7 +81,7 @@ const Hero = (props) => {
 									href={props.ButtonTwo?.url}
 									target={props.ButtonTwo?.target}
 								>
-									<a className="inline-block w-full md:w-[fit-content] sm:w-auto py-4 px-6 text-center font-heading font-medium text-base text-white rounded-[15px] bg-darkBlue hover:text-white hover:bg-blue hover:ease-in-out hover:duration-200">
+									<a className={isButtonTwoContent(props.ButtonOne?.url)}>
 										{props.ButtonTwo?.title}
 									</a>
 								</Link>

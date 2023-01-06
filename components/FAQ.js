@@ -3,8 +3,7 @@ import styles from "../styles/components/FAQ.module.scss";
 import AccordionCard from "./AccordionCard";
 
 const FAQ = (props) => {
-	// console.log(props.accordion);
-
+	// console.log(props?.accordion);
 	return (
 		<section className={styles.faq}>
 			<div className="relative z-10 container px-4 mx-auto">
@@ -15,7 +14,7 @@ const FAQ = (props) => {
 					<h2 className="mb-16 text-4xl md:text-5xl lg:text-7xl text-center font-bold font-heading tracking-px-n leading-normal">
 						{props?.title}
 					</h2>
-					<div className="mb-11 flex flex-wrap gap-3">
+					<div className="mb-11 flex flex-col gap-3">
 						{props.accordion.map((keys) => (
 							<AccordionCard
 								key={keys.id}

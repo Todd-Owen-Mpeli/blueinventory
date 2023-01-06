@@ -1,5 +1,17 @@
 /* eslint-disable @next/next/no-img-element */
 const TextImage = (props) => {
+	/* Check if Image content is null
+	 And Displays content if it is not */
+	function isImageContent(isImageContent) {
+		let contentStyling;
+		if (isImageContent === null) {
+			contentStyling = "hidden w-full h-full object-cover rounded-[15px]";
+		} else {
+			contentStyling = "block w-full h-full object-cover rounded-[15px]";
+		}
+		return contentStyling;
+	}
+
 	/* Calculates How many iterations and sets the 
     Icons Background Color a different color per iteration */
 	let iconBackgroundColor;
@@ -37,7 +49,7 @@ const TextImage = (props) => {
 			<div className="w-full lg:w-1/2" style={{display: leftImageDisplay}}>
 				<img
 					src={props?.image?.sourceUrl}
-					className="w-full h-full object-cover rounded-[15px]"
+					className={isImageContent(props?.image?.sourceUrl)}
 					alt="Image One"
 					width="100"
 					height="100"
@@ -70,7 +82,7 @@ const TextImage = (props) => {
 			<div className="w-full lg:w-1/2" style={{display: rightImageDisplay}}>
 				<img
 					src={props?.image?.sourceUrl}
-					className="w-full h-full object-cover rounded-[15px]"
+					className={isImageContent(props?.image?.sourceUrl)}
 					alt="Image One"
 					width="100"
 					height="100"
