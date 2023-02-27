@@ -7,6 +7,7 @@ import Hero from "../components/Hero";
 import CTAOne from "../components/CTAOne";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import SignUp from "../components/SignUp";
 import CTATwo from "../components/CTATwo";
 import MetaTag from "../components/Meta/MetaTag";
 import HowItWorks from "../components/HowItWorks";
@@ -67,6 +68,15 @@ export default function HomePage({seo, homePageContent}: any) {
 					titleTwo={homePageContent?.contactBanner?.titleTwo}
 					paragraph={homePageContent?.contactBanner?.paragraph}
 					paragraphTwo={homePageContent?.contactBanner?.paragraphTwo}
+				/>
+
+				{/* <!--===== SIGN UP =====--> */}
+				<SignUp
+					title={homePageContent?.contactBanner?.title}
+					paragraph={homePageContent?.contactBanner?.paragraph}
+					// Display Options
+					backgroundColor={"white"}
+					// backgroundColor={homePageContent?.signUp?.backgroundColor}
 				/>
 
 				{/* FAQ */}
