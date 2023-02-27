@@ -3,21 +3,32 @@
 @import url("https://fonts.googleapis.com/css2?family=Heebo:wght@500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lexend+Deca&family=Open+Sans&family=Sarabun:wght@200&display=swap");
 
+/*===== GOOGLE FONTS =====*/
+@font-face {
+	font-family: Rubik;
+	src: url("./fonts/Rubik-VariableFont_wght.ttf");
+}
+
+@font-face {
+	font-family: Lexend Deca;
+	src: url("./fonts/LexendDeca-VariableFont_wght.ttf");
+}
+
 // Font Stack Properties
-$fontStyle_main: "Lexend Deca", cursive;
+$fontStyle_main: "Lexend Deca", sans-serif;
 $fontStyle_body: "Rubik", sans-serif;
-$fontStyle_option1: "Heebo", cursive;
 
 // Font Sizes
 $fontSize_xSmall: 0.75rem;
-$fontSize_small: 0.9rem;
+$fontSize_small: 0.8rem;
+$fontSize_tiny: 0.9rem;
 $fontSize_normal: 1rem;
 $fontSize_medium: 1.25rem;
 $fontSize_large: 1.5rem;
-$fontSize_large-0: 2rem;
-$fontSize_large-1: 2.5rem;
-$fontSize_large-2: 3rem;
-$fontSize_large-3: 3.5rem;
-$fontSize_XL-large: 4rem;
-$fontSize_XL-large-0: 4.5rem;
-$fontSize_XL-large-1: 5rem;
+$fontSize_XL: 1.5rem;
+$fontSize_2XL: 1.75rem;
+$fontSize_3XL: 1.85rem;
+$fontSize_4XL: 2rem;
+$fontSize_5XL: 2.5rem;
+$fontSize_6XL: 3rem;
+$fontSize_7XL: 4rem;
