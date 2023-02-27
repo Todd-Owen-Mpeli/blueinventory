@@ -2,7 +2,6 @@
 import Image from "next/image";
 import {FunctionComponent} from "react";
 import TextImage from "./Cards/TextImage";
-import styles from "../styles/components/CTAOne.module.scss";
 
 interface IProps {
 	title: string;
@@ -37,7 +36,7 @@ const HowItWorks: FunctionComponent<IProps> = ({
 	let iterationCount: number = 0;
 
 	return (
-		<section className={styles.HowItWorks} id="HowItWorks">
+		<section className="" id="HowItWorks">
 			<div className="relative backgroundSVG">
 				<Image
 					alt="Background Wave One Image"
@@ -48,7 +47,7 @@ const HowItWorks: FunctionComponent<IProps> = ({
 				/>
 			</div>
 			<div className="container relative z-50 px-0 mx-auto">
-				<div className={styles.content}>
+				<div className="">
 					<div className="px-6 py-12 md:py-28 xl:py-28 md:px-10 xl:px-12">
 						<div className="mx-auto mb-16 text-center">
 							<span className="max-w-sm text-white text-medium">

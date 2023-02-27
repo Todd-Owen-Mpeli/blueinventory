@@ -62,21 +62,20 @@ export default function HomePage({seo, homePageContent}: any) {
 				/>
 
 				{/* CTA One */}
-				{/* <CTAOne
-					title={homePageContent?.ctaBannerOne?.topSection?.title}
-					paragraph={homePageContent?.ctaBannerOne?.topSection?.paragraph}
-					titleTwo={homePageContent?.ctaBannerOne?.bottomSection?.title}
-					paragraphTwo={homePageContent?.ctaBannerOne?.bottomSection?.paragraph}
-				/> */}
+				<CTAOne
+					title={homePageContent?.contactBanner?.title}
+					titleTwo={homePageContent?.contactBanner?.titleTwo}
+					paragraph={homePageContent?.contactBanner?.paragraph}
+					paragraphTwo={homePageContent?.contactBanner?.paragraphTwo}
+				/>
 
 				{/* FAQ */}
-				{/* <FAQ
-					title={homePageContent?.faqTitle}
-					subtitle={homePageContent?.faqSubtitle}
-					accordion={homePageContent?.faq}
-					bottomText={homePageContent?.faqBottomText}
-					buttonLink={homePageContent?.faqBottomButtonLink}
-				/> */}
+				<FAQ
+					title={homePageContent?.faq?.title}
+					paragraph={homePageContent?.faq?.paragraph}
+					buttonLink={homePageContent?.faq?.buttonLink}
+					faqContent={homePageContent?.faq?.faqContent}
+				/>
 			</main>
 		</>
 	);
@@ -161,6 +160,26 @@ export async function getStaticProps() {
 									}
 								}
 							}
+							howItWorks {
+								title
+								subtitle
+								gridContent {
+									card {
+										title
+										subtitle
+										paragraph
+										displayImageLocation
+										icon {
+											altText
+											sourceUrl
+										}
+										image {
+											altText
+											sourceUrl
+										}
+									}
+								}
+							}
 							trustedBrands {
 								title
 								paragraph
@@ -180,24 +199,23 @@ export async function getStaticProps() {
 									target
 								}
 							}
-							howItWorks {
+							contactBanner {
 								title
-								subtitle
-								gridContent {
-									card {
-										title
-										subtitle
-										paragraph
-										displayImageLocation
-										icon {
-											altText
-											sourceUrl
-										}
-										image {
-											altText
-											sourceUrl
-										}
-									}
+								titleTwo
+								paragraph
+								paragraphTwo
+							}
+							faq {
+								title
+								paragraph
+								buttonLink {
+									url
+									title
+									target
+								}
+								faqContent {
+									title
+									paragraph
 								}
 							}
 						}
