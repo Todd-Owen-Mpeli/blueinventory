@@ -19,7 +19,7 @@ const CardGrid: FunctionComponent<IProps> = ({title, gridContent}) => {
 			<div className="container px-0 mx-auto">
 				<div className={styles.content}>
 					<div className="my-28">
-						<h2 className="text-white text-5xl sm:text-6xl mx-auto text-center font-bold tracking-px-n leading-none md:max-w-2xl">
+						<h2 className="text-white text-5xl sm:text-8xl mx-auto text-center font-bold tracking-px-n leading-none md:max-w-2xl">
 							{title}
 						</h2>
 					</div>

@@ -23,11 +23,12 @@ const FeaturesBanner: FunctionComponent<IProps> = ({title, content}) => {
 		<section className={styles.featuresBanner}>
 			<div className="container px-0 mx-auto">
 				<div className="flex flex-col justify-center items-center px-4">
-					<motion.div variants={fadeInUp} className="py-8 px-4 mb-8">
-						<h2 className="w-full lg:w-[45rem] mx-auto text-black text-center tracking-normal leading-[2.75rem] font-[600] text-2xl sm:text-3xl lg:text-5xl">
-							{title}
-						</h2>
-					</motion.div>
+					<motion.h2
+						variants={fadeInUp}
+						className="w-full lg:w-[45rem] mb-10 lg:mb-20 mx-auto text-black text-center leading-[2.75rem] font-[600] text-2xl sm:text-3xl lg:text-5xl"
+					>
+						{title}
+					</motion.h2>
 					<div className="flex flex-col lg:flex-row justify-center lg:justify-between items-center">
 						{content.map((keys) => (
 							<FeaturesBannerCard

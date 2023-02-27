@@ -27,10 +27,10 @@ const TrustedBrands: FunctionComponent<IProps> = ({
 		let contentStyling: string;
 		if (isParagraphContent === null || isParagraphContent === undefined) {
 			contentStyling =
-				"hidden w-full lg:max-w-[75rem] mx-auto py-8  text-center lg:text-left text-black font-[400] text-medium";
+				"hidden w-full lg:max-w-[75rem] mx-auto py-8  text-center lg:text-left text-darkGrey font-[400] text-medium";
 		} else {
 			contentStyling =
-				"block w-full lg:max-w-[75rem] mx-auto py-8 text-center lg:text-left text-black font-[400] text-medium";
+				"block w-full lg:max-w-[75rem] mx-auto py-8 text-center lg:text-left text-darkGrey font-[400] text-medium";
 		}
 		return contentStyling;
 	}
@@ -42,16 +42,16 @@ const TrustedBrands: FunctionComponent<IProps> = ({
 	}
 
 	return (
-		<section className="p-4 md:pt-36 md:pb-28 bg-white overflow-hidden">
+		<section className="p-4 overflow-hidden bg-white md:pt-36 md:pb-28">
 			<div className="container px-4 mx-auto">
-				<h2 className="text-black text-center tracking-normal leading-[2.75rem] font-[600] text-2xl sm:text-3xl lg:text-5xl mb-24">
+				<h2 className="text-black text-center tracking-normal leading-[2.75rem] font-[600] text-2xl sm:text-3xl lg:text-5xl mb-4">
 					{title}
 				</h2>
 				<div
 					className={isParagraphContent(paragraph)}
 					dangerouslySetInnerHTML={createParagraphMarkup(paragraph)}
 				/>
-				<div className="grid items-center justify-center grid-cols-2 gap-8 lg:flex lg:flex-row">
+				<div className="grid items-center justify-center grid-cols-2 gap-8 mt-10 lg:flex lg:flex-row">
 					{logos.map((keys) => (
 						<LogoImage key={keys.id} image={keys.image} />
 					))}

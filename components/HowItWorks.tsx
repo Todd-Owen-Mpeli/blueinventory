@@ -38,25 +38,27 @@ const HowItWorks: FunctionComponent<IProps> = ({
 
 	return (
 		<section className={styles.HowItWorks} id="HowItWorks">
-			<div className="backgroundSVG relative">
-				<img
+			<div className="relative backgroundSVG">
+				<Image
+					alt="Background Wave One Image"
+					width={550}
+					height={550}
 					src="/svg/backgroundSVG/backgroundWaveOne.svg"
-					className="absolute w-full object-cover"
-					alt=""
-					width="75px"
-					height="75px"
+					className="absolute w-full h-[550px] object-cover object-center"
 				/>
 			</div>
-			<div className="container mx-auto px-0 z-50 relative">
+			<div className="container relative z-50 px-0 mx-auto">
 				<div className={styles.content}>
-					<div className="py-12 md:py-28 xl:py-28 px-6 md:px-10 xl:px-12">
-						<div className="mb-16 text-center mx-auto">
-							<span className="text-white text-xl font-bold">{subtitle}</span>
-							<h2 className="mb-6 mt-8 text-4xl md:text-6xl text-center text-white md:text-black lg:text-white font-bold font-heading tracking-px-n leading-none md:max-w-5xl mx-auto">
+					<div className="px-6 py-12 md:py-28 xl:py-28 md:px-10 xl:px-12">
+						<div className="mx-auto mb-16 text-center">
+							<span className="max-w-sm text-white text-medium">
+								{subtitle}
+							</span>
+							<h2 className="mb-6 mt-8 text-4xl md:text-5xl text-center text-white font-[600] max-w-xl mx-auto leading-[2.75rem]">
 								{title}
 							</h2>
 						</div>
-						<div className="flex flex-col gap-10 lg:gap-20 xl:gap-36 mt-10 lg:mt-36">
+						<div className="flex flex-col gap-10 mt-10 lg:gap-20 xl:gap-36 lg:mt-36">
 							{gridContent.map((keys) => (
 								<TextImage
 									key={keys?.card?.id}

@@ -24,7 +24,7 @@ const PricingOptions = () => {
 									<h4 className="mb-2 text-2xl text-white  font-bold font-heading">
 										Standard
 									</h4>
-									<span className="text-6xl text-white  font-bold">£29</span>
+									<span className="text-8xl text-white  font-bold">£29</span>
 									<span className="text-white  text-xs">/month</span>
 									<p className="mt-3 mb-6 text-white leading-loose">
 										Nullam diam arcu, sodales quis convallis sit amet, sagittis
@@ -120,7 +120,7 @@ const PricingOptions = () => {
 									<h4 className="mb-2 text-2xl font-bold text-white">
 										Professional
 									</h4>
-									<span className="text-6xl font-bold text-white">£129</span>
+									<span className="text-8xl font-bold text-white">£129</span>
 									<span className="text-white text-xs">/month</span>
 									<p className="mt-3 mb-6 leading-loose text-white">
 										Nullam diam arcu, sodales quis convallis sit amet, sagittis
@@ -216,7 +216,7 @@ const PricingOptions = () => {
 									<h4 className="mb-2 text-2xl text-white  font-bold font-heading">
 										Enterprise
 									</h4>
-									<span className="text-6xl text-white  font-bold">£749</span>
+									<span className="text-8xl text-white  font-bold">£749</span>
 									<span className="text-white text-xs">/month</span>
 									<p className="mt-3 mb-6 text-white leading-loose">
 										Nullam diam arcu, sodales quis convallis sit amet, sagittis

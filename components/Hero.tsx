@@ -75,7 +75,7 @@ const Hero: FunctionComponent<IProps> = ({
 				<div className="pt-24 sm:pt-34 pb-8 bg-cover">
 					<div className="container px-4 mx-auto">
 						<div className="max-w-2xl xl:max-w-4xl mx-auto text-center">
-							<h1 className="max-w-sm mx-auto md:max-w-xl font-heading text-[2rem] sm:text-5xl md:text-6xl font-bold font-heading leading-normal sm:leading-[4.5rem] text-center text-white mb-6">
+							<h1 className="max-w-sm mx-auto md:max-w-xl font-heading text-[2rem] sm:text-5xl md:text-8xl font-bold font-heading leading-normal sm:leading-[4.5rem] text-center text-white mb-6">
 								{title}
 							</h1>
 							<h4 className="max-w-md md:max-w-lg mx-auto text-lg leading-6 text-white mb-10">

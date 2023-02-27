@@ -94,7 +94,7 @@ const TextImage: FunctionComponent<IProps> = ({
 	}
 
 	return (
-		<div className="flex flex-col md:flex-row justify-between items-center gap-20">
+		<div className="flex flex-col items-center justify-between gap-20 md:flex-row">
 			<div className="w-full lg:w-1/2" style={{display: leftImageDisplay}}>
 				<Image
 					width={550}
@@ -104,7 +104,7 @@ const TextImage: FunctionComponent<IProps> = ({
 					className={isImageContent(image?.sourceUrl)}
 				/>
 			</div>
-			<div className="w-full lg:w-1/2 mb-5 lg:mb-0">
+			<div className="w-full mb-5 lg:w-1/2 lg:mb-0">
 				<span
 					className="mx-auto lg:mx-0 mb-6 lg:mb-10 flex w-[7rem] h-[7rem] items-center justify-center rounded-full text-white text-2xl"
 					style={{background}}
@@ -114,13 +114,13 @@ const TextImage: FunctionComponent<IProps> = ({
 						height={550}
 						alt={`${icon?.altText}`}
 						src={`${icon?.sourceUrl}`}
-						className="object-contain object-center"
+						className="w-full h-[100px] object-contain object-center"
 					/>
 				</span>
-				<h5 className="mb-4 text-base uppercase font-bold text-center lg:text-left font-heading text-lightBlue max-w-sm">
+				<h5 className="max-w-sm mx-auto mb-4 text-base font-bold text-center uppercase lg:mx-0 lg:text-left font-heading text-lightBlue">
 					{subtitle}
 				</h5>
-				<h3 className="mb-4 text-3xl font-bold font-heading text-center lg:text-left text-black">
+				<h3 className="py-8 text-4xl font-bold text-center text-black md:text-5xl font-heading lg:text-left">
 					{title}
 				</h3>
 				<div
