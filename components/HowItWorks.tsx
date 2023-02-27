@@ -9,20 +9,21 @@ interface IProps {
 	subtitle: string;
 	gridContent: [
 		{
-			id: string;
-			title: string;
-			subtitle: string;
-			paragraph: string;
-			icon: {
-				altText: string;
-				sourceUrl: string;
+			card: {
+				id: string;
+				title: string;
+				subtitle: string;
+				paragraph: string;
+				icon: {
+					altText: string;
+					sourceUrl: string;
+				};
+				image: {
+					altText: string;
+					sourceUrl: string;
+				};
+				displayImageLocation: string;
 			};
-			image: {
-				altText: string;
-				sourceUrl: string;
-			};
-			iterationCount: number;
-			displayImageLocation: string;
 		}
 	];
 }
@@ -58,14 +59,14 @@ const HowItWorks: FunctionComponent<IProps> = ({
 						<div className="flex flex-col gap-10 lg:gap-20 xl:gap-36 mt-10 lg:mt-36">
 							{gridContent.map((keys) => (
 								<TextImage
-									key={keys.id}
-									icon={keys?.icon}
-									image={keys?.image}
-									title={keys?.title}
-									subtitle={keys?.subtitle}
-									paragraph={keys?.paragraph}
+									key={keys?.card?.id}
+									icon={keys?.card?.icon}
+									image={keys?.card?.image}
+									title={keys?.card?.title}
+									subtitle={keys?.card?.subtitle}
+									paragraph={keys?.card?.paragraph}
 									iterationCount={iterationCount++}
-									displayImageLocation={keys?.displayImageLocation}
+									displayImageLocation={keys?.card?.displayImageLocation}
 								/>
 							))}
 						</div>

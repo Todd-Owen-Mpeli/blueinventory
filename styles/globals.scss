@@ -16,20 +16,21 @@ body {
 }
 
 body::-webkit-scrollbar {
-	width: 0.7rem;
-	height: 0.7rem;
+	width: 0.65rem;
+	height: 0.65rem;
 }
 
 body::-webkit-scrollbar-track {
-	background: $secondary_darkBlue;
+	background: $darkBlue;
 }
 
 body::-webkit-scrollbar-thumb {
-	background: $secondary_blue;
+	background: $blue;
+	border-radius: 100px;
 
 	&:hover {
 		transition: all 0.5s;
-		background-color: $secondary_limeGreen;
+		background-color: $limeGreen;
 	}
 }
 
@@ -39,6 +40,31 @@ a {
 }
 
 * {
+	@apply outline-none;
 	box-sizing: border-box;
 	font-family: $fontStyle_main;
+}
+
+p,
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+li,
+span,
+input,
+label,
+button {
+	font-family: $fontStyle_main;
+}
+
+li,
+p {
+	a {
+		@apply text-blue transition-all ease-in-out duration-[0.5s] hover:text-yellow focus:text-yellow hover:underline;
+	}
 }

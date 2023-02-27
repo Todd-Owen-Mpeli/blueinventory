@@ -1,4 +1,5 @@
 import Image from "next/image";
+import DOMPurify from "isomorphic-dompurify";
 import {FunctionComponent} from "react";
 
 interface IProps {
@@ -26,14 +27,36 @@ const TextImage: FunctionComponent<IProps> = ({
 	iterationCount,
 	displayImageLocation,
 }) => {
+	/* Check if paragraph content is null
+	 And Displays content if it null */
+	function isParagraphContent(isParagraphContent: string) {
+		let contentStyling: string;
+		if (isParagraphContent === null || isParagraphContent === undefined) {
+			contentStyling =
+				"hidden w-full lg:max-w-[75rem] text-center lg:text-left text-darkGrey text-medium font-[400]";
+		} else {
+			contentStyling =
+				"block w-full lg:max-w-[75rem] text-center lg:text-left text-darkGrey text-medium font-[400]";
+		}
+		return contentStyling;
+	}
+
+	function createParagraphMarkup(paragraphContent: string) {
+		return {
+			__html: DOMPurify.sanitize(paragraphContent),
+		};
+	}
+
 	/* Check if Image content is null
 	 And Displays content if it is not */
 	function isImageContent(isImageContent: string) {
 		let contentStyling;
 		if (isImageContent === null || isImageContent === undefined) {
-			contentStyling = "hidden w-full h-full object-cover rounded-[15px]";
+			contentStyling =
+				"hidden w-full h-[400px] lg:h-[550px] rounded-lg object-cover object-center";
 		} else {
-			contentStyling = "block w-full h-full object-cover rounded-[15px]";
+			contentStyling =
+				"block w-full h-[400px] lg:h-[550px] rounded-lg object-cover object-center";
 		}
 		return contentStyling;
 	}
@@ -76,9 +99,9 @@ const TextImage: FunctionComponent<IProps> = ({
 				<Image
 					width={550}
 					height={550}
-					alt={`${icon?.altText}`}
-					src={`${icon?.sourceUrl}`}
-					className={isImageContent(icon?.sourceUrl)}
+					alt={`${image?.altText}`}
+					src={`${image?.sourceUrl}`}
+					className={isImageContent(image?.sourceUrl)}
 				/>
 			</div>
 			<div className="w-full lg:w-1/2 mb-5 lg:mb-0">
@@ -94,15 +117,16 @@ const TextImage: FunctionComponent<IProps> = ({
 						className="object-contain object-center"
 					/>
 				</span>
-				<h5 className="mb-4 text-base uppercase font-bold text-center lg:text-left font-heading text-lightBlue">
+				<h5 className="mb-4 text-base uppercase font-bold text-center lg:text-left font-heading text-lightBlue max-w-sm">
 					{subtitle}
 				</h5>
 				<h3 className="mb-4 text-3xl font-bold font-heading text-center lg:text-left text-black">
 					{title}
 				</h3>
-				<p className="text-black text-base text-center lg:text-left leading-relaxed">
-					{paragraph}
-				</p>
+				<div
+					className={isParagraphContent(paragraph)}
+					dangerouslySetInnerHTML={createParagraphMarkup(paragraph)}
+				/>
 			</div>
 			<div className="w-full lg:w-1/2" style={{display: rightImageDisplay}}>
 				<Image

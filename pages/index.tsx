@@ -42,17 +42,17 @@ export default function HomePage({seo, homePageContent}: any) {
 
 				{/* CTA Two */}
 				<CTATwo
-					title={homePageContent?.heroSection?.title}
-					paragraph={homePageContent?.heroSection?.subtitle}
-					buttonLink={homePageContent?.heroSection?.buttonLink}
+					title={homePageContent?.contactBannerTwo?.title}
+					paragraph={homePageContent?.contactBannerTwo?.paragraph}
+					buttonLink={homePageContent?.contactBannerTwo?.buttonLink}
 				/>
 
 				{/* How It Works */}
-				{/* <HowItWorks
-					title={homePageContent?.ourServiceTitle}
-					subtitle={homePageContent?.ourServiceSubtitle}
-					gridContent={homePageContent?.ourServices}
-				/> */}
+				<HowItWorks
+					title={homePageContent?.howItWorks?.title}
+					subtitle={homePageContent?.howItWorks?.subtitle}
+					gridContent={homePageContent?.howItWorks?.gridContent}
+				/>
 
 				{/* Trusted Brands Logos */}
 				<TrustedBrands
@@ -168,6 +168,35 @@ export async function getStaticProps() {
 									image {
 										altText
 										sourceUrl
+									}
+								}
+							}
+							contactBannerTwo {
+								title
+								paragraph
+								buttonLink {
+									url
+									title
+									target
+								}
+							}
+							howItWorks {
+								title
+								subtitle
+								gridContent {
+									card {
+										title
+										subtitle
+										paragraph
+										displayImageLocation
+										icon {
+											altText
+											sourceUrl
+										}
+										image {
+											altText
+											sourceUrl
+										}
 									}
 								}
 							}
