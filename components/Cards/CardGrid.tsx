@@ -1,6 +1,6 @@
 import {FunctionComponent} from "react";
 import FeatureListCard from "./FeatureListCard";
-import styles from "../styles/components/CardGrid.module.scss";
+import styles from "../../styles/components/CardGrid.module.scss";
 
 interface IProps {
 	title: string;
