@@ -1,8 +1,8 @@
 import {motion} from "framer-motion";
 import {FunctionComponent} from "react";
 import {fadeInUp} from "../animations/animations";
-import styles from "../styles/components/FeaturesBanner.module.scss";
-import FeaturesBannerCard from "./Cards/FeaturesBannerCard";
+import styles from "../styles/components/featuresBanner.module.scss";
+import FeaturesBannerCard from "./Cards/featuresBannerCard";
 
 interface IProps {
 	title: string;

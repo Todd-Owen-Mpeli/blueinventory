@@ -1,6 +1,6 @@
 import Image from "next/image";
-import DOMPurify from "isomorphic-dompurify";
 import {FunctionComponent} from "react";
+import DOMPurify from "isomorphic-dompurify";
 
 interface IProps {
 	title: string;

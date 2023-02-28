@@ -1,6 +1,6 @@
 import Image from "next/image";
 import {FunctionComponent} from "react";
-import styles from "../../styles/components/FeaturesBanner.module.scss";
+import styles from "../../styles/components/featuresBanner.module.scss";
 
 interface IProps {
 	title: string;

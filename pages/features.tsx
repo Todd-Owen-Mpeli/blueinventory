@@ -8,7 +8,7 @@ import Navbar from "../components/Navbar";
 import CTATwo from "../components/CTATwo";
 import HeroTwo from "../components/HeroTwo";
 import MetaTag from "../components/Meta/MetaTag";
-import CardGrid from "../components/Cards/CardGrid";
+import CardGrid from "../components/CardGrid";
 import FeaturesBanner from "../components/FeaturesBanner";
 import ThreeContentGrid from "../components/ThreeContentGrid";
 
@@ -17,8 +17,8 @@ import styles from "../styles/Home.module.scss";
 
 export default function FeaturesPage({
 	seo,
-	featurePageContent,
 	pageTitle,
+	featurePageContent,
 }: any) {
 	// console.log(featurePageContent);
 	return (
@@ -70,9 +70,9 @@ export default function FeaturesPage({
 
 				{/* CTA Two */}
 				<CTATwo
-					title={featurePageContent?.ctaBannerTwo?.title}
-					paragraph={featurePageContent?.ctaBannerTwo?.paragraph}
-					buttonLink={featurePageContent?.ctaBannerTwo?.buttonLink}
+					title={featurePageContent?.contactBannerTwo?.title}
+					paragraph={featurePageContent?.contactBannerTwo?.paragraph}
+					buttonLink={featurePageContent?.contactBannerTwo?.buttonLink}
 				/>
 			</main>
 		</>
@@ -80,24 +80,24 @@ export default function FeaturesPage({
 }
 
 // Removes Global Navbar & Adds Custom Header and Footer Page layout Function
-FeaturesPage.getLayout = function PageLayout({
-	page,
-	pageTitle,
-	featurePageContent,
-}: any) {
-	return (
-		<>
-			{/* <!--===== NAVBAR =====--> */}
-			<Navbar />
+// FeaturesPage.getLayout = function PageLayout({
+// 	page,
+// 	pageTitle,
+// 	featurePageContent,
+// }: any) {
+// 	return (
+// 		<>
+// 			{/* <!--===== NAVBAR =====--> */}
+// 			<Navbar />
 
-			{/* <!--===== PAGE CONTENT =====--> */}
-			{page}
+// 			{/* <!--===== PAGE CONTENT =====--> */}
+// 			{page}
 
-			{/* <!--===== FOOTER =====--> */}
-			<Footer email={featurePageContent?.ctaBannerTwo?.title} />
-		</>
-	);
-};
+// 			{/* <!--===== FOOTER =====--> */}
+// 			<Footer email={featurePageContent?.ctaBannerTwo?.title} />
+// 		</>
+// 	);
+// };
 
 export async function getStaticProps() {
 	const getFeaturePageContent: any = gql`
@@ -149,21 +149,6 @@ export async function getStaticProps() {
 									sourceUrl
 								}
 							}
-							featuresBanner {
-								text
-								icons {
-									sourceUrl
-								}
-							}
-							ctaBannerTwo {
-								title
-								paragraph
-								buttonLink {
-									url
-									title
-									target
-								}
-							}
 							stats {
 								title
 								subtitle
@@ -173,6 +158,16 @@ export async function getStaticProps() {
 								afterTopText
 								afterNumber
 								afterBottomText
+							}
+							featuresBanner {
+								title
+								content {
+									title
+									icon {
+										altText
+										sourceUrl
+									}
+								}
 							}
 							threeGridContent {
 								title
@@ -193,8 +188,19 @@ export async function getStaticProps() {
 							featureList {
 								title
 								gridContent {
+									card {
+										title
+										paragraph
+									}
+								}
+							}
+							contactBannerTwo {
+								title
+								paragraph
+								buttonLink {
+									url
 									title
-									paragraph
+									target
 								}
 							}
 						}

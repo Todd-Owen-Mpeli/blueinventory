@@ -51,10 +51,10 @@ const CTATwo: FunctionComponent<IProps> = ({title, paragraph, buttonLink}) => {
 	}
 
 	return (
-		<section className="py-12 lg:py-20 bg-blue overflow-hidden bg-gradient-to-r from-blue to-blueTwo">
+		<section className="py-12 overflow-hidden lg:py-20 bg-blue bg-gradient-to-r from-blue to-blueTwo">
 			<div className="container px-0 mx-auto">
-				<div className="flex flex-col lg:flex-row justify-center items-center z-50">
-					<div className="w-full lg:w-1/2 relative">
+				<div className="z-50 flex flex-col items-center justify-center lg:flex-row">
+					<div className="relative w-full lg:w-1/2">
 						<div className="relative z-50">
 							<h2 className="text-white text-left tracking-normal leading-[2.75rem] font-[600] text-2xl sm:text-3xl lg:text-5xl">
 								{title}
@@ -74,7 +74,7 @@ const CTATwo: FunctionComponent<IProps> = ({title, paragraph, buttonLink}) => {
 							/>
 						</div>
 					</div>
-					<div className="w-full lg:w-1/2 py-4 lg:py-8 relative">
+					<div className="relative w-full py-4 lg:w-1/2 lg:py-8">
 						<div className="absolute top-[-380px] right-[-75px] lg:top-[-300px]">
 							<Image
 								width={550}
@@ -88,7 +88,7 @@ const CTATwo: FunctionComponent<IProps> = ({title, paragraph, buttonLink}) => {
 							<Link
 								href={buttonLink?.url}
 								target={buttonLink?.target}
-								className="text-medium font-semibold"
+								className="font-semibold text-medium"
 							>
 								{buttonLink?.title}
 							</Link>

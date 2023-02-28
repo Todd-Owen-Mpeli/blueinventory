@@ -15,9 +15,11 @@ interface IProps {
 	};
 	faqContent: [
 		{
-			id: string;
-			title: string;
-			paragraph: string;
+			card: {
+				id: string;
+				title: string;
+				paragraph: string;
+			};
 		}
 	];
 }
@@ -94,9 +96,9 @@ const FAQ: FunctionComponent<IProps> = ({
 							<div className="flex flex-col">
 								{faqContent.map((keys) => (
 									<FAQCard
-										key={keys?.id}
-										title={keys?.title}
-										paragraph={keys?.paragraph}
+										key={keys?.card?.id}
+										title={keys?.card?.title}
+										paragraph={keys?.card?.paragraph}
 									/>
 								))}
 							</div>

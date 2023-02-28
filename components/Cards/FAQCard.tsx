@@ -16,10 +16,10 @@ const FAQCard: FunctionComponent<IProps> = ({title, paragraph}) => {
 		let contentStyling: string;
 		if (isParagraphContent === null || isParagraphContent === undefined) {
 			contentStyling =
-				"hidden mb-5 text-darkGrey text-medium leading-relaxed font-[400]";
+				"hidden mb-5 text-darkGrey text-base leading-relaxed font-[400]";
 		} else {
 			contentStyling =
-				"block mb-5 text-darkGrey text-medium leading-relaxed font-[400]";
+				"block mb-5 text-darkGrey text-base leading-relaxed font-[400]";
 		}
 		return contentStyling;
 	}
@@ -63,7 +63,10 @@ const FAQCard: FunctionComponent<IProps> = ({title, paragraph}) => {
 					</div>
 					<div className="flex-1 p-2 mt-2">
 						<button onClick={displayAccordionContent}>
-							<motion.h3 variants={fadeIn} className="mb-4 font-[600] ">
+							<motion.h3
+								variants={fadeIn}
+								className="mb-4 text-medium font-[600]"
+							>
 								{title}
 							</motion.h3>
 						</button>

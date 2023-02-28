@@ -110,7 +110,7 @@ export default function HomePage({seo, homePageContent}: any) {
 export async function getStaticProps() {
 	const getHomePageContent: any = gql`
 		{
-			mainContent: pages(where: {id: 54, status: PUBLISH}) {
+			mainContent: pages(where: {id: 49, status: PUBLISH}) {
 				edges {
 					node {
 						seo {
@@ -224,8 +224,10 @@ export async function getStaticProps() {
 									target
 								}
 								faqContent {
-									title
-									paragraph
+									card {
+										title
+										paragraph
+									}
 								}
 							}
 						}

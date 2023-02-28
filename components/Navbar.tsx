@@ -8,8 +8,8 @@ interface IProps {
 
 const Navbar = () => {
 	return (
-		<nav className="navigation py-1 bg-white">
-			<div className="container mx-auto px-4">
+		<nav className="py-1 bg-white navigation">
+			<div className="container px-4 mx-auto">
 				<div className="relative flex items-center justify-between">
 					<div className="w-auto">
 						<Link href="/" className="inline-block">
@@ -22,19 +22,19 @@ const Navbar = () => {
 							/>
 						</Link>
 					</div>
-					<div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden lg:block">
-						<ul className="flex justify-between items-center gap-14">
+					<div className="absolute hidden transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 lg:block">
+						<ul className="flex items-center justify-between gap-14">
 							<li>
 								<Link
-									className="font-heading mr-12 text-base text-black hover:text-grey"
-									href="/features"
+									className="mr-12 text-base text-black font-heading hover:text-grey"
+									href="/Features"
 								>
 									Features
 								</Link>
 							</li>
 							<li>
 								<Link
-									className="font-heading mr-12 text-base text-black hover:text-grey"
+									className="mr-12 text-base text-black font-heading hover:text-grey"
 									href="#"
 								>
 									About
@@ -42,15 +42,15 @@ const Navbar = () => {
 							</li>
 							<li>
 								<Link
-									className="font-heading mr-12 text-base text-black hover:text-grey"
-									href="/pricing"
+									className="mr-12 text-base text-black font-heading hover:text-grey"
+									href="/Pricing"
 								>
 									Pricing
 								</Link>
 							</li>
 						</ul>
 					</div>
-					<div className="hidden lg:flex flex-row gap-6 w-auto">
+					<div className="flex-row hidden w-auto gap-6 lg:flex">
 						<Link
 							href="#"
 							className="inline-block py-2 px-4 rounded-[15px] font-heading text-sm text-white border border-darkBlue hover:border-blue hover:ease-in-out hover:duration-200 bg-darkBlue hover:bg-blue"
