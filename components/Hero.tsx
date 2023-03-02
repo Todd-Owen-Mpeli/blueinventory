@@ -78,6 +78,7 @@ const Hero: FunctionComponent<IProps> = ({
 							<h1 className="max-w-sm mx-auto md:max-w-xl font-heading text-[2rem] sm:text-5xl md:text-8xl font-bold font-heading leading-normal sm:leading-[4.5rem] text-center text-white mb-6">
 								{title}
 							</h1>
+
 							<h4 className="max-w-md md:max-w-lg mx-auto text-lg leading-6 text-white mb-10">
 								{subtitle}
 							</h4>

@@ -18,6 +18,7 @@ import FeaturesBanner from "../components/FeaturesBanner";
 import styles from "../styles/Home.module.scss";
 import Link from "next/link";
 import ThreeLinksGrid from "../components/ThreeLinksGrid";
+import LegosSpinner from "../components/LegosSpinner";
 
 export default function HomePage({seo, homePageContent}: any) {
 	return (
@@ -52,6 +53,8 @@ export default function HomePage({seo, homePageContent}: any) {
 						homePageContent?.heroSection?.backgroundImage?.sourceUrl
 					}
 				/>
+
+				<LegosSpinner />
 
 				{/* CTA Two */}
 				<CTATwo

@@ -1,4 +1,11 @@
 {
 	"compile-hero.disable-compile-files-on-did-save-code": true,
-	"cSpell.words": ["blueinventory", "Deca", "Lexend", "tailwindcss"]
+	"cSpell.words": [
+		"blueinventory",
+		"Deca",
+		"dribbble",
+		"Legos",
+		"Lexend",
+		"tailwindcss"
+	]
 }
