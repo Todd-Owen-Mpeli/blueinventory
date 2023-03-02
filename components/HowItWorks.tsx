@@ -39,9 +39,9 @@ const HowItWorks: FunctionComponent<IProps> = ({
 		<section className="" id="HowItWorks">
 			<div className="relative backgroundSVG">
 				<Image
-					alt="Background Wave One Image"
 					width={550}
 					height={550}
+					alt="Background Wave One Image"
 					src="/svg/backgroundSVG/backgroundWaveOne.svg"
 					className="absolute w-full h-[550px] object-cover object-center"
 				/>

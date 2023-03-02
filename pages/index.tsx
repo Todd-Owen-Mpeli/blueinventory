@@ -16,6 +16,8 @@ import FeaturesBanner from "../components/FeaturesBanner";
 
 // Styling
 import styles from "../styles/Home.module.scss";
+import Link from "next/link";
+import ThreeLinksGrid from "../components/ThreeLinksGrid";
 
 export default function HomePage({seo, homePageContent}: any) {
 	return (
@@ -23,7 +25,7 @@ export default function HomePage({seo, homePageContent}: any) {
 			{/* <!--===== META TAG =====--> */}
 			<MetaTag title={`BlueInventory `} seo={seo} />
 
-			<main className={styles.main}>
+			<main>
 				{/* Hero Section */}
 				<Hero
 					title={homePageContent?.heroSection?.title}
@@ -39,6 +41,16 @@ export default function HomePage({seo, homePageContent}: any) {
 				<FeaturesBanner
 					title={homePageContent?.featuresBanner?.title}
 					content={homePageContent?.featuresBanner?.content}
+				/>
+
+				{/*  THREE LINKS GRID */}
+				<ThreeLinksGrid
+					buttonLink={homePageContent?.heroSection?.buttonLinkTwo}
+					buttonLinkTwo={homePageContent?.heroSection?.buttonLinkTwo}
+					buttonLinkThree={homePageContent?.heroSection?.buttonLinkTwo}
+					backgroundImage={
+						homePageContent?.heroSection?.backgroundImage?.sourceUrl
+					}
 				/>
 
 				{/* CTA Two */}
@@ -70,7 +82,7 @@ export default function HomePage({seo, homePageContent}: any) {
 					paragraphTwo={homePageContent?.contactBanner?.paragraphTwo}
 				/>
 
-				{/* <!--===== SIGN UP =====--> */}
+				{/*  SIGN UP */}
 				<SignUp
 					title={homePageContent?.contactBanner?.title}
 					paragraph={homePageContent?.contactBanner?.paragraph}
@@ -78,6 +90,108 @@ export default function HomePage({seo, homePageContent}: any) {
 					backgroundColor={"white"}
 					// backgroundColor={homePageContent?.signUp?.backgroundColor}
 				/>
+
+				<section className="pt-24 pb-32 bg-gradient-gray2 overflow-hidden">
+					<div className="container mx-auto px-4">
+						<div className="max-w-md mx-auto mb-20">
+							<h2 className="mb-4 font-semibold text-center text-6xl sm:text-7xl text-gray-900">
+								Got questions?
+							</h2>
+							<p className="text-lg text-gray-600 text-center">
+								Frequently Asked Questions
+							</p>
+						</div>
+						<div className="flex flex-wrap -m-6 mb-24">
+							<div className="w-full md:w-1/2 p-6">
+								<div className="md:max-w-xl">
+									<h2 className="mb-4 font-medium text-medium text-gray-900">
+										Is it really unlimited downloads?
+									</h2>
+									<p className="text-base text-black">
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+										Sagittis euismod ornare aenean ut justo elit amet. Gravida
+										pulvinar ac elementum praesent vel quis accumsan, proin
+										rhoncus.
+									</p>
+								</div>
+							</div>
+							<div className="w-full md:w-1/2 p-6">
+								<div className="md:max-w-xl">
+									<h2 className="mb-4 font-medium text-medium text-gray-900">
+										Is it really unlimited downloads?
+									</h2>
+									<p className="text-base text-black">
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+										Sagittis euismod ornare aenean ut justo elit amet. Gravida
+										pulvinar ac elementum praesent vel quis accumsan, proin
+										rhoncus.
+									</p>
+								</div>
+							</div>
+							<div className="w-full md:w-1/2 p-6">
+								<div className="md:max-w-xl">
+									<h2 className="mb-4 font-medium text-medium text-gray-900">
+										Do you offer discounts on annual plans?
+									</h2>
+									<p className="text-base text-black">
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+										Sagittis euismod ornare aenean ut justo elit amet. Gravida
+										pulvinar ac elementum praesent vel quis accumsan, proin
+										rhoncus.
+									</p>
+								</div>
+							</div>
+							<div className="w-full md:w-1/2 p-6">
+								<div className="md:max-w-xl">
+									<h2 className="mb-4 font-medium text-medium text-gray-900">
+										Do you offer discounts on annual plans?
+									</h2>
+									<p className="text-base text-black">
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+										Sagittis euismod ornare aenean ut justo elit amet. Gravida
+										pulvinar ac elementum praesent vel quis accumsan, proin
+										rhoncus.
+									</p>
+								</div>
+							</div>
+							<div className="w-full md:w-1/2 p-6">
+								<div className="md:max-w-xl">
+									<h2 className="mb-4 font-medium text-medium text-gray-900">
+										What kind of file do you offer with the packages?
+									</h2>
+									<p className="text-base text-black">
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+										Sagittis euismod ornare aenean ut justo elit amet. Gravida
+										pulvinar ac elementum praesent vel quis accumsan, proin
+										rhoncus.
+									</p>
+								</div>
+							</div>
+							<div className="w-full md:w-1/2 p-6">
+								<div className="md:max-w-xl">
+									<h2 className="mb-4 font-medium text-medium text-gray-900">
+										What kind of file do you offer with the packages?
+									</h2>
+									<p className="text-base text-black">
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+										Sagittis euismod ornare aenean ut justo elit amet. Gravida
+										pulvinar ac elementum praesent vel quis accumsan, proin
+										rhoncus.
+									</p>
+								</div>
+							</div>
+						</div>
+						<a
+							className="group block max-w-max mx-auto font-medium text-gray-900 hover:text-gray-800 text-base overflow-hidden"
+							href="#"
+						>
+							<p className="mb-1">
+								Didn&rsquo;t find the answer? Contact us here
+							</p>
+							<div className="w-full transform -translate-x-0 group-hover:translate-x-full h-px bg-gradient-cyan transition ease-in-out duration-500"></div>
+						</a>
+					</div>
+				</section>
 
 				{/* FAQ */}
 				<FAQ
