@@ -1,88 +1,8 @@
-// Imports
-@tailwind base;
-@tailwind utilities;
-@tailwind components;
+import styled from "styled-components";
 
-// Imports
-@import "./_fonts";
-@import "./_colors";
-
-html,
-body {
-	padding: 0;
-	margin: 0;
-	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-		Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
-
-body::-webkit-scrollbar {
-	display: none;
-	width: 0.65rem;
-	height: 0.65rem;
-}
-
-body::-webkit-scrollbar-track {
-	background: $darkBlue;
-}
-
-body::-webkit-scrollbar-thumb {
-	background: $blue;
-	border-radius: 100px;
-
-	&:hover {
-		transition: all 0.5s;
-		background-color: $limeGreen;
-	}
-}
-
-a {
-	color: inherit;
-	text-decoration: none;
-}
-
-* {
-	@apply outline-none;
-	box-sizing: border-box;
-	font-family: $fontStyle_main;
-}
-
-p,
-a,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-ul,
-li,
-span,
-input,
-label,
-button {
-	font-family: $fontStyle_main;
-}
-
-li,
-p {
-	a {
-		@apply text-blue transition-all ease-in-out duration-[0.5s] hover:text-yellow focus:text-yellow hover:underline;
-	}
-}
-
-/*  WASHING MACHINE
-PAGE LOADING ANIMATION */
-.spinner-wrapper {
-	top: 0;
-	left: 0;
-	width: 100vw;
-	height: 100vh;
-	z-index: 9999;
-	display: flex;
-	position: fixed;
-	align-items: center;
-	justify-content: center;
-	background-color: rgba(13, 23, 42, 0.95);
+const PageLoadingAnimation = styled.div`
+	height: 40vh;
+	margin: auto 0;
 
 	.loader {
 		--duration: 3s;
@@ -800,4 +720,41 @@ PAGE LOADING ANIMATION */
 			opacity: 1;
 		}
 	}
-}
+`;
+const LoadingAnimation = () => {
+	return (
+		<PageLoadingAnimation>
+			<div className="loader">
+				<div className="box box0">
+					<div></div>
+				</div>
+				<div className="box box1">
+					<div></div>
+				</div>
+				<div className="box box2">
+					<div></div>
+				</div>
+				<div className="box box3">
+					<div></div>
+				</div>
+				<div className="box box4">
+					<div></div>
+				</div>
+				<div className="box box5">
+					<div></div>
+				</div>
+				<div className="box box6">
+					<div></div>
+				</div>
+				<div className="box box7">
+					<div></div>
+				</div>
+				<div className="ground">
+					<div></div>
+				</div>
+			</div>
+		</PageLoadingAnimation>
+	);
+};
+
+export default LoadingAnimation;

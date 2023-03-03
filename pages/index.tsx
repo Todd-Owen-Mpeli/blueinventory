@@ -54,6 +54,7 @@ export default function HomePage({seo, homePageContent}: any) {
 					}
 				/>
 
+				{/* LEGO SPINNER */}
 				<LegosSpinner />
 
 				{/* CTA Two */}

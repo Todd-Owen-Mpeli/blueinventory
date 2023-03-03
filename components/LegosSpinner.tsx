@@ -1,10 +1,10 @@
 import styles from "../styles/components/LegosSpinner.module.scss";
 import styled from "styled-components";
 
-// Image Icons
+// Lego Spinner Animation Icons
 const Lego = styled.div`
-	$height: 100px;
 	height: 50vh;
+	$height: 100px;
 	background-color: rgba(39, 94, 254, 0.95);
 
 	.LogoContainer {
