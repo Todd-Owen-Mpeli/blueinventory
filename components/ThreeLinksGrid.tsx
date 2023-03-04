@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
+import styled from "styled-components";
 import {FunctionComponent} from "react";
 import styles from "../styles/components/ThreeLinksGrid.module.scss";
 
@@ -37,9 +39,6 @@ const ThreeLinksGrid: FunctionComponent<IProps> = ({
 								rgba(13, 23, 42, 0.45)
 							),
 							url("${backgroundImage}");`,
-				backgroundPosition: "center",
-				backgroundRepeat: "no-repeat",
-				backgroundSize: "cover",
 			}}
 		>
 			<div
@@ -47,7 +46,7 @@ const ThreeLinksGrid: FunctionComponent<IProps> = ({
 				style={{backdropFilter: "blur(5px)"}}
 			>
 				<div className="w-full h-full">
-					<div className="flex flex-col justify-center items-center text-center text-6xl h-full relative z-0">
+					<div className="relative z-0 flex flex-col items-center justify-center h-full text-6xl text-center">
 						<Link
 							className={styles.linkOne}
 							href={buttonLink?.url}
@@ -58,7 +57,7 @@ const ThreeLinksGrid: FunctionComponent<IProps> = ({
 					</div>
 				</div>
 				<div className="w-full h-full">
-					<div className="flex flex-col justify-center items-center text-center text-6xl h-full relative z-0">
+					<div className="relative z-0 flex flex-col items-center justify-center h-full text-6xl text-center">
 						<Link
 							className={styles.linkTwo}
 							href={buttonLinkTwo?.url}
@@ -69,7 +68,7 @@ const ThreeLinksGrid: FunctionComponent<IProps> = ({
 					</div>
 				</div>
 				<div className="w-full h-full">
-					<div className="flex flex-col justify-center items-center text-center text-6xl h-full relative z-0">
+					<div className="relative z-0 flex flex-col items-center justify-center h-full text-6xl text-center">
 						<Link
 							className={styles.linkThree}
 							href={buttonLinkThree?.url}

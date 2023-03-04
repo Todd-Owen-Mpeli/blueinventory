@@ -3,6 +3,10 @@
 @import "../_colors";
 
 .ThreeLinksGrid {
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+
 	a {
 		line-height: normal;
 	}
@@ -126,10 +130,9 @@
 		height: 5ch;
 		top: 50%;
 		right: 50%;
+		background-color: $blue;
 		transform: translate(50%, -50%) rotate(0deg) scale(0);
 		transition: transform 1s ease;
-
-		background-color: $blue;
 	}
 
 	.linkTwo:hover::after {
@@ -148,6 +151,7 @@
 		height: 100%;
 		top: 0%;
 		left: 0%;
+		color: $limeGreen;
 		transform: translate(0, -50%) scaleY(0);
 		transition: transform 1s ease;
 		mix-blend-mode: difference;

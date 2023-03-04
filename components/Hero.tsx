@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import {FunctionComponent} from "react";
-import styles from "../styles/components/Hero.module.scss";
 
 interface IProps {
 	title: string;
@@ -57,76 +56,74 @@ const Hero: FunctionComponent<IProps> = ({
 	}
 
 	return (
-		<section className={styles.hero}>
-			<div
-				className="flex min-h-[70vh] flex-col justify-center item-center"
-				style={{
-					background: `linear-gradient(
+		<section
+			className="bg-cover bg-center bg-no-repeat flex min-h-[80vh] flex-col justify-center item-center"
+			style={{
+				background: `linear-gradient(
 								0deg,
 								rgba(13, 23, 42, 0.45),
 								rgba(13, 23, 42, 0.45)
 							),
 							url("${backgroundImage}");`,
-					backgroundPosition: "center",
-					backgroundRepeat: "no-repeat",
-					backgroundSize: "cover",
-				}}
-			>
-				<div className="pt-24 sm:pt-34 pb-8 bg-cover">
-					<div className="container px-4 mx-auto">
-						<div className="max-w-2xl xl:max-w-4xl mx-auto text-center">
-							<h1 className="max-w-sm mx-auto md:max-w-xl font-heading text-[2rem] sm:text-5xl md:text-8xl font-bold font-heading leading-normal sm:leading-[4.5rem] text-center text-white mb-6">
-								{title}
-							</h1>
+				backgroundPosition: "center",
+				backgroundRepeat: "no-repeat",
+				backgroundSize: "cover",
+			}}
+		>
+			<div className="pt-24 pb-8 bg-cover sm:pt-34">
+				<div className="container px-4 mx-auto">
+					<div className="max-w-2xl mx-auto text-center xl:max-w-4xl">
+						<h1 className="max-w-sm mx-auto md:max-w-xl font-heading text-[2rem] sm:text-5xl md:text-8xl font-bold font-heading leading-normal sm:leading-[4.5rem] text-center text-white mb-6">
+							{title}
+						</h1>
 
-							<h4 className="max-w-md md:max-w-lg mx-auto text-lg leading-6 text-white mb-10">
-								{subtitle}
-							</h4>
-							<div className="flex flex-col md:flex-row items-center justify-center mb-16 gap-4">
-								<Link
-									href={buttonLink?.url}
-									target={buttonLink?.target}
-									className={isButtonOneContent(buttonLink?.url)}
-								>
-									{buttonLink?.title}
-								</Link>
-								<Link
-									href={buttonLinkTwo?.url}
-									target={buttonLinkTwo?.target}
-									className={isButtonTwoContent(buttonLinkTwo?.url)}
-								>
-									{buttonLinkTwo?.title}
-								</Link>
-							</div>
+						<h4 className="max-w-md mx-auto mb-10 text-lg leading-6 text-white md:max-w-lg">
+							{subtitle}
+						</h4>
+						<div className="flex flex-col items-center justify-center gap-4 mb-16 md:flex-row">
 							<Link
-								href={`#HowItWorks`}
-								passHref
-								className="hidden lg:inline-block mb-6 text-white"
+								href={buttonLink?.url}
+								target={buttonLink?.target}
+								className={isButtonOneContent(buttonLink?.url)}
 							>
-								<svg
-									width="26"
-									height="30"
-									viewBox="0 0 26 30"
-									fill="none"
-									xmlns="http://www.w3.org/2000/svg"
-								>
-									<path
-										d="M13 1V29M13 29L25 17M13 29L1 17"
-										stroke="currentColor"
-										strokeWidth="1.5"
-										strokeLinecap="round"
-										strokeLinejoin="round"
-									></path>
-								</svg>
+								{buttonLink?.title}
+							</Link>
+							<Link
+								href={buttonLinkTwo?.url}
+								target={buttonLinkTwo?.target}
+								className={isButtonTwoContent(buttonLinkTwo?.url)}
+							>
+								{buttonLinkTwo?.title}
 							</Link>
 						</div>
+						<Link
+							href={`#HowItWorks`}
+							passHref
+							className="hidden mb-6 text-white lg:inline-block"
+						>
+							<svg
+								width="26"
+								height="30"
+								viewBox="0 0 26 30"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M13 1V29M13 29L25 17M13 29L1 17"
+									stroke="currentColor"
+									strokeWidth="1.5"
+									strokeLinecap="round"
+									strokeLinejoin="round"
+								></path>
+							</svg>
+						</Link>
 					</div>
 				</div>
 			</div>
-			<div className="hidden navbar-menu fixed top-0 left-0 bottom-0 w-5/6 max-w-sm z-50">
-				<div className="navbar-backdrop fixed inset-0 backdrop-blur-xl backdrop-filter bg-blueTwo bg-opacity-30"></div>
-				<nav className="relative pt-7 pb-8 bg-white h-full overflow-y-auto">
-					<div className="flex flex-col px-6 h-full">
+			<div className="fixed top-0 bottom-0 left-0 z-50 hidden w-5/6 max-w-sm navbar-menu">
+				<div className="fixed inset-0 navbar-backdrop backdrop-blur-xl backdrop-filter bg-blueTwo bg-opacity-30"></div>
+				<nav className="relative h-full pb-8 overflow-y-auto bg-white pt-7">
+					<div className="flex flex-col h-full px-6">
 						<Link href={`"#"`} passHref className="inline-block ml-4 mb-7">
 							<Image
 								alt=""
@@ -136,7 +133,7 @@ const Hero: FunctionComponent<IProps> = ({
 								className="w-full h-[75px] sm:h-[200px] object-contain object center"
 							/>
 						</Link>
-						<ul className="w-full mb-auto pb-16">
+						<ul className="w-full pb-16 mb-auto">
 							<Link
 								href="#"
 								className="font-heading block text-base font-medium py-4 px-6 hover:bg-blue hover:text-white rounded-[15px]"
