@@ -19,6 +19,7 @@ import styles from "../styles/Home.module.scss";
 import Link from "next/link";
 import ThreeLinksGrid from "../components/ThreeLinksGrid";
 import LegosSpinner from "../components/LegosSpinner";
+import TestComponent from "../components/TestComponent";
 
 export default function HomePage({seo, homePageContent}: any) {
 	return (
@@ -94,6 +95,8 @@ export default function HomePage({seo, homePageContent}: any) {
 					backgroundColor={"white"}
 					// backgroundColor={homePageContent?.signUp?.backgroundColor}
 				/>
+
+				<TestComponent />
 
 				<section className="pt-24 pb-32 overflow-hidden bg-gradient-gray2">
 					<div className="container px-4 mx-auto">
