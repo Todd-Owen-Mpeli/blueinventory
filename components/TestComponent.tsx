@@ -14,7 +14,7 @@ const TestComponentStyling = styled.div`
 		&__fill {
 			width: 0;
 			height: inherit;
-			background: #c20000;
+			background: #ff8300;
 			transition: all 0.16s;
 		}
 		&--primary {
@@ -163,23 +163,9 @@ const TestComponentStyling = styled.div`
 		color: #fff;
 		position: relative;
 		padding: 16px 20px;
-		&__header {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			font-size: 0.8em;
-		}
-		&__tag {
-			color: #80837e;
-		}
-		&__title {
-			font-weight: 400;
-			font-size: 0.95em;
-			line-height: 1.5;
-		}
 		&--active {
-			opacity: 1;
-			background: rgba(#0e0d0e, 0.75);
+			opacity: 0.95;
+			background: #2563eb;
 		}
 		&:not(.post--active) {
 			pointer-events: none;
@@ -284,7 +270,7 @@ const TestComponent = () => {
 	let notActiveClassCss: string = "main-post--not-active";
 	function progress() {
 		let currentPost: any;
-		if (iRef.current === 100) {
+		if (i === 100) {
 			setI(-5);
 
 			// Reset progress bar
@@ -294,6 +280,13 @@ const TestComponent = () => {
 			// 	)!.style.width = "0";
 			// 	currentPostRef.current.classList.remove("post--active");
 			// }
+
+			if (currentPostRef.current) {
+				currentPostRef.current.querySelector<HTMLDivElement>(
+					".progress-bar__fill"
+				)!.style.width = "0";
+				currentPostRef.current.classList.remove("post--active");
+			}
 
 			postIndex++;
 
@@ -311,7 +304,7 @@ const TestComponent = () => {
 			currentPost = postsRef.current?.[postIndex];
 			currentPostRef.current = currentPost;
 		} else {
-			iRef.current++;
+			// iRef.current++;
 
 			// if (currentPostRef.current) {
 			// 	currentPostRef.current.querySelector<HTMLDivElement>(
@@ -322,6 +315,16 @@ const TestComponent = () => {
 			// 	).style.width = `${i}%`;
 			// 	currentPostRef.current.classList.add("post--active");
 			// }
+
+			setI(i + 1);
+
+			// Reset progress bar
+			if (currentPostRef.current) {
+				currentPostRef.current.querySelector<HTMLDivElement>(
+					".progress-bar__fill"
+				)!.style.width = `${i}%`;
+				currentPostRef.current.classList.add("post--active");
+			}
 
 			// Main Background Post
 			if (currentMainPost.current) {
@@ -346,10 +349,7 @@ const TestComponent = () => {
 			>
 				<div className="progress-bar absolute top-0 left-0 w-full h-[5px]">
 					<div className="progress-bar--primary z-[2]">
-						<div
-							className="progress-bar__fill"
-							style={{width: `${iRef.current}%`}}
-						/>
+						<div className="progress-bar__fill" style={{width: `${i}%`}} />
 					</div>
 				</div>
 
@@ -409,7 +409,7 @@ const TestComponent = () => {
 									<span className="main-post__tag">Video</span>
 								</div>
 								<h1 className="main-post__title">
-									What To Watch For in the 2019 Hungarian Grand Prix
+									What To Watch For in the 2023 Hungarian Grand Prix
 								</h1>
 								<a className="main-post__link" href="#">
 									<svg
@@ -472,30 +472,37 @@ const TestComponent = () => {
 					</div>
 				</header>
 
-				<div className="posts-wrapper hide-on-mobile">
-					<article ref={currentPostRef} className="post">
-						<div className="progress-bar">
-							<div className="progress-bar__fill"></div>
-						</div>
-						<header className="post__header">
-							<span className="post__tag">News</span>
-							<p className="post__published">16 August 2019</p>
-						</header>
-						<h2 className="post__title">
-							New McLaren wind tunnel &apos;critical&apos; to future
-							performance, says Tech Director Key
-						</h2>
+				<div className="posts-wrapper hidden lg:flex flex-col">
+					<article
+						ref={currentPostRef}
+						className="bg-pureBlack opacity-30 text-white relative py-4 px-6"
+					>
+						<Link href={`/`}>
+							<div className="progress-bar">
+								<div className="progress-bar__fill"></div>
+							</div>
+							<header className="flex justify-between items-center">
+								<span className="text-tiny text-orange font-[600]">News</span>
+								<p className="text-tiny text-white font-[400]">
+									16 August 2023
+								</p>
+							</header>
+							<h2 className="text-medium mt-8 text-white font-[400] leading-[1.5rem]">
+								New McLaren wind tunnel &apos;critical&apos; to future
+								performance, says Tech Director Key
+							</h2>
+						</Link>
 					</article>
-					<article ref={currentPostRef} className="post">
+					{/* <article ref={currentPostRef} className="post">
 						<div className="progress-bar">
 							<div className="progress-bar__fill"></div>
 						</div>
 						<header className="post__header">
 							<span className="post__tag">Video</span>
-							<p className="post__published">12 August 2019</p>
+							<p className="post__published">12 August 2023</p>
 						</header>
 						<h2 className="post__title">
-							What To Watch For in the 2019 Hungarian Grand Prix
+							What To Watch For in the 2023 Hungarian Grand Prix
 						</h2>
 					</article>
 					<article ref={currentPostRef} className="post">
@@ -504,13 +511,13 @@ const TestComponent = () => {
 						</div>
 						<header className="post__header">
 							<span className="post__tag">News</span>
-							<p className="post__published">08 August 2019</p>
+							<p className="post__published">08 August 2023</p>
 						</header>
 						<h2 className="post__title">
 							Hamilton wants harder championship fight from Leclerc and
 							Verstappen
 						</h2>
-					</article>
+					</article> */}
 				</div>
 			</div>
 		</TestComponentStyling>
