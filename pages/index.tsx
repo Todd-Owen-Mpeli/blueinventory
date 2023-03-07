@@ -28,6 +28,8 @@ export default function HomePage({seo, homePageContent}: any) {
 			<MetaTag title={`BlueInventory `} seo={seo} />
 
 			<main>
+				<TestComponent />
+
 				{/* Hero Section */}
 				<Hero
 					title={homePageContent?.heroSection?.title}
@@ -95,8 +97,6 @@ export default function HomePage({seo, homePageContent}: any) {
 					backgroundColor={"white"}
 					// backgroundColor={homePageContent?.signUp?.backgroundColor}
 				/>
-
-				<TestComponent />
 
 				<section className="pt-24 pb-32 overflow-hidden bg-gradient-gray2">
 					<div className="container px-4 mx-auto">

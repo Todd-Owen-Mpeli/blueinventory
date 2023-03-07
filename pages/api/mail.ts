@@ -14,7 +14,7 @@ interface generateEmailContent {
 	html: string;
 }
 
-const CONTACT_MESSAGE_FIELDS: CONTACT_MESSAGE_FIELDS = {
+const CONTACT_MESSAGE_FIELDS: CONTACT_MESSAGE_FIELDS | any = {
 	firstName: "First Name",
 	lastName: "Last Name",
 	email: "Email",

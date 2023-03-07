@@ -35,7 +35,6 @@ module.exports = {
 
 			// Main colors
 			orange: "#FF8300",
-			pureBlack: "#000",
 			pinkRed: "#ff002f",
 			blueTwo: "#3978ff",
 			darkBlue: "#0d172a",
@@ -43,10 +42,8 @@ module.exports = {
 			lightBlue: "#3d77f3",
 			darkOrange: "#ff9900",
 			flatPinkRed: "#f95674",
-			current: "currentColor",
 			flatLightBlue: "#77b5f8",
 			flatLimeGreen: "#cfe798",
-			transparent: "transparent",
 			yellow: "rgb(255, 201, 21)",
 		},
 	},

@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import {FunctionComponent} from "react";
-import styles from "../styles/components/Hero.module.scss";
 
 interface IProps {
 	title: string;
@@ -21,7 +20,7 @@ interface IProps {
 
 const HeroTwo = (props) => {
 	return (
-		<section className={styles.hero}>
+		<section>
 			<div
 				style={{
 					display: "flex",
