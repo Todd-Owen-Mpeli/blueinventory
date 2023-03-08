@@ -28,8 +28,6 @@ export default function HomePage({seo, homePageContent}: any) {
 			<MetaTag title={`BlueInventory `} seo={seo} />
 
 			<main>
-				<TestComponent />
-
 				{/* Hero Section */}
 				<Hero
 					title={homePageContent?.heroSection?.title}
@@ -40,6 +38,8 @@ export default function HomePage({seo, homePageContent}: any) {
 						homePageContent?.heroSection?.backgroundImage?.sourceUrl
 					}
 				/>
+
+				<TestComponent />
 
 				{/* Feature Banner Section */}
 				<FeaturesBanner

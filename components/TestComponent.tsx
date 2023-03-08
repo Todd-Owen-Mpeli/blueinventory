@@ -2,6 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import styled from "styled-components";
+import DOMPurify from "isomorphic-dompurify";
 import React, {useEffect, useRef, useState, FunctionComponent} from "react";
 // H2 styling
 const TestComponentStyling = styled.div`
@@ -22,128 +23,45 @@ const TestComponentStyling = styled.div`
 		}
 	}
 
-	.main-post {
-		position: absolute;
-		top: 100%;
-		right: 0;
-		left: 0;
-		bottom: 0;
-		width: 100%;
-		height: 100%;
-		&__image {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			bottom: 0;
-			img {
-				width: 100%;
-				height: 100%;
-				display: block;
-				object-fit: cover;
-			}
-			&::before {
-				content: "";
-				display: block;
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				background: rgba(#0e0d0e, 0.5);
-			}
-		}
-		&__content {
-			position: absolute;
-			top: 40%;
-			left: 4%;
-			transform: translateY(-40%);
-			color: #fff;
-			width: 90%;
-		}
-		&__tag-wrapper {
-			margin: 0;
-			display: inline-flex;
-			overflow: hidden;
-		}
-		&__tag {
-			font-size: 0.95em;
-			background: #c20000;
-			padding: 6px 18px;
-		}
-		&__title {
-			font-weight: 700;
-			font-size: 1.95em;
-			line-height: 1.25;
-			text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-		}
-		&__link {
-			text-decoration: none;
-			color: #fff;
-			text-transform: uppercase;
-			letter-spacing: 1.5px;
-			display: inline-flex;
-			align-items: center;
-			&-text {
-				font-size: 0.9em;
-			}
-			&-icon {
-				&--arrow {
-					margin-left: 12px;
-				}
-				&--play-btn {
-					margin-right: 12px;
-				}
-			}
-		}
-	}
-
-	.main-post__link:hover .main-post__link-text,
-	.main-post__link:hover .main-post__link-icon--arrow path {
-		color: #c20000;
-		stroke: #c20000;
-	}
-
-	.main-post--active {
+	.active {
 		top: 0;
 		z-index: 1;
 		transition: top 0.9s 0.4s ease-out;
 	}
 
-	.main-post--not-active {
+	.notActive {
 		top: 100%;
 		z-index: 0;
 		transition: top 0.75s 2s;
 	}
 
-	.main-post.main-post--active .main-post__tag-wrapper {
+	.main-post .active .main-post__tag-wrapper {
 		width: 25%;
 		transition: all 0.98s 1.9s;
 	}
-	.main-post.main-post--not-active .main-post__tag-wrapper {
+	.main-post.notActive .main-post__tag-wrapper {
 		width: 0;
 		transition: width 0.3s 0.2s;
 	}
 
-	.main-post.main-post--active .main-post__title {
+	.main-post .active .main-post__title {
 		opacity: 1;
 		transform: translateY(0);
 		transition: opacity 0.8s 1.42s, transform 0.5s 1.4s;
 	}
 
-	.main-post.main-post--not-active .main-post__title {
+	.main-post .notActive .main-post__title {
 		transform: translateY(40px);
 		opacity: 0;
 		transition: transform 0.2s 0.35s, opacity 0.5s 0.2s;
 	}
 
-	.main-post.main-post--active .main-post__link {
+	.main-post .active .main-post__link {
 		opacity: 1;
 		transition: opacity 0.9s 2.2s;
 	}
 
-	.main-post.main-post--not-active .main-post__link {
+	.main-post .notActive .main-post__link {
 		opacity: 0;
 		transition: opacity 0.5s 0.2s;
 	}
@@ -158,11 +76,6 @@ const TestComponentStyling = styled.div`
 	}
 
 	.post {
-		background: rgba(#0e0d0e, 0.6);
-		opacity: 0.3;
-		color: #fff;
-		position: relative;
-		padding: 16px 20px;
 		&--active {
 			opacity: 0.95;
 			background: #2563eb;
@@ -170,10 +83,6 @@ const TestComponentStyling = styled.div`
 		&:not(.post--active) {
 			pointer-events: none;
 		}
-	}
-
-	.hide-on-mobile {
-		display: none;
 	}
 
 	@media screen and (min-width: 768px) {
@@ -204,139 +113,54 @@ const TestComponentStyling = styled.div`
 `;
 
 const TestComponent = () => {
-	// const [i, setI] = useState<number>(0);
-	// const currentPostRef = useRef<HTMLDivElement>(null);
-	// const [posts, setPosts] = useState<NodeListOf<HTMLDivElement>>();
-
-	// let postIndex = 0;
-	// let currentPost: HTMLDivElement | null = posts?.[postIndex];
-
-	// useEffect(() => {
-	// 	setPosts(document.querySelectorAll<HTMLDivElement>(".post"));
-	// }, []);
-
-	// const progressInterval = setInterval(progress, 100);
-
-	// function progress() {
-	// 	if (i === 100) {
-	// 		setI(-5);
-
-	// 		if (currentPostRef.current) {
-	// 			currentPostRef.current.querySelector<HTMLDivElement>(
-	// 				".progress-bar__fill"
-	// 			)!.style.width = "0";
-	// 			currentPostRef.current.classList.remove("post--active");
-	// 		}
-
-	// 		postIndex++;
-
-	// 		if (postIndex === posts?.length) {
-	// 			postIndex = 0;
-	// 		}
-
-	// 		currentPost = posts?.[postIndex];
-	// 		currentPostRef.current = currentPost;
-	// 	} else {
-	// 		setI(i + 1);
-
-	// 		if (currentPostRef.current) {
-	// 			currentPostRef.current.querySelector<HTMLDivElement>(
-	// 				".progress-bar__fill"
-	// 			)!.style.width = `${i}%`;
-	// 			currentPostRef.current.classList.add("post--active");
-	// 		}
-	// 	}
-	// }
-
-	// useEffect(() => {
-	// 	return () => clearInterval(progressInterval);
-	// }, [progressInterval]);
-
-	const iRef = useRef<number>(0);
-	const currentPostRef = useRef<HTMLDivElement>(null);
-	const currentMainPost = useRef<HTMLDivElement>(null);
-	const postsRef = useRef<NodeListOf<HTMLDivElement>>();
-	const [posts, setPosts] = useState<NodeListOf<HTMLDivElement>>();
-
-	const [i, setI] = useState<number>(0);
-	let postIndex: number = 0;
-
-	useEffect(() => {
-		setPosts(document.querySelectorAll<HTMLDivElement>(".post"));
-	}, []);
-
-	const progressInterval = setInterval(progress, 100); // 180
-	let activeClassCss: string = "main-post--active";
-	let notActiveClassCss: string = "main-post--not-active";
-	function progress() {
-		let currentPost: any;
-		if (i === 100) {
-			setI(-5);
-
-			// Reset progress bar
-			// if (currentPostRef.current) {
-			// 	currentPostRef.current.querySelector<HTMLDivElement>(
-			// 		".progress-bar__fill"
-			// 	)!.style.width = "0";
-			// 	currentPostRef.current.classList.remove("post--active");
-			// }
-
-			if (currentPostRef.current) {
-				currentPostRef.current.querySelector<HTMLDivElement>(
-					".progress-bar__fill"
-				)!.style.width = "0";
-				currentPostRef.current.classList.remove("post--active");
-			}
-
-			postIndex++;
-
-			// Main Background Post
-			if (currentMainPost.current) {
-				currentMainPost.current.classList.add(notActiveClassCss);
-				currentMainPost.current.classList.remove(activeClassCss);
-			}
-
-			// Reset postIndex to loop over the slides again
-			if (postIndex === postsRef.current?.length) {
-				postIndex = 0;
-			}
-
-			currentPost = postsRef.current?.[postIndex];
-			currentPostRef.current = currentPost;
+	/* Check if paragraph content is null
+	 And Displays content if it null */
+	function isParagraphContent(isParagraphContent: string) {
+		let contentStyling: string;
+		if (isParagraphContent === null || isParagraphContent === undefined) {
+			contentStyling =
+				"hidden mt-8 font-[400] text-white text-base text-left leading-[1.5rem]";
 		} else {
-			// iRef.current++;
-
-			// if (currentPostRef.current) {
-			// 	currentPostRef.current.querySelector<HTMLDivElement>(
-			// 		".progress-bar__fill"
-			// 	).style.width = `${i}%`;
-			// 	currentPostRef.current.querySelector<HTMLDivElement>(
-			// 		".progress-bar--primary .progress-bar__fill"
-			// 	).style.width = `${i}%`;
-			// 	currentPostRef.current.classList.add("post--active");
-			// }
-
-			setI(i + 1);
-
-			// Reset progress bar
-			if (currentPostRef.current) {
-				currentPostRef.current.querySelector<HTMLDivElement>(
-					".progress-bar__fill"
-				)!.style.width = `${i}%`;
-				currentPostRef.current.classList.add("post--active");
-			}
-
-			// Main Background Post
-			if (currentMainPost.current) {
-				currentMainPost.current.classList.add(activeClassCss);
-				currentMainPost.current.classList.remove(notActiveClassCss);
-			}
+			contentStyling =
+				"block mt-8 font-[400] text-white text-base text-left leading-[1.5rem]";
 		}
+		return contentStyling;
 	}
 
+	function createTrimmedParagraphMarkup(paragraphContent: string) {
+		const sanitizedContent: string = DOMPurify.sanitize(paragraphContent);
+
+		return {
+			__html: `${sanitizedContent.substring(0, 250)}...`,
+		};
+	}
+
+	const parentRef = useRef<HTMLDivElement>(null);
+
 	useEffect(() => {
-		return () => clearInterval(progressInterval);
-	}, [progressInterval]);
+		const parentElement = parentRef.current;
+		const childElements = parentElement?.querySelectorAll(".parent > div");
+		let currentIndex = 0;
+
+		const intervalId = setInterval(() => {
+			const currentChild = childElements?.[currentIndex];
+			const nextIndex =
+				currentIndex + 1 >= childElements?.length ? 0 : currentIndex + 1;
+			const nextChild = childElements?.[nextIndex];
+
+			const tailwindcss: string = `absolute top-[100%] right-0 left-0 bottom-0 w-full h-full`;
+
+			if (currentChild && nextChild) {
+				currentChild.classList.remove("active");
+				currentChild.classList.add("notactive");
+				nextChild.classList.remove("notactive");
+				nextChild.classList.add("active");
+				currentIndex = nextIndex;
+			}
+		}, 5000);
+
+		return () => clearInterval(intervalId);
+	}, []);
 
 	return (
 		<TestComponentStyling>
@@ -347,39 +171,51 @@ const TestComponent = () => {
 					gridTemplateColumns: "50px 1fr 1fr 1fr 1fr 50px",
 				}}
 			>
-				<div className="progress-bar absolute top-0 left-0 w-full h-[5px]">
-					<div className="progress-bar--primary z-[2]">
-						<div className="progress-bar__fill" style={{width: `${i}%`}} />
+				{/* <div className="progress-bar absolute top-0 left-0 w-full h-[5px]">
+					<div className="progress-bar--primary absolute top-0 left-0 w-full h-[5px] z-[2]">
+						<div
+							className="h-[inherit] bg-orange transition-all ease-in-out duration-75"
+							// style={{width: `${iRef.current}%`}}
+						/>
 					</div>
-				</div>
+				</div> */}
 
 				<header
 					className="h-[100vh] relative"
 					style={{gridRow: "1 / 4", gridColumn: "1 / 7"}}
 				>
-					<div className="relative w-full h-full overflow-hidden">
-						<article
-							ref={currentMainPost}
-							className="main-post main-post--active"
-						>
-							<div className="main-post__image">
-								<img
-									src="https://www.formula1.com/content/dam/fom-website/manual/Misc/2019-Races/Monaco2019/McLarenMonaco19.jpg.transform/9col/image.jpg"
+					<div
+						className="parent relative w-full h-full overflow-hidden"
+						ref={parentRef}
+					>
+						<article className="active absolute top-[100%] right-0 left-0 bottom-0 w-full h-full">
+							<div className="absolute top-0 left-0 w-full h-full bottom-0">
+								<Image
+									width={1050}
+									height={1050}
+									className="w-full h-full block object-cover object-center"
+									src="/img/marvin-ong-oEcWn1Qvi5U-unsplash.jpg"
 									alt="New McLaren wind tunnel 'critical' to future performance, says Tech Director Key"
 								/>
 							</div>
-							<div className="main-post__content">
-								<div className="main-post__tag-wrapper">
-									<span className="main-post__tag">News</span>
+							<div className="absolute top-[40%] left-[4%] transform translate-y-[-40%] text-white w-[90%]">
+								<div className="m-0 overflow-hidden inline-flex">
+									<span className="py-[6px] px-6 bg-blue">News</span>
 								</div>
-								<h1 className="main-post__title">
+								<h1
+									className="font-[700] py-4 lg:py-8 text-white text-7xl w-full lg:w-[55rem] leading-[3.5rem]"
+									style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
+								>
 									New McLaren wind tunnel &apos;critical&apos; to future
 									performance, says Tech Director Key
 								</h1>
-								<a className="main-post__link" href="#">
-									<span className="main-post__link-text">find out more</span>
+								<Link
+									href={`/`}
+									className="text-white uppercase tracking-[0.25rem] inline-flex items-center no-underline hover:text-blue hover:stroke-blue"
+								>
+									<span className="text-tiny">find out more</span>
 									<svg
-										className="main-post__link-icon main-post__link-icon--arrow"
+										className="ml-[12px]"
 										width="37"
 										height="12"
 										viewBox="0 0 37 12"
@@ -391,29 +227,35 @@ const TestComponent = () => {
 											stroke="white"
 										/>
 									</svg>
-								</a>
+								</Link>
 							</div>
 						</article>
-						<article
-							ref={currentMainPost}
-							className="main-post main-post--not-active"
-						>
-							<div className="main-post__image">
-								<img
+						<article className="notActive absolute top-[100%] right-0 left-0 bottom-0 w-full h-full">
+							<div className="absolute top-0 left-0 w-full h-full bottom-0">
+								<Image
+									width={1050}
+									height={1050}
+									className="w-full h-full block object-cover object-center"
 									src="https://www.formula1.com/content/dam/fom-website/sutton/2019/Hungary/Saturday/1017645792-LAT-20190803-_2ST5188.jpg.transform/9col-retina/image.jpg"
 									alt="What To Watch For in the 2019 Hungarian Grand Prix"
 								/>
 							</div>
-							<div className="main-post__content">
-								<div className="main-post__tag-wrapper">
-									<span className="main-post__tag">Video</span>
+							<div className="absolute top-[40%] left-[4%] transform translate-y-[-40%] text-white w-[90%]">
+								<div className="m-0 overflow-hidden inline-flex">
+									<span className="py-[6px] px-6 bg-blue">Video</span>
 								</div>
-								<h1 className="main-post__title">
-									What To Watch For in the 2023 Hungarian Grand Prix
+								<h1
+									className="font-[700] py-4 lg:py-8 text-white text-7xl w-full lg:w-[55rem] leading-[3.5rem]"
+									style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
+								>
+									What To Watch For in the 2019 Hungarian Grand Prix
 								</h1>
-								<a className="main-post__link" href="#">
+								<Link
+									href={`/`}
+									className="text-white uppercase tracking-[0.25rem] inline-flex items-center no-underline hover:text-blue hover:stroke-blue"
+								>
 									<svg
-										className="main-post__link-icon main-post__link-icon--play-btn"
+										className="mr-[12px]"
 										width="30"
 										height="30"
 										viewBox="0 0 20 20"
@@ -429,32 +271,38 @@ const TestComponent = () => {
 										/>
 										<path d="M14 10L8 6V14L14 10Z" fill="white" />
 									</svg>
-									<span className="main-post__link-text">play video</span>
-								</a>
+									<span className="text-tiny">play video</span>
+								</Link>
 							</div>
 						</article>
-						<article
-							ref={currentMainPost}
-							className="main-post main-post--not-active"
-						>
-							<div className="main-post__image">
-								<img
-									src="https://www.formula1.com/content/dam/fom-website/manual/Misc/2019-Races/Austria-2019/Top3Austria2019.jpg.transform/9col-retina/image.jpg"
+						<article className="notActive absolute top-[100%] right-0 left-0 bottom-0 w-full h-full">
+							<div className="absolute top-0 left-0 w-full h-full bottom-0">
+								<Image
+									width={1050}
+									height={1050}
+									className="w-full h-full block object-cover object-center"
+									src="/img/pexels-jenda-kubeš-13641535.jpg"
 									alt="Hamilton wants harder championship fight from Leclerc and Verstappen"
 								/>
 							</div>
-							<div className="main-post__content">
-								<div className="main-post__tag-wrapper">
-									<span className="main-post__tag">News</span>
+							<div className="absolute top-[40%] left-[4%] transform translate-y-[-40%] text-white w-[90%]">
+								<div className="m-0 overflow-hidden inline-flex">
+									<span className="py-[6px] px-6 bg-blue">News</span>
 								</div>
-								<h1 className="main-post__title">
+								<h1
+									className="font-[700] py-4 lg:py-8 text-white text-7xl w-full lg:w-[55rem] leading-[3.5rem]"
+									style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
+								>
 									Hamilton wants harder championship fight from Leclerc and
 									Verstappen
 								</h1>
-								<a className="main-post__link" href="#">
-									<span className="main-post__link-text">find out more</span>
+								<Link
+									href={`/`}
+									className="text-white uppercase tracking-[0.25rem] inline-flex items-center no-underline hover:text-blue hover:stroke-blue"
+								>
+									<span className="text-tiny">find out more</span>
 									<svg
-										className="main-post__link-icon main-post__link-icon--arrow"
+										className="ml-[12px]"
 										width="37"
 										height="12"
 										viewBox="0 0 37 12"
@@ -466,58 +314,91 @@ const TestComponent = () => {
 											stroke="white"
 										/>
 									</svg>
-								</a>
+								</Link>
 							</div>
 						</article>
 					</div>
 				</header>
 
-				<div className="posts-wrapper hidden lg:flex flex-col">
-					<article
-						ref={currentPostRef}
-						className="bg-pureBlack opacity-30 text-white relative py-4 px-6"
-					>
+				<div
+					className="hidden lg:grid gap-4 z-[1]"
+					style={{
+						gridRow: "3 / 4",
+						gridColumn: "3 / 6",
+						gridTemplateColumns: "repeat(3, 1fr)",
+					}}
+				>
+					<article className="relative px-8 py-4 text-white transition-all duration-75 ease-in-out bg-blue hover:bg-orange">
 						<Link href={`/`}>
-							<div className="progress-bar">
-								<div className="progress-bar__fill"></div>
+							<div className="absolute top-0 left-0 h-[5px] w-full">
+								<div className="progress-bar__fill h-[inherit] bg-orange transition-all ease-in-out duration-75" />
 							</div>
-							<header className="flex justify-between items-center">
-								<span className="text-tiny text-orange font-[600]">News</span>
-								<p className="text-tiny text-white font-[400]">
-									16 August 2023
-								</p>
+							<header className="flex items-center justify-between">
+								<span className="text-tiny text-white font-[400]">News</span>
+								<span className="text-tiny text-white font-[400]">
+									16 January 2023
+								</span>
 							</header>
-							<h2 className="text-medium mt-8 text-white font-[400] leading-[1.5rem]">
-								New McLaren wind tunnel &apos;critical&apos; to future
-								performance, says Tech Director Key
-							</h2>
+							<div
+								className={isParagraphContent(
+									`<p>New McLaren wind tunnel 'critical' to future
+								performance, says Tech Director Key. It was popularised in the 2023 with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>`
+								)}
+								dangerouslySetInnerHTML={createTrimmedParagraphMarkup(
+									`<p>New McLaren wind tunnel 'critical' to future
+								performance, says Tech Director Key. It was popularised in the 2023 with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>`
+								)}
+							/>
 						</Link>
 					</article>
-					{/* <article ref={currentPostRef} className="post">
-						<div className="progress-bar">
-							<div className="progress-bar__fill"></div>
-						</div>
-						<header className="post__header">
-							<span className="post__tag">Video</span>
-							<p className="post__published">12 August 2023</p>
-						</header>
-						<h2 className="post__title">
-							What To Watch For in the 2023 Hungarian Grand Prix
-						</h2>
+					<article className="relative px-8 py-4 text-white transition-all duration-75 ease-in-out bg-blue hover:bg-orange ">
+						<Link href={`/`}>
+							<div className="absolute top-0 left-0 h-[5px] w-full">
+								<div
+									className="progress-bar__fill h-[inherit] bg-orange transition-all ease-in-out duration-75"
+									// style={{width: `${iRef.current}%`}}
+								/>
+							</div>
+							<header className="flex items-center justify-between">
+								<span className="text-tiny text-white font-[400]">Video</span>
+								<span className="text-tiny text-white font-[400]">
+									12 February 2023
+								</span>
+							</header>
+							<div
+								className={isParagraphContent(
+									`<p>What To Watch For in the 2023 Hungarian Grand Prix. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.</p>`
+								)}
+								dangerouslySetInnerHTML={createTrimmedParagraphMarkup(
+									`<p>What To Watch For in the 2023 Hungarian Grand Prix. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.</p>`
+								)}
+							/>
+						</Link>
 					</article>
-					<article ref={currentPostRef} className="post">
-						<div className="progress-bar">
-							<div className="progress-bar__fill"></div>
-						</div>
-						<header className="post__header">
-							<span className="post__tag">News</span>
-							<p className="post__published">08 August 2023</p>
-						</header>
-						<h2 className="post__title">
-							Hamilton wants harder championship fight from Leclerc and
-							Verstappen
-						</h2>
-					</article> */}
+					<article className="relative px-8 py-4 text-white transition-all duration-75 ease-in-out bg-blue hover:bg-orange ">
+						<Link href={`/`}>
+							<div className="absolute top-0 left-0 h-[5px] w-full">
+								<div
+									className="progress-bar__fill h-[inherit] bg-orange transition-all ease-in-out duration-75"
+									// style={{width: `${iRef.current}%`}}
+								/>
+							</div>
+							<header className="flex items-center justify-between">
+								<span className="text-tiny text-white font-[400]">News</span>
+								<span className="text-tiny text-white font-[400]">
+									08 March 2023
+								</span>
+							</header>
+							<div
+								className={isParagraphContent(
+									`<p>Hamilton wants harder championship fight from Leclerc and Verstappen. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 2023, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>`
+								)}
+								dangerouslySetInnerHTML={createTrimmedParagraphMarkup(
+									`<p>Hamilton wants harder championship fight from Leclerc and Verstappen. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 2023, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>`
+								)}
+							/>
+						</Link>
+					</article>
 				</div>
 			</div>
 		</TestComponentStyling>
