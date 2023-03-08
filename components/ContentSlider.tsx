@@ -139,14 +139,42 @@ const ContentSliderStyling = styled.div`
 		z-index: 1;
 	}
 
-	.post {
-		&--active {
-			opacity: 0.95;
-			background: #2563eb;
-		}
-		&:not(.post--active) {
-			pointer-events: none;
-		}
+	.post:hover {
+		background: #ff8300;
+		transition: none;
+		transition-delay: 0s;
+	}
+
+	.post-active {
+		opacity: 0.95;
+		background: #2563eb;
+		transition-delay: 1s;
+	}
+
+	.post-not-active {
+		background: #000;
+		pointer-events: none;
+		transition-delay: 1s;
+	}
+
+	.post.post-active .header {
+		opacity: 1;
+		transition: opacity 1.5s, transform 1.5s;
+	}
+
+	.post.post-not-active .header {
+		opacity: 0.3;
+		transition: transform 1.5s, opacity 1.5s;
+	}
+
+	.post.post-active .paragraph {
+		opacity: 1;
+		transition: opacity 1.5s, transform 1.5s;
+	}
+
+	.post.post-not-active .paragraph {
+		opacity: 0.3;
+		transition: transform 1.5s, opacity 1.5s;
 	}
 
 	@media screen and (min-width: 768px) {
@@ -187,10 +215,10 @@ const ContentSlider: FunctionComponent<IProps> = ({
 		let contentStyling: string;
 		if (isParagraphContent === null || isParagraphContent === undefined) {
 			contentStyling =
-				"hidden mt-8 font-[400] text-white text-base text-left leading-[1.5rem]";
+				"hidden paragraph mt-8 font-[400] text-white text-base text-left leading-[1.5rem]";
 		} else {
 			contentStyling =
-				"block mt-8 font-[400] text-white text-base text-left leading-[1.5rem]";
+				"block paragraph mt-8 font-[400] text-white text-base text-left leading-[1.5rem]";
 		}
 		return contentStyling;
 	}
@@ -199,31 +227,57 @@ const ContentSlider: FunctionComponent<IProps> = ({
 		const sanitizedContent: string = DOMPurify.sanitize(paragraphContent);
 
 		return {
-			__html: `${sanitizedContent.substring(0, 250)}...`,
+			__html: `${sanitizedContent.substring(0, 225)}...`,
 		};
 	}
 
 	// Content Slider
-	const parentRef = useRef<HTMLDivElement>(null);
-	const tailwindcss: string = `absolute top-[100%] right-0 left-0 bottom-0 w-full h-full`;
+	const mainRef = useRef<HTMLDivElement>(null);
+	const postRef = useRef<HTMLDivElement>(null);
+	const mainContentTailwindcss: string = `absolute top-[100%] right-0 left-0 bottom-0 w-full h-full`;
+	const postContentTailwindcss: string = `relative px-8  py-4 text-white transition-all duration-75 ease-in-out opacity-30 bg-blue hover:bg-orange`;
 
 	useEffect(() => {
-		const parentElement = parentRef.current;
-		const childElements = parentElement?.querySelectorAll(".parent > article");
+		// Main Content
+		const mainParentElement = mainRef.current;
+		const mainChildElements = mainParentElement?.querySelectorAll(
+			".mainPost > article"
+		);
+
+		// Post Content
+		const postParentElement = postRef.current;
+		const postChildElements = postParentElement?.querySelectorAll(
+			".postPost > article"
+		);
+
 		let currentIndex = 0;
 
 		const intervalId = setInterval(() => {
-			const currentChild = childElements?.[currentIndex];
-			const nextIndex =
-				currentIndex + 1 >= childElements?.length ? 0 : currentIndex + 1;
-			const nextChild = childElements?.[nextIndex];
+			// Main Content Loop
+			const currentMainPostChild = mainChildElements?.[currentIndex];
+			const nextMainPostIndex =
+				currentIndex + 1 >= mainChildElements?.length ? 0 : currentIndex + 1;
+			const nextMainPostChild = mainChildElements?.[nextMainPostIndex];
 
-			if (currentChild && nextChild) {
-				currentChild.classList.remove("main-active");
-				currentChild.classList.add("main-not-active");
-				nextChild.classList.remove("main-not-active");
-				nextChild.classList.add("main-active");
-				currentIndex = nextIndex;
+			// Post Content Loop
+			const currentPostChild = postChildElements?.[currentIndex];
+			const nextPostIndex =
+				currentIndex + 1 >= postChildElements?.length ? 0 : currentIndex + 1;
+			const nextPostChild = postChildElements?.[nextPostIndex];
+
+			if (currentMainPostChild && nextMainPostChild) {
+				// Main Content
+				currentMainPostChild.classList.remove("main-active");
+				currentMainPostChild.classList.add("main-not-active");
+				nextMainPostChild.classList.remove("main-not-active");
+				nextMainPostChild.classList.add("main-active");
+
+				// Post Content
+				currentPostChild.classList.remove("post-active");
+				currentPostChild.classList.add("post-not-active");
+				nextPostChild.classList.remove("post-not-active");
+				nextPostChild.classList.add("post-active");
+				currentIndex = nextMainPostIndex;
 			}
 		}, 7000);
 
@@ -253,10 +307,12 @@ const ContentSlider: FunctionComponent<IProps> = ({
 					style={{gridRow: "1 / 4", gridColumn: "1 / 7"}}
 				>
 					<div
-						className="relative w-full h-full overflow-hidden parent bg-blue"
-						ref={parentRef}
+						className="relative w-full h-full overflow-hidden mainPost bg-blue"
+						ref={mainRef}
 					>
-						<article className={`main-post main-active ${tailwindcss}`}>
+						<article
+							className={`main-post main-active ${mainContentTailwindcss}`}
+						>
 							<motion.div
 								variants={fadeIn}
 								className="absolute top-0 bottom-0 left-0 w-full h-full main-post__image"
@@ -305,7 +361,9 @@ const ContentSlider: FunctionComponent<IProps> = ({
 								</Link>
 							</div>
 						</article>
-						<article className={`main-post main-not-active ${tailwindcss}`}>
+						<article
+							className={`main-post main-not-active ${mainContentTailwindcss}`}
+						>
 							<div className="absolute top-0 bottom-0 left-0 w-full h-full">
 								<Image
 									src={contentTwo?.backgroundImage?.sourceUrl}
@@ -355,7 +413,9 @@ const ContentSlider: FunctionComponent<IProps> = ({
 								</Link>
 							</div>
 						</article>
-						<article className={`main-post main-not-active ${tailwindcss}`}>
+						<article
+							className={`main-post main-not-active ${mainContentTailwindcss}`}
+						>
 							<div className="absolute top-0 bottom-0 left-0 w-full h-full">
 								<Image
 									src={contentThree?.backgroundImage?.sourceUrl}
@@ -405,14 +465,15 @@ const ContentSlider: FunctionComponent<IProps> = ({
 				</header>
 
 				<div
-					className="hidden lg:grid gap-4 z-[1]"
+					ref={postRef}
+					className="hidden postPost lg:grid gap-4 z-[1]"
 					style={{
 						gridRow: "3 / 4",
 						gridColumn: "3 / 6",
 						gridTemplateColumns: "repeat(3, 1fr)",
 					}}
 				>
-					<article className="relative px-8 py-4 text-white transition-all duration-75 ease-in-out bg-blue hover:bg-orange">
+					<article className={`post post-active ${postContentTailwindcss}`}>
 						<Link
 							href={contentOne?.buttonLink?.url}
 							target={contentOne?.buttonLink?.target}
@@ -420,7 +481,7 @@ const ContentSlider: FunctionComponent<IProps> = ({
 							<div className="absolute top-0 left-0 h-[5px] w-full">
 								<div className="progress-bar__fill h-[inherit] bg-orange transition-all ease-in-out duration-75" />
 							</div>
-							<header className="flex items-center justify-between">
+							<header className="header flex items-center justify-between">
 								<span className="text-tiny text-white font-[400]">
 									{contentOne?.tag}
 								</span>
@@ -436,7 +497,7 @@ const ContentSlider: FunctionComponent<IProps> = ({
 							/>
 						</Link>
 					</article>
-					<article className="relative px-8 py-4 text-white transition-all duration-75 ease-in-out bg-blue hover:bg-orange ">
+					<article className={`post post-not-active ${postContentTailwindcss}`}>
 						<Link
 							href={contentTwo?.buttonLink?.url}
 							target={contentTwo?.buttonLink?.target}
@@ -444,7 +505,7 @@ const ContentSlider: FunctionComponent<IProps> = ({
 							<div className="absolute top-0 left-0 h-[5px] w-full">
 								<div className="progress-bar__fill h-[inherit] bg-orange transition-all ease-in-out duration-75" />
 							</div>
-							<header className="flex items-center justify-between">
+							<header className="header flex items-center justify-between">
 								<span className="text-tiny text-white font-[400]">
 									{contentTwo?.tag}
 								</span>
@@ -460,7 +521,7 @@ const ContentSlider: FunctionComponent<IProps> = ({
 							/>
 						</Link>
 					</article>
-					<article className="relative px-8 py-4 text-white transition-all duration-75 ease-in-out bg-blue hover:bg-orange ">
+					<article className={`post post-not-active ${postContentTailwindcss}`}>
 						<Link
 							href={contentThree?.buttonLink?.url}
 							target={contentThree?.buttonLink?.target}
@@ -468,7 +529,7 @@ const ContentSlider: FunctionComponent<IProps> = ({
 							<div className="absolute top-0 left-0 h-[5px] w-full">
 								<div className="progress-bar__fill h-[inherit] bg-orange transition-all ease-in-out duration-75" />
 							</div>
-							<header className="flex items-center justify-between">
+							<header className="header flex items-center justify-between">
 								<span className="text-tiny text-white font-[400]">
 									{contentThree?.tag}
 								</span>
