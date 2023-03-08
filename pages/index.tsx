@@ -14,7 +14,6 @@ import MetaTag from "../components/Meta/MetaTag";
 import HowItWorks from "../components/HowItWorks";
 import LegosSpinner from "../components/LegosSpinner";
 import TrustedBrands from "../components/TrustedBrands";
-import TestComponent from "../components/TestComponent";
 import FeaturesBanner from "../components/FeaturesBanner";
 import ThreeLinksGrid from "../components/ThreeLinksGrid";
 
@@ -57,7 +56,6 @@ export default function HomePage({seo, homePageContent}: any) {
 				/>
 
 				{/* CONTENT SLIDER */}
-				<TestComponent />
 				<ContentSlider
 					contentOne={homePageContent?.contentSlider?.contentOne}
 					contentTwo={homePageContent?.contentSlider?.contentTwo}

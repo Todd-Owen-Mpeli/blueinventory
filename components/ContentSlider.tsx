@@ -239,14 +239,14 @@ const ContentSlider: FunctionComponent<IProps> = ({
 					gridTemplateColumns: "50px 1fr 1fr 1fr 1fr 50px",
 				}}
 			>
-				<div className="progress-bar absolute top-0 left-0 w-full h-[5px]">
+				{/* <div className="progress-bar absolute top-0 left-0 w-full h-[5px]">
 					<div className="progress-bar--primary absolute top-0 left-0 w-full h-[5px] z-[2]">
 						<div
 							className="h-[inherit] bg-orange transition-all ease-in-out duration-75"
 							// style={{width: `${iRef.current}%`}}
 						/>
 					</div>
-				</div>
+				</div> */}
 
 				<header
 					className="h-[100vh] relative"
