@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {gql} from "@apollo/client";
 import {client} from "../lib/apollo";
 
@@ -11,15 +12,15 @@ import SignUp from "../components/SignUp";
 import CTATwo from "../components/CTATwo";
 import MetaTag from "../components/Meta/MetaTag";
 import HowItWorks from "../components/HowItWorks";
+import LegosSpinner from "../components/LegosSpinner";
 import TrustedBrands from "../components/TrustedBrands";
+import TestComponent from "../components/TestComponent";
 import FeaturesBanner from "../components/FeaturesBanner";
+import ThreeLinksGrid from "../components/ThreeLinksGrid";
 
 // Styling
 import styles from "../styles/Home.module.scss";
-import Link from "next/link";
-import ThreeLinksGrid from "../components/ThreeLinksGrid";
-import LegosSpinner from "../components/LegosSpinner";
-import TestComponent from "../components/TestComponent";
+import ContentSlider from "../components/ContentSlider";
 
 export default function HomePage({seo, homePageContent}: any) {
 	return (
@@ -39,8 +40,6 @@ export default function HomePage({seo, homePageContent}: any) {
 					}
 				/>
 
-				<TestComponent />
-
 				{/* Feature Banner Section */}
 				<FeaturesBanner
 					title={homePageContent?.featuresBanner?.title}
@@ -55,6 +54,14 @@ export default function HomePage({seo, homePageContent}: any) {
 					backgroundImage={
 						homePageContent?.heroSection?.backgroundImage?.sourceUrl
 					}
+				/>
+
+				{/* CONTENT SLIDER */}
+				<TestComponent />
+				<ContentSlider
+					contentOne={homePageContent?.contentSlider?.contentOne}
+					contentTwo={homePageContent?.contentSlider?.contentTwo}
+					contentThree={homePageContent?.contentSlider?.contentThree}
 				/>
 
 				{/* LEGO SPINNER */}
@@ -279,6 +286,65 @@ export async function getStaticProps() {
 								}
 								backgroundImage {
 									sourceUrl
+								}
+							}
+							contentSlider {
+								contentOne {
+									tag
+									title
+									paragraph
+									publishedDate
+									buttonLink {
+										url
+										title
+										target
+									}
+									backgroundImage {
+										altText
+										sourceUrl
+										mediaDetails {
+											width
+											height
+										}
+									}
+								}
+								contentTwo {
+									tag
+									title
+									paragraph
+									publishedDate
+									buttonLink {
+										url
+										title
+										target
+									}
+									backgroundImage {
+										altText
+										sourceUrl
+										mediaDetails {
+											width
+											height
+										}
+									}
+								}
+								contentThree {
+									tag
+									title
+									paragraph
+									publishedDate
+									buttonLink {
+										url
+										title
+										target
+									}
+									backgroundImage {
+										altText
+										sourceUrl
+										mediaDetails {
+											width
+											height
+										}
+									}
 								}
 							}
 							featuresBanner {
