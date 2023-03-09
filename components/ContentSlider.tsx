@@ -215,10 +215,10 @@ const ContentSlider: FunctionComponent<IProps> = ({
 		let contentStyling: string;
 		if (isParagraphContent === null || isParagraphContent === undefined) {
 			contentStyling =
-				"hidden paragraph mt-8 font-[400] text-white text-base text-left leading-[1.5rem]";
+				"hidden paragraph mt-2 font-[400] text-white text-base text-left leading-[1.5rem]";
 		} else {
 			contentStyling =
-				"block paragraph mt-8 font-[400] text-white text-base text-left leading-[1.5rem]";
+				"block paragraph mt-2 font-[400] text-white text-base text-left leading-[1.5rem]";
 		}
 		return contentStyling;
 	}
@@ -227,7 +227,7 @@ const ContentSlider: FunctionComponent<IProps> = ({
 		const sanitizedContent: string = DOMPurify.sanitize(paragraphContent);
 
 		return {
-			__html: `${sanitizedContent.substring(0, 225)}...`,
+			__html: `${sanitizedContent.substring(0, 185)}...`,
 		};
 	}
 
@@ -287,7 +287,7 @@ const ContentSlider: FunctionComponent<IProps> = ({
 	return (
 		<ContentSliderStyling>
 			<div
-				className="min-h-[100vh] grid relative gap-y-[2vh]"
+				className="h-[100vh] grid relative gap-y-[2vh]"
 				style={{
 					gridTemplateRows: "1fr 3fr 1.5fr",
 					gridTemplateColumns: "50px 1fr 1fr 1fr 1fr 50px",
@@ -303,7 +303,7 @@ const ContentSlider: FunctionComponent<IProps> = ({
 				</div> */}
 
 				<header
-					className="h-[100vh] relative"
+					className="h-full relative"
 					style={{gridRow: "1 / 4", gridColumn: "1 / 7"}}
 				>
 					<div
@@ -489,12 +489,20 @@ const ContentSlider: FunctionComponent<IProps> = ({
 									{contentOne?.publishedDate}
 								</span>
 							</header>
-							<div
-								className={isParagraphContent(contentOne?.paragraph)}
-								dangerouslySetInnerHTML={createTrimmedParagraphMarkup(
-									contentOne?.paragraph
-								)}
-							/>
+							<div className="flex flex-col justify-between items-center gap-4">
+								<h3
+									className="title font-[700] py-4 mt-8 text-white text-lg leading-[1.75rem]"
+									style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
+								>
+									{contentOne?.title}
+								</h3>
+								<div
+									className={isParagraphContent(contentOne?.paragraph)}
+									dangerouslySetInnerHTML={createTrimmedParagraphMarkup(
+										contentOne?.paragraph
+									)}
+								/>
+							</div>
 						</Link>
 					</article>
 					<article className={`post post-not-active ${postContentTailwindcss}`}>
@@ -513,12 +521,20 @@ const ContentSlider: FunctionComponent<IProps> = ({
 									{contentTwo?.publishedDate}
 								</span>
 							</header>
-							<div
-								className={isParagraphContent(contentTwo?.paragraph)}
-								dangerouslySetInnerHTML={createTrimmedParagraphMarkup(
-									contentTwo?.paragraph
-								)}
-							/>
+							<div className="flex flex-col justify-between items-center gap-4">
+								<h3
+									className="title font-[700] py-4 mt-8 text-white text-lg leading-[1.75rem]"
+									style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
+								>
+									{contentTwo?.title}
+								</h3>
+								<div
+									className={isParagraphContent(contentTwo?.paragraph)}
+									dangerouslySetInnerHTML={createTrimmedParagraphMarkup(
+										contentTwo?.paragraph
+									)}
+								/>
+							</div>
 						</Link>
 					</article>
 					<article className={`post post-not-active ${postContentTailwindcss}`}>
@@ -537,12 +553,20 @@ const ContentSlider: FunctionComponent<IProps> = ({
 									{contentThree?.publishedDate}
 								</span>
 							</header>
-							<div
-								className={isParagraphContent(contentThree?.paragraph)}
-								dangerouslySetInnerHTML={createTrimmedParagraphMarkup(
-									contentThree?.paragraph
-								)}
-							/>
+							<div className="flex flex-col justify-between items-center gap-4">
+								<h3
+									className="title font-[700] py-4 mt-8 text-white text-lg leading-[1.75rem]"
+									style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
+								>
+									{contentThree?.title}
+								</h3>
+								<div
+									className={isParagraphContent(contentThree?.paragraph)}
+									dangerouslySetInnerHTML={createTrimmedParagraphMarkup(
+										contentThree?.paragraph
+									)}
+								/>
+							</div>
 						</Link>
 					</article>
 				</div>

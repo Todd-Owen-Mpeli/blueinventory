@@ -31,7 +31,7 @@ const ThreeLinksGrid: FunctionComponent<IProps> = ({
 }) => {
 	return (
 		<section
-			className={styles.ThreeLinksGrid}
+			className={styles.threeLinksGrid}
 			style={{
 				background: `linear-gradient(
 								0deg,
@@ -39,6 +39,9 @@ const ThreeLinksGrid: FunctionComponent<IProps> = ({
 								rgba(13, 23, 42, 0.45)
 							),
 							url("${backgroundImage}");`,
+				backgroundSize: "cover",
+				backgroundRepeat: "no-repeat",
+				backgroundPosition: "center",
 			}}
 		>
 			<div
