@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-
 import styled from "styled-components";
 import DOMPurify from "isomorphic-dompurify";
 import React, {useEffect, useRef, FunctionComponent} from "react";
@@ -138,8 +137,8 @@ const ContentSliderStyling = styled.div`
 
 	.post-active {
 		opacity: 0.95;
-		background: #2563eb;
 		transition-delay: 1s;
+		background-color: #3978ff;
 	}
 
 	.post-not-active {
@@ -224,7 +223,7 @@ const ContentSlider: FunctionComponent<IProps> = ({
 	const mainRef = useRef<HTMLDivElement>(null);
 	const postRef = useRef<HTMLDivElement>(null);
 	const mainContentTailwindcss: string = `absolute top-[100%] right-0 left-0 bottom-0 w-full h-full`;
-	const postContentTailwindcss: string = `relative px-8  py-4 text-white transition-all duration-75 ease-in-out opacity-30 bg-blue hover:bg-orange`;
+	const postContentTailwindcss: string = `relative px-8  py-4 text-white transition-all duration-75 ease-in-out opacity-30`;
 
 	useEffect(() => {
 		// Main Content
@@ -294,13 +293,17 @@ const ContentSlider: FunctionComponent<IProps> = ({
 							className={`main-post main-active ${mainContentTailwindcss}`}
 						>
 							<div className="absolute top-0 bottom-0 left-0 w-full h-full main-post__image">
-								<Image
-									width={contentOne?.backgroundImage?.mediaDetails?.width}
-									height={contentOne?.backgroundImage?.mediaDetails?.height}
+								<video
+									autoPlay
+									muted
+									loop
 									className="block object-cover object-center w-full h-full"
-									src={contentOne?.backgroundImage?.sourceUrl}
-									alt={`${contentOne?.backgroundImage?.altText} image`}
-								/>
+								>
+									<source
+										src="/video/construction site Two.mp4"
+										type="video/mp4"
+									/>
+								</video>
 							</div>
 							<div className="absolute top-[35%] sm:top-[50%] lg:top-[20%] xl:top-[25%] 2xl:top-[35%] left-[4%] transform translate-y-[-40%] text-white w-[90%]">
 								<div className="inline-flex m-0 overflow-hidden tag">
@@ -342,17 +345,13 @@ const ContentSlider: FunctionComponent<IProps> = ({
 							className={`main-post main-not-active ${mainContentTailwindcss}`}
 						>
 							<div className="absolute top-0 bottom-0 left-0 w-full h-full">
-								<video
-									autoPlay
-									muted
-									loop
+								<Image
+									width={contentTwo?.backgroundImage?.mediaDetails?.width}
+									height={contentTwo?.backgroundImage?.mediaDetails?.height}
 									className="block object-cover object-center w-full h-full"
-								>
-									<source
-										src="/video/Racing Car Video One.mp4"
-										type="video/mp4"
-									/>
-								</video>
+									src={contentTwo?.backgroundImage?.sourceUrl}
+									alt={`${contentTwo?.backgroundImage?.altText} image`}
+								/>
 							</div>
 							<div className="absolute top-[35%] sm:top-[50%] lg:top-[20%] xl:top-[25%] 2xl:top-[35%] left-[4%] transform translate-y-[-40%] text-white w-[90%]">
 								<div className="inline-flex m-0 overflow-hidden tag">
@@ -399,11 +398,11 @@ const ContentSlider: FunctionComponent<IProps> = ({
 						>
 							<div className="absolute top-0 bottom-0 left-0 w-full h-full">
 								<Image
-									src={contentThree?.backgroundImage?.sourceUrl}
-									alt={`${contentThree?.backgroundImage?.altText} image`}
 									width={contentThree?.backgroundImage?.mediaDetails?.width}
 									height={contentThree?.backgroundImage?.mediaDetails?.height}
 									className="block object-cover object-center w-full h-full"
+									src={contentThree?.backgroundImage?.sourceUrl}
+									alt={`${contentThree?.backgroundImage?.altText} image`}
 								/>
 							</div>
 							<div className="absolute top-[35%] sm:top-[50%] lg:top-[20%] xl:top-[25%] 2xl:top-[35%] left-[4%] transform translate-y-[-40%] text-white w-[90%]">

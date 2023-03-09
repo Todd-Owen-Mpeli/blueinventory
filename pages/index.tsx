@@ -45,13 +45,6 @@ export default function HomePage({seo, homePageContent}: any) {
 					content={homePageContent?.featuresBanner?.content}
 				/>
 
-				{/* CONTENT SLIDER */}
-				<ContentSlider
-					contentOne={homePageContent?.contentSlider?.contentOne}
-					contentTwo={homePageContent?.contentSlider?.contentTwo}
-					contentThree={homePageContent?.contentSlider?.contentThree}
-				/>
-
 				{/*  THREE LINKS GRID */}
 				<ThreeLinksGrid
 					buttonLink={homePageContent?.heroSection?.buttonLinkTwo}
@@ -63,13 +56,20 @@ export default function HomePage({seo, homePageContent}: any) {
 				/>
 
 				{/* LEGO SPINNER */}
-				<LegosSpinner />
+				{/* <LegosSpinner /> */}
 
 				{/* CTA Two */}
 				<CTATwo
 					title={homePageContent?.contactBannerTwo?.title}
 					paragraph={homePageContent?.contactBannerTwo?.paragraph}
 					buttonLink={homePageContent?.contactBannerTwo?.buttonLink}
+				/>
+
+				{/* CONTENT SLIDER */}
+				<ContentSlider
+					contentOne={homePageContent?.contentSlider?.contentOne}
+					contentTwo={homePageContent?.contentSlider?.contentTwo}
+					contentThree={homePageContent?.contentSlider?.contentThree}
 				/>
 
 				{/* How It Works */}
