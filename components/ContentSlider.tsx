@@ -1,7 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import {motion} from "framer-motion";
-import {fadeIn} from "../animations/animations";
 
 import styled from "styled-components";
 import DOMPurify from "isomorphic-dompurify";
@@ -67,7 +65,7 @@ interface IProps {
 	};
 }
 
-// H2 styling
+// Styling Components
 const ContentSliderStyling = styled.div`
 	.progress-bar {
 		position: absolute;
@@ -86,6 +84,7 @@ const ContentSliderStyling = styled.div`
 		}
 	}
 
+	// Main Content Slider
 	.main-active {
 		top: 0;
 		z-index: 1;
@@ -130,18 +129,10 @@ const ContentSliderStyling = styled.div`
 		transition: opacity 0.5s 0.2s;
 	}
 
-	.posts-wrapper {
-		grid-row: 3 / 4;
-		grid-column: 3 / 6;
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		column-gap: 14px;
-		z-index: 1;
-	}
-
+	// Post Grid Content
 	.post:hover {
-		background: #ff8300;
 		transition: none;
+		background: #ff8300;
 		transition-delay: 0s;
 	}
 
@@ -178,28 +169,26 @@ const ContentSliderStyling = styled.div`
 	}
 
 	@media screen and (min-width: 768px) {
-		.main-post__title {
-			font-size: 2.9em;
-		}
-	}
-	@media screen and (min-width: 1024px) {
-		.hide-on-mobile {
-			display: grid;
-		}
-		.posts-wrapper {
-			grid-column: 2 / 6;
-		}
-		.hide-on-desktop {
+		.postPost {
 			display: none;
 		}
 	}
 
-	@media screen and (min-width: 1440px) {
-		.main-post__content {
-			width: 45%;
+	@media screen and (min-width: 1024px) {
+		.postPost {
+			display: grid;
+			grid-row: 3 / 4;
+			grid-column: 2 / 6;
+			grid-template-columns: repeat(3, 1fr);
 		}
-		.posts-wrapper {
+	}
+
+	@media screen and (min-width: 1440px) {
+		.postPost {
+			display: grid;
+			grid-row: 3 / 4;
 			grid-column: 3 / 6;
+			grid-template-columns: repeat(3, 1fr);
 		}
 	}
 `;
@@ -287,23 +276,14 @@ const ContentSlider: FunctionComponent<IProps> = ({
 	return (
 		<ContentSliderStyling>
 			<div
-				className="h-[100vh] grid relative gap-y-[2vh]"
+				className="h-[100vh] sm:h-[65vh] lg:h-[100vh] grid relative gap-y-[2vh]"
 				style={{
 					gridTemplateRows: "1fr 3fr 1.5fr",
 					gridTemplateColumns: "50px 1fr 1fr 1fr 1fr 50px",
 				}}
 			>
-				{/* <div className="progress-bar absolute top-0 left-0 w-full h-[5px]">
-					<div className="progress-bar--primary absolute top-0 left-0 w-full h-[5px] z-[2]">
-						<div
-							className="h-[inherit] bg-orange transition-all ease-in-out duration-75"
-							// style={{width: `${iRef.current}%`}}
-						/>
-					</div>
-				</div> */}
-
-				<header
-					className="h-full relative"
+				<div
+					className="relative h-full"
 					style={{gridRow: "1 / 4", gridColumn: "1 / 7"}}
 				>
 					<div
@@ -313,10 +293,7 @@ const ContentSlider: FunctionComponent<IProps> = ({
 						<article
 							className={`main-post main-active ${mainContentTailwindcss}`}
 						>
-							<motion.div
-								variants={fadeIn}
-								className="absolute top-0 bottom-0 left-0 w-full h-full main-post__image"
-							>
+							<div className="absolute top-0 bottom-0 left-0 w-full h-full main-post__image">
 								<Image
 									width={contentOne?.backgroundImage?.mediaDetails?.width}
 									height={contentOne?.backgroundImage?.mediaDetails?.height}
@@ -324,8 +301,8 @@ const ContentSlider: FunctionComponent<IProps> = ({
 									src={contentOne?.backgroundImage?.sourceUrl}
 									alt={`${contentOne?.backgroundImage?.altText} image`}
 								/>
-							</motion.div>
-							<div className="absolute top-[40%] left-[4%] transform translate-y-[-40%] text-white w-[90%]">
+							</div>
+							<div className="absolute top-[35%] sm:top-[50%] lg:top-[20%] xl:top-[25%] 2xl:top-[35%] left-[4%] transform translate-y-[-40%] text-white w-[90%]">
 								<div className="inline-flex m-0 overflow-hidden tag">
 									<span className="py-[6px] px-6 bg-blue">
 										{contentOne?.tag}
@@ -365,15 +342,19 @@ const ContentSlider: FunctionComponent<IProps> = ({
 							className={`main-post main-not-active ${mainContentTailwindcss}`}
 						>
 							<div className="absolute top-0 bottom-0 left-0 w-full h-full">
-								<Image
-									src={contentTwo?.backgroundImage?.sourceUrl}
-									alt={`${contentTwo?.backgroundImage?.altText} image`}
-									width={contentTwo?.backgroundImage?.mediaDetails?.width}
-									height={contentTwo?.backgroundImage?.mediaDetails?.height}
+								<video
+									autoPlay
+									muted
+									loop
 									className="block object-cover object-center w-full h-full"
-								/>
+								>
+									<source
+										src="/video/Racing Car Video One.mp4"
+										type="video/mp4"
+									/>
+								</video>
 							</div>
-							<div className="absolute top-[40%] left-[4%] transform translate-y-[-40%] text-white w-[90%]">
+							<div className="absolute top-[35%] sm:top-[50%] lg:top-[20%] xl:top-[25%] 2xl:top-[35%] left-[4%] transform translate-y-[-40%] text-white w-[90%]">
 								<div className="inline-flex m-0 overflow-hidden tag">
 									<span className="py-[6px] px-6 bg-blue">
 										{contentTwo?.tag}
@@ -425,7 +406,7 @@ const ContentSlider: FunctionComponent<IProps> = ({
 									className="block object-cover object-center w-full h-full"
 								/>
 							</div>
-							<div className="absolute top-[40%] left-[4%] transform translate-y-[-40%] text-white w-[90%]">
+							<div className="absolute top-[35%] sm:top-[50%] lg:top-[20%] xl:top-[25%] 2xl:top-[35%] left-[4%] transform translate-y-[-40%] text-white w-[90%]">
 								<div className="inline-flex m-0 overflow-hidden tag">
 									<span className="py-[6px] px-6 bg-blue">
 										{contentThree?.tag}
@@ -462,17 +443,9 @@ const ContentSlider: FunctionComponent<IProps> = ({
 							</div>
 						</article>
 					</div>
-				</header>
+				</div>
 
-				<div
-					ref={postRef}
-					className="hidden postPost lg:grid gap-4 z-[1]"
-					style={{
-						gridRow: "3 / 4",
-						gridColumn: "3 / 6",
-						gridTemplateColumns: "repeat(3, 1fr)",
-					}}
-				>
+				<div ref={postRef} className="hidden postPost lg:grid gap-4 z-[1]">
 					<article className={`post post-active ${postContentTailwindcss}`}>
 						<Link
 							href={contentOne?.buttonLink?.url}
@@ -481,7 +454,7 @@ const ContentSlider: FunctionComponent<IProps> = ({
 							<div className="absolute top-0 left-0 h-[5px] w-full">
 								<div className="progress-bar__fill h-[inherit] bg-orange transition-all ease-in-out duration-75" />
 							</div>
-							<header className="header flex items-center justify-between">
+							<header className="flex items-center justify-between header">
 								<span className="text-tiny text-white font-[400]">
 									{contentOne?.tag}
 								</span>
@@ -489,7 +462,7 @@ const ContentSlider: FunctionComponent<IProps> = ({
 									{contentOne?.publishedDate}
 								</span>
 							</header>
-							<div className="flex flex-col justify-between items-center gap-4">
+							<div className="flex flex-col items-center justify-between gap-4">
 								<h3
 									className="title font-[700] py-4 mt-8 text-white text-lg leading-[1.75rem]"
 									style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
@@ -513,7 +486,7 @@ const ContentSlider: FunctionComponent<IProps> = ({
 							<div className="absolute top-0 left-0 h-[5px] w-full">
 								<div className="progress-bar__fill h-[inherit] bg-orange transition-all ease-in-out duration-75" />
 							</div>
-							<header className="header flex items-center justify-between">
+							<header className="flex items-center justify-between header">
 								<span className="text-tiny text-white font-[400]">
 									{contentTwo?.tag}
 								</span>
@@ -521,7 +494,7 @@ const ContentSlider: FunctionComponent<IProps> = ({
 									{contentTwo?.publishedDate}
 								</span>
 							</header>
-							<div className="flex flex-col justify-between items-center gap-4">
+							<div className="flex flex-col items-center justify-between gap-4">
 								<h3
 									className="title font-[700] py-4 mt-8 text-white text-lg leading-[1.75rem]"
 									style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
@@ -545,7 +518,7 @@ const ContentSlider: FunctionComponent<IProps> = ({
 							<div className="absolute top-0 left-0 h-[5px] w-full">
 								<div className="progress-bar__fill h-[inherit] bg-orange transition-all ease-in-out duration-75" />
 							</div>
-							<header className="header flex items-center justify-between">
+							<header className="flex items-center justify-between header">
 								<span className="text-tiny text-white font-[400]">
 									{contentThree?.tag}
 								</span>
@@ -553,7 +526,7 @@ const ContentSlider: FunctionComponent<IProps> = ({
 									{contentThree?.publishedDate}
 								</span>
 							</header>
-							<div className="flex flex-col justify-between items-center gap-4">
+							<div className="flex flex-col items-center justify-between gap-4">
 								<h3
 									className="title font-[700] py-4 mt-8 text-white text-lg leading-[1.75rem]"
 									style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
