@@ -20,6 +20,7 @@ import ThreeLinksGrid from "../components/ThreeLinksGrid";
 // Styling
 import styles from "../styles/Home.module.scss";
 import ContentSlider from "../components/ContentSlider";
+import TestComponent from "../components/TestComponent";
 
 export default function HomePage({seo, homePageContent}: any) {
 	return (
@@ -45,15 +46,17 @@ export default function HomePage({seo, homePageContent}: any) {
 					content={homePageContent?.featuresBanner?.content}
 				/>
 
+				<TestComponent props="Test Component" />
+
 				{/*  THREE LINKS GRID */}
-				<ThreeLinksGrid
+				{/* <ThreeLinksGrid
 					buttonLink={homePageContent?.heroSection?.buttonLinkTwo}
 					buttonLinkTwo={homePageContent?.heroSection?.buttonLinkTwo}
 					buttonLinkThree={homePageContent?.heroSection?.buttonLinkTwo}
 					backgroundImage={
 						homePageContent?.heroSection?.backgroundImage?.sourceUrl
 					}
-				/>
+				/> */}
 
 				{/* LEGO SPINNER */}
 				{/* <LegosSpinner /> */}
