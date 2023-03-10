@@ -173,8 +173,14 @@ const Hero: FunctionComponent<IProps> = ({
 	};
 
 	return (
-		<HeroComponentStyling className="relative bg-cover z-[50] bg-center bg-no-repeat flex flex-col justify-center item-center">
-			<div className="relative px-0 max-h-[100vh] bg-blue">
+		<HeroComponentStyling className="relative bg-cover z-[50] bg-center bg-no-repeat flex flex-col justify-center item-center bg-blue">
+			<div
+				className="relative px-0 min-h-[100vh] bg-blue bg-cover bg-bottom bg-no-repeat"
+				style={{
+					backgroundImage: `
+							url("/svg/backgroundSVG/backgroundHeroTriangles.svg")`,
+				}}
+			>
 				<div className={menuActive ? "menu active" : "menu z-[50]"}>
 					<button
 						onClick={toggleMenu}
@@ -184,23 +190,7 @@ const Hero: FunctionComponent<IProps> = ({
 					>
 						<span aria-hidden="true"></span>
 					</button>
-					<nav className="nav">
-						<ul>
-							<li>element one</li>
-							<li>element two</li>
-							<li>element three</li>
-							<li>element four</li>
-						</ul>
-					</nav>
-				</div>
-				<div className="relative z-[40] w-full">
-					<Image
-						width={550}
-						height={550}
-						alt="Background Wave One Image"
-						src="/svg/backgroundSVG/backgroundHeroTriangles.svg"
-						className="w-full h-full object-cover object-center"
-					/>
+					<nav className="nav relative z-[50]">{/* Hidden Menu Content */}</nav>
 				</div>
 			</div>
 		</HeroComponentStyling>
