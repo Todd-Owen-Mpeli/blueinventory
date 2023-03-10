@@ -34,11 +34,12 @@ const HeroComponentStyling = styled.div`
 		z-index: 100;
 		right: 30px;
 		top: 30px;
+		padding: 0;
 		width: 70px;
 		height: 70px;
 		border: none;
 		border-radius: 50%;
-		padding: 0;
+		background: #2563eb;
 		box-shadow: 0px 4px 24px rgba(#fff, 0.24);
 		line-height: 0.6;
 		text-align: center;
