@@ -82,7 +82,7 @@ function MyApp({Component, pageProps}) {
 		<ApolloProvider client={client}>
 			<Loading />
 			{/* <!--===== NAVIGATION =====--> */}
-			<Navbar />
+			{/* <Navbar /> */}
 			<Component {...pageProps} />
 		</ApolloProvider>
 	);

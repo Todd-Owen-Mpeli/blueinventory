@@ -13,14 +13,15 @@ interface IProps {
 	props: string;
 }
 
-// H2 styling
+// styling
 const TestComponentStyling = styled.div`
 	// Main Content Loop
 	.active {
 		color: #fff;
 		z-index: -1;
+		padding: 0rem;
 		border-radius: 1.5rem;
-		background-color: #0d172a;
+		background-color: rgba(13, 23, 42, 0.9);
 		clip-path: circle(100% at 50% calc(50%));
 		transition: clip-path 1s cubic-bezier(0.65, 0, 0.35, 1);
 
@@ -38,38 +39,6 @@ const TestComponentStyling = styled.div`
 		background-color: #fff;
 		clip-path: circle(100% at 50% calc(50%));
 		transition: clip-path 1.25s cubic-bezier(0.65, 0, 0.35, 1.25);
-	}
-
-	.hoverEffect:hover {
-		@apply text-white;
-		transition: color 1s cubic-bezier(0.33, 1, 0.68, 1);
-
-		p {
-			@apply text-white;
-			transition: color 1.25s cubic-bezier(0.33, 1, 0.68, 1);
-
-			a {
-				@apply text-darkBlue;
-			}
-		}
-	}
-
-	.hoverEffect::before {
-		content: "";
-		position: absolute;
-		z-index: -1;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		right: 0;
-		border-radius: 1.5rem;
-		background-color: $pinkRed;
-		clip-path: circle(0% at 50% calc(50%));
-		transition: clip-path 1s cubic-bezier(0.65, 0, 0.35, 1);
-	}
-
-	.hoverEffect:hover::before {
-		clip-path: circle(100% at 50% 50%);
 	}
 `;
 
@@ -94,7 +63,7 @@ const TestComponent: FunctionComponent<IProps> = ({props}) => {
 		};
 	}
 
-	// Content Loop
+	// Content Styling Loop
 	const mainRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
@@ -122,7 +91,7 @@ const TestComponent: FunctionComponent<IProps> = ({props}) => {
 
 				currentIndex = nextMainPostIndex; // update the index
 			}
-		}, 2000);
+		}, 7000);
 
 		return () => clearInterval(intervalId);
 	}, []);
@@ -135,54 +104,54 @@ const TestComponent: FunctionComponent<IProps> = ({props}) => {
 					className="flex flex-wrap items-start mx-4 mainContent gap-y-6"
 				>
 					<article className="relative w-full px-4 active md:w-1/2">
-						<div className="relative z-10 px-8 pt-16 pb-20 leading-4 border border-black md:px-12 2xl:px-16 border-opacity-10 rounded-3xl">
-							<div className="hoverEffect">
+						<div className="relative z-10 px-8 pt-16 pb-20 leading-4 border border-black md:px-12 2xl:px-8 border-opacity-10 rounded-3xl">
+							<div className={styles.hoverEffect}>
 								<div className="relative inline-flex items-center justify-center w-12 h-12 mb-8 leading-6 text-white rounded-full bg-blue">
 									<span className="text-2xl font-bold">1</span>
 								</div>
-								<h2 className="font-medium leading-tight mb-14 text-7xl 2xl:text-8xl font-heading">
-									Be Always In Control.
+								<h2 className="font-medium leading-tight mb-8 text-4xl 2xl:text-5xl font-heading">
+									Real-Time
 								</h2>
 								<div
 									className={isParagraphContent(`<p></p>`)}
 									dangerouslySetInnerHTML={createParagraphMarkup(
-										`<p>Creating and managing inventory has never been easier. With powerful tools that integrate with popular devices. No more spending hours on spreadsheets to figure out what stock you have.</p>`
+										`<p>BlueInventory connects with your point of sale system and your e-commerce store so you have an instant snapshot of how your business is performing as a whole.</p>`
 									)}
 								/>
 							</div>
 						</div>
 					</article>
 					<article className="relative w-full px-4 mb-12 not-active md:w-1/2 md:mb-0 md:mt-40">
-						<div className="relative z-10 px-8 pt-16 pb-20 leading-4 border border-black md:px-12 2xl:px-16 border-opacity-10 rounded-3xl">
-							<div className="hoverEffect">
+						<div className="relative z-10 px-8 pt-16 pb-20 leading-4 border border-black md:px-12 2xl:px-8 border-opacity-10 rounded-3xl">
+							<div className={styles.hoverEffect}>
 								<div className="relative inline-flex items-center justify-center w-12 h-12 mb-8 leading-6 text-white rounded-full bg-blue">
 									<span className="text-2xl font-bold">2</span>
 								</div>
-								<h2 className="font-medium leading-tight mb-14 text-7xl 2xl:text-8xl font-heading">
-									Keep updated all the time
+								<h2 className="font-medium leading-tight mb-8 text-4xl 2xl:text-5xl font-heading">
+									In-Depth Data
 								</h2>
 								<div
 									className={isParagraphContent(`<p></p>`)}
 									dangerouslySetInnerHTML={createParagraphMarkup(
-										`<p>Track inventory levels across a wide variety of products and calculate the costs of goods sold. Stop worrying about running out of stock – plan your inventory with absolute clarit.</p>`
+										`<p>Expand your reporting capabilities, without costly, additional third-party apps. Access a number of pre-built reports and our powerful custom report builder.</p>`
 									)}
 								/>
 							</div>
 						</div>
 					</article>
-					<article className="not-active relative w-full px-4  md:w-1/2 mt-[-10rem]">
-						<div className="relative z-10 px-8 pt-16 pb-20 leading-4 border border-black md:px-12 2xl:px-16 border-opacity-10 rounded-3xl">
-							<div className="hoverEffect">
+					<article className="not-active relative w-full px-4  md:w-1/2 mt-[-8.5rem]">
+						<div className="relative z-10 px-8 pt-16 pb-20 leading-4 border border-black md:px-12 2xl:px-8 border-opacity-10 rounded-3xl">
+							<div className={styles.hoverEffect}>
 								<div className="relative inline-flex items-center justify-center w-12 h-12 mb-8 leading-6 text-white rounded-full bg-blue">
 									<span className="text-2xl font-bold">3</span>
 								</div>
-								<h2 className="font-medium leading-tight mb-14 text-7xl 2xl:text-8xl font-heading">
-									Save Time And Money.
+								<h2 className="font-medium leading-tight mb-8 text-4xl 2xl:text-5xl font-heading">
+									User Friendly
 								</h2>
 								<div
 									className={isParagraphContent(`<p></p>`)}
 									dangerouslySetInnerHTML={createParagraphMarkup(
-										`<p>Blue Inventory’s inventory tracking software helps you find what is selling and what is not, saving you time and money by ensuring that your inventory is not only accurate, but has been prioritized.</p>`
+										`<p>Our reports are easy to use with lots of filters and customization options. Slice and dice the exact data you want and export as a CSV to simplify bookkeeping.</p>`
 									)}
 								/>
 							</div>

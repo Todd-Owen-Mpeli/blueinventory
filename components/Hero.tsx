@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import {FunctionComponent} from "react";
+import styled from "styled-components";
+import {useState, useRef, FunctionComponent} from "react";
 
 interface IProps {
 	title: string;
@@ -17,6 +18,116 @@ interface IProps {
 	};
 	backgroundImage: string;
 }
+
+// styling
+const HeroComponentStyling = styled.div`
+	.nav {
+		ul {
+			display: none;
+		}
+	}
+
+	.nav-tgl {
+		display: inline-block;
+		cursor: pointer;
+		position: fixed;
+		z-index: 100;
+		right: 30px;
+		top: 30px;
+		width: 70px;
+		height: 70px;
+		border: none;
+		border-radius: 50%;
+		padding: 0;
+		box-shadow: 0px 4px 24px rgba(#fff, 0.24);
+		line-height: 0.6;
+		text-align: center;
+
+		// making the dividers
+		> span {
+			// the second divider
+			display: inline-block;
+			position: relative;
+			height: 2px;
+			width: 34px;
+			border-radius: 1px;
+			background: #ffffff;
+			vertical-align: middle;
+
+			// the first & the third dividers
+			&:before,
+			&:after {
+				display: inline-block;
+				position: absolute;
+				content: "";
+				height: 2px;
+				border-radius: 1px;
+				background: #ffffff;
+				// for the hover state
+				transition: all 200ms;
+			}
+			&:before {
+				top: -11px;
+				left: 3px;
+				width: 28px;
+			}
+			&:after {
+				top: 11px;
+				left: 6px;
+				width: 22px;
+			}
+		}
+		&:focus {
+			outline: none;
+		}
+
+		&:hover > span:after,
+		&:hover > span:before {
+			width: 34px;
+			left: 0;
+		}
+	}
+
+	// for the nav background (styling the nav itself is not our topic)
+	.nav:before {
+		display: block;
+		position: relative;
+		top: 0;
+		left: 0;
+		content: "";
+		width: 100vw;
+		height: 100vh;
+		background: #0d172a;
+		transition: all 500ms ease-in-out;
+
+		clip-path: circle(30px at calc(100% - 65px) 65px);
+		visibility: hidden;
+	}
+
+	// when it gits activated
+	.menu.active {
+		.nav:before {
+			visibility: visible;
+			clip-path: circle(100%);
+		}
+
+		.nav-tgl > span {
+			height: 0;
+			&:after,
+			&:before {
+				top: 0px;
+				left: 0;
+				width: 34px;
+			}
+			&:after {
+				transform: rotate(-45deg);
+			}
+			&:before {
+				transform: rotate(45deg);
+			}
+		}
+	}
+`;
 
 const Hero: FunctionComponent<IProps> = ({
 	title,
@@ -55,141 +166,44 @@ const Hero: FunctionComponent<IProps> = ({
 		return contentStyling;
 	}
 
-	return (
-		<section
-			className="bg-cover bg-center bg-no-repeat flex min-h-[80vh] flex-col justify-center item-center"
-			style={{
-				background: `linear-gradient(
-								0deg,
-								rgba(13, 23, 42, 0.45),
-								rgba(13, 23, 42, 0.45)
-							),
-							url("${backgroundImage}");`,
-				backgroundPosition: "center",
-				backgroundRepeat: "no-repeat",
-				backgroundSize: "cover",
-			}}
-		>
-			<div className="pt-24 pb-8 bg-cover sm:pt-34">
-				<div className="container px-4 mx-auto">
-					<div className="max-w-2xl mx-auto text-center xl:max-w-4xl">
-						<h1 className="max-w-sm mx-auto md:max-w-xl font-heading text-[2rem] sm:text-5xl md:text-8xl font-bold font-heading leading-normal sm:leading-[4.5rem] text-center text-white mb-6">
-							{title}
-						</h1>
+	const [menuActive, setMenuActive] = useState(false);
 
-						<h4 className="max-w-md mx-auto mb-10 text-lg leading-6 text-white md:max-w-lg">
-							{subtitle}
-						</h4>
-						<div className="flex flex-col items-center justify-center gap-4 mb-16 md:flex-row">
-							<Link
-								href={buttonLink?.url}
-								target={buttonLink?.target}
-								className={isButtonOneContent(buttonLink?.url)}
-							>
-								{buttonLink?.title}
-							</Link>
-							<Link
-								href={buttonLinkTwo?.url}
-								target={buttonLinkTwo?.target}
-								className={isButtonTwoContent(buttonLinkTwo?.url)}
-							>
-								{buttonLinkTwo?.title}
-							</Link>
-						</div>
-						<Link
-							href={`#HowItWorks`}
-							passHref
-							className="hidden mb-6 text-white lg:inline-block"
-						>
-							<svg
-								width="26"
-								height="30"
-								viewBox="0 0 26 30"
-								fill="none"
-								xmlns="http://www.w3.org/2000/svg"
-							>
-								<path
-									d="M13 1V29M13 29L25 17M13 29L1 17"
-									stroke="currentColor"
-									strokeWidth="1.5"
-									strokeLinecap="round"
-									strokeLinejoin="round"
-								></path>
-							</svg>
-						</Link>
-					</div>
+	const toggleMenu = () => {
+		setMenuActive(!menuActive);
+	};
+
+	return (
+		<HeroComponentStyling className="relative bg-cover z-[50] bg-center bg-no-repeat flex flex-col justify-center item-center">
+			<div className="relative px-0 max-h-[100vh] bg-blue">
+				<div className={menuActive ? "menu active" : "menu z-[50]"}>
+					<button
+						onClick={toggleMenu}
+						className="nav-tgl"
+						type="button"
+						aria-label="toggle menu"
+					>
+						<span aria-hidden="true"></span>
+					</button>
+					<nav className="nav">
+						<ul>
+							<li>element one</li>
+							<li>element two</li>
+							<li>element three</li>
+							<li>element four</li>
+						</ul>
+					</nav>
+				</div>
+				<div className="relative z-[40] w-full">
+					<Image
+						width={550}
+						height={550}
+						alt="Background Wave One Image"
+						src="/svg/backgroundSVG/backgroundHeroTriangles.svg"
+						className="w-full h-full object-cover object-center"
+					/>
 				</div>
 			</div>
-			<div className="fixed top-0 bottom-0 left-0 z-50 hidden w-5/6 max-w-sm navbar-menu">
-				<div className="fixed inset-0 navbar-backdrop backdrop-blur-xl backdrop-filter bg-blueTwo bg-opacity-30"></div>
-				<nav className="relative h-full pb-8 overflow-y-auto bg-white pt-7">
-					<div className="flex flex-col h-full px-6">
-						<Link href={`"#"`} passHref className="inline-block ml-4 mb-7">
-							<Image
-								alt=""
-								width={550}
-								height={550}
-								src="/img/Logos/BlueInventory Logo One White.png"
-								className="w-full h-[75px] sm:h-[200px] object-contain object center"
-							/>
-						</Link>
-						<ul className="w-full pb-16 mb-auto">
-							<Link
-								href="#"
-								className="font-heading block text-base font-medium py-4 px-6 hover:bg-blue hover:text-white rounded-[15px]"
-							>
-								Home
-							</Link>
-							<Link
-								href="#"
-								className="font-heading block text-base py-4 px-6 hover:bg-blue hover:text-white rounded-[15px]"
-							>
-								Features
-							</Link>
-							<Link
-								href="#"
-								className="font-heading block text-base py-4 px-6 hover:bg-blue hover:text-white rounded-[15px]"
-							>
-								About
-							</Link>
-							<Link
-								href="#"
-								className="font-heading block text-base py-4 px-6 hover:bg-blue hover:text-white rounded-[15px]"
-							>
-								Pricing
-							</Link>
-							<Link
-								href="#"
-								className="font-heading block text-base py-4 px-6 hover:bg-blue hover:text-white rounded-[15px]"
-							>
-								Resources
-							</Link>
-							<Link
-								href="#"
-								className="font-heading block text-base py-4 px-6 hover:bg-blue hover:text-white rounded-[15px]"
-							>
-								Contact Us
-							</Link>
-						</ul>
-						<div className="w-full">
-							<Link
-								href="#"
-								className="block w-full py-4 px-4 mb-4 text-center font-heading font-medium text-base hover:text-blue border border-lightGrey hover:border-blue rounded-[15px] hover:ease-in-out hover:duration-200"
-							>
-								Log in
-							</Link>
-							<Link
-								href="#"
-								className="block w-full py-4 px-4 mb-8 text-center font-heading font-medium text-base text-white bg-blue hover:bg-limeGreen border border-blue hover:border-limeGreen rounded-[15px] hover:ease-in-out hover:duration-200"
-							>
-								Sign up
-							</Link>
-							<p className="pl-2 text-sm text-black">2022 © BlueInventory</p>
-						</div>
-					</div>
-				</nav>
-			</div>
-		</section>
+		</HeroComponentStyling>
 	);
 };
 
