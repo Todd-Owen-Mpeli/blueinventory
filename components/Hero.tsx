@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import styled from "styled-components";
-import {useState, useRef, FunctionComponent} from "react";
+import {useState, FunctionComponent} from "react";
 
 interface IProps {
 	title: string;
@@ -136,6 +136,13 @@ const Hero: FunctionComponent<IProps> = ({
 	buttonLinkTwo,
 	backgroundImage,
 }) => {
+	/* Hides or Displays the secondary Menu and
+	 Menu links */
+	const [menuActive, setMenuActive] = useState(false);
+	const toggleMenu = () => {
+		setMenuActive(!menuActive);
+	};
+
 	/* Check if Button One Link / content is null
 	 And Displays content if it is not */
 	function isButtonOneContent(isButtonOneContent: string) {
@@ -166,12 +173,6 @@ const Hero: FunctionComponent<IProps> = ({
 		return contentStyling;
 	}
 
-	const [menuActive, setMenuActive] = useState(false);
-
-	const toggleMenu = () => {
-		setMenuActive(!menuActive);
-	};
-
 	return (
 		<HeroComponentStyling className="relative bg-cover z-[50] bg-center bg-no-repeat flex flex-col justify-center item-center bg-blue">
 			<div
@@ -181,7 +182,11 @@ const Hero: FunctionComponent<IProps> = ({
 							url("/svg/backgroundSVG/backgroundHeroTriangles.svg")`,
 				}}
 			>
-				<div className={menuActive ? "menu active" : "menu z-[50]"}>
+				<div
+					className={
+						menuActive ? "menu active relative z-[50]" : "menu relative z-[50]"
+					}
+				>
 					<button
 						onClick={toggleMenu}
 						className="nav-tgl"
