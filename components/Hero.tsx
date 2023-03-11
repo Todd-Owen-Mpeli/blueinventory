@@ -44,7 +44,6 @@ const HeroComponentStyling = styled.div`
 		line-height: 0.6;
 		text-align: center;
 
-		// making the dividers
 		> span {
 			// the second divider
 			display: inline-block;
@@ -55,7 +54,6 @@ const HeroComponentStyling = styled.div`
 			background: #ffffff;
 			vertical-align: middle;
 
-			// the first & the third dividers
 			&:before,
 			&:after {
 				display: inline-block;
@@ -89,7 +87,6 @@ const HeroComponentStyling = styled.div`
 		}
 	}
 
-	// for the nav background (styling the nav itself is not our topic)
 	.nav:before {
 		display: block;
 		position: relative;
@@ -105,11 +102,14 @@ const HeroComponentStyling = styled.div`
 		visibility: hidden;
 	}
 
-	// when it gits activated
 	.menu.active {
 		.nav:before {
 			visibility: visible;
 			clip-path: circle(100%);
+		}
+
+		.nav-tgl {
+			background: #0d172a;
 		}
 
 		.nav-tgl > span {
@@ -190,7 +190,7 @@ const Hero: FunctionComponent<IProps> = ({
 				>
 					<button
 						onClick={toggleMenu}
-						className="nav-tgl"
+						className="nav-tgl fixed"
 						type="button"
 						aria-label="toggle menu"
 					>
