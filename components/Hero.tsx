@@ -306,6 +306,45 @@ const Hero: FunctionComponent<IProps> = ({
 						contentThree={contentThree}
 					/>
 				</nav>
+				{/* Secondary Hero Menu */}
+				<nav
+					className="content min-h-[100vh] flex justify-center item-center bg-darkBlue bg-cover bg-bottom bg-no-repeat"
+					style={{
+						backgroundImage: `
+							url("/svg/backgroundSVG/backgroundHeroTriangles.svg")`,
+					}}
+				>
+					{/* Hidden Menu Content */}
+					<div className="w-full lg:w-[40%]">
+						<ul className="header__menu">
+							<li className="header__menu-item">
+								<Link href="#">Works</Link>
+							</li>
+							<li className="header__menu-item">
+								<Link href="#">News</Link>
+							</li>
+							<li className="header__menu-item">
+								<Link href="#">About</Link>
+							</li>
+							<li className="header__menu-item">
+								<Link href="#">Help</Link>
+							</li>
+							<li className="header__menu-item">
+								<Link href="#">Contacts</Link>
+							</li>
+						</ul>
+					</div>
+					<div className="w-full lg:w-[60%]">
+						<video
+							autoPlay
+							muted
+							loop
+							className="block object-cover object-center w-full h-full"
+						>
+							<source src="/video/Racing Car Video One.mp4" type="video/mp4" />
+						</video>
+					</div>
+				</nav>
 			</div>
 		</HeroComponentStyling>
 	);
