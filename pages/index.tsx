@@ -38,6 +38,10 @@ export default function HomePage({seo, homePageContent}: any) {
 					backgroundImage={
 						homePageContent?.heroSection?.backgroundImage?.sourceUrl
 					}
+					// Content Slider
+					contentOne={homePageContent?.contentSlider?.contentOne}
+					contentTwo={homePageContent?.contentSlider?.contentTwo}
+					contentThree={homePageContent?.contentSlider?.contentThree}
 				/>
 
 				{/* Feature Banner Section */}

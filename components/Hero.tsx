@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import styled from "styled-components";
 import {useState, FunctionComponent} from "react";
+import ContentSlider from "./ContentSlider";
 
 interface IProps {
 	title: string;
@@ -17,21 +18,74 @@ interface IProps {
 		target: string;
 	};
 	backgroundImage: string;
+
+	// Content Slider
+	contentOne: {
+		tag: string;
+		title: string;
+		paragraph: string;
+		publishedDate: string;
+		buttonLink: {
+			url: string;
+			title: string;
+			target: string;
+		};
+		backgroundImage: {
+			altText: string;
+			sourceUrl: string;
+			mediaDetails: {
+				width: number;
+				height: number;
+			};
+		};
+	};
+	contentTwo: {
+		tag: string;
+		title: string;
+		paragraph: string;
+		publishedDate: string;
+		buttonLink: {
+			url: string;
+			title: string;
+			target: string;
+		};
+		backgroundImage: {
+			altText: string;
+			sourceUrl: string;
+			mediaDetails: {
+				width: number;
+				height: number;
+			};
+		};
+	};
+	contentThree: {
+		tag: string;
+		title: string;
+		paragraph: string;
+		publishedDate: string;
+		buttonLink: {
+			url: string;
+			title: string;
+			target: string;
+		};
+		backgroundImage: {
+			altText: string;
+			sourceUrl: string;
+			mediaDetails: {
+				width: number;
+				height: number;
+			};
+		};
+	};
 }
 
 // styling
 const HeroComponentStyling = styled.div`
-	.nav {
-		ul {
-			display: none;
-		}
-	}
-
 	.nav-tgl {
 		display: inline-block;
 		cursor: pointer;
 		position: fixed;
-		z-index: 100;
+		z-index: 999;
 		right: 30px;
 		top: 30px;
 		padding: 0;
@@ -43,7 +97,6 @@ const HeroComponentStyling = styled.div`
 		box-shadow: 0px 4px 24px rgba(#fff, 0.24);
 		line-height: 0.6;
 		text-align: center;
-
 		> span {
 			// the second divider
 			display: inline-block;
@@ -53,7 +106,6 @@ const HeroComponentStyling = styled.div`
 			border-radius: 1px;
 			background: #ffffff;
 			vertical-align: middle;
-
 			&:before,
 			&:after {
 				display: inline-block;
@@ -79,7 +131,6 @@ const HeroComponentStyling = styled.div`
 		&:focus {
 			outline: none;
 		}
-
 		&:hover > span:after,
 		&:hover > span:before {
 			width: 34px;
@@ -87,31 +138,60 @@ const HeroComponentStyling = styled.div`
 		}
 	}
 
-	.nav:before {
-		display: block;
-		position: relative;
+	.header__menu {
+		padding: 0;
+		margin: 0;
+	}
+
+	.header__menu > .header__menu-item {
+		font-size: 10vh;
+	}
+
+	.header__menu > .header__menu-item:not(:last-of-type) {
+		margin-bottom: 0.1em;
+	}
+
+	.header__menu-item a {
+		font-weight: bold;
+		color: white;
+		text-decoration: none;
+	}
+
+	.header__menu-item a:hover {
+		font-style: italic;
+	}
+
+	.nav {
 		top: 0;
 		left: 0;
-		content: "";
-		width: 100vw;
-		height: 100vh;
-		background: #0d172a;
-		transition: all 500ms ease-in-out;
-
-		clip-path: circle(30px at calc(100% - 65px) 65px);
+		width: 100%;
+		z-index: 998;
+		height: 100%;
+		display: flex;
+		position: fixed;
+		overflow: hidden;
 		visibility: hidden;
+		align-items: center;
+		box-sizing: border-box;
+		flex-direction: column;
+		background-color: #0d172a;
+		justify-content: center;
+		transition: all 500ms ease-in-out;
+		clip-path: circle(30px at calc(100% - 65px) 65px);
 	}
 
 	.menu.active {
-		.nav:before {
+		.nav {
 			visibility: visible;
 			clip-path: circle(100%);
 		}
-
 		.nav-tgl {
-			background: #0d172a;
+			background: #a2e603;
+			&:hover {
+				background: #ff002f;
+				transition: all 500ms ease-in-out;
+			}
 		}
-
 		.nav-tgl > span {
 			height: 0;
 			&:after,
@@ -136,13 +216,16 @@ const Hero: FunctionComponent<IProps> = ({
 	buttonLink,
 	buttonLinkTwo,
 	backgroundImage,
+	contentOne,
+	contentTwo,
+	contentThree,
 }) => {
 	/* Hides or Displays the secondary Menu and
 	 Menu links */
 	const [menuActive, setMenuActive] = useState(false);
-	const toggleMenu = () => {
+	function toggleMenu() {
 		setMenuActive(!menuActive);
-	};
+	}
 
 	/* Check if Button One Link / content is null
 	 And Displays content if it is not */
@@ -175,29 +258,54 @@ const Hero: FunctionComponent<IProps> = ({
 	}
 
 	return (
-		<HeroComponentStyling className="relative bg-cover z-[50] bg-center bg-no-repeat flex flex-col justify-center item-center bg-blue">
-			<div
-				className="relative px-0 min-h-[100vh] bg-blue bg-cover bg-bottom bg-no-repeat"
-				style={{
-					backgroundImage: `
-							url("/svg/backgroundSVG/backgroundHeroTriangles.svg")`,
-				}}
-			>
-				<div
-					className={
-						menuActive ? "menu active relative z-[50]" : "menu relative z-[50]"
-					}
+		<HeroComponentStyling className="flex flex-col justify-center item-center bg-blue">
+			<div className={menuActive ? "menu active" : "menu h-full"}>
+				<button
+					type="button"
+					onClick={toggleMenu}
+					aria-label="toggle menu"
+					className="nav-tgl fixed"
 				>
-					<button
-						onClick={toggleMenu}
-						className="nav-tgl fixed"
-						type="button"
-						aria-label="toggle menu"
-					>
-						<span aria-hidden="true"></span>
-					</button>
-					<nav className="nav relative z-[50]">{/* Hidden Menu Content */}</nav>
+					<span aria-hidden="true"></span>
+				</button>
+				{/* Main Landing Hero */}
+				<div
+					className="min-h-[100vh] flex flex-col justify-center item-center bg-blue bg-cover bg-bottom bg-no-repeat"
+					style={{
+						backgroundImage: `
+							url("/svg/backgroundSVG/backgroundHeroTriangles.svg")`,
+					}}
+				>
+					<p className="max-w-md md:max-w-lg mx-auto text-lg leading-6 text-white mb-10">
+						{subtitle}
+					</p>
 				</div>
+				{/* Secondary Hero Menu */}
+				<nav className="nav min-h-[100vh] flex flex-col justify-center item-center bg-yellow bg-cover bg-bottom bg-no-repeat">
+					{/* Hidden Menu Content */}
+					{/* <ul className="header__menu">
+						<li className="header__menu-item">
+							<Link href="#">Works</Link>
+						</li>
+						<li className="header__menu-item">
+							<Link href="#">News</Link>
+						</li>
+						<li className="header__menu-item">
+							<Link href="#">About</Link>
+						</li>
+						<li className="header__menu-item">
+							<Link href="#">Help</Link>
+						</li>
+						<li className="header__menu-item">
+							<Link href="#">Contacts</Link>
+						</li>
+					</ul> */}
+					<ContentSlider
+						contentOne={contentOne}
+						contentTwo={contentTwo}
+						contentThree={contentThree}
+					/>
+				</nav>
 			</div>
 		</HeroComponentStyling>
 	);
