@@ -1,5 +1,3 @@
-import Link from "next/link";
-import Image from "next/image";
 import {FunctionComponent} from "react";
 import ContentSlider from "../ContentSlider";
 
@@ -71,16 +69,13 @@ const NavSecondaryContent: FunctionComponent<IProps> = ({
 	contentTwo,
 	contentThree,
 }) => {
-	let contentStyling: string = `secondaryContent min-h-[100vh] flex justify-center item-center bg-yellow bg-cover bg-bottom bg-no-repeat`;
+	let contentStyling: string = `secondaryContent min-h-[100vh] flex justify-center item-center`;
 
 	return (
 		<nav
 			className={
 				inUsersView ? `nav ${contentStyling}` : `hidden ${contentStyling}`
 			}
-			style={{
-				backgroundImage: `url("/svg/backgroundSVG/backgroundHeroTriangles.svg")`,
-			}}
 		>
 			<ContentSlider
 				contentOne={contentOne}

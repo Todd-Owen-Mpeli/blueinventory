@@ -306,7 +306,7 @@ const Hero: FunctionComponent<IProps> = ({
 				</div>
 				{/* Secondary Hero Content Slide */}
 				<NavSecondaryContent
-					inUsersView={true}
+					inUsersView={false}
 					contentOne={contentOne}
 					contentTwo={contentTwo}
 					contentThree={contentThree}
@@ -326,7 +326,7 @@ const Hero: FunctionComponent<IProps> = ({
 				/>
 
 				{/* Fifth Hero Content Slide */}
-				<NavFifthContent inUsersView={false} videoSrc="/video/events.mp4" />
+				<NavFifthContent inUsersView={true} videoSrc="/video/events.mp4" />
 			</div>
 		</HeroComponentStyling>
 	);
