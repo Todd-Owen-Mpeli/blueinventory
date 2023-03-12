@@ -1,8 +1,15 @@
 import Link from "next/link";
 import Image from "next/image";
+import {motion} from "framer-motion";
 import styled from "styled-components";
+import DOMPurify from "isomorphic-dompurify";
 import {useState, FunctionComponent} from "react";
+import {fadeIn, stagger} from "../animations/animations";
 import ContentSlider from "./ContentSlider";
+import NavFifthContent from "./HeroContent/NavFifthContent";
+import NavForthContent from "./HeroContent/NavForthContent";
+import NavThirdContent from "./HeroContent/NavThirdContent";
+import NavSecondaryContent from "./HeroContent/NavSecondaryContent";
 
 interface IProps {
 	title: string;
@@ -173,9 +180,8 @@ const HeroComponentStyling = styled.div`
 		visibility: hidden;
 		align-items: center;
 		box-sizing: border-box;
-		flex-direction: column;
-		background-color: #0d172a;
 		justify-content: center;
+		background-color: #0d172a;
 		transition: all 500ms ease-in-out;
 		clip-path: circle(30px at calc(100% - 65px) 65px);
 	}
@@ -257,94 +263,70 @@ const Hero: FunctionComponent<IProps> = ({
 		return contentStyling;
 	}
 
+	/* Check if Paragraph content is null
+	 And Displays content if it null */
+	function isParagraphContent(isParagraphContent: string) {
+		let contentStyling: string;
+		if (isParagraphContent === null || isParagraphContent === undefined) {
+			contentStyling = `hidden mb-6 text-darkGrey font-[400] leading-relaxed`;
+		} else {
+			contentStyling = `block mb-6 text-darkGrey font-[400] leading-relaxed`;
+		}
+		return contentStyling;
+	}
+
+	function createParagraphMarkup(paragraphContent: string) {
+		return {
+			__html: DOMPurify.sanitize(paragraphContent),
+		};
+	}
+
 	return (
-		<HeroComponentStyling className="flex flex-col justify-center item-center bg-blue">
+		<HeroComponentStyling className="flex flex-col justify-center bg-blue">
 			<div className={menuActive ? "menu active" : "menu h-full"}>
 				<button
 					type="button"
 					onClick={toggleMenu}
 					aria-label="toggle menu"
-					className="nav-tgl fixed"
+					className="fixed nav-tgl"
 				>
 					<span aria-hidden="true"></span>
 				</button>
 				{/* Main Landing Hero */}
 				<div
-					className="min-h-[100vh] flex flex-col justify-center item-center bg-blue bg-cover bg-bottom bg-no-repeat"
+					className="min-h-[100vh] flex flex-col justify-center item-center bg-cover bg-bottom bg-no-repeat"
 					style={{
 						backgroundImage: `
 							url("/svg/backgroundSVG/backgroundHeroTriangles.svg")`,
 					}}
 				>
-					<p className="max-w-md md:max-w-lg mx-auto text-lg leading-6 text-white mb-10">
+					<p className="max-w-md mx-auto mb-10 text-lg leading-6 text-white md:max-w-lg">
 						{subtitle}
 					</p>
 				</div>
-				{/* Secondary Hero Menu */}
-				<nav className="nav min-h-[100vh] flex flex-col justify-center item-center bg-yellow bg-cover bg-bottom bg-no-repeat">
-					{/* Hidden Menu Content */}
-					{/* <ul className="header__menu">
-						<li className="header__menu-item">
-							<Link href="#">Works</Link>
-						</li>
-						<li className="header__menu-item">
-							<Link href="#">News</Link>
-						</li>
-						<li className="header__menu-item">
-							<Link href="#">About</Link>
-						</li>
-						<li className="header__menu-item">
-							<Link href="#">Help</Link>
-						</li>
-						<li className="header__menu-item">
-							<Link href="#">Contacts</Link>
-						</li>
-					</ul> */}
-					<ContentSlider
-						contentOne={contentOne}
-						contentTwo={contentTwo}
-						contentThree={contentThree}
-					/>
-				</nav>
-				{/* Secondary Hero Menu */}
-				<nav
-					className="content min-h-[100vh] flex justify-center item-center bg-darkBlue bg-cover bg-bottom bg-no-repeat"
-					style={{
-						backgroundImage: `
-							url("/svg/backgroundSVG/backgroundHeroTriangles.svg")`,
-					}}
-				>
-					{/* Hidden Menu Content */}
-					<div className="w-full lg:w-[40%]">
-						<ul className="header__menu">
-							<li className="header__menu-item">
-								<Link href="#">Works</Link>
-							</li>
-							<li className="header__menu-item">
-								<Link href="#">News</Link>
-							</li>
-							<li className="header__menu-item">
-								<Link href="#">About</Link>
-							</li>
-							<li className="header__menu-item">
-								<Link href="#">Help</Link>
-							</li>
-							<li className="header__menu-item">
-								<Link href="#">Contacts</Link>
-							</li>
-						</ul>
-					</div>
-					<div className="w-full lg:w-[60%]">
-						<video
-							autoPlay
-							muted
-							loop
-							className="block object-cover object-center w-full h-full"
-						>
-							<source src="/video/Racing Car Video One.mp4" type="video/mp4" />
-						</video>
-					</div>
-				</nav>
+				{/* Secondary Hero Content Slide */}
+				<NavSecondaryContent
+					inUsersView={true}
+					contentOne={contentOne}
+					contentTwo={contentTwo}
+					contentThree={contentThree}
+				/>
+
+				{/* Third Hero Content Slide */}
+				<NavThirdContent inUsersView={false} />
+
+				{/* Forth Hero Content Slide */}
+				<NavForthContent
+					inUsersView={false}
+					title={"Build website animations and interactions visually."}
+					subtitle={
+						"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis venenatis volutpat velit, quis iaculis velit bibendum a. Maecenas accumsan fermentum nisl."
+					}
+					backgroundImage="http://blueinventory.local/wp-content/uploads/2023/03/pexels-paul-voie-12359137-scaled.jpg"
+				/>
+
+				{/* Fifth Hero Content Slide */}
+				<NavFifthContent inUsersView={false} videoSrc="/video/events.mp4" />
 			</div>
 		</HeroComponentStyling>
 	);
