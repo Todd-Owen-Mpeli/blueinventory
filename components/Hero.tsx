@@ -89,7 +89,6 @@ interface IProps {
 // styling
 const HeroComponentStyling = styled.div`
 	.nav-tgl {
-		display: inline-block;
 		cursor: pointer;
 		position: fixed;
 		z-index: 999;
@@ -100,7 +99,7 @@ const HeroComponentStyling = styled.div`
 		height: 70px;
 		border: none;
 		border-radius: 50%;
-		background: #2563eb;
+		// background: #2563eb;
 		box-shadow: 0px 4px 24px rgba(#fff, 0.24);
 		line-height: 0.6;
 		text-align: center;
@@ -282,27 +281,58 @@ const Hero: FunctionComponent<IProps> = ({
 	}
 
 	return (
-		<HeroComponentStyling className="flex flex-col justify-center bg-blue">
+		<HeroComponentStyling
+			className="flex flex-col justify-center bg-cover bg-top bg-no-repeat"
+			style={{
+				backgroundImage: `linear-gradient(
+								0deg,
+								rgba(13, 23, 42, 0.65),
+								rgba(13, 23, 42, 0.65)
+							),
+							url("${backgroundImage}")`,
+			}}
+		>
 			<div className={menuActive ? "menu active" : "menu h-full"}>
 				<button
 					type="button"
 					onClick={toggleMenu}
 					aria-label="toggle menu"
-					className="fixed nav-tgl"
+					className=" block fixed nav-tgl"
 				>
 					<span aria-hidden="true"></span>
 				</button>
 				{/* Main Landing Hero */}
 				<div
-					className="min-h-[100vh] flex flex-col justify-center item-center bg-cover bg-bottom bg-no-repeat"
+					className="min-h-[100vh] flex flex-col justify-center bg-cover bg-bottom bg-no-repeat px-4 xl:px-28"
 					style={{
 						backgroundImage: `
 							url("/svg/backgroundSVG/backgroundHeroTriangles.svg")`,
 					}}
 				>
-					<p className="max-w-md mx-auto mb-10 text-lg leading-6 text-white md:max-w-lg">
-						{subtitle}
-					</p>
+					<div className="max-w-2xl xl:max-w-4xl  text-white">
+						<h1 className=" text-4xl sm:text-5xl md:text-8xl font-bold leading-normal sm:leading-[4.5rem] text-center lg:text-left mb-6">
+							{title}
+						</h1>
+						<p className="max-w-md text-xl text-left leading-8 md:max-w-4xl">
+							{subtitle}
+						</p>
+						<div className="flex gap-4 mt-10">
+							<Link
+								href={buttonLink?.url}
+								target={buttonLink?.target}
+								className="font-semibold text-medium py-4 px-6 bg-limeGreen rounded-lg hover:bg-blueTwo"
+							>
+								{buttonLink?.title}
+							</Link>
+							<Link
+								href={buttonLinkTwo?.url}
+								target={buttonLinkTwo?.target}
+								className="font-semibold text-medium py-4 px-6 bg-darkBlue rounded-lg hover:bg-limeGreen"
+							>
+								{buttonLinkTwo?.title}
+							</Link>
+						</div>
+					</div>
 				</div>
 				{/* Secondary Hero Content Slide */}
 				<NavSecondaryContent
