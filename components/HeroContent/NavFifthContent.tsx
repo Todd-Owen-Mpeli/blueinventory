@@ -1,4 +1,5 @@
 import {FunctionComponent} from "react";
+import styles from "../../styles/components/Hero.module.scss";
 
 interface IProps {
 	inUsersView: boolean;
@@ -9,12 +10,16 @@ const NavFifthContent: FunctionComponent<IProps> = ({
 	inUsersView,
 	videoSrc,
 }) => {
-	let contentStyling: string = `fifthContent min-h-[100vh] p-20 flex justify-center item-center bg-cover bg-bottom bg-no-repeat`;
+	// Full Screen Nav Revealed Styling
+	const nav: string = styles.nav;
+	const navReveal: string = styles.navReveal;
+
+	let contentStyling: string = `${nav} fifthContent min-h-[100vh] p-20 flex justify-center item-center bg-cover bg-bottom bg-no-repeat`;
 
 	return (
 		<nav
 			className={
-				inUsersView ? `nav ${contentStyling}` : `hidden ${contentStyling}`
+				inUsersView ? `${nav} ${contentStyling}` : `hidden ${contentStyling}`
 			}
 			style={{
 				backgroundImage: `

@@ -166,6 +166,10 @@ export async function getStaticProps() {
 									icon {
 										altText
 										sourceUrl
+										mediaDetails {
+											width
+											height
+										}
 									}
 								}
 							}
@@ -181,7 +185,12 @@ export async function getStaticProps() {
 									title
 									paragraph
 									icon {
+										altText
 										sourceUrl
+										mediaDetails {
+											width
+											height
+										}
 									}
 								}
 							}

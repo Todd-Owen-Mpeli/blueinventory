@@ -4,15 +4,21 @@ import {FunctionComponent} from "react";
 
 interface IProps {
 	inUsersView: boolean;
+	navStylingProps: string;
 }
 
-const NavThirdContent: FunctionComponent<IProps> = ({inUsersView}) => {
+const NavThirdContent: FunctionComponent<IProps> = ({
+	inUsersView,
+	navStylingProps,
+}) => {
 	let contentStyling: string = `thirdContent min-h-[100vh] flex justify-center item-center bg-darkBlue bg-cover bg-bottom bg-no-repeat`;
 
 	return (
 		<nav
 			className={
-				inUsersView ? `nav ${contentStyling}` : `hidden ${contentStyling}`
+				inUsersView
+					? `${navStylingProps} ${contentStyling}`
+					: `hidden ${contentStyling}`
 			}
 			style={{
 				backgroundImage: `url("/svg/backgroundSVG/backgroundHeroTriangles.svg")`,

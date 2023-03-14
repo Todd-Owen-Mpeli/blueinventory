@@ -359,6 +359,10 @@ export async function getStaticProps() {
 									icon {
 										altText
 										sourceUrl
+										mediaDetails {
+											width
+											height
+										}
 									}
 								}
 							}
@@ -374,10 +378,18 @@ export async function getStaticProps() {
 										icon {
 											altText
 											sourceUrl
+											mediaDetails {
+												width
+												height
+											}
 										}
 										image {
 											altText
 											sourceUrl
+											mediaDetails {
+												width
+												height
+											}
 										}
 									}
 								}
@@ -389,6 +401,10 @@ export async function getStaticProps() {
 									image {
 										altText
 										sourceUrl
+										mediaDetails {
+											width
+											height
+										}
 									}
 								}
 							}

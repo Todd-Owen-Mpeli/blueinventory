@@ -9,10 +9,18 @@ interface IProps {
 	icon: {
 		altText: string;
 		sourceUrl: string;
+		mediaDetails: {
+			width: number;
+			height: number;
+		};
 	};
 	image: {
 		altText: string;
 		sourceUrl: string;
+		mediaDetails: {
+			width: number;
+			height: number;
+		};
 	};
 	iterationCount: number;
 	displayImageLocation: string;
@@ -97,10 +105,10 @@ const TextImage: FunctionComponent<IProps> = ({
 		<div className="flex flex-col items-center justify-between gap-20 md:flex-row">
 			<div className="w-full lg:w-1/2" style={{display: leftImageDisplay}}>
 				<Image
-					width={550}
-					height={550}
 					alt={`${image?.altText}`}
 					src={`${image?.sourceUrl}`}
+					width={image?.mediaDetails?.width}
+					height={image?.mediaDetails?.height}
 					className={isImageContent(image?.sourceUrl)}
 				/>
 			</div>
@@ -110,10 +118,10 @@ const TextImage: FunctionComponent<IProps> = ({
 					style={{background}}
 				>
 					<Image
-						width={550}
-						height={550}
 						alt={`${icon?.altText}`}
 						src={`${icon?.sourceUrl}`}
+						width={icon?.mediaDetails?.width}
+						height={icon?.mediaDetails?.height}
 						className="w-full h-[100px] object-contain object-center"
 					/>
 				</span>
@@ -130,10 +138,10 @@ const TextImage: FunctionComponent<IProps> = ({
 			</div>
 			<div className="w-full lg:w-1/2" style={{display: rightImageDisplay}}>
 				<Image
-					width={550}
-					height={550}
 					alt={`${image?.altText}`}
 					src={`${image?.sourceUrl}`}
+					width={image?.mediaDetails?.width}
+					height={image?.mediaDetails?.height}
 					className={isImageContent(image?.sourceUrl)}
 				/>
 			</div>

@@ -16,10 +16,18 @@ interface IProps {
 				icon: {
 					altText: string;
 					sourceUrl: string;
+					mediaDetails: {
+						width: number;
+						height: number;
+					};
 				};
 				image: {
 					altText: string;
 					sourceUrl: string;
+					mediaDetails: {
+						width: number;
+						height: number;
+					};
 				};
 				displayImageLocation: string;
 			};

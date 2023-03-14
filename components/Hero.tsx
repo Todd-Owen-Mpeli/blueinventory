@@ -5,6 +5,9 @@ import styled from "styled-components";
 import DOMPurify from "isomorphic-dompurify";
 import {useState, FunctionComponent} from "react";
 import {fadeIn, stagger} from "../animations/animations";
+import styles from "../styles/components/Hero.module.scss";
+
+// Components
 import ContentSlider from "./ContentSlider";
 import NavFifthContent from "./HeroContent/NavFifthContent";
 import NavForthContent from "./HeroContent/NavForthContent";
@@ -88,7 +91,7 @@ interface IProps {
 
 // styling
 const HeroComponentStyling = styled.div`
-	.nav-tgl {
+	.navToggle {
 		cursor: pointer;
 		position: fixed;
 		z-index: 999;
@@ -167,37 +170,15 @@ const HeroComponentStyling = styled.div`
 		font-style: italic;
 	}
 
-	.nav {
-		top: 0;
-		left: 0;
-		width: 100%;
-		z-index: 998;
-		height: 100%;
-		display: flex;
-		position: fixed;
-		overflow: hidden;
-		visibility: hidden;
-		align-items: center;
-		box-sizing: border-box;
-		justify-content: center;
-		background-color: #0d172a;
-		transition: all 500ms ease-in-out;
-		clip-path: circle(30px at calc(100% - 65px) 65px);
-	}
-
-	.menu.active {
-		.nav {
-			visibility: visible;
-			clip-path: circle(100%);
-		}
-		.nav-tgl {
+	.navActive {
+		.navToggleOpen {
 			background: #a2e603;
 			&:hover {
 				background: #ff002f;
 				transition: all 500ms ease-in-out;
 			}
 		}
-		.nav-tgl > span {
+		.navToggleOpen > span {
 			height: 0;
 			&:after,
 			&:before {
@@ -225,12 +206,22 @@ const Hero: FunctionComponent<IProps> = ({
 	contentTwo,
 	contentThree,
 }) => {
-	/* Hides or Displays the secondary Menu and
+	/* Hides or Displays the Full Screen Secondary Menu and
 	 Menu links */
 	const [menuActive, setMenuActive] = useState(false);
+	let burgerIconClose: string = styles.navToggle;
+	let burgerIconOpen: string = styles.navToggleOpen;
+	// Full Screen Nav Revealed Styling
+	const nav: string = styles.nav;
+	const navReveal: string = styles.navReveal;
+
 	function toggleMenu() {
 		setMenuActive(!menuActive);
 	}
+
+	// Full Screen Nav Revealed Styling
+	const navStylingProps: string = styles.nav;
+	// let navStylingProps: string = `top-0 left-0 w-full z-[998] h-full flex fixed overflow-hidden invisible items-center box-border justify-center bg-[#0d172a] transition-all duration-500 ease-in-out`;
 
 	/* Check if Button One Link / content is null
 	 And Displays content if it is not */
@@ -284,20 +275,15 @@ const Hero: FunctionComponent<IProps> = ({
 		<HeroComponentStyling
 			className="flex flex-col justify-center bg-cover bg-top bg-no-repeat"
 			style={{
-				backgroundImage: `linear-gradient(
-								0deg,
-								rgba(13, 23, 42, 0.65),
-								rgba(13, 23, 42, 0.65)
-							),
-							url("${backgroundImage}")`,
+				backgroundImage: `linear-gradient(0deg,rgba(13, 23, 42, 0.65),rgba(13, 23, 42, 0.65)),url("${backgroundImage}")`,
 			}}
 		>
-			<div className={menuActive ? "menu active" : "menu h-full"}>
+			<div className="menu">
 				<button
 					type="button"
 					onClick={toggleMenu}
 					aria-label="toggle menu"
-					className=" block fixed nav-tgl"
+					className={menuActive ? burgerIconOpen : burgerIconClose}
 				>
 					<span aria-hidden="true"></span>
 				</button>
@@ -306,48 +292,54 @@ const Hero: FunctionComponent<IProps> = ({
 					className="min-h-[100vh] flex flex-col justify-center bg-cover bg-bottom bg-no-repeat px-4 xl:px-28"
 					style={{
 						backgroundImage: `
-							url("/svg/backgroundSVG/backgroundHeroTriangles.svg")`,
+							url("/svg/backgroundSVG/backgroundHeroLayeredWaves.svg")`,
 					}}
 				>
-					<div className="max-w-2xl xl:max-w-4xl  text-white">
-						<h1 className=" text-4xl sm:text-5xl md:text-8xl font-bold leading-normal sm:leading-[4.5rem] text-center lg:text-left mb-6">
+					<div className="max-w-2xl xl:max-w-4xl text-white">
+						<h1 className=" text-4xl sm:text-5xl md:text-8xl font-bold leading-normal sm:leading-[4.5rem] text-center sm:text-left mb-6">
 							{title}
 						</h1>
-						<p className="max-w-md text-xl text-left leading-8 md:max-w-4xl">
+						<h2 className="max-w-md text-medium sm:text-xl text-center sm:text-left leading-6 sm:leading-8 md:max-w-4xl">
 							{subtitle}
-						</p>
-						<div className="flex gap-4 mt-10">
+						</h2>
+						<div className="flex flex-row justify-center sm:justify-start gap-4 mt-10">
 							<Link
 								href={buttonLink?.url}
 								target={buttonLink?.target}
-								className="font-semibold text-medium py-4 px-6 bg-limeGreen rounded-lg hover:bg-blueTwo"
+								className="font-semibold text-base sm:text-medium py-4 px-6 bg-limeGreen rounded-lg hover:bg-blueTwo"
 							>
 								{buttonLink?.title}
 							</Link>
 							<Link
 								href={buttonLinkTwo?.url}
 								target={buttonLinkTwo?.target}
-								className="font-semibold text-medium py-4 px-6 bg-darkBlue rounded-lg hover:bg-limeGreen"
+								className="font-semibold text-base sm:text-medium py-4 px-6 bg-darkBlue rounded-lg hover:bg-limeGreen"
 							>
 								{buttonLinkTwo?.title}
 							</Link>
 						</div>
 					</div>
 				</div>
+
 				{/* Secondary Hero Content Slide */}
 				<NavSecondaryContent
 					inUsersView={false}
 					contentOne={contentOne}
 					contentTwo={contentTwo}
 					contentThree={contentThree}
+					navStylingProps={navStylingProps}
 				/>
 
 				{/* Third Hero Content Slide */}
-				<NavThirdContent inUsersView={false} />
+				<NavThirdContent
+					inUsersView={false}
+					navStylingProps={navStylingProps}
+				/>
 
 				{/* Forth Hero Content Slide */}
 				<NavForthContent
 					inUsersView={false}
+					navStylingProps={navStylingProps}
 					title={"Build website animations and interactions visually."}
 					subtitle={
 						"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis venenatis volutpat velit, quis iaculis velit bibendum a. Maecenas accumsan fermentum nisl."

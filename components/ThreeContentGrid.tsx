@@ -20,6 +20,10 @@ interface IProps {
 			icon: {
 				altText: string;
 				sourceUrl: string;
+				mediaDetails: {
+					width: number;
+					height: number;
+				};
 			};
 		}
 	];

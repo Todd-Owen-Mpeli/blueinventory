@@ -3,6 +3,8 @@ import ContentSlider from "../ContentSlider";
 
 interface IProps {
 	inUsersView: boolean;
+	navStylingProps: string;
+
 	// Content Slider
 	contentOne: {
 		tag: string;
@@ -68,13 +70,16 @@ const NavSecondaryContent: FunctionComponent<IProps> = ({
 	contentOne,
 	contentTwo,
 	contentThree,
+	navStylingProps,
 }) => {
 	let contentStyling: string = `secondaryContent min-h-[100vh] flex justify-center item-center`;
 
 	return (
 		<nav
 			className={
-				inUsersView ? `nav ${contentStyling}` : `hidden ${contentStyling}`
+				inUsersView
+					? `${navStylingProps} ${contentStyling}`
+					: `hidden ${contentStyling}`
 			}
 		>
 			<ContentSlider

@@ -5,6 +5,7 @@ interface IProps {
 	title: string;
 	subtitle: string;
 	inUsersView: boolean;
+	navStylingProps: string;
 	backgroundImage: string;
 }
 
@@ -13,13 +14,16 @@ const NavForthContent: FunctionComponent<IProps> = ({
 	subtitle,
 	inUsersView,
 	backgroundImage,
+	navStylingProps,
 }) => {
 	let contentStyling: string = `forthContent min-h-[100vh] flex flex-row justify-center item-center bg-darkOrange bg-cover bg-bottom bg-no-repeat`;
 
 	return (
 		<nav
 			className={
-				inUsersView ? `nav ${contentStyling}` : ` hidden ${contentStyling}`
+				inUsersView
+					? `${navStylingProps} ${contentStyling}`
+					: ` hidden ${contentStyling}`
 			}
 			style={{
 				backgroundImage: `url("/svg/backgroundSVG/backgroundWaveOne.svg")`,

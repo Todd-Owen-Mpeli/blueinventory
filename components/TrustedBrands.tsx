@@ -11,6 +11,10 @@ interface IProps {
 			image: {
 				altText: string;
 				sourceUrl: string;
+				mediaDetails: {
+					width: number;
+					height: number;
+				};
 			};
 		}
 	];

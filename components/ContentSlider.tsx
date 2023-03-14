@@ -386,7 +386,7 @@ const ContentSlider: FunctionComponent<IProps> = ({
 											cy="10"
 											r="9"
 											stroke="#FF8300"
-											stroke-width="2"
+											strokeWidth="2"
 										/>
 										<path d="M14 10L8 6V14L14 10Z" fill="white" />
 									</svg>

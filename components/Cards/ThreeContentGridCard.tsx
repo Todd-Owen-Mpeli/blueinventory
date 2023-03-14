@@ -10,6 +10,10 @@ interface IProps {
 	icon: {
 		altText: string;
 		sourceUrl: string;
+		mediaDetails: {
+			width: number;
+			height: number;
+		};
 	};
 }
 
@@ -43,10 +47,10 @@ const ThreeContentGridCard: FunctionComponent<IProps> = ({
 		<div className="w-full md:w-1/2 lg:w-1/3 p-8">
 			<span className="mx-auto lg:mx-0 mb-6 lg:mb-10 flex w-[7rem] h-[7rem] items-center justify-center  rounded-full text-2xl">
 				<Image
-					width={550}
-					height={550}
 					alt={`${icon?.altText}`}
 					src={`${icon?.sourceUrl}`}
+					width={icon?.mediaDetails?.width}
+					height={icon?.mediaDetails?.height}
 					className="object-contain object center"
 				/>
 			</span>

@@ -7,6 +7,10 @@ interface IProps {
 	icon: {
 		altText: string;
 		sourceUrl: string;
+		mediaDetails: {
+			width: number;
+			height: number;
+		};
 	};
 }
 
@@ -16,10 +20,10 @@ const FeaturesBannerCard: FunctionComponent<IProps> = ({title, icon}) => {
 			<div className={styles.iconsWrap}>
 				<div className="flex flex-row items-center justify-center gap-x-8">
 					<Image
-						width={550}
-						height={550}
 						src={icon?.sourceUrl}
-						alt={`${icon?.altText} Icon`}
+						alt={`${icon?.altText} icon`}
+						width={icon?.mediaDetails?.width}
+						height={icon?.mediaDetails?.height}
 						className="w-[75px] h-[75px] sm:w-[100px] sm:h-[100px] lg:w-[110px] lg:h-[110px] object-contain object-center"
 					/>
 					<div className="p-3">

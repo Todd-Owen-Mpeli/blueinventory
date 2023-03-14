@@ -13,6 +13,10 @@ interface IProps {
 			icon: {
 				altText: string;
 				sourceUrl: string;
+				mediaDetails: {
+					width: number;
+					height: number;
+				};
 			};
 		}
 	];
@@ -32,7 +36,7 @@ const FeaturesBanner: FunctionComponent<IProps> = ({title, content}) => {
 					<div className="flex flex-col items-center justify-center lg:flex-row lg:justify-between">
 						{content.map((keys) => (
 							<FeaturesBannerCard
-								key={keys?.id}
+								key={content.length}
 								title={keys?.title}
 								icon={keys?.icon}
 							/>
