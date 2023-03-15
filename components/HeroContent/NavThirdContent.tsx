@@ -1,23 +1,28 @@
 import Link from "next/link";
 import Image from "next/image";
 import {FunctionComponent} from "react";
+import styles from "../../styles/components/Hero.module.scss";
 
 interface IProps {
+	menuActive: boolean;
 	inUsersView: boolean;
-	navStylingProps: string;
 }
 
 const NavThirdContent: FunctionComponent<IProps> = ({
 	inUsersView,
-	navStylingProps,
+	menuActive,
 }) => {
-	let contentStyling: string = `thirdContent min-h-[100vh] flex justify-center item-center bg-darkBlue bg-cover bg-bottom bg-no-repeat`;
+	// Full Screen Nav Revealed Styling
+	const nav: string = styles.nav;
+	const navReveal: string = styles.navReveal;
+
+	let contentStyling: string = `${nav} thirdContent min-h-[100vh] flex justify-center item-center bg-darkBlue bg-cover bg-bottom bg-no-repeat`;
 
 	return (
 		<nav
 			className={
-				inUsersView
-					? `${navStylingProps} ${contentStyling}`
+				menuActive && inUsersView
+					? `${navReveal} ${contentStyling}`
 					: `hidden ${contentStyling}`
 			}
 			style={{

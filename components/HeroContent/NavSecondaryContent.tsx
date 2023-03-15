@@ -1,9 +1,10 @@
 import {FunctionComponent} from "react";
 import ContentSlider from "../ContentSlider";
+import styles from "../../styles/components/Hero.module.scss";
 
 interface IProps {
+	menuActive: boolean;
 	inUsersView: boolean;
-	navStylingProps: string;
 
 	// Content Slider
 	contentOne: {
@@ -66,19 +67,23 @@ interface IProps {
 }
 
 const NavSecondaryContent: FunctionComponent<IProps> = ({
+	menuActive,
 	inUsersView,
 	contentOne,
 	contentTwo,
 	contentThree,
-	navStylingProps,
 }) => {
-	let contentStyling: string = `secondaryContent min-h-[100vh] flex justify-center item-center`;
+	// Full Screen Nav Revealed Styling
+	const nav: string = styles.nav;
+	const navReveal: string = styles.navReveal;
+
+	let contentStyling: string = `${nav} secondaryContent min-h-[100vh] flex justify-center item-center`;
 
 	return (
 		<nav
 			className={
-				inUsersView
-					? `${navStylingProps} ${contentStyling}`
+				menuActive && inUsersView
+					? `${navReveal} ${contentStyling}`
 					: `hidden ${contentStyling}`
 			}
 		>

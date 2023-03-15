@@ -40,7 +40,8 @@
 	// background: #2563eb;
 	line-height: 0.6;
 	text-align: center;
-	> span {
+
+	span {
 		// the second divider
 		display: inline-block;
 		position: relative;
@@ -71,6 +72,7 @@
 			width: 22px;
 		}
 	}
+
 	&:focus {
 		outline: none;
 	}
@@ -96,14 +98,6 @@
 	border-radius: 50%;
 	text-align: center;
 	background: $limeGreen;
-
-	&:hover {
-		background: $blue;
-		transition: all 500ms ease-in-out;
-	}
-}
-
-.navToggleOpen {
 	span {
 		height: 0;
 		width: 34px;
@@ -137,5 +131,9 @@
 			left: 0px;
 			transform: rotate(45deg);
 		}
+	}
+	&:hover {
+		background: $blue;
+		transition: all 500ms ease-in-out;
 	}
 }

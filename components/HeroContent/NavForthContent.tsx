@@ -1,29 +1,34 @@
 import Link from "next/link";
 import {FunctionComponent} from "react";
+import styles from "../../styles/components/Hero.module.scss";
 
 interface IProps {
 	title: string;
 	subtitle: string;
 	inUsersView: boolean;
-	navStylingProps: string;
+	menuActive: boolean;
 	backgroundImage: string;
 }
 
 const NavForthContent: FunctionComponent<IProps> = ({
 	title,
 	subtitle,
+	menuActive,
 	inUsersView,
 	backgroundImage,
-	navStylingProps,
 }) => {
-	let contentStyling: string = `forthContent min-h-[100vh] flex flex-row justify-center item-center bg-darkOrange bg-cover bg-bottom bg-no-repeat`;
+	// Full Screen Nav Revealed Styling
+	const nav: string = styles.nav;
+	const navReveal: string = styles.navReveal;
+
+	let contentStyling: string = `${nav} forthContent min-h-[100vh] flex flex-row justify-center item-center bg-darkOrange bg-cover bg-bottom bg-no-repeat`;
 
 	return (
 		<nav
 			className={
-				inUsersView
-					? `${navStylingProps} ${contentStyling}`
-					: ` hidden ${contentStyling}`
+				menuActive && inUsersView
+					? `${navReveal} ${contentStyling}`
+					: `hidden ${contentStyling}`
 			}
 			style={{
 				backgroundImage: `url("/svg/backgroundSVG/backgroundWaveOne.svg")`,
