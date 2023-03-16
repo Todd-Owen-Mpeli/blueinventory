@@ -3,6 +3,7 @@ import Image from "next/image";
 import styled from "styled-components";
 import DOMPurify from "isomorphic-dompurify";
 import React, {useEffect, useRef, FunctionComponent} from "react";
+import styles from "../styles/components/ContentSlider.module.scss";
 
 interface IProps {
 	contentOne: {
@@ -68,131 +69,6 @@ interface IProps {
 const ContentSliderStyling = styled.div`
 	width: 100%;
 	height: 100%;
-
-	.progress-bar {
-		position: absolute;
-		top: 0;
-		left: 0;
-		height: 5px;
-		width: 100%;
-		&__fill {
-			width: 0;
-			height: inherit;
-			background: #ff8300;
-			transition: all 0.16s;
-		}
-		&--primary {
-			z-index: 2;
-		}
-	}
-
-	// Main Content Slider
-	.main-active {
-		top: 0;
-		z-index: 1;
-		transition: top 0.9s 0.4s ease-out;
-	}
-
-	.main-not-active {
-		top: 100%;
-		z-index: 0;
-		transition: top 0.75s 2s;
-	}
-
-	.main-post.main-active .tag {
-		width: 25%;
-		transition: all 0.98s 1.9s;
-	}
-
-	.main-post.main-not-active .tag {
-		width: 0;
-		transition: width 0.3s 0.2s;
-	}
-
-	.main-post.main-active .title {
-		opacity: 1;
-		transform: translateY(0);
-		transition: opacity 0.8s 1.42s, transform 0.5s 1.4s;
-	}
-
-	.main-post.main-not-active .title {
-		opacity: 0;
-		transform: translateY(40px);
-		transition: transform 0.2s 0.35s, opacity 0.5s 0.2s;
-	}
-
-	.main-post.main-active .postLink {
-		opacity: 1;
-		transition: opacity 0.9s 2.2s;
-	}
-
-	.main-post.main-not-active .postLink {
-		opacity: 0;
-		transition: opacity 0.5s 0.2s;
-	}
-
-	// Post Grid Content
-	.post:hover {
-		transition: none;
-		background: #ff8300;
-		transition-delay: 0s;
-	}
-
-	.post-active {
-		opacity: 0.95;
-		transition-delay: 1s;
-		background-color: #3978ff;
-	}
-
-	.post-not-active {
-		background: #000;
-		pointer-events: none;
-		transition-delay: 1s;
-	}
-
-	.post.post-active .header {
-		opacity: 1;
-		transition: opacity 1.5s, transform 1.5s;
-	}
-
-	.post.post-not-active .header {
-		opacity: 0.3;
-		transition: transform 1.5s, opacity 1.5s;
-	}
-
-	.post.post-active .paragraph {
-		opacity: 1;
-		transition: opacity 1.5s, transform 1.5s;
-	}
-
-	.post.post-not-active .paragraph {
-		opacity: 0.3;
-		transition: transform 1.5s, opacity 1.5s;
-	}
-
-	@media screen and (min-width: 768px) {
-		.postPost {
-			display: none;
-		}
-	}
-
-	@media screen and (min-width: 1024px) {
-		.postPost {
-			display: grid;
-			grid-row: 3 / 4;
-			grid-column: 2 / 6;
-			grid-template-columns: repeat(3, 1fr);
-		}
-	}
-
-	@media screen and (min-width: 1440px) {
-		.postPost {
-			display: grid;
-			grid-row: 3 / 4;
-			grid-column: 3 / 6;
-			grid-template-columns: repeat(3, 1fr);
-		}
-	}
 `;
 
 const ContentSlider: FunctionComponent<IProps> = ({
@@ -228,22 +104,38 @@ const ContentSlider: FunctionComponent<IProps> = ({
 	const mainContentTailwindcss: string = `absolute top-[100%] right-0 left-0 bottom-0 w-full h-full`;
 	const postContentTailwindcss: string = `relative px-8  py-4 text-white transition-all duration-75 ease-in-out opacity-30`;
 
+	// Full Screen Nav Revealed Styling
+	const mainPost: string = styles.mainPost;
+	const mainActive: string = styles.mainActive;
+	const mainNotActive: string = styles.mainNotActive;
+
+	// Sub post (Blue Squares)
+	const post: string = styles.post;
+	const postPost: string = styles.postPost;
+	const postActive: string = styles.postActive;
+	const postNotActive: string = styles.postNotActive;
+
+	const progressBarFill: string = styles.progressBarFill;
+	const progressBarFillActive: string = styles.progressBarFillActive;
+
 	useEffect(() => {
 		// Main Content
-		const mainParentElement = mainRef.current;
-		const mainChildElements = mainParentElement?.querySelectorAll(
-			".mainPost > article"
-		);
+		const mainParentElement: HTMLDivElement = mainRef.current;
+		const mainChildElements: NodeListOf<Element> =
+			mainParentElement?.querySelectorAll<HTMLDivElement>(
+				".mainPost > article"
+			);
 
 		// Post Content
-		const postParentElement = postRef.current;
-		const postChildElements = postParentElement?.querySelectorAll(
-			".postPost > article"
-		);
+		const postParentElement: HTMLDivElement = postRef.current;
+		const postChildElements =
+			postParentElement?.querySelectorAll<HTMLDivElement>(
+				".postPost > article"
+			);
 
-		let currentIndex = 0;
+		let currentIndex: number = 0;
 
-		const intervalId = setInterval(() => {
+		const intervalId: NodeJS.Timer = setInterval(() => {
 			// Main Content Loop
 			const currentMainPostChild = mainChildElements?.[currentIndex];
 			const nextMainPostIndex =
@@ -258,16 +150,16 @@ const ContentSlider: FunctionComponent<IProps> = ({
 
 			if (currentMainPostChild && nextMainPostChild) {
 				// Main Content
-				currentMainPostChild.classList.remove("main-active");
-				currentMainPostChild.classList.add("main-not-active");
-				nextMainPostChild.classList.remove("main-not-active");
-				nextMainPostChild.classList.add("main-active");
+				currentMainPostChild.classList.remove(mainActive);
+				currentMainPostChild.classList.add(mainNotActive);
+				nextMainPostChild.classList.remove(mainNotActive);
+				nextMainPostChild.classList.add(mainActive);
 
 				// Post Content
-				currentPostChild.classList.remove("post-active");
-				currentPostChild.classList.add("post-not-active");
-				nextPostChild.classList.remove("post-not-active");
-				nextPostChild.classList.add("post-active");
+				currentPostChild.classList.remove(postActive);
+				currentPostChild.classList.add(postNotActive);
+				nextPostChild.classList.remove(postNotActive);
+				nextPostChild.classList.add(postActive);
 				currentIndex = nextMainPostIndex;
 			}
 		}, 7000);
@@ -276,7 +168,7 @@ const ContentSlider: FunctionComponent<IProps> = ({
 	}, []);
 
 	return (
-		<ContentSliderStyling>
+		<ContentSliderStyling className="w-full h-full">
 			<div
 				className="h-[100vh] sm:h-[65vh] lg:h-[100vh] grid relative gap-y-[2vh]"
 				style={{
@@ -288,12 +180,9 @@ const ContentSlider: FunctionComponent<IProps> = ({
 					className="relative h-full"
 					style={{gridRow: "1 / 4", gridColumn: "1 / 7"}}
 				>
-					<div
-						className="relative w-full h-full overflow-hidden mainPost bg-blue"
-						ref={mainRef}
-					>
+					<div className={`mainPost ${mainPost}`} ref={mainRef}>
 						<article
-							className={`main-post main-active ${mainContentTailwindcss}`}
+							className={`main-post ${mainActive} ${mainContentTailwindcss}`}
 						>
 							<div className="absolute top-0 bottom-0 left-0 w-full h-full main-post__image">
 								<video
@@ -345,7 +234,7 @@ const ContentSlider: FunctionComponent<IProps> = ({
 							</div>
 						</article>
 						<article
-							className={`main-post main-not-active ${mainContentTailwindcss}`}
+							className={`main-post ${mainNotActive} ${mainContentTailwindcss}`}
 						>
 							<div className="absolute top-0 bottom-0 left-0 w-full h-full">
 								<Image
@@ -397,7 +286,7 @@ const ContentSlider: FunctionComponent<IProps> = ({
 							</div>
 						</article>
 						<article
-							className={`main-post main-not-active ${mainContentTailwindcss}`}
+							className={`main-post ${mainNotActive} ${mainContentTailwindcss}`}
 						>
 							<div className="absolute top-0 bottom-0 left-0 w-full h-full">
 								<Image
@@ -447,14 +336,18 @@ const ContentSlider: FunctionComponent<IProps> = ({
 					</div>
 				</div>
 
-				<div ref={postRef} className="hidden postPost lg:grid gap-4 z-[1]">
-					<article className={`post post-active ${postContentTailwindcss}`}>
+				<div ref={postRef} className={`postPost ${postPost}`}>
+					<article
+						className={`${post} ${postActive} ${postContentTailwindcss}`}
+					>
 						<Link
 							href={contentOne?.buttonLink?.url}
 							target={contentOne?.buttonLink?.target}
 						>
 							<div className="absolute top-0 left-0 h-[5px] w-full">
-								<div className="progress-bar__fill h-[inherit] bg-orange transition-all ease-in-out duration-75" />
+								<div
+									className={`${progressBarFill} h-[inherit] bg-orange transition-all ease-in-out duration-75`}
+								/>
 							</div>
 							<header className="flex items-center justify-between header">
 								<span className="text-tiny text-white font-[400]">
@@ -480,13 +373,17 @@ const ContentSlider: FunctionComponent<IProps> = ({
 							</div>
 						</Link>
 					</article>
-					<article className={`post post-not-active ${postContentTailwindcss}`}>
+					<article
+						className={`${post} ${postNotActive} ${postContentTailwindcss}`}
+					>
 						<Link
 							href={contentTwo?.buttonLink?.url}
 							target={contentTwo?.buttonLink?.target}
 						>
 							<div className="absolute top-0 left-0 h-[5px] w-full">
-								<div className="progress-bar__fill h-[inherit] bg-orange transition-all ease-in-out duration-75" />
+								<div
+									className={`${progressBarFill} h-[inherit] bg-orange transition-all ease-in-out duration-75`}
+								/>
 							</div>
 							<header className="flex items-center justify-between header">
 								<span className="text-tiny text-white font-[400]">
@@ -512,13 +409,17 @@ const ContentSlider: FunctionComponent<IProps> = ({
 							</div>
 						</Link>
 					</article>
-					<article className={`post post-not-active ${postContentTailwindcss}`}>
+					<article
+						className={`${post} ${postNotActive} ${postContentTailwindcss}`}
+					>
 						<Link
 							href={contentThree?.buttonLink?.url}
 							target={contentThree?.buttonLink?.target}
 						>
 							<div className="absolute top-0 left-0 h-[5px] w-full">
-								<div className="progress-bar__fill h-[inherit] bg-orange transition-all ease-in-out duration-75" />
+								<div
+									className={`${progressBarFill} h-[inherit] bg-orange transition-all ease-in-out duration-75`}
+								/>
 							</div>
 							<header className="flex items-center justify-between header">
 								<span className="text-tiny text-white font-[400]">
