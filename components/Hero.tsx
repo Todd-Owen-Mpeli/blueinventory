@@ -320,33 +320,35 @@ const Hero: FunctionComponent<IProps> = ({
 						</div>
 					</div>
 				</div>
-				{/* Secondary Hero Content Slide */}
-				<NavSecondaryContent
-					inUsersView={true}
-					menuActive={menuActive}
-					contentOne={contentOne}
-					contentTwo={contentTwo}
-					contentThree={contentThree}
-				/>
-				{/* Third Hero Content Slide */}
+				<div className="">
+					{/* Secondary Hero Content Slide */}
+					<NavSecondaryContent
+						inUsersView={false}
+						menuActive={menuActive}
+						contentOne={contentOne}
+						contentTwo={contentTwo}
+						contentThree={contentThree}
+					/>
+					{/* Third Hero Content Slide */}
 
-				<NavThirdContent inUsersView={false} menuActive={menuActive} />
-				{/* Forth Hero Content Slide */}
-				<NavForthContent
-					inUsersView={false}
-					menuActive={menuActive}
-					title={"Build website animations and interactions visually."}
-					subtitle={
-						"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis venenatis volutpat velit, quis iaculis velit bibendum a. Maecenas accumsan fermentum nisl."
-					}
-					backgroundImage="http://blueinventory.local/wp-content/uploads/2023/03/pexels-paul-voie-12359137-scaled.jpg"
-				/>
-				{/* Fifth Hero Content Slide */}
-				<NavFifthContent
-					inUsersView={false}
-					menuActive={menuActive}
-					videoSrc="/video/events.mp4"
-				/>
+					<NavThirdContent inUsersView={true} menuActive={menuActive} />
+					{/* Forth Hero Content Slide */}
+					<NavForthContent
+						inUsersView={false}
+						menuActive={menuActive}
+						title={"Build website animations and interactions visually."}
+						subtitle={
+							"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis venenatis volutpat velit, quis iaculis velit bibendum a. Maecenas accumsan fermentum nisl."
+						}
+						backgroundImage="http://blueinventory.local/wp-content/uploads/2023/03/pexels-paul-voie-12359137-scaled.jpg"
+					/>
+					{/* Fifth Hero Content Slide */}
+					<NavFifthContent
+						inUsersView={false}
+						menuActive={menuActive}
+						videoSrc="/video/events.mp4"
+					/>
+				</div>
 			</div>
 		</HeroComponentStyling>
 	);

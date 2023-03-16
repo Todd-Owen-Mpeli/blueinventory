@@ -65,7 +65,7 @@ button {
 li,
 p {
 	a {
-		@apply text-blue transition-all ease-in-out duration-[0.5s] hover:text-yellow focus:text-yellow hover:underline;
+		@apply text-blue transition-all ease-in-out duration-[0.5s] hover:text-limeGreen focus:text-limeGreen;
 	}
 }
 

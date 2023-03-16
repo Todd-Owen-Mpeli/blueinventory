@@ -6,11 +6,12 @@
 	top: 0;
 	left: 0;
 	width: 100%;
-	z-index: 998;
 	height: 100%;
+	z-index: 998;
 	display: flex;
 	position: fixed;
-	overflow: hidden;
+	overflow-x: hidden;
+	overflow-y: scroll;
 	visibility: hidden;
 	align-items: center;
 	box-sizing: border-box;
@@ -18,6 +19,25 @@
 	background-color: #0d172a;
 	transition: all 500ms ease-in-out;
 	clip-path: circle(30px at calc(100% - 65px) 65px);
+}
+
+.nav::-webkit-scrollbar {
+	width: 0.65rem;
+	height: 0.65rem;
+}
+
+.nav::-webkit-scrollbar-track {
+	background: $darkBlue;
+}
+
+.nav::-webkit-scrollbar-thumb {
+	background: $blue;
+	border-radius: 100px;
+
+	&:hover {
+		transition: all 0.5s;
+		background-color: $limeGreen;
+	}
 }
 
 // Reveal Fullscreen Nav
@@ -98,6 +118,7 @@
 	border-radius: 50%;
 	text-align: center;
 	background: $limeGreen;
+
 	span {
 		height: 0;
 		width: 34px;
