@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import styled from "styled-components";
 import DOMPurify from "isomorphic-dompurify";
-import React, {useEffect, useRef, FunctionComponent} from "react";
+import React, {useEffect, useRef, FC} from "react";
 import styles from "../styles/components/ContentSlider.module.scss";
 
 interface IProps {
@@ -71,11 +71,7 @@ const ContentSliderStyling = styled.div`
 	height: 100%;
 `;
 
-const ContentSlider: FunctionComponent<IProps> = ({
-	contentOne,
-	contentTwo,
-	contentThree,
-}) => {
+const ContentSlider: FC<IProps> = ({contentOne, contentTwo, contentThree}) => {
 	/* Check if paragraph content is null
 	 And Displays content if it null */
 	function isParagraphContent(isParagraphContent: string) {
@@ -120,15 +116,15 @@ const ContentSlider: FunctionComponent<IProps> = ({
 
 	useEffect(() => {
 		// Main Content
-		const mainParentElement: HTMLDivElement = mainRef.current;
-		const mainChildElements: NodeListOf<Element> =
+		const mainParentElement: HTMLDivElement | null = mainRef?.current;
+		const mainChildElements: NodeListOf<Element> | undefined =
 			mainParentElement?.querySelectorAll<HTMLDivElement>(
 				".mainPost > article"
 			);
 
 		// Post Content
-		const postParentElement: HTMLDivElement = postRef.current;
-		const postChildElements =
+		const postParentElement: HTMLDivElement | null = postRef?.current;
+		const postChildElements: NodeListOf<Element> | undefined =
 			postParentElement?.querySelectorAll<HTMLDivElement>(
 				".postPost > article"
 			);
@@ -136,36 +132,42 @@ const ContentSlider: FunctionComponent<IProps> = ({
 		let currentIndex: number = 0;
 
 		const intervalId: NodeJS.Timer = setInterval(() => {
-			// Main Content Loop
-			const currentMainPostChild = mainChildElements?.[currentIndex];
-			const nextMainPostIndex =
-				currentIndex + 1 >= mainChildElements?.length ? 0 : currentIndex + 1;
-			const nextMainPostChild = mainChildElements?.[nextMainPostIndex];
+			if (mainChildElements && postChildElements) {
+				const currentMainPostChild = mainChildElements[currentIndex];
+				const nextMainPostIndex =
+					currentIndex + 1 >= mainChildElements.length ? 0 : currentIndex + 1;
+				const nextMainPostChild = mainChildElements[nextMainPostIndex];
 
-			// Post Content Loop
-			const currentPostChild = postChildElements?.[currentIndex];
-			const nextPostIndex =
-				currentIndex + 1 >= postChildElements?.length ? 0 : currentIndex + 1;
-			const nextPostChild = postChildElements?.[nextPostIndex];
+				const currentPostChild = postChildElements[currentIndex];
+				const nextPostIndex =
+					currentIndex + 1 >= postChildElements.length ? 0 : currentIndex + 1;
+				const nextPostChild = postChildElements[nextPostIndex];
 
-			if (currentMainPostChild && nextMainPostChild) {
-				// Main Content
-				currentMainPostChild.classList.remove(mainActive);
-				currentMainPostChild.classList.add(mainNotActive);
-				nextMainPostChild.classList.remove(mainNotActive);
-				nextMainPostChild.classList.add(mainActive);
+				if (
+					currentMainPostChild &&
+					nextMainPostChild &&
+					currentPostChild &&
+					nextPostChild
+				) {
+					// Rest of the code that uses currentMainPostChild, nextMainPostChild,
+					// Main Content
+					currentMainPostChild.classList.remove(mainActive);
+					currentMainPostChild.classList.add(mainNotActive);
+					nextMainPostChild.classList.remove(mainNotActive);
+					nextMainPostChild.classList.add(mainActive);
 
-				// Post Content
-				currentPostChild.classList.remove(postActive);
-				currentPostChild.classList.add(postNotActive);
-				nextPostChild.classList.remove(postNotActive);
-				nextPostChild.classList.add(postActive);
-				currentIndex = nextMainPostIndex;
+					// Post Content
+					currentPostChild.classList.remove(postActive);
+					currentPostChild.classList.add(postNotActive);
+					nextPostChild.classList.remove(postNotActive);
+					nextPostChild.classList.add(postActive);
+					currentIndex = nextMainPostIndex;
+				}
 			}
 		}, 7000);
 
 		return () => clearInterval(intervalId);
-	}, []);
+	}, [mainActive, mainNotActive, postActive, postNotActive]);
 
 	return (
 		<ContentSliderStyling className="w-full h-full">

@@ -14,13 +14,13 @@ import MetaTag from "../components/Meta/MetaTag";
 import HowItWorks from "../components/HowItWorks";
 import LegosSpinner from "../components/LegosSpinner";
 import TrustedBrands from "../components/TrustedBrands";
+import TestComponent from "../components/TestComponent";
+import ContentSlider from "../components/ContentSlider";
 import FeaturesBanner from "../components/FeaturesBanner";
 import ThreeLinksGrid from "../components/ThreeLinksGrid";
 
 // Styling
 import styles from "../styles/Home.module.scss";
-import ContentSlider from "../components/ContentSlider";
-import TestComponent from "../components/TestComponent";
 
 export default function HomePage({seo, homePageContent}: any) {
 	return (

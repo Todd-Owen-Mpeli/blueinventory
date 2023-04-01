@@ -35,7 +35,7 @@ const generateEmailContent = (data: any): generateEmailContent => {
 	returns as a html rendered string */
 	const htmlData: string = Object.entries(data).reduce(
 		(str, [key, val]) =>
-			(str += `<h class="form-heading" align="left">${CONTACT_MESSAGE_FIELDS[key]}</h> <p class="form-answer" align="left">${val}</p>`),
+			(str += `<h1 class="form-heading" align="left">${CONTACT_MESSAGE_FIELDS[key]}</h1> <p class="form-answer" align="left">${val}</p>`),
 		""
 	);
 	return {
