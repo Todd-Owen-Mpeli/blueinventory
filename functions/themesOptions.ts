@@ -6,7 +6,7 @@ export async function getThemesOptionsContent() {
 	try {
 		const content: DocumentNode = gql`
 			{
-				themeOptions(where: {id: 537, status: PUBLISH}) {
+				themeOptions(where: {id: 539, status: PUBLISH}) {
 					edges {
 						node {
 							themeOptions {

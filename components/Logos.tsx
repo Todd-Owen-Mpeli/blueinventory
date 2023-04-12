@@ -37,7 +37,7 @@ const Logos: FC<IProps> = ({title, logoGrid}) => {
 					content={`<p>We use cookies to personalize content, to provide social media
 						features and to analyze our traffic. We also share information about
 						your use of our site with our partners.</p>`}
-					tailwindStyling="mt-3 mb-6 text-medium text-left"
+					tailwindStyling="mt-3 mb-6 text-base text-left"
 				/>
 				<div className="max-w-6xl mx-auto">
 					<motion.div

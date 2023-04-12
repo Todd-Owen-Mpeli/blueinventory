@@ -1,11 +1,18 @@
 import {gql} from "@apollo/client";
 import {client} from "../config/apollo";
+import {getThemesOptionsContent} from "../functions/themesOptions";
 
 // Components
 import Logos from "../components/Logos";
 import MetaTag from "../components/Meta/MetaTag";
+import Footer from "../components/Footer";
 
-export default function HomePage({seo, content}: any) {
+export default function HomePage({
+	seo,
+	content,
+	footerMenuLinks,
+	themesOptionsContent,
+}: any) {
 	return (
 		<>
 			{/* <!--===== META TAG =====--> */}
@@ -15,6 +22,16 @@ export default function HomePage({seo, content}: any) {
 				<Logos
 					title={content?.trustedBrands?.title}
 					logoGrid={content?.trustedBrands?.logos}
+				/>
+				<Footer
+					email={themesOptionsContent?.email}
+					phoneNumber={themesOptionsContent?.phoneNumber}
+					twitterLink={themesOptionsContent?.twitterLink}
+					facebookLink={themesOptionsContent?.facebookLink}
+					linkedinLink={themesOptionsContent?.linkedinLink}
+					footerMenuLinks={footerMenuLinks?.footerMenuLinks}
+					copyRightText={themesOptionsContent?.copyrightText}
+					phoneNumberTwo={themesOptionsContent?.phoneNumberTwo}
 				/>
 			</main>
 		</>
@@ -97,8 +114,11 @@ export async function getStaticProps() {
 		query: getHomePageContent,
 	});
 
+	const themesOptionsContent: object = await getThemesOptionsContent();
+
 	return {
 		props: {
+			themesOptionsContent,
 			seo: response?.data?.mainContent?.edges[0]?.node?.seo,
 			content: response.data?.mainContent?.edges[0]?.node?.homePage,
 		},

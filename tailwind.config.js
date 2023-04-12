@@ -26,7 +26,6 @@ module.exports = {
 		colors: {
 			// Base colors Variables
 			black: "#111",
-			blue: "#2563eb",
 			grey: "#686868",
 			white: "#ffffff",
 			pureBlack: "#000",
@@ -34,10 +33,13 @@ module.exports = {
 			lightGrey: "#f7f7f7",
 
 			// Main colors
+			blue: "#2563eb",
 			blueTwo: "#3978ff",
 			darkBlue: "#09275e",
-			darkerBlue: "#0d172a",
 			lightBlue: "#3d77f3",
+			babyBlue: "#5ac3ff",
+			darkerBlue: "#0d172a",
+			darkerBlueTwo: "#061229",
 			goldPrime: "#e8b042",
 			goldPrimeDark: "#d1a855",
 			goldPrimeDarker: "#b68b36",
