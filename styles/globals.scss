@@ -11,6 +11,7 @@ html,
 body {
 	padding: 0;
 	margin: 0;
+	background-color: $blue;
 	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
 		Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
@@ -31,7 +32,7 @@ body::-webkit-scrollbar-thumb {
 
 	&:hover {
 		transition: all 0.5s;
-		background-color: $limeGreen;
+		background-color: $lightBlue;
 	}
 }
 
@@ -45,27 +46,55 @@ a {
 	font-family: $fontStyle_main;
 }
 
-p,
-a,
+svg:hover {
+	fill: $blue !important;
+}
+
 h1,
 h2,
 h3,
 h4,
 h5,
 h6,
+button {
+	font-family: $fontStyle_main;
+	@apply tracking-widest;
+
+	span {
+		font-family: $fontStyle_main;
+	}
+}
+
+a,
+p,
 ul,
 li,
 span,
 input,
+strong,
 label,
-button {
-	font-family: $fontStyle_main;
+textarea {
+	font-family: $fontStyle_body;
+}
+
+ol,
+ul {
+	li {
+		padding: 0px 10px;
+		position: relative;
+		list-style-type: decimal;
+
+		strong {
+			font-family: $fontStyle_main;
+			@apply text-darkBlue font-bold tracking-wider uppercase text-medium py-4;
+		}
+	}
 }
 
 li,
 p {
 	a {
-		@apply text-blue transition-all ease-in-out duration-[0.5s] hover:text-limeGreen focus:text-limeGreen;
+		@apply text-blue transition-all ease-in-out duration-[0.5s] hover:text-goldPrime focus:text-goldPrime;
 	}
 }
 

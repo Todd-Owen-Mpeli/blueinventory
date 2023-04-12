@@ -1,9 +1,9 @@
-/*===== GOOGLE FONTS =====*/
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Heebo:wght@500&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Lexend+Deca&family=Open+Sans&family=Sarabun:wght@200&display=swap");
+/*===== FONTS =====*/
+@font-face {
+	font-family: GratelosDisplay;
+	src: url("./fonts/Gratelosdisplay-VariableFont_wght.ttf");
+}
 
-/*===== GOOGLE FONTS =====*/
 @font-face {
 	font-family: Rubik;
 	src: url("./fonts/Rubik-VariableFont_wght.ttf");
@@ -15,7 +15,7 @@
 }
 
 // Font Stack Properties
-$fontStyle_main: "Lexend Deca", sans-serif;
+$fontStyle_main: "GratelosDisplay", sans-serif;
 $fontStyle_body: "Rubik", sans-serif;
 
 // Font Sizes

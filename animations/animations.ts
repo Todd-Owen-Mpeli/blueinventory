@@ -13,6 +13,7 @@ interface FadeInUp {
 		};
 	};
 }
+
 interface FadeIn {
 	initial: {
 		opacity: number;
@@ -26,6 +27,7 @@ interface FadeIn {
 		};
 	};
 }
+
 interface Stagger {
 	animate: {
 		transition: {
@@ -33,6 +35,7 @@ interface Stagger {
 		};
 	};
 }
+
 interface FadeInTwo {
 	initial: {
 		opacity: number;
@@ -58,6 +61,7 @@ export const fadeInUp: FadeInUp | any = {
 		transition: {duration: 0.5, ease: "easeOut"},
 	},
 };
+
 export const fadeIn: FadeIn | any = {
 	initial: {
 		opacity: 0,
@@ -71,6 +75,7 @@ export const fadeIn: FadeIn | any = {
 		},
 	},
 };
+
 export const stagger: Stagger | any = {
 	animate: {
 		transition: {
@@ -78,6 +83,7 @@ export const stagger: Stagger | any = {
 		},
 	},
 };
+
 export const fadeInTwo: FadeInTwo | any = {
 	initial: {
 		opacity: 0,
@@ -91,4 +97,5 @@ export const fadeInTwo: FadeInTwo | any = {
 		},
 	},
 };
+
 export default fadeInUp;
