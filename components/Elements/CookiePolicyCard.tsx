@@ -29,7 +29,7 @@ const CookiePolicyCard = () => {
 				variants={stagger}
 				className="px-6 pt-4 pb-6 mb-8 text-white rounded bg-blueTwo"
 			>
-				<motion.h3 variants={fadeInUp} className="font-bold font-heading">
+				<motion.h3 variants={fadeInUp} className="text-xl uppercase">
 					Cookie Policy
 				</motion.h3>
 				<Paragraph
@@ -45,14 +45,14 @@ const CookiePolicyCard = () => {
 					<motion.button
 						onClick={acceptCookies}
 						variants={fadeInUp}
-						className="inline-block px-6 py-3 mr-2 text-xs leading-none rounded bg-blue hover:bg-goldPrime"
+						className="inline-block px-6 py-3 mr-2 text-base leading-none normal-case rounded bg-blue hover:bg-goldPrime"
 					>
 						Accept Cookies
 					</motion.button>
 					<motion.button
 						onClick={refuseCookies}
 						variants={fadeInUp}
-						className="inline-block px-6 py-3 text-xs leading-none text-white rounded bg-darkBlue hover:bg-darkerBlue"
+						className="inline-block px-6 py-3 text-base leading-none text-white normal-case rounded bg-darkBlue hover:bg-darkerBlue"
 					>
 						Refuse Cookies
 					</motion.button>

@@ -35,8 +35,8 @@ module.exports = {
 
 			// Main colors
 			blueTwo: "#3978ff",
-			darkBlue: "#0d172a",
-			darkerBlue: "#061229",
+			darkBlue: "#09275e",
+			darkerBlue: "#0d172a",
 			lightBlue: "#3d77f3",
 			goldPrime: "#e8b042",
 			goldPrimeDark: "#d1a855",

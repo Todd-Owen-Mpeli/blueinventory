@@ -2,6 +2,7 @@ import {gql} from "@apollo/client";
 import {client} from "../config/apollo";
 
 // Components
+import Logos from "../components/Logos";
 import MetaTag from "../components/Meta/MetaTag";
 
 export default function HomePage({seo, content}: any) {
@@ -10,7 +11,12 @@ export default function HomePage({seo, content}: any) {
 			{/* <!--===== META TAG =====--> */}
 			<MetaTag title={`BlueInventory `} seo={seo} />
 
-			<main></main>
+			<main>
+				<Logos
+					title={content?.trustedBrands?.title}
+					logoGrid={content?.trustedBrands?.logos}
+				/>
+			</main>
 		</>
 	);
 }
@@ -66,6 +72,21 @@ export async function getStaticProps() {
 								mediaItemUrl
 							}
 						}
+						homePage {
+							trustedBrands {
+								title
+								logos {
+									image {
+										altText
+										sourceUrl
+										mediaDetails {
+											height
+											width
+										}
+									}
+								}
+							}
+						}
 					}
 				}
 			}
@@ -79,7 +100,7 @@ export async function getStaticProps() {
 	return {
 		props: {
 			seo: response?.data?.mainContent?.edges[0]?.node?.seo,
-			// content: response.data?.mainContent?.edges[0]?.node?.homePage,
+			content: response.data?.mainContent?.edges[0]?.node?.homePage,
 		},
 		revalidate: 60,
 	};
