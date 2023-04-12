@@ -1,22 +1,18 @@
 /*===== FONTS =====*/
+
 @font-face {
-	font-family: GratelosDisplay;
-	src: url("./fonts/Gratelosdisplay-VariableFont_wght.ttf");
+	font-family: EvolventaRegular;
+	src: url("./fonts/Evolventa-Regular-VariableFont_wght.ttf");
 }
 
 @font-face {
-	font-family: Rubik;
-	src: url("./fonts/Rubik-VariableFont_wght.ttf");
-}
-
-@font-face {
-	font-family: Lexend Deca;
-	src: url("./fonts/LexendDeca-VariableFont_wght.ttf");
+	font-family: EvolventaBold;
+	src: url("./fonts/Evolventa-Bold-VariableFont_wght.ttf");
 }
 
 // Font Stack Properties
-$fontStyle_main: "GratelosDisplay", sans-serif;
-$fontStyle_body: "Rubik", sans-serif;
+$fontStyle_main: "EvolventaBold", sans-serif;
+$fontStyle_body: "EvolventaRegular", sans-serif;
 
 // Font Sizes
 $fontSize_xSmall: 0.75rem;

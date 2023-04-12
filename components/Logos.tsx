@@ -4,6 +4,7 @@ import {fadeIn, stagger} from "../animations/animations";
 
 // Components
 import LogoCard from "../components/Cards/LogoCard";
+import Paragraph from "./Elements/Paragraph";
 
 interface IProps {
 	title: string;
@@ -28,10 +29,16 @@ const Logos: FC<IProps> = ({title, logoGrid}) => {
 			<div className="container px-0 mx-auto">
 				<motion.h2
 					variants={fadeIn}
-					className=" mb-20 text-black text-center tracking-wide leading-[2.75rem] font-semibold text-3xl md:text-4xl"
+					className=" mb-20 text-black text-center tracking-wider leading-[2.75rem] font-[900] text-3xl md:text-5xl"
 				>
 					{title}
 				</motion.h2>
+				<Paragraph
+					content={`<p>We use cookies to personalize content, to provide social media
+						features and to analyze our traffic. We also share information about
+						your use of our site with our partners.</p>`}
+					tailwindStyling="mt-3 mb-6 text-medium text-left"
+				/>
 				<div className="max-w-6xl mx-auto">
 					<motion.div
 						variants={stagger}

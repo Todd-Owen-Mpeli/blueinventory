@@ -55,10 +55,8 @@ h2,
 h3,
 h4,
 h5,
-h6,
-button {
+h6 {
 	font-family: $fontStyle_main;
-	@apply tracking-widest;
 
 	span {
 		font-family: $fontStyle_main;
@@ -73,7 +71,9 @@ span,
 input,
 strong,
 label,
+button,
 textarea {
+	@apply tracking-wide;
 	font-family: $fontStyle_body;
 }
 
