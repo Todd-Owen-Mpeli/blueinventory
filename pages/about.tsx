@@ -12,7 +12,7 @@ import {
 import Footer from "../components/Footer";
 import MetaTag from "../components/Meta/MetaTag";
 
-const features = ({
+const about = ({
 	seo,
 	content,
 	pageTitle,
@@ -41,19 +41,19 @@ const features = ({
 	);
 };
 
-export default features;
+export default about;
 
 export async function getStaticProps() {
-	const geFeaturesPageContent: any = gql`
+	const geAboutPageContent: any = gql`
 		{
-			title: pages(where: {id: 121}) {
+			title: pages(where: {id: 721}) {
 				edges {
 					node {
 						title
 					}
 				}
 			}
-			mainContent: pages(where: {id: 121, status: PUBLISH}) {
+			mainContent: pages(where: {id: 721, status: PUBLISH}) {
 				edges {
 					node {
 						seo {
@@ -92,7 +92,7 @@ export async function getStaticProps() {
 	`;
 
 	const response: any = await client.query({
-		query: geFeaturesPageContent,
+		query: geAboutPageContent,
 	});
 
 	const footerMenuLinks: object = await getFooterMenuLinks();
@@ -104,7 +104,7 @@ export async function getStaticProps() {
 			themesOptionsContent,
 			seo: response?.data?.mainContent?.edges[0]?.node?.seo,
 			pageTitle: response.data?.title?.edges[0]?.node?.title,
-			// content: response.data?.mainContent?.edges[0]?.node?.featuresPage,
+			// content: response.data?.mainContent?.edges[0]?.node?.aboutPage,
 		},
 		revalidate: 60,
 	};

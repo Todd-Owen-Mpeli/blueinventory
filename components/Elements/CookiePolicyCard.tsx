@@ -31,7 +31,7 @@ const CookiePolicyCard = () => {
 			>
 				<motion.h3
 					variants={fadeInUp}
-					className="text-lg tracking-wider uppercase"
+					className="tracking-normal uppercase text-medium"
 				>
 					Cookie Policy
 				</motion.h3>
@@ -39,7 +39,7 @@ const CookiePolicyCard = () => {
 					content={`<p>We use cookies to personalize content, to provide social media
 						features and to analyze our traffic. We also share information about
 						your use of our site with our partners.</p>`}
-					tailwindStyling="mt-3 mb-6 text-sm text-left"
+					tailwindStyling="mt-3 mb-6 text-xs text-left"
 				/>
 				<motion.div
 					variants={stagger}
@@ -48,14 +48,14 @@ const CookiePolicyCard = () => {
 					<motion.button
 						onClick={acceptCookies}
 						variants={fadeInUp}
-						className="inline-block px-6 py-3 mr-2 text-sm leading-none rounded bg-blue hover:bg-goldPrime"
+						className="px-6 py-3 text-xs leading-none rounded bg-blue hover:bg-goldPrime"
 					>
 						Accept Cookies
 					</motion.button>
 					<motion.button
 						onClick={refuseCookies}
 						variants={fadeInUp}
-						className="inline-block px-6 py-3 text-sm leading-none text-white rounded bg-darkBlue hover:bg-darkerBlue"
+						className="px-6 py-3 text-xs leading-none text-white rounded bg-darkBlue hover:bg-darkerBlue"
 					>
 						Refuse Cookies
 					</motion.button>

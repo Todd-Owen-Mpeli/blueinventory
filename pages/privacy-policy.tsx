@@ -11,8 +11,9 @@ import {
 // Components
 import Footer from "../components/Footer";
 import MetaTag from "../components/Meta/MetaTag";
+import TitleParagraph from "../components/TitleParagraph";
 
-const features = ({
+const privacyPolicy = ({
 	seo,
 	content,
 	pageTitle,
@@ -25,6 +26,11 @@ const features = ({
 			<MetaTag title={pageTitle} seo={seo} />
 
 			<main>
+				<TitleParagraph
+					title={content?.titleParagraph?.title}
+					paragraph={content?.titleParagraph?.paragraph}
+				/>
+
 				<Footer
 					email={themesOptionsContent?.email}
 					emailTwo={themesOptionsContent?.emailTwo}
@@ -41,19 +47,19 @@ const features = ({
 	);
 };
 
-export default features;
+export default privacyPolicy;
 
 export async function getStaticProps() {
-	const geFeaturesPageContent: any = gql`
+	const gePrivacyPolicyPageContent: any = gql`
 		{
-			title: pages(where: {id: 121}) {
+			title: pages(where: {id: 547}) {
 				edges {
 					node {
 						title
 					}
 				}
 			}
-			mainContent: pages(where: {id: 121, status: PUBLISH}) {
+			mainContent: pages(where: {id: 547, status: PUBLISH}) {
 				edges {
 					node {
 						seo {
@@ -85,6 +91,12 @@ export async function getStaticProps() {
 								mediaItemUrl
 							}
 						}
+						privacyPolicyPage {
+							titleParagraph {
+								title
+								paragraph
+							}
+						}
 					}
 				}
 			}
@@ -92,7 +104,7 @@ export async function getStaticProps() {
 	`;
 
 	const response: any = await client.query({
-		query: geFeaturesPageContent,
+		query: gePrivacyPolicyPageContent,
 	});
 
 	const footerMenuLinks: object = await getFooterMenuLinks();
@@ -104,7 +116,7 @@ export async function getStaticProps() {
 			themesOptionsContent,
 			seo: response?.data?.mainContent?.edges[0]?.node?.seo,
 			pageTitle: response.data?.title?.edges[0]?.node?.title,
-			// content: response.data?.mainContent?.edges[0]?.node?.featuresPage,
+			content: response.data?.mainContent?.edges[0]?.node?.privacyPolicyPage,
 		},
 		revalidate: 60,
 	};

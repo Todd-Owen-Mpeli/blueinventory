@@ -47,7 +47,7 @@ a {
 }
 
 svg:hover {
-	fill: $blue !important;
+	fill: $goldPrime !important;
 }
 
 h1,
@@ -73,16 +73,16 @@ strong,
 label,
 button,
 textarea {
-	@apply tracking-wide;
+	@apply tracking-wide font-[500];
 	font-family: $fontStyle_body;
 }
 
 ol,
 ul {
 	li {
-		padding: 0px 10px;
-		position: relative;
-		list-style-type: decimal;
+		// padding: 0px 10px;
+		// position: relative;
+		// list-style-type: decimal;
 
 		strong {
 			font-family: $fontStyle_main;

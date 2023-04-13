@@ -64,7 +64,7 @@ const ErrorPage: FC<IProps> = ({
 										strokeLinejoin="round"
 									></path>
 								</svg>
-								<span className="text-medium tracking-wider text-white font-[900]">
+								<span className="text-base tracking-wider text-white font-[500]">
 									{buttonLink?.title}
 								</span>
 							</Link>

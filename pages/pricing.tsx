@@ -1,36 +1,59 @@
+// Import
 import {gql} from "@apollo/client";
-import {client} from "../lib/apollo";
+import {client} from "../config/apollo";
+import {getThemesOptionsContent} from "../functions/themesOptions";
+import {
+	getMainMenuLinks,
+	getNavbarMenuLinks,
+	getFooterMenuLinks,
+} from "../functions/MenuLinks";
 
 // Components
+import Footer from "../components/Footer";
 import MetaTag from "../components/Meta/MetaTag";
 
-// Styling
-import styles from "../styles/Home.module.scss";
-
-const pricingPage = ({seo, pricingPageContent, pageTitle}: any) => {
+const pricing = ({
+	seo,
+	content,
+	pageTitle,
+	footerMenuLinks,
+	themesOptionsContent,
+}: any) => {
 	return (
 		<>
 			{/* <!--===== META TAG =====--> */}
 			<MetaTag title={pageTitle} seo={seo} />
 
-			<main></main>
+			<main>
+				<Footer
+					email={themesOptionsContent?.email}
+					emailTwo={themesOptionsContent?.emailTwo}
+					phoneNumber={themesOptionsContent?.phoneNumber}
+					twitterLink={themesOptionsContent?.twitterLink}
+					facebookLink={themesOptionsContent?.facebookLink}
+					linkedinLink={themesOptionsContent?.linkedinLink}
+					footerMenuLinks={footerMenuLinks?.footerMenuLinks}
+					copyRightText={themesOptionsContent?.copyrightText}
+					phoneNumberTwo={themesOptionsContent?.phoneNumberTwo}
+				/>
+			</main>
 		</>
 	);
 };
 
-export default pricingPage;
+export default pricing;
 
 export async function getStaticProps() {
-	const getPricingPageContent: any = gql`
+	const gePricingPageContent: any = gql`
 		{
-			title: pages(where: {id: 251}) {
+			title: pages(where: {id: 543}) {
 				edges {
 					node {
 						title
 					}
 				}
 			}
-			mainContent: pages(where: {id: 251}) {
+			mainContent: pages(where: {id: 543, status: PUBLISH}) {
 				edges {
 					node {
 						seo {
@@ -69,14 +92,19 @@ export async function getStaticProps() {
 	`;
 
 	const response: any = await client.query({
-		query: getPricingPageContent,
+		query: gePricingPageContent,
 	});
+
+	const footerMenuLinks: object = await getFooterMenuLinks();
+	const themesOptionsContent: object = await getThemesOptionsContent();
 
 	return {
 		props: {
+			footerMenuLinks,
+			themesOptionsContent,
 			seo: response?.data?.mainContent?.edges[0]?.node?.seo,
 			pageTitle: response.data?.title?.edges[0]?.node?.title,
-			content: response.data?.mainContent?.edges[0]?.node?.pricingPage,
+			// content: response.data?.mainContent?.edges[0]?.node?.pricingPage,
 		},
 		revalidate: 60,
 	};

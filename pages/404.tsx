@@ -1,7 +1,9 @@
+// Import
 import Head from "next/head";
 import ErrorPage from "../components/Elements/ErrorPage";
 import {getFooterMenuLinks} from "../functions/MenuLinks";
 import {getThemesOptionsContent} from "../functions/themesOptions";
+import Footer from "../components/Footer";
 
 const noPageExits = ({footerMenuLinks, themesOptionsContent}: any) => {
 	return (
