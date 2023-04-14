@@ -1,13 +1,15 @@
+// Import
 import {FC} from "react";
 import {motion} from "framer-motion";
 import {fadeIn, stagger} from "../animations/animations";
 
 // Components
-import LogoCard from "../components/Cards/LogoCard";
 import Paragraph from "./Elements/Paragraph";
+import LogoCard from "../components/Cards/LogoCard";
 
 interface IProps {
 	title: string;
+	paragraph: string;
 	logoGrid: [
 		{
 			id: string;
@@ -23,16 +25,20 @@ interface IProps {
 	];
 }
 
-const Logos: FC<IProps> = ({title, logoGrid}) => {
+const logos: FC<IProps> = ({title, paragraph, logoGrid}) => {
 	return (
-		<section className="px-4 py-20 bg-white lg:px-0">
+		<section className="px-4 py-10 bg-white lg:px-0">
 			<div className="container px-0 mx-auto">
 				<motion.h2
 					variants={fadeIn}
-					className=" mb-20 text-black text-center tracking-wider leading-[2.75rem] text-3xl md:text-4xl"
+					className=" mb-10 text-black text-center tracking-wider leading-[2.75rem] text-3xl md:text-4xl"
 				>
 					{title}
 				</motion.h2>
+				<Paragraph
+					content={paragraph}
+					tailwindStyling="my-5 w-full lg:max-w-3xl mx-auto text-left"
+				/>
 				<div className="max-w-6xl mx-auto">
 					<motion.div
 						variants={stagger}
@@ -51,4 +57,4 @@ const Logos: FC<IProps> = ({title, logoGrid}) => {
 	);
 };
 
-export default Logos;
+export default logos;

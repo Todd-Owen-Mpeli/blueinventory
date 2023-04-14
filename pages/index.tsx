@@ -36,6 +36,7 @@ export default function HomePage({
 				<Logos
 					title={content?.trustedBrands?.title}
 					logoGrid={content?.trustedBrands?.logos}
+					paragraph={content?.trustedBrands?.paragraph}
 				/>
 
 				<Footer
@@ -108,6 +109,7 @@ export async function getStaticProps() {
 						homePage {
 							trustedBrands {
 								title
+								paragraph
 								logos {
 									image {
 										altText

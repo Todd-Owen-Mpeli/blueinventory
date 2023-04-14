@@ -1,11 +1,11 @@
 // Import
 import Head from "next/head";
-import ErrorPage from "../components/Elements/ErrorPage";
-import {getFooterMenuLinks} from "../functions/MenuLinks";
 import {getThemesOptionsContent} from "../functions/themesOptions";
-import Footer from "../components/Footer";
 
-const noPageExits = ({footerMenuLinks, themesOptionsContent}: any) => {
+// Components
+import ErrorPage from "../components/Elements/ErrorPage";
+
+const noPageExits = ({themesOptionsContent}: any) => {
 	return (
 		<>
 			<Head>
@@ -31,12 +31,10 @@ const noPageExits = ({footerMenuLinks, themesOptionsContent}: any) => {
 export default noPageExits;
 
 export async function getStaticProps() {
-	const footerMenuLinks: object = await getFooterMenuLinks();
 	const themesOptionsContent: object = await getThemesOptionsContent();
 
 	return {
 		props: {
-			footerMenuLinks,
 			themesOptionsContent,
 		},
 		revalidate: 60,

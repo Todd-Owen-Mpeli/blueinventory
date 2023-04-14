@@ -1,6 +1,9 @@
+// Import
 import {FC} from "react";
 import Link from "next/link";
 import Image from "next/image";
+
+// Components
 import FooterMenuLinks from "./Elements/FooterMenuLinks";
 
 interface FooterProps {
@@ -52,21 +55,21 @@ const Footer: FC<FooterProps> = ({
 						</Link>
 					</div>
 					<div className="w-full p-6 md:w-1/2">
-						<ul className="flex flex-wrap -m-5">
+						<div className="flex flex-wrap -m-5">
 							{footerMenuLinks?.map((keys) => (
 								<li key={keys?.node?.id} className="p-5">
 									<FooterMenuLinks
 										url={keys?.node?.url}
 										label={keys?.node?.label}
-										tailwindStyling="text-base text-white font-heading hover:text-goldPrime"
+										tailwindStyling="text-white font-heading hover:text-goldPrime"
 									/>
 								</li>
 							))}
-						</ul>
+						</div>
 					</div>
 					<div className="flex flex-col items-end justify-between w-auto gap-6 p-6 md:ml-auto">
-						<div className="flex flex-wrap items-center -m-1.5">
-							<div className="flex items-center justify-center w-10 h-10 mb-3 rounded-full bg-goldPrime sm:mb-0 sm:mr-3">
+						<div className="flex flex-row items-center justify-center -m-1.5">
+							<div className="flex items-center justify-center w-10 h-10 rounded-full bg-goldPrime sm:mr-3">
 								<svg
 									width="20"
 									height="20"
@@ -84,7 +87,7 @@ const Footer: FC<FooterProps> = ({
 								</svg>
 							</div>
 							<div className="w-auto p-1.5">
-								<h3 className="text-base font-medium tracking-wide text-white font-heading hover:text-goldPrime">
+								<h3 className="font-medium tracking-wide text-white font-heading hover:text-goldPrime">
 									<Link href={`mailto:${email}`}>{email}</Link>
 								</h3>
 							</div>

@@ -32,6 +32,7 @@ export async function getMainMenuLinks() {
 		);
 	}
 }
+
 // Navbar Menu Links
 export async function getNavbarMenuLinks() {
 	try {

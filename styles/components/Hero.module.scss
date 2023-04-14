@@ -1,0 +1,18 @@
+// Imports
+@import "../fonts";
+@import "../colors";
+
+.hero {
+	@apply bg-blue bg-gradient-to-t from-darkBlue;
+
+	nav {
+		ul {
+			li {
+				a {
+					font-family: $fontStyle_body;
+					@apply uppercase tracking-wide font-bold;
+				}
+			}
+		}
+	}
+}

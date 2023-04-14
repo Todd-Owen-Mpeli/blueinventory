@@ -1,5 +1,8 @@
+// Import
 import {FC} from "react";
 import postHog from "posthog-js";
+
+// Components
 import CookiePolicyCard from "../Elements/CookiePolicyCard";
 
 interface ILayout {

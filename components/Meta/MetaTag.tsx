@@ -1,3 +1,4 @@
+// Import
 import Head from "next/head";
 import {FunctionComponent} from "react";
 

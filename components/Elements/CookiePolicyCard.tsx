@@ -1,8 +1,11 @@
+// Import
 import {useState} from "react";
 import postHog from "posthog-js";
 import {motion} from "framer-motion";
-import Paragraph from "./Paragraph";
 import {fadeInUp, stagger} from "../../animations/animations";
+
+// Components
+import Paragraph from "./Paragraph";
 
 const CookiePolicyCard = () => {
 	const [showCookiePolicyCard, setShowCookiePolicyCard] = useState(true);
@@ -48,14 +51,14 @@ const CookiePolicyCard = () => {
 					<motion.button
 						onClick={acceptCookies}
 						variants={fadeInUp}
-						className="px-6 py-3 text-xs leading-none rounded bg-blue hover:bg-goldPrime"
+						className="px-6 py-3 text-xs leading-none tracking-wider rounded bg-blue hover:bg-goldPrime"
 					>
 						Accept Cookies
 					</motion.button>
 					<motion.button
 						onClick={refuseCookies}
 						variants={fadeInUp}
-						className="px-6 py-3 text-xs leading-none text-white rounded bg-darkBlue hover:bg-darkerBlue"
+						className="px-6 py-3 text-xs leading-none tracking-wider text-white rounded bg-darkBlue hover:bg-darkerBlue"
 					>
 						Refuse Cookies
 					</motion.button>

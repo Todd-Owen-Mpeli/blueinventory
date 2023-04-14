@@ -55,7 +55,8 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+button {
 	font-family: $fontStyle_main;
 
 	span {
@@ -71,19 +72,32 @@ span,
 input,
 strong,
 label,
-button,
 textarea {
 	@apply tracking-wide font-[500];
+
 	font-family: $fontStyle_body;
+}
+
+p {
+	strong {
+		font-family: $fontStyle_main;
+		@apply tracking-tight font-[900];
+	}
+}
+
+h3 {
+	strong {
+		font-family: $fontStyle_main;
+		@apply text-darkBlue tracking-tight text-lg font-[900];
+	}
 }
 
 ol,
 ul {
 	li {
-		// padding: 0px 10px;
-		// position: relative;
-		// list-style-type: decimal;
-
+		padding: 0px 10px;
+		position: relative;
+		list-style-type: decimal;
 		strong {
 			font-family: $fontStyle_main;
 			@apply text-darkBlue font-bold tracking-wider uppercase text-medium py-4;
@@ -93,8 +107,12 @@ ul {
 
 li,
 p {
+	padding: 0px 10px;
+	position: relative;
+	list-style-type: none;
+
 	a {
-		@apply text-blue transition-all ease-in-out duration-[0.5s] hover:text-goldPrime focus:text-goldPrime;
+		@apply text-darkBlue transition-all ease-in-out duration-[0.5s] hover:text-goldPrime focus:text-goldPrime;
 	}
 }
 

@@ -2,6 +2,7 @@
 import {gql} from "@apollo/client";
 import {client} from "../config/apollo";
 import {getThemesOptionsContent} from "../functions/themesOptions";
+import {getAllOperationalInsightsContent} from "../functions/OperationalInsightsPostsSlugs";
 import {
 	getMainMenuLinks,
 	getNavbarMenuLinks,
@@ -11,10 +12,12 @@ import {
 // Components
 import Footer from "../components/Footer";
 import MetaTag from "../components/Meta/MetaTag";
+import OperationalInsights from "../components/OperationalInsights";
 
 const operationalInsights = ({
 	seo,
 	content,
+	operationalInsights,
 	pageTitle,
 	footerMenuLinks,
 	themesOptionsContent,
@@ -25,6 +28,9 @@ const operationalInsights = ({
 			<MetaTag title={pageTitle} seo={seo} />
 
 			<main>
+				{/* Renders all operational insights blog posts */}
+				<OperationalInsights operationalInsights={operationalInsights} />
+
 				<Footer
 					email={themesOptionsContent?.email}
 					emailTwo={themesOptionsContent?.emailTwo}
@@ -97,14 +103,16 @@ export async function getStaticProps() {
 
 	const footerMenuLinks: object = await getFooterMenuLinks();
 	const themesOptionsContent: object = await getThemesOptionsContent();
+	const operationalInsights: object = await getAllOperationalInsightsContent();
 
 	return {
 		props: {
 			footerMenuLinks,
+			operationalInsights,
 			themesOptionsContent,
 			seo: response?.data?.mainContent?.edges[0]?.node?.seo,
-			pageTitle: response.data?.title?.edges[0]?.node?.title,
-			// content: response.data?.mainContent?.edges[0]?.node?.operationalInsightsPage,
+			pageTitle: response?.data?.title?.edges[0]?.node?.title,
+			// content: response?.data?.mainContent?.edges[0]?.node?.operationalInsightsPage,
 		},
 		revalidate: 60,
 	};

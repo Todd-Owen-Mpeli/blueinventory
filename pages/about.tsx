@@ -103,8 +103,8 @@ export async function getStaticProps() {
 			footerMenuLinks,
 			themesOptionsContent,
 			seo: response?.data?.mainContent?.edges[0]?.node?.seo,
-			pageTitle: response.data?.title?.edges[0]?.node?.title,
-			// content: response.data?.mainContent?.edges[0]?.node?.aboutPage,
+			pageTitle: response?.data?.title?.edges[0]?.node?.title,
+			// content: response?.data?.mainContent?.edges[0]?.node?.aboutPage,
 		},
 		revalidate: 60,
 	};

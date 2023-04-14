@@ -1,3 +1,4 @@
+// Import
 import {FC} from "react";
 import Image from "next/image";
 import {motion} from "framer-motion";
@@ -14,7 +15,7 @@ interface IProps {
 	};
 }
 
-const LogoCard: FC<IProps> = ({image}) => {
+const logoCard: FC<IProps> = ({image}) => {
 	return (
 		<motion.div variants={fadeIn} className="mx-auto">
 			<Image
@@ -24,7 +25,7 @@ const LogoCard: FC<IProps> = ({image}) => {
 				height={image?.mediaDetails?.height}
 				className={
 					image?.sourceUrl
-						? `block w-[150px] h-full sm:w-[150px] lg:w-full lg:h-[125px] object-contain object-center`
+						? `block w-[150px] h-full sm:w-[150px] lg:w-full lg:h-[225px] object-contain object-center`
 						: `hidden`
 				}
 			/>
@@ -32,4 +33,4 @@ const LogoCard: FC<IProps> = ({image}) => {
 	);
 };
 
-export default LogoCard;
+export default logoCard;
