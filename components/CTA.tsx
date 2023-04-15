@@ -21,7 +21,7 @@ interface IProps {
 const CTA: FC<IProps> = ({title, paragraph, buttonLink, backgroundImage}) => {
 	return (
 		<section
-			className="px-4 py-20 bg-center bg-no-repeat bg-cover lg:px-0"
+			className="px-4 py-8 bg-center bg-no-repeat bg-cover lg:px-0"
 			style={{
 				backgroundImage: `linear-gradient(
 							0deg,
