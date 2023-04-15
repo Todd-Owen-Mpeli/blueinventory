@@ -15,7 +15,7 @@ import {getThemesOptionsContent} from "../../functions/themesOptions";
 import CTA from "../../components/CTA";
 import Footer from "../../components/Footer";
 import HeroThree from "../../components/HeroThree";
-import MetaTag from "../../components/Meta/MetaTag";
+import Layout from "../../components/Layout/Layout";
 import TitleParagraph from "../../components/TitleParagraph";
 
 const singlePost = ({
@@ -35,10 +35,12 @@ const singlePost = ({
 			initial="initial"
 			animate="animate"
 		>
-			{/* <!--===== META TAG =====--> */}
-			<MetaTag title={pageTitle} seo={seo} />
-
-			<main>
+			<Layout
+				seo={seo}
+				pageTitle={pageTitle}
+				themesOptionsContent={themesOptionsContent}
+				footerMenuLinks={footerMenuLinks?.footerMenuLinks}
+			>
 				<HeroThree
 					title={content?.heroSection?.title}
 					paragraph={content?.heroSection?.paragraph}
@@ -58,19 +60,7 @@ const singlePost = ({
 					buttonLink={content?.contactBanner?.buttonLink}
 					backgroundImage={content?.contactBanner?.backgroundImage?.sourceUrl}
 				/>
-
-				<Footer
-					email={themesOptionsContent?.email}
-					emailTwo={themesOptionsContent?.emailTwo}
-					phoneNumber={themesOptionsContent?.phoneNumber}
-					twitterLink={themesOptionsContent?.twitterLink}
-					facebookLink={themesOptionsContent?.facebookLink}
-					linkedinLink={themesOptionsContent?.linkedinLink}
-					footerMenuLinks={footerMenuLinks?.footerMenuLinks}
-					copyRightText={themesOptionsContent?.copyrightText}
-					phoneNumberTwo={themesOptionsContent?.phoneNumberTwo}
-				/>
-			</main>
+			</Layout>
 		</motion.div>
 	);
 };

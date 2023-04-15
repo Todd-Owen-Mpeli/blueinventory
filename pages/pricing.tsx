@@ -1,5 +1,6 @@
 // Import
 import {gql} from "@apollo/client";
+import {motion} from "framer-motion";
 import {client} from "../config/apollo";
 import {getThemesOptionsContent} from "../functions/themesOptions";
 import {
@@ -9,8 +10,7 @@ import {
 } from "../functions/MenuLinks";
 
 // Components
-import Footer from "../components/Footer";
-import MetaTag from "../components/Meta/MetaTag";
+import Layout from "../components/Layout/Layout";
 
 const pricing = ({
 	seo,
@@ -20,24 +20,22 @@ const pricing = ({
 	themesOptionsContent,
 }: any) => {
 	return (
-		<>
-			{/* <!--===== META TAG =====--> */}
-			<MetaTag title={pageTitle} seo={seo} />
-
-			<main>
-				<Footer
-					email={themesOptionsContent?.email}
-					emailTwo={themesOptionsContent?.emailTwo}
-					phoneNumber={themesOptionsContent?.phoneNumber}
-					twitterLink={themesOptionsContent?.twitterLink}
-					facebookLink={themesOptionsContent?.facebookLink}
-					linkedinLink={themesOptionsContent?.linkedinLink}
-					footerMenuLinks={footerMenuLinks?.footerMenuLinks}
-					copyRightText={themesOptionsContent?.copyrightText}
-					phoneNumberTwo={themesOptionsContent?.phoneNumberTwo}
-				/>
-			</main>
-		</>
+		<motion.div
+			exit={{
+				opacity: 0,
+			}}
+			initial="initial"
+			animate="animate"
+		>
+			<Layout
+				seo={seo}
+				pageTitle={pageTitle}
+				themesOptionsContent={themesOptionsContent}
+				footerMenuLinks={footerMenuLinks?.footerMenuLinks}
+			>
+				<h1>{pageTitle}</h1>
+			</Layout>
+		</motion.div>
 	);
 };
 

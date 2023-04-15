@@ -1,5 +1,6 @@
 // Import
 import {gql} from "@apollo/client";
+import {motion} from "framer-motion";
 import {client} from "../config/apollo";
 import {getThemesOptionsContent} from "../functions/themesOptions";
 import {
@@ -10,8 +11,7 @@ import {
 
 // Components
 import Logos from "../components/Logos";
-import MetaTag from "../components/Meta/MetaTag";
-import Footer from "../components/Footer";
+import Layout from "../components/Layout/Layout";
 import TitleParagraph from "../components/TitleParagraph";
 
 export default function HomePage({
@@ -21,11 +21,19 @@ export default function HomePage({
 	themesOptionsContent,
 }: any) {
 	return (
-		<>
-			{/* <!--===== META TAG =====--> */}
-			<MetaTag title={`BlueInventory `} seo={seo} />
-
-			<main>
+		<motion.div
+			exit={{
+				opacity: 0,
+			}}
+			initial="initial"
+			animate="animate"
+		>
+			<Layout
+				seo={seo}
+				pageTitle={`BlueInventory `}
+				themesOptionsContent={themesOptionsContent}
+				footerMenuLinks={footerMenuLinks?.footerMenuLinks}
+			>
 				<TitleParagraph
 					title={`How DBMX Racing Motocross Saves Thousands Of pounds`}
 					paragraph={`<p>Prior to 2016 in Philadelphia, beer was only available for purchase in independent beer stores, like Stone’s. There was hardly a need for clear in-store pricing, the beer would practically sell itself since stores like Stone’s were the only places in the neighborhood you could buy it.
@@ -38,38 +46,10 @@ export default function HomePage({
 					logoGrid={content?.trustedBrands?.logos}
 					paragraph={content?.trustedBrands?.paragraph}
 				/>
-
-				<Footer
-					email={themesOptionsContent?.email}
-					emailTwo={themesOptionsContent?.emailTwo}
-					phoneNumber={themesOptionsContent?.phoneNumber}
-					twitterLink={themesOptionsContent?.twitterLink}
-					facebookLink={themesOptionsContent?.facebookLink}
-					linkedinLink={themesOptionsContent?.linkedinLink}
-					footerMenuLinks={footerMenuLinks?.footerMenuLinks}
-					copyRightText={themesOptionsContent?.copyrightText}
-					phoneNumberTwo={themesOptionsContent?.phoneNumberTwo}
-				/>
-			</main>
-		</>
+			</Layout>
+		</motion.div>
 	);
 }
-
-// Removes Global Navbar & Adds Custom Header and Footer Page layout Function
-// HomePage.getLayout = function PageLayout(page) {
-// 	return (
-// 		<>
-// 			{/* <!--===== NAVBAR =====--> */}
-// 			<Navbar />
-
-// 			{/* <!--===== PAGE CONTENT =====--> */}
-// 			{page}
-
-// 			{/* <!--===== FOOTER =====--> */}
-// 			<Footer />
-// 		</>
-// 	);
-// };
 
 export async function getStaticProps() {
 	const getHomePageContent: any = gql`

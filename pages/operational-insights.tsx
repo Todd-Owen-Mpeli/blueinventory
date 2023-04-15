@@ -1,5 +1,6 @@
 // Import
 import {gql} from "@apollo/client";
+import {motion} from "framer-motion";
 import {client} from "../config/apollo";
 import {getThemesOptionsContent} from "../functions/themesOptions";
 import {getAllOperationalInsightsContent} from "../functions/OperationalInsightsPostsSlugs";
@@ -10,8 +11,7 @@ import {
 } from "../functions/MenuLinks";
 
 // Components
-import Footer from "../components/Footer";
-import MetaTag from "../components/Meta/MetaTag";
+import Layout from "../components/Layout/Layout";
 import OperationalInsights from "../components/OperationalInsights";
 
 const operationalInsights = ({
@@ -23,27 +23,23 @@ const operationalInsights = ({
 	themesOptionsContent,
 }: any) => {
 	return (
-		<>
-			{/* <!--===== META TAG =====--> */}
-			<MetaTag title={pageTitle} seo={seo} />
-
-			<main>
+		<motion.div
+			exit={{
+				opacity: 0,
+			}}
+			initial="initial"
+			animate="animate"
+		>
+			<Layout
+				seo={seo}
+				pageTitle={pageTitle}
+				themesOptionsContent={themesOptionsContent}
+				footerMenuLinks={footerMenuLinks?.footerMenuLinks}
+			>
 				{/* Renders all operational insights blog posts */}
 				<OperationalInsights operationalInsights={operationalInsights} />
-
-				<Footer
-					email={themesOptionsContent?.email}
-					emailTwo={themesOptionsContent?.emailTwo}
-					phoneNumber={themesOptionsContent?.phoneNumber}
-					twitterLink={themesOptionsContent?.twitterLink}
-					facebookLink={themesOptionsContent?.facebookLink}
-					linkedinLink={themesOptionsContent?.linkedinLink}
-					footerMenuLinks={footerMenuLinks?.footerMenuLinks}
-					copyRightText={themesOptionsContent?.copyrightText}
-					phoneNumberTwo={themesOptionsContent?.phoneNumberTwo}
-				/>
-			</main>
-		</>
+			</Layout>
+		</motion.div>
 	);
 };
 

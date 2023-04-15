@@ -1,5 +1,6 @@
 // Import
 import {gql} from "@apollo/client";
+import {motion} from "framer-motion";
 import {client} from "../config/apollo";
 import {getThemesOptionsContent} from "../functions/themesOptions";
 import {
@@ -9,8 +10,7 @@ import {
 } from "../functions/MenuLinks";
 
 // Components
-import Footer from "../components/Footer";
-import MetaTag from "../components/Meta/MetaTag";
+import Layout from "../components/Layout/Layout";
 import TitleParagraph from "../components/TitleParagraph";
 
 const privacyPolicy = ({
@@ -21,29 +21,25 @@ const privacyPolicy = ({
 	themesOptionsContent,
 }: any) => {
 	return (
-		<>
-			{/* <!--===== META TAG =====--> */}
-			<MetaTag title={pageTitle} seo={seo} />
-
-			<main>
+		<motion.div
+			exit={{
+				opacity: 0,
+			}}
+			initial="initial"
+			animate="animate"
+		>
+			<Layout
+				seo={seo}
+				pageTitle={pageTitle}
+				themesOptionsContent={themesOptionsContent}
+				footerMenuLinks={footerMenuLinks?.footerMenuLinks}
+			>
 				<TitleParagraph
 					title={content?.titleParagraph?.title}
 					paragraph={content?.titleParagraph?.paragraph}
 				/>
-
-				<Footer
-					email={themesOptionsContent?.email}
-					emailTwo={themesOptionsContent?.emailTwo}
-					phoneNumber={themesOptionsContent?.phoneNumber}
-					twitterLink={themesOptionsContent?.twitterLink}
-					facebookLink={themesOptionsContent?.facebookLink}
-					linkedinLink={themesOptionsContent?.linkedinLink}
-					footerMenuLinks={footerMenuLinks?.footerMenuLinks}
-					copyRightText={themesOptionsContent?.copyrightText}
-					phoneNumberTwo={themesOptionsContent?.phoneNumberTwo}
-				/>
-			</main>
-		</>
+			</Layout>
+		</motion.div>
 	);
 };
 

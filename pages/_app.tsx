@@ -11,6 +11,7 @@ import Layout from "../components/Layout/Layout";
 
 // Styling
 import "../styles/globals.scss";
+import CookiePolicyCard from "../components/Elements/CookiePolicyCard";
 
 // Check that PostHog is client-side (used to handle Next.js SSR)
 if (typeof window !== "undefined") {
@@ -99,27 +100,16 @@ function MyApp({Component, pageProps}) {
 			)
 		);
 	}
-
-	// Removes Global Navbar & Adds Custom Header and Footer Page layout Function
-	if (Component.getLayout) {
-		return Component.getLayout(
-			<ApolloProvider client={client}>
-				<PostHogProvider client={postHog}>
-					<Layout>
-						<Loading />
-						<Component {...pageProps} />
-					</Layout>
-				</PostHogProvider>
-			</ApolloProvider>
-		);
-	}
 	return (
 		<ApolloProvider client={client}>
 			<PostHogProvider client={postHog}>
-				<Layout>
-					<Loading />
-					<Component {...pageProps} />
-				</Layout>
+				{/* Cookie Policy Pop Up */}
+				{postHog.has_opted_in_capturing() ||
+				postHog.has_opted_out_capturing() ? null : (
+					<CookiePolicyCard />
+				)}
+				<Loading />
+				<Component {...pageProps} />
 			</PostHogProvider>
 		</ApolloProvider>
 	);

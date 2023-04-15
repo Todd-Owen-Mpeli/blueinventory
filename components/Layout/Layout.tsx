@@ -3,20 +3,49 @@ import {FC} from "react";
 import postHog from "posthog-js";
 
 // Components
-import CookiePolicyCard from "../Elements/CookiePolicyCard";
+import Footer from "../Footer";
+import MetaTag from "../Meta/MetaTag";
 
 interface ILayout {
+	seo: any;
+	pageTitle: string;
+	footerMenuLinks: [
+		{
+			node: {
+				id: string;
+				url: string;
+				label: string;
+			};
+		}
+	];
+	themesOptionsContent: any;
 	children: React.ReactNode;
 }
 
-const Layout: FC<ILayout> = ({children}) => {
+const Layout: FC<ILayout> = ({
+	seo,
+	children,
+	pageTitle,
+	footerMenuLinks,
+	themesOptionsContent,
+}) => {
 	return (
 		<div>
+			<MetaTag title={pageTitle} seo={seo} />
+
 			<div>{children}</div>
-			{postHog.has_opted_in_capturing() ||
-			postHog.has_opted_out_capturing() ? null : (
-				<CookiePolicyCard />
-			)}
+
+			<Footer
+				footerMenuLinks={footerMenuLinks}
+				email={themesOptionsContent?.email}
+				emailTwo={themesOptionsContent?.emailTwo}
+				phoneNumber={themesOptionsContent?.phoneNumber}
+				twitterLink={themesOptionsContent?.twitterLink}
+				facebookLink={themesOptionsContent?.facebookLink}
+				linkedinLink={themesOptionsContent?.linkedinLink}
+				copyRightText={themesOptionsContent?.copyrightText}
+				phoneNumberTwo={themesOptionsContent?.phoneNumberTwo}
+			/>
 		</div>
 	);
 };
