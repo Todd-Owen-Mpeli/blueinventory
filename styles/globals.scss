@@ -59,6 +59,7 @@ h6,
 button {
 	font-family: $fontStyle_main;
 
+	a,
 	span {
 		font-family: $fontStyle_main;
 	}
@@ -68,10 +69,11 @@ a,
 p,
 ul,
 li,
+div,
 span,
 input,
-strong,
 label,
+strong,
 textarea {
 	@apply tracking-wide font-[500];
 

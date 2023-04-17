@@ -20,6 +20,7 @@ const operationalInsights = ({
 	operationalInsights,
 	pageTitle,
 	footerMenuLinks,
+	navbarMenuLinks,
 	themesOptionsContent,
 }: any) => {
 	return (
@@ -35,6 +36,7 @@ const operationalInsights = ({
 				pageTitle={pageTitle}
 				themesOptionsContent={themesOptionsContent}
 				footerMenuLinks={footerMenuLinks?.footerMenuLinks}
+				navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks}
 			>
 				{/* Renders all operational insights blog posts */}
 				<OperationalInsights operationalInsights={operationalInsights} />
@@ -97,6 +99,7 @@ export async function getStaticProps() {
 		query: geOperationalInsightsPageContent,
 	});
 
+	const navbarMenuLinks: object = await getNavbarMenuLinks();
 	const footerMenuLinks: object = await getFooterMenuLinks();
 	const themesOptionsContent: object = await getThemesOptionsContent();
 	const operationalInsights: object = await getAllOperationalInsightsContent();

@@ -86,12 +86,14 @@ export async function getStaticProps({params}: any) {
 
 	const mainMenuLinks: object = await getMainMenuLinks();
 	const navbarMenuLinks: object = await getNavbarMenuLinks();
+	const navbarMenuLinks: object = await getNavbarMenuLinks();
 	const footerMenuLinks: object = await getFooterMenuLinks();
 	const themesOptionsContent: object = await getThemesOptionsContent();
 
 	return {
 		props: {
 			mainMenuLinks,
+			navbarMenuLinks,
 			navbarMenuLinks,
 			footerMenuLinks,
 			themesOptionsContent,

@@ -18,6 +18,7 @@ const privacyPolicy = ({
 	content,
 	pageTitle,
 	footerMenuLinks,
+	navbarMenuLinks,
 	themesOptionsContent,
 }: any) => {
 	return (
@@ -33,6 +34,7 @@ const privacyPolicy = ({
 				pageTitle={pageTitle}
 				themesOptionsContent={themesOptionsContent}
 				footerMenuLinks={footerMenuLinks?.footerMenuLinks}
+				navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks}
 			>
 				<TitleParagraph
 					title={content?.titleParagraph?.title}
@@ -103,11 +105,13 @@ export async function getStaticProps() {
 		query: gePrivacyPolicyPageContent,
 	});
 
+	const navbarMenuLinks: object = await getNavbarMenuLinks();
 	const footerMenuLinks: object = await getFooterMenuLinks();
 	const themesOptionsContent: object = await getThemesOptionsContent();
 
 	return {
 		props: {
+			navbarMenuLinks,
 			footerMenuLinks,
 			themesOptionsContent,
 			seo: response?.data?.mainContent?.edges[0]?.node?.seo,

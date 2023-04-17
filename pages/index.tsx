@@ -13,11 +13,13 @@ import {
 import Logos from "../components/Logos";
 import Layout from "../components/Layout/Layout";
 import TitleParagraph from "../components/TitleParagraph";
+import Hero from "../components/Hero";
 
 export default function HomePage({
 	seo,
 	content,
 	footerMenuLinks,
+	navbarMenuLinks,
 	themesOptionsContent,
 }: any) {
 	return (
@@ -33,7 +35,17 @@ export default function HomePage({
 				pageTitle={`BlueInventory `}
 				themesOptionsContent={themesOptionsContent}
 				footerMenuLinks={footerMenuLinks?.footerMenuLinks}
+				navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks}
 			>
+				<Hero
+					title={content?.heroSection?.title}
+					subtitle={content?.heroSection?.subtitle}
+					buttonLink={content?.heroSection?.buttonLink}
+					buttonLinkTwo={content?.heroSection?.buttonLinkTwo}
+					backgroundVideoUrl={content?.heroSection?.backgroundVideoUrl}
+					backgroundImage={content?.heroSection?.backgroundImage?.sourceUrl}
+				/>
+
 				<TitleParagraph
 					title={`How DBMX Racing Motocross Saves Thousands Of pounds`}
 					paragraph={`<p>Prior to 2016 in Philadelphia, beer was only available for purchase in independent beer stores, like Stone’s. There was hardly a need for clear in-store pricing, the beer would practically sell itself since stores like Stone’s were the only places in the neighborhood you could buy it.
@@ -87,6 +99,24 @@ export async function getStaticProps() {
 							}
 						}
 						homePage {
+							heroSection {
+								title
+								subtitle
+								backgroundVideoUrl
+								backgroundImage {
+									sourceUrl
+								}
+								buttonLink {
+									url
+									title
+									target
+								}
+								buttonLinkTwo {
+									url
+									title
+									target
+								}
+							}
 							trustedBrands {
 								title
 								paragraph
@@ -112,11 +142,13 @@ export async function getStaticProps() {
 		query: getHomePageContent,
 	});
 
+	const navbarMenuLinks: object = await getNavbarMenuLinks();
 	const footerMenuLinks: object = await getFooterMenuLinks();
 	const themesOptionsContent: object = await getThemesOptionsContent();
 
 	return {
 		props: {
+			navbarMenuLinks,
 			footerMenuLinks,
 			themesOptionsContent,
 			seo: response?.data?.mainContent?.edges[0]?.node?.seo,

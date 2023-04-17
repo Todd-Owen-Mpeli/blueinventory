@@ -5,11 +5,21 @@ import postHog from "posthog-js";
 // Components
 import Footer from "../Footer";
 import MetaTag from "../Meta/MetaTag";
+import Navbar from "../Navbar";
 
 interface ILayout {
 	seo: any;
 	pageTitle: string;
 	footerMenuLinks: [
+		{
+			node: {
+				id: string;
+				url: string;
+				label: string;
+			};
+		}
+	];
+	navbarMenuLinks: [
 		{
 			node: {
 				id: string;
@@ -27,13 +37,16 @@ const Layout: FC<ILayout> = ({
 	children,
 	pageTitle,
 	footerMenuLinks,
+	navbarMenuLinks,
 	themesOptionsContent,
 }) => {
 	return (
 		<div>
 			<MetaTag title={pageTitle} seo={seo} />
 
-			<div>{children}</div>
+			<Navbar navbarMenuLinks={navbarMenuLinks} />
+
+			<div className="pt-20">{children}</div>
 
 			<Footer
 				footerMenuLinks={footerMenuLinks}

@@ -9,9 +9,14 @@
 	src: url("./fonts/Evolventa-Bold-VariableFont_wght.ttf");
 }
 
+@font-face {
+	font-family: SFTSchriftedSansTRIALMedium;
+	src: url("./fonts/SFTSchriftedSansTRIAL-Medium-VariableFont_wght.ttf");
+}
+
 // Font Stack Properties
 $fontStyle_main: "EvolventaBold", sans-serif;
-$fontStyle_body: "EvolventaRegular", sans-serif;
+$fontStyle_body: "SFTSchriftedSansTRIALMedium", sans-serif;
 
 // Font Sizes
 $fontSize_xSmall: 0.75rem;

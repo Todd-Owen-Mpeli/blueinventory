@@ -7,11 +7,10 @@ import {PostHogProvider} from "posthog-js/react";
 import {ApolloProvider} from "@apollo/client/react";
 
 // Components
-import Layout from "../components/Layout/Layout";
+import CookiePolicyCard from "../components/Elements/CookiePolicyCard";
 
 // Styling
 import "../styles/globals.scss";
-import CookiePolicyCard from "../components/Elements/CookiePolicyCard";
 
 // Check that PostHog is client-side (used to handle Next.js SSR)
 if (typeof window !== "undefined") {
