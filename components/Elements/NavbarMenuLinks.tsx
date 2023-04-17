@@ -2,6 +2,7 @@ import {FC} from "react";
 import Link from "next/link";
 import {motion} from "framer-motion";
 import {fadeInUp} from "../../animations/animations";
+
 interface IProps {
 	url: string;
 	label: string;

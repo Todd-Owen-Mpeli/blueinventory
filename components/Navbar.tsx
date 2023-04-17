@@ -1,13 +1,9 @@
 import {FC} from "react";
 import Link from "next/link";
-import Image from "next/image";
-import parse from "html-react-parser";
-import styled from "styled-components";
 import {motion} from "framer-motion";
 import {fadeInUp, stagger} from "../animations/animations";
 
 // Components
-import Paragraph from "./Elements/Paragraph";
 import NavbarMenuLinks from "./Elements/NavbarMenuLinks";
 
 interface HeroProps {
