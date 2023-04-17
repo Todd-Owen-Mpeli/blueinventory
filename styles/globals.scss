@@ -94,19 +94,6 @@ h3 {
 	}
 }
 
-ol,
-ul {
-	li {
-		padding: 0px 10px;
-		position: relative;
-		list-style-type: decimal;
-		strong {
-			font-family: $fontStyle_main;
-			@apply text-darkBlue font-bold tracking-wider uppercase text-medium py-4;
-		}
-	}
-}
-
 li,
 p {
 	padding: 0px 10px;

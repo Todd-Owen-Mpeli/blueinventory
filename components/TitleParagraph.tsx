@@ -1,7 +1,24 @@
 // Import
 import {FC} from "react";
 import {motion} from "framer-motion";
+import styled from "styled-components";
 import {fadeInUp} from "../animations/animations";
+
+const TitleParagraph = styled.div`
+	ol,
+	ul {
+		li {
+			padding: 0px 10px;
+			position: relative;
+			list-style-type: decimal;
+
+			strong {
+				font-family: $fontStyle_main;
+				@apply text-darkBlue font-bold tracking-wider uppercase text-medium py-4;
+			}
+		}
+	}
+`;
 
 // Components
 import Paragraph from "./Elements/Paragraph";
@@ -13,7 +30,7 @@ interface IProps {
 
 const titleParagraph: FC<IProps> = ({title, paragraph}) => {
 	return (
-		<section className="px-4 py-10 bg-white">
+		<TitleParagraph className="px-4 py-10 bg-white">
 			<div className="container p-0 mx-auto">
 				<div className="flex flex-col">
 					<motion.div
@@ -30,7 +47,7 @@ const titleParagraph: FC<IProps> = ({title, paragraph}) => {
 					</motion.div>
 				</div>
 			</div>
-		</section>
+		</TitleParagraph>
 	);
 };
 

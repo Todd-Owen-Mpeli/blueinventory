@@ -35,7 +35,10 @@ const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 					<div className="w-auto">
 						<div className="flex flex-wrap items-center">
 							<div className="hidden w-auto lg:block">
-								<ul className="flex items-center justify-center gap-6">
+								<motion.ul
+									variants={stagger}
+									className="flex items-center justify-center gap-6"
+								>
 									{navbarMenuLinks?.map((keys) => (
 										<NavbarMenuLinks
 											key={keys?.node?.id}
@@ -44,31 +47,37 @@ const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 											tailwindStyling="text-base uppercase font-bold tracking-[.15rem] text-darkBlue hover:text-goldPrime transition-all ease-in-out duration-500"
 										/>
 									))}
-								</ul>
+								</motion.ul>
 							</div>
 						</div>
 					</div>
 					<div className="w-auto">
 						<div className="flex flex-wrap items-center">
 							<div className="hidden w-auto lg:block">
-								<div className="flex flex-wrap -m-2">
-									<div className="w-full p-2 md:w-auto">
+								<motion.div variants={stagger} className="flex flex-wrap -m-2">
+									<motion.div
+										variants={fadeInUp}
+										className="w-full p-2 md:w-auto"
+									>
 										<Link
 											className="px-8 py-3 text-sm tracking-widest text-center text-white uppercase rounded-sm w-fit bg-goldPrime hover:bg-goldPrimeDark focus:ring-4 focus:ring-blue"
 											href={`/login`}
 										>
 											Log In
 										</Link>
-									</div>
-									<div className="w-full p-2 md:w-auto">
+									</motion.div>
+									<motion.div
+										variants={fadeInUp}
+										className="w-full p-2 md:w-auto"
+									>
 										<Link
 											className="px-8 py-3 text-sm tracking-widest text-center text-white uppercase rounded-sm w-fit bg-blue hover:bg-darkBlue focus:ring-4 focus:ring-blue"
 											href={`/sign-up`}
 										>
 											Get Started
 										</Link>
-									</div>
-								</div>
+									</motion.div>
+								</motion.div>
 							</div>
 							<div className="w-auto lg:hidden">
 								<Link className="inline-block" href="#">
@@ -100,7 +109,7 @@ const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 					</div>
 				</div>
 				{/* Mobile Navbar */}
-				<div className="fixed top-0 bottom-0 left-0 z-50 block w-4/6 navbar-menu sm:max-w-xs">
+				<div className="fixed top-0 bottom-0 left-0 z-50 hidden w-4/6 navbar-menu sm:max-w-xs">
 					<div className="fixed inset-0 bg-grey navbar-backdrop opacity-80"></div>
 					<div className="relative z-10 h-full pt-8 overflow-y-auto bg-white px-9">
 						<div className="flex flex-wrap justify-between h-full">
@@ -136,7 +145,10 @@ const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 								</div>
 							</div>
 							<div className="flex flex-col justify-center w-full py-8">
-								<ul className="flex flex-col items-baseline justify-center gap-6">
+								<motion.ul
+									variants={stagger}
+									className="flex flex-col items-baseline justify-center gap-6"
+								>
 									{navbarMenuLinks?.map((keys) => (
 										<NavbarMenuLinks
 											key={keys?.node?.id}
@@ -145,27 +157,30 @@ const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 											tailwindStyling="text-base uppercase font-bold tracking-[.15rem] text-darkBlue hover:text-goldPrime transition-all ease-in-out duration-500"
 										/>
 									))}
-								</ul>
+								</motion.ul>
 							</div>
 							<div className="flex flex-col justify-end w-full pb-8">
-								<div className="flex flex-wrap gap-3 -m-2">
-									<div className="w-full p-2">
+								<motion.div
+									variants={stagger}
+									className="flex flex-wrap gap-3 -m-2"
+								>
+									<motion.div variants={fadeInUp} className="w-full p-2">
 										<Link
 											className="px-8 py-3 text-sm tracking-widest text-center text-white uppercase rounded-sm w-fit bg-goldPrime hover:bg-goldPrimeDark focus:ring-4 focus:ring-blue"
 											href={`/login`}
 										>
 											Log In
 										</Link>
-									</div>
-									<div className="w-full p-2">
+									</motion.div>
+									<motion.div variants={fadeInUp} className="w-full p-2">
 										<Link
 											className="px-8 py-3 text-sm tracking-widest text-center text-white uppercase rounded-sm w-fit bg-blue hover:bg-darkBlue focus:ring-4 focus:ring-blue"
 											href={`/sign-up`}
 										>
 											Get Started
 										</Link>
-									</div>
-								</div>
+									</motion.div>
+								</motion.div>
 							</div>
 						</div>
 					</div>
