@@ -12,7 +12,7 @@
 		"dompurify": "^2.4.1",
 		"firebase": "^9.19.1",
 		"formik": "^2.2.9",
-		"framer-motion": "^10.0.1",
+		"framer-motion": "^10.12.2",
 		"graphql": "^16.6.0",
 		"html-react-parser": "^3.0.15",
 		"isomorphic-dompurify": "^0.24.0",

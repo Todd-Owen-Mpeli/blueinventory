@@ -13,7 +13,6 @@ import {getThemesOptionsContent} from "../../functions/themesOptions";
 
 // Components
 import CTA from "../../components/CTA";
-import Footer from "../../components/Footer";
 import HeroThree from "../../components/HeroThree";
 import Layout from "../../components/Layout/Layout";
 import TitleParagraph from "../../components/TitleParagraph";
@@ -40,6 +39,7 @@ const singlePost = ({
 				pageTitle={pageTitle}
 				themesOptionsContent={themesOptionsContent}
 				footerMenuLinks={footerMenuLinks?.footerMenuLinks}
+				navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks}
 			>
 				<HeroThree
 					title={content?.heroSection?.title}
@@ -86,14 +86,12 @@ export async function getStaticProps({params}: any) {
 
 	const mainMenuLinks: object = await getMainMenuLinks();
 	const navbarMenuLinks: object = await getNavbarMenuLinks();
-	const navbarMenuLinks: object = await getNavbarMenuLinks();
 	const footerMenuLinks: object = await getFooterMenuLinks();
 	const themesOptionsContent: object = await getThemesOptionsContent();
 
 	return {
 		props: {
 			mainMenuLinks,
-			navbarMenuLinks,
 			navbarMenuLinks,
 			footerMenuLinks,
 			themesOptionsContent,

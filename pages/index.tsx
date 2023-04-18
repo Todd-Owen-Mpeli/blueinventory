@@ -14,6 +14,8 @@ import Logos from "../components/Logos";
 import Layout from "../components/Layout/Layout";
 import TitleParagraph from "../components/TitleParagraph";
 import Hero from "../components/Hero";
+import Stats from "../components/Stats";
+import JumboContent from "../components/JumboContent";
 
 export default function HomePage({
 	seo,
@@ -44,6 +46,24 @@ export default function HomePage({
 					buttonLinkTwo={content?.heroSection?.buttonLinkTwo}
 					backgroundVideoUrl={content?.heroSection?.backgroundVideoUrl}
 					backgroundImage={content?.heroSection?.backgroundImage?.sourceUrl}
+				/>
+
+				<Stats
+					title={content?.stats?.title}
+					column={content?.stats?.column}
+					subtitle={content?.stats?.subtitle}
+					paragraph={content?.stats?.paragraph}
+					columnTwo={content?.stats?.columnTwo}
+					bulletPoints={content?.stats?.bulletPoints}
+				/>
+
+				<JumboContent
+					title={content?.howItWorks?.title}
+					cardOne={content?.howItWorks?.cardOne}
+					cardTwo={content?.howItWorks?.cardTwo}
+					cardThree={content?.howItWorks?.cardThree}
+					paragraph={content?.howItWorks?.paragraph}
+					gridContent={content?.howItWorks?.gridContent}
 				/>
 
 				<TitleParagraph
@@ -115,6 +135,57 @@ export async function getStaticProps() {
 									url
 									title
 									target
+								}
+							}
+							stats {
+								title
+								subtitle
+								paragraph
+								bulletPoints {
+									bulletPoint
+								}
+								column {
+									title
+									values
+									percentage
+								}
+								columnTwo {
+									title
+									values
+									percentage
+								}
+							}
+							howItWorks {
+								title
+								paragraph
+								cardOne {
+									title
+									subtitle
+									paragraph
+								}
+								cardTwo {
+									backgroundImage {
+										sourceUrl
+									}
+								}
+								cardThree {
+									foreground {
+										title
+										subtitle
+										paragraph
+									}
+									background {
+										title
+										subtitle
+										paragraph
+									}
+								}
+								gridContent {
+									card {
+										title
+										subtitle
+										paragraph
+									}
 								}
 							}
 							trustedBrands {
