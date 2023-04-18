@@ -77,7 +77,7 @@ const JumboContent: FC<IProps> = ({
 					<motion.div variants={stagger} className="flex flex-wrap -m-3">
 						{/* Card One */}
 						<div className="w-full p-3 md:w-1/2">
-							<div className="h-full p-10 bg-lightGrey rounded-2xl">
+							<div className="h-full p-10 rounded-sm bg-lightGrey">
 								<div className="flex flex-wrap items-center mb-10">
 									<div className="w-auto p-2">
 										<h4 className="text-lg font-semibold text-goldPrimeDark">
@@ -103,7 +103,7 @@ const JumboContent: FC<IProps> = ({
 							}
 						>
 							<div
-								className="h-full p-8 bg-center bg-no-repeat bg-cover bg-lightGrey rounded-2xl"
+								className="h-full p-8 bg-center bg-no-repeat bg-cover rounded-sm bg-lightGrey"
 								style={{
 									backgroundImage: `url("${cardTwo?.backgroundImage?.sourceUrl}")`,
 								}}
@@ -111,7 +111,7 @@ const JumboContent: FC<IProps> = ({
 						</div>
 						{/* Card Three */}
 						<div className="w-full p-3 md:w-1/2">
-							<div className="h-full p-16 bg-lightBlue rounded-2xl">
+							<div className="h-full p-16 rounded-sm bg-lightBlue">
 								<div className="flex flex-wrap items-center justify-center h-full">
 									<div className="w-full group">
 										<div className="relative z-10 transition duration-500 ease-in-out transform group-hover:-translate-y-6 group-hover:-translate-x-6 pr-7">
@@ -182,7 +182,7 @@ const JumboContent: FC<IProps> = ({
 							}
 						>
 							<div
-								className="h-full p-8 bg-center bg-no-repeat bg-cover bg-lightGrey rounded-2xl"
+								className="h-full p-8 bg-center bg-no-repeat bg-cover rounded-sm bg-lightGrey"
 								style={{
 									backgroundImage: `url("${lastCard?.backgroundImage?.sourceUrl}")`,
 								}}

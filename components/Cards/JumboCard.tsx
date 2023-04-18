@@ -17,7 +17,7 @@ const JumboCard: FC<IProps> = ({title, subtitle, paragraph}) => {
 		<div className="w-full p-3 md:w-1/2">
 			<motion.div
 				variants={stagger}
-				className="h-full p-10 bg-lightGrey rounded-2xl"
+				className="h-full p-10 rounded-sm bg-lightGrey"
 			>
 				<motion.div
 					variants={fadeInUp}

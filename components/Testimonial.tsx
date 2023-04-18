@@ -42,10 +42,10 @@ interface IProps {
 const Testimonial: FC<IProps> = ({title, paragraph, content, contentTwo}) => {
 	return (
 		<section className="pt-24 overflow-hidden bg-white pb-36">
-			<div className="container px-4 mx-auto">
-				<h2 className="mb-10 text-3xl font-bold text-center md:text-4xl ">
+			<motion.div className="container px-4 mx-auto">
+				<motion.h2 className="mb-10 text-3xl font-bold text-center md:text-4xl ">
 					{title}
-				</h2>
+				</motion.h2>
 				<Paragraph
 					content={paragraph}
 					tailwindStyling="mb-10 text-base text-black text-center"
@@ -118,7 +118,7 @@ const Testimonial: FC<IProps> = ({title, paragraph, content, contentTwo}) => {
 						</div>
 					</div>
 				</div>
-			</div>
+			</motion.div>
 		</section>
 	);
 };
