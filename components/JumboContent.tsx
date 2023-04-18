@@ -42,14 +42,20 @@ interface IProps {
 			};
 		}
 	];
+	lastCard: {
+		backgroundImage: {
+			sourceUrl: string;
+		};
+	};
 }
 
 const JumboContent: FC<IProps> = ({
 	title,
-	paragraph,
 	cardOne,
 	cardTwo,
+	lastCard,
 	cardThree,
+	paragraph,
 	gridContent,
 }) => {
 	return (
@@ -65,7 +71,7 @@ const JumboContent: FC<IProps> = ({
 						</motion.h2>
 						<Paragraph
 							content={paragraph}
-							tailwindStyling="max-w-2xl mb-10 text-base text-black"
+							tailwindStyling="max-w-2xl px-0 mb-10 text-base text-black"
 						/>
 					</motion.div>
 					<motion.div variants={stagger} className="flex flex-wrap -m-3">
@@ -75,7 +81,7 @@ const JumboContent: FC<IProps> = ({
 								<div className="flex flex-wrap items-center mb-10">
 									<div className="w-auto p-2">
 										<h4 className="text-lg font-semibold text-goldPrimeDark">
-											{cardOne?.title}
+											{cardOne?.subtitle}
 										</h4>
 									</div>
 								</div>
@@ -89,7 +95,13 @@ const JumboContent: FC<IProps> = ({
 							</div>
 						</div>
 						{/* Card Two */}
-						<div className="w-full p-3 md:w-1/2">
+						<div
+							className={
+								cardTwo?.backgroundImage?.sourceUrl
+									? `w-full p-3 md:w-1/2 min-h-[450px]`
+									: `hidden`
+							}
+						>
 							<div
 								className="h-full p-8 bg-center bg-no-repeat bg-cover bg-lightGrey rounded-2xl"
 								style={{
@@ -115,13 +127,13 @@ const JumboContent: FC<IProps> = ({
 												</motion.h4>
 												<motion.h4
 													variants={fadeIn}
-													className="mb-3 text-xs font-bold text-black"
+													className="mb-3 text-base font-bold text-black"
 												>
 													{cardThree?.foreground?.title}
 												</motion.h4>
 												<Paragraph
 													content={cardThree?.foreground?.paragraph}
-													tailwindStyling="text-xs text-black"
+													tailwindStyling="text-tiny text-black"
 												/>
 											</motion.div>
 										</div>
@@ -138,13 +150,13 @@ const JumboContent: FC<IProps> = ({
 												</motion.h4>
 												<motion.h4
 													variants={fadeIn}
-													className="mb-3 text-xs font-bold text-black"
+													className="mb-3 text-base font-bold text-black"
 												>
 													{cardThree?.background?.title}
 												</motion.h4>
 												<Paragraph
 													content={cardThree?.background?.paragraph}
-													tailwindStyling="text-xs text-black"
+													tailwindStyling="text-tiny text-black"
 												/>
 											</motion.div>
 										</div>
@@ -161,6 +173,21 @@ const JumboContent: FC<IProps> = ({
 								paragraph={keys?.card?.paragraph}
 							/>
 						))}
+						{/* Last Card */}
+						<div
+							className={
+								lastCard?.backgroundImage?.sourceUrl
+									? `w-full p-3 md:w-1/2 min-h-[450px]`
+									: `hidden`
+							}
+						>
+							<div
+								className="h-full p-8 bg-center bg-no-repeat bg-cover bg-lightGrey rounded-2xl"
+								style={{
+									backgroundImage: `url("${lastCard?.backgroundImage?.sourceUrl}")`,
+								}}
+							/>
+						</div>
 					</motion.div>
 				</div>
 			</div>

@@ -76,12 +76,12 @@ const Hero: FC<HeroProps> = ({
 
 					<div className="absolute top-0 bottom-0 left-0 flex flex-col items-center justify-center px-8 py-20 mx-auto max-w-7xl">
 						<div className="max-w-2xl p-10 bg-white rounded-sm">
-							<motion.h2
+							<motion.h1
 								variants={fadeInUp}
-								className="text-darkBlue text-center lg:text-left tracking-normal leading-[2.75rem] font-semibold text-4xl sm:text-6xl lg:text-7xl"
+								className="text-darkBlue text-center lg:text-left tracking-normal leading-[3.5rem] font-semibold text-4xl sm:text-6xl lg:text-7xl"
 							>
 								{title}
-							</motion.h2>
+							</motion.h1>
 							<Paragraph
 								content={subtitle}
 								tailwindStyling="w-full lg:max-w-2xl mx-auto mt-6 text-black text-left text-base"

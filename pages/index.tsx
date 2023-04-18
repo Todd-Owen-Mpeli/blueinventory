@@ -61,6 +61,7 @@ export default function HomePage({
 					title={content?.howItWorks?.title}
 					cardOne={content?.howItWorks?.cardOne}
 					cardTwo={content?.howItWorks?.cardTwo}
+					lastCard={content?.howItWorks?.lastCard}
 					cardThree={content?.howItWorks?.cardThree}
 					paragraph={content?.howItWorks?.paragraph}
 					gridContent={content?.howItWorks?.gridContent}
@@ -164,6 +165,11 @@ export async function getStaticProps() {
 									paragraph
 								}
 								cardTwo {
+									backgroundImage {
+										sourceUrl
+									}
+								}
+								lastCard {
 									backgroundImage {
 										sourceUrl
 									}

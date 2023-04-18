@@ -40,7 +40,7 @@ const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 											key={keys?.node?.id}
 											url={keys?.node?.url}
 											label={keys?.node?.label}
-											tailwindStyling="text-base uppercase font-bold tracking-[.15rem] text-darkBlue hover:text-goldPrime transition-all ease-in-out duration-500"
+											tailwindStyling="text-tiny uppercase font-bold tracking-[.15rem] text-darkBlue hover:text-goldPrime transition-all ease-in-out duration-500"
 										/>
 									))}
 								</motion.ul>
