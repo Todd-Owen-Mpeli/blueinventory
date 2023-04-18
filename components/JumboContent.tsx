@@ -65,7 +65,7 @@ const JumboContent: FC<IProps> = ({
 					<motion.div variants={stagger} className="mb-20">
 						<motion.h2
 							variants={fadeInUp}
-							className="max-w-md mb-6 text-5xl font-bold text-darkBlue font-heading sm:text-6xl"
+							className="max-w-md mb-6 text-3xl font-bold md:text-4xl"
 						>
 							{title}
 						</motion.h2>
@@ -85,7 +85,7 @@ const JumboContent: FC<IProps> = ({
 										</h4>
 									</div>
 								</div>
-								<h3 className="mb-4 text-3xl font-semibold text-darkBlue font-heading">
+								<h3 className="mb-4 text-3xl font-semibold">
 									{cardOne?.title}
 								</h3>
 								<Paragraph

@@ -1,6 +1,5 @@
 import {FC} from "react";
 import Link from "next/link";
-import Image from "next/image";
 import parse from "html-react-parser";
 import styled from "styled-components";
 import {motion} from "framer-motion";
@@ -75,10 +74,10 @@ const Hero: FC<HeroProps> = ({
 					<div className="absolute top-0 bottom-0 left-0 w-full h-full opacity-50 bg-gradient-to-b from-darkBlue from-2% via-transparent via-5% to-transparent to-100%" />
 
 					<div className="absolute top-0 bottom-0 left-0 flex flex-col items-center justify-center px-8 py-20 mx-auto max-w-7xl">
-						<div className="max-w-2xl p-10 bg-white rounded-sm">
+						<div className="max-w-2xl px-6 py-10 bg-white rounded-sm sm:p-10">
 							<motion.h1
 								variants={fadeInUp}
-								className="text-darkBlue text-center lg:text-left tracking-normal leading-[3.5rem] font-semibold text-4xl sm:text-6xl lg:text-7xl"
+								className="text-center lg:text-left tracking-normal leading-[3.5rem] font-semibold text-4xl sm:text-6xl lg:text-7xl"
 							>
 								{title}
 							</motion.h1>

@@ -18,7 +18,7 @@
 		"isomorphic-dompurify": "^0.24.0",
 		"next": "^13.1.1",
 		"nodemailer": "^6.9.1",
-		"posthog-js": "^1.52.0",
+		"posthog-js": "^1.53.4",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-is": "^18.2.0",

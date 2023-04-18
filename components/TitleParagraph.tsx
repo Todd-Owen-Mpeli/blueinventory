@@ -37,7 +37,7 @@ const titleParagraph: FC<IProps> = ({title, paragraph}) => {
 						variants={fadeInUp}
 						className="w-full py-16 mx-auto sm:py-20 md:py-28 lg:max-w-3xl"
 					>
-						<h2 className="text-black text-center tracking-normal leading-[2.75rem] font-[900] text-3xl md:text-4xl">
+						<h2 className="text-center tracking-normal leading-[2.75rem] font-[900] text-3xl md:text-4xl">
 							{title}
 						</h2>
 						<Paragraph

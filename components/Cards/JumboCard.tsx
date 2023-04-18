@@ -29,7 +29,7 @@ const JumboCard: FC<IProps> = ({title, subtitle, paragraph}) => {
 				</motion.div>
 				<motion.h3
 					variants={fadeInUp}
-					className="mb-4 text-3xl font-semibold text-darkBlue font-heading"
+					className="mb-4 text-3xl font-semibold font-heading"
 				>
 					{title}
 				</motion.h3>

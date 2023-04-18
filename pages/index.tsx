@@ -10,12 +10,12 @@ import {
 } from "../functions/MenuLinks";
 
 // Components
-import Logos from "../components/Logos";
-import Layout from "../components/Layout/Layout";
-import TitleParagraph from "../components/TitleParagraph";
 import Hero from "../components/Hero";
+import Logos from "../components/Logos";
 import Stats from "../components/Stats";
+import Layout from "../components/Layout/Layout";
 import JumboContent from "../components/JumboContent";
+import Testimonial from "../components/Testimonial";
 
 export default function HomePage({
 	seo,
@@ -67,17 +67,17 @@ export default function HomePage({
 					gridContent={content?.howItWorks?.gridContent}
 				/>
 
-				<TitleParagraph
-					title={`How DBMX Racing Motocross Saves Thousands Of pounds`}
-					paragraph={`<p>Prior to 2016 in Philadelphia, beer was only available for purchase in independent beer stores, like Stone’s. There was hardly a need for clear in-store pricing, the beer would practically sell itself since stores like Stone’s were the only places in the neighborhood you could buy it.
-					<br><br>
-					With new oil varieties arriving at their warehouse every seven months to maintain the highest quality of ingredients, Saratoga Olive Oil is always bottling different flavors. Not only did setting up the software take months of work, but they also lost thousands of dollars by not knowing their products’ true costs.</p>`}
-				/>
-
 				<Logos
 					title={content?.trustedBrands?.title}
 					logoGrid={content?.trustedBrands?.logos}
 					paragraph={content?.trustedBrands?.paragraph}
+				/>
+
+				<Testimonial
+					title={content?.testimonial?.title}
+					content={content?.testimonial?.content}
+					contentTwo={content?.testimonial?.contentTwo}
+					paragraph={content?.testimonial?.paragraph}
 				/>
 			</Layout>
 		</motion.div>
@@ -198,6 +198,36 @@ export async function getStaticProps() {
 								title
 								paragraph
 								logos {
+									image {
+										altText
+										sourceUrl
+										mediaDetails {
+											height
+											width
+										}
+									}
+								}
+							}
+							testimonial {
+								title
+								paragraph
+								content {
+									title
+									paragraph
+									name
+									image {
+										altText
+										sourceUrl
+										mediaDetails {
+											height
+											width
+										}
+									}
+								}
+								contentTwo {
+									title
+									paragraph
+									name
 									image {
 										altText
 										sourceUrl

@@ -17,9 +17,9 @@ if (typeof window !== "undefined") {
 	postHog.init(`${process.env.POSTHOG_KEY}`, {
 		api_host: `${process.env.POSTHOG_HOST}` || "https://app.posthog.com",
 		// Disable in development
-		// loaded: (postHog) => {
-		// 	if (process.env.NODE_ENV === "development") postHog.opt_out_capturing();
-		// },
+		loaded: (postHog) => {
+			if (process.env.NODE_ENV === "development") postHog.opt_out_capturing();
+		},
 	});
 }
 

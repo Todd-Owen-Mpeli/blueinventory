@@ -31,7 +31,7 @@ const logos: FC<IProps> = ({title, paragraph, logoGrid}) => {
 			<div className="container px-0 mx-auto">
 				<motion.h2
 					variants={fadeIn}
-					className=" mb-10 text-black text-center tracking-wider leading-[2.75rem] text-3xl md:text-4xl"
+					className="mb-10 text-center tracking-wider leading-[2.75rem] text-3xl md:text-4xl"
 				>
 					{title}
 				</motion.h2>
