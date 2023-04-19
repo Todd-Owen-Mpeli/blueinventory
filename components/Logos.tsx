@@ -42,7 +42,7 @@ const logos: FC<IProps> = ({title, paragraph, logoGrid}) => {
 				<div className="max-w-6xl mx-auto">
 					<motion.div
 						variants={stagger}
-						className="grid items-center justify-center grid-cols-2 gap-4 lg:grid-cols-6 lg:justify-between"
+						className="grid items-center justify-center grid-cols-2 gap-4 lg:grid-cols-4 lg:justify-between"
 					>
 						{logoGrid.map((keys) => (
 							<LogoCard

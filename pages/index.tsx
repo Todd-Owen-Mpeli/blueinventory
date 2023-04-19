@@ -16,6 +16,7 @@ import Stats from "../components/Stats";
 import Layout from "../components/Layout/Layout";
 import JumboContent from "../components/JumboContent";
 import Testimonial from "../components/Testimonial";
+import CTA from "../components/CTA";
 
 export default function HomePage({
 	seo,
@@ -75,9 +76,18 @@ export default function HomePage({
 
 				<Testimonial
 					title={content?.testimonial?.title}
-					content={content?.testimonial?.content}
-					contentTwo={content?.testimonial?.contentTwo}
 					paragraph={content?.testimonial?.paragraph}
+					contentGrid={content?.testimonial?.contentGrid}
+				/>
+
+				<CTA
+					title={content?.cta?.title}
+					content={content?.cta?.content}
+					paragraph={content?.cta?.paragraph}
+					contentTwo={content?.cta?.contentTwo}
+					buttonLink={content?.cta?.buttonLink}
+					buttonLinkTwo={content?.cta?.buttonLinkTwo}
+					backgroundImage={content?.cta?.backgroundImage?.sourceUrl}
 				/>
 			</Layout>
 		</motion.div>
@@ -211,31 +221,45 @@ export async function getStaticProps() {
 							testimonial {
 								title
 								paragraph
+								contentGrid {
+									card {
+										name
+										paragraph
+										position
+										image {
+											altText
+											sourceUrl
+											mediaDetails {
+												height
+												width
+											}
+										}
+									}
+								}
+							}
+							cta {
+								title
+								paragraph
+								buttonLink {
+									url
+									title
+									target
+								}
+								buttonLinkTwo {
+									url
+									title
+									target
+								}
 								content {
 									title
 									paragraph
-									name
-									image {
-										altText
-										sourceUrl
-										mediaDetails {
-											height
-											width
-										}
-									}
 								}
 								contentTwo {
 									title
 									paragraph
-									name
-									image {
-										altText
-										sourceUrl
-										mediaDetails {
-											height
-											width
-										}
-									}
+								}
+								backgroundImage {
+									sourceUrl
 								}
 							}
 						}
