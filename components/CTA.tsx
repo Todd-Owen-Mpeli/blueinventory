@@ -36,7 +36,7 @@ const CTATwo: FC<IProps> = ({
 }) => {
 	return (
 		<section
-			className="py-16 bg-center bg-no-repeat bg-cover"
+			className="py-10 bg-center bg-no-repeat bg-cover"
 			style={{
 				backgroundImage: `linear-gradient(
 							0deg,

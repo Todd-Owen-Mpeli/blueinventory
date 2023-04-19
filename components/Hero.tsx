@@ -59,7 +59,7 @@ const Hero: FC<HeroProps> = ({
 	backgroundVideoUrl,
 }) => {
 	return (
-		<section className="px-4 py-10 overflow-hidden bg-white">
+		<section className="px-4 pt-16 pb-10 overflow-hidden bg-white">
 			<div className="container px-0 mx-auto">
 				<div
 					className="relative w-full h-[600px] overflow-hidden bg-center bg-no-repeat bg-cover rounded-sm"

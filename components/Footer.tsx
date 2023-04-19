@@ -44,61 +44,71 @@ const Footer: FC<FooterProps> = ({
 	return (
 		<section className="py-10 overflow-hidden bg-darkerBlueTwo">
 			<div className="container px-4 mx-auto">
-				<div className="flex flex-wrap -m-6 lg:items-center">
+				<div className="flex flex-row justify-between -m-6 lg:items-center">
 					<div className="w-full p-6 md:w-auto">
-						<Link href="/">
-							<Image
-								width={500}
-								height={500}
-								alt="BlueInventory Company Logo"
-								src="/img/Logos/BlueInventory favicon Two.png"
-								className="object-contain object-center w-full h-[75px]"
-							/>
-						</Link>
-					</div>
-					<div className="w-full p-6 md:w-1/2">
-						<motion.ul variants={stagger} className="flex flex-wrap -m-5">
-							{footerMenuLinks?.map((keys) => (
-								<FooterMenuLinks
-									key={keys?.node?.id}
-									url={keys?.node?.url}
-									label={keys?.node?.label}
-									tailwindStyling="text-white font-heading hover:text-goldPrime"
-								/>
-							))}
-						</motion.ul>
-					</div>
-					<div className="flex flex-col items-end justify-between w-auto gap-6 p-6 md:ml-auto">
-						<motion.div
-							variants={stagger}
-							className="flex flex-row items-center justify-center -m-1.5"
-						>
+						<div className="mb-10">
+							<Link href="/" className="text-2xl text-lightBlue font-[900]">
+								BlueInventory
+							</Link>
+						</div>
+						<div className="flex flex-col items-baseline justify-between w-auto gap-2 py-6 mb-10">
 							<motion.div
 								variants={fadeIn}
-								className="flex items-center justify-center w-10 h-10 rounded-full bg-goldPrime sm:mr-3"
+								className="flex items-center justify-center gap-2"
 							>
-								<svg
-									width="20"
-									height="20"
-									viewBox="0 0 20 20"
-									fill="none"
-									xmlns="http://www.w3.org/2000/svg"
+								<div className="flex items-center justify-center w-8 h-8 rounded-full bg-goldPrime sm:mr-3">
+									<svg
+										width="20"
+										height="20"
+										viewBox="0 0 20 20"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											d="M2.5 6.66669L9.0755 11.0504C9.63533 11.4236 10.3647 11.4236 10.9245 11.0504L17.5 6.66669M4.16667 15.8334H15.8333C16.7538 15.8334 17.5 15.0872 17.5 14.1667V5.83335C17.5 4.91288 16.7538 4.16669 15.8333 4.16669H4.16667C3.24619 4.16669 2.5 4.91288 2.5 5.83335V14.1667C2.5 15.0872 3.24619 15.8334 4.16667 15.8334Z"
+											stroke="white"
+											stroke-width="1.5"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										></path>
+									</svg>
+								</div>
+								<Link
+									className="font-medium tracking-wide text-white hover:text-goldPrime"
+									href={`mailto:${email}`}
 								>
-									<path
-										d="M2.5 6.66669L9.0755 11.0504C9.63533 11.4236 10.3647 11.4236 10.9245 11.0504L17.5 6.66669M4.16667 15.8334H15.8333C16.7538 15.8334 17.5 15.0872 17.5 14.1667V5.83335C17.5 4.91288 16.7538 4.16669 15.8333 4.16669H4.16667C3.24619 4.16669 2.5 4.91288 2.5 5.83335V14.1667C2.5 15.0872 3.24619 15.8334 4.16667 15.8334Z"
-										stroke="white"
-										stroke-width="1.5"
-										stroke-linecap="round"
-										stroke-linejoin="round"
-									></path>
-								</svg>
+									{email}
+								</Link>
 							</motion.div>
-							<motion.div variants={fadeIn} className="w-auto p-1.5">
-								<h3 className="font-medium tracking-wide text-white font-heading hover:text-goldPrime">
-									<Link href={`mailto:${email}`}>{email}</Link>
-								</h3>
+							<motion.div
+								variants={fadeIn}
+								className="flex items-center justify-center gap-2"
+							>
+								<div className="flex items-center justify-center w-8 h-8 rounded-full bg-goldPrime sm:mr-3">
+									<svg
+										width="20"
+										height="20"
+										viewBox="0 0 20 20"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											d="M2.5 6.66669L9.0755 11.0504C9.63533 11.4236 10.3647 11.4236 10.9245 11.0504L17.5 6.66669M4.16667 15.8334H15.8333C16.7538 15.8334 17.5 15.0872 17.5 14.1667V5.83335C17.5 4.91288 16.7538 4.16669 15.8333 4.16669H4.16667C3.24619 4.16669 2.5 4.91288 2.5 5.83335V14.1667C2.5 15.0872 3.24619 15.8334 4.16667 15.8334Z"
+											stroke="white"
+											stroke-width="1.5"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										></path>
+									</svg>
+								</div>
+								<Link
+									className="font-medium tracking-wide text-white hover:text-goldPrime"
+									href={`mailto:${emailTwo}`}
+								>
+									{emailTwo}
+								</Link>
 							</motion.div>
-						</motion.div>
+						</div>
 						<motion.div
 							variants={stagger}
 							className="flex items-center justify-start gap-6 text-center -m-1.5 "
@@ -173,6 +183,21 @@ const Footer: FC<FooterProps> = ({
 								</Link>
 							</motion.div>
 						</motion.div>
+					</div>
+					<div className="w-full p-6 md:w-1/2">
+						<motion.ul
+							variants={stagger}
+							className="flex flex-col items-center justify-center gap-4 -m-5"
+						>
+							{footerMenuLinks?.map((keys) => (
+								<FooterMenuLinks
+									key={keys?.node?.id}
+									url={keys?.node?.url}
+									label={keys?.node?.label}
+									tailwindStyling="text-white hover:text-goldPrime"
+								/>
+							))}
+						</motion.ul>
 					</div>
 				</div>
 				<div className="py-9">

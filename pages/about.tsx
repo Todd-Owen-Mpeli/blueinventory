@@ -11,6 +11,8 @@ import {
 
 // Components
 import Layout from "../components/Layout/Layout";
+import TitleParagraph from "../components/TitleParagraph";
+import CTATwo from "../components/CTATwo";
 
 const about = ({
 	seo,
@@ -36,6 +38,18 @@ const about = ({
 				navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks}
 			>
 				<h1>{pageTitle}</h1>
+
+				<TitleParagraph
+					title={content?.titleParagraph?.title}
+					paragraph={content?.titleParagraph?.paragraph}
+				/>
+
+				<CTATwo
+					title={content?.cta?.title}
+					paragraph={content?.cta?.paragraph}
+					buttonLink={content?.cta?.buttonLink}
+					backgroundImage={content?.cta?.backgroundImage?.sourceUrl}
+				/>
 			</Layout>
 		</motion.div>
 	);
@@ -85,6 +99,24 @@ export async function getStaticProps() {
 								mediaItemUrl
 							}
 						}
+						aboutPage {
+							titleParagraph {
+								title
+								paragraph
+							}
+							cta {
+								title
+								paragraph
+								buttonLink {
+									url
+									title
+									target
+								}
+								backgroundImage {
+									sourceUrl
+								}
+							}
+						}
 					}
 				}
 			}
@@ -106,7 +138,7 @@ export async function getStaticProps() {
 			themesOptionsContent,
 			seo: response?.data?.mainContent?.edges[0]?.node?.seo,
 			pageTitle: response?.data?.title?.edges[0]?.node?.title,
-			// content: response?.data?.mainContent?.edges[0]?.node?.aboutPage,
+			content: response?.data?.mainContent?.edges[0]?.node?.aboutPage,
 		},
 		revalidate: 60,
 	};
