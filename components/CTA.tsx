@@ -82,7 +82,7 @@ const CTATwo: FC<IProps> = ({
 										<Link
 											href={`${buttonLinkTwo?.url}`}
 											target={`${buttonLinkTwo?.target}`}
-											className="relative inline-block w-full h-12 px-8 py-3 mb-3 overflow-hidden text-center text-white transition duration-200 group sm:w-auto sm:mb-0 sm:mr-4 bg-goldPrime hover:bg-goldPrimeDarker"
+											className="relative inline-block w-full h-12 px-8 py-3 mb-3 overflow-hidden text-center text-white transition duration-200 group sm:w-auto sm:mb-0 sm:mr-4 bg-goldPrime hover:bg-darkerBlue"
 										>
 											{buttonLinkTwo?.title}
 										</Link>
