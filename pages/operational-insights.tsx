@@ -18,10 +18,11 @@ import OperationalInsights from "../components/OperationalInsights";
 const operationalInsights = ({
 	seo,
 	content,
-	operationalInsights,
 	pageTitle,
 	footerMenuLinks,
 	navbarMenuLinks,
+	operationalInsights,
+	industriesMenuLinks,
 	themesOptionsContent,
 }: any) => {
 	return (
@@ -110,6 +111,8 @@ export async function getStaticProps() {
 	return {
 		props: {
 			footerMenuLinks,
+			navbarMenuLinks,
+			industriesMenuLinks,
 			operationalInsights,
 			themesOptionsContent,
 			seo: response?.data?.mainContent?.edges[0]?.node?.seo,

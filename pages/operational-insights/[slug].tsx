@@ -13,7 +13,7 @@ import {
 import {getThemesOptionsContent} from "../../functions/themesOptions";
 
 // Components
-import CTA from "../../components/CTA";
+import CTATwo from "../../components/CTATwo";
 import HeroThree from "../../components/HeroThree";
 import Layout from "../../components/Layout/Layout";
 import TitleParagraph from "../../components/TitleParagraph";
@@ -57,7 +57,7 @@ const singlePost = ({
 					paragraph={content?.titleParagraph?.paragraph}
 				/>
 
-				<CTA
+				<CTATwo
 					title={content?.contactBanner?.title}
 					paragraph={content?.contactBanner?.paragraph}
 					buttonLink={content?.contactBanner?.buttonLink}
