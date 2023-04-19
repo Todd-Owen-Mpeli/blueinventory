@@ -3,6 +3,7 @@ import {FC} from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {motion} from "framer-motion";
+import DOMPurify from "isomorphic-dompurify";
 import {fadeInUp, stagger} from "../../animations/animations";
 
 // Components
@@ -27,6 +28,15 @@ const TestimonialCard: FC<IProps> = ({
 	paragraph,
 	jobPosition,
 }) => {
+	/* Sanitize the WYSIWYG paragraph content */
+	function createTrimmedParagraphMarkup(paragraphContent: string) {
+		const sanitizedContent: string = DOMPurify.sanitize(paragraphContent);
+
+		return {
+			__html: `${sanitizedContent.substring(0, 175)}...`,
+		};
+	}
+
 	return (
 		<div className="w-full px-4 mb-8 lg:w-1/3 lg:mb-0">
 			<div className="max-w-sm p-10 pb-6 mx-auto rounded-md bg-lightGrey">
@@ -42,9 +52,9 @@ const TestimonialCard: FC<IProps> = ({
 						fill="#e8b042"
 					></path>
 				</svg>
-				<Paragraph
-					content={paragraph}
-					tailwindStyling="mt-2 mb-6 text-base text-darkBlue"
+				<div
+					className={paragraph ? `mt-2 mb-6 text-base text-darkBlue` : `hidden`}
+					dangerouslySetInnerHTML={createTrimmedParagraphMarkup(paragraph)}
 				/>
 				<div className="flex items-center">
 					<Image
