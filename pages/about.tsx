@@ -7,6 +7,7 @@ import {
 	getMainMenuLinks,
 	getNavbarMenuLinks,
 	getFooterMenuLinks,
+	getIndustriesMenuLinks,
 } from "../functions/MenuLinks";
 
 // Components
@@ -20,6 +21,7 @@ const about = ({
 	pageTitle,
 	footerMenuLinks,
 	navbarMenuLinks,
+	industriesMenuLinks,
 	themesOptionsContent,
 }: any) => {
 	return (
@@ -36,6 +38,7 @@ const about = ({
 				themesOptionsContent={themesOptionsContent}
 				footerMenuLinks={footerMenuLinks?.footerMenuLinks}
 				navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks}
+				industriesMenuLinks={industriesMenuLinks?.industriesMenuLinks}
 			>
 				<h1>{pageTitle}</h1>
 
@@ -129,12 +132,14 @@ export async function getStaticProps() {
 
 	const navbarMenuLinks: object = await getNavbarMenuLinks();
 	const footerMenuLinks: object = await getFooterMenuLinks();
+	const industriesMenuLinks: object = await getIndustriesMenuLinks();
 	const themesOptionsContent: object = await getThemesOptionsContent();
 
 	return {
 		props: {
 			navbarMenuLinks,
 			footerMenuLinks,
+			industriesMenuLinks,
 			themesOptionsContent,
 			seo: response?.data?.mainContent?.edges[0]?.node?.seo,
 			pageTitle: response?.data?.title?.edges[0]?.node?.title,

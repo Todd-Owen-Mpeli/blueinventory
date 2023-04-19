@@ -28,6 +28,15 @@ interface FooterProps {
 			};
 		}
 	];
+	industriesMenuLinks: [
+		{
+			node: {
+				id: string;
+				url: string;
+				label: string;
+			};
+		}
+	];
 }
 
 const Footer: FC<FooterProps> = ({
@@ -40,9 +49,10 @@ const Footer: FC<FooterProps> = ({
 	linkedinLink,
 	copyRightText,
 	footerMenuLinks,
+	industriesMenuLinks,
 }) => {
 	return (
-		<section className="py-10 overflow-hidden bg-darkerBlueTwo">
+		<section className="py-20 overflow-hidden bg-darkerBlueTwo">
 			<div className="container px-4 mx-auto">
 				<div className="flex flex-row justify-between -m-6 lg:items-center">
 					<div className="w-full p-6 md:w-auto">
@@ -184,20 +194,43 @@ const Footer: FC<FooterProps> = ({
 							</motion.div>
 						</motion.div>
 					</div>
-					<div className="w-full p-6 md:w-1/2">
-						<motion.ul
-							variants={stagger}
-							className="flex flex-col items-center justify-center gap-4 -m-5"
-						>
-							{footerMenuLinks?.map((keys) => (
-								<FooterMenuLinks
-									key={keys?.node?.id}
-									url={keys?.node?.url}
-									label={keys?.node?.label}
-									tailwindStyling="text-white hover:text-goldPrime"
-								/>
-							))}
-						</motion.ul>
+					<div className="flex flex-row items-start justify-end w-full gap-6 md:w-1/2">
+						<div className="flex flex-col px-2 sm:px-6">
+							<h4 className="text-white tracking-normal font-[900] uppercase mb-5 text-left">
+								Company
+							</h4>
+							<motion.ul
+								variants={stagger}
+								className="flex flex-col gap-2 py-6"
+							>
+								{footerMenuLinks?.map((keys) => (
+									<FooterMenuLinks
+										key={keys?.node?.id}
+										url={keys?.node?.url}
+										label={keys?.node?.label}
+										tailwindStyling="text-white text-left hover:text-goldPrime"
+									/>
+								))}
+							</motion.ul>
+						</div>
+						<div className="flex flex-col px-2 sm:px-6">
+							<h4 className="text-white tracking-normal font-[900] uppercase mb-5 text-left">
+								Industries
+							</h4>
+							<motion.ul
+								variants={stagger}
+								className="flex flex-col gap-2 py-6"
+							>
+								{industriesMenuLinks?.map((keys) => (
+									<FooterMenuLinks
+										key={keys?.node?.id}
+										label={keys?.node?.label}
+										url={`/industries${keys?.node?.url}`}
+										tailwindStyling="text-white text-left hover:text-goldPrime"
+									/>
+								))}
+							</motion.ul>
+						</div>
 					</div>
 				</div>
 				<div className="py-9">

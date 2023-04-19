@@ -7,6 +7,7 @@ import {
 	getMainMenuLinks,
 	getNavbarMenuLinks,
 	getFooterMenuLinks,
+	getIndustriesMenuLinks,
 } from "../functions/MenuLinks";
 
 // Components
@@ -23,6 +24,7 @@ export default function HomePage({
 	content,
 	footerMenuLinks,
 	navbarMenuLinks,
+	industriesMenuLinks,
 	themesOptionsContent,
 }: any) {
 	return (
@@ -39,6 +41,7 @@ export default function HomePage({
 				themesOptionsContent={themesOptionsContent}
 				footerMenuLinks={footerMenuLinks?.footerMenuLinks}
 				navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks}
+				industriesMenuLinks={industriesMenuLinks?.industriesMenuLinks}
 			>
 				<Hero
 					title={content?.heroSection?.title}
@@ -270,12 +273,14 @@ export async function getStaticProps() {
 
 	const navbarMenuLinks: object = await getNavbarMenuLinks();
 	const footerMenuLinks: object = await getFooterMenuLinks();
+	const industriesMenuLinks: object = await getIndustriesMenuLinks();
 	const themesOptionsContent: object = await getThemesOptionsContent();
 
 	return {
 		props: {
 			navbarMenuLinks,
 			footerMenuLinks,
+			industriesMenuLinks,
 			themesOptionsContent,
 			seo: response?.data?.mainContent?.edges[0]?.node?.seo,
 			content: response.data?.mainContent?.edges[0]?.node?.homePage,

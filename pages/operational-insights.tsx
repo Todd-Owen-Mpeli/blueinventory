@@ -8,6 +8,7 @@ import {
 	getMainMenuLinks,
 	getNavbarMenuLinks,
 	getFooterMenuLinks,
+	getIndustriesMenuLinks,
 } from "../functions/MenuLinks";
 
 // Components
@@ -37,6 +38,7 @@ const operationalInsights = ({
 				themesOptionsContent={themesOptionsContent}
 				footerMenuLinks={footerMenuLinks?.footerMenuLinks}
 				navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks}
+				industriesMenuLinks={industriesMenuLinks?.industriesMenuLinks}
 			>
 				{/* Renders all operational insights blog posts */}
 				<OperationalInsights operationalInsights={operationalInsights} />
@@ -101,6 +103,7 @@ export async function getStaticProps() {
 
 	const navbarMenuLinks: object = await getNavbarMenuLinks();
 	const footerMenuLinks: object = await getFooterMenuLinks();
+	const industriesMenuLinks: object = await getIndustriesMenuLinks();
 	const themesOptionsContent: object = await getThemesOptionsContent();
 	const operationalInsights: object = await getAllOperationalInsightsContent();
 

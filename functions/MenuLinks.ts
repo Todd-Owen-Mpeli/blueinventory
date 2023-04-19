@@ -96,3 +96,35 @@ export async function getFooterMenuLinks() {
 		);
 	}
 }
+
+// Industries Menu Links
+export async function getIndustriesMenuLinks() {
+	try {
+		const content: any = gql`
+			{
+				industriesMenuLinks: menuItems(where: {location: INDUSTRIES}) {
+					edges {
+						node {
+							id
+							url
+							label
+						}
+					}
+				}
+			}
+		`;
+
+		const response: any = await client.query({
+			query: content,
+		});
+
+		return {
+			industriesMenuLinks: response?.data?.industriesMenuLinks?.edges,
+		};
+	} catch (error) {
+		console.log(error);
+		throw new Error(
+			"Something went wrong trying to fetch footer menu links content"
+		);
+	}
+}

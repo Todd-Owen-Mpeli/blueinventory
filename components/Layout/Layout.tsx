@@ -1,11 +1,10 @@
 // Import
 import {FC} from "react";
-import postHog from "posthog-js";
 
 // Components
 import Footer from "../Footer";
-import MetaTag from "../Meta/MetaTag";
 import Navbar from "../Navbar";
+import MetaTag from "../Meta/MetaTag";
 
 interface ILayout {
 	seo: any;
@@ -28,6 +27,15 @@ interface ILayout {
 			};
 		}
 	];
+	industriesMenuLinks: [
+		{
+			node: {
+				id: string;
+				url: string;
+				label: string;
+			};
+		}
+	];
 	themesOptionsContent: any;
 	children: React.ReactNode;
 }
@@ -38,6 +46,7 @@ const Layout: FC<ILayout> = ({
 	pageTitle,
 	footerMenuLinks,
 	navbarMenuLinks,
+	industriesMenuLinks,
 	themesOptionsContent,
 }) => {
 	return (
@@ -51,6 +60,7 @@ const Layout: FC<ILayout> = ({
 			<Footer
 				footerMenuLinks={footerMenuLinks}
 				email={themesOptionsContent?.email}
+				industriesMenuLinks={industriesMenuLinks}
 				emailTwo={themesOptionsContent?.emailTwo}
 				phoneNumber={themesOptionsContent?.phoneNumber}
 				twitterLink={themesOptionsContent?.twitterLink}
