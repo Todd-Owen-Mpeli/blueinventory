@@ -43,7 +43,7 @@ const Testimonial: FC<IProps> = ({title, paragraph, contentGrid}) => {
 					content={paragraph}
 					tailwindStyling="my-5 text-base text-black text-center"
 				/>
-				<div className="flex flex-row items-center justify-center mx-10 mt-8">
+				<div className="flex flex-col items-center justify-center mx-4 mt-8 lg:mx-10 lg:flex-row">
 					{contentGrid?.map((keys) => (
 						<TestimonialCard
 							key={keys?.card?.id}

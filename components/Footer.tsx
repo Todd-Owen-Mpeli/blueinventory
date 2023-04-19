@@ -54,8 +54,8 @@ const Footer: FC<FooterProps> = ({
 	return (
 		<section className="py-20 overflow-hidden bg-darkerBlueTwo">
 			<div className="container px-4 mx-auto">
-				<div className="flex flex-row justify-between -m-6 lg:items-center">
-					<div className="w-full p-6 md:w-auto">
+				<div className="flex flex-col items-baseline justify-between gap-6 px-6 -m-6 lg:px-4 md:flex-row lg:items-center">
+					<div className="w-full py-6 md:w-auto">
 						<div className="mb-10">
 							<Link href="/" className="text-2xl text-lightBlue font-[900]">
 								BlueInventory
@@ -121,7 +121,7 @@ const Footer: FC<FooterProps> = ({
 						</div>
 						<motion.div
 							variants={stagger}
-							className="flex items-center justify-start gap-6 text-center -m-1.5 "
+							className="flex items-center justify-start gap-6 text-center"
 						>
 							<motion.div variants={fadeIn}>
 								<Link className="inline-block text-green" href={facebookLink}>
@@ -194,7 +194,7 @@ const Footer: FC<FooterProps> = ({
 							</motion.div>
 						</motion.div>
 					</div>
-					<div className="flex flex-row items-start justify-end w-full gap-6 md:w-1/2">
+					<div className="flex flex-col items-start justify-start w-full gap-6 sm:flex-row lg:justify-end md:w-1/2">
 						<div className="flex flex-col px-2 sm:px-6">
 							<h4 className="text-white tracking-normal font-[900] uppercase mb-5 text-left">
 								Company
@@ -236,7 +236,7 @@ const Footer: FC<FooterProps> = ({
 				<div className="py-9">
 					<div className="border-b border-goldPrime"></div>
 				</div>
-				<div className="flex flex-wrap items-center justify-between -m-6">
+				<div className="flex flex-col items-center justify-between -m-6 lg:flex-row">
 					<div className="w-auto p-6">
 						<motion.p variants={fadeIn} className="text-sm text-white">
 							{copyRightText}

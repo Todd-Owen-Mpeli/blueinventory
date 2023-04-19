@@ -7,9 +7,9 @@ import {
 	getIndustriesMenuLinks,
 } from "../../functions/MenuLinks";
 import {
-	fetchOperationalInsightsPostsSlugs,
-	fetchOperationalInsightsPostsContent,
-} from "../../functions/OperationalInsightsPostsSlugs";
+	fetchIndustriesPageSlugs,
+	fetchIndustriesPageContent,
+} from "../../functions/IndustriesPageSlugs";
 import {getThemesOptionsContent} from "../../functions/themesOptions";
 
 // Components
@@ -58,10 +58,10 @@ const singlePost = ({
 				/>
 
 				<CTATwo
-					title={content?.contactBanner?.title}
-					paragraph={content?.contactBanner?.paragraph}
-					buttonLink={content?.contactBanner?.buttonLink}
-					backgroundImage={content?.contactBanner?.backgroundImage?.sourceUrl}
+					title={content?.cta?.title}
+					paragraph={content?.cta?.paragraph}
+					buttonLink={content?.cta?.buttonLink}
+					backgroundImage={content?.cta?.backgroundImage?.sourceUrl}
 				/>
 			</Layout>
 		</motion.div>
@@ -71,7 +71,7 @@ const singlePost = ({
 export default singlePost;
 
 export async function getStaticPaths() {
-	const data = await fetchOperationalInsightsPostsSlugs();
+	const data = await fetchIndustriesPageSlugs();
 
 	const paths = data.map((slugUrl) => ({
 		params: {
@@ -83,9 +83,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({params}: any) {
-	const response: any = await fetchOperationalInsightsPostsContent(
-		params?.slug
-	);
+	const response: any = await fetchIndustriesPageContent(params?.slug);
 
 	const mainMenuLinks: object = await getMainMenuLinks();
 	const navbarMenuLinks: object = await getNavbarMenuLinks();
