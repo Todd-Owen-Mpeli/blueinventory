@@ -6,9 +6,6 @@ import {motion} from "framer-motion";
 import DOMPurify from "isomorphic-dompurify";
 import {fadeInUp, stagger} from "../../animations/animations";
 
-// Components
-import Paragraph from ".././Elements/Paragraph";
-
 interface IProps {
 	title: string;
 	paragraph: string;
@@ -39,7 +36,10 @@ const TestimonialCard: FC<IProps> = ({
 
 	return (
 		<div className="w-full px-4 mb-8 lg:w-1/3 lg:mb-0">
-			<div className="max-w-sm p-10 pb-6 mx-auto rounded-md bg-lightGrey">
+			<motion.div
+				variants={stagger}
+				className="max-w-sm p-10 pb-6 mx-auto rounded-md bg-lightGrey"
+			>
 				<svg
 					width="24"
 					height="16"
@@ -52,24 +52,27 @@ const TestimonialCard: FC<IProps> = ({
 						fill="#e8b042"
 					></path>
 				</svg>
-				<div
+				<motion.div
+					variants={fadeInUp}
 					className={paragraph ? `mt-2 mb-6 text-base text-darkBlue` : `hidden`}
 					dangerouslySetInnerHTML={createTrimmedParagraphMarkup(paragraph)}
 				/>
-				<div className="flex items-center">
-					<Image
-						alt={image?.altText}
-						src={image?.sourceUrl}
-						width={image?.mediaDetails?.width}
-						height={image?.mediaDetails?.height}
-						className="object-cover object-top w-8 h-8 mr-4 rounded-full"
-					/>
-					<div>
+				<motion.div variants={stagger} className="flex items-center">
+					<motion.div variants={fadeInUp}>
+						<Image
+							alt={image?.altText}
+							src={image?.sourceUrl}
+							width={image?.mediaDetails?.width}
+							height={image?.mediaDetails?.height}
+							className="object-cover object-top w-8 h-8 mr-4 rounded-full"
+						/>
+					</motion.div>
+					<motion.div variants={fadeInUp}>
 						<h4 className="text-sm font-medium">{title}</h4>
 						<span className="text-sm text-black">{jobPosition}</span>
-					</div>
-				</div>
-			</div>
+					</motion.div>
+				</motion.div>
+			</motion.div>
 		</div>
 	);
 };

@@ -84,7 +84,6 @@ export default function HomePage({
 					title={content?.cta?.title}
 					content={content?.cta?.content}
 					paragraph={content?.cta?.paragraph}
-					contentTwo={content?.cta?.contentTwo}
 					buttonLink={content?.cta?.buttonLink}
 					buttonLinkTwo={content?.cta?.buttonLinkTwo}
 					backgroundImage={content?.cta?.backgroundImage?.sourceUrl}
@@ -251,10 +250,6 @@ export async function getStaticProps() {
 									target
 								}
 								content {
-									title
-									paragraph
-								}
-								contentTwo {
 									title
 									paragraph
 								}

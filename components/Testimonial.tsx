@@ -17,7 +17,7 @@ interface IProps {
 			card: {
 				id: string;
 				name: string;
-				title: string;
+				position: string;
 				paragraph: string;
 				image: {
 					altText: string;
@@ -47,9 +47,9 @@ const Testimonial: FC<IProps> = ({title, paragraph, contentGrid}) => {
 					{contentGrid?.map((keys) => (
 						<TestimonialCard
 							key={keys?.card?.id}
-							title={keys?.card?.title}
+							title={keys?.card?.name}
 							image={keys?.card?.image}
-							jobPosition={keys?.card?.name}
+							jobPosition={keys?.card?.position}
 							paragraph={keys?.card?.paragraph}
 						/>
 					))}
