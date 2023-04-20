@@ -46,11 +46,11 @@ const Testimonial: FC<IProps> = ({title, paragraph, contentGrid}) => {
 				<div className="flex flex-col items-center justify-center mx-4 mt-8 lg:mx-10 lg:flex-row">
 					{contentGrid?.map((keys) => (
 						<TestimonialCard
-							key={keys?.card?.id}
 							title={keys?.card?.name}
 							image={keys?.card?.image}
-							jobPosition={keys?.card?.position}
 							paragraph={keys?.card?.paragraph}
+							jobPosition={keys?.card?.position}
+							key={keys?.card?.id || keys?.card?.name}
 						/>
 					))}
 				</div>

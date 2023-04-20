@@ -50,7 +50,7 @@ const Layout: FC<ILayout> = ({
 	themesOptionsContent,
 }) => {
 	return (
-		<div>
+		<section>
 			<MetaTag title={pageTitle} seo={seo} />
 
 			<Navbar navbarMenuLinks={navbarMenuLinks} />
@@ -69,7 +69,7 @@ const Layout: FC<ILayout> = ({
 				copyRightText={themesOptionsContent?.copyrightText}
 				phoneNumberTwo={themesOptionsContent?.phoneNumberTwo}
 			/>
-		</div>
+		</section>
 	);
 };
 

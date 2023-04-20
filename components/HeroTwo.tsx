@@ -1,4 +1,4 @@
-import Link from "next/link";
+// Import
 import Image from "next/image";
 import {useState, FC} from "react";
 import {motion} from "framer-motion";
@@ -25,7 +25,7 @@ interface HeroProps {
 	};
 }
 
-const HeroThree: FC<HeroProps> = ({
+const HeroTwo: FC<HeroProps> = ({
 	title,
 	paragraph,
 	backgroundImage,
@@ -44,27 +44,31 @@ const HeroThree: FC<HeroProps> = ({
 	return (
 		<section className={styles.hero}>
 			<div className="flex flex-col bg-cover bg-center bg-no-repeat relative h-full min-h-[75vh]">
-				{/* Background Video */}
-				<div className="absolute top-0 bottom-0 left-0 w-full h-full z-[995]">
-					{/* Video */}
+				<div
+					className="absolute top-0 bottom-0 left-0 w-full h-full max-h-[75vh] z-[995] bg-center bg-no-repeat bg-cove"
+					style={{backgroundImage: `url("${backgroundImage?.sourceUrl}")`}}
+				>
+					{/* Background Video */}
 					<div
 						className={
 							backgroundImageOrVideo === "Video"
-								? `w-full h-full max-h-[75vh] overflow-hidden`
-								: ` hidden`
+								? `absolute top-0 bottom-0 left-0 w-full h-full`
+								: `hidden`
 						}
 					>
-						<div className="relative pt-[56.25%] h-full">
-							<iframe
-								width="3840"
-								height="2160"
-								frameBorder="0"
-								title="DBMX Racing Hero Video"
-								allow="autoplay; fullscreen; picture-in-picture"
-								className="absolute top-0 left-0 w-full h-full"
-								src={`${backgroundVideoUrl}?autoplay=1&loop=1&autopause=0&background=1&title=0&sidedock=0&controls=0`}
-							/>
-						</div>
+						<video
+							autoPlay
+							muted
+							loop
+							className={
+								backgroundVideoUrl
+									? "object-cover object-center w-full h-full"
+									: `hidden`
+							}
+						>
+							<source src={`${backgroundVideoUrl}`} type="video/mp4" />
+						</video>
+						<div className="absolute top-0 bottom-0 left-0 w-full h-full opacity-90 bg-gradient-to-b from-darkerRedTwo from-5% via-darkerRedTwo via-10% to-transparent to-100%" />
 					</div>
 
 					{/* Image */}
@@ -103,4 +107,4 @@ const HeroThree: FC<HeroProps> = ({
 	);
 };
 
-export default HeroThree;
+export default HeroTwo;

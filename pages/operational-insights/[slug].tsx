@@ -14,7 +14,7 @@ import {getThemesOptionsContent} from "../../functions/themesOptions";
 
 // Components
 import CTATwo from "../../components/CTATwo";
-import HeroThree from "../../components/HeroThree";
+import HeroTwo from "../../components/HeroTwo";
 import Layout from "../../components/Layout/Layout";
 import TitleParagraph from "../../components/TitleParagraph";
 
@@ -44,7 +44,7 @@ const singlePost = ({
 				navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks}
 				industriesMenuLinks={industriesMenuLinks?.industriesMenuLinks}
 			>
-				<HeroThree
+				<HeroTwo
 					title={content?.heroSection?.title}
 					paragraph={content?.heroSection?.paragraph}
 					backgroundImage={content?.heroSection?.backgroundImage}

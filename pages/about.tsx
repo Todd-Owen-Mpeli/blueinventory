@@ -11,9 +11,10 @@ import {
 } from "../functions/MenuLinks";
 
 // Components
+import CTATwo from "../components/CTATwo";
 import Layout from "../components/Layout/Layout";
 import TitleParagraph from "../components/TitleParagraph";
-import CTATwo from "../components/CTATwo";
+import ContentBackgroundImage from "../components/ContentBackgroundImage";
 
 const about = ({
 	seo,
@@ -40,12 +41,12 @@ const about = ({
 				navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks}
 				industriesMenuLinks={industriesMenuLinks?.industriesMenuLinks}
 			>
-				<h1>{pageTitle}</h1>
-
 				<TitleParagraph
 					title={content?.titleParagraph?.title}
 					paragraph={content?.titleParagraph?.paragraph}
 				/>
+
+				<ContentBackgroundImage gridContent={content?.gridContent} />
 
 				<CTATwo
 					title={content?.cta?.title}
@@ -106,6 +107,16 @@ export async function getStaticProps() {
 							titleParagraph {
 								title
 								paragraph
+							}
+							gridContent {
+								card {
+									title
+									paragraph
+									contentLocation
+									backgroundImage {
+										sourceUrl
+									}
+								}
 							}
 							cta {
 								title

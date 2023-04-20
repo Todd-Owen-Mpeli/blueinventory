@@ -167,10 +167,10 @@ const JumboContent: FC<IProps> = ({
 						{/* Remaining Cards */}
 						{gridContent?.map((keys) => (
 							<JumboCard
-								key={keys?.card?.id}
 								title={keys?.card?.title}
 								subtitle={keys?.card?.subtitle}
 								paragraph={keys?.card?.paragraph}
+								key={keys?.card?.id || keys?.card?.title}
 							/>
 						))}
 						{/* Last Card */}

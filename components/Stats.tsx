@@ -56,7 +56,7 @@ const Stats: FC<IProps> = ({
 								<ul>
 									{bulletPoints?.map((keys) => (
 										<StatsBulletPointCard
-											key={keys?.id}
+											key={keys?.id || keys?.bulletPoint}
 											bulletPointText={keys?.bulletPoint}
 										/>
 									))}

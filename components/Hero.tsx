@@ -1,8 +1,8 @@
 import {FC} from "react";
 import Link from "next/link";
+import {motion} from "framer-motion";
 import parse from "html-react-parser";
 import styled from "styled-components";
-import {motion} from "framer-motion";
 import {fadeInUp, stagger} from "../animations/animations";
 
 // Components

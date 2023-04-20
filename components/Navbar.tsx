@@ -20,7 +20,7 @@ interface HeroProps {
 
 const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 	return (
-		<nav className="fixed z-[999] w-full py-4 bg-white">
+		<div className="fixed z-[999] w-full py-4 bg-white">
 			<div className="container px-0 mx-auto">
 				<div className="flex items-center justify-between px-6 py-3.5 bg-white">
 					<div className="flex flex-wrap items-center">
@@ -94,9 +94,9 @@ const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 										<path
 											d="M37 32H19M37 24H19"
 											stroke="white"
-											stroke-width="1.5"
-											stroke-linecap="round"
-											stroke-linejoin="round"
+											strokeWidth="1.5"
+											strokeLinecap="round"
+											strokeLinejoin="round"
 										></path>
 									</svg>
 								</Link>
@@ -106,7 +106,7 @@ const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 				</div>
 				{/* Mobile Navbar */}
 				<div className="fixed top-0 bottom-0 left-0 z-50 hidden w-4/6 navbar-menu sm:max-w-xs">
-					<div className="fixed inset-0 bg-grey navbar-backdrop opacity-80"></div>
+					<div className="fixed inset-0 bg-grey navbar-backdrop opacity-80" />
 					<div className="relative z-10 h-full pt-8 overflow-y-auto bg-white px-9">
 						<div className="flex flex-wrap justify-between h-full">
 							<div className="w-full">
@@ -131,9 +131,9 @@ const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 												<path
 													d="M6 18L18 6M6 6L18 18"
 													stroke="#111827"
-													stroke-width="2"
-													stroke-linecap="round"
-													stroke-linejoin="round"
+													strokeWidth="2"
+													strokeLinecap="round"
+													strokeLinejoin="round"
 												></path>
 											</svg>
 										</Link>
@@ -182,7 +182,7 @@ const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 					</div>
 				</div>
 			</div>
-		</nav>
+		</div>
 	);
 };
 
