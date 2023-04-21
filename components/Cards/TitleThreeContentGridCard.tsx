@@ -33,7 +33,7 @@ const TitleThreeContentGridCard: FC<IProps> = ({
 						<h3 className="text-xl font-semibold leading-snug mb-7">{title}</h3>
 						<Paragraph
 							content={paragraph}
-							tailwindStyling="mb-10 font-medium leading-relaxed text-darkGrey"
+							tailwindStyling="mb-10 font-medium leading-relaxed"
 						/>
 					</motion.div>
 					<motion.div

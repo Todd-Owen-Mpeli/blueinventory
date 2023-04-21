@@ -11,7 +11,9 @@ import {
 } from "../functions/MenuLinks";
 
 // Components
+import CTA from "../components/CTA";
 import Layout from "../components/Layout/Layout";
+import ContactInfo from "@/components/ContactInfo";
 
 const contact = ({
 	seo,
@@ -38,7 +40,26 @@ const contact = ({
 				navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks}
 				industriesMenuLinks={industriesMenuLinks?.industriesMenuLinks}
 			>
-				<h1>{pageTitle}</h1>
+				<ContactInfo
+					email={themesOptionsContent?.email}
+					title={content?.contactInfo?.title}
+					subtitle={content?.contactInfo?.subtitle}
+					groupOne={content?.contactInfo?.groupOne}
+					groupTwo={content?.contactInfo?.groupTwo}
+					emailTwo={themesOptionsContent?.emailTwo}
+					paragraph={content?.contactInfo?.paragraph}
+					phoneNumber={themesOptionsContent?.phoneNumber}
+					phoneNumberTwo={themesOptionsContent?.phoneNumberTwo}
+				/>
+
+				<CTA
+					title={content?.cta?.title}
+					content={content?.cta?.content}
+					paragraph={content?.cta?.paragraph}
+					buttonLink={content?.cta?.buttonLink}
+					buttonLinkTwo={content?.cta?.buttonLinkTwo}
+					backgroundImage={content?.cta?.backgroundImage?.sourceUrl}
+				/>
 			</Layout>
 		</motion.div>
 	);
@@ -88,6 +109,60 @@ export async function getStaticProps() {
 								mediaItemUrl
 							}
 						}
+						contactPage {
+							contactInfo {
+								title
+								subtitle
+								paragraph
+								groupOne {
+									title
+									subtitle
+									address
+									image {
+										altText
+										sourceUrl
+										mediaDetails {
+											height
+											width
+										}
+									}
+								}
+								groupTwo {
+									title
+									subtitle
+									address
+									image {
+										altText
+										sourceUrl
+										mediaDetails {
+											height
+											width
+										}
+									}
+								}
+							}
+							cta {
+								title
+								paragraph
+								buttonLink {
+									url
+									title
+									target
+								}
+								buttonLinkTwo {
+									url
+									title
+									target
+								}
+								content {
+									title
+									paragraph
+								}
+								backgroundImage {
+									sourceUrl
+								}
+							}
+						}
 					}
 				}
 			}
@@ -111,7 +186,7 @@ export async function getStaticProps() {
 			themesOptionsContent,
 			seo: response?.data?.mainContent?.edges[0]?.node?.seo,
 			pageTitle: response?.data?.title?.edges[0]?.node?.title,
-			// content: response?.data?.mainContent?.edges[0]?.node?.contactPage,
+			content: response?.data?.mainContent?.edges[0]?.node?.contactPage,
 		},
 		revalidate: 60,
 	};

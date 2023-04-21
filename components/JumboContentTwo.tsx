@@ -44,7 +44,7 @@ const JumboContentTwo: FC<IProps> = ({
 	return (
 		<section className="overflow-hidden bg-white">
 			<div className="container px-4 mx-auto">
-				<div className="max-w-6xl mx-auto pt-28 pb-36">
+				<div className="mx-auto max-w-7xl pt-28 pb-36">
 					<motion.div variants={stagger} className="flex flex-wrap -m-3">
 						{/* Card One */}
 						<div className="w-full p-3 md:w-1/2">

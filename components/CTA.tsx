@@ -26,6 +26,7 @@ interface IProps {
 		paragraph: string;
 	};
 }
+
 const CTATwo: FC<IProps> = ({
 	title,
 	content,
