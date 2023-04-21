@@ -11,13 +11,13 @@ import {
 } from "../functions/MenuLinks";
 
 // Components
+import CTA from "../components/CTA";
 import Hero from "../components/Hero";
 import Logos from "../components/Logos";
 import Stats from "../components/Stats";
 import Layout from "../components/Layout/Layout";
-import JumboContent from "../components/JumboContent";
 import Testimonial from "../components/Testimonial";
-import CTA from "../components/CTA";
+import JumboContent from "../components/JumboContent";
 
 export default function HomePage({
 	seo,

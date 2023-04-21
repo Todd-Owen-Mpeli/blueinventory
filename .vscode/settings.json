@@ -1,28 +1,3 @@
 {
-	"compile-hero.disable-compile-files-on-did-save-code": true,
-	"cSpell.words": [
-		"blueinventory",
-		"Deca",
-		"dribbble",
-		"Evolventa",
-		"focuskw",
-		"Gratelos",
-		"Gratelosdisplay",
-		"gsap",
-		"Hoxton",
-		"Leclerc",
-		"Legos",
-		"Lexend",
-		"Meridiana",
-		"Millunium",
-		"Neuvegrotesque",
-		"newyork",
-		"POSTHOG",
-		"sanfrancisco",
-		"Schrifted",
-		"shdw",
-		"tailwindcss",
-		"Verstappen",
-		"webp"
-	]
+	"cSpell.words": ["tailwindcss"]
 }

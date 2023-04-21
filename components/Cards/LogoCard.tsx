@@ -25,7 +25,7 @@ const logoCard: FC<IProps> = ({image}) => {
 				height={image?.mediaDetails?.height}
 				className={
 					image?.sourceUrl
-						? `block w-[150px] h-full sm:w-[150px] lg:w-full lg:h-[150px] object-contain object-center`
+						? `block w-[150px] h-[100px] sm:w-[150px] lg:w-full object-contain object-center`
 						: `hidden`
 				}
 			/>

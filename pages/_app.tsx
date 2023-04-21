@@ -1,13 +1,11 @@
 // Import
 import postHog from "posthog-js";
 import {useRouter} from "next/router";
+import type {AppProps} from "next/app";
 import {client} from "../config/apollo";
 import {useState, useEffect} from "react";
 import {PostHogProvider} from "posthog-js/react";
 import {ApolloProvider} from "@apollo/client/react";
-
-// Components
-import CookiePolicyCard from "../components/Elements/CookiePolicyCard";
 
 // Styling
 import "../styles/globals.scss";
@@ -23,7 +21,7 @@ if (typeof window !== "undefined") {
 	});
 }
 
-function MyApp({Component, pageProps}) {
+export default function App({Component, pageProps}: AppProps) {
 	// PostHog Cookies Policy
 	const router = useRouter();
 
@@ -44,8 +42,9 @@ function MyApp({Component, pageProps}) {
 		const [loading, setLoading]: any = useState(false);
 
 		useEffect(() => {
-			const handleStart = (url) => url !== router.asPath && setLoading(true);
-			const handleComplete = (url) =>
+			const handleStart = (url: any) =>
+				url !== router.asPath && setLoading(true);
+			const handleComplete = (url: any) =>
 				url === router.asPath &&
 				setTimeout(() => {
 					setLoading(false);
@@ -99,19 +98,13 @@ function MyApp({Component, pageProps}) {
 			)
 		);
 	}
+
 	return (
 		<ApolloProvider client={client}>
 			<PostHogProvider client={postHog}>
-				{/* Cookie Policy Pop Up */}
-				{postHog.has_opted_in_capturing() ||
-				postHog.has_opted_out_capturing() ? null : (
-					<CookiePolicyCard />
-				)}
 				<Loading />
 				<Component {...pageProps} />
 			</PostHogProvider>
 		</ApolloProvider>
 	);
 }
-
-export default MyApp;

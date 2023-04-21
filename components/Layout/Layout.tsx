@@ -1,10 +1,12 @@
 // Import
 import {FC} from "react";
+import postHog from "posthog-js";
 
 // Components
 import Footer from "../Footer";
 import Navbar from "../Navbar";
 import MetaTag from "../Meta/MetaTag";
+import CookiePolicyCard from "../Elements/CookiePolicyCard";
 
 interface ILayout {
 	seo: any;
@@ -50,12 +52,12 @@ const Layout: FC<ILayout> = ({
 	themesOptionsContent,
 }) => {
 	return (
-		<section>
+		<>
 			<MetaTag title={pageTitle} seo={seo} />
 
 			<Navbar navbarMenuLinks={navbarMenuLinks} />
 
-			<div className="pt-16">{children}</div>
+			<section className="pt-16">{children}</section>
 
 			<Footer
 				footerMenuLinks={footerMenuLinks}
@@ -69,7 +71,13 @@ const Layout: FC<ILayout> = ({
 				copyRightText={themesOptionsContent?.copyrightText}
 				phoneNumberTwo={themesOptionsContent?.phoneNumberTwo}
 			/>
-		</section>
+
+			{/* Cookie Policy Pop Up */}
+			{postHog.has_opted_in_capturing() ||
+			postHog.has_opted_out_capturing() ? null : (
+				<CookiePolicyCard />
+			)}
+		</>
 	);
 };
 

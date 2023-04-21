@@ -20,7 +20,7 @@ interface HeroProps {
 
 const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 	return (
-		<div className="fixed z-[999] w-full py-4 bg-white">
+		<nav className="fixed z-[999] w-full py-4 bg-white">
 			<div className="container px-0 mx-auto">
 				<div className="flex items-center justify-between px-6 py-3.5 bg-white">
 					<div className="flex flex-wrap items-center">
@@ -40,7 +40,7 @@ const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 											key={keys?.node?.id}
 											url={keys?.node?.url}
 											label={keys?.node?.label}
-											tailwindStyling="text-tiny uppercase font-bold tracking-[.15rem] text-darkBlue hover:text-goldPrime transition-all ease-in-out duration-500"
+											tailwindStyling="text-sm uppercase font-bold tracking-[.15rem] text-darkBlue hover:text-goldPrime transition-all ease-in-out duration-500"
 										/>
 									))}
 								</motion.ul>
@@ -182,7 +182,7 @@ const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 					</div>
 				</div>
 			</div>
-		</div>
+		</nav>
 	);
 };
 

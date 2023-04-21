@@ -1,0 +1,114 @@
+// Import
+import {FC} from "react";
+import {motion} from "framer-motion";
+import {fadeInUp, fadeIn, stagger} from "../animations/animations";
+
+// Components
+import Paragraph from "./Elements/Paragraph";
+import JumboCard from "./Cards/JumboCard";
+
+interface IProps {
+	cardOne: {
+		title: string;
+		subtitle: string;
+		paragraph: string;
+	};
+	cardTwo: {
+		backgroundImage: {
+			sourceUrl: string;
+		};
+	};
+	gridContent: [
+		{
+			card: {
+				id: string;
+				title: string;
+				subtitle: string;
+				paragraph: string;
+			};
+		}
+	];
+	lastCard: {
+		backgroundImage: {
+			sourceUrl: string;
+		};
+	};
+}
+
+const JumboContentTwo: FC<IProps> = ({
+	cardOne,
+	cardTwo,
+	lastCard,
+	gridContent,
+}) => {
+	return (
+		<section className="overflow-hidden bg-white">
+			<div className="container px-4 mx-auto">
+				<div className="max-w-6xl mx-auto pt-28 pb-36">
+					<motion.div variants={stagger} className="flex flex-wrap -m-3">
+						{/* Card One */}
+						<div className="w-full p-3 md:w-1/2">
+							<div className="h-full p-10 rounded-sm bg-lightGrey">
+								<div className="flex flex-wrap items-center mb-10">
+									<div className="w-auto p-2">
+										<h4 className="text-lg font-semibold text-goldPrimeDark">
+											{cardOne?.subtitle}
+										</h4>
+									</div>
+								</div>
+								<h3 className="mb-4 text-3xl font-semibold">
+									{cardOne?.title}
+								</h3>
+								<Paragraph
+									content={cardOne?.paragraph}
+									tailwindStyling="mb-10 text-base text-black"
+								/>
+							</div>
+						</div>
+						{/* Card Two */}
+						<div
+							className={
+								cardTwo?.backgroundImage?.sourceUrl
+									? `w-full p-3 md:w-1/2 min-h-[450px]`
+									: `hidden`
+							}
+						>
+							<div
+								className="h-full p-8 bg-center bg-no-repeat bg-cover rounded-sm bg-lightGrey"
+								style={{
+									backgroundImage: `url("${cardTwo?.backgroundImage?.sourceUrl}")`,
+								}}
+							/>
+						</div>
+						{/* Remaining Cards */}
+						{gridContent?.map((keys) => (
+							<JumboCard
+								title={keys?.card?.title}
+								subtitle={keys?.card?.subtitle}
+								paragraph={keys?.card?.paragraph}
+								key={keys?.card?.id || keys?.card?.title}
+							/>
+						))}
+						{/* Last Card */}
+						<div
+							className={
+								lastCard?.backgroundImage?.sourceUrl
+									? `w-full p-3 md:w-1/2 min-h-[450px]`
+									: `hidden`
+							}
+						>
+							<div
+								className="h-full p-8 bg-center bg-no-repeat bg-cover rounded-sm bg-lightGrey"
+								style={{
+									backgroundImage: `url("${lastCard?.backgroundImage?.sourceUrl}")`,
+								}}
+							/>
+						</div>
+					</motion.div>
+				</div>
+			</div>
+		</section>
+	);
+};
+
+export default JumboContentTwo;

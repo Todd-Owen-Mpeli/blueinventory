@@ -11,9 +11,11 @@ import {
 } from "../functions/MenuLinks";
 
 // Components
+import Logos from "../components/Logos";
 import CTATwo from "../components/CTATwo";
 import HeroTwo from "../components/HeroTwo";
 import Layout from "../components/Layout/Layout";
+import JumboContentTwo from "@/components/JumboContentTwo";
 import TitleThreeContentGrid from "../components/TitleThreeContentGrid";
 
 const features = ({
@@ -52,6 +54,19 @@ const features = ({
 				<TitleThreeContentGrid
 					title={content?.introContent?.title}
 					contentGrid={content?.introContent?.contentGrid}
+				/>
+
+				<JumboContentTwo
+					cardOne={content?.featuresGrid?.cardOne}
+					cardTwo={content?.featuresGrid?.cardTwo}
+					lastCard={content?.featuresGrid?.lastCard}
+					gridContent={content?.featuresGrid?.gridContent}
+				/>
+
+				<Logos
+					title={content?.trustedBrands?.title}
+					logoGrid={content?.trustedBrands?.logos}
+					paragraph={content?.trustedBrands?.paragraph}
 				/>
 
 				<CTATwo
@@ -134,6 +149,44 @@ export async function getStaticProps() {
 											url
 											title
 											target
+										}
+									}
+								}
+							}
+							featuresGrid {
+								cardOne {
+									title
+									subtitle
+									paragraph
+								}
+								cardTwo {
+									backgroundImage {
+										sourceUrl
+									}
+								}
+								lastCard {
+									backgroundImage {
+										sourceUrl
+									}
+								}
+								gridContent {
+									card {
+										title
+										subtitle
+										paragraph
+									}
+								}
+							}
+							trustedBrands {
+								title
+								paragraph
+								logos {
+									image {
+										altText
+										sourceUrl
+										mediaDetails {
+											height
+											width
 										}
 									}
 								}

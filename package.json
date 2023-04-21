@@ -1,5 +1,6 @@
 {
-	"name": "blueinventory",
+	"name": "blueinventorynext",
+	"version": "0.1.0",
 	"private": true,
 	"scripts": {
 		"dev": "next dev",
@@ -9,31 +10,28 @@
 	},
 	"dependencies": {
 		"@apollo/client": "^3.7.12",
-		"dompurify": "^2.4.1",
+		"@types/node": "^18.15.13",
+		"@types/react": "^18.0.37",
+		"@types/react-dom": "^18.0.11",
+		"autoprefixer": "^10.4.14",
+		"dompurify": "^3.0.2",
+		"eslint": "^8.38.0",
+		"eslint-config-next": "^13.3.0",
 		"firebase": "^9.19.1",
 		"formik": "^2.2.9",
 		"framer-motion": "^10.12.4",
 		"graphql": "^16.6.0",
 		"html-react-parser": "^3.0.15",
-		"isomorphic-dompurify": "^0.24.0",
-		"next": "^13.1.1",
+		"isomorphic-dompurify": "^1.3.0",
+		"next": "13.3.0",
 		"nodemailer": "^6.9.1",
+		"postcss": "^8.4.23",
 		"posthog-js": "^1.53.4",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
-		"react-is": "^18.2.0",
 		"sass": "^1.62.0",
 		"styled-components": "^5.3.9",
-		"typescript": "^4.9.5",
-		"yup": "^1.0.1"
-	},
-	"devDependencies": {
-		"@types/node": "18.14.2",
-		"@types/react": "18.0.28",
-		"autoprefixer": "^10.4.13",
-		"eslint": "8.5.0",
-		"eslint-config-next": "^13.2.1",
-		"postcss": "^8.4.18",
-		"tailwindcss": "^3.2.7"
+		"tailwindcss": "^3.3.1",
+		"typescript": "^5.0.4"
 	}
 }

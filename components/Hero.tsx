@@ -1,8 +1,6 @@
 import {FC} from "react";
 import Link from "next/link";
 import {motion} from "framer-motion";
-import parse from "html-react-parser";
-import styled from "styled-components";
 import {fadeInUp, stagger} from "../animations/animations";
 
 // Components
@@ -32,24 +30,6 @@ interface HeroProps {
 	};
 }
 
-const Vimeo = styled.div`
-	position: relative;
-	padding-bottom: 56.25%;
-	overflow: hidden;
-	max-width: 100%;
-	height: auto;
-
-	iframe,
-	object,
-	embed {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-	}
-`;
-
 const Hero: FC<HeroProps> = ({
 	title,
 	subtitle,
@@ -67,9 +47,19 @@ const Hero: FC<HeroProps> = ({
 						backgroundImage: `url("${backgroundImage}")`,
 					}}
 				>
-					<Vimeo className="absolute top-0 bottom-0 left-0 hidden 2xl:block">
-						{parse(backgroundVideoUrl ? backgroundVideoUrl : `/`)}
-					</Vimeo>
+					{/* Background Video */}
+					<video
+						autoPlay
+						muted
+						loop
+						className={
+							backgroundVideoUrl
+								? "absolute top-0 bottom-0 left-0 object-cover object-center w-full h-full"
+								: `hidden`
+						}
+					>
+						<source src={`${backgroundVideoUrl}`} type="video/mp4" />
+					</video>
 
 					<div className="absolute top-0 bottom-0 left-0 w-full h-full opacity-50 bg-gradient-to-b from-darkBlue from-2% via-transparent via-5% to-transparent to-100%" />
 
