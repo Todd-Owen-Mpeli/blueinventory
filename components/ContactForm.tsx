@@ -121,7 +121,7 @@ const ContactForm: FC<IProps> = ({title, backgroundImage}) => {
 		>
 			<div className="container flex flex-col-reverse items-center justify-center mx-auto bg-white gap-y-20 lg:gap-4 lg:flex-row">
 				<div
-					className="w-full h-full min-h-[250px] sm:min-h-[450px] lg:min-h-[950px] lg:w-1/2 bg-center bg-no-repeat bg-cover"
+					className="w-full h-full min-h-[250px] sm:min-h-[450px] lg:min-h-[760px] lg:w-1/2 bg-center bg-no-repeat bg-cover"
 					style={{
 						backgroundImage: `url("${backgroundImage}")`,
 					}}
