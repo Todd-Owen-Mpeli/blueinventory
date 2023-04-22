@@ -12,6 +12,7 @@ import {
 
 // Components
 import CTATwo from "../components/CTATwo";
+import HeroTwo from "../components/HeroTwo";
 import Layout from "../components/Layout/Layout";
 import TitleParagraph from "../components/TitleParagraph";
 import ContentBackgroundImage from "../components/ContentBackgroundImage";
@@ -41,6 +42,14 @@ const about = ({
 				navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks}
 				industriesMenuLinks={industriesMenuLinks?.industriesMenuLinks}
 			>
+				<HeroTwo
+					title={content?.heroSection?.title}
+					paragraph={content?.heroSection?.paragraph}
+					backgroundImage={content?.heroSection?.backgroundImage}
+					backgroundVideoUrl={content?.heroSection?.backgroundVideoUrl}
+					backgroundImageOrVideo={content?.heroSection?.backgroundImageOrVideo}
+				/>
+
 				<TitleParagraph
 					title={content?.titleParagraph?.title}
 					paragraph={content?.titleParagraph?.paragraph}
@@ -104,6 +113,20 @@ export async function getStaticProps() {
 							}
 						}
 						aboutPage {
+							heroSection {
+								title
+								paragraph
+								backgroundVideoUrl
+								backgroundImageOrVideo
+								backgroundImage {
+									altText
+									sourceUrl
+									mediaDetails {
+										height
+										width
+									}
+								}
+							}
 							titleParagraph {
 								title
 								paragraph

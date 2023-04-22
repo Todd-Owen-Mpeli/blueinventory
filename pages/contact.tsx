@@ -12,6 +12,7 @@ import {
 
 // Components
 import CTA from "../components/CTA";
+import HeroTwo from "../components/HeroTwo";
 import Layout from "../components/Layout/Layout";
 import ContactInfo from "@/components/ContactInfo";
 
@@ -40,12 +41,18 @@ const contact = ({
 				navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks}
 				industriesMenuLinks={industriesMenuLinks?.industriesMenuLinks}
 			>
+				<HeroTwo
+					title={content?.heroSection?.title}
+					paragraph={content?.heroSection?.paragraph}
+					backgroundImage={content?.heroSection?.backgroundImage}
+					backgroundVideoUrl={content?.heroSection?.backgroundVideoUrl}
+					backgroundImageOrVideo={content?.heroSection?.backgroundImageOrVideo}
+				/>
+
 				<ContactInfo
 					email={themesOptionsContent?.email}
 					title={content?.contactInfo?.title}
-					subtitle={content?.contactInfo?.subtitle}
-					groupOne={content?.contactInfo?.groupOne}
-					groupTwo={content?.contactInfo?.groupTwo}
+					address={themesOptionsContent?.address}
 					emailTwo={themesOptionsContent?.emailTwo}
 					paragraph={content?.contactInfo?.paragraph}
 					phoneNumber={themesOptionsContent?.phoneNumber}
@@ -110,6 +117,20 @@ export async function getStaticProps() {
 							}
 						}
 						contactPage {
+							heroSection {
+								title
+								paragraph
+								backgroundVideoUrl
+								backgroundImageOrVideo
+								backgroundImage {
+									altText
+									sourceUrl
+									mediaDetails {
+										height
+										width
+									}
+								}
+							}
 							contactInfo {
 								title
 								subtitle
