@@ -89,6 +89,16 @@ export const fetchOperationalInsightsPostsContent = async (slug: string) => {
 							title
 							paragraph
 						}
+						gridContent {
+								card {
+									title
+									paragraph
+									contentLocation
+									backgroundImage {
+										sourceUrl
+									}
+								}
+							}
 						contactBanner {
 							title
 							paragraph
@@ -133,7 +143,6 @@ export async function getAllOperationalInsightsContent() {
 						node {
 							id
 							uri
-							date
 							title(format: RENDERED)
 							featuredImage {
 								node {

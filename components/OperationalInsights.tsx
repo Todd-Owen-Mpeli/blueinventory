@@ -12,7 +12,6 @@ interface IProps {
 			node: {
 				id: string;
 				uri: string;
-				date: string;
 				title: string;
 				singleOperationalInsightPost: {
 					titleParagraph: {
@@ -46,7 +45,6 @@ const operationalInsights: FC<IProps> = ({operationalInsights}) => {
 						<OperationalInsightsCard
 							key={keys?.node?.id}
 							uri={keys?.node?.uri}
-							date={keys?.node?.date}
 							title={keys?.node?.title}
 							featuredImage={keys?.node?.featuredImage}
 							paragraph={

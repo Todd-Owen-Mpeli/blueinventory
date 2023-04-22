@@ -43,9 +43,9 @@ const HeroTwo: FC<HeroProps> = ({
 
 	return (
 		<section className={styles.hero}>
-			<div className="flex flex-col bg-cover bg-center bg-no-repeat relative h-full min-h-[75vh]">
+			<div className="flex flex-col bg-cover bg-center bg-no-repeat relative h-full min-h-[50vh]">
 				<div
-					className="absolute top-0 bottom-0 left-0 w-full h-full max-h-[75vh] z-[995] bg-center bg-no-repeat bg-cove"
+					className="absolute top-0 bottom-0 left-0 w-full h-full max-h-[50vh] z-[995] bg-center bg-no-repeat bg-cove"
 					style={{backgroundImage: `url("${backgroundImage?.sourceUrl}")`}}
 				>
 					{/* Background Video */}

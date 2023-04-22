@@ -8,7 +8,6 @@ import {fadeInUp, stagger} from "../../animations/animations";
 
 interface IProps {
 	uri: string;
-	date: string;
 	title: string;
 	paragraph: string;
 	featuredImage: {
@@ -25,7 +24,6 @@ interface IProps {
 
 const OperationalInsightsCard: FC<IProps> = ({
 	uri,
-	date,
 	title,
 	paragraph,
 	featuredImage,
@@ -35,7 +33,7 @@ const OperationalInsightsCard: FC<IProps> = ({
 		const sanitizedContent: string = DOMPurify.sanitize(paragraphContent);
 
 		return {
-			__html: `${sanitizedContent.substring(0, 150)}...`,
+			__html: `${sanitizedContent.substring(0, 350)}...`,
 		};
 	}
 
@@ -59,15 +57,11 @@ const OperationalInsightsCard: FC<IProps> = ({
 				<Link href={uri ? `operational-insights${uri}` : `/`}>
 					<motion.h2
 						variants={fadeInUp}
-						className="mb-2 text-xl font-semibold text-black font-heading"
+						className="mb-2 text-xl font-semibold text-darkBlue font-heading"
 					>
 						{title}
 					</motion.h2>
 				</Link>
-
-				<span className="mt-2 font-semibold text-goldPrimeDark text-tiny">
-					{date}
-				</span>
 
 				<motion.div variants={fadeInUp}>
 					<div
@@ -82,7 +76,7 @@ const OperationalInsightsCard: FC<IProps> = ({
 				<motion.div variants={fadeInUp}>
 					<Link
 						href={uri ? `operational-insights${uri}` : `/`}
-						className="text-blue hover:text-goldPrime hover:underline"
+						className="underline text-blue hover:text-goldPrime"
 					>
 						<span className="text-sm font-bold uppercase transition duration-200 ">
 							Read more

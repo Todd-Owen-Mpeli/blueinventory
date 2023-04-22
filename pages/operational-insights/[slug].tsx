@@ -17,6 +17,7 @@ import CTATwo from "../../components/CTATwo";
 import HeroTwo from "../../components/HeroTwo";
 import Layout from "../../components/Layout/Layout";
 import TitleParagraph from "../../components/TitleParagraph";
+import ContentBackgroundImage from "../../components/ContentBackgroundImage";
 
 const singlePost = ({
 	seo,
@@ -56,6 +57,8 @@ const singlePost = ({
 					title={content?.titleParagraph?.title}
 					paragraph={content?.titleParagraph?.paragraph}
 				/>
+
+				<ContentBackgroundImage gridContent={content?.gridContent} />
 
 				<CTATwo
 					title={content?.contactBanner?.title}
