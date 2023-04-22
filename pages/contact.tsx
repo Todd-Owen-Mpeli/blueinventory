@@ -15,6 +15,7 @@ import CTA from "../components/CTA";
 import HeroTwo from "../components/HeroTwo";
 import Layout from "../components/Layout/Layout";
 import ContactInfo from "@/components/ContactInfo";
+import ContactForm from "@/components/ContactForm";
 
 const contact = ({
 	seo,
@@ -57,6 +58,11 @@ const contact = ({
 					paragraph={content?.contactInfo?.paragraph}
 					phoneNumber={themesOptionsContent?.phoneNumber}
 					phoneNumberTwo={themesOptionsContent?.phoneNumberTwo}
+				/>
+
+				<ContactForm
+					title={content?.contactForm?.title}
+					backgroundImage={content?.contactForm?.backgroundImage?.sourceUrl}
 				/>
 
 				<CTA
@@ -160,6 +166,12 @@ export async function getStaticProps() {
 											width
 										}
 									}
+								}
+							}
+							contactForm {
+								title
+								backgroundImage {
+									sourceUrl
 								}
 							}
 							cta {

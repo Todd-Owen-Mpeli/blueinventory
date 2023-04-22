@@ -27,7 +27,7 @@ const ContactInfo: FC<IProps> = ({
 	phoneNumberTwo,
 }) => {
 	return (
-		<section className="pt-20 bg-white">
+		<section className="py-20 bg-white">
 			<div className="container px-4 mx-auto">
 				<div className="flex flex-wrap items-center justify-between -mx-4">
 					<div className="w-full px-4 mb-12 lg:w-auto lg:mb-0">
@@ -43,7 +43,7 @@ const ContactInfo: FC<IProps> = ({
 					</div>
 					<motion.div
 						variants={stagger}
-						className="flex flex-col w-full gap-8 px-4 py-10 lg:w-auto"
+						className="flex flex-col w-full gap-8 lg:w-auto lg:mr-28"
 					>
 						<motion.div variants={stagger}>
 							<motion.h3
@@ -64,7 +64,7 @@ const ContactInfo: FC<IProps> = ({
 							>
 								Contacts
 							</motion.h3>
-							<motion.div variants={stagger}>
+							<motion.div variants={stagger} className="flex flex-col gap-3">
 								<motion.div variants={fadeInUp}>
 									<Link
 										className="font-medium tracking-wide text-black hover:text-goldPrime"
