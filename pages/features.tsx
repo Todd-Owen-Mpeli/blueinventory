@@ -17,7 +17,7 @@ import HeroTwo from "../components/HeroTwo";
 import Layout from "../components/Layout/Layout";
 import JumboContentTwo from "@/components/JumboContentTwo";
 import TitleThreeContentGrid from "../components/TitleThreeContentGrid";
-
+import ContentBackgroundImage from "../components/ContentBackgroundImage";
 const features = ({
 	seo,
 	content,
@@ -62,6 +62,8 @@ const features = ({
 					lastCard={content?.featuresGrid?.lastCard}
 					gridContent={content?.featuresGrid?.gridContent}
 				/>
+
+				<ContentBackgroundImage gridContent={content?.gridContent} />
 
 				<Logos
 					title={content?.trustedBrands?.title}
@@ -174,6 +176,16 @@ export async function getStaticProps() {
 										title
 										subtitle
 										paragraph
+									}
+								}
+							}
+							gridContent {
+								card {
+									title
+									paragraph
+									contentLocation
+									backgroundImage {
+										sourceUrl
 									}
 								}
 							}
