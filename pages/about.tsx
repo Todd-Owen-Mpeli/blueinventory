@@ -56,6 +56,8 @@ const about = ({
 					paragraph={content?.titleParagraph?.paragraph}
 				/>
 
+				<ContentBackgroundImage gridContent={content?.gridContent} />
+
 				<Sustainability
 					image={content?.sustainability?.image}
 					title={content?.sustainability?.title}
@@ -64,8 +66,6 @@ const about = ({
 					paragraph={content?.sustainability?.paragraph}
 					percentage={content?.sustainability?.percentage}
 				/>
-
-				<ContentBackgroundImage gridContent={content?.gridContent} />
 
 				<CTATwo
 					title={content?.cta?.title}

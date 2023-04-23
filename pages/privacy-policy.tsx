@@ -11,6 +11,8 @@ import {
 } from "../functions/MenuLinks";
 
 // Components
+import CTATwo from "../components/CTATwo";
+import HeroTwo from "../components/HeroTwo";
 import Layout from "../components/Layout/Layout";
 import TitleParagraph from "../components/TitleParagraph";
 
@@ -39,9 +41,24 @@ const privacyPolicy = ({
 				navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks}
 				industriesMenuLinks={industriesMenuLinks?.industriesMenuLinks}
 			>
+				<HeroTwo
+					title={content?.heroSection?.title}
+					paragraph={content?.heroSection?.paragraph}
+					backgroundImage={content?.heroSection?.backgroundImage}
+					backgroundVideoUrl={content?.heroSection?.backgroundVideoUrl}
+					backgroundImageOrVideo={content?.heroSection?.backgroundImageOrVideo}
+				/>
+
 				<TitleParagraph
 					title={content?.titleParagraph?.title}
 					paragraph={content?.titleParagraph?.paragraph}
+				/>
+
+				<CTATwo
+					title={content?.cta?.title}
+					paragraph={content?.cta?.paragraph}
+					buttonLink={content?.cta?.buttonLink}
+					backgroundImage={content?.cta?.backgroundImage?.sourceUrl}
 				/>
 			</Layout>
 		</motion.div>
@@ -93,9 +110,35 @@ export async function getStaticProps() {
 							}
 						}
 						privacyPolicyPage {
+							heroSection {
+								title
+								paragraph
+								backgroundVideoUrl
+								backgroundImageOrVideo
+								backgroundImage {
+									altText
+									sourceUrl
+									mediaDetails {
+										height
+										width
+									}
+								}
+							}
 							titleParagraph {
 								title
 								paragraph
+							}
+							cta {
+								title
+								paragraph
+								buttonLink {
+									url
+									title
+									target
+								}
+								backgroundImage {
+									sourceUrl
+								}
 							}
 						}
 					}

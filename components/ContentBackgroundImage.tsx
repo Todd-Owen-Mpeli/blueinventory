@@ -19,7 +19,9 @@ interface IProps {
 
 const contentBackgroundImage: FC<IProps> = ({gridContent}) => {
 	return (
-		<section className="px-4 py-10 overflow-hidden bg-white">
+		<section
+			className={gridContent ? `px-4 py-10 overflow-hidden bg-white` : `hidden`}
+		>
 			<div className="container flex flex-col gap-4 px-0 mx-auto">
 				{gridContent?.map((keys) => (
 					<ContentImageCard

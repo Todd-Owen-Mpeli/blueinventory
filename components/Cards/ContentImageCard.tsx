@@ -43,7 +43,11 @@ const contentImageCard: FC<IProps> = ({
 							0deg,
 							rgba(9, 39, 94, 0),
 							rgba(9, 39, 94, 0.65)
-						),url("${backgroundImage}")`,
+						),url("${
+							backgroundImage
+								? backgroundImage
+								: `/svg/backgroundSVG/stacked-waves-haikei.svg`
+						}")`,
 			}}
 		>
 			<div
