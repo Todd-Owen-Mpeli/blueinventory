@@ -14,9 +14,11 @@ import {getThemesOptionsContent} from "../../functions/themesOptions";
 
 // Components
 import CTATwo from "../../components/CTATwo";
+import ImageGrid from "@/components/ImageGrid";
 import HeroTwo from "../../components/HeroTwo";
 import Layout from "../../components/Layout/Layout";
 import TitleParagraph from "../../components/TitleParagraph";
+import ContentBackgroundImage from "../../components/ContentBackgroundImage";
 
 const singlePost = ({
 	seo,
@@ -57,11 +59,22 @@ const singlePost = ({
 					paragraph={content?.titleParagraph?.paragraph}
 				/>
 
+				<ContentBackgroundImage gridContent={content?.gridContent} />
+
 				<CTATwo
 					title={content?.cta?.title}
 					paragraph={content?.cta?.paragraph}
 					buttonLink={content?.cta?.buttonLink}
 					backgroundImage={content?.cta?.backgroundImage?.sourceUrl}
+				/>
+
+				<ImageGrid
+					image={content?.imageGrid?.image}
+					imageTwo={content?.imageGrid?.imageTwo}
+					imageThree={content?.imageGrid?.imageThree}
+					imageFour={content?.imageGrid?.imageFour}
+					imageFive={content?.imageGrid?.imageFive}
+					imageSix={content?.imageGrid?.imageSix}
 				/>
 			</Layout>
 		</motion.div>

@@ -1,7 +1,26 @@
 import {FC} from "react";
 import {motion} from "framer-motion";
+import styled from "styled-components";
 import Paragraph from "./../Elements/Paragraph";
 import {fadeInUp, stagger} from "../../animations/animations";
+
+const ContentImageCard = styled.div`
+	ol,
+	ul {
+		padding-left: 30px;
+
+		li {
+			padding: 0px 10px;
+			position: relative;
+			list-style-type: decimal;
+
+			strong {
+				font-family: $fontStyle_main;
+				@apply text-darkBlue font-bold tracking-wider uppercase text-medium py-4;
+			}
+		}
+	}
+`;
 
 interface IProps {
 	title: string;
@@ -10,14 +29,14 @@ interface IProps {
 	backgroundImage: string;
 }
 
-const ContentImageCard: FC<IProps> = ({
+const contentImageCard: FC<IProps> = ({
 	title,
 	paragraph,
 	contentLocation,
 	backgroundImage,
 }) => {
 	return (
-		<div
+		<ContentImageCard
 			className="relative min-h-[450PX] px-8 py-20 bg-center bg-no-repeat bg-cover"
 			style={{
 				backgroundImage: `linear-gradient(
@@ -47,8 +66,8 @@ const ContentImageCard: FC<IProps> = ({
 					/>
 				</motion.div>
 			</div>
-		</div>
+		</ContentImageCard>
 	);
 };
 
-export default ContentImageCard;
+export default contentImageCard;

@@ -17,7 +17,7 @@ interface IProps {
 	];
 }
 
-const ContentBackgroundImage: FC<IProps> = ({gridContent}) => {
+const contentBackgroundImage: FC<IProps> = ({gridContent}) => {
 	return (
 		<section className="px-4 py-10 overflow-hidden bg-white">
 			<div className="container flex flex-col gap-4 px-0 mx-auto">
@@ -35,4 +35,4 @@ const ContentBackgroundImage: FC<IProps> = ({gridContent}) => {
 	);
 };
 
-export default ContentBackgroundImage;
+export default contentBackgroundImage;

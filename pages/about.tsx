@@ -14,6 +14,7 @@ import {
 import CTATwo from "../components/CTATwo";
 import HeroTwo from "../components/HeroTwo";
 import Layout from "../components/Layout/Layout";
+import Sustainability from "@/components/Sustainability";
 import TitleParagraph from "../components/TitleParagraph";
 import ContentBackgroundImage from "../components/ContentBackgroundImage";
 
@@ -53,6 +54,15 @@ const about = ({
 				<TitleParagraph
 					title={content?.titleParagraph?.title}
 					paragraph={content?.titleParagraph?.paragraph}
+				/>
+
+				<Sustainability
+					image={content?.sustainability?.image}
+					title={content?.sustainability?.title}
+					subtitle={content?.sustainability?.subtitle}
+					imageText={content?.sustainability?.imageText}
+					paragraph={content?.sustainability?.paragraph}
+					percentage={content?.sustainability?.percentage}
 				/>
 
 				<ContentBackgroundImage gridContent={content?.gridContent} />
@@ -130,6 +140,21 @@ export async function getStaticProps() {
 							titleParagraph {
 								title
 								paragraph
+							}
+							sustainability {
+								title
+								subtitle
+								paragraph
+								imageText
+								percentage
+								image {
+									altText
+									sourceUrl
+									mediaDetails {
+										height
+										width
+									}
+								}
 							}
 							gridContent {
 								card {

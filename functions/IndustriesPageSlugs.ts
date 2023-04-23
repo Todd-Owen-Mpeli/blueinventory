@@ -89,6 +89,16 @@ export const fetchIndustriesPageContent = async (slug: string) => {
 							title
 							paragraph
 						}
+						gridContent {
+								card {
+									title
+									paragraph
+									contentLocation
+									backgroundImage {
+										sourceUrl
+									}
+								}
+							}
 						cta {
 							title
 							paragraph
@@ -101,6 +111,56 @@ export const fetchIndustriesPageContent = async (slug: string) => {
 								sourceUrl
 							}
 						}
+						imageGrid {
+								image {
+									altText
+									sourceUrl
+									mediaDetails {
+										height
+										width
+									}
+								}
+								imageTwo {
+									altText
+									sourceUrl
+									mediaDetails {
+										height
+										width
+									}
+								}
+								imageThree {
+									altText
+									sourceUrl
+									mediaDetails {
+										height
+										width
+									}
+								}
+								imageFour {
+									altText
+									sourceUrl
+									mediaDetails {
+										height
+										width
+									}
+								}
+								imageFive {
+									altText
+									sourceUrl
+									mediaDetails {
+										height
+										width
+									}
+								}
+								imageSix {
+									altText
+									sourceUrl
+									mediaDetails {
+										height
+										width
+									}
+								}
+							}
 					}
 				}
 			}

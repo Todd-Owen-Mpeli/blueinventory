@@ -4,9 +4,14 @@ import {motion} from "framer-motion";
 import styled from "styled-components";
 import {fadeInUp} from "../animations/animations";
 
+// Components
+import Paragraph from "./Elements/Paragraph";
+
 const TitleParagraph = styled.div`
 	ol,
 	ul {
+		padding-left: 30px;
+
 		li {
 			padding: 0px 10px;
 			position: relative;
@@ -19,9 +24,6 @@ const TitleParagraph = styled.div`
 		}
 	}
 `;
-
-// Components
-import Paragraph from "./Elements/Paragraph";
 
 interface IProps {
 	title: string;
