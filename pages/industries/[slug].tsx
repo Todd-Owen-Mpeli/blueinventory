@@ -53,7 +53,6 @@ const singlePost = ({
 					backgroundVideoUrl={content?.heroSection?.backgroundVideoUrl}
 					backgroundImageOrVideo={content?.heroSection?.backgroundImageOrVideo}
 				/>
-
 				<TitleParagraph
 					title={content?.titleParagraph?.title}
 					paragraph={content?.titleParagraph?.paragraph}
@@ -67,7 +66,6 @@ const singlePost = ({
 					buttonLink={content?.cta?.buttonLink}
 					backgroundImage={content?.cta?.backgroundImage?.sourceUrl}
 				/>
-
 				<ImageGrid
 					image={content?.imageGrid?.image}
 					imageTwo={content?.imageGrid?.imageTwo}

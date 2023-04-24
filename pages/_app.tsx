@@ -4,6 +4,7 @@ import {useRouter} from "next/router";
 import type {AppProps} from "next/app";
 import {client} from "../config/apollo";
 import {useState, useEffect} from "react";
+import {ClerkProvider} from "@clerk/nextjs";
 import {PostHogProvider} from "posthog-js/react";
 import {ApolloProvider} from "@apollo/client/react";
 
@@ -102,8 +103,10 @@ export default function App({Component, pageProps}: AppProps) {
 	return (
 		<ApolloProvider client={client}>
 			<PostHogProvider client={postHog}>
-				<Loading />
-				<Component {...pageProps} />
+				<ClerkProvider {...pageProps}>
+					<Loading />
+					<Component {...pageProps} />
+				</ClerkProvider>
 			</PostHogProvider>
 		</ApolloProvider>
 	);
