@@ -32,7 +32,7 @@ interface IProps {
 
 const titleParagraph: FC<IProps> = ({title, paragraph}) => {
 	return (
-		<TitleParagraph className={title ? `px-4 py-10 bg-white` : `hidden`}>
+		<TitleParagraph className="px-4 py-10 bg-white">
 			<div className="container p-0 mx-auto">
 				<div className="flex flex-col">
 					<motion.div
