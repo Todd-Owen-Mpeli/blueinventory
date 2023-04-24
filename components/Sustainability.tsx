@@ -34,7 +34,7 @@ const Sustainability: FC<IProps> = ({
 		<section
 			className={`py-16 bg-darkBlue bg-cover bg-center bg-no-repeat`}
 			style={{
-				backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei.svg")`,
+				backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue.svg")`,
 			}}
 		>
 			<div className="px-4 mx-auto max-w-7xl">

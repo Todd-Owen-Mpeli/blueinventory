@@ -43,7 +43,11 @@ const CTATwo: FC<IProps> = ({
 							0deg,
 							rgba(9, 39, 94, 0.85),
 							rgba(9, 39, 94, 0.85)
-						),url("${backgroundImage}")`,
+						),url("${
+							backgroundImage
+								? backgroundImage
+								: `/svg/backgroundSVG/stacked-waves-haikei-blue-pink-red-yellow.svg`
+						}")`,
 			}}
 		>
 			<div className="container px-4 mx-auto">

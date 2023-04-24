@@ -46,7 +46,7 @@ const contentImageCard: FC<IProps> = ({
 						),url("${
 							backgroundImage
 								? backgroundImage
-								: `/svg/backgroundSVG/stacked-waves-haikei.svg`
+								: `/svg/backgroundSVG/stacked-waves-haikei-blue.svg`
 						}")`,
 			}}
 		>

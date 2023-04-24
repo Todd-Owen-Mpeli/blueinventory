@@ -50,24 +50,33 @@ const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 					<div className="w-auto">
 						<div className="flex flex-wrap items-center">
 							<div className="hidden w-auto lg:block">
-								<motion.div variants={stagger} className="flex flex-wrap -m-2">
+								<motion.div
+									variants={stagger}
+									className="flex flex-wrap gap-2 -m-2"
+								>
 									<motion.div
 										variants={fadeInUp}
-										className="w-full p-2 md:w-auto"
+										className="py-2 m-auto bg-center bg-no-repeat bg-cover rounded-sm"
+										style={{
+											backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-orange-yellow.svg")`,
+										}}
 									>
 										<Link
-											className="px-8 py-3 text-sm tracking-widest text-center text-white uppercase rounded-sm w-fit bg-goldPrime hover:bg-goldPrimeDark focus:ring-4 focus:ring-blue"
-											href={`/login`}
+											className="w-full px-8 py-3 text-sm tracking-widest text-center text-white uppercase bg-transparent hover:bg-goldPrime focus:ring-0 focus:ring-blue"
+											href={`/sign-in`}
 										>
-											Log In
+											Sign In
 										</Link>
 									</motion.div>
 									<motion.div
 										variants={fadeInUp}
-										className="w-full p-2 md:w-auto"
+										className="py-2 m-auto bg-center bg-no-repeat bg-cover rounded-sm"
+										style={{
+											backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue-pink-red-yellow.svg")`,
+										}}
 									>
 										<Link
-											className="px-8 py-3 text-sm tracking-widest text-center text-white uppercase rounded-sm w-fit bg-blue hover:bg-darkBlue focus:ring-4 focus:ring-blue"
+											className="w-full px-8 py-3 text-sm tracking-widest text-center text-white uppercase bg-transparent hover:bg-darkBlue focus:ring-0 focus:ring-blue"
 											href={`/sign-up`}
 										>
 											Get Started

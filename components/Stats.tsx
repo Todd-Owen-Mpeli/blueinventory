@@ -42,7 +42,7 @@ const Stats: FC<IProps> = ({
 		<section
 			className="py-10 overflow-hidden bg-center bg-no-repeat bg-cover"
 			style={{
-				backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei.svg")`,
+				backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue.svg")`,
 			}}
 		>
 			<div className="container px-4 mx-auto">

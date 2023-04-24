@@ -116,7 +116,7 @@ const ContactForm: FC<IProps> = ({title, backgroundImage}) => {
 		<section
 			className="px-4 py-20 mx-auto overflow-hidden bg-center bg-no-repeat bg-cover bg-darkBlue"
 			style={{
-				backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei.svg")`,
+				backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue.svg")`,
 			}}
 		>
 			<div className="container flex flex-col-reverse items-center justify-center mx-auto bg-white gap-y-20 lg:gap-4 lg:flex-row">
