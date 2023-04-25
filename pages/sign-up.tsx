@@ -91,21 +91,21 @@ const SignUpPage: FC<ISignUpPage> = ({
 				path="/sign-up"
 				routing="path"
 				signInUrl="/sign-in"
-				redirectUrl="/"
+				redirectUrl="/dashboard"
 			/>
 		</section>
 
 		<Footer
-			footerMenuLinks={footerMenuLinks?.footerMenuLinks}
 			email={themesOptionsContent?.email}
-			industriesMenuLinks={industriesMenuLinks?.industriesMenuLinks}
 			emailTwo={themesOptionsContent?.emailTwo}
 			phoneNumber={themesOptionsContent?.phoneNumber}
 			twitterLink={themesOptionsContent?.twitterLink}
 			facebookLink={themesOptionsContent?.facebookLink}
 			linkedinLink={themesOptionsContent?.linkedinLink}
+			footerMenuLinks={footerMenuLinks?.footerMenuLinks}
 			copyRightText={themesOptionsContent?.copyRightText}
 			phoneNumberTwo={themesOptionsContent?.phoneNumberTwo}
+			industriesMenuLinks={industriesMenuLinks?.industriesMenuLinks}
 		/>
 	</motion.div>
 );

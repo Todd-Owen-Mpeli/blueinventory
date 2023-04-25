@@ -2,6 +2,7 @@ import {FC} from "react";
 import Link from "next/link";
 import {motion} from "framer-motion";
 import {fadeInUp, stagger} from "../animations/animations";
+import {SignedIn, SignedOut, UserButton} from "@clerk/nextjs";
 
 // Components
 import NavbarMenuLinks from "./Elements/NavbarMenuLinks";
@@ -23,11 +24,6 @@ const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 		<nav className="fixed z-[999] w-full py-4 bg-white">
 			<div className="container px-0 mx-auto">
 				<div className="flex items-center justify-between px-6 py-3.5 bg-white">
-					<div className="flex flex-wrap items-center">
-						<Link href="/" className="text-2xl text-darkBlue font-[900]">
-							BlueInventory
-						</Link>
-					</div>
 					<div className="w-auto">
 						<div className="flex flex-wrap items-center">
 							<div className="hidden w-auto lg:block">
@@ -54,34 +50,52 @@ const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 									variants={stagger}
 									className="flex flex-wrap gap-2 -m-2"
 								>
-									<motion.div
-										variants={fadeInUp}
-										className="py-2 m-auto bg-center bg-no-repeat bg-cover rounded-sm"
-										style={{
-											backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-orange-yellow.svg")`,
-										}}
-									>
-										<Link
-											className="w-full px-8 py-3 text-sm tracking-widest text-center text-white uppercase bg-transparent hover:bg-goldPrime focus:ring-0 focus:ring-blue"
-											href={`/sign-in`}
+									<SignedIn>
+										<div className="flex gap-4">
+											<motion.div
+												variants={fadeInUp}
+												className="py-1 m-auto rounded-full"
+											>
+												<Link
+													className="w-full px-4 py-2.5 text-sm tracking-widest text-center text-white uppercase rounded-full bg-blue hover:bg-darkBlue focus:ring-none focus:ring-blue"
+													href={`/dashboard`}
+												>
+													My Dashboard
+												</Link>
+											</motion.div>
+											<UserButton />
+										</div>
+									</SignedIn>
+									<SignedOut>
+										<motion.div
+											variants={fadeInUp}
+											className="py-2 m-auto bg-center bg-no-repeat bg-cover rounded-sm"
+											style={{
+												backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-orange-yellow.svg")`,
+											}}
 										>
-											Sign In
-										</Link>
-									</motion.div>
-									<motion.div
-										variants={fadeInUp}
-										className="py-2 m-auto bg-center bg-no-repeat bg-cover rounded-sm"
-										style={{
-											backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue-pink-red-yellow.svg")`,
-										}}
-									>
-										<Link
-											className="w-full px-8 py-3 text-sm tracking-widest text-center text-white uppercase bg-transparent hover:bg-darkBlue focus:ring-0 focus:ring-blue"
-											href={`/sign-up`}
+											<Link
+												className="w-full px-8 py-3 text-sm tracking-widest text-center text-white uppercase bg-transparent hover:bg-goldPrime focus:ring-none focus:ring-blue"
+												href={`/sign-in`}
+											>
+												Sign In
+											</Link>
+										</motion.div>
+										<motion.div
+											variants={fadeInUp}
+											className="py-2 m-auto bg-center bg-no-repeat bg-cover rounded-sm"
+											style={{
+												backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue-pink-red-yellow.svg")`,
+											}}
 										>
-											Get Started
-										</Link>
-									</motion.div>
+											<Link
+												className="w-full px-8 py-3 text-sm tracking-widest text-center text-white uppercase bg-transparent rounded-sm hover:bg-darkBlue focus:ring-none focus:ring-blue"
+												href={`/sign-up`}
+											>
+												Get Started
+											</Link>
+										</motion.div>
+									</SignedOut>
 								</motion.div>
 							</div>
 							<div className="w-auto lg:hidden">

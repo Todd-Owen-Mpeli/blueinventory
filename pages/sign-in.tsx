@@ -87,20 +87,25 @@ const SignInPage: FC<ISignInPage> = ({
 		<Navbar navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks} />
 
 		<section className="container flex flex-col items-center justify-center min-h-screen px-4 py-10 mx-auto overflow-hidden lg:pt-36 xxl:pt-24">
-			<SignIn path="/sign-in" routing="path" signUpUrl="/sign-up" />
+			<SignIn
+				path="/sign-in"
+				routing="path"
+				signUpUrl="/sign-up"
+				redirectUrl="/dashboard"
+			/>
 		</section>
 
 		<Footer
-			footerMenuLinks={footerMenuLinks?.footerMenuLinks}
 			email={themesOptionsContent?.email}
-			industriesMenuLinks={industriesMenuLinks?.industriesMenuLinks}
 			emailTwo={themesOptionsContent?.emailTwo}
 			phoneNumber={themesOptionsContent?.phoneNumber}
 			twitterLink={themesOptionsContent?.twitterLink}
 			facebookLink={themesOptionsContent?.facebookLink}
 			linkedinLink={themesOptionsContent?.linkedinLink}
+			footerMenuLinks={footerMenuLinks?.footerMenuLinks}
 			copyRightText={themesOptionsContent?.copyRightText}
 			phoneNumberTwo={themesOptionsContent?.phoneNumberTwo}
+			industriesMenuLinks={industriesMenuLinks?.industriesMenuLinks}
 		/>
 	</motion.div>
 );

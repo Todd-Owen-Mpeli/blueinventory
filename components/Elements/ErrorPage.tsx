@@ -26,7 +26,11 @@ const ErrorPage: FC<IProps> = ({
 			className="h-[100vh] bg-cover bg-center bg-[no-repeat] flex flex-col justify-center items-center"
 			style={{
 				backgroundImage: `linear-gradient(0deg,rgba(1, 42, 45, 0.65),rgba(1, 42, 45, 0.65)),
-									url("${backgroundImage}")`,
+									url("${
+										backgroundImage
+											? backgroundImage
+											: `/svg/backgroundSVG/stacked-waves-haikei-orange-yellow.svg`
+									}")`,
 			}}
 		>
 			<div className="px-10 my-auto overflow-hidden py-44">
@@ -42,11 +46,18 @@ const ErrorPage: FC<IProps> = ({
 						tailwindStyling="mx-auto my-10 text-lg leading-relaxed text-center text-white md:max-w-md"
 					/>
 					<div className="flex flex-col items-center justify-center mx-auto md:max-w-max">
-						<motion.button variants={fadeInUp} type="button">
+						<motion.button
+							variants={fadeInUp}
+							type="button"
+							className="m-auto bg-center bg-no-repeat bg-cover rounded-lg"
+							style={{
+								backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue-pink-red-yellow.svg")`,
+							}}
+						>
 							<Link
 								href={buttonLink?.url ? buttonLink?.url : `/`}
 								target={buttonLink?.target}
-								className="flex flex-row px-6 py-4 leading-4 text-white transition-all duration-500 ease-in-out rounded-lg lg:py-6 lg:px-20 bg-blue hover:bg-blueTwo"
+								className="flex flex-row px-6 py-4 leading-4 text-white transition-all duration-500 ease-in-out bg-transparent rounded-lg lg:py-6 lg:px-20 hover:bg-darkBlue"
 							>
 								<svg
 									className="mr-2.5 text-white"

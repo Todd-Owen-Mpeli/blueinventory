@@ -1,10 +1,15 @@
 // Import
+import {
+	ClerkProvider,
+	SignedIn,
+	SignedOut,
+	RedirectToSignIn,
+} from "@clerk/nextjs";
 import postHog from "posthog-js";
 import {useRouter} from "next/router";
 import type {AppProps} from "next/app";
 import {client} from "../config/apollo";
 import {useState, useEffect} from "react";
-import {ClerkProvider} from "@clerk/nextjs";
 import {PostHogProvider} from "posthog-js/react";
 import {ApolloProvider} from "@apollo/client/react";
 
@@ -22,7 +27,32 @@ if (typeof window !== "undefined") {
 	});
 }
 
+/* Clerk Authentication: Pages that don't require 
+users to sign-in to view them */
+const publicPages: Array<string> = [
+	"/",
+	"/404",
+	"/about",
+	"/pricing",
+	"/sign-in",
+	"/contact",
+	"/sign-up",
+	"/features",
+	"/privacy-policy",
+	"/terms-conditions",
+	"/dashboard/[path]",
+	"/industries/[slug]",
+	"/operational-insights",
+	"/operational-insights/[slug]",
+];
+
 export default function App({Component, pageProps}: AppProps) {
+	// Clerk Auth0: Get the pathname
+	const {pathname} = useRouter();
+
+	// Clerk Auth0: Check if the current route matches a public page
+	const isPublicPage = publicPages.includes(pathname);
+
 	// PostHog Cookies Policy
 	const router = useRouter();
 
@@ -104,8 +134,22 @@ export default function App({Component, pageProps}: AppProps) {
 		<ApolloProvider client={client}>
 			<PostHogProvider client={postHog}>
 				<ClerkProvider {...pageProps}>
-					<Loading />
-					<Component {...pageProps} />
+					{isPublicPage ? (
+						<section>
+							<Loading />
+							<Component {...pageProps} />
+						</section>
+					) : (
+						<>
+							<SignedIn>
+								<Loading />
+								<Component {...pageProps} />
+							</SignedIn>
+							<SignedOut>
+								<RedirectToSignIn />
+							</SignedOut>
+						</>
+					)}
 				</ClerkProvider>
 			</PostHogProvider>
 		</ApolloProvider>

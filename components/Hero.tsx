@@ -44,7 +44,11 @@ const Hero: FC<HeroProps> = ({
 				<div
 					className="relative w-full h-[600px] overflow-hidden bg-center bg-no-repeat bg-cover rounded-sm"
 					style={{
-						backgroundImage: `url("${backgroundImage}")`,
+						backgroundImage: `url("${
+							backgroundImage
+								? backgroundImage
+								: `/svg/backgroundSVG/stacked-waves-haikei-blue-pink-red-yellow.svg`
+						}")`,
 					}}
 				>
 					{/* Background Video */}

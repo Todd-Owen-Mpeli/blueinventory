@@ -41,7 +41,7 @@ const MetaTag: FunctionComponent<IProps> = ({seo, title}) => {
 			{/* <!-- Website Title --> */}
 			<title key="title">{`${title} | Inventory Management Software`}</title>
 			<meta name="description" content={seo?.metaDesc} />
-			<link rel="icon" href="/public/img/Logos/BlueInventory favicon Two.png" />
+			<link rel="icon" href="/img/Logos/BlueInventory favicon Two.png" />
 			<meta
 				name="robots"
 				content={`${seo?.metaRobotsNoindex} , ${seo?.metaRobotsNofollow}`}
