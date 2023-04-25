@@ -24,6 +24,16 @@ const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 		<nav className="fixed z-[999] w-full py-4 bg-white">
 			<div className="container px-0 mx-auto">
 				<div className="flex items-center justify-between px-6 py-3.5 bg-white">
+					<div className="flex items-center justify-between gap-4 px-0 sm:px-4">
+						<motion.div variants={fadeInUp} className="flex flex-col">
+							<Link
+								href="/"
+								className="text-lg lg:text-2xl text-darkBlue font-[900]"
+							>
+								BlueInventory
+							</Link>
+						</motion.div>
+					</div>
 					<div className="w-auto">
 						<div className="flex flex-wrap items-center">
 							<div className="hidden w-auto lg:block">
@@ -52,17 +62,17 @@ const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 								>
 									<SignedIn>
 										<div className="flex gap-4">
-											<motion.div
+											<motion.button
 												variants={fadeInUp}
 												className="py-1 m-auto rounded-full"
 											>
 												<Link
-													className="w-full px-4 py-2.5 text-sm tracking-widest text-center text-white uppercase rounded-full bg-blue hover:bg-darkBlue focus:ring-none focus:ring-blue"
+													className="w-full px-4 py-2 text-xs tracking-widest text-center text-white uppercase rounded-full bg-blue hover:bg-darkBlue focus:ring-none focus:ring-blue"
 													href={`/dashboard`}
 												>
 													My Dashboard
 												</Link>
-											</motion.div>
+											</motion.button>
 											<UserButton />
 										</div>
 									</SignedIn>
