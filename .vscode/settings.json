@@ -6,6 +6,7 @@
 		"nextjs",
 		"POSTHOG",
 		"recaptcha",
-		"tailwindcss"
+		"tailwindcss",
+		"webp"
 	]
 }

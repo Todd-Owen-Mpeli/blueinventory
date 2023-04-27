@@ -12,9 +12,9 @@ import {
 
 // Components
 import Footer from "../components/Footer";
-import Layout from "@/app/Layout/Layout";
-import Navbar from "@/app/components/Navbar";
-import Stats from "@/app/components/Stats";
+import Layout from "../components/App/dashboard/layout/Layout";
+import Navbar from "../components/App/dashboard/components/Navbar";
+import Stats from "../components/App/dashboard/components/Stats";
 
 interface IDashboard {
 	id: string;
@@ -115,19 +115,24 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
 	const user = userId ? await clerkClient.users.getUser(userId) : undefined;
 
+	// Dashboard User Profile Information
 	const userResponse = {
-		id: user?.id,
-		firstName: user?.firstName,
-		lastName: user?.lastName,
-		profileImageUrl: user?.profileImageUrl,
-		emailAddress: user?.emailAddresses[0]?.emailAddress,
+		id: user?.id ? user?.id : ` `,
+		firstName: user?.firstName ? user?.firstName : ` `,
+		lastName: user?.lastName ? user?.lastName : ` `,
+		profileImageUrl: user?.profileImageUrl
+			? user?.profileImageUrl
+			: `/img/Logos/default-avatar-profile.png`,
+		emailAddress: user?.emailAddresses[0]?.emailAddress ? user?.firstName : ` `,
 	};
 
-	// Meta Tag Object
+	// Dashboard Meta Tag Object
 	const metaTag = {
-		firstName: user?.firstName,
-		lastName: user?.lastName,
-		profileImageUrl: user?.profileImageUrl,
+		firstName: user?.firstName ? user?.firstName : `BlueInventory`,
+		lastName: user?.lastName ? user?.lastName : ` `,
+		profileImageUrl: user?.profileImageUrl
+			? user?.profileImageUrl
+			: `/img/Logos/default-avatar-profile.png`,
 	};
 
 	const footerMenuLinks: object = await getFooterMenuLinks();

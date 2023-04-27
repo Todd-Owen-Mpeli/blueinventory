@@ -2,7 +2,7 @@
 import Link from "next/link";
 import {motion} from "framer-motion";
 import {UserButton} from "@clerk/nextjs";
-import {fadeInUp} from "../../animations/animations";
+import {fadeInUp} from "@/animations/animations";
 
 const Navbar = () => {
 	return (

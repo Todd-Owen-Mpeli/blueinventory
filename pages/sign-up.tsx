@@ -87,12 +87,7 @@ const SignUpPage: FC<ISignUpPage> = ({
 		<Navbar navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks} />
 
 		<section className="container flex flex-col items-center justify-center min-h-screen px-4 py-10 mx-auto overflow-hidden lg:pt-36 xxl:pt-24">
-			<SignUp
-				path="/sign-up"
-				routing="path"
-				signInUrl="/sign-in"
-				redirectUrl="/dashboard"
-			/>
+			<SignUp path="/sign-up" routing="path" signInUrl="/sign-in" />
 		</section>
 
 		<Footer

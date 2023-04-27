@@ -1,6 +1,6 @@
 // Import
 import {motion} from "framer-motion";
-import {fadeInUp, stagger} from "../../animations/animations";
+import {fadeInUp, stagger} from "@/animations/animations";
 
 const Stats = () => {
 	return (

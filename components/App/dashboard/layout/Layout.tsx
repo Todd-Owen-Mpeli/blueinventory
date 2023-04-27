@@ -2,7 +2,7 @@
 import {FC} from "react";
 
 // Components
-import MetaTag from "../../app/components/Meta/MetaTag";
+import MetaTag from "../components/Meta/MetaTag";
 
 interface ILayout {
 	metaTag: {
