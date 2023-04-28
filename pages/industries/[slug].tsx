@@ -1,4 +1,5 @@
 // Import
+import type {NextPage} from "next";
 import {motion} from "framer-motion";
 import {
 	getMainMenuLinks,
@@ -20,7 +21,7 @@ import Layout from "../../components/Layout/Layout";
 import TitleParagraph from "../../components/TitleParagraph";
 import ContentBackgroundImage from "../../components/ContentBackgroundImage";
 
-const singlePost = ({
+const singlePost: NextPage = ({
 	seo,
 	content,
 	pageTitle,

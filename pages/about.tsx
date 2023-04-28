@@ -1,4 +1,5 @@
 // Import
+import type {NextPage} from "next";
 import {gql} from "@apollo/client";
 import {motion} from "framer-motion";
 import {client} from "../config/apollo";
@@ -18,7 +19,7 @@ import Sustainability from "@/components/Sustainability";
 import TitleParagraph from "../components/TitleParagraph";
 import ContentBackgroundImage from "../components/ContentBackgroundImage";
 
-const about = ({
+const about: NextPage = ({
 	seo,
 	content,
 	pageTitle,

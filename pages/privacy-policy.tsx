@@ -1,5 +1,6 @@
 // Import
 import {gql} from "@apollo/client";
+import type {NextPage} from "next";
 import {motion} from "framer-motion";
 import {client} from "../config/apollo";
 import {getThemesOptionsContent} from "../functions/themesOptions";
@@ -16,7 +17,7 @@ import HeroTwo from "../components/HeroTwo";
 import Layout from "../components/Layout/Layout";
 import TitleParagraph from "../components/TitleParagraph";
 
-const privacyPolicy = ({
+const privacyPolicy: NextPage = ({
 	seo,
 	content,
 	pageTitle,

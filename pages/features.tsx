@@ -1,5 +1,6 @@
 // Import
 import {gql} from "@apollo/client";
+import type {NextPage} from "next";
 import {motion} from "framer-motion";
 import {client} from "../config/apollo";
 import {getThemesOptionsContent} from "../functions/themesOptions";
@@ -18,7 +19,7 @@ import Layout from "../components/Layout/Layout";
 import JumboContentTwo from "@/components/JumboContentTwo";
 import TitleThreeContentGrid from "../components/TitleThreeContentGrid";
 import ContentBackgroundImage from "../components/ContentBackgroundImage";
-const features = ({
+const features: NextPage = ({
 	seo,
 	content,
 	pageTitle,

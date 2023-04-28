@@ -1,6 +1,6 @@
 // Import
-import {FC} from "react";
 import Head from "next/head";
+import type {NextPage} from "next";
 import {motion} from "framer-motion";
 import {SignUp} from "@clerk/nextjs";
 import {getThemesOptionsContent} from "../functions/themesOptions";
@@ -61,7 +61,7 @@ interface ISignUpPage {
 	};
 }
 
-const SignUpPage: FC<ISignUpPage> = ({
+const SignUpPage: NextPage<ISignUpPage> = ({
 	footerMenuLinks,
 	navbarMenuLinks,
 	industriesMenuLinks,

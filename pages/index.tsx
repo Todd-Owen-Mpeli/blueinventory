@@ -1,4 +1,5 @@
 // Import
+import type {NextPage} from "next";
 import {gql} from "@apollo/client";
 import {motion} from "framer-motion";
 import {client} from "../config/apollo";
@@ -19,82 +20,294 @@ import Layout from "../components/Layout/Layout";
 import Testimonial from "../components/Testimonial";
 import JumboContent from "../components/JumboContent";
 
-export default function HomePage({
+interface IHomePage {
+	seo: {
+		canonical: string;
+		cornerstone: Boolean;
+		focuskw: string;
+		fullHead: string;
+		metaDesc: string;
+		metaKeywords: string;
+		metaRobotsNofollow: string;
+		metaRobotsNoindex: string;
+		opengraphAuthor: string;
+		opengraphDescription: string;
+		opengraphImage: {
+			mediaItemUrl: string;
+		};
+		opengraphModifiedTime: string;
+		opengraphPublishedTime: string;
+		opengraphPublisher: string;
+		opengraphSiteName: string;
+		opengraphTitle: string;
+		opengraphType: string;
+		opengraphUrl: string;
+		readingTime: number;
+		title: string;
+		twitterDescription: string;
+		twitterTitle: string;
+		twitterImage: {
+			mediaItemUrl: string;
+		};
+	};
+	content: {
+		heroSection: {
+			title: string;
+			subtitle: string;
+			backgroundVideoUrl: string;
+			backgroundImage: {
+				sourceUrl: string;
+			};
+			buttonLink: {
+				url: string;
+				title: string;
+				target: string;
+			};
+			buttonLinkTwo: {
+				url: string;
+				title: string;
+				target: string;
+			};
+		};
+		stats: {
+			title: string;
+			subtitle: string;
+			paragraph: string;
+			bulletPoints: [[Object], [Object], [Object]];
+			column: {
+				title: string;
+				values: string;
+				percentage: string;
+			};
+			columnTwo: {
+				title: string;
+				values: string;
+				percentage: string;
+			};
+		};
+		howItWorks: {
+			title: string;
+			paragraph: string;
+			cardOne: {
+				title: string;
+				subtitle: string;
+				paragraph: string;
+			};
+			cardTwo: {
+				backgroundImage: {
+					sourceUrl: string;
+				};
+			};
+			cardThree: {
+				foreground: {
+					title: string;
+					subtitle: string;
+					paragraph: string;
+				};
+				background: {
+					title: string;
+					subtitle: string;
+					paragraph: string;
+				};
+			};
+			gridContent: [
+				{
+					card: {
+						id: string;
+						title: string;
+						subtitle: string;
+						paragraph: string;
+					};
+				}
+			];
+			lastCard: {
+				backgroundImage: {
+					sourceUrl: string;
+				};
+			};
+		};
+		trustedBrands: {
+			title: string;
+			paragraph: string;
+			logoGrid: [
+				{
+					id: string;
+					image: {
+						altText: string;
+						sourceUrl: string;
+						mediaDetails: {
+							height: number;
+							width: number;
+						};
+					};
+				}
+			];
+		};
+		testimonial: {
+			title: string;
+			paragraph: string;
+			contentGrid: [
+				{
+					card: {
+						id: string;
+						name: string;
+						position: string;
+						paragraph: string;
+						image: {
+							altText: string;
+							sourceUrl: string;
+							mediaDetails: {
+								height: number;
+								width: number;
+							};
+						};
+					};
+				}
+			];
+		};
+		cta: {
+			title: string;
+			paragraph: string;
+			buttonLink: {
+				url: string;
+				title: string;
+				target: string;
+			};
+			buttonLinkTwo: {
+				url: string;
+				title: string;
+				target: string;
+			};
+			content: {
+				title: string;
+				paragraph: string;
+				backgroundImage: {
+					sourceUrl: string;
+				};
+			};
+		};
+	};
+	footerMenuLinks: {
+		footerMenuLinks: [
+			{
+				node: {
+					id: string;
+					url: string;
+					label: string;
+				};
+			}
+		];
+	};
+	navbarMenuLinks: {
+		navbarMenuLinks: [
+			{
+				node: {
+					id: string;
+					url: string;
+					label: string;
+				};
+			}
+		];
+	};
+	industriesMenuLinks: {
+		industriesMenuLinks: [
+			{
+				node: {
+					id: string;
+					url: string;
+					label: string;
+				};
+			}
+		];
+	};
+	themesOptionsContent: {
+		email: string;
+		emailTwo: string;
+		phoneNumber: string;
+		phoneNumberTwo: string;
+		twitterLink: string;
+		facebookLink: string;
+		linkedinLink: string;
+		copyRightText: string;
+	};
+}
+
+const HomePage: NextPage<IHomePage> = ({
 	seo,
 	content,
 	footerMenuLinks,
 	navbarMenuLinks,
 	industriesMenuLinks,
 	themesOptionsContent,
-}: any) {
-	return (
-		<motion.div
-			exit={{
-				opacity: 0,
-			}}
-			initial="initial"
-			animate="animate"
+}: any) => (
+	<motion.div
+		exit={{
+			opacity: 0,
+		}}
+		initial="initial"
+		animate="animate"
+	>
+		<Layout
+			seo={seo}
+			pageTitle={`BlueInventory `}
+			themesOptionsContent={themesOptionsContent}
+			footerMenuLinks={footerMenuLinks?.footerMenuLinks}
+			navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks}
+			industriesMenuLinks={industriesMenuLinks?.industriesMenuLinks}
 		>
-			<Layout
-				seo={seo}
-				pageTitle={`BlueInventory `}
-				themesOptionsContent={themesOptionsContent}
-				footerMenuLinks={footerMenuLinks?.footerMenuLinks}
-				navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks}
-				industriesMenuLinks={industriesMenuLinks?.industriesMenuLinks}
-			>
-				<Hero
-					title={content?.heroSection?.title}
-					subtitle={content?.heroSection?.subtitle}
-					buttonLink={content?.heroSection?.buttonLink}
-					buttonLinkTwo={content?.heroSection?.buttonLinkTwo}
-					backgroundVideoUrl={content?.heroSection?.backgroundVideoUrl}
-					backgroundImage={content?.heroSection?.backgroundImage?.sourceUrl}
-				/>
+			<Hero
+				title={content?.heroSection?.title}
+				subtitle={content?.heroSection?.subtitle}
+				buttonLink={content?.heroSection?.buttonLink}
+				buttonLinkTwo={content?.heroSection?.buttonLinkTwo}
+				backgroundVideoUrl={content?.heroSection?.backgroundVideoUrl}
+				backgroundImage={content?.heroSection?.backgroundImage?.sourceUrl}
+			/>
 
-				<Stats
-					title={content?.stats?.title}
-					column={content?.stats?.column}
-					subtitle={content?.stats?.subtitle}
-					paragraph={content?.stats?.paragraph}
-					columnTwo={content?.stats?.columnTwo}
-					bulletPoints={content?.stats?.bulletPoints}
-				/>
+			<Stats
+				title={content?.stats?.title}
+				column={content?.stats?.column}
+				subtitle={content?.stats?.subtitle}
+				paragraph={content?.stats?.paragraph}
+				columnTwo={content?.stats?.columnTwo}
+				bulletPoints={content?.stats?.bulletPoints}
+			/>
 
-				<JumboContent
-					title={content?.howItWorks?.title}
-					cardOne={content?.howItWorks?.cardOne}
-					cardTwo={content?.howItWorks?.cardTwo}
-					lastCard={content?.howItWorks?.lastCard}
-					cardThree={content?.howItWorks?.cardThree}
-					paragraph={content?.howItWorks?.paragraph}
-					gridContent={content?.howItWorks?.gridContent}
-				/>
+			<JumboContent
+				title={content?.howItWorks?.title}
+				cardOne={content?.howItWorks?.cardOne}
+				cardTwo={content?.howItWorks?.cardTwo}
+				lastCard={content?.howItWorks?.lastCard}
+				cardThree={content?.howItWorks?.cardThree}
+				paragraph={content?.howItWorks?.paragraph}
+				gridContent={content?.howItWorks?.gridContent}
+			/>
 
-				<Logos
-					title={content?.trustedBrands?.title}
-					logoGrid={content?.trustedBrands?.logos}
-					paragraph={content?.trustedBrands?.paragraph}
-				/>
+			<Logos
+				title={content?.trustedBrands?.title}
+				logoGrid={content?.trustedBrands?.logos}
+				paragraph={content?.trustedBrands?.paragraph}
+			/>
 
-				<Testimonial
-					title={content?.testimonial?.title}
-					paragraph={content?.testimonial?.paragraph}
-					contentGrid={content?.testimonial?.contentGrid}
-				/>
+			<Testimonial
+				title={content?.testimonial?.title}
+				paragraph={content?.testimonial?.paragraph}
+				contentGrid={content?.testimonial?.contentGrid}
+			/>
 
-				<CTA
-					title={content?.cta?.title}
-					content={content?.cta?.content}
-					paragraph={content?.cta?.paragraph}
-					buttonLink={content?.cta?.buttonLink}
-					buttonLinkTwo={content?.cta?.buttonLinkTwo}
-					backgroundImage={content?.cta?.backgroundImage?.sourceUrl}
-				/>
-			</Layout>
-		</motion.div>
-	);
-}
+			<CTA
+				title={content?.cta?.title}
+				content={content?.cta?.content}
+				paragraph={content?.cta?.paragraph}
+				buttonLink={content?.cta?.buttonLink}
+				buttonLinkTwo={content?.cta?.buttonLinkTwo}
+				backgroundImage={content?.cta?.backgroundImage?.sourceUrl}
+			/>
+		</Layout>
+	</motion.div>
+);
+
+export default HomePage;
 
 export async function getStaticProps() {
 	const getHomePageContent: any = gql`

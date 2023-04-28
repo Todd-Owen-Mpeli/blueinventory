@@ -1,20 +1,15 @@
 // Import
-import {FC} from "react";
+import Link from "next/link";
+import Image from "next/image";
+import type {NextPage} from "next";
 import {motion} from "framer-motion";
 import {GetServerSideProps} from "next";
 import {fadeInUp, stagger} from "../animations/animations";
 import {getThemesOptionsContent} from "../functions/themesOptions";
 import {clerkClient, getAuth, buildClerkProps} from "@clerk/nextjs/server";
-import {
-	getFooterMenuLinks,
-	getIndustriesMenuLinks,
-} from "../functions/MenuLinks";
 
 // Components
-import Footer from "../components/Footer";
 import Layout from "../components/App/dashboard/layout/Layout";
-import Navbar from "../components/App/dashboard/components/Navbar";
-import Stats from "../components/App/dashboard/components/Stats";
 
 interface IDashboard {
 	id: string;
@@ -28,28 +23,6 @@ interface IDashboard {
 		lastName: string;
 		profileImageUrl: string;
 	};
-	footerMenuLinks: {
-		footerMenuLinks: [
-			{
-				node: {
-					id: string;
-					url: string;
-					label: string;
-				};
-			}
-		];
-	};
-	industriesMenuLinks: {
-		industriesMenuLinks: [
-			{
-				node: {
-					id: string;
-					url: string;
-					label: string;
-				};
-			}
-		];
-	};
 	themesOptionsContent: {
 		email: string;
 		emailTwo: string;
@@ -62,7 +35,7 @@ interface IDashboard {
 	};
 }
 
-const dashboard: FC<IDashboard> = ({
+const dashboard: NextPage<IDashboard> = ({
 	id,
 	metaTag,
 	lastName,
@@ -70,8 +43,6 @@ const dashboard: FC<IDashboard> = ({
 	emailAddress,
 	userContent,
 	profileImageUrl,
-	footerMenuLinks,
-	industriesMenuLinks,
 	themesOptionsContent,
 }) => {
 	return (
@@ -81,29 +52,30 @@ const dashboard: FC<IDashboard> = ({
 			}}
 			initial="initial"
 			animate="animate"
-			className="min-h-screen bg-center bg-no-repeat bg-cover bg-lightGrey"
-			style={{
-				backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue.svg")`,
-			}}
+			className="min-h-screen bg-center bg-no-repeat bg-cover bg-pureBlack"
 		>
-			<Layout metaTag={metaTag}>
-				<Navbar />
-
-				<Stats />
+			<Layout
+				metaTag={metaTag}
+				firstName={firstName}
+				lastName={lastName}
+				profileImageUrl={profileImageUrl}
+			>
+				<div className="flex items-center justify-between p-4 mt-6">
+					<Link href="#" className="flex items-center gap-x-2">
+						<Image
+							width={500}
+							height={500}
+							alt="avatar"
+							src={profileImageUrl}
+							className="object-cover rounded-full h-7 w-7"
+						/>
+						<div className="flex gap-1 text-base font-medium text-white dark:text-white">
+							<span>{firstName}</span>
+							<span>{lastName}</span>
+						</div>
+					</Link>
+				</div>
 			</Layout>
-
-			<Footer
-				email={themesOptionsContent?.email}
-				emailTwo={themesOptionsContent?.emailTwo}
-				phoneNumber={themesOptionsContent?.phoneNumber}
-				twitterLink={themesOptionsContent?.twitterLink}
-				facebookLink={themesOptionsContent?.facebookLink}
-				linkedinLink={themesOptionsContent?.linkedinLink}
-				footerMenuLinks={footerMenuLinks?.footerMenuLinks}
-				copyRightText={themesOptionsContent?.copyRightText}
-				phoneNumberTwo={themesOptionsContent?.phoneNumberTwo}
-				industriesMenuLinks={industriesMenuLinks?.industriesMenuLinks}
-			/>
 		</motion.section>
 	);
 };
@@ -135,14 +107,10 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 			: `/img/Logos/default-avatar-profile.png`,
 	};
 
-	const footerMenuLinks: object = await getFooterMenuLinks();
-	const industriesMenuLinks: object = await getIndustriesMenuLinks();
 	const themesOptionsContent: object = await getThemesOptionsContent();
 
 	const props = {
 		metaTag,
-		footerMenuLinks,
-		industriesMenuLinks,
 		themesOptionsContent,
 		id: userResponse?.id,
 		lastName: userResponse?.lastName,

@@ -43,6 +43,17 @@ module.exports = {
 			goldPrime: "#e8b042",
 			goldPrimeDark: "#d1a855",
 			goldPrimeDarker: "#b68b36",
+
+			// Dashboard Colours
+			blueDash: "#0072f5",
+			greyDash: "#9ba1a6",
+			yellowDash: "#f6ad37",
+			blueTwoDash: "#0072f5",
+			pinkRedDash: "#f31260",
+			blackBlueDash: "#16181a",
+			brightPinkDash: "#f4256d",
+			brightGreenDash: "#17c964",
+			blackBlueDashTwo: "#131618",
 		},
 	},
 	plugins: [],
