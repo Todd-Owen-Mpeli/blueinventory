@@ -1,0 +1,7 @@
+// Imports
+@import "../fonts";
+
+.dashboard {
+	font-family: $fontStyle_dashboard;
+	@apply min-h-screen bg-center bg-no-repeat bg-cover bg-darkerBlue;
+}

@@ -1,5 +1,10 @@
 /*===== FONTS =====*/
 @font-face {
+	font-family: Inter;
+	src: url("./fonts/Inter-VariableFont_wght.ttf");
+}
+
+@font-face {
 	font-family: EvolventaRegular;
 	src: url("./fonts/Evolventa-Regular-VariableFont_wght.ttf");
 }
@@ -15,6 +20,7 @@
 }
 
 // Font Stack Properties
+$fontStyle_dashboard: "Inter", sans-serif;
 $fontStyle_main: "EvolventaBold", sans-serif;
 $fontStyle_body: "SFTSchriftedSansTRIALMedium", sans-serif;
 

@@ -1,55 +1,31 @@
 // Import
+import React from "react";
 import type {NextPage} from "next";
 import {GetServerSideProps} from "next";
-import {getThemesOptionsContent} from "../functions/themesOptions";
+import {getThemesOptionsContent} from "@/functions/themesOptions";
 import {clerkClient, getAuth, buildClerkProps} from "@clerk/nextjs/server";
 
 // Components
-import {Layout} from "../components/App/dashboard/components/layout/layout";
-import {Content} from "../components/App/dashboard/components/home/content";
+import {Accounts} from "../../components/App/dashboard/components/accounts";
+import {Layout} from "../../components/App/dashboard/components/layout/layout";
 
 interface IDashboard {
-	id: string;
-	lastName: string;
-	firstName: string;
-	userContent: string;
-	emailAddress: string;
-	profileImageUrl: string;
 	metaTag: {
 		firstName: string;
 		lastName: string;
 		profileImageUrl: string;
 	};
-	themesOptionsContent: {
-		email: string;
-		emailTwo: string;
-		phoneNumber: string;
-		phoneNumberTwo: string;
-		twitterLink: string;
-		facebookLink: string;
-		linkedinLink: string;
-		copyRightText: string;
-	};
 }
 
-const dashboard: NextPage<IDashboard> = ({
-	id,
-	metaTag,
-	lastName,
-	firstName,
-	userContent,
-	emailAddress,
-	profileImageUrl,
-	themesOptionsContent,
-}) => {
+const accounts: NextPage<IDashboard> = ({metaTag}) => {
 	return (
 		<Layout metaTag={metaTag}>
-			<Content />
+			<Accounts />
 		</Layout>
 	);
 };
 
-export default dashboard;
+export default accounts;
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
 	const {userId} = getAuth(ctx.req);
