@@ -38,6 +38,7 @@ const publicPages: Array<string> = [
 	"/contact",
 	"/sign-up",
 	"/features",
+	"/api/sitemap",
 	"/privacy-policy",
 	"/terms-conditions",
 	"/dashboard/[path]",

@@ -7,10 +7,11 @@
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint",
-		"test": "playwright test"
+		"test": "playwright test",
+		"postbuild": "next-sitemap"
 	},
 	"dependencies": {
-		"@apollo/client": "^3.7.12",
+		"@apollo/client": "^3.7.13",
 		"@clerk/nextjs": "^4.16.4",
 		"@nextui-org/react": "^1.0.0-beta.12",
 		"@types/node": "^18.15.13",
@@ -27,7 +28,7 @@
 		"graphql": "^16.6.0",
 		"html-react-parser": "^3.0.15",
 		"isomorphic-dompurify": "^1.3.0",
-		"next": "13.3.0",
+		"next": "^13.3.4",
 		"next-themes": "^0.2.1",
 		"nodemailer": "^6.9.1",
 		"postcss": "^8.4.23",
@@ -43,7 +44,10 @@
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.32.3",
+		"@types/dateformat": "^5.0.0",
 		"@types/react-google-recaptcha": "^2.1.5",
-		"@types/styled-components": "^5.1.26"
+		"@types/styled-components": "^5.1.26",
+		"dateformat": "^5.0.3",
+		"sitemap": "^7.1.1"
 	}
 }

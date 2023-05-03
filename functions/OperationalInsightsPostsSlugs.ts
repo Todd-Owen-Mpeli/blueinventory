@@ -16,6 +16,7 @@ export const fetchOperationalInsightsPostsSlugs = async (): Promise<ISlug> => {
 				slugs: posts(where: {status: PUBLISH}) {
 					nodes {
 						slug
+						modified
 					}
 				}
 			}
