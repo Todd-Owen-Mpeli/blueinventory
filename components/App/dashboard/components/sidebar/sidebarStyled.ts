@@ -1,7 +1,6 @@
 import {styled} from "@nextui-org/react";
 
 export const SidebarWrapper = styled("div", {
-	backgroundColor: "$background",
 	transition: "transform 0.2s ease",
 	height: "100%",
 	position: "fixed",
@@ -13,7 +12,6 @@ export const SidebarWrapper = styled("div", {
 	"&::-webkit-scrollbar": {
 		display: "none",
 	},
-	borderRight: "1px solid $border",
 	flexDirection: "column",
 	py: "$10",
 	px: "$6",

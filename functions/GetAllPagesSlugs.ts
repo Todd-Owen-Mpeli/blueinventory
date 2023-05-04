@@ -2,12 +2,19 @@
 import {client} from "../config/apollo";
 import {DocumentNode, gql} from "@apollo/client";
 
+type SlugResponse = {
+	slug: string;
+	modified: string;
+};
+
+interface ISlug extends Array<SlugResponse> {}
+
 // Fetches All Pages Slugs
-export async function fetchAllPagesSlugs() {
+export async function fetchAllPagesSlugs(): Promise<ISlug> {
 	try {
 		const content: DocumentNode = gql`
 			{
-				pages: pages(where: {status: PUBLISH}) {
+				pages: pages(first: 100, where: {status: PUBLISH}) {
 					nodes {
 						slug
 						modified

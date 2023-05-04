@@ -4,6 +4,9 @@ import {GetServerSideProps} from "next";
 import {getThemesOptionsContent} from "../functions/themesOptions";
 import {clerkClient, getAuth, buildClerkProps} from "@clerk/nextjs/server";
 
+// Styling
+import styles from "@/styles/components/Dashboard.module.scss";
+
 // Components
 import {Layout} from "../components/App/dashboard/components/layout/layout";
 import {Content} from "../components/App/dashboard/components/home/content";
@@ -44,7 +47,9 @@ const dashboard: NextPage<IDashboard> = ({
 }) => {
 	return (
 		<Layout metaTag={metaTag}>
-			<Content />
+			<section className={styles.dashboardContent}>
+				<Content />
+			</section>
 		</Layout>
 	);
 };

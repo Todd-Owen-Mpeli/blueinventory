@@ -41,9 +41,6 @@ export const NavbarWrapper = ({children}: Props) => {
 			<Navbar
 				isBordered
 				css={{
-					borderBottom: "1px solid $border",
-					justifyContent: "space-between",
-					width: "100%",
 					"@md": {
 						justifyContent: "space-between",
 					},
@@ -58,6 +55,7 @@ export const NavbarWrapper = ({children}: Props) => {
 						},
 					},
 				}}
+				className="justify-between w-full bg-pureBlack"
 			>
 				<Navbar.Content showIn="md">
 					<BurgerButton />

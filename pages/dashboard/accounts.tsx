@@ -5,6 +5,9 @@ import {GetServerSideProps} from "next";
 import {getThemesOptionsContent} from "@/functions/themesOptions";
 import {clerkClient, getAuth, buildClerkProps} from "@clerk/nextjs/server";
 
+// Styling
+import styles from "@/styles/components/Dashboard.module.scss";
+
 // Components
 import {Accounts} from "../../components/App/dashboard/components/accounts";
 import {Layout} from "../../components/App/dashboard/components/layout/layout";
@@ -20,7 +23,9 @@ interface IDashboard {
 const accounts: NextPage<IDashboard> = ({metaTag}) => {
 	return (
 		<Layout metaTag={metaTag}>
-			<Accounts />
+			<section className={styles.dashboardContent}>
+				<Accounts />
+			</section>
 		</Layout>
 	);
 };

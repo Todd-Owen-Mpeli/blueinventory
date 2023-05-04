@@ -37,7 +37,7 @@ export const SidebarWrapper = () => {
 	return (
 		<Box
 			as="aside"
-			className="sticky top-0 min-h-screen h-full z-[202] bg-darkerBlue"
+			className="sticky top-0 min-h-screen h-full z-[202] bg-pureBlack"
 		>
 			{collapsed ? <Sidebar.Overlay onClick={setCollapsed} /> : null}
 
