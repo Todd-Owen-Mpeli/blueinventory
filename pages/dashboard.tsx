@@ -48,7 +48,14 @@ const dashboard: NextPage<IDashboard> = ({
 	return (
 		<Layout metaTag={metaTag}>
 			<section className={styles.dashboardContent}>
-				<Content />
+				<Content
+					id={id}
+					lastName={lastName}
+					firstName={firstName}
+					userContent={userContent}
+					emailAddress={emailAddress}
+					profileImageUrl={profileImageUrl}
+				/>
 			</section>
 		</Layout>
 	);

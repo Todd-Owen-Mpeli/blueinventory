@@ -41,7 +41,7 @@ export const SidebarWrapper = () => {
 		>
 			{collapsed ? <Sidebar.Overlay onClick={setCollapsed} /> : null}
 
-			<Sidebar collapsed={collapsed}>
+			<Sidebar collapsed={collapsed} className="bg-blueDash rounded-r-xl">
 				<Sidebar.Header>
 					<CompaniesDropdown />
 				</Sidebar.Header>

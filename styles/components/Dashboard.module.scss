@@ -7,21 +7,5 @@
 }
 
 .dashboardContent {
-	background: linear-gradient(-45deg, #ffffff, #76a0fa, #9ba1a6, #f31260);
-	// background: linear-gradient(-45deg, #ffffff, #76a0fa, #9ba1a6, #f31260);
-	background-size: 400% 400%;
-	animation: gradient 15s ease infinite;
-	@apply m-0 sm:mx-4 sm:mb-4 rounded-2xl;
-}
-
-@keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
+	@apply m-0 sm:mx-4 sm:mb-4 rounded-2xl bg-white;
 }

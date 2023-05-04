@@ -1,15 +1,29 @@
-import React from "react";
+// Import
+import React, {FC} from "react";
 import NextLink from "next/link";
 import {Box} from "../styles/box";
 import dynamic from "next/dynamic";
 import {Flex} from "../styles/flex";
+import {motion} from "framer-motion";
 import {Text, Link} from "@nextui-org/react";
+import {fadeInUp, stagger} from "@/animations/animations";
+
+// Components
+import {CardAgents} from "./card-agents";
 import {TableWrapper} from "../table/table";
 import {CardBalance1} from "./card-balance1";
 import {CardBalance2} from "./card-balance2";
 import {CardBalance3} from "./card-balance3";
-import {CardAgents} from "./card-agents";
 import {CardTransactions} from "./card-transactions";
+
+interface IProps {
+	id: string;
+	lastName: string;
+	firstName: string;
+	emailAddress: string;
+	profileImageUrl: string;
+	userContent: string;
+}
 
 const Chart = dynamic(
 	() => import("../charts/steam").then((mod) => mod.Steam),
@@ -18,7 +32,14 @@ const Chart = dynamic(
 	}
 );
 
-export const Content = () => (
+export const Content: FC<IProps> = ({
+	id,
+	lastName,
+	firstName,
+	userContent,
+	emailAddress,
+	profileImageUrl,
+}) => (
 	<Box css={{overflow: "hidden", height: "100%"}}>
 		<Flex
 			css={{
@@ -46,47 +67,37 @@ export const Content = () => (
 			>
 				{/* Card Section Top */}
 				<Box>
-					<Text
-						h3
-						css={{
-							textAlign: "center",
-							"@sm": {
-								textAlign: "inherit",
-							},
-						}}
+					<motion.h3
+						variants={stagger}
+						className="flex gap-2 text-center text-black lg:text-left"
 					>
-						Available Balance
-					</Text>
-					<Flex
-						css={{
-							gap: "$10",
-							flexWrap: "wrap",
-							justifyContent: "center",
-							"@sm": {
-								flexWrap: "nowrap",
-							},
-						}}
-						direction={"row"}
+						Hello,
+						<motion.span variants={fadeInUp} className="tracking-tight">
+							{firstName}
+						</motion.span>
+						<motion.span variants={fadeInUp} className="tracking-tight">
+							{lastName}
+						</motion.span>
+					</motion.h3>
+					<motion.div
+						variants={stagger}
+						className="flex flex-wrap items-center justify-between gap-4 lg:flex-row"
 					>
-						<CardBalance1 />
-						<CardBalance2 />
-						<CardBalance3 />
-					</Flex>
+						<motion.div variants={fadeInUp}>
+							<CardBalance1 title={`Community Insurance`} price={`45,910`} />
+						</motion.div>
+						<motion.div variants={fadeInUp}>
+							<CardBalance2 />
+						</motion.div>
+						<motion.div variants={fadeInUp}>
+							<CardBalance3 />
+						</motion.div>
+					</motion.div>
 				</Box>
 
 				{/* Chart */}
 				<Box>
-					<Text
-						h3
-						css={{
-							textAlign: "center",
-							"@lg": {
-								textAlign: "inherit",
-							},
-						}}
-					>
-						Statistics
-					</Text>
+					<h3 className="text-center text-black lg:text-left">Statistics</h3>
 					<Box
 						css={{
 							width: "100%",
@@ -113,32 +124,11 @@ export const Content = () => (
 					overflow: "hidden",
 				}}
 			>
-				<Text
-					h3
-					css={{
-						textAlign: "center",
-						"@lg": {
-							textAlign: "inherit",
-						},
-					}}
-				>
-					Section
-				</Text>
+				<h3 className="text-center text-black lg:text-left">Section</h3>
 				<Flex
 					direction={"column"}
 					justify={"center"}
-					css={{
-						gap: "$8",
-						flexDirection: "row",
-						flexWrap: "wrap",
-						"@sm": {
-							flexWrap: "nowrap",
-						},
-						"@lg": {
-							flexWrap: "nowrap",
-							flexDirection: "column",
-						},
-					}}
+					className="flex flex-row flex-wrap sm:flex-wrap lg:flex-col"
 				>
 					<CardAgents />
 					<CardTransactions />
@@ -159,17 +149,7 @@ export const Content = () => (
 			}}
 		>
 			<Flex justify={"between"} wrap={"wrap"}>
-				<Text
-					h3
-					css={{
-						textAlign: "center",
-						"@lg": {
-							textAlign: "inherit",
-						},
-					}}
-				>
-					Latest Users
-				</Text>
+				<h3 className="text-center text-black lg:text-left">Latest Users</h3>
 				<NextLink href="/accounts">
 					<Link
 						block

@@ -18,6 +18,7 @@ interface IProps {
 		};
 	};
 }
+
 const TestimonialCard: FC<IProps> = ({
 	title,
 	image,
