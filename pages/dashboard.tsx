@@ -5,7 +5,7 @@ import {getThemesOptionsContent} from "../functions/themesOptions";
 import {clerkClient, getAuth, buildClerkProps} from "@clerk/nextjs/server";
 
 // Styling
-import styles from "@/styles/components/Dashboard.module.scss";
+import styles from "@/styles/pages/Dashboard.module.scss";
 
 // Components
 import {Layout} from "../components/App/dashboard/components/layout/layout";
@@ -46,7 +46,13 @@ const dashboard: NextPage<IDashboard> = ({
 	themesOptionsContent,
 }) => {
 	return (
-		<Layout metaTag={metaTag}>
+		<Layout
+			metaTag={metaTag}
+			lastName={lastName}
+			firstName={firstName}
+			emailAddress={emailAddress}
+			profileImageUrl={profileImageUrl}
+		>
 			<section className={styles.dashboardContent}>
 				<Content
 					id={id}
@@ -76,7 +82,9 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 		profileImageUrl: user?.profileImageUrl
 			? user?.profileImageUrl
 			: `/img/Logos/default-avatar-profile.png`,
-		emailAddress: user?.emailAddresses[0]?.emailAddress ? user?.firstName : ` `,
+		emailAddress: user?.emailAddresses[0]?.emailAddress
+			? user?.emailAddresses[0]?.emailAddress
+			: ` `,
 	};
 
 	// Dashboard Meta Tag Object

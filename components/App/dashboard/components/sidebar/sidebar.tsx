@@ -1,8 +1,11 @@
 // Import
-import React, {useState} from "react";
+import Link from "next/link";
+import {motion} from "framer-motion";
+import React, {FC} from "react";
 import {useRouter} from "next/router";
 import {CollapseItems} from "./collapse-items";
 import {Avatar, Tooltip} from "@nextui-org/react";
+import {fadeInUp, stagger} from "@/animations/animations";
 
 // Styling
 import {Box} from "../styles/box";
@@ -29,26 +32,37 @@ import {SettingsIcon} from "../icons/sidebar/settings-icon";
 import {CustomersIcon} from "../icons/sidebar/customers-icon";
 import {ChangeLogIcon} from "../icons/sidebar/changelog-icon";
 
-export const SidebarWrapper = () => {
+interface IProps {
+	profileImageUrl: string;
+}
+
+export const SidebarWrapper: FC<IProps> = ({profileImageUrl}) => {
 	const router = useRouter();
 	const defaultRoute = "/dashboard";
 	const {collapsed, setCollapsed} = useSidebarContext();
 
 	return (
-		<Box
-			as="aside"
-			className="sticky top-0 min-h-screen h-full z-[202] bg-pureBlack"
-		>
+		<Box as="aside" className="sticky top-0 min-h-screen h-full z-[202]">
 			{collapsed ? <Sidebar.Overlay onClick={setCollapsed} /> : null}
 
-			<Sidebar collapsed={collapsed} className="bg-blueDash rounded-r-xl">
+			<Sidebar
+				collapsed={collapsed}
+				className="py-8 bg-darkerBlueTwo rounded-r-xl"
+			>
 				<Sidebar.Header>
-					<CompaniesDropdown />
+					<motion.div variants={fadeInUp}>
+						<Link
+							href="/"
+							className="text-xl font-[500] tracking-wider text-white hover:text-blueDash transition-all duration-200 ease-in-out"
+						>
+							<span>BlueInventory</span>
+						</Link>
+					</motion.div>
 				</Sidebar.Header>
-				<Flex direction={"column"} justify={"between"} css={{height: "100%"}}>
-					<Sidebar.Body className="body sidebar">
+				<div className="flex flex-col justify-between h-full py-4">
+					<Sidebar className="flex flex-col gap-8 px-3 my-3 sidebar">
 						<SidebarItem
-							title="Home"
+							title="Dashboard"
 							icon={<HomeIcon />}
 							isActive={router.pathname === defaultRoute}
 							href={defaultRoute}
@@ -119,7 +133,7 @@ export const SidebarWrapper = () => {
 								href={`${defaultRoute}/changelog`}
 							/>
 						</SidebarMenu>
-					</Sidebar.Body>
+					</Sidebar>
 					<Sidebar.Footer>
 						<Tooltip content={"Settings"} rounded color="primary">
 							<SettingsIcon />
@@ -128,13 +142,10 @@ export const SidebarWrapper = () => {
 							<FilterIcon />
 						</Tooltip>
 						<Tooltip content={"Profile"} rounded color="primary">
-							<Avatar
-								src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
-								size={"sm"}
-							/>
+							<Avatar src={profileImageUrl} size={"sm"} />
 						</Tooltip>
 					</Sidebar.Footer>
-				</Flex>
+				</div>
 			</Sidebar>
 		</Box>
 	);

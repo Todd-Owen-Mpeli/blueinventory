@@ -2,12 +2,11 @@
 import React from "react";
 import {motion} from "framer-motion";
 import {useLockedBody} from "../hooks/useBodyLock";
-import {createTheme, NextUIProvider} from "@nextui-org/react";
-import {ThemeProvider as NextThemesProvider} from "next-themes";
+import {NextUIProvider} from "@nextui-org/react";
 
 // Styling
 import {WrapperLayout} from "./layout.styles";
-import styles from "../../../../../styles/components/Dashboard.module.scss";
+import styles from "../../../../../styles/pages/Dashboard.module.scss";
 
 // Components
 import {NavbarWrapper} from "../navbar/navbar";
@@ -15,22 +14,11 @@ import {SidebarContext} from "./layout-context";
 import {SidebarWrapper} from "../sidebar/sidebar";
 import MetaTag from "@/components/App/dashboard/components/Meta/MetaTag";
 
-// Themes
-const lightTheme = createTheme({
-	type: "light",
-	theme: {
-		colors: {},
-	},
-});
-
-const darkTheme = createTheme({
-	type: "dark",
-	theme: {
-		colors: {},
-	},
-});
-
 interface Layout {
+	lastName: string;
+	firstName: string;
+	emailAddress: string;
+	profileImageUrl: string;
 	metaTag: {
 		firstName: string;
 		lastName: string;
@@ -39,7 +27,14 @@ interface Layout {
 	children: React.ReactNode;
 }
 
-export const Layout = ({children, metaTag}: Layout) => {
+export const Layout = ({
+	children,
+	metaTag,
+	lastName,
+	firstName,
+	emailAddress,
+	profileImageUrl,
+}: Layout) => {
 	const [sidebarOpen, setSidebarOpen] = React.useState(false);
 	const [_, setLocked] = useLockedBody(false);
 	const handleToggleSidebar = () => {
@@ -48,14 +43,7 @@ export const Layout = ({children, metaTag}: Layout) => {
 	};
 
 	return (
-		<NextThemesProvider
-			defaultTheme="system"
-			attribute="class"
-			value={{
-				light: lightTheme.className,
-				dark: darkTheme.className,
-			}}
-		>
+		<section className="bg-pureBlack">
 			<NextUIProvider>
 				<motion.section
 					exit={{
@@ -77,12 +65,19 @@ export const Layout = ({children, metaTag}: Layout) => {
 							profileImageUrl={metaTag?.profileImageUrl}
 						/>
 						<WrapperLayout>
-							<SidebarWrapper />
-							<NavbarWrapper>{children}</NavbarWrapper>
+							<SidebarWrapper profileImageUrl={profileImageUrl} />
+							<NavbarWrapper
+								lastName={lastName}
+								firstName={firstName}
+								emailAddress={emailAddress}
+								profileImageUrl={profileImageUrl}
+							>
+								{children}
+							</NavbarWrapper>
 						</WrapperLayout>
 					</SidebarContext.Provider>
 				</motion.section>
 			</NextUIProvider>
-		</NextThemesProvider>
+		</section>
 	);
 };

@@ -1,71 +1,62 @@
-import {Text, Link} from '@nextui-org/react';
-import NextLink from 'next/link';
-import React from 'react';
-import {useSidebarContext} from '../layout/layout-context';
-import {Flex} from '../styles/flex';
+// Import
+import React from "react";
+import NextLink from "next/link";
+import {Flex} from "../styles/flex";
+import {Link} from "@nextui-org/react";
+
+// Components
+import {useSidebarContext} from "../layout/layout-context";
 
 interface Props {
-   title: string;
-   icon: React.ReactNode;
-   isActive?: boolean;
-   href?: string;
+	title: string;
+	href?: string;
+	isActive?: boolean;
+	icon: React.ReactNode;
 }
 
-export const SidebarItem = ({icon, title, isActive, href = ''}: Props) => {
-   const {collapsed, setCollapsed} = useSidebarContext();
+export const SidebarItem = ({icon, title, isActive, href = ""}: Props) => {
+	const {collapsed, setCollapsed} = useSidebarContext();
 
-   const handleClick = () => {
-      if (window.innerWidth < 768) {
-         setCollapsed();
-      }
-   };
-   return (
-      <NextLink href={href}>
-         <Link
-            css={{
-               color: '$accents9',
-               maxWidth: '100%',
-            }}
-         >
-            <Flex
-               onClick={handleClick}
-               css={{
-                  'gap': '$6',
-                  'width': '100%',
-                  'minHeight': '44px',
-                  'height': '100%',
-                  'alignItems': 'center',
-                  'px': '$7',
-                  'borderRadius': '8px',
-                  'cursor': 'pointer',
-                  'transition': 'all 0.15s ease',
-                  '&:active': {
-                     transform: 'scale(0.98)',
-                  },
-                  ...(isActive
-                     ? {
-                          'bg': '$blue200',
-                          '& svg path': {
-                             fill: '$blue600',
-                          },
-                       }
-                     : {'&:hover': {bg: '$accents2'}}),
-               }}
-               align={'center'}
-            >
-               {icon}
-               <Text
-                  span
-                  weight={'normal'}
-                  size={'$base'}
-                  css={{
-                     color: '$accents9',
-                  }}
-               >
-                  {title}
-               </Text>
-            </Flex>
-         </Link>
-      </NextLink>
-   );
+	const handleClick = () => {
+		if (window.innerWidth < 768) {
+			setCollapsed();
+		}
+	};
+	return (
+		<NextLink href={href}>
+			<Link className="max-w-full bg-blue">
+				<Flex
+					onClick={handleClick}
+					css={{
+						"svg path": {
+							fill: "#3d77f3",
+						},
+						"&:active": {
+							transform: "scale(0.98)",
+						},
+						...(isActive
+							? {
+									bg: "#0072f5",
+
+									"& svg path": {
+										fill: "#f6ad37",
+									},
+							  }
+							: {
+									"&:hover": {
+										bg: "#0072f5",
+										"& svg path": {
+											fill: "#f6ad37",
+										},
+									},
+							  }),
+					}}
+					className="h-full px-4 gap-4 flex items-center min-h-[44px] w-full rounded-md cursor-pointer transition-all duration-200 ease-in-out"
+				>
+					{icon}
+					<span className="text-base text-white">{title}</span>
+				</Flex>
+			</Link>
+		</NextLink>
+	);
 };

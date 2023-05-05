@@ -12,7 +12,7 @@
 		"@apollo/client": "^3.7.14",
 		"@clerk/nextjs": "^4.16.4",
 		"@nextui-org/react": "^1.0.0-beta.12",
-		"@types/node": "^18.15.13",
+		"@types/node": "^20.0.0",
 		"@types/react": "^18.0.37",
 		"@types/react-dom": "^18.0.11",
 		"apexcharts": "^3.40.0",

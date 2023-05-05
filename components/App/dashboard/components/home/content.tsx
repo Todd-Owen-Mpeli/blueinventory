@@ -1,5 +1,6 @@
 // Import
-import React, {FC} from "react";
+import React from "react";
+import type {NextPage} from "next";
 import NextLink from "next/link";
 import {Box} from "../styles/box";
 import dynamic from "next/dynamic";
@@ -16,7 +17,7 @@ import {CardBalance2} from "./card-balance2";
 import {CardBalance3} from "./card-balance3";
 import {CardTransactions} from "./card-transactions";
 
-interface IProps {
+interface IDashboard {
 	id: string;
 	lastName: string;
 	firstName: string;
@@ -32,7 +33,7 @@ const Chart = dynamic(
 	}
 );
 
-export const Content: FC<IProps> = ({
+export const Content: NextPage<IDashboard> = ({
 	id,
 	lastName,
 	firstName,
@@ -56,20 +57,12 @@ export const Content: FC<IProps> = ({
 			}}
 			justify={"center"}
 		>
-			<Flex
-				css={{
-					px: "$12",
-					mt: "$8",
-					"@xsMax": {px: "$10"},
-					gap: "$12",
-				}}
-				direction={"column"}
-			>
+			<div className="flex flex-col gap-8 px-10 mt-4">
 				{/* Card Section Top */}
-				<Box>
+				<section>
 					<motion.h3
 						variants={stagger}
-						className="flex gap-2 text-center text-black lg:text-left"
+						className="flex gap-2 mb-4 text-center text-black lg:text-left"
 					>
 						Hello,
 						<motion.span variants={fadeInUp} className="tracking-tight">
@@ -84,56 +77,57 @@ export const Content: FC<IProps> = ({
 						className="flex flex-wrap items-center justify-between gap-4 lg:flex-row"
 					>
 						<motion.div variants={fadeInUp}>
-							<CardBalance1 title={`Community Insurance`} price={`45,910`} />
+							<CardBalance1 title={`Software Checking`} price={`45,910`} />
 						</motion.div>
 						<motion.div variants={fadeInUp}>
-							<CardBalance2 />
+							<CardBalance2 title={`Providing keys`} price={`12,138`} />
 						</motion.div>
 						<motion.div variants={fadeInUp}>
-							<CardBalance3 />
+							<CardBalance3 title={`Balance Insurance`} price={`3,910`} />
 						</motion.div>
 					</motion.div>
-				</Box>
+				</section>
 
 				{/* Chart */}
-				<Box>
-					<h3 className="text-center text-black lg:text-left">Statistics</h3>
-					<Box
-						css={{
-							width: "100%",
-							backgroundColor: "$accents0",
-							boxShadow: "$lg",
-							borderRadius: "$2xl",
-							px: "$10",
-							py: "$10",
-						}}
+				<motion.section variants={stagger}>
+					<motion.h3
+						variants={fadeInUp}
+						className="flex gap-2 mb-4 text-center text-black lg:text-left"
+					>
+						Statistics
+					</motion.h3>
+					<motion.div
+						variants={fadeInUp}
+						className="w-full p-10 rounded-xl bg-pureBlack"
 					>
 						<Chart />
-					</Box>
-				</Box>
-			</Flex>
+					</motion.div>
+				</motion.section>
+			</div>
 
 			{/* Left Section */}
-			<Box
-				css={{
-					px: "$12",
-					mt: "$8",
-					height: "fit-content",
-					"@xsMax": {px: "$10"},
-					gap: "$6",
-					overflow: "hidden",
-				}}
+			<motion.section
+				variants={stagger}
+				className="flex flex-col gap-4 px-6 mt-4 overflow-hidden h-fit"
 			>
-				<h3 className="text-center text-black lg:text-left">Section</h3>
-				<Flex
-					direction={"column"}
-					justify={"center"}
-					className="flex flex-row flex-wrap sm:flex-wrap lg:flex-col"
+				<motion.h3
+					variants={fadeInUp}
+					className="flex gap-2 mb-4 text-center text-black lg:text-left"
 				>
-					<CardAgents />
-					<CardTransactions />
-				</Flex>
-			</Box>
+					Section
+				</motion.h3>
+				<motion.div
+					variants={stagger}
+					className="flex flex-row flex-wrap gap-4 sm:flex-wrap lg:flex-col"
+				>
+					<motion.div variants={fadeInUp}>
+						<CardAgents />
+					</motion.div>
+					<motion.div variants={fadeInUp}>
+						<CardTransactions />
+					</motion.div>
+				</motion.div>
+			</motion.section>
 		</Flex>
 
 		{/* Table Latest Users */}

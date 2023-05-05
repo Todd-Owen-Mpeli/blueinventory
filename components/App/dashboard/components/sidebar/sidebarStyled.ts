@@ -72,7 +72,7 @@ export const Footer = styled("div", {
 	pb: "$8",
 	"@md": {
 		pt: 0,
-		pb: 0,
+		pb: 16,
 	},
 	px: "$8",
 });

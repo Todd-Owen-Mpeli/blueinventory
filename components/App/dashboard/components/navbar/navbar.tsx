@@ -1,21 +1,34 @@
-import {Input, Link, Navbar, Text} from "@nextui-org/react";
+// Import
 import React from "react";
-import {FeedbackIcon} from "../icons/navbar/feedback-icon";
-import {GithubIcon} from "../icons/navbar/github-icon";
-import {SupportIcon} from "../icons/navbar/support-icon";
-import {SearchIcon} from "../icons/searchicon";
 import {Box} from "../styles/box";
 import {Flex} from "../styles/flex";
-import {BurgerButton} from "./Burger-button";
-import {NotificationsDropdown} from "./notifications-dropdown";
+import {Input, Link, Navbar, Text} from "@nextui-org/react";
+
+// Components
 import {UserDropdown} from "./user-dropdown";
+import {BurgerButton} from "./Burger-button";
+import {SearchIcon} from "../icons/searchicon";
+import {GithubIcon} from "../icons/navbar/github-icon";
+import {SupportIcon} from "../icons/navbar/support-icon";
+import {FeedbackIcon} from "../icons/navbar/feedback-icon";
+import {NotificationsDropdown} from "./notifications-dropdown";
 
 interface Props {
+	lastName: string;
+	firstName: string;
+	emailAddress: string;
+	profileImageUrl: string;
 	children: React.ReactNode;
 }
 
-export const NavbarWrapper = ({children}: Props) => {
-	const collapseItems = [
+export const NavbarWrapper = ({
+	children,
+	lastName,
+	firstName,
+	emailAddress,
+	profileImageUrl,
+}: Props) => {
+	const collapseItems: string[] = [
 		"Profile",
 		"Dashboard",
 		"Activity",
@@ -27,17 +40,37 @@ export const NavbarWrapper = ({children}: Props) => {
 		"Help & Feedback",
 		"Log Out",
 	];
+
+	// Notifications Content
+	const notifications: any = [
+		{
+			id: 1,
+			title: "📣 Edit your information",
+			description:
+				"Sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.",
+		},
+		{
+			id: 2,
+			title: "🚀 Say goodbye to paper receipts!",
+			description:
+				"Sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.",
+		},
+		{
+			id: 3,
+			title: "📣 Inventory information update",
+			description:
+				"Sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.",
+		},
+		{
+			id: 4,
+			title: "Stock Control levels",
+			description:
+				"Sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.",
+		},
+	];
+
 	return (
-		<Box
-			css={{
-				position: "relative",
-				display: "flex",
-				flexDirection: "column",
-				flex: "1 1 auto",
-				overflowY: "auto",
-				overflowX: "hidden",
-			}}
-		>
+		<section className="relative flex flex-col w-full overflow-x-hidden overflow-y-auto bg-pureBlack">
 			<Navbar
 				isBordered
 				css={{
@@ -55,7 +88,7 @@ export const NavbarWrapper = ({children}: Props) => {
 						},
 					},
 				}}
-				className="justify-between w-full bg-pureBlack"
+				className="justify-between w-full"
 			>
 				<Navbar.Content showIn="md">
 					<BurgerButton />
@@ -90,14 +123,16 @@ export const NavbarWrapper = ({children}: Props) => {
 				</Navbar.Content>
 				<Navbar.Content>
 					<Navbar.Content hideIn={"md"}>
-						<Flex align={"center"} css={{gap: "$4"}}>
-							<FeedbackIcon />
-							<Text span>Feedback?</Text>
-						</Flex>
+						<Link href="/contact/#contactForm">
+							<div className="flex items-center justify-between gap-2">
+								<FeedbackIcon />
+								<span className="text-base text-white">Feedback?</span>
+							</div>
+						</Link>
 					</Navbar.Content>
 
 					<Navbar.Content>
-						<NotificationsDropdown />
+						<NotificationsDropdown notifications={notifications} />
 					</Navbar.Content>
 
 					<Navbar.Content hideIn={"md"}>
@@ -137,6 +172,6 @@ export const NavbarWrapper = ({children}: Props) => {
 				</Navbar.Collapse>
 			</Navbar>
 			{children}
-		</Box>
+		</section>
 	);
 };
