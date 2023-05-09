@@ -1,8 +1,8 @@
 // Import
-import type {NextPage} from "next";
 import {gql} from "@apollo/client";
 import {motion} from "framer-motion";
 import {client} from "../config/apollo";
+import type {NextPage, GetStaticProps} from "next";
 import {getThemesOptionsContent} from "../functions/themesOptions";
 import {
 	getMainMenuLinks,
@@ -309,7 +309,7 @@ const HomePage: NextPage<IHomePage> = ({
 
 export default HomePage;
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
 	const getHomePageContent: any = gql`
 		{
 			mainContent: pages(where: {id: 49, status: PUBLISH}) {
@@ -500,4 +500,4 @@ export async function getStaticProps() {
 		},
 		revalidate: 60,
 	};
-}
+};

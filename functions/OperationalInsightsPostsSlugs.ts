@@ -101,7 +101,7 @@ export const fetchOperationalInsightsPostsContent = async (slug: string) => {
 									}
 								}
 							}
-						contactBanner {
+						cta {
 							title
 							paragraph
 							buttonLink {

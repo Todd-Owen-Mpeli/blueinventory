@@ -1,8 +1,8 @@
 // Import
-import type {NextPage} from "next";
 import {gql} from "@apollo/client";
 import {motion} from "framer-motion";
 import {client} from "../config/apollo";
+import type {NextPage, GetStaticProps} from "next";
 import {getThemesOptionsContent} from "../functions/themesOptions";
 import {
 	getMainMenuLinks,
@@ -19,7 +19,150 @@ import Sustainability from "@/components/Sustainability";
 import TitleParagraph from "../components/TitleParagraph";
 import ContentBackgroundImage from "../components/ContentBackgroundImage";
 
-const about: NextPage = ({
+interface IAbout {
+	seo: {
+		canonical: string;
+		cornerstone: Boolean;
+		focuskw: string;
+		fullHead: string;
+		metaDesc: string;
+		metaKeywords: string;
+		metaRobotsNofollow: string;
+		metaRobotsNoindex: string;
+		opengraphAuthor: string;
+		opengraphDescription: string;
+		opengraphImage: {
+			mediaItemUrl: string;
+		};
+		opengraphModifiedTime: string;
+		opengraphPublishedTime: string;
+		opengraphPublisher: string;
+		opengraphSiteName: string;
+		opengraphTitle: string;
+		opengraphType: string;
+		opengraphUrl: string;
+		readingTime: number;
+		title: string;
+		twitterDescription: string;
+		twitterTitle: string;
+		twitterImage: {
+			mediaItemUrl: string;
+		};
+	};
+	content: {
+		heroSection: {
+			title: string;
+			paragraph: string;
+			backgroundVideoUrl: string;
+			backgroundImageOrVideo: string;
+			backgroundImage: {
+				altText: string;
+				sourceUrl: string;
+				mediaDetails: {
+					height: string;
+					width: string;
+				};
+			};
+		};
+		titleParagraph: {
+			title: string;
+			paragraph: string;
+		};
+		sustainability: {
+			title: string;
+			subtitle: string;
+			paragraph: string;
+			imageText: string;
+			percentage: string;
+			image: {
+				altText: string;
+				sourceUrl: string;
+				mediaDetails: {
+					height: string;
+					width: string;
+				};
+			};
+		};
+		gridContent: [
+			{
+				card: {
+					title: string;
+					paragraph: string;
+					contentLocation: string;
+					backgroundImage: {
+						sourceUrl: string;
+					};
+				};
+			}
+		];
+		cta: {
+			title: string;
+			paragraph: string;
+			buttonLink: {
+				url: string;
+				title: string;
+				target: string;
+			};
+			buttonLinkTwo: {
+				url: string;
+				title: string;
+				target: string;
+			};
+			content: {
+				title: string;
+				paragraph: string;
+				backgroundImage: {
+					sourceUrl: string;
+				};
+			};
+		};
+	};
+	footerMenuLinks: {
+		footerMenuLinks: [
+			{
+				node: {
+					id: string;
+					url: string;
+					label: string;
+				};
+			}
+		];
+	};
+	navbarMenuLinks: {
+		navbarMenuLinks: [
+			{
+				node: {
+					id: string;
+					url: string;
+					label: string;
+				};
+			}
+		];
+	};
+	industriesMenuLinks: {
+		industriesMenuLinks: [
+			{
+				node: {
+					id: string;
+					url: string;
+					label: string;
+				};
+			}
+		];
+	};
+	themesOptionsContent: {
+		email: string;
+		emailTwo: string;
+		phoneNumber: string;
+		phoneNumberTwo: string;
+		twitterLink: string;
+		facebookLink: string;
+		linkedinLink: string;
+		copyRightText: string;
+	};
+}
+
+const about: NextPage<IAbout> = ({
 	seo,
 	content,
 	pageTitle,
@@ -81,7 +224,7 @@ const about: NextPage = ({
 
 export default about;
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
 	const geAboutPageContent: any = gql`
 		{
 			title: pages(where: {id: 721}) {
@@ -207,4 +350,4 @@ export async function getStaticProps() {
 		},
 		revalidate: 60,
 	};
-}
+};

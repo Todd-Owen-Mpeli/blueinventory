@@ -1,5 +1,5 @@
 // Import
-import type {NextPage} from "next";
+import type {NextPage, GetStaticProps} from "next";
 import {motion} from "framer-motion";
 import {
 	getMainMenuLinks,
@@ -21,7 +21,185 @@ import Layout from "../../components/Layout/Layout";
 import TitleParagraph from "../../components/TitleParagraph";
 import ContentBackgroundImage from "../../components/ContentBackgroundImage";
 
-const singlePost: NextPage = ({
+interface ISinglePost {
+	seo: {
+		canonical: string;
+		cornerstone: Boolean;
+		focuskw: string;
+		fullHead: string;
+		metaDesc: string;
+		metaKeywords: string;
+		metaRobotsNofollow: string;
+		metaRobotsNoindex: string;
+		opengraphAuthor: string;
+		opengraphDescription: string;
+		opengraphImage: {
+			mediaItemUrl: string;
+		};
+		opengraphModifiedTime: string;
+		opengraphPublishedTime: string;
+		opengraphPublisher: string;
+		opengraphSiteName: string;
+		opengraphTitle: string;
+		opengraphType: string;
+		opengraphUrl: string;
+		readingTime: number;
+		title: string;
+		twitterDescription: string;
+		twitterTitle: string;
+		twitterImage: {
+			mediaItemUrl: string;
+		};
+	};
+	content: {
+		heroSection: {
+			title: string;
+			paragraph: string;
+			backgroundVideoUrl: string;
+			backgroundImageOrVideo: string;
+			backgroundImage: {
+				altText: string;
+				sourceUrl: string;
+				mediaDetails: {
+					height: string;
+					width: string;
+				};
+			};
+		};
+		titleParagraph: {
+			title: string;
+			paragraph: string;
+		};
+		gridContent: [
+			{
+				card: {
+					title: string;
+					paragraph: string;
+					contentLocation: string;
+					backgroundImage: {
+						sourceUrl: string;
+					};
+				};
+			}
+		];
+		cta: {
+			title: string;
+			paragraph: string;
+			buttonLink: {
+				url: string;
+				title: string;
+				target: string;
+			};
+			buttonLinkTwo: {
+				url: string;
+				title: string;
+				target: string;
+			};
+			content: {
+				title: string;
+				paragraph: string;
+				backgroundImage: {
+					sourceUrl: string;
+				};
+			};
+		};
+		imageGrid: {
+			image: {
+				altText: string;
+				sourceUrl: string;
+				mediaDetails: {
+					height: string;
+					width: string;
+				};
+			};
+			imageTwo: {
+				altText: string;
+				sourceUrl: string;
+				mediaDetails: {
+					height: string;
+					width: string;
+				};
+			};
+			imageThree: {
+				altText: string;
+				sourceUrl: string;
+				mediaDetails: {
+					height: string;
+					width: string;
+				};
+			};
+			imageFour: {
+				altText: string;
+				sourceUrl: string;
+				mediaDetails: {
+					height: string;
+					width: string;
+				};
+			};
+			imageFive: {
+				altText: string;
+				sourceUrl: string;
+				mediaDetails: {
+					height: string;
+					width: string;
+				};
+			};
+			imageSix: {
+				altText: string;
+				sourceUrl: string;
+				mediaDetails: {
+					height: string;
+					width: string;
+				};
+			};
+		};
+	};
+	footerMenuLinks: {
+		footerMenuLinks: [
+			{
+				node: {
+					id: string;
+					url: string;
+					label: string;
+				};
+			}
+		];
+	};
+	navbarMenuLinks: {
+		navbarMenuLinks: [
+			{
+				node: {
+					id: string;
+					url: string;
+					label: string;
+				};
+			}
+		];
+	};
+	industriesMenuLinks: {
+		industriesMenuLinks: [
+			{
+				node: {
+					id: string;
+					url: string;
+					label: string;
+				};
+			}
+		];
+	};
+	themesOptionsContent: {
+		email: string;
+		emailTwo: string;
+		phoneNumber: string;
+		phoneNumberTwo: string;
+		twitterLink: string;
+		facebookLink: string;
+		linkedinLink: string;
+		copyRightText: string;
+	};
+}
+
+const singlePost: NextPage<ISinglePost> = ({
 	seo,
 	content,
 	pageTitle,
@@ -94,7 +272,7 @@ export async function getStaticPaths() {
 	return {paths, fallback: false};
 }
 
-export async function getStaticProps({params}: any) {
+export const getStaticProps: GetStaticProps = async ({params}: any) => {
 	const response: any = await fetchIndustriesPageContent(params?.slug);
 
 	const mainMenuLinks: object = await getMainMenuLinks();
@@ -116,4 +294,4 @@ export async function getStaticProps({params}: any) {
 		},
 		revalidate: 60,
 	};
-}
+};

@@ -1,6 +1,5 @@
 // Import
-import type {NextPage} from "next";
-import {GetServerSideProps} from "next";
+import type {NextPage, GetServerSideProps} from "next";
 import {getThemesOptionsContent} from "../functions/themesOptions";
 import {clerkClient, getAuth, buildClerkProps} from "@clerk/nextjs/server";
 
