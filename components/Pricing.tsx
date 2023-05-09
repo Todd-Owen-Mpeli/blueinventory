@@ -1,28 +1,40 @@
 // Import
 import {FC} from "react";
 import Link from "next/link";
-import Image from "next/image";
 import {motion} from "framer-motion";
 import {fadeInUp, stagger} from "../animations/animations";
 
 // Components
 import Paragraph from "./Elements/Paragraph";
+import BulletListCard from "./Cards/BulletListCard";
 import PaymentProvidersCard from "./Cards/PaymentProvidersCard";
 
 interface IProps {
 	title: string;
 	italic: string;
+	pointOne: string;
+	pointTwo: string;
 	paragraph: string;
-	bulletList: [
+	card: {
+		plan: string;
+		pricing: string;
+		paragraph: string;
+		buttonLink: {
+			url: string;
+			title: string;
+			target: string;
+		};
+		bulletList: [
+			{
+				id: string;
+				bulletPoint: string;
+			}
+		];
+	};
+	paymentProviders: [
 		{
 			id: string;
-			bulletPoint: string;
-		}
-	];
-	PaymentProviders: [
-		{
-			id: string;
-			image: {
+			logo: {
 				altText: string;
 				sourceUrl: string;
 				mediaDetails: {
@@ -35,11 +47,13 @@ interface IProps {
 }
 
 const Pricing: FC<IProps> = ({
+	card,
 	title,
 	italic,
+	pointOne,
+	pointTwo,
 	paragraph,
-	bulletList,
-	PaymentProviders,
+	paymentProviders,
 }) => {
 	return (
 		<div>
@@ -76,105 +90,36 @@ const Pricing: FC<IProps> = ({
 								<div className="w-full px-4 pb-12 mb-8 border-b border-grey lg:w-2/5 lg:mb-0 lg:py-4 lg:border-0 lg:border-r">
 									<div className="text-center">
 										<span className="block mb-4 text-2xl font-semibold">
-											Standard
+											{card?.plan}
 										</span>
 										<span className="block mb-5 text-5xl font-bold text-darkBlue">
-											£29.99 / month
+											{card?.pricing}
 										</span>
 										<Link
 											className="relative inline-block px-10 py-4 overflow-hidden font-semibold text-center text-white transition duration-200 rounded-full bg-blue group"
-											href="/checkout"
+											href={card?.buttonLink?.url}
+											target={card?.buttonLink?.target}
 										>
 											<div className="absolute top-0 w-full h-full transition duration-200 transform bg-darkBlue right-full group-hover:translate-x-full group-hover:scale-102" />
-											<span className="relative">Get Started</span>
+											<span className="relative">
+												{card?.buttonLink?.title}
+											</span>
 										</Link>
 									</div>
 								</div>
 								<div className="w-full px-4 py-2 lg:w-3/5">
 									<div className="max-w-sm ml-auto">
 										<Paragraph
-											content={`Providing simplicity, consistency & in-depth product/item descriptions.`}
+											content={card?.paragraph}
 											tailwindStyling="mb-8 text-black"
 										/>
 										<ul>
-											<li className="flex items-center mb-6">
-												<svg
-													version="1.1"
-													id="Layer_1"
-													xmlns="http://www.w3.org/2000/svg"
-													x="0px"
-													y="0px"
-													width="96px"
-													height="96px"
-													viewBox="0 0 96 96"
-													className="w-5 h-5"
-													enable-background="new 0 0 96 96"
-												>
-													<g>
-														<path
-															fill-rule="evenodd"
-															clip-rule="evenodd"
-															fill="#6BBE66"
-															d="M48,0c26.51,0,48,21.49,48,48S74.51,96,48,96S0,74.51,0,48 S21.49,0,48,0L48,0z M26.764,49.277c0.644-3.734,4.906-5.813,8.269-3.79c0.305,0.182,0.596,0.398,0.867,0.646l0.026,0.025 c1.509,1.446,3.2,2.951,4.876,4.443l1.438,1.291l17.063-17.898c1.019-1.067,1.764-1.757,3.293-2.101 c5.235-1.155,8.916,5.244,5.206,9.155L46.536,63.366c-2.003,2.137-5.583,2.332-7.736,0.291c-1.234-1.146-2.576-2.312-3.933-3.489 c-2.35-2.042-4.747-4.125-6.701-6.187C26.993,52.809,26.487,50.89,26.764,49.277L26.764,49.277z"
-														/>
-													</g>
-												</svg>
-												<span className="ml-2 text-sm text-black">
-													Design Style well organized
-												</span>
-											</li>
-											<li className="flex items-center mb-6">
-												<svg
-													version="1.1"
-													id="Layer_1"
-													xmlns="http://www.w3.org/2000/svg"
-													x="0px"
-													y="0px"
-													width="96px"
-													height="96px"
-													viewBox="0 0 96 96"
-													className="w-5 h-5"
-													enable-background="new 0 0 96 96"
-												>
-													<g>
-														<path
-															fill-rule="evenodd"
-															clip-rule="evenodd"
-															fill="#6BBE66"
-															d="M48,0c26.51,0,48,21.49,48,48S74.51,96,48,96S0,74.51,0,48 S21.49,0,48,0L48,0z M26.764,49.277c0.644-3.734,4.906-5.813,8.269-3.79c0.305,0.182,0.596,0.398,0.867,0.646l0.026,0.025 c1.509,1.446,3.2,2.951,4.876,4.443l1.438,1.291l17.063-17.898c1.019-1.067,1.764-1.757,3.293-2.101 c5.235-1.155,8.916,5.244,5.206,9.155L46.536,63.366c-2.003,2.137-5.583,2.332-7.736,0.291c-1.234-1.146-2.576-2.312-3.933-3.489 c-2.35-2.042-4.747-4.125-6.701-6.187C26.993,52.809,26.487,50.89,26.764,49.277L26.764,49.277z"
-														/>
-													</g>
-												</svg>
-												<span className="ml-2 text-sm text-black">
-													Component Library with many variants
-												</span>
-											</li>
-											<li className="flex items-center">
-												<svg
-													version="1.1"
-													id="Layer_1"
-													xmlns="http://www.w3.org/2000/svg"
-													x="0px"
-													y="0px"
-													width="96px"
-													height="96px"
-													viewBox="0 0 96 96"
-													className="w-5 h-5"
-													enable-background="new 0 0 96 96"
-												>
-													<g>
-														<path
-															fill-rule="evenodd"
-															clip-rule="evenodd"
-															fill="#6BBE66"
-															d="M48,0c26.51,0,48,21.49,48,48S74.51,96,48,96S0,74.51,0,48 S21.49,0,48,0L48,0z M26.764,49.277c0.644-3.734,4.906-5.813,8.269-3.79c0.305,0.182,0.596,0.398,0.867,0.646l0.026,0.025 c1.509,1.446,3.2,2.951,4.876,4.443l1.438,1.291l17.063-17.898c1.019-1.067,1.764-1.757,3.293-2.101 c5.235-1.155,8.916,5.244,5.206,9.155L46.536,63.366c-2.003,2.137-5.583,2.332-7.736,0.291c-1.234-1.146-2.576-2.312-3.933-3.489 c-2.35-2.042-4.747-4.125-6.701-6.187C26.993,52.809,26.487,50.89,26.764,49.277L26.764,49.277z"
-														/>
-													</g>
-												</svg>
-												<span className="ml-2 text-sm text-black">
-													All limited links
-												</span>
-											</li>
+											{card?.bulletList.map((keys) => (
+												<BulletListCard
+													bulletPoint={keys?.bulletPoint}
+													key={keys?.id || keys?.bulletPoint}
+												/>
+											))}
 										</ul>
 									</div>
 								</div>
@@ -207,7 +152,7 @@ const Pricing: FC<IProps> = ({
 									</svg>
 								</div>
 								<Paragraph
-									content={`Billed monthly subscription`}
+									content={pointOne}
 									tailwindStyling="font-semibold text-darkBlue"
 								/>
 							</motion.div>
@@ -234,7 +179,7 @@ const Pricing: FC<IProps> = ({
 									</svg>
 								</div>
 								<Paragraph
-									content={`Cancel anytime if there was any problem`}
+									content={pointTwo}
 									tailwindStyling="font-semibold text-darkBlue"
 								/>
 							</motion.div>
@@ -244,64 +189,10 @@ const Pricing: FC<IProps> = ({
 							variants={stagger}
 							className="flex flex-wrap justify-center gap-6 mt-20 lg:flex-row"
 						>
-							<motion.div variants={fadeInUp} className="w-auto">
-								<Image
-									src="/svg/Payment Providers/stripe.svg"
-									alt="stripe payments"
-									width={500}
-									height={500}
-									className="w-full h-[50px] sm:h-[85px] object-contain object-center"
-								/>
-							</motion.div>
-							<motion.div variants={fadeInUp} className="w-auto">
-								<Image
-									src="/svg/Payment Providers/google-pay.svg"
-									alt="Google Pay payments"
-									width={500}
-									height={500}
-									className="w-full h-[50px] sm:h-[85px] object-contain object-center"
-								/>
-							</motion.div>
-							<motion.div variants={fadeInUp} className="w-auto">
-								<Image
-									src="/svg/Payment Providers/mastercard.svg"
-									alt="Mastercard payments"
-									width={500}
-									height={500}
-									className="w-full h-[50px] sm:h-[85px] object-contain object-center"
-								/>
-							</motion.div>
-							<motion.div variants={fadeInUp} className="w-auto">
-								<Image
-									src="/svg/Payment Providers/paypal.svg"
-									alt="Paypal payments"
-									width={500}
-									height={500}
-									className="w-full h-[50px] sm:h-[85px] object-contain object-center"
-								/>
-							</motion.div>
-							<motion.div variants={fadeInUp} className="w-auto">
-								<Image
-									src="/svg/Payment Providers/visa.svg"
-									alt="Visa payments"
-									width={500}
-									height={500}
-									className="w-full h-[50px] sm:h-[85px] object-contain object-center"
-								/>
-							</motion.div>
-							<motion.div variants={fadeInUp} className="w-auto">
-								<Image
-									src="/svg/Payment Providers/apple-pay.svg"
-									alt="Apple Pay payments"
-									width={500}
-									height={500}
-									className="w-full h-[50px] sm:h-[85px] object-contain object-center"
-								/>
-							</motion.div>
-							{PaymentProviders.map((keys) => (
+							{paymentProviders.map((keys) => (
 								<PaymentProvidersCard
-									image={keys?.image}
-									key={keys?.id || keys?.image?.sourceUrl}
+									image={keys?.logo}
+									key={keys?.id || keys?.logo?.sourceUrl}
 								/>
 							))}
 						</motion.div>

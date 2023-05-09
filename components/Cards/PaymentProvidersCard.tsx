@@ -25,7 +25,7 @@ const PaymentProvidersCard: FC<IProps> = ({image}) => {
 				height={image?.mediaDetails?.height}
 				className={
 					image?.sourceUrl
-						? `w-full h-[50px] sm:h-[85px] object-contain object-center`
+						? `w-full h-[50px] sm:h-[75px] object-contain object-center`
 						: `hidden`
 				}
 			/>

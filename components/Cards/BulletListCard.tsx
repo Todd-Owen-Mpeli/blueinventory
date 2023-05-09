@@ -2,10 +2,10 @@
 import {FC} from "react";
 
 interface IProps {
-	title: string;
+	bulletPoint: string;
 }
 
-const BulletListCard: FC<IProps> = ({title}) => {
+const BulletListCard: FC<IProps> = ({bulletPoint}) => {
 	return (
 		<li className="flex items-center mb-6">
 			<svg
@@ -29,7 +29,7 @@ const BulletListCard: FC<IProps> = ({title}) => {
 					/>
 				</g>
 			</svg>
-			<span className="ml-2 text-sm text-black">{title}</span>
+			<span className="ml-2 text-sm text-black">{bulletPoint}</span>
 		</li>
 	);
 };

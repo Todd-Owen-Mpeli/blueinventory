@@ -52,11 +52,13 @@ const pricing: NextPage = ({
 				/>
 
 				<Pricing
-					italic={"innovation"}
-					title={"Inspiring possibility and applying"}
-					paragraph={
-						"BlueInventory is your powerful Non E-commerce inventory management solution. Simpler Inventory, easier growth, better management."
-					}
+					card={content?.pricing?.card}
+					title={content?.pricing?.title}
+					italic={content?.pricing?.italic}
+					pointOne={content?.pricing?.pointOne}
+					pointTwo={content?.pricing?.pointTwo}
+					paragraph={content?.pricing?.paragraph}
+					paymentProviders={content?.pricing?.paymentProviders}
 				/>
 
 				<TitleParagraph
@@ -131,6 +133,36 @@ export async function getStaticProps() {
 									mediaDetails {
 										height
 										width
+									}
+								}
+							}
+							pricing {
+								title
+								italic
+								pointOne
+								pointTwo
+								paragraph
+								card {
+									plan
+									pricing
+									paragraph
+									buttonLink {
+										url
+										title
+										target
+									}
+									bulletList {
+										bulletPoint
+									}
+								}
+								paymentProviders {
+									logo {
+										altText
+										sourceUrl
+										mediaDetails {
+											height
+											width
+										}
 									}
 								}
 							}
