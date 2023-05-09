@@ -16,6 +16,7 @@ import CTATwo from "../components/CTATwo";
 import HeroTwo from "../components/HeroTwo";
 import Layout from "../components/Layout/Layout";
 import TitleParagraph from "../components/TitleParagraph";
+import Pricing from "@/components/Pricing";
 
 const pricing: NextPage = ({
 	seo,
@@ -48,6 +49,14 @@ const pricing: NextPage = ({
 					backgroundImage={content?.heroSection?.backgroundImage}
 					backgroundVideoUrl={content?.heroSection?.backgroundVideoUrl}
 					backgroundImageOrVideo={content?.heroSection?.backgroundImageOrVideo}
+				/>
+
+				<Pricing
+					italic={"innovation"}
+					title={"Inspiring possibility and applying"}
+					paragraph={
+						"BlueInventory is your powerful Non E-commerce inventory management solution. Simpler Inventory, easier growth, better management."
+					}
 				/>
 
 				<TitleParagraph
