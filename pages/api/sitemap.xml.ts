@@ -5,7 +5,7 @@ import {fetchOperationalInsightsPostsSlugs} from "@/functions/OperationalInsight
 const {SitemapStream, streamToPromise} = require("sitemap");
 const {Readable} = require("stream");
 
-export default async (req: any, res: any) => {
+const sitemap = async (req: any, res: any) => {
 	const pagesSlugs = await fetchAllPagesSlugs();
 	const postsSlugs = await fetchOperationalInsightsPostsSlugs();
 
@@ -55,3 +55,5 @@ export default async (req: any, res: any) => {
 
 	res.end(xmlString);
 };
+
+export default sitemap;
