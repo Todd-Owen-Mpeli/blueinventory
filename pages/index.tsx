@@ -55,9 +55,6 @@ interface IHomePage {
 			title: string;
 			subtitle: string;
 			backgroundVideoUrl: string;
-			backgroundImage: {
-				sourceUrl: string;
-			};
 			buttonLink: {
 				url: string;
 				title: string;
@@ -68,12 +65,20 @@ interface IHomePage {
 				title: string;
 				target: string;
 			};
+			backgroundImage: {
+				sourceUrl: string;
+			};
 		};
 		stats: {
 			title: string;
 			subtitle: string;
 			paragraph: string;
-			bulletPoints: [[Object], [Object], [Object]];
+			bulletPoints: [
+				{
+					id: string;
+					bulletPoint: string;
+				}
+			];
 			column: {
 				title: string;
 				values: string;
@@ -129,7 +134,7 @@ interface IHomePage {
 		trustedBrands: {
 			title: string;
 			paragraph: string;
-			logoGrid: [
+			logos: [
 				{
 					id: string;
 					image: {
@@ -168,6 +173,9 @@ interface IHomePage {
 		cta: {
 			title: string;
 			paragraph: string;
+			backgroundImage: {
+				sourceUrl: string;
+			};
 			buttonLink: {
 				url: string;
 				title: string;
@@ -181,9 +189,6 @@ interface IHomePage {
 			content: {
 				title: string;
 				paragraph: string;
-				backgroundImage: {
-					sourceUrl: string;
-				};
 			};
 		};
 	};
@@ -221,14 +226,30 @@ interface IHomePage {
 		];
 	};
 	themesOptionsContent: {
+		address: string;
 		email: string;
 		emailTwo: string;
 		phoneNumber: string;
 		phoneNumberTwo: string;
-		twitterLink: string;
+		copyrightText: string;
 		facebookLink: string;
 		linkedinLink: string;
-		copyRightText: string;
+		twitterLink: string;
+		businessHours: {
+			content: string;
+		};
+		errorPageContent: {
+			title: string;
+			paragraph: string;
+			buttonLink: {
+				url: string;
+				title: string;
+				target: string;
+			};
+			backgroundImage: {
+				sourceUrl: string;
+			};
+		};
 	};
 }
 
@@ -239,7 +260,7 @@ const HomePage: NextPage<IHomePage> = ({
 	navbarMenuLinks,
 	industriesMenuLinks,
 	themesOptionsContent,
-}: any) => (
+}) => (
 	<motion.div
 		exit={{
 			opacity: 0,
@@ -306,8 +327,6 @@ const HomePage: NextPage<IHomePage> = ({
 		</Layout>
 	</motion.div>
 );
-
-export default HomePage;
 
 export const getStaticProps: GetStaticProps = async () => {
 	const getHomePageContent: any = gql`
@@ -501,3 +520,5 @@ export const getStaticProps: GetStaticProps = async () => {
 		revalidate: 60,
 	};
 };
+
+export default HomePage;

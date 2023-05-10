@@ -47,6 +47,7 @@ interface IPrivacyPolicy {
 			mediaItemUrl: string;
 		};
 	};
+	pageTitle: string;
 	content: {
 		heroSection: {
 			title: string;
@@ -57,8 +58,8 @@ interface IPrivacyPolicy {
 				altText: string;
 				sourceUrl: string;
 				mediaDetails: {
-					height: string;
-					width: string;
+					width: number;
+					height: number;
 				};
 			};
 		};
@@ -69,6 +70,9 @@ interface IPrivacyPolicy {
 		cta: {
 			title: string;
 			paragraph: string;
+			backgroundImage: {
+				sourceUrl: string;
+			};
 			buttonLink: {
 				url: string;
 				title: string;
@@ -122,14 +126,30 @@ interface IPrivacyPolicy {
 		];
 	};
 	themesOptionsContent: {
+		address: string;
 		email: string;
 		emailTwo: string;
 		phoneNumber: string;
 		phoneNumberTwo: string;
-		twitterLink: string;
+		copyrightText: string;
 		facebookLink: string;
 		linkedinLink: string;
-		copyRightText: string;
+		twitterLink: string;
+		businessHours: {
+			content: string;
+		};
+		errorPageContent: {
+			title: string;
+			paragraph: string;
+			buttonLink: {
+				url: string;
+				title: string;
+				target: string;
+			};
+			backgroundImage: {
+				sourceUrl: string;
+			};
+		};
 	};
 }
 
@@ -141,7 +161,7 @@ const privacyPolicy: NextPage<IPrivacyPolicy> = ({
 	navbarMenuLinks,
 	industriesMenuLinks,
 	themesOptionsContent,
-}: any) => {
+}) => {
 	return (
 		<motion.div
 			exit={{

@@ -48,6 +48,7 @@ interface IPricing {
 			mediaItemUrl: string;
 		};
 	};
+	pageTitle: string;
 	content: {
 		heroSection: {
 			title: string;
@@ -58,8 +59,8 @@ interface IPricing {
 				altText: string;
 				sourceUrl: string;
 				mediaDetails: {
-					height: string;
-					width: string;
+					width: number;
+					height: number;
 				};
 			};
 		};
@@ -69,29 +70,31 @@ interface IPricing {
 			pointOne: string;
 			pointTwo: string;
 			paragraph: string;
-			buttonLink: {
-				url: string;
-				title: string;
-				target: string;
-			};
 			card: {
 				plan: string;
 				pricing: string;
 				paragraph: string;
+				buttonLink: {
+					url: string;
+					title: string;
+					target: string;
+				};
 				bulletList: [
 					{
+						id: string;
 						bulletPoint: string;
 					}
 				];
 			};
 			paymentProviders: [
 				{
+					id: string;
 					logo: {
 						altText: string;
 						sourceUrl: string;
 						mediaDetails: {
-							height: string;
-							width: string;
+							height: number;
+							width: number;
 						};
 					};
 				}
@@ -104,6 +107,9 @@ interface IPricing {
 		cta: {
 			title: string;
 			paragraph: string;
+			backgroundImage: {
+				sourceUrl: string;
+			};
 			buttonLink: {
 				url: string;
 				title: string;
@@ -157,14 +163,30 @@ interface IPricing {
 		];
 	};
 	themesOptionsContent: {
+		address: string;
 		email: string;
 		emailTwo: string;
 		phoneNumber: string;
 		phoneNumberTwo: string;
-		twitterLink: string;
+		copyrightText: string;
 		facebookLink: string;
 		linkedinLink: string;
-		copyRightText: string;
+		twitterLink: string;
+		businessHours: {
+			content: string;
+		};
+		errorPageContent: {
+			title: string;
+			paragraph: string;
+			buttonLink: {
+				url: string;
+				title: string;
+				target: string;
+			};
+			backgroundImage: {
+				sourceUrl: string;
+			};
+		};
 	};
 }
 
@@ -176,7 +198,7 @@ const pricing: NextPage<IPricing> = ({
 	navbarMenuLinks,
 	industriesMenuLinks,
 	themesOptionsContent,
-}: any) => {
+}) => {
 	return (
 		<motion.div
 			exit={{

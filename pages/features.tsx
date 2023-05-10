@@ -50,6 +50,7 @@ interface IFeatures {
 			mediaItemUrl: string;
 		};
 	};
+	pageTitle: string;
 	content: {
 		heroSection: {
 			title: string;
@@ -60,8 +61,8 @@ interface IFeatures {
 				altText: string;
 				sourceUrl: string;
 				mediaDetails: {
-					height: string;
-					width: string;
+					width: number;
+					height: number;
 				};
 			};
 		};
@@ -70,6 +71,7 @@ interface IFeatures {
 			contentGrid: [
 				{
 					card: {
+						id: string;
 						title: string;
 						paragraph: string;
 						buttonLink: {
@@ -92,24 +94,26 @@ interface IFeatures {
 					sourceUrl: string;
 				};
 			};
-			lastCard: {
-				backgroundImage: {
-					sourceUrl: string;
-				};
-			};
 			gridContent: [
 				{
 					card: {
+						id: string;
 						title: string;
 						subtitle: string;
 						paragraph: string;
 					};
 				}
 			];
+			lastCard: {
+				backgroundImage: {
+					sourceUrl: string;
+				};
+			};
 		};
 		gridContent: [
 			{
 				card: {
+					id: string;
 					title: string;
 					paragraph: string;
 					contentLocation: string;
@@ -122,7 +126,7 @@ interface IFeatures {
 		trustedBrands: {
 			title: string;
 			paragraph: string;
-			logoGrid: [
+			logos: [
 				{
 					id: string;
 					image: {
@@ -139,6 +143,9 @@ interface IFeatures {
 		cta: {
 			title: string;
 			paragraph: string;
+			backgroundImage: {
+				sourceUrl: string;
+			};
 			buttonLink: {
 				url: string;
 				title: string;
@@ -192,14 +199,30 @@ interface IFeatures {
 		];
 	};
 	themesOptionsContent: {
+		address: string;
 		email: string;
 		emailTwo: string;
 		phoneNumber: string;
 		phoneNumberTwo: string;
-		twitterLink: string;
+		copyrightText: string;
 		facebookLink: string;
 		linkedinLink: string;
-		copyRightText: string;
+		twitterLink: string;
+		businessHours: {
+			content: string;
+		};
+		errorPageContent: {
+			title: string;
+			paragraph: string;
+			buttonLink: {
+				url: string;
+				title: string;
+				target: string;
+			};
+			backgroundImage: {
+				sourceUrl: string;
+			};
+		};
 	};
 }
 
@@ -211,7 +234,7 @@ const features: NextPage<IFeatures> = ({
 	navbarMenuLinks,
 	industriesMenuLinks,
 	themesOptionsContent,
-}: any) => {
+}) => {
 	return (
 		<motion.div
 			exit={{

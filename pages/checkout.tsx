@@ -49,14 +49,18 @@ interface ICheckout {
 		];
 	};
 	themesOptionsContent: {
+		address: string;
 		email: string;
 		emailTwo: string;
 		phoneNumber: string;
 		phoneNumberTwo: string;
-		twitterLink: string;
+		copyrightText: string;
 		facebookLink: string;
 		linkedinLink: string;
-		copyRightText: string;
+		twitterLink: string;
+		businessHours: {
+			content: string;
+		};
 		errorPageContent: {
 			title: string;
 			paragraph: string;
@@ -77,7 +81,7 @@ const checkout: NextPage<ICheckout> = ({
 	navbarMenuLinks,
 	industriesMenuLinks,
 	themesOptionsContent,
-}: any) => {
+}) => {
 	return (
 		<motion.div
 			exit={{
@@ -109,7 +113,7 @@ const checkout: NextPage<ICheckout> = ({
 				twitterLink={themesOptionsContent?.twitterLink}
 				facebookLink={themesOptionsContent?.facebookLink}
 				linkedinLink={themesOptionsContent?.linkedinLink}
-				copyRightText={themesOptionsContent?.copyRightText}
+				copyRightText={themesOptionsContent?.copyrightText}
 				phoneNumberTwo={themesOptionsContent?.phoneNumberTwo}
 			/>
 		</motion.div>

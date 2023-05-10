@@ -50,14 +50,30 @@ interface ISignUpPage {
 		];
 	};
 	themesOptionsContent: {
+		address: string;
 		email: string;
 		emailTwo: string;
 		phoneNumber: string;
 		phoneNumberTwo: string;
-		twitterLink: string;
+		copyrightText: string;
 		facebookLink: string;
 		linkedinLink: string;
-		copyRightText: string;
+		twitterLink: string;
+		businessHours: {
+			content: string;
+		};
+		errorPageContent: {
+			title: string;
+			paragraph: string;
+			buttonLink: {
+				url: string;
+				title: string;
+				target: string;
+			};
+			backgroundImage: {
+				sourceUrl: string;
+			};
+		};
 	};
 }
 
@@ -98,7 +114,7 @@ const SignUpPage: NextPage<ISignUpPage> = ({
 			facebookLink={themesOptionsContent?.facebookLink}
 			linkedinLink={themesOptionsContent?.linkedinLink}
 			footerMenuLinks={footerMenuLinks?.footerMenuLinks}
-			copyRightText={themesOptionsContent?.copyRightText}
+			copyRightText={themesOptionsContent?.copyrightText}
 			phoneNumberTwo={themesOptionsContent?.phoneNumberTwo}
 			industriesMenuLinks={industriesMenuLinks?.industriesMenuLinks}
 		/>

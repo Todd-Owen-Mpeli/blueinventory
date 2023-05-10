@@ -1,6 +1,6 @@
 // Import
-import type {NextPage, GetStaticProps} from "next";
 import {motion} from "framer-motion";
+import type {NextPage, GetStaticProps} from "next";
 import {
 	getMainMenuLinks,
 	getNavbarMenuLinks,
@@ -51,6 +51,7 @@ interface ISinglePost {
 			mediaItemUrl: string;
 		};
 	};
+	pageTitle: string;
 	content: {
 		heroSection: {
 			title: string;
@@ -61,8 +62,8 @@ interface ISinglePost {
 				altText: string;
 				sourceUrl: string;
 				mediaDetails: {
-					height: string;
-					width: string;
+					width: number;
+					height: number;
 				};
 			};
 		};
@@ -73,6 +74,7 @@ interface ISinglePost {
 		gridContent: [
 			{
 				card: {
+					id: string;
 					title: string;
 					paragraph: string;
 					contentLocation: string;
@@ -85,6 +87,9 @@ interface ISinglePost {
 		cta: {
 			title: string;
 			paragraph: string;
+			backgroundImage: {
+				sourceUrl: string;
+			};
 			buttonLink: {
 				url: string;
 				title: string;
@@ -108,54 +113,65 @@ interface ISinglePost {
 				altText: string;
 				sourceUrl: string;
 				mediaDetails: {
-					height: string;
-					width: string;
+					height: number;
+					width: number;
 				};
 			};
 			imageTwo: {
 				altText: string;
 				sourceUrl: string;
 				mediaDetails: {
-					height: string;
-					width: string;
+					height: number;
+					width: number;
 				};
 			};
 			imageThree: {
 				altText: string;
 				sourceUrl: string;
 				mediaDetails: {
-					height: string;
-					width: string;
+					height: number;
+					width: number;
 				};
 			};
 			imageFour: {
 				altText: string;
 				sourceUrl: string;
 				mediaDetails: {
-					height: string;
-					width: string;
+					height: number;
+					width: number;
 				};
 			};
 			imageFive: {
 				altText: string;
 				sourceUrl: string;
 				mediaDetails: {
-					height: string;
-					width: string;
+					height: number;
+					width: number;
 				};
 			};
 			imageSix: {
 				altText: string;
 				sourceUrl: string;
 				mediaDetails: {
-					height: string;
-					width: string;
+					height: number;
+					width: number;
 				};
 			};
 		};
 	};
 	footerMenuLinks: {
 		footerMenuLinks: [
+			{
+				node: {
+					id: string;
+					url: string;
+					label: string;
+				};
+			}
+		];
+	};
+	mainMenuLinks: {
+		mainMenuLinks: [
 			{
 				node: {
 					id: string;
@@ -188,14 +204,30 @@ interface ISinglePost {
 		];
 	};
 	themesOptionsContent: {
+		address: string;
 		email: string;
 		emailTwo: string;
 		phoneNumber: string;
 		phoneNumberTwo: string;
-		twitterLink: string;
+		copyrightText: string;
 		facebookLink: string;
 		linkedinLink: string;
-		copyRightText: string;
+		twitterLink: string;
+		businessHours: {
+			content: string;
+		};
+		errorPageContent: {
+			title: string;
+			paragraph: string;
+			buttonLink: {
+				url: string;
+				title: string;
+				target: string;
+			};
+			backgroundImage: {
+				sourceUrl: string;
+			};
+		};
 	};
 }
 
@@ -208,7 +240,7 @@ const singlePost: NextPage<ISinglePost> = ({
 	footerMenuLinks,
 	industriesMenuLinks,
 	themesOptionsContent,
-}: any) => {
+}) => {
 	return (
 		<motion.div
 			exit={{

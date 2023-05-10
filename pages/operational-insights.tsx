@@ -48,6 +48,7 @@ interface IOperationalInsights {
 			mediaItemUrl: string;
 		};
 	};
+	pageTitle: string;
 	content: {
 		heroSection: {
 			title: string;
@@ -58,14 +59,17 @@ interface IOperationalInsights {
 				altText: string;
 				sourceUrl: string;
 				mediaDetails: {
-					height: string;
-					width: string;
+					width: number;
+					height: number;
 				};
 			};
 		};
 		cta: {
 			title: string;
 			paragraph: string;
+			backgroundImage: {
+				sourceUrl: string;
+			};
 			buttonLink: {
 				url: string;
 				title: string;
@@ -91,17 +95,20 @@ interface IOperationalInsights {
 				id: string;
 				uri: string;
 				title: string;
-				featuredImage: {
-					altText: string;
-					sourceUrl: string;
-					mediaDetails: {
-						height: string;
-						width: string;
+				singleOperationalInsightPost: {
+					titleParagraph: {
+						paragraph: string;
 					};
 				};
-				singleOperationalInsightPost: {
-					title: string;
-					paragraph: string;
+				featuredImage: {
+					node: {
+						altText: string;
+						sourceUrl: string;
+						mediaDetails: {
+							width: number;
+							height: number;
+						};
+					};
 				};
 			};
 		}
@@ -140,14 +147,30 @@ interface IOperationalInsights {
 		];
 	};
 	themesOptionsContent: {
+		address: string;
 		email: string;
 		emailTwo: string;
 		phoneNumber: string;
 		phoneNumberTwo: string;
-		twitterLink: string;
+		copyrightText: string;
 		facebookLink: string;
 		linkedinLink: string;
-		copyRightText: string;
+		twitterLink: string;
+		businessHours: {
+			content: string;
+		};
+		errorPageContent: {
+			title: string;
+			paragraph: string;
+			buttonLink: {
+				url: string;
+				title: string;
+				target: string;
+			};
+			backgroundImage: {
+				sourceUrl: string;
+			};
+		};
 	};
 }
 
@@ -160,7 +183,7 @@ const operationalInsights: NextPage<IOperationalInsights> = ({
 	operationalInsights,
 	industriesMenuLinks,
 	themesOptionsContent,
-}: any) => {
+}) => {
 	return (
 		<motion.div
 			exit={{

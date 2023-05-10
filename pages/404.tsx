@@ -1,7 +1,7 @@
 // Import
 import Head from "next/head";
-import type {NextPage} from "next";
 import {motion} from "framer-motion";
+import type {NextPage, GetStaticProps} from "next";
 import {getThemesOptionsContent} from "../functions/themesOptions";
 import {
 	getMainMenuLinks,
@@ -13,8 +13,6 @@ import {
 // Components
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-
-// Components
 import ErrorPage from "../components/Elements/ErrorPage";
 
 interface INoPageExits {
@@ -127,7 +125,7 @@ const noPageExits: NextPage<INoPageExits> = ({
 
 export default noPageExits;
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
 	const navbarMenuLinks: object = await getNavbarMenuLinks();
 	const footerMenuLinks: object = await getFooterMenuLinks();
 	const industriesMenuLinks: object = await getIndustriesMenuLinks();
@@ -142,4 +140,4 @@ export async function getStaticProps() {
 		},
 		revalidate: 60,
 	};
-}
+};

@@ -9,6 +9,7 @@ import Paragraph from "./Elements/Paragraph";
 interface HeroProps {
 	title: string;
 	subtitle: string;
+	backgroundImage: string;
 	backgroundVideoUrl: string;
 	buttonLink: {
 		url: string;
@@ -19,14 +20,6 @@ interface HeroProps {
 		url: string;
 		title: string;
 		target: string;
-	};
-	backgroundImage: {
-		altText: string;
-		sourceUrl: string;
-		mediaDetails: {
-			width: number;
-			height: number;
-		};
 	};
 }
 
