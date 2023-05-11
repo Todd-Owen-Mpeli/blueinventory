@@ -13,10 +13,10 @@ interface IProps {
 
 const SignIn: FC<IProps> = ({title, paragraph}) => {
 	return (
-		<section className="container relative px-4 mx-auto">
+		<section className="container relative px-0 mx-auto">
 			<motion.div
 				variants={stagger}
-				className="max-w-lg px-10 mx-auto bg-white py-14 rounded-xl"
+				className="max-w-md px-10 mx-auto bg-white py-14 rounded-xl"
 			>
 				<motion.div variants={stagger}>
 					<motion.h3
@@ -27,69 +27,164 @@ const SignIn: FC<IProps> = ({title, paragraph}) => {
 					</motion.h3>
 					<Paragraph
 						content={paragraph}
-						tailwindStyling="mb-10 text-base text-black"
+						tailwindStyling="mb-4 text-base text-black"
 					/>
 				</motion.div>
-				<motion.div variants={stagger} className="flex flex-col my-6 gap-y-4">
-					<Link href={`/pricing/#Pricing`}>
-						<motion.button
-							variants={fadeInUp}
-							aria-label="Login with Google"
-							type="button"
-							className="relative flex items-center justify-center w-full p-4 space-x-4 overflow-hidden transition duration-200 border rounded-md group focus:ring-2 focus:ring-offset-1 text-darkBlue hover:text-white border-darkBlue hover:border-blue focus:ring-blue"
+				<motion.div
+					variants={stagger}
+					className="flex items-center gap-4 my-6 -mx-2"
+				>
+					<motion.button variants={fadeInUp}>
+						<Link
+							className="flex items-center justify-center w-12 h-12"
+							href={`/pricing/#Pricing`}
 						>
-							<div className="absolute top-0 w-full h-full transition duration-200 transform bg-blue right-full group-hover:translate-x-full group-hover:scale-102" />
 							<svg
-								fill="#e8b042"
-								viewBox="0 0 32 32"
 								xmlns="http://www.w3.org/2000/svg"
-								className="relative w-5 h-5 fill-current"
+								viewBox="0 0 48 48"
+								width="96px"
+								height="96px"
+								className="relative fill-current w-7 h-7"
 							>
-								<path d="M16.318 13.714v5.484h9.078c-0.37 2.354-2.745 6.901-9.078 6.901-5.458 0-9.917-4.521-9.917-10.099s4.458-10.099 9.917-10.099c3.109 0 5.193 1.318 6.38 2.464l4.339-4.182c-2.786-2.599-6.396-4.182-10.719-4.182-8.844 0-16 7.151-16 16s7.156 16 16 16c9.234 0 15.365-6.49 15.365-15.635 0-1.052-0.115-1.854-0.255-2.651z"></path>
+								<path
+									fill="#FFC107"
+									d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"
+								/>
+								<path
+									fill="#FF3D00"
+									d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"
+								/>
+								<path
+									fill="#4CAF50"
+									d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"
+								/>
+								<path
+									fill="#1976D2"
+									d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"
+								/>
 							</svg>
-							<p className="relative">Continue with Google</p>
-						</motion.button>
-					</Link>
-					<Link href={`/pricing/#Pricing`}>
+						</Link>
+					</motion.button>
+					<motion.button variants={fadeInUp}>
+						<Link
+							className="flex items-center justify-center w-12 h-12"
+							href={`/pricing/#Pricing`}
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 48 48"
+								width="96px"
+								height="96px"
+								className="relative w-8 h-8 fill-current"
+							>
+								<path
+									fill="#2563eb"
+									d="M24 5A19 19 0 1 0 24 43A19 19 0 1 0 24 5Z"
+								/>
+								<path
+									fill="#fff"
+									d="M26.572,29.036h4.917l0.772-4.995h-5.69v-2.73c0-2.075,0.678-3.915,2.619-3.915h3.119v-4.359c-0.548-0.074-1.707-0.236-3.897-0.236c-4.573,0-7.254,2.415-7.254,7.917v3.323h-4.701v4.995h4.701v13.729C22.089,42.905,23.032,43,24,43c0.875,0,1.729-0.08,2.572-0.194V29.036z"
+								/>
+							</svg>
+						</Link>
+					</motion.button>
+					<motion.button variants={fadeInUp}>
+						<Link
+							className="flex items-center justify-center w-12 h-12"
+							href={`/pricing/#Pricing`}
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 72 72"
+								width="128px"
+								height="128px"
+								fill="#000"
+								className="relative mt-1 fill-current w-9 h-9"
+							>
+								<path
+									d="M46.955 1.353c.246 3.559-.915 6.425-2.628 8.527-2.519 3.092-6.232 4.533-8.422 4.105-.412-2.47.61-5.623 2.686-8.164C40.549 3.428 43.441 1.578 46.955 1.353zM36.378 17.159c2.498 0 5.203-2.532 9.658-2.532 2.007 0 7.762.607 10.934 5.486-1.26.913-5.917 3.843-5.917 10.514 0 7.859 6.366 10.579 7.33 11.077-.348 1.299-2.026 5.802-4.856 9.329-.876 1.091-3.507 5.281-7.436 5.281-3.568 0-4.926-2.208-9.043-2.208-4.69 0-4.914 2.248-9.476 2.248-.958 0-2.363-.433-3.477-1.413-3.955-3.482-10.478-12.483-10.478-23.71 0-11.093 7.357-16.418 13.809-16.418C31.482 14.812 33.796 17.159 36.378 17.159z"
+									fill="#000"
+								/>
+							</svg>
+						</Link>
+					</motion.button>
+				</motion.div>
+				<motion.div variants={fadeInUp} className="flex items-center mb-6">
+					<div className="w-full h-px bg-darkGrey" />
+					<span className="mx-4 text-sm text-black">Or</span>
+					<div className="w-full h-px bg-darkGrey" />
+				</motion.div>
+				<motion.div variants={fadeInUp}>
+					<form
+						action=""
+						className="space-y-8 ng-untouched ng-pristine ng-valid"
+					>
+						<motion.div variants={stagger} className="space-y-4">
+							<motion.div variants={fadeInUp} className="space-y-2">
+								<label htmlFor="email" className="block text-sm text-darkBlue">
+									Email address
+								</label>
+								<input
+									type="email"
+									name="email"
+									id="email"
+									placeholder="leroy@jenkins.com"
+									className="w-full px-3 py-2 border-[1px] rounded-lg border-grey text-darkBlue focus:border-darkBlue"
+								/>
+							</motion.div>
+							<motion.div variants={fadeInUp} className="space-y-2">
+								<div className="flex justify-between">
+									<label htmlFor="password" className="text-sm text-darkBlue">
+										Password
+									</label>
+									<Link
+										rel="noopener noreferrer"
+										href="#"
+										className="text-xs focus:underline text-darkBlue hover:text-blue hover:underline"
+									>
+										Forgot password?
+									</Link>
+								</div>
+								<input
+									type="password"
+									name="password"
+									id="password"
+									placeholder="*****"
+									className="w-full px-3 py-2 border-[1px] rounded-lg border-grey text-darkBlue focus:border-darkBlue"
+								/>
+							</motion.div>
+						</motion.div>
 						<motion.button
 							variants={fadeInUp}
 							aria-label="Login with Facebook"
 							role="button"
-							className="relative flex items-center justify-center w-full p-4 space-x-4 overflow-hidden transition duration-200 border rounded-md group focus:ring-2 focus:ring-offset-1 text-darkBlue hover:text-white border-darkBlue hover:border-blue focus:ring-blue"
+							type="button"
+							className="relative flex items-center justify-center w-full px-4 py-2 space-x-4 overflow-hidden text-white transition duration-200 bg-top bg-no-repeat bg-cover rounded-md border-darkBlue group focus:ring-2 focus:ring-offset-1 hover:text-white hover:border-white focus:ring-white"
+							style={{
+								backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue.svg")`,
+							}}
 						>
-							<div className="absolute top-0 w-full h-full transition duration-200 transform bg-blue right-full group-hover:translate-x-full group-hover:scale-102" />
-							<svg
-								fill="#e8b042"
-								viewBox="0 0 32 32"
-								xmlns="http://www.w3.org/2000/svg"
-								className="relative fill-current w-7 h-7"
-							>
-								<path d="M15,3C8.373,3,3,8.373,3,15c0,6.016,4.432,10.984,10.206,11.852V18.18h-2.969v-3.154h2.969v-2.099c0-3.475,1.693-5,4.581-5 c1.383,0,2.115,0.103,2.461,0.149v2.753h-1.97c-1.226,0-1.654,1.163-1.654,2.473v1.724h3.593L19.73,18.18h-3.106v8.697 C22.481,26.083,27,21.075,27,15C27,8.373,21.627,3,15,3z" />
-							</svg>
-							<p className="relative">Continue with Facebook</p>
+							<div
+								className="absolute top-0 w-full h-full transition duration-200 transform bg-center bg-no-repeat bg-cover bg-darkBlue right-full group-hover:translate-x-full group-hover:scale-102"
+								style={{
+									backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue-pink-red-yellow.svg")`,
+								}}
+							/>
+							<p className="relative">Sign in</p>
 						</motion.button>
-					</Link>
-					<Link href={`/pricing/#Pricing`}>
-						<motion.button
-							variants={fadeInUp}
-							aria-label="Login with Apple"
-							role="button"
-							className="relative flex items-center justify-center w-full p-4 space-x-4 overflow-hidden transition duration-200 border rounded-md group focus:ring-2 focus:ring-offset-1 text-darkBlue hover:text-white border-darkBlue hover:border-blue focus:ring-blue"
+					</form>
+				</motion.div>
+				<motion.div variants={fadeInUp} className="mt-4">
+					<p className="text-sm text-center dark:text-grey">
+						Don&apos;t have an account?
+						<Link
+							href={`/pricing/#Pricing`}
+							rel="noopener noreferrer"
+							className="ml-1 focus:underline text-darkBlue hover:text-blue hover:underline"
 						>
-							<div className="absolute top-0 w-full h-full transition duration-200 transform bg-blue right-full group-hover:translate-x-full group-hover:scale-102" />
-							<svg
-								height="2500"
-								width="2158"
-								fill="#e8b042"
-								xmlns="http://www.w3.org/2000/svg"
-								viewBox="0 -3.552713678800501e-15 820 950"
-								className="relative w-5 h-5 fill-current"
-							>
-								<path d="M404.345 229.846c52.467 0 98.494-20.488 138.08-61.465s59.38-88.626 59.38-142.947c0-5.966-.472-14.444-1.414-25.434-6.912.942-12.096 1.727-15.552 2.355-48.383 6.908-90.954 30.615-127.713 71.12-36.758 40.506-55.137 83.838-55.137 129.996 0 5.337.785 14.13 2.356 26.375zM592.379 950c37.387 0 78.701-25.59 123.943-76.772S796.122 761.915 820 692.836c-88.912-45.844-133.368-111.626-133.368-197.348 0-71.591 35.973-132.82 107.92-183.688-49.954-62.486-115.931-93.729-197.931-93.729-34.56 0-66.134 5.181-94.724 15.543l-17.908 6.594-24.035 9.42c-15.709 5.966-30.004 8.95-42.885 8.95-10.054 0-23.25-3.455-39.586-10.363l-18.38-7.536-17.436-7.065c-25.449-10.676-52.782-16.014-82-16.014-78.23 0-141.065 26.376-188.506 79.128C23.72 349.479 0 419.03 0 505.379c0 121.517 38.015 233.772 114.046 336.763C166.828 914.047 215.054 950 258.724 950c18.537 0 36.916-3.611 55.138-10.833l23.092-9.42 18.38-6.594c25.762-9.106 49.482-13.659 71.16-13.659 22.935 0 49.326 5.81 79.173 17.427l14.609 5.652C550.75 944.191 574.786 950 592.379 950z" />
-							</svg>
-							<p className="relative">Continue with Apple</p>
-						</motion.button>
-					</Link>
+							Sign up here
+						</Link>
+					</p>
 				</motion.div>
 			</motion.div>
 		</section>

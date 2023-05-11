@@ -88,42 +88,61 @@ const Pricing: FC<IProps> = ({
 			<div className="container px-4 mx-auto">
 				<div className="max-w-md mx-auto lg:max-w-4xl">
 					<div className="px-8 mb-16 bg-white shadow-xl -mt-52 lg:mb-8 py-9 sm:px-14 rounded-3xl">
-						<div className="flex flex-wrap items-center -mx-4">
-							<div className="w-full px-4 pb-12 mb-8 border-b border-grey lg:w-2/5 lg:mb-0 lg:py-4 lg:border-0 lg:border-r">
-								<div className="text-center">
-									<span className="block mb-4 text-2xl font-semibold">
-										{card?.plan}
-									</span>
-									<span className="block mb-5 text-5xl font-bold text-darkBlue">
-										{card?.pricing}
-									</span>
-									<Link
-										className="relative inline-block px-10 py-4 overflow-hidden font-semibold text-center text-white transition duration-200 rounded-full bg-blue group"
-										href={card?.buttonLink?.url}
-										target={card?.buttonLink?.target}
+						<motion.div
+							variants={stagger}
+							className="flex flex-wrap items-center -mx-4"
+						>
+							<motion.div
+								variants={fadeInUp}
+								className="w-full px-4 pb-12 mb-8 border-b border-grey lg:w-2/5 lg:mb-0 lg:py-4 lg:border-0 lg:border-r"
+							>
+								<motion.div variants={stagger} className="text-center">
+									<motion.span
+										variants={fadeInUp}
+										className="block mb-4 text-2xl font-semibold"
 									>
-										<div className="absolute top-0 w-full h-full transition duration-200 transform bg-darkBlue right-full group-hover:translate-x-full group-hover:scale-102" />
-										<span className="relative">{card?.buttonLink?.title}</span>
-									</Link>
-								</div>
-							</div>
-							<div className="w-full px-4 py-2 lg:w-3/5">
-								<div className="max-w-sm ml-auto">
+										{card?.plan}
+									</motion.span>
+									<motion.span
+										variants={fadeInUp}
+										className="block mb-5 text-5xl font-bold text-darkBlue"
+									>
+										{card?.pricing}
+									</motion.span>
+									<motion.div variants={fadeInUp}>
+										<Link
+											className="relative inline-block px-10 py-4 overflow-hidden font-semibold text-center text-white transition duration-200 rounded-full bg-blue group"
+											href={card?.buttonLink?.url}
+											target={card?.buttonLink?.target}
+										>
+											<div className="absolute top-0 w-full h-full transition duration-200 transform bg-darkBlue right-full group-hover:translate-x-full group-hover:scale-102" />
+											<span className="relative">
+												{card?.buttonLink?.title}
+											</span>
+										</Link>
+									</motion.div>
+								</motion.div>
+							</motion.div>
+							<motion.div
+								variants={fadeInUp}
+								className="w-full px-4 py-2 lg:w-3/5"
+							>
+								<motion.div variants={stagger} className="max-w-sm ml-auto">
 									<Paragraph
 										content={card?.paragraph}
 										tailwindStyling="mb-8 text-black"
 									/>
-									<ul>
+									<motion.ul variants={stagger}>
 										{card?.bulletList.map((keys) => (
 											<BulletListCard
 												bulletPoint={keys?.bulletPoint}
 												key={keys?.id || keys?.bulletPoint}
 											/>
 										))}
-									</ul>
-								</div>
-							</div>
-						</div>
+									</motion.ul>
+								</motion.div>
+							</motion.div>
+						</motion.div>
 					</div>
 					<motion.div
 						variants={stagger}

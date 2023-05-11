@@ -104,7 +104,7 @@ const SignInPage: NextPage<ISignInPage> = ({
 
 		<section className="container flex flex-col items-center justify-center min-h-screen px-4 py-10 mx-auto overflow-hidden lg:pt-36 xxl:pt-24">
 			<SignIn
-				title={`Sign in to your account`}
+				title={`Login in to your account`}
 				paragraph={`Greetings on your return! We kindly request you to enter your details.`}
 			/>
 		</section>
