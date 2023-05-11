@@ -1,7 +1,6 @@
 // Import
 import Head from "next/head";
 import {motion} from "framer-motion";
-import {SignUp} from "@clerk/nextjs";
 import type {NextPage, GetStaticProps} from "next";
 import {getThemesOptionsContent} from "../functions/themesOptions";
 import {
@@ -103,7 +102,7 @@ const SignUpPage: NextPage<ISignUpPage> = ({
 		<Navbar navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks} />
 
 		<section className="container flex flex-col items-center justify-center min-h-screen px-4 py-10 mx-auto overflow-hidden lg:pt-36 xxl:pt-24">
-			<SignUp path="/sign-up" routing="path" signInUrl="/sign-in" />
+			Hello
 		</section>
 
 		<Footer

@@ -3,7 +3,7 @@ import {FC} from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {motion} from "framer-motion";
-import {fadeInUp, fadeIn, stagger} from "../animations/animations";
+import {fadeIn, stagger} from "../animations/animations";
 
 // Components
 import FooterMenuLinks from "./Elements/FooterMenuLinks";

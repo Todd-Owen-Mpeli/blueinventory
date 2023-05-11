@@ -1,10 +1,4 @@
 // Import
-import {
-	ClerkProvider,
-	SignedIn,
-	SignedOut,
-	RedirectToSignIn,
-} from "@clerk/nextjs";
 import postHog from "posthog-js";
 import {useRouter} from "next/router";
 import type {AppProps} from "next/app";
@@ -15,6 +9,7 @@ import {ApolloProvider} from "@apollo/client/react";
 
 // Styling
 import "../styles/globals.scss";
+import ErrorPage from "@/components/Elements/ErrorPage";
 
 // Check that PostHog is client-side (used to handle Next.js SSR)
 if (typeof window !== "undefined") {
@@ -27,7 +22,7 @@ if (typeof window !== "undefined") {
 	});
 }
 
-/* Clerk Authentication: Pages that don't require 
+/* Public Pages Authentication: Pages that don't require 
 users to sign-in to view them */
 const publicPages: Array<string> = [
 	"/",
@@ -49,11 +44,25 @@ const publicPages: Array<string> = [
 ];
 
 export default function App({Component, pageProps}: AppProps) {
-	// Clerk Auth0: Get the pathname
+	// Public Pages: Get the pathname
 	const {pathname} = useRouter();
 
-	// Clerk Auth0: Check if the current route matches a public page
+	// Public Pages: Check if the current route matches a public page
 	const isPublicPage = publicPages.includes(pathname);
+
+	// Error Page Content
+	const errorPageContent = {
+		title: "Something went wrong!",
+		buttonLink: {
+			url: "/",
+			title: "Homepage",
+			target: " ",
+		},
+		paragraph:
+			"The page you are looking for is not accessible! Please sign in or go back to homepage.",
+		backgroundImage:
+			"http://blueinventory.local/wp-content/uploads/2023/04/pexels-antoni-shkraba-7163406-min-scaled.jpg",
+	};
 
 	// PostHog Cookies Policy
 	const router = useRouter();
@@ -135,24 +144,22 @@ export default function App({Component, pageProps}: AppProps) {
 	return (
 		<ApolloProvider client={client}>
 			<PostHogProvider client={postHog}>
-				<ClerkProvider {...pageProps}>
-					{isPublicPage ? (
-						<section>
-							<Loading />
-							<Component {...pageProps} />
-						</section>
-					) : (
-						<>
-							<SignedIn>
-								<Loading />
-								<Component {...pageProps} />
-							</SignedIn>
-							<SignedOut>
-								<RedirectToSignIn />
-							</SignedOut>
-						</>
-					)}
-				</ClerkProvider>
+				{isPublicPage ? (
+					<>
+						<Loading />
+						<Component {...pageProps} />
+					</>
+				) : (
+					<>
+						<Loading />
+						<ErrorPage
+							title={errorPageContent?.title}
+							paragraph={errorPageContent?.paragraph}
+							buttonLink={errorPageContent?.buttonLink}
+							backgroundImage={errorPageContent?.backgroundImage}
+						/>
+					</>
+				)}
 			</PostHogProvider>
 		</ApolloProvider>
 	);

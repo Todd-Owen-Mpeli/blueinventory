@@ -51,7 +51,7 @@ const Sustainability: FC<IProps> = ({
 						</motion.h2>
 						<Paragraph
 							content={paragraph}
-							tailwindStyling="text-medium text-white"
+							tailwindStyling="text-base text-white"
 						/>
 					</div>
 
