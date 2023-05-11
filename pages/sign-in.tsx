@@ -13,6 +13,7 @@ import {
 // Components
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import SignIn from "@/components/SignIn";
 
 interface ISignInPage {
 	footerMenuLinks: {
@@ -102,7 +103,10 @@ const SignInPage: NextPage<ISignInPage> = ({
 		<Navbar navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks} />
 
 		<section className="container flex flex-col items-center justify-center min-h-screen px-4 py-10 mx-auto overflow-hidden lg:pt-36 xxl:pt-24">
-			Hello
+			<SignIn
+				title={`Sign in to your account`}
+				paragraph={`Greetings on your return! We kindly request you to enter your details.`}
+			/>
 		</section>
 
 		<Footer

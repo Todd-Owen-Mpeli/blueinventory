@@ -83,7 +83,7 @@ const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 									>
 										<Link
 											className="w-full px-8 py-3 text-sm tracking-widest text-center text-white uppercase bg-transparent rounded-sm hover:bg-darkBlue focus:ring-none focus:ring-blue"
-											href={`/sign-up`}
+											href={`/pricing/#Pricing`}
 										>
 											Get Started
 										</Link>

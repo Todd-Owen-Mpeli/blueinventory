@@ -56,7 +56,10 @@ const Pricing: FC<IProps> = ({
 	paymentProviders,
 }) => {
 	return (
-		<section className="relative pb-24 overflow-hidden bg-lightGrey">
+		<section
+			id="Pricing"
+			className="relative pb-24 overflow-hidden bg-lightGrey"
+		>
 			<div className="pt-32 pb-52">
 				<div className="container px-4 mx-auto">
 					<div className="max-w-2xl mx-auto mb-24 text-center lg:max-w-5xl">
