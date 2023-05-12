@@ -1,8 +1,9 @@
 // Import
 import {FC} from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {motion} from "framer-motion";
-import {fadeInUp, stagger} from "../animations/animations";
+import {fadeIn, fadeInUp, stagger} from "../animations/animations";
 
 // Components
 import NavbarMenuLinks from "./Elements/NavbarMenuLinks";
@@ -20,6 +21,16 @@ interface HeroProps {
 }
 
 const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
+	const signedIn = true;
+
+	const user = {
+		firstName: "Todd",
+		lastName: "Mpeli",
+		profileImageURL:
+			"http://blueinventory.local/wp-content/uploads/2023/05/pexels-shazard-r-14197704-min-scaled-e1683834127519.jpg",
+		description: "User dropdown",
+	};
+
 	return (
 		<nav className="fixed z-[999] w-full py-4 bg-white">
 			<div className="container px-0 mx-auto">
@@ -56,39 +67,109 @@ const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 					<div className="w-auto">
 						<div className="flex flex-wrap items-center">
 							<div className="hidden w-auto lg:block">
-								<motion.div
-									variants={stagger}
-									className="flex flex-wrap gap-2 -m-2"
-								>
-									<motion.div
-										variants={fadeInUp}
-										className="py-2 m-auto bg-center bg-no-repeat bg-cover rounded-sm"
-										style={{
-											backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-orange-yellow.svg")`,
-										}}
-									>
-										<Link
-											className="w-full px-8 py-3 text-sm tracking-widest text-center text-white uppercase bg-transparent hover:bg-goldPrime focus:ring-none focus:ring-blue"
-											href={`/sign-in`}
+								<div>
+									{signedIn ? (
+										<motion.div variants={fadeIn}>
+											<div className="relative">
+												<Image
+													width={500}
+													height={500}
+													id="avatarButton"
+													data-dropdown-toggle="userDropdown"
+													data-dropdown-placement="bottom-start"
+													className="object-cover object-top w-10 h-10 rounded-full cursor-pointer ring-4 ring-blue"
+													src={user?.profileImageURL}
+													alt={`${user?.firstName} ${user?.lastName} profile image`}
+												/>
+												<span className="bottom-[-6px] left-7 absolute w-3.5 h-3.5 bg-brightGreenDash border-2 border-white rounded-full"></span>
+											</div>
+
+											{/* <!-- Dropdown menu --> */}
+											<div
+												id="userDropdown"
+												className="z-10 hidden bg-white divide-y rounded-lg shadow divide-grey w-44 dark:bg-grey dark:divide-grey"
+											>
+												<div className="px-4 py-3 text-sm text-grey dark:text-white">
+													<div>Todd Owen Mpeli</div>
+													<div className="font-medium truncate">
+														toddowenmpeli@rocketmail.com
+													</div>
+												</div>
+												<ul
+													className="py-2 text-sm text-grey dark:text-grey"
+													aria-labelledby="avatarButton"
+												>
+													<li>
+														<Link
+															href="#"
+															className="block px-4 py-2 hover:bg-grey dark:hover:bg-grey dark:hover:text-white"
+														>
+															Dashboard
+														</Link>
+													</li>
+													<li>
+														<Link
+															href="#"
+															className="block px-4 py-2 hover:bg-grey dark:hover:bg-grey dark:hover:text-white"
+														>
+															Settings
+														</Link>
+													</li>
+													<li>
+														<Link
+															href="#"
+															className="block px-4 py-2 hover:bg-grey dark:hover:bg-grey dark:hover:text-white"
+														>
+															Earnings
+														</Link>
+													</li>
+												</ul>
+												<div className="py-1">
+													<Link
+														href="#"
+														className="block px-4 py-2 text-sm text-grey hover:bg-grey dark:hover:bg-grey dark:text-grey dark:hover:text-white"
+													>
+														Sign out
+													</Link>
+												</div>
+											</div>
+										</motion.div>
+									) : (
+										<motion.div
+											variants={stagger}
+											className="flex flex-wrap gap-2 -m-2"
 										>
-											Sign In
-										</Link>
-									</motion.div>
-									<motion.div
-										variants={fadeInUp}
-										className="py-2 m-auto bg-center bg-no-repeat bg-cover rounded-sm"
-										style={{
-											backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue-pink-red-yellow.svg")`,
-										}}
-									>
-										<Link
-											className="w-full px-8 py-3 text-sm tracking-widest text-center text-white uppercase bg-transparent rounded-sm hover:bg-darkBlue focus:ring-none focus:ring-blue"
-											href={`/pricing/#Pricing`}
-										>
-											Get Started
-										</Link>
-									</motion.div>
-								</motion.div>
+											<motion.div
+												variants={fadeInUp}
+												className="py-2 m-auto bg-center bg-no-repeat bg-cover rounded-sm"
+												style={{
+													backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-orange-yellow.svg")`,
+												}}
+											>
+												<Link
+													className="w-full px-8 py-3 text-sm tracking-widest text-center text-white uppercase bg-transparent hover:bg-goldPrime focus:ring-none focus:ring-blue"
+													href={`/sign-in`}
+												>
+													Sign In
+												</Link>
+											</motion.div>
+											<motion.div
+												variants={fadeInUp}
+												className="py-2 m-auto bg-center bg-no-repeat bg-cover rounded-sm"
+												style={{
+													backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue-pink-red-yellow.svg")`,
+												}}
+											>
+												<Link
+													className="w-full px-8 py-3 text-sm tracking-widest text-center text-white uppercase bg-transparent rounded-sm hover:bg-darkBlue focus:ring-none focus:ring-blue"
+													href={`/pricing/#Pricing`}
+												>
+													Get Started
+												</Link>
+											</motion.div>
+										</motion.div>
+									)}
+								</div>
 							</div>
 							<div className="w-auto lg:hidden">
 								<Link className="inline-block" href="#">
