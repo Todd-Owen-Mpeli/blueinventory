@@ -14,13 +14,16 @@ export const stripe = new Stripe(`${process.env.STRIPE_SECRET_KEY}`, {
 
 export default async function handler(req: any, res: any) {
 	const amount = req?.body?.amount;
+	const body = req?.body;
 	if (req?.method === "POST") {
 		try {
 			res.status(200).json({
 				status: "Ok",
 				message: `Request Successful`,
 				Amount: amount * 7,
+				body: body,
 			});
+			console.log(body);
 		} catch (err) {
 			console.log(err);
 
@@ -31,9 +34,9 @@ export default async function handler(req: any, res: any) {
 			});
 		}
 	} else {
-		res.status(200).json({
-			status: "Ok",
-			message: `Waiting for Request`,
+		return res.status(400).json({
+			status: "error",
+			message: "Bad request. Please try again.",
 		});
 	}
 }

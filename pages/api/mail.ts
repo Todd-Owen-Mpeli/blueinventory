@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import {mailOptions, transporter} from "../../config/nodemailer";
 
-interface CONTACT_MESSAGE_FIELDS {
+interface contactMessageFields {
 	firstName: string;
 	lastName: string;
 	email: string;
@@ -14,7 +14,7 @@ interface generateEmailContent {
 	html: string;
 }
 
-const CONTACT_MESSAGE_FIELDS: CONTACT_MESSAGE_FIELDS | any = {
+const contactMessageFields: contactMessageFields | any = {
 	firstName: "First Name",
 	lastName: "Last Name",
 	email: "Email",
@@ -27,7 +27,7 @@ const generateEmailContent = (data: any): generateEmailContent => {
 	and returns as a long string */
 	const stringData: string = Object.entries(data).reduce(
 		(str, [key, val]) =>
-			(str += `${CONTACT_MESSAGE_FIELDS[key]}: \n${val} \n \n`),
+			(str += `${contactMessageFields[key]}: \n${val} \n \n`),
 		""
 	);
 
@@ -35,7 +35,7 @@ const generateEmailContent = (data: any): generateEmailContent => {
 	returns as a html rendered string */
 	const htmlData: string = Object.entries(data).reduce(
 		(str, [key, val]) =>
-			(str += `<h class="form-heading" align="left">${CONTACT_MESSAGE_FIELDS[key]}</h> <p class="form-answer" align="left">${val}</p>`),
+			(str += `<h class="form-heading" align="left">${contactMessageFields[key]}</h> <p class="form-answer" align="left">${val}</p>`),
 		""
 	);
 	return {
@@ -67,7 +67,7 @@ export default async function handler(req: any, res: any) {
 					<strong>Message:</strong> ${body.message}`,
 			});
 
-			return res.json({
+			return res.status(200).json({
 				status: "success",
 				message:
 					"Thanks for your message! We'll endeavour to get back in touch with you as soon as possible.",
@@ -81,10 +81,10 @@ export default async function handler(req: any, res: any) {
 				data: err,
 			});
 		}
+	} else {
+		return res.status(400).json({
+			status: "error",
+			message: "Bad request. Please try again.",
+		});
 	}
-
-	return res.status(400).json({
-		status: "error",
-		message: "Bad request. Please try again.",
-	});
 }
