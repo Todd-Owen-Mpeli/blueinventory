@@ -1,4 +1,4 @@
-// Import
+// Imports
 import Head from "next/head";
 import type {NextPage} from "next";
 import {motion} from "framer-motion";

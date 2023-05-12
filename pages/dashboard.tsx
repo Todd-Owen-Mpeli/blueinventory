@@ -1,4 +1,4 @@
-// Import
+// Imports
 import {motion} from "framer-motion";
 import type {NextPage, GetServerSideProps} from "next";
 import {getThemesOptionsContent} from "../functions/themesOptions";

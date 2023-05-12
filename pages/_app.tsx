@@ -1,4 +1,4 @@
-// Import
+// Imports
 import postHog from "posthog-js";
 import {useRouter} from "next/router";
 import type {AppProps} from "next/app";
@@ -9,6 +9,8 @@ import {ApolloProvider} from "@apollo/client/react";
 
 // Styling
 import "../styles/globals.scss";
+
+// Components
 import ErrorPage from "@/components/Elements/ErrorPage";
 
 // Check that PostHog is client-side (used to handle Next.js SSR)
@@ -27,6 +29,7 @@ users to sign-in to view them */
 const publicPages: Array<string> = [
 	"/",
 	"/404",
+	"/api/api",
 	"/about",
 	"/pricing",
 	"/sign-in",
@@ -56,7 +59,7 @@ export default function App({Component, pageProps}: AppProps) {
 		buttonLink: {
 			url: "/",
 			title: "Homepage",
-			target: " ",
+			target: "",
 		},
 		paragraph:
 			"The page you are looking for is not accessible! Please sign in or go back to homepage.",

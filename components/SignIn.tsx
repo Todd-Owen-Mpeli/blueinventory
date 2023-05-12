@@ -1,4 +1,4 @@
-// Import
+// Imports
 import {FC} from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -128,7 +128,7 @@ const SignIn: FC<IProps> = ({title, paragraph}) => {
 									type="email"
 									name="email"
 									id="email"
-									placeholder="leroy@jenkins.com"
+									placeholder="leroyjenkins@gmail.com"
 									className="w-full px-3 py-2 border-[1px] rounded-lg border-grey text-darkBlue focus:border-darkBlue"
 								/>
 							</motion.div>

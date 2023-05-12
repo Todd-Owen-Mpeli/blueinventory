@@ -1,4 +1,4 @@
-// Import
+// Imports
 import Image from "next/image";
 import {useState, FC} from "react";
 import {motion} from "framer-motion";

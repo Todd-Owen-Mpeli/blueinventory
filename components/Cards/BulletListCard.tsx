@@ -1,4 +1,4 @@
-// Import
+// Imports
 import {FC} from "react";
 
 interface IProps {

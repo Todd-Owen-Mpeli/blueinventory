@@ -1,4 +1,4 @@
-// Import
+// Imports
 import {useState} from "react";
 import postHog from "posthog-js";
 import {motion} from "framer-motion";

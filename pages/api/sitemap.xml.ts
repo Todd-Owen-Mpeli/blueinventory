@@ -1,4 +1,4 @@
-// Import
+// Imports
 import {fetchAllPagesSlugs} from "@/functions/GetAllPagesSlugs";
 import {fetchOperationalInsightsPostsSlugs} from "@/functions/OperationalInsightsPostsSlugs";
 

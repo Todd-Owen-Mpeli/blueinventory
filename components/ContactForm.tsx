@@ -1,7 +1,7 @@
 import Image from "next/image";
 import {motion} from "framer-motion";
 import React, {useState, FC} from "react";
-import {sendContactForm} from "../lib/api";
+import {sendContactForm} from "../pages/api/contactForm";
 import ReCAPTCHA from "react-google-recaptcha";
 import {useFormik, Formik, Field, Form} from "formik";
 import {fadeIn, fadeInUp, stagger} from "../animations/animations";

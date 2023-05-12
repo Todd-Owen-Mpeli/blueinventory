@@ -1,4 +1,4 @@
-// Import
+// Imports
 import {FC} from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -26,6 +26,7 @@ const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 	const user = {
 		firstName: "Todd",
 		lastName: "Mpeli",
+		email: "toddowenmpeli@rocketmail.com",
 		profileImageURL:
 			"http://blueinventory.local/wp-content/uploads/2023/05/pexels-shazard-r-14197704-min-scaled-e1683834127519.jpg",
 		description: "User dropdown",
@@ -69,65 +70,57 @@ const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 							<div className="hidden w-auto lg:block">
 								<div>
 									{signedIn ? (
-										<motion.div variants={fadeIn}>
-											<div className="relative">
+										<motion.div variants={fadeIn} className="relative group">
+											<div className="relative group">
 												<Image
 													width={500}
 													height={500}
 													id="avatarButton"
 													data-dropdown-toggle="userDropdown"
 													data-dropdown-placement="bottom-start"
-													className="object-cover object-top w-10 h-10 rounded-full cursor-pointer ring-4 ring-blue"
+													className="object-cover object-top w-10 h-10 transition-all duration-200 ease-in-out rounded-full cursor-pointer ring-4 ring-lightBlue hover:ring-goldPrime"
 													src={user?.profileImageURL}
 													alt={`${user?.firstName} ${user?.lastName} profile image`}
 												/>
-												<span className="bottom-[-6px] left-7 absolute w-3.5 h-3.5 bg-brightGreenDash border-2 border-white rounded-full"></span>
+												<span className="bottom-[-6px] left-7 absolute w-3.5 h-3.5 bg-brightGreenDash border-2 border-white rounded-full "></span>
 											</div>
 
 											{/* <!-- Dropdown menu --> */}
 											<div
 												id="userDropdown"
-												className="z-10 hidden bg-white divide-y rounded-lg shadow divide-grey w-44 dark:bg-grey dark:divide-grey"
+												className="absolute left-[-100px] hidden z-10 flex flex-col mt-1 bg-white divide-y rounded-lg shadow group-hover:flex group divide-blue w-44 bg-darkBlue"
 											>
-												<div className="px-4 py-3 text-sm text-grey dark:text-white">
-													<div>Todd Owen Mpeli</div>
-													<div className="font-medium truncate">
-														toddowenmpeli@rocketmail.com
-													</div>
+												<div className="flex flex-col gap-2 px-4 py-3 text-sm text-black">
+													<h2 className="text-medium">{`${user?.firstName} ${user?.lastName}`}</h2>
+													<h2 className="font-medium text-black truncate">
+														{user?.email}
+													</h2>
 												</div>
 												<ul
-													className="py-2 text-sm text-grey dark:text-grey"
+													className="py-2 text-sm text-black"
 													aria-labelledby="avatarButton"
 												>
-													<li>
+													<li className="p-0">
 														<Link
-															href="#"
-															className="block px-4 py-2 hover:bg-grey dark:hover:bg-grey dark:hover:text-white"
+															href={`/dashboard`}
+															className="block px-4 py-2 text-black hover:bg-blue hover:text-white"
 														>
 															Dashboard
 														</Link>
 													</li>
-													<li>
+													<li className="p-0">
 														<Link
-															href="#"
-															className="block px-4 py-2 hover:bg-grey dark:hover:bg-grey dark:hover:text-white"
+															href={`/dashboard/settings`}
+															className="block px-4 py-2 text-black hover:bg-blue hover:text-white"
 														>
 															Settings
 														</Link>
 													</li>
-													<li>
-														<Link
-															href="#"
-															className="block px-4 py-2 hover:bg-grey dark:hover:bg-grey dark:hover:text-white"
-														>
-															Earnings
-														</Link>
-													</li>
 												</ul>
-												<div className="py-1">
+												<div className="mt-1">
 													<Link
-														href="#"
-														className="block px-4 py-2 text-sm text-grey hover:bg-grey dark:hover:bg-grey dark:text-grey dark:hover:text-white"
+														href={``}
+														className="block px-4 py-3 text-sm text-black rounded-b-lg hover:bg-red hover:text-white"
 													>
 														Sign out
 													</Link>

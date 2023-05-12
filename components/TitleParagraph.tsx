@@ -1,4 +1,4 @@
-// Import
+// Imports
 import {FC} from "react";
 import {motion} from "framer-motion";
 import styled from "styled-components";

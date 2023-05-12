@@ -1,4 +1,4 @@
-// Import
+// Imports
 import type {NextPage, GetStaticProps} from "next";
 import {motion} from "framer-motion";
 import {

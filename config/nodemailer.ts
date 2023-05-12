@@ -5,8 +5,8 @@ interface mailOptions {
 	to: string;
 }
 
-const email: string = process.env.EMAIL_USER;
-const pass: string = process.env.EMAIL_PASS;
+const email = process.env.EMAIL_USER;
+const pass = process.env.EMAIL_PASS;
 
 export const transporter: any = nodemailer.createTransport({
 	host: "gmail",
@@ -23,6 +23,6 @@ export const transporter: any = nodemailer.createTransport({
 });
 
 export const mailOptions: mailOptions = {
-	from: email,
-	to: email,
+	from: "info@blueinventory.com",
+	to: `${email}`,
 };

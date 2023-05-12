@@ -1,3 +1,4 @@
+// Send Contact Form Data
 export const sendContactForm = async (data: any) => {
 	fetch("/api/mail", {
 		method: "post",
