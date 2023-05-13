@@ -44,6 +44,7 @@
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.32.3",
+		"@stripe/react-stripe-js": "^2.1.0",
 		"@types/cors": "^2.8.13",
 		"@types/dateformat": "^5.0.0",
 		"@types/nodemailer": "^6.4.7",

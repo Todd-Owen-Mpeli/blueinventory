@@ -56,9 +56,9 @@ const TitleThreeContentGridCard: FC<IProps> = ({
 								<path
 									d="M10.5 3.75L15.75 9M15.75 9L10.5 14.25M15.75 9L2.25 9"
 									stroke="currentColor"
-									stroke-width="2"
-									stroke-linecap="round"
-									stroke-linejoin="round"
+									strokeWidth="2"
+									strokeLinecap="round"
+									strokeLinejoin="round"
 								></path>
 							</svg>
 						</Link>

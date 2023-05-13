@@ -1,9 +1,11 @@
 // Imports
+import Stripe from "stripe";
 import {gql} from "@apollo/client";
 import {motion} from "framer-motion";
 import {client} from "../config/apollo";
 import type {NextPage, GetStaticProps} from "next";
 import {getThemesOptionsContent} from "../functions/themesOptions";
+import {fetchStripePaymentPlans} from "../functions/GetStripePaymentPlans";
 import {
 	getMainMenuLinks,
 	getNavbarMenuLinks,
@@ -129,6 +131,18 @@ interface IPricing {
 			};
 		};
 	};
+	stripePremiumPlan: {
+		name: string;
+		description: string;
+		price: number;
+		paymentRecurringInterval: string;
+	};
+	stripeStandardPlan: {
+		name: string;
+		description: string;
+		price: number;
+		paymentRecurringInterval: string;
+	};
 	footerMenuLinks: {
 		footerMenuLinks: [
 			{
@@ -196,6 +210,8 @@ const pricing: NextPage<IPricing> = ({
 	pageTitle,
 	footerMenuLinks,
 	navbarMenuLinks,
+	stripePremiumPlan,
+	stripeStandardPlan,
 	industriesMenuLinks,
 	themesOptionsContent,
 }) => {
@@ -227,8 +243,10 @@ const pricing: NextPage<IPricing> = ({
 					card={content?.pricing?.card}
 					title={content?.pricing?.title}
 					italic={content?.pricing?.italic}
+					stripePremiumPlan={stripePremiumPlan}
 					pointOne={content?.pricing?.pointOne}
 					pointTwo={content?.pricing?.pointTwo}
+					stripeStandardPlan={stripeStandardPlan}
 					paragraph={content?.pricing?.paragraph}
 					paymentProviders={content?.pricing?.paymentProviders}
 				/>
@@ -369,11 +387,16 @@ export const getStaticProps: GetStaticProps = async () => {
 	const footerMenuLinks: object = await getFooterMenuLinks();
 	const industriesMenuLinks: object = await getIndustriesMenuLinks();
 	const themesOptionsContent: object = await getThemesOptionsContent();
+	// Fetches All Stripe Payment Plans
+	const {stripeStandardPlan, stripePremiumPlan} =
+		await fetchStripePaymentPlans();
 
 	return {
 		props: {
 			navbarMenuLinks,
 			footerMenuLinks,
+			stripePremiumPlan,
+			stripeStandardPlan,
 			industriesMenuLinks,
 			themesOptionsContent,
 			seo: response?.data?.mainContent?.edges[0]?.node?.seo,

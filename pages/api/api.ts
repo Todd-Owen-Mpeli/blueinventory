@@ -1,17 +1,3 @@
-// Imports
-import Stripe from "stripe";
-import {config} from "dotenv";
-
-// Environment Variables (Stripe Api Key) Stripe
-if (process.env.NODE_ENV !== "production") {
-	config();
-}
-
-// Initialize Stripe
-export const stripe = new Stripe(`${process.env.STRIPE_SECRET_KEY}`, {
-	apiVersion: "2022-11-15",
-});
-
 export default async function handler(req: any, res: any) {
 	const amount = req?.body?.amount;
 	const body = req?.body;
