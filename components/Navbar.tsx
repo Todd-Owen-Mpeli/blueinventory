@@ -35,9 +35,9 @@ const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 	return (
 		<nav className="fixed z-[999] w-full py-4 bg-white">
 			<div className="container px-0 mx-auto">
-				<div className="flex items-center justify-between px-6 py-2 bg-white">
-					<div className="flex items-center justify-between gap-4 px-0 sm:px-4">
-						<motion.div variants={fadeInUp} className="flex flex-col">
+				<div className="flex flex-row items-center justify-between px-6 py-2 bg-white">
+					<div className="flex items-center justify-start w-full gap-4 px-0 sm:px-4 lg:w-1/3">
+						<motion.div variants={fadeInUp}>
 							<Link
 								href="/"
 								className="text-lg lg:text-2xl text-darkBlue font-[900]"
@@ -46,7 +46,7 @@ const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 							</Link>
 						</motion.div>
 					</div>
-					<div className="w-auto">
+					<div className="w-full lg:w-1/3">
 						<div className="flex flex-wrap items-center">
 							<div className="hidden w-auto lg:block">
 								<motion.ul
@@ -65,8 +65,8 @@ const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 							</div>
 						</div>
 					</div>
-					<div className="w-auto">
-						<div className="flex flex-wrap items-center">
+					<div className="w-full lg:w-1/3">
+						<div className="flex flex-wrap items-center justify-end">
 							<div className="hidden w-auto lg:block">
 								<div>
 									{signedIn ? (

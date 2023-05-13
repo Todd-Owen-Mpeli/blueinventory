@@ -73,14 +73,6 @@ interface IPricing {
 			pointTwo: string;
 			paragraph: string;
 			card: {
-				plan: string;
-				pricing: string;
-				paragraph: string;
-				buttonLink: {
-					url: string;
-					title: string;
-					target: string;
-				};
 				bulletList: [
 					{
 						id: string;
@@ -333,14 +325,6 @@ export const getStaticProps: GetStaticProps = async () => {
 								pointTwo
 								paragraph
 								card {
-									plan
-									pricing
-									paragraph
-									buttonLink {
-										url
-										title
-										target
-									}
 									bulletList {
 										bulletPoint
 									}
