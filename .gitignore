@@ -12,6 +12,9 @@
 /.next/
 /out/
 
+# firebase
+service-account.json
+
 # production
 /build
 

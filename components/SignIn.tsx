@@ -1,9 +1,11 @@
 // Imports
 import {FC} from "react";
 import Link from "next/link";
-import Image from "next/image";
 import {motion} from "framer-motion";
+import {getAuth, signInWithPopup, GoogleAuthProvider} from "firebase/auth";
 import {fadeInUp, stagger} from "../animations/animations";
+
+// Components
 import Paragraph from "./Elements/Paragraph";
 
 interface IProps {
@@ -12,6 +14,26 @@ interface IProps {
 }
 
 const SignIn: FC<IProps> = ({title, paragraph}) => {
+	const provider = new GoogleAuthProvider();
+	const auth = getAuth();
+
+	const handleSignInWithGoogle = async () => {
+		signInWithPopup(auth, provider)
+			.then((result) => {
+				// The signed-in user info.
+				const user = result.user;
+
+				/* Collect Users inserted google Details 
+				and send it ot the Database */
+				console.log(user);
+				// IdP data available using getAdditionalUserInfo(result)
+				// ...
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	};
+
 	return (
 		<section className="container relative px-0 mx-auto">
 			<motion.div
@@ -34,11 +56,8 @@ const SignIn: FC<IProps> = ({title, paragraph}) => {
 					variants={stagger}
 					className="flex items-center gap-4 my-6 -mx-2"
 				>
-					<motion.button variants={fadeInUp}>
-						<Link
-							className="flex items-center justify-center w-12 h-12"
-							href={`/pricing/#Pricing`}
-						>
+					<motion.button variants={fadeInUp} onClick={handleSignInWithGoogle}>
+						<span className="flex items-center justify-center w-12 h-12">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								viewBox="0 0 48 48"
@@ -63,7 +82,7 @@ const SignIn: FC<IProps> = ({title, paragraph}) => {
 									d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"
 								/>
 							</svg>
-						</Link>
+						</span>
 					</motion.button>
 					<motion.button variants={fadeInUp}>
 						<Link
