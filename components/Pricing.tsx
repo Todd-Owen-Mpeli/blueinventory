@@ -106,7 +106,7 @@ const Pricing: FC<IProps> = ({
 								variants={fadeInUp}
 								className="w-full px-4 mb-8 lg:w-1/3 lg:pt-16 lg:mb-0"
 							>
-								<div className="max-w-sm p-10 mx-auto bg-white border border-grey rounded-3xl">
+								<div className="max-w-lg p-10 mx-auto bg-white border border-grey rounded-3xl">
 									<div className="flex items-center justify-center w-10 h-10 mb-4 border rounded-full border-darkBlue">
 										<svg
 											version="1.1"
@@ -229,13 +229,19 @@ const Pricing: FC<IProps> = ({
 												</span>
 											</li>
 										</ul>
-										<Link
-											className="relative inline-block py-4 overflow-hidden text-sm font-semibold text-center transition duration-200 border rounded-full border-grey-200 text-goldPrime hover:text-white group px-7 hover:text-orange"
-											href={`/checkout`}
+										<form
+											action="/api/stripe/standardPlanCheckoutSession"
+											method="POST"
 										>
-											<div className="absolute top-0 w-full h-full transition duration-200 transform bg-goldPrime right-full group-hover:translate-x-full group-hover:scale-102"></div>
-											<span className="relative">Choose Plan</span>
-										</Link>
+											<button
+												type="submit"
+												role="link"
+												className="relative inline-block py-4 overflow-hidden text-sm font-semibold text-center transition duration-200 border rounded-full border-grey-200 text-goldPrime hover:text-white group px-7 hover:text-orange"
+											>
+												<div className="absolute top-0 w-full h-full transition duration-200 transform bg-goldPrime right-full group-hover:translate-x-full group-hover:scale-102"></div>
+												<span className="relative">Choose Plan</span>
+											</button>
+										</form>
 									</div>
 								</div>
 							</motion.div>
@@ -243,7 +249,7 @@ const Pricing: FC<IProps> = ({
 								variants={fadeInUp}
 								className="w-full px-4 mb-8 lg:w-1/3 lg:mb-0"
 							>
-								<div className="max-w-sm p-10 mx-auto bg-blue rounded-3xl">
+								<div className="max-w-lg p-10 mx-auto bg-blue rounded-3xl">
 									<div className="flex items-center justify-center w-10 h-10 mb-4 rounded-full bg-goldPrime">
 										<svg
 											version="1.1"
@@ -290,7 +296,7 @@ const Pricing: FC<IProps> = ({
 											<motion.ul variants={stagger}>
 												{card?.bulletList.map((keys) => (
 													<BulletListCard
-														iconFillColor={`#e8b042`}
+														iconFillColor={`#5ac3ff`}
 														bulletPoint={keys?.bulletPoint}
 														key={keys?.id || keys?.bulletPoint}
 														tailwindStyling="ml-2 text-sm text-white"
@@ -366,13 +372,19 @@ const Pricing: FC<IProps> = ({
 												</span>
 											</li>
 										</ul>
-										<Link
-											className="relative inline-block py-4 overflow-hidden text-sm font-semibold text-center text-white transition duration-200 rounded-full bg-goldPrime group px-7 hover:text-goldPrime"
-											href={`/checkout`}
+										<form
+											action="/api/stripe/premiumPlanCheckoutSession"
+											method="POST"
 										>
-											<div className="absolute top-0 w-full h-full transition duration-200 transform bg-white right-full group-hover:translate-x-full group-hover:scale-102"></div>
-											<span className="relative">Choose Plan</span>
-										</Link>
+											<button
+												type="submit"
+												role="link"
+												className="relative inline-block py-4 overflow-hidden text-sm font-semibold text-center text-white transition duration-200 rounded-full bg-goldPrime group px-7 hover:text-goldPrime"
+											>
+												<div className="absolute top-0 w-full h-full transition duration-200 transform bg-darkBlue right-full group-hover:translate-x-full group-hover:scale-102"></div>
+												<span className="relative">Choose Plan</span>
+											</button>
+										</form>
 									</div>
 								</div>
 							</motion.div>
@@ -380,7 +392,7 @@ const Pricing: FC<IProps> = ({
 								variants={fadeInUp}
 								className="w-full px-4 lg:w-1/3 lg:pt-16"
 							>
-								<div className="max-w-sm p-10 mx-auto bg-white border border-darkBlue rounded-3xl">
+								<div className="max-w-lg p-10 mx-auto bg-white border border-darkBlue rounded-3xl">
 									<div className="flex items-center justify-center w-10 h-10 mb-4 border rounded-full border-darkBlue">
 										<svg
 											version="1.1"

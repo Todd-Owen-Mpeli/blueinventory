@@ -4,8 +4,6 @@ import {useRouter} from "next/router";
 import type {AppProps} from "next/app";
 import {client} from "../config/apollo";
 import {useState, useEffect} from "react";
-import {loadStripe} from "@Stripe/stripe-js";
-import {Elements} from "@stripe/react-stripe-js";
 import {PostHogProvider} from "posthog-js/react";
 import {ApolloProvider} from "@apollo/client/react";
 
@@ -46,11 +44,6 @@ const publicPages: Array<string> = [
 	"/operational-insights",
 	"/operational-insights/[slug]",
 ];
-
-// Stripe Checkout Session Init
-export const stripePromise = loadStripe(
-	`${process.env.STRIPE_PUBLISHABLE_KEY}`
-);
 
 export default function App({Component, pageProps}: AppProps) {
 	// Public Pages: Get the pathname
@@ -152,26 +145,24 @@ export default function App({Component, pageProps}: AppProps) {
 
 	return (
 		<ApolloProvider client={client}>
-			<Elements stripe={stripePromise}>
-				<PostHogProvider client={postHog}>
-					{isPublicPage ? (
-						<>
-							<Loading />
-							<Component {...pageProps} />
-						</>
-					) : (
-						<>
-							<Loading />
-							<ErrorPage
-								title={errorPageContent?.title}
-								paragraph={errorPageContent?.paragraph}
-								buttonLink={errorPageContent?.buttonLink}
-								backgroundImage={errorPageContent?.backgroundImage}
-							/>
-						</>
-					)}
-				</PostHogProvider>
-			</Elements>
+			<PostHogProvider client={postHog}>
+				{isPublicPage ? (
+					<>
+						<Loading />
+						<Component {...pageProps} />
+					</>
+				) : (
+					<>
+						<Loading />
+						<ErrorPage
+							title={errorPageContent?.title}
+							paragraph={errorPageContent?.paragraph}
+							buttonLink={errorPageContent?.buttonLink}
+							backgroundImage={errorPageContent?.backgroundImage}
+						/>
+					</>
+				)}
+			</PostHogProvider>
 		</ApolloProvider>
 	);
 }

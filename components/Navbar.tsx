@@ -21,7 +21,7 @@ interface HeroProps {
 }
 
 const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
-	const signedIn = true;
+	const signedIn = false;
 
 	const user = {
 		firstName: "Todd",
