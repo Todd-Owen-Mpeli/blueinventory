@@ -15,7 +15,7 @@ export default async function handler(req: any, res: any): Promise<any> {
 				line_items: [
 					{
 						// Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-						price: "price_1N5obFJz4FXjPdTh5IjxncEh",
+						price: `${process.env.STRIPE_STANDARD_PLAN}`,
 						quantity: 1,
 					},
 				],
