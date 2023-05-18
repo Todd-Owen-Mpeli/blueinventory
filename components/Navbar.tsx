@@ -3,6 +3,7 @@ import {FC} from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {motion} from "framer-motion";
+import {useState, useEffect} from "react";
 import {fadeIn, fadeInUp, stagger} from "../animations/animations";
 
 // Components
@@ -21,16 +22,38 @@ interface HeroProps {
 }
 
 const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
-	const signedIn = false;
-
 	const user = {
 		firstName: "Todd",
 		lastName: "Mpeli",
 		email: "toddowenmpeli@rocketmail.com",
 		profileImageURL:
-			"http://blueinventory.local/wp-content/uploads/2023/05/pexels-shazard-r-14197704-min-scaled-e1683834127519.jpg",
+			"http://blueinventory.local/wp-content/uploads/2023/05/pexels-kampus-production-8353841-scaled-e1683833484486.jpg",
 		description: "User dropdown",
 	};
+
+	/* Changes the nav UI base on if the 
+	user is SIGNED IN or NOT SIGNED IN */
+	const [signedIn, setSignedIn] = useState(false);
+	const changeUserSignedInStatus = (isSignedIn: any) => setSignedIn(!signedIn);
+
+	useEffect(() => {
+		try {
+			if (signedIn === false) {
+				setSignedIn(false);
+			} else if (signedIn === true) {
+				setSignedIn(true);
+			}
+			return console.log("Nav Clean Up");
+		} catch (error) {
+			console.log(error);
+
+			/* Sets th user Nav UI to Not 
+			Signed In as a Fall back */
+			setSignedIn(false);
+
+			throw new Error("Something went wrong trying Render Nav UI");
+		}
+	}, [signedIn]);
 
 	return (
 		<nav className="fixed z-[999] w-full py-4 bg-white">
@@ -66,7 +89,7 @@ const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 						</div>
 					</div>
 					<div className="w-full lg:w-1/3">
-						<div className="flex flex-wrap items-center justify-end">
+						<div className="flex flex-wrap items-center justify-end gap-2">
 							<div className="hidden w-auto lg:block">
 								<div>
 									{signedIn ? (
