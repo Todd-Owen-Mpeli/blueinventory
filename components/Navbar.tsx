@@ -88,7 +88,7 @@ const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 											{/* <!-- Dropdown menu --> */}
 											<div
 												id="userDropdown"
-												className="absolute left-[-100px] hidden z-10 flex flex-col mt-1 bg-white divide-y rounded-lg shadow group-hover:flex group divide-blue w-44 bg-darkBlue"
+												className="absolute left-[-100px] hidden z-10 flex flex-col mt-1 bg-white divide-y rounded-lg shadow group-hover:flex group divide-blue w-44"
 											>
 												<div className="flex flex-col gap-2 px-4 py-3 text-sm text-black">
 													<h2 className="text-medium">{`${user?.firstName} ${user?.lastName}`}</h2>
@@ -155,7 +155,7 @@ const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 											>
 												<Link
 													className="w-full px-8 py-3 text-sm tracking-widest text-center text-white uppercase bg-transparent rounded-sm hover:bg-darkBlue focus:ring-none focus:ring-blue"
-													href={`/pricing/#Pricing`}
+													href={`/sign-up`}
 												>
 													Get Started
 												</Link>

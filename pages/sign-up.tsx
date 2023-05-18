@@ -11,6 +11,7 @@ import {
 } from "../functions/MenuLinks";
 
 // Components
+import SignUp from "@/components/SignUp";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
@@ -102,7 +103,10 @@ const SignUpPage: NextPage<ISignUpPage> = ({
 		<Navbar navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks} />
 
 		<section className="container flex flex-col items-center justify-center min-h-screen px-4 py-10 mx-auto overflow-hidden lg:pt-36 xxl:pt-24">
-			Hello
+			<SignUp
+				title={`Sign Up today`}
+				paragraph={`We kindly request you to enter your details.`}
+			/>
 		</section>
 
 		<Footer

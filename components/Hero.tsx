@@ -45,18 +45,18 @@ const Hero: FC<HeroProps> = ({
 					}}
 				>
 					{/* Background Video */}
-					<video
-						autoPlay
-						muted
-						loop
-						className={
-							backgroundVideoUrl
-								? "absolute top-0 bottom-0 left-0 object-cover object-center w-full h-full"
-								: `hidden`
-						}
-					>
-						<source src={`${backgroundVideoUrl}`} type="video/mp4" />
-					</video>
+					<div className="hidden xl:block relative top-[-75px] pb-[56.25%] overflow-hidden w-full h-full bg-center bg-no-repeat bg-cover">
+						<iframe
+							allowFullScreen
+							allow="autoplay; fullscreen; picture-in-picture"
+							className={
+								backgroundVideoUrl
+									? "absolute top-0 left-0 border-none w-full h-full"
+									: `hidden`
+							}
+							src={backgroundVideoUrl}
+						/>
+					</div>
 
 					<div className="absolute top-0 bottom-0 left-0 w-full h-full opacity-50 bg-gradient-to-b from-darkBlue from-2% via-transparent via-5% to-transparent to-100%" />
 

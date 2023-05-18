@@ -43,31 +43,31 @@ const HeroTwo: FC<HeroProps> = ({
 
 	return (
 		<section className={styles.hero}>
-			<div className="flex flex-col bg-cover bg-center bg-no-repeat relative h-full min-h-[50vh]">
+			<div className="flex flex-col bg-cover bg-center bg-no-repeat relative h-full min-h-[65vh]">
 				<div
-					className="absolute top-0 bottom-0 left-0 w-full h-full max-h-[50vh] z-[995] bg-center bg-no-repeat bg-cove"
+					className="absolute top-0 bottom-0 left-0 w-full h-full max-h-[65vh] z-[995] bg-center bg-no-repeat bg-cove"
 					style={{backgroundImage: `url("${backgroundImage?.sourceUrl}")`}}
 				>
 					{/* Background Video */}
 					<div
 						className={
 							backgroundImageOrVideo === "Video"
-								? `absolute top-0 bottom-0 left-0 w-full h-full`
+								? `absolute top-0 bottom-0 left-0 w-full h-full overflow-hidden `
 								: `hidden`
 						}
 					>
-						<video
-							autoPlay
-							muted
-							loop
-							className={
-								backgroundVideoUrl
-									? "object-cover object-center w-full h-full"
-									: `hidden`
-							}
-						>
-							<source src={`${backgroundVideoUrl}`} type="video/mp4" />
-						</video>
+						<div className="hidden xl:block relative top-[-175px] pb-[56.25%] w-full h-full bg-center bg-no-repeat bg-cover">
+							<iframe
+								allowFullScreen
+								allow="autoplay; fullscreen; picture-in-picture"
+								className={
+									backgroundVideoUrl
+										? "absolute top-0 left-0 border-none w-full h-full"
+										: `hidden`
+								}
+								src={backgroundVideoUrl}
+							/>
+						</div>
 						<div className="absolute top-0 bottom-0 left-0 w-full h-full opacity-90 bg-gradient-to-b from-darkerRedTwo from-5% via-darkerRedTwo via-10% to-transparent to-100%" />
 					</div>
 

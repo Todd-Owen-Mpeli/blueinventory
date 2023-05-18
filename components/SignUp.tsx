@@ -18,13 +18,13 @@ interface IProps {
 	paragraph: string;
 }
 
-const SignIn: FC<IProps> = ({title, paragraph}) => {
+const SignUp: FC<IProps> = ({title, paragraph}) => {
 	const auth = getAuth();
 	const providerGoogle = new GoogleAuthProvider();
 	const providerApple = new OAuthProvider("apple.com");
 
-	// Sign In with Google
-	const handleSignInWithGoogle = async () => {
+	// Sign Up with Google
+	const handleSignUpWithGoogle = async () => {
 		signInWithPopup(auth, providerGoogle)
 			.then((result) => {
 				// The signed-in user info.
@@ -41,11 +41,11 @@ const SignIn: FC<IProps> = ({title, paragraph}) => {
 			});
 	};
 
-	// Sign In with Apple
-	const handleSignInWithApple = async () => {
+	// Sign Up with Apple
+	const handleSignUpWithApple = async () => {
 		signInWithPopup(auth, providerApple)
 			.then((result) => {
-				// The signed-in user info.
+				// The signed-up user info.
 				const user = result.user;
 
 				/* Collect Users inserted google Details 
@@ -81,7 +81,7 @@ const SignIn: FC<IProps> = ({title, paragraph}) => {
 					variants={stagger}
 					className="flex items-center gap-4 my-6 -mx-2"
 				>
-					<motion.button variants={fadeInUp} onClick={handleSignInWithGoogle}>
+					<motion.button variants={fadeInUp} onClick={handleSignUpWithGoogle}>
 						<span className="flex items-center justify-center w-12 h-12">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -132,7 +132,7 @@ const SignIn: FC<IProps> = ({title, paragraph}) => {
 							</svg>
 						</Link>
 					</motion.button>
-					<motion.button variants={fadeInUp} onClick={handleSignInWithApple}>
+					<motion.button variants={fadeInUp} onClick={handleSignUpWithApple}>
 						<span className="flex items-center justify-center w-12 h-12">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -161,6 +161,30 @@ const SignIn: FC<IProps> = ({title, paragraph}) => {
 						className="space-y-8 ng-untouched ng-pristine ng-valid"
 					>
 						<motion.div variants={stagger} className="space-y-4">
+							<motion.div variants={fadeInUp} className="space-y-2">
+								<label htmlFor="email" className="block text-sm text-darkBlue">
+									First Name
+								</label>
+								<input
+									type="text"
+									name="firstName"
+									id="firstName"
+									placeholder="Leroy"
+									className="w-full px-3 py-2 border-[1px] rounded-lg border-grey text-darkBlue focus:border-darkBlue"
+								/>
+							</motion.div>
+							<motion.div variants={fadeInUp} className="space-y-2">
+								<label htmlFor="email" className="block text-sm text-darkBlue">
+									Last Name
+								</label>
+								<input
+									type="text"
+									name="lastName"
+									id="lastName"
+									placeholder="Jenkins"
+									className="w-full px-3 py-2 border-[1px] rounded-lg border-grey text-darkBlue focus:border-darkBlue"
+								/>
+							</motion.div>
 							<motion.div variants={fadeInUp} className="space-y-2">
 								<label htmlFor="email" className="block text-sm text-darkBlue">
 									Email address
@@ -211,19 +235,19 @@ const SignIn: FC<IProps> = ({title, paragraph}) => {
 									backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue-pink-red-yellow.svg")`,
 								}}
 							/>
-							<p className="relative">Sign in</p>
+							<p className="relative">Sign up</p>
 						</motion.button>
 					</form>
 				</motion.div>
 				<motion.div variants={fadeInUp} className="mt-4">
 					<p className="text-sm text-center dark:text-grey">
-						Don&apos;t have an account?
+						Already have an account?
 						<Link
-							href={`/pricing/#Pricing`}
+							href={`/sign-in`}
 							rel="noopener noreferrer"
 							className="ml-1 focus:underline text-darkBlue hover:text-blue hover:underline"
 						>
-							Sign up here
+							Sign In here
 						</Link>
 					</p>
 				</motion.div>
@@ -232,4 +256,4 @@ const SignIn: FC<IProps> = ({title, paragraph}) => {
 	);
 };
 
-export default SignIn;
+export default SignUp;
