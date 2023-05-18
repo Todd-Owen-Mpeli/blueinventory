@@ -13,7 +13,7 @@
 /out/
 
 # firebase
-service-account.json
+service-account-key.json
 
 # production
 /build
