@@ -109,7 +109,7 @@ const SignUp: FC<IProps> = ({title, paragraph}) => {
 							</svg>
 						</span>
 					</motion.button>
-					<motion.button variants={fadeInUp}>
+					{/* <motion.button variants={fadeInUp}>
 						<Link
 							className="flex items-center justify-center w-12 h-12"
 							href={`/pricing/#Pricing`}
@@ -131,8 +131,8 @@ const SignUp: FC<IProps> = ({title, paragraph}) => {
 								/>
 							</svg>
 						</Link>
-					</motion.button>
-					<motion.button variants={fadeInUp} onClick={handleSignUpWithApple}>
+					</motion.button> */}
+					{/* <motion.button variants={fadeInUp} onClick={handleSignUpWithApple}>
 						<span className="flex items-center justify-center w-12 h-12">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -148,7 +148,7 @@ const SignUp: FC<IProps> = ({title, paragraph}) => {
 								/>
 							</svg>
 						</span>
-					</motion.button>
+					</motion.button> */}
 				</motion.div>
 				<motion.div variants={fadeInUp} className="flex items-center mb-6">
 					<div className="w-full h-px bg-darkGrey" />

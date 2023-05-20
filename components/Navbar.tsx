@@ -31,6 +31,13 @@ const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 		description: "User dropdown",
 	};
 
+	// Hides or Displays User dropdown
+	const [revealUserDropdown, setRevealUserDropdown] = useState(false);
+
+	const handleRevealUserDropdown = () => {
+		setRevealUserDropdown(!revealUserDropdown);
+	};
+
 	/* Changes the nav UI base on if the 
 	user is SIGNED IN or NOT SIGNED IN */
 	const [signedIn, setSignedIn] = useState(false);
@@ -94,7 +101,10 @@ const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 								<div>
 									{signedIn ? (
 										<motion.div variants={fadeIn} className="relative group">
-											<div className="relative group">
+											<button
+												onClick={handleRevealUserDropdown}
+												className="relative"
+											>
 												<Image
 													width={500}
 													height={500}
@@ -106,49 +116,51 @@ const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 													alt={`${user?.firstName} ${user?.lastName} profile image`}
 												/>
 												<span className="bottom-[-6px] left-7 absolute w-3.5 h-3.5 bg-brightGreenDash border-2 border-white rounded-full "></span>
-											</div>
+											</button>
 
 											{/* <!-- Dropdown menu --> */}
-											<div
-												id="userDropdown"
-												className="absolute left-[-100px] hidden z-10 flex flex-col mt-1 bg-white divide-y rounded-lg shadow group-hover:flex group divide-blue w-44"
-											>
-												<div className="flex flex-col gap-2 px-4 py-3 text-sm text-black">
-													<h2 className="text-medium">{`${user?.firstName} ${user?.lastName}`}</h2>
-													<h2 className="font-medium text-black truncate">
-														{user?.email}
-													</h2>
-												</div>
-												<ul
-													className="py-2 text-sm text-black"
-													aria-labelledby="avatarButton"
+											{revealUserDropdown ? (
+												<div
+													id="userDropdown"
+													className="absolute left-[-100px] z-10 flex flex-col mt-1 bg-white divide-y rounded-lg shadow divide-blue w-44"
 												>
-													<li className="p-0">
-														<Link
-															href={`/dashboard`}
-															className="block px-4 py-2 text-black hover:bg-blue hover:text-white"
-														>
-															Dashboard
-														</Link>
-													</li>
-													<li className="p-0">
-														<Link
-															href={`/dashboard/settings`}
-															className="block px-4 py-2 text-black hover:bg-blue hover:text-white"
-														>
-															Settings
-														</Link>
-													</li>
-												</ul>
-												<div className="mt-1">
-													<Link
-														href={``}
-														className="block px-4 py-3 text-sm text-black rounded-b-lg hover:bg-red hover:text-white"
+													<div className="flex flex-col gap-2 px-4 py-3 text-sm text-black">
+														<h2 className="text-medium">{`${user?.firstName} ${user?.lastName}`}</h2>
+														<h2 className="font-medium text-black truncate">
+															{user?.email}
+														</h2>
+													</div>
+													<ul
+														className="py-2 text-sm text-black"
+														aria-labelledby="avatarButton"
 													>
-														Sign out
-													</Link>
+														<li className="p-0">
+															<Link
+																href={`/dashboard`}
+																className="block px-4 py-2 text-black hover:bg-blue hover:text-white"
+															>
+																Dashboard
+															</Link>
+														</li>
+														<li className="p-0">
+															<Link
+																href={`/dashboard/settings`}
+																className="block px-4 py-2 text-black hover:bg-blue hover:text-white"
+															>
+																Settings
+															</Link>
+														</li>
+													</ul>
+													<div className="mt-1">
+														<Link
+															href={``}
+															className="block px-4 py-3 text-sm text-black rounded-b-lg hover:bg-red hover:text-white"
+														>
+															Sign out
+														</Link>
+													</div>
 												</div>
-											</div>
+											) : null}
 										</motion.div>
 									) : (
 										<motion.div
