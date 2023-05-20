@@ -2,6 +2,7 @@
 import {FC} from "react";
 import Link from "next/link";
 import {motion} from "framer-motion";
+import {useRouter} from "next/router";
 import {
 	getAuth,
 	signInWithPopup,
@@ -20,6 +21,7 @@ interface IProps {
 
 const SignIn: FC<IProps> = ({title, paragraph}) => {
 	const auth = getAuth();
+	const router = useRouter();
 	const providerGoogle = new GoogleAuthProvider();
 	const providerApple = new OAuthProvider("apple.com");
 
@@ -33,6 +35,7 @@ const SignIn: FC<IProps> = ({title, paragraph}) => {
 				/* Collect Users inserted google Details 
 				and send it ot the Database */
 				console.log(user);
+				router.push("/");
 				// IdP data available using getAdditionalUserInfo(result)
 				// ...
 			})
@@ -51,6 +54,7 @@ const SignIn: FC<IProps> = ({title, paragraph}) => {
 				/* Collect Users inserted google Details 
 				and send it ot the Database */
 				console.log(user);
+				router.push("/dashboard");
 				// IdP data available using getAdditionalUserInfo(result)
 				// ...
 			})

@@ -1,18 +1,8 @@
 // Imports
-import {useState} from "react";
+import {NextRequest, NextResponse} from "next/server";
+import initializeFirebase from "@/firebase/firebase";
 
-import {NextResponse} from "next/server";
-import type {NextRequest} from "next/server";
-
-const middleware = (req: NextRequest) => {
-	let signedIn: boolean = false;
-
-	const url = req.nextUrl.clone();
-	if (signedIn === false && url.pathname === "/dashboard") {
-		url.pathname = "/sign-in";
-		return NextResponse.redirect(url);
-	}
-};
+const middleware = (req: NextRequest) => {};
 
 // Stop Middleware running on static files
 export const config = {

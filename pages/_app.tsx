@@ -1,6 +1,7 @@
 // Imports
 import postHog from "posthog-js";
 import {useRouter} from "next/router";
+import {getAuth} from "firebase/auth";
 import type {AppProps} from "next/app";
 import {client} from "../config/apollo";
 import {useState, useEffect} from "react";
@@ -52,7 +53,7 @@ const publicPages: Array<string> = [
 	"/privacy-policy",
 	"/api/sitemap.xml",
 	"/terms-conditions",
-	"/dashboard/[path]",
+	"/dashboard/[slug]",
 	"/industries/[slug]",
 	"/operational-insights",
 	"/operational-insights/[slug]",
@@ -61,6 +62,11 @@ const publicPages: Array<string> = [
 export default function App({Component, pageProps}: AppProps) {
 	// Initializing Firebase
 	initializeFirebase();
+
+	// Retrieving Firebase User Details
+	const auth = getAuth();
+
+	console.log(auth.currentUser);
 
 	// Public Pages: Get the pathname
 	const {pathname} = useRouter();

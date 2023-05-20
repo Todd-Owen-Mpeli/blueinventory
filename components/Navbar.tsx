@@ -3,7 +3,10 @@ import {FC} from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {motion} from "framer-motion";
+import {useRouter} from "next/router";
 import {useState, useEffect} from "react";
+import {getAuth, signOut} from "firebase/auth";
+import initializeFirebase from "@/firebase/firebase";
 import {fadeIn, fadeInUp, stagger} from "../animations/animations";
 
 // Components
@@ -22,13 +25,17 @@ interface HeroProps {
 }
 
 const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
+	const auth = getAuth();
+	const router = useRouter();
+
+	// Firebase User Details
 	const user = {
-		firstName: "Todd",
-		lastName: "Mpeli",
-		email: "toddowenmpeli@rocketmail.com",
-		profileImageURL:
-			"http://blueinventory.local/wp-content/uploads/2023/05/pexels-kampus-production-8353841-scaled-e1683833484486.jpg",
-		description: "User dropdown",
+		uid: `${auth?.currentUser?.uid}`,
+		email: `${auth?.currentUser?.email}`,
+		metadata: `${auth?.currentUser?.metadata}`,
+		phoneNumber: `${auth?.currentUser?.phoneNumber}`,
+		displayName: `${auth?.currentUser?.displayName}`,
+		profileImageURL: `/${auth?.currentUser?.photoURL}`,
 	};
 
 	// Hides or Displays User dropdown
@@ -38,29 +45,18 @@ const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 		setRevealUserDropdown(!revealUserDropdown);
 	};
 
-	/* Changes the nav UI base on if the 
-	user is SIGNED IN or NOT SIGNED IN */
-	const [signedIn, setSignedIn] = useState(false);
-	const changeUserSignedInStatus = (isSignedIn: any) => setSignedIn(!signedIn);
-
-	useEffect(() => {
-		try {
-			if (signedIn === false) {
-				setSignedIn(false);
-			} else if (signedIn === true) {
-				setSignedIn(true);
-			}
-			return console.log("Nav Clean Up");
-		} catch (error) {
-			console.log(error);
-
-			/* Sets th user Nav UI to Not 
-			Signed In as a Fall back */
-			setSignedIn(false);
-
-			throw new Error("Something went wrong trying Render Nav UI");
-		}
-	}, [signedIn]);
+	// Handles User Logout
+	const handleLogout = () => {
+		signOut(auth)
+			.then(() => {
+				// Sign-out successful.
+				router.push("/");
+				console.log("User Sign out Successful");
+			})
+			.catch((error) => {
+				// An error happened.
+			});
+	};
 
 	return (
 		<nav className="fixed z-[999] w-full py-4 bg-white">
@@ -99,7 +95,7 @@ const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 						<div className="flex flex-wrap items-center justify-end gap-2">
 							<div className="hidden w-auto lg:block">
 								<div>
-									{signedIn ? (
+									{auth ? (
 										<motion.div variants={fadeIn} className="relative group">
 											<button
 												onClick={handleRevealUserDropdown}
@@ -112,8 +108,12 @@ const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 													data-dropdown-toggle="userDropdown"
 													data-dropdown-placement="bottom-start"
 													className="object-cover object-top w-10 h-10 transition-all duration-200 ease-in-out rounded-full cursor-pointer ring-4 ring-lightBlue hover:ring-goldPrime"
-													src={user?.profileImageURL}
-													alt={`${user?.firstName} ${user?.lastName} profile image`}
+													src={
+														user?.profileImageURL
+															? user?.profileImageURL
+															: `/img/Logos/BlueInventory favicon Two.png`
+													}
+													alt={`${user?.displayName} profile image`}
 												/>
 												<span className="bottom-[-6px] left-7 absolute w-3.5 h-3.5 bg-brightGreenDash border-2 border-white rounded-full "></span>
 											</button>
@@ -125,7 +125,7 @@ const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 													className="absolute left-[-100px] z-10 flex flex-col mt-1 bg-white divide-y rounded-lg shadow divide-blue w-44"
 												>
 													<div className="flex flex-col gap-2 px-4 py-3 text-sm text-black">
-														<h2 className="text-medium">{`${user?.firstName} ${user?.lastName}`}</h2>
+														<h2 className="text-medium">{`${user?.displayName}`}</h2>
 														<h2 className="font-medium text-black truncate">
 															{user?.email}
 														</h2>
@@ -152,12 +152,12 @@ const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 														</li>
 													</ul>
 													<div className="mt-1">
-														<Link
-															href={``}
-															className="block px-4 py-3 text-sm text-black rounded-b-lg hover:bg-red hover:text-white"
+														<button
+															onClick={handleLogout}
+															className="block w-full px-4 py-3 text-sm text-left text-black rounded-b-lg hover:bg-red hover:text-white"
 														>
 															Sign out
-														</Link>
+														</button>
 													</div>
 												</div>
 											) : null}
