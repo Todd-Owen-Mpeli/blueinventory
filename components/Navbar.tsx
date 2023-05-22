@@ -6,7 +6,6 @@ import {motion} from "framer-motion";
 import {useRouter} from "next/router";
 import {useState, useEffect} from "react";
 import {getAuth, signOut} from "firebase/auth";
-import initializeFirebase from "@/firebase/firebase";
 import {fadeIn, fadeInUp, stagger} from "../animations/animations";
 
 // Components
@@ -29,6 +28,10 @@ const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 	const router = useRouter();
 
 	// Firebase User Details
+	const currentUser = auth?.currentUser?.uid;
+
+	console.log(`The current user is ${auth?.currentUser?.uid}`);
+
 	const user = {
 		uid: `${auth?.currentUser?.uid}`,
 		email: `${auth?.currentUser?.email}`,
@@ -37,6 +40,18 @@ const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 		displayName: `${auth?.currentUser?.displayName}`,
 		profileImageURL: `/${auth?.currentUser?.photoURL}`,
 	};
+
+	const [signedInUser, setSignedInUser] = useState(false);
+
+	useEffect(() => {
+		currentUser ? setSignedInUser(true) : setSignedInUser(false);
+
+		console.log(`Signed user is ${auth?.currentUser?.uid}`);
+
+		return () => {
+			currentUser;
+		};
+	}, [currentUser]);
 
 	// Hides or Displays User dropdown
 	const [revealUserDropdown, setRevealUserDropdown] = useState(false);
@@ -95,7 +110,7 @@ const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 						<div className="flex flex-wrap items-center justify-end gap-2">
 							<div className="hidden w-auto lg:block">
 								<div>
-									{auth ? (
+									{signedInUser ? (
 										<motion.div variants={fadeIn} className="relative group">
 											<button
 												onClick={handleRevealUserDropdown}

@@ -31,7 +31,26 @@ export const firebaseConfig: IFirebaseConfig = {
 	measurementId: `${process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID}`,
 };
 
-const initializeFirebase = () => {
+interface IFirebaseUser {
+	uid: string;
+	email: string;
+	metadata: string;
+	phoneNumber: string;
+	displayName: string;
+	profileImageURL: string;
+}
+
+// Firebase User Details
+export const firebaseUser: IFirebaseUser = {
+	uid: ``,
+	email: ``,
+	metadata: ``,
+	phoneNumber: ``,
+	displayName: ``,
+	profileImageURL: ``,
+};
+
+export const initializeFirebase = () => {
 	try {
 		if (!getApps().length) {
 			// Initializing Firebase
@@ -39,6 +58,16 @@ const initializeFirebase = () => {
 
 			// Creating auth for Authentication
 			const auth = getAuth(app);
+
+			// Firebase User Details
+			const firebaseUser: IFirebaseUser = {
+				uid: `${auth?.currentUser?.uid}`,
+				email: `${auth?.currentUser?.email}`,
+				metadata: `${auth?.currentUser?.metadata}`,
+				phoneNumber: `${auth?.currentUser?.phoneNumber}`,
+				displayName: `${auth?.currentUser?.displayName}`,
+				profileImageURL: `/${auth?.currentUser?.photoURL}`,
+			};
 
 			// Initializing Firebase Analytics & Performance
 			if (typeof window !== "undefined") {
@@ -59,4 +88,5 @@ const initializeFirebase = () => {
 		);
 	}
 };
+
 export default initializeFirebase;

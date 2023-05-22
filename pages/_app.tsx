@@ -50,6 +50,7 @@ const publicPages: Array<string> = [
 	"/sign-up",
 	"/features",
 	"/checkout",
+	"/dashboard",
 	"/privacy-policy",
 	"/api/sitemap.xml",
 	"/terms-conditions",
@@ -65,8 +66,6 @@ export default function App({Component, pageProps}: AppProps) {
 
 	// Retrieving Firebase User Details
 	const auth = getAuth();
-
-	console.log(auth.currentUser);
 
 	// Public Pages: Get the pathname
 	const {pathname} = useRouter();
