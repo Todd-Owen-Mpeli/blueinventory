@@ -26,12 +26,10 @@ interface HeroProps {
 const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 	const auth = getAuth();
 	const router = useRouter();
+	const [signedInUser, setSignedInUser] = useState(false);
+	const [revealUserDropdown, setRevealUserDropdown] = useState(false);
 
 	// Firebase User Details
-	const currentUser = auth?.currentUser?.uid;
-
-	console.log(`The current user is ${auth?.currentUser?.uid}`);
-
 	const user = {
 		uid: `${auth?.currentUser?.uid}`,
 		email: `${auth?.currentUser?.email}`,
@@ -41,21 +39,19 @@ const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 		profileImageURL: `/${auth?.currentUser?.photoURL}`,
 	};
 
-	const [signedInUser, setSignedInUser] = useState(false);
-
+	/* Check if user is SIGNED IN if 
+	True Displays Signed In Navbar */
 	useEffect(() => {
-		currentUser ? setSignedInUser(true) : setSignedInUser(false);
-
-		console.log(`Signed user is ${auth?.currentUser?.uid}`);
+		auth?.onAuthStateChanged((currentUser) => {
+			currentUser ? setSignedInUser(true) : setSignedInUser(false);
+		});
 
 		return () => {
-			currentUser;
+			signedInUser;
 		};
-	}, [currentUser]);
+	}, [signedInUser, auth]);
 
 	// Hides or Displays User dropdown
-	const [revealUserDropdown, setRevealUserDropdown] = useState(false);
-
 	const handleRevealUserDropdown = () => {
 		setRevealUserDropdown(!revealUserDropdown);
 	};
@@ -111,7 +107,7 @@ const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 							<div className="hidden w-auto lg:block">
 								<div>
 									{signedInUser ? (
-										<motion.div variants={fadeIn} className="relative group">
+										<motion.div variants={fadeIn} className="relative">
 											<button
 												onClick={handleRevealUserDropdown}
 												className="relative"
