@@ -30,6 +30,11 @@ export async function getThemesOptionsContent() {
 										title
 										target
 									}
+									buttonLinkTwo {
+										url
+										title
+										target
+									}
 									backgroundImage {
 										sourceUrl
 									}

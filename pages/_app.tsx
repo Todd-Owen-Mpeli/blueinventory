@@ -50,14 +50,19 @@ const publicPages: Array<string> = [
 	"/sign-up",
 	"/features",
 	"/checkout",
-	"/dashboard",
 	"/privacy-policy",
 	"/api/sitemap.xml",
 	"/terms-conditions",
-	"/dashboard/[slug]",
 	"/industries/[slug]",
 	"/operational-insights",
 	"/operational-insights/[slug]",
+];
+
+const protectedPages: Array<string> = [
+	"/dashboard",
+	"/dashboard/items",
+	"/dashboard/[slug]",
+	"/dashboard/settings",
 ];
 
 export default function App({Component, pageProps}: AppProps) {
@@ -66,12 +71,26 @@ export default function App({Component, pageProps}: AppProps) {
 
 	// Retrieving Firebase User Details
 	const auth = getAuth();
+	const [signedInUser, setSignedInUser] = useState(false);
+
+	/* Check if user is SIGNED IN if 
+	True Displays Signed In Navbar */
+	useEffect(() => {
+		auth?.onAuthStateChanged((currentUser) => {
+			currentUser ? setSignedInUser(true) : setSignedInUser(false);
+		});
+
+		return () => {
+			signedInUser;
+		};
+	}, [signedInUser, auth]);
 
 	// Public Pages: Get the pathname
 	const {pathname} = useRouter();
 
 	// Public Pages: Check if the current route matches a public page
 	const isPublicPage = publicPages.includes(pathname);
+	const isProtectedPage = protectedPages.includes(pathname);
 
 	// Error Page Content
 	const errorPageContent = {
@@ -81,15 +100,21 @@ export default function App({Component, pageProps}: AppProps) {
 			title: "Homepage",
 			target: "",
 		},
+		buttonLinkTwo: {
+			url: "/sign-in",
+			title: "Sign In",
+			target: "",
+		},
 		paragraph:
 			"The page you are looking for is not accessible! Please sign in or go back to homepage.",
 		backgroundImage:
-			"http://blueinventory.local/wp-content/uploads/2023/04/pexels-antoni-shkraba-7163406-min-scaled.jpg",
+			"http://blueinventory.local/wp-content/uploads/2023/05/pexels-proxyclick-visitor-management-system-2451566-min-scaled.jpg",
 	};
 
 	// PostHog Cookies Policy
 	const router = useRouter();
 
+	// PostHog Cookies Policy
 	useEffect(() => {
 		// Track page views
 		const handleRouteChange = () => postHog?.capture("$pageview");
@@ -113,7 +138,7 @@ export default function App({Component, pageProps}: AppProps) {
 				url === router.asPath &&
 				setTimeout(() => {
 					setLoading(false);
-				}, 20000);
+				}, 7000);
 
 			router.events.on("routeChangeStart", handleStart);
 			router.events.on("routeChangeComplete", handleComplete);
@@ -167,7 +192,12 @@ export default function App({Component, pageProps}: AppProps) {
 	return (
 		<ApolloProvider client={client}>
 			<PostHogProvider client={postHog}>
-				{isPublicPage ? (
+				{isProtectedPage && signedInUser ? (
+					<>
+						<Loading />
+						<Component {...pageProps} />
+					</>
+				) : isPublicPage ? (
 					<>
 						<Loading />
 						<Component {...pageProps} />
@@ -179,6 +209,7 @@ export default function App({Component, pageProps}: AppProps) {
 							title={errorPageContent?.title}
 							paragraph={errorPageContent?.paragraph}
 							buttonLink={errorPageContent?.buttonLink}
+							buttonLinkTwo={errorPageContent?.buttonLinkTwo}
 							backgroundImage={errorPageContent?.backgroundImage}
 						/>
 					</>

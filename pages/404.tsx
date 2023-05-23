@@ -66,6 +66,11 @@ interface INoPageExits {
 				title: string;
 				target: string;
 			};
+			buttonLinkTwo: {
+				url: string;
+				title: string;
+				target: string;
+			};
 			backgroundImage: {
 				sourceUrl: string;
 			};
@@ -103,21 +108,22 @@ const noPageExits: NextPage<INoPageExits> = ({
 				title={themesOptionsContent?.errorPageContent?.title}
 				paragraph={themesOptionsContent?.errorPageContent?.paragraph}
 				buttonLink={themesOptionsContent?.errorPageContent?.buttonLink}
+				buttonLinkTwo={themesOptionsContent?.errorPageContent?.buttonLinkTwo}
 				backgroundImage={
 					themesOptionsContent?.errorPageContent?.backgroundImage?.sourceUrl
 				}
 			/>
 			<Footer
-				footerMenuLinks={footerMenuLinks?.footerMenuLinks}
 				email={themesOptionsContent?.email}
-				industriesMenuLinks={industriesMenuLinks?.industriesMenuLinks}
 				emailTwo={themesOptionsContent?.emailTwo}
 				phoneNumber={themesOptionsContent?.phoneNumber}
 				twitterLink={themesOptionsContent?.twitterLink}
 				facebookLink={themesOptionsContent?.facebookLink}
 				linkedinLink={themesOptionsContent?.linkedinLink}
+				footerMenuLinks={footerMenuLinks?.footerMenuLinks}
 				copyRightText={themesOptionsContent?.copyRightText}
 				phoneNumberTwo={themesOptionsContent?.phoneNumberTwo}
+				industriesMenuLinks={industriesMenuLinks?.industriesMenuLinks}
 			/>
 		</motion.div>
 	);

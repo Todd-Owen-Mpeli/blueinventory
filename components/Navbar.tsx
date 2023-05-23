@@ -11,6 +11,15 @@ import {fadeIn, fadeInUp, stagger} from "../animations/animations";
 // Components
 import NavbarMenuLinks from "./Elements/NavbarMenuLinks";
 
+interface firebaseUser {
+	uid: string;
+	email: string;
+	metadata: string;
+	phoneNumber: string;
+	displayName: string;
+	profileImageURL: string;
+}
+
 interface HeroProps {
 	navbarMenuLinks: [
 		{
@@ -30,13 +39,13 @@ const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 	const [revealUserDropdown, setRevealUserDropdown] = useState(false);
 
 	// Firebase User Details
-	const user = {
+	const user: firebaseUser = {
 		uid: `${auth?.currentUser?.uid}`,
 		email: `${auth?.currentUser?.email}`,
 		metadata: `${auth?.currentUser?.metadata}`,
 		phoneNumber: `${auth?.currentUser?.phoneNumber}`,
 		displayName: `${auth?.currentUser?.displayName}`,
-		profileImageURL: `/${auth?.currentUser?.photoURL}`,
+		profileImageURL: `http://blueinventory.local/wp-content/uploads/2023/04/pexels-linkedin-sales-navigator-2182970-scaled.jpg`,
 	};
 
 	/* Check if user is SIGNED IN if 
@@ -61,8 +70,8 @@ const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 		signOut(auth)
 			.then(() => {
 				// Sign-out successful.
-				router.push("/");
 				console.log("User Sign out Successful");
+				router.push("/");
 			})
 			.catch((error) => {
 				// An error happened.

@@ -13,12 +13,18 @@ interface IProps {
 		title: string;
 		target: string;
 	};
+	buttonLinkTwo: {
+		url: string;
+		title: string;
+		target: string;
+	};
 }
 
 const ErrorPage: FC<IProps> = ({
 	title,
 	paragraph,
 	buttonLink,
+	buttonLinkTwo,
 	backgroundImage,
 }) => {
 	return (
@@ -45,11 +51,11 @@ const ErrorPage: FC<IProps> = ({
 						content={paragraph}
 						tailwindStyling="mx-auto my-10 text-lg leading-relaxed text-center text-white md:max-w-md"
 					/>
-					<div className="flex flex-col items-center justify-center mx-auto md:max-w-max">
+					<div className="flex flex-col items-center justify-center gap-4 mx-auto sm:flex-row sm md:max-w-max">
 						<motion.button
 							variants={fadeInUp}
 							type="button"
-							className="m-auto bg-center bg-no-repeat bg-cover rounded-lg"
+							className="m-auto bg-center bg-no-repeat bg-cover"
 							style={{
 								backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue-pink-red-yellow.svg")`,
 							}}
@@ -57,7 +63,7 @@ const ErrorPage: FC<IProps> = ({
 							<Link
 								href={buttonLink?.url ? buttonLink?.url : `/`}
 								target={buttonLink?.target}
-								className="flex flex-row px-6 py-4 leading-4 text-white transition-all duration-500 ease-in-out bg-transparent rounded-lg lg:py-6 lg:px-20 hover:bg-darkBlue"
+								className="flex flex-row px-6 py-3 leading-4 text-white transition-all duration-500 ease-in-out bg-transparent lg:py-6 lg:px-20 hover:bg-blue"
 							>
 								<svg
 									className="mr-2.5 text-white"
@@ -77,6 +83,24 @@ const ErrorPage: FC<IProps> = ({
 								</svg>
 								<span className="text-base tracking-wider text-white font-[500]">
 									{buttonLink?.title}
+								</span>
+							</Link>
+						</motion.button>
+						<motion.button
+							variants={fadeInUp}
+							type="button"
+							className="m-auto bg-center bg-no-repeat bg-cover"
+							style={{
+								backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-orange-yellow.svg")`,
+							}}
+						>
+							<Link
+								href={buttonLinkTwo?.url ? buttonLinkTwo?.url : `/`}
+								target={buttonLinkTwo?.target}
+								className="flex flex-row px-6 py-3 leading-4 text-white transition-all duration-500 ease-in-out bg-transparent lg:py-6 lg:px-20 hover:bg-goldPrime"
+							>
+								<span className="text-base tracking-wider text-white font-[500]">
+									{buttonLinkTwo?.title}
 								</span>
 							</Link>
 						</motion.button>
