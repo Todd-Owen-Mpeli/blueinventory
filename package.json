@@ -11,7 +11,7 @@
 	"dependencies": {
 		"@apollo/client": "^3.7.14",
 		"@nextui-org/react": "^1.0.0-beta.12",
-		"@stripe/stripe-js": "^1.52.1",
+		"@stripe/stripe-js": "^1.53.0",
 		"@types/node": "^20.1.2",
 		"@types/react": "^18.0.37",
 		"@types/react-dom": "^18.0.11",

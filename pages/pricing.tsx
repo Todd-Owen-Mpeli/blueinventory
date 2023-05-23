@@ -1,6 +1,5 @@
 // Imports
 import React, {useEffect} from "react";
-import Stripe from "stripe";
 import {gql} from "@apollo/client";
 import {motion} from "framer-motion";
 import {client} from "../config/apollo";
