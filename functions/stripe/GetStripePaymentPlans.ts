@@ -86,18 +86,22 @@ export const fetchStripePaymentPlans = async (): Promise<
 
 		// Stripe Standard Plan
 		const stripeStandardPlan: IStripeStandardPlan | any = {
-			name: stripePrices[1]?.product?.name,
-			description: stripePrices[1]?.product?.description,
-			price: stripePrices[1].unit_amount / 100,
-			paymentRecurringInterval: stripePrices[1]?.recurring?.interval,
+			name: stripePrices[1]?.product?.name || "Standard",
+			description:
+				stripePrices[1]?.product?.description ||
+				"Standard Inventory Management Software subscription",
+			price: stripePrices[1]?.unit_amount / 100 || 2999 / 100,
+			paymentRecurringInterval: stripePrices[1]?.recurring?.interval || "month",
 		};
 
 		// Stripe Premium Plan
 		const stripePremiumPlan: IStripePremiumPlan | any = {
-			name: stripePrices[0]?.product?.name,
-			description: stripePrices[0]?.product?.description,
-			price: stripePrices[0].unit_amount / 100,
-			paymentRecurringInterval: stripePrices[0]?.recurring?.interval,
+			name: stripePrices[0]?.product?.name || "Premium",
+			description:
+				stripePrices[0]?.product?.description ||
+				"Premium Inventory Management Software subscription",
+			price: stripePrices[0]?.unit_amount / 100 || 7999 / 100,
+			paymentRecurringInterval: stripePrices[0]?.recurring?.interval || "month",
 		};
 
 		return {stripePrices, stripeStandardPlan, stripePremiumPlan};

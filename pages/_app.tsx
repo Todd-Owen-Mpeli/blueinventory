@@ -138,7 +138,7 @@ export default function App({Component, pageProps}: AppProps) {
 				url === router.asPath &&
 				setTimeout(() => {
 					setLoading(false);
-				}, 7000);
+				}, 5000);
 
 			router.events.on("routeChangeStart", handleStart);
 			router.events.on("routeChangeComplete", handleComplete);

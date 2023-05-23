@@ -7,6 +7,7 @@ const nextConfig = {
 			"mydummysite.co.uk",
 			"images.clerk.dev",
 			"lh3.googleusercontent.com",
+			"cmsblueinventory.com",
 		],
 	},
 };
