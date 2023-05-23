@@ -1,10 +1,9 @@
 // Imports
-import React, {useEffect} from "react";
+import Stripe from "stripe";
 import {gql} from "@apollo/client";
 import {motion} from "framer-motion";
+import React, {useEffect} from "react";
 import {client} from "../config/apollo";
-import {loadStripe} from "@Stripe/stripe-js";
-import {Elements} from "@stripe/react-stripe-js";
 import type {NextPage, GetStaticProps} from "next";
 import {getThemesOptionsContent} from "../functions/themesOptions";
 import {fetchStripePaymentPlans} from "../functions/stripe/GetStripePaymentPlans";
@@ -21,13 +20,6 @@ import Pricing from "@/components/Pricing";
 import HeroTwo from "../components/HeroTwo";
 import Layout from "../components/Layout/Layout";
 import TitleParagraph from "../components/TitleParagraph";
-
-// Make sure to call `loadStripe` outside of a component’s render to avoid
-// recreating the `Stripe` object on every render.
-// Stripe Checkout Session Init
-const stripePromise = loadStripe(
-	`${process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}`
-);
 
 interface IPricing {
 	seo: {
@@ -178,23 +170,22 @@ interface IPricing {
 		];
 	};
 	themesOptionsContent: {
+		address: string;
 		email: string;
 		emailTwo: string;
 		phoneNumber: string;
 		phoneNumberTwo: string;
-		twitterLink: string;
+		copyrightText: string;
 		facebookLink: string;
 		linkedinLink: string;
-		copyRightText: string;
+		twitterLink: string;
+		businessHours: {
+			content: string;
+		};
 		errorPageContent: {
 			title: string;
 			paragraph: string;
 			buttonLink: {
-				url: string;
-				title: string;
-				target: string;
-			};
-			buttonLinkTwo: {
 				url: string;
 				title: string;
 				target: string;
@@ -233,58 +224,54 @@ const pricing: NextPage<IPricing> = ({
 	}, []);
 
 	return (
-		<Elements stripe={stripePromise}>
-			<motion.div
-				exit={{
-					opacity: 0,
-				}}
-				initial="initial"
-				animate="animate"
+		<motion.div
+			exit={{
+				opacity: 0,
+			}}
+			initial="initial"
+			animate="animate"
+		>
+			<Layout
+				seo={seo}
+				pageTitle={pageTitle}
+				themesOptionsContent={themesOptionsContent}
+				footerMenuLinks={footerMenuLinks?.footerMenuLinks}
+				navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks}
+				industriesMenuLinks={industriesMenuLinks?.industriesMenuLinks}
 			>
-				<Layout
-					seo={seo}
-					pageTitle={pageTitle}
-					themesOptionsContent={themesOptionsContent}
-					footerMenuLinks={footerMenuLinks?.footerMenuLinks}
-					navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks}
-					industriesMenuLinks={industriesMenuLinks?.industriesMenuLinks}
-				>
-					<HeroTwo
-						title={content?.heroSection?.title}
-						paragraph={content?.heroSection?.paragraph}
-						backgroundImage={content?.heroSection?.backgroundImage}
-						backgroundVideoUrl={content?.heroSection?.backgroundVideoUrl}
-						backgroundImageOrVideo={
-							content?.heroSection?.backgroundImageOrVideo
-						}
-					/>
+				<HeroTwo
+					title={content?.heroSection?.title}
+					paragraph={content?.heroSection?.paragraph}
+					backgroundImage={content?.heroSection?.backgroundImage}
+					backgroundVideoUrl={content?.heroSection?.backgroundVideoUrl}
+					backgroundImageOrVideo={content?.heroSection?.backgroundImageOrVideo}
+				/>
 
-					<Pricing
-						card={content?.pricing?.card}
-						title={content?.pricing?.title}
-						italic={content?.pricing?.italic}
-						stripePremiumPlan={stripePremiumPlan}
-						pointOne={content?.pricing?.pointOne}
-						pointTwo={content?.pricing?.pointTwo}
-						stripeStandardPlan={stripeStandardPlan}
-						paragraph={content?.pricing?.paragraph}
-						paymentProviders={content?.pricing?.paymentProviders}
-					/>
+				<Pricing
+					card={content?.pricing?.card}
+					title={content?.pricing?.title}
+					italic={content?.pricing?.italic}
+					stripePremiumPlan={stripePremiumPlan}
+					pointOne={content?.pricing?.pointOne}
+					pointTwo={content?.pricing?.pointTwo}
+					stripeStandardPlan={stripeStandardPlan}
+					paragraph={content?.pricing?.paragraph}
+					paymentProviders={content?.pricing?.paymentProviders}
+				/>
 
-					<TitleParagraph
-						title={content?.titleParagraph?.title}
-						paragraph={content?.titleParagraph?.paragraph}
-					/>
+				<TitleParagraph
+					title={content?.titleParagraph?.title}
+					paragraph={content?.titleParagraph?.paragraph}
+				/>
 
-					<CTATwo
-						title={content?.cta?.title}
-						paragraph={content?.cta?.paragraph}
-						buttonLink={content?.cta?.buttonLink}
-						backgroundImage={content?.cta?.backgroundImage?.sourceUrl}
-					/>
-				</Layout>
-			</motion.div>
-		</Elements>
+				<CTATwo
+					title={content?.cta?.title}
+					paragraph={content?.cta?.paragraph}
+					buttonLink={content?.cta?.buttonLink}
+					backgroundImage={content?.cta?.backgroundImage?.sourceUrl}
+				/>
+			</Layout>
+		</motion.div>
 	);
 };
 
