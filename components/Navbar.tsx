@@ -56,7 +56,7 @@ const Navbar: FC<HeroProps> = ({navbarMenuLinks}) => {
 		metadata: `${auth?.currentUser?.metadata}`,
 		phoneNumber: `${auth?.currentUser?.phoneNumber}`,
 		displayName: `${auth?.currentUser?.displayName}`,
-		profileImageURL: `http://blueinventory.local/wp-content/uploads/2023/04/pexels-linkedin-sales-navigator-2182970-scaled.jpg`,
+		profileImageURL: `https://cmsblueinventory.com/wp-content/uploads/2023/04/pexels-linkedin-sales-navigator-2182970-scaled.jpg`,
 	};
 
 	/* Check if user is SIGNED IN if 

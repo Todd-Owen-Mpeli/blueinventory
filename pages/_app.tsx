@@ -108,7 +108,7 @@ export default function App({Component, pageProps}: AppProps) {
 		paragraph:
 			"The page you are looking for is not accessible! Please sign in or go back to homepage.",
 		backgroundImage:
-			"http://blueinventory.local/wp-content/uploads/2023/05/pexels-proxyclick-visitor-management-system-2451566-min-scaled.jpg",
+			"https://cmsblueinventory.com/wp-content/uploads/2023/05/pexels-proxyclick-visitor-management-system-2451566-min-scaled.jpg",
 	};
 
 	// PostHog Cookies Policy
