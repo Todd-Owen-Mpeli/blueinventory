@@ -38,10 +38,33 @@ interface IProps {
 const MetaTag: FunctionComponent<IProps> = ({seo, title}) => {
 	return (
 		<Head>
-			{/* <!-- Website Title --> */}
+			{/* Website Title */}
 			<title key="title">{`${title} | Inventory Management Software`}</title>
 			<meta name="description" content={seo?.metaDesc} />
+			{/* Website Icon */}
 			<link rel="icon" href="/img/Logos/BlueInventory favicon Two.png" />
+			{/* PreLoading fonts for IOS devices */}
+			<link
+				rel="preload"
+				as="font"
+				href="../../styles/fonts/Inter-VariableFont_wght.ttf"
+			/>
+			<link
+				rel="preload"
+				as="font"
+				href="../../styles/fonts/Evolventa-Regular-VariableFont_wght.ttf"
+			/>
+			<link
+				rel="preload"
+				as="font"
+				href="../../styles/fonts/Evolventa-Bold-VariableFont_wght.ttf"
+			/>
+			<link
+				rel="preload"
+				as="font"
+				href="../../styles/fonts/SFTSchriftedSansTRIAL-Medium-VariableFont_wght.ttf"
+			/>
+			{/* Meta Robots */}
 			<meta
 				name="robots"
 				content={`${seo?.metaRobotsNoindex} , ${seo?.metaRobotsNofollow}`}

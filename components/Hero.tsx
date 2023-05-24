@@ -74,7 +74,7 @@ const Hero: FC<HeroProps> = ({
 							/>
 							<motion.div
 								variants={stagger}
-								className="flex flex-col items-center justify-center gap-6 pt-8 lg:justify-start lg:flex-row"
+								className="flex flex-col items-center justify-center gap-6 pt-8 lg:justify-start sm:flex-row"
 							>
 								<motion.button variants={fadeInUp}>
 									<Link

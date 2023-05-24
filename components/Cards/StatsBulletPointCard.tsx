@@ -1,16 +1,18 @@
 // Imports
 import {FC} from "react";
 import Image from "next/image";
-import {motion} from "framer-motion";
-import {fadeInUp} from "../../animations/animations";
 
 interface IProps {
 	bulletPointText: string;
+	tailwindStyling: string;
 }
 
-const StatsBulletPointCard: FC<IProps> = ({bulletPointText}) => {
+const StatsBulletPointCard: FC<IProps> = ({
+	bulletPointText,
+	tailwindStyling,
+}) => {
 	return (
-		<motion.li variants={fadeInUp} className="flex items-start mb-4">
+		<span className="flex items-start">
 			<Image
 				alt=""
 				width={500}
@@ -18,8 +20,10 @@ const StatsBulletPointCard: FC<IProps> = ({bulletPointText}) => {
 				className="w-6 h-6 mr-3"
 				src="/svg/green-checkmark-icon.svg"
 			/>
-			<span className="text-white text-medium">{bulletPointText}</span>
-		</motion.li>
+			<span className={tailwindStyling ? tailwindStyling : `hidden`}>
+				{bulletPointText}
+			</span>
+		</span>
 	);
 };
 

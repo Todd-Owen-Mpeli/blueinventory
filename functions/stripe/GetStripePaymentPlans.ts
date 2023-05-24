@@ -92,7 +92,7 @@ export const fetchStripePaymentPlans = async (): Promise<
 				"Standard Inventory Management Software subscription",
 			price: stripePrices[1]?.unit_amount
 				? stripePrices[1]?.unit_amount / 100
-				: 2999 / 100,
+				: 3999 / 100,
 			paymentRecurringInterval: stripePrices[1]?.recurring?.interval,
 		};
 
@@ -104,7 +104,7 @@ export const fetchStripePaymentPlans = async (): Promise<
 				"Premium Inventory Management Software subscription",
 			price: stripePrices[0]?.unit_amount
 				? stripePrices[0]?.unit_amount / 100
-				: 7999 / 100,
+				: 8999 / 100,
 			paymentRecurringInterval: stripePrices[0]?.recurring?.interval,
 		};
 

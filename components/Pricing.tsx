@@ -528,11 +528,11 @@ const Pricing: FC<IProps> = ({
 					{/* Billing Information */}
 					<motion.div
 						variants={stagger}
-						className="items-center justify-center mt-12 lg:flex"
+						className="flex flex-col items-baseline justify-center max-w-xs mx-auto mt-12 sm:mx-0 sm:max-w-none sm:items-center gap-y-4 gap-x-8 sm:flex-row"
 					>
 						<motion.div
 							variants={fadeInUp}
-							className="flex items-center max-w-xs mb-12 lg:mb-0 sm:mr-24"
+							className="flex items-center max-w-xs lg:mb-0 lg:mr-24"
 						>
 							<div className="flex items-center justify-center flex-shrink-0 w-12 h-12 mr-4 rounded-full bg-goldPrime">
 								<svg
@@ -588,7 +588,7 @@ const Pricing: FC<IProps> = ({
 					{/* Payment Providers */}
 					<motion.div
 						variants={stagger}
-						className="flex flex-wrap justify-center gap-6 mt-20 lg:flex-row"
+						className="flex flex-wrap justify-center gap-6 mt-20 sm:flex-row lg:flex-row"
 					>
 						{paymentProviders.map((keys) => (
 							<PaymentProvidersCard

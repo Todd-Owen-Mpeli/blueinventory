@@ -38,7 +38,33 @@ interface ILayout {
 			};
 		}
 	];
-	themesOptionsContent: any;
+	themesOptionsContent: {
+		email: string;
+		emailTwo: string;
+		phoneNumber: string;
+		phoneNumberTwo: string;
+		twitterLink: string;
+		facebookLink: string;
+		linkedinLink: string;
+		copyrightText: string;
+		errorPageContent: {
+			title: string;
+			paragraph: string;
+			buttonLink: {
+				url: string;
+				title: string;
+				target: string;
+			};
+			buttonLinkTwo: {
+				url: string;
+				title: string;
+				target: string;
+			};
+			backgroundImage: {
+				sourceUrl: string;
+			};
+		};
+	};
 	children: React.ReactNode;
 }
 
@@ -55,7 +81,10 @@ const Layout: FC<ILayout> = ({
 		<>
 			<MetaTag title={pageTitle} seo={seo} />
 
-			<Navbar navbarMenuLinks={navbarMenuLinks} />
+			<Navbar
+				navbarMenuLinks={navbarMenuLinks}
+				themesOptionsContent={themesOptionsContent}
+			/>
 
 			<section className="pt-16">{children}</section>
 

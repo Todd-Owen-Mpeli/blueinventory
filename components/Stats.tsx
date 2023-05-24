@@ -49,18 +49,24 @@ const Stats: FC<IProps> = ({
 				<div className="mx-auto max-w-7xl">
 					<div className="flex flex-wrap items-center -mx-4">
 						<div className="w-full px-4 mb-16 lg:w-1/2 lg:mb-0">
-							<div className="max-w-lg mx-auto lg:mx-0">
-								<h2 className="mb-10 text-5xl font-bold text-white xs:text-6xl md:text-7xl">
+							<div className="mx-auto lg:max-w-lg lg:mx-0">
+								<h2 className="mb-10 text-3xl font-bold text-white lg:text-5xl">
 									{title}
 								</h2>
-								<ul>
+								<motion.ul variants={stagger}>
 									{bulletPoints?.map((keys) => (
-										<StatsBulletPointCard
+										<motion.li
+											className="mb-4"
+											variants={fadeInUp}
 											key={keys?.id || keys?.bulletPoint}
-											bulletPointText={keys?.bulletPoint}
-										/>
+										>
+											<StatsBulletPointCard
+												bulletPointText={keys?.bulletPoint}
+												tailwindStyling={`text-white text-base lg:text-medium`}
+											/>
+										</motion.li>
 									))}
-								</ul>
+								</motion.ul>
 							</div>
 						</div>
 						<div className="w-full px-4 lg:w-1/2">
@@ -76,12 +82,12 @@ const Stats: FC<IProps> = ({
 										content={paragraph}
 										tailwindStyling="mb-10 text-base text-black"
 									/>
-									<div className="max-w-md">
+									<div className="max-w-md mx-auto">
 										<div className="flex flex-col items-center justify-center gap-4 -mx-4 lg:flex-row">
 											<div className="w-full p-4 rounded-sm xs:w-1/2 bg-lightGrey">
 												<motion.div
 													variants={stagger}
-													className="flex flex-col items-baseline justify-start"
+													className="flex flex-col items-center justify-center lg:items-baseline lg:justify-start"
 												>
 													<motion.span
 														variants={fadeInUp}
@@ -97,7 +103,7 @@ const Stats: FC<IProps> = ({
 													</motion.span>
 													<motion.span
 														variants={fadeInUp}
-														className="inline-flex py-1 pl-1.5 pr-2 items-center justify-center rounded-md bg-babyBlue"
+														className="inline-flex py-1 pl-1.5 pr-2 items-center justify-center rounded-md bg-blue"
 													>
 														<Image
 															alt=""
@@ -106,7 +112,7 @@ const Stats: FC<IProps> = ({
 															className="w-3 h-3 mr-1"
 															src="/svg/up-arrow.png"
 														/>
-														<span className="ml-1 text-sm font-semibold text-red-800">
+														<span className="ml-1 text-sm text-white lg:font-semibold">
 															{column?.percentage}
 														</span>
 													</motion.span>
@@ -115,7 +121,7 @@ const Stats: FC<IProps> = ({
 											<div className="w-full p-4 rounded-sm xs:w-1/2 bg-lightGrey">
 												<motion.div
 													variants={stagger}
-													className="flex flex-col items-baseline justify-start xs:pl-8"
+													className="flex flex-col items-center justify-center lg:items-baseline lg:justify-start xs:pl-8"
 												>
 													<motion.span
 														variants={fadeInUp}

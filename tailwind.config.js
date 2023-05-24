@@ -33,7 +33,6 @@ module.exports = {
 			lightGrey: "#f7f7f7",
 
 			// Main colors
-			red: "#e70101",
 			blue: "#2563eb",
 			blueTwo: "#3978ff",
 			darkBlue: "#09275e",
@@ -41,6 +40,8 @@ module.exports = {
 			babyBlue: "#5ac3ff",
 			darkerBlue: "#0d172a",
 			darkerBlueTwo: "#061229",
+			pinkRed: "#e20031",
+			darkPinkRed: "#9a0021",
 			goldPrime: "#e8b042",
 			goldPrimeDark: "#d1a855",
 			goldPrimeDarker: "#b68b36",

@@ -54,7 +54,7 @@ const CTATwo: FC<IProps> = ({
 						<Link
 							href={`${buttonLink?.url}`}
 							target={`${buttonLink?.target}`}
-							className="px-20 py-6 mb-3 text-center text-white transition duration-200 bg-blue hover:bg-goldPrime"
+							className="px-12 py-6 mb-3 text-center text-white transition duration-200  xl:px-20 bg-blue hover:bg-goldPrime"
 						>
 							{buttonLink?.title}
 						</Link>
