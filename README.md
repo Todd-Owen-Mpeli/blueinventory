@@ -2,8 +2,8 @@
 
 1. All images are in 4K resolution, click to enlarge for better viewing.
 
-<img src="public/img/screenshots/BlueInventory-Inventory-Management-Software.jpg" width="750px" height="850px">
-<img src="public/img/screenshots/BlueInventory-Inventory-Management-Software (2).jpg" width="750px" height="850px">
+<img src="public/img/screenshots/BlueInventory-Inventory-Management-Software.jpg" width="1080px" height="850px">
+<img src="public/img/screenshots/BlueInventory-Inventory-Management-Software (2).jpg" width="1080px" height="850px">
 
 # Project Context
 Most of my projects are developed using Client-Side rendering. And this project I wanted to develop a website using Next.js framework, specifically the Server Side Rendering development process. I wanted to expand my knowledge in next.js and and begin into developing with react and react components.
