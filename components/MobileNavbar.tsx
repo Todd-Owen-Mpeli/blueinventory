@@ -97,7 +97,19 @@ const mobileNavbar: FC<NavbarProps> = ({
 									<span className="bottom-[-6px] left-7 absolute w-3.5 h-3.5 bg-brightGreenDash border-2 border-white rounded-full " />
 								</button>
 							</motion.div>
-						) : null}
+						) : (
+							<motion.div variants={fadeInUp} className="relative">
+								<Link href="/">
+									<Image
+										height={500}
+										width={500}
+										alt="Blue Inventory Company Logo Racing"
+										src="/img/Logos/BlueInventory favicon Two.png"
+										className="object-contain object-center w-full h-12"
+									/>
+								</Link>
+							</motion.div>
+						)}
 					</div>
 					<div className="mt-20 lg:mt-0">
 						<motion.ul variants={stagger}>
