@@ -170,22 +170,23 @@ interface IPricing {
 		];
 	};
 	themesOptionsContent: {
-		address: string;
 		email: string;
 		emailTwo: string;
 		phoneNumber: string;
 		phoneNumberTwo: string;
-		copyrightText: string;
+		twitterLink: string;
 		facebookLink: string;
 		linkedinLink: string;
-		twitterLink: string;
-		businessHours: {
-			content: string;
-		};
+		copyrightText: string;
 		errorPageContent: {
 			title: string;
 			paragraph: string;
 			buttonLink: {
+				url: string;
+				title: string;
+				target: string;
+			};
+			buttonLinkTwo: {
 				url: string;
 				title: string;
 				target: string;

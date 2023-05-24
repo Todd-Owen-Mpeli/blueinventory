@@ -168,7 +168,7 @@ interface IContact {
 		twitterLink: string;
 		facebookLink: string;
 		linkedinLink: string;
-		copyRightText: string;
+		copyrightText: string;
 		errorPageContent: {
 			title: string;
 			paragraph: string;

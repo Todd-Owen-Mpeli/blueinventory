@@ -3,13 +3,13 @@ import {FC} from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {motion} from "framer-motion";
-import {useRouter} from "next/router";
 import {getAuth, signOut} from "firebase/auth";
 import styles from "../styles/components/Hero.module.scss";
-import {fadeIn, fadeInUp, stagger} from "../animations/animations";
+import {fadeInUp, stagger} from "../animations/animations";
 
 // Components
 import NavbarMenuLinks from "./Elements/NavbarMenuLinks";
+import {useRouter} from "next/router";
 
 interface NavbarProps {
 	user: {
@@ -50,7 +50,6 @@ const mobileNavbar: FC<NavbarProps> = ({
 	revealMobileMenu,
 }) => {
 	const auth = getAuth();
-	const router = useRouter();
 
 	// Handles User Logout
 	const handleLogout = () => {
@@ -58,7 +57,6 @@ const mobileNavbar: FC<NavbarProps> = ({
 			.then(() => {
 				// Sign-out successful.
 				console.log("User Sign out Successful");
-				router.push("/");
 			})
 			.catch((error) => {
 				// An error happened.

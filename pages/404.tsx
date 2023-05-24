@@ -57,7 +57,7 @@ interface INoPageExits {
 		twitterLink: string;
 		facebookLink: string;
 		linkedinLink: string;
-		copyRightText: string;
+		copyrightText: string;
 		errorPageContent: {
 			title: string;
 			paragraph: string;
@@ -102,7 +102,10 @@ const noPageExits: NextPage<INoPageExits> = ({
 				<link rel="icon" href="/img/Logos/BlueInventory favicon Two.png" />
 			</Head>
 
-			<Navbar navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks} />
+			<Navbar
+				themesOptionsContent={themesOptionsContent}
+				navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks}
+			/>
 
 			<ErrorPage
 				title={themesOptionsContent?.errorPageContent?.title}
@@ -121,7 +124,7 @@ const noPageExits: NextPage<INoPageExits> = ({
 				facebookLink={themesOptionsContent?.facebookLink}
 				linkedinLink={themesOptionsContent?.linkedinLink}
 				footerMenuLinks={footerMenuLinks?.footerMenuLinks}
-				copyRightText={themesOptionsContent?.copyRightText}
+				copyrightText={themesOptionsContent?.copyrightText}
 				phoneNumberTwo={themesOptionsContent?.phoneNumberTwo}
 				industriesMenuLinks={industriesMenuLinks?.industriesMenuLinks}
 			/>

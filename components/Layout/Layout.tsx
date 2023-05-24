@@ -97,7 +97,7 @@ const Layout: FC<ILayout> = ({
 				twitterLink={themesOptionsContent?.twitterLink}
 				facebookLink={themesOptionsContent?.facebookLink}
 				linkedinLink={themesOptionsContent?.linkedinLink}
-				copyRightText={themesOptionsContent?.copyrightText}
+				copyrightText={themesOptionsContent?.copyrightText}
 				phoneNumberTwo={themesOptionsContent?.phoneNumberTwo}
 			/>
 

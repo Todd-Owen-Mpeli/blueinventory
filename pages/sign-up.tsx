@@ -101,7 +101,10 @@ const SignUpPage: NextPage<ISignUpPage> = ({
 			<link rel="icon" href="/img/Logos/BlueInventory favicon Two.png" />
 		</Head>
 
-		<Navbar navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks} />
+		<Navbar
+			themesOptionsContent={themesOptionsContent}
+			navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks}
+		/>
 
 		<section className="container flex flex-col items-center justify-center min-h-screen px-4 py-10 mx-auto overflow-hidden lg:pt-36 xxl:pt-24">
 			<SignUp
@@ -118,7 +121,7 @@ const SignUpPage: NextPage<ISignUpPage> = ({
 			facebookLink={themesOptionsContent?.facebookLink}
 			linkedinLink={themesOptionsContent?.linkedinLink}
 			footerMenuLinks={footerMenuLinks?.footerMenuLinks}
-			copyRightText={themesOptionsContent?.copyrightText}
+			copyrightText={themesOptionsContent?.copyrightText}
 			phoneNumberTwo={themesOptionsContent?.phoneNumberTwo}
 			industriesMenuLinks={industriesMenuLinks?.industriesMenuLinks}
 		/>

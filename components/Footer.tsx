@@ -16,7 +16,7 @@ interface FooterProps {
 	twitterLink: string;
 	facebookLink: string;
 	linkedinLink: string;
-	copyRightText: string;
+	copyrightText: string;
 
 	// Menu Links
 	footerMenuLinks: [
@@ -47,7 +47,7 @@ const Footer: FC<FooterProps> = ({
 	twitterLink,
 	facebookLink,
 	linkedinLink,
-	copyRightText,
+	copyrightText,
 	footerMenuLinks,
 	industriesMenuLinks,
 }) => {
@@ -239,7 +239,7 @@ const Footer: FC<FooterProps> = ({
 				<div className="flex flex-col items-center justify-between -m-6 lg:flex-row">
 					<div className="w-auto p-6">
 						<motion.p variants={fadeIn} className="text-sm text-white">
-							{copyRightText}
+							{copyrightText}
 						</motion.p>
 					</div>
 					<div className="w-auto p-6">
