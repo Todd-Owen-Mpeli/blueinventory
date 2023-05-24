@@ -30,10 +30,13 @@
 	overflow: hidden;
 	visibility: hidden;
 	transition: all 500ms ease-in-out;
-	clip-path: circle(10px at calc(100% - 65px) 65px);
+	clip-path: circle(10px at calc(100% - 45px) 45px);
+
+	@media screen and (min-width: 768px) {
+		width: 40%;
+	}
 
 	@media screen and (min-width: 1280px) {
-		width: 40%;
 		display: none;
 	}
 }

@@ -64,7 +64,7 @@ const Hero: FC<HeroProps> = ({
 						<div className="max-w-2xl px-6 py-10 bg-white rounded-sm sm:p-10">
 							<motion.h1
 								variants={fadeInUp}
-								className="text-center lg:text-left tracking-normal leading-[3.5rem] font-semibold text-4xl sm:text-6xl lg:text-7xl"
+								className="text-center lg:text-left tracking-normal leading-normal sm:leading-[3.5rem] font-semibold text-2xl sm:text-6xl lg:text-7xl"
 							>
 								{title}
 							</motion.h1>

@@ -29,26 +29,26 @@ const ContactInfo: FC<IProps> = ({
 	return (
 		<section className="py-20 bg-white">
 			<div className="container px-4 mx-auto">
-				<div className="flex flex-wrap items-center justify-between -mx-4">
-					<div className="w-full px-4 mb-12 lg:w-auto lg:mb-0">
+				<div className="flex flex-wrap items-center justify-around -mx-4">
+					<div className="w-full px-4 lg:w-auto lg:mb-0">
 						<div className="max-w-lg">
 							<motion.h2 variants={fadeInUp} className="text-4xl font-semibold">
 								{title}
 							</motion.h2>
 							<Paragraph
 								content={paragraph}
-								tailwindStyling="my-10 py-10 w-full lg:max-w-3xl mt-4 text-center lg:text-left text-black"
+								tailwindStyling="py-10 w-full lg:max-w-3xl text-center lg:text-left text-black"
 							/>
 						</div>
 					</div>
 					<motion.div
 						variants={stagger}
-						className="flex flex-col w-full gap-8 lg:w-auto lg:mr-28"
+						className="flex flex-col w-full gap-8 px-4 lg:w-auto lg:mr-28"
 					>
 						<motion.div variants={stagger}>
 							<motion.h3
 								variants={fadeInUp}
-								className="mb-4 text-2xl font-semibold"
+								className="mb-4 text-2xl font-semibold text-center lg:text-left"
 							>
 								Address
 							</motion.h3>
@@ -60,11 +60,14 @@ const ContactInfo: FC<IProps> = ({
 						<motion.div variants={stagger}>
 							<motion.h3
 								variants={fadeInUp}
-								className="mb-4 text-2xl font-semibold"
+								className="mb-4 text-2xl font-semibold text-center lg:text-left"
 							>
 								Contacts
 							</motion.h3>
-							<motion.div variants={stagger} className="flex flex-col gap-3">
+							<motion.div
+								variants={stagger}
+								className="flex flex-col gap-3 text-center lg:text-left"
+							>
 								<motion.div variants={fadeInUp}>
 									<Link
 										className="font-medium tracking-wide text-black hover:text-goldPrime"

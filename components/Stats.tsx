@@ -95,27 +95,29 @@ const Stats: FC<IProps> = ({
 													>
 														{column?.title}
 													</motion.span>
-													<motion.span
-														variants={fadeInUp}
-														className="mb-2 text-5xl font-bold "
-													>
-														{column?.values}
-													</motion.span>
-													<motion.span
-														variants={fadeInUp}
-														className="inline-flex py-1 pl-1.5 pr-2 items-center justify-center rounded-md bg-blue"
-													>
-														<Image
-															alt=""
-															width={500}
-															height={500}
-															className="w-3 h-3 mr-1"
-															src="/svg/up-arrow.png"
-														/>
-														<span className="ml-1 text-sm text-white lg:font-semibold">
-															{column?.percentage}
-														</span>
-													</motion.span>
+													<div className="flex flex-wrap gap-4">
+														<motion.span
+															variants={fadeInUp}
+															className="mb-2 text-5xl font-bold "
+														>
+															{column?.values}
+														</motion.span>
+														<motion.span
+															variants={fadeInUp}
+															className="flex my-auto h-fit py-1 pl-1.5 pr-2 items-center justify-center rounded-md bg-blue"
+														>
+															<Image
+																alt=""
+																width={500}
+																height={500}
+																className="w-3 h-3 mr-1"
+																src="/svg/up-arrow.png"
+															/>
+															<span className="ml-1 text-sm text-white lg:font-semibold">
+																{column?.percentage}
+															</span>
+														</motion.span>
+													</div>
 												</motion.div>
 											</div>
 											<div className="w-full p-4 rounded-sm xs:w-1/2 bg-lightGrey">
@@ -129,27 +131,29 @@ const Stats: FC<IProps> = ({
 													>
 														{columnTwo?.title}
 													</motion.span>
-													<motion.span
-														variants={fadeInUp}
-														className="mb-2 text-5xl font-bold"
-													>
-														{columnTwo?.values}
-													</motion.span>
-													<motion.span
-														variants={fadeInUp}
-														className="inline-flex py-1 pl-1.5 pr-2 items-center justify-center rounded-md bg-goldPrime"
-													>
-														<Image
-															alt=""
-															width={500}
-															height={500}
-															className="w-3 h-3 mr-1"
-															src="/svg/up-arrow.png"
-														/>
-														<span className="ml-1 text-sm font-semibold text-green-800">
-															{columnTwo?.percentage}
-														</span>
-													</motion.span>
+													<div className="flex flex-wrap gap-4">
+														<motion.span
+															variants={fadeInUp}
+															className="mb-2 text-5xl font-bold"
+														>
+															{columnTwo?.values}
+														</motion.span>
+														<motion.span
+															variants={fadeInUp}
+															className="flex my-auto h-fit py-1 pl-1.5 pr-2 items-center justify-center rounded-md bg-goldPrime"
+														>
+															<Image
+																alt=""
+																width={500}
+																height={500}
+																className="w-3 h-3 mr-1"
+																src="/svg/up-arrow.png"
+															/>
+															<span className="ml-1 text-sm font-semibold text-green-800">
+																{columnTwo?.percentage}
+															</span>
+														</motion.span>
+													</div>
 												</motion.div>
 											</div>
 										</div>

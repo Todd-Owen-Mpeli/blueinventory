@@ -57,7 +57,7 @@ const CTATwo: FC<IProps> = ({
 							<motion.div variants={stagger} className="mx-auto lg:max-w-md">
 								<motion.h4
 									variants={fadeInUp}
-									className="mb-5 text-4xl font-bold text-white"
+									className="mb-5 text-4xl font-bold text-center text-white sm:text-left"
 								>
 									{title}
 								</motion.h4>
@@ -69,7 +69,10 @@ const CTATwo: FC<IProps> = ({
 									variants={stagger}
 									className="flex flex-col flex-wrap sm:flex-row sm:items-center"
 								>
-									<motion.div variants={fadeInUp}>
+									<motion.div
+										variants={fadeInUp}
+										className={buttonLink?.url ? `block` : `hidden`}
+									>
 										<Link
 											href={`${buttonLink?.url}`}
 											target={`${buttonLink?.target}`}
@@ -78,7 +81,10 @@ const CTATwo: FC<IProps> = ({
 											{buttonLink?.title}
 										</Link>
 									</motion.div>
-									<motion.div variants={fadeInUp}>
+									<motion.div
+										variants={fadeInUp}
+										className={buttonLinkTwo?.url ? `block` : `hidden`}
+									>
 										<Link
 											href={`${buttonLinkTwo?.url}`}
 											target={`${buttonLinkTwo?.target}`}
@@ -103,7 +109,7 @@ const CTATwo: FC<IProps> = ({
 											clipRule="evenodd"
 											viewBox="0 0 512 459.422"
 											fill="#ffffff"
-											className="object-cover object-center w-14 h-14"
+											className="object-cover object-center mx-auto sm:mx-0 w-14 h-14"
 										>
 											<path
 												fillRule="nonzero"
@@ -116,7 +122,7 @@ const CTATwo: FC<IProps> = ({
 									</h5>
 									<Paragraph
 										content={content?.paragraph}
-										tailwindStyling="w-full lg:max-w-3xl mt-4 text-center lg:text-left text-white"
+										tailwindStyling="w-full lg:max-w-3xl mt-4 text-left text-white"
 									/>
 								</motion.div>
 							</motion.div>

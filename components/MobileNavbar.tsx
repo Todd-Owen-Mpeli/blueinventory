@@ -73,7 +73,7 @@ const mobileNavbar: FC<NavbarProps> = ({
 					: `hidden ${styles.nav}`
 			}
 		>
-			<div className="fixed inset-0 opacity-25 bg-darkerBlue" />
+			<div className="fixed inset-0 opacity-60 bg-darkBlue" />
 			<nav className="relative flex flex-col justify-between w-full h-full px-6 py-6 overflow-x-hidden overflow-y-auto bg-darkBlue">
 				<div>
 					<div className="flex flex-col items-baseline justify-center mb-16">
@@ -246,7 +246,7 @@ const mobileNavbar: FC<NavbarProps> = ({
 							</motion.li>
 						</motion.ul>
 					</div>
-					<div className="flex flex-col justify-end gap-4">
+					<div className="flex flex-col justify-end gap-4 mb-4">
 						<div>
 							{signedInUser ? (
 								<div className="flex flex-col items-baseline justify-between gap-x-4 gap-y-8">
@@ -313,7 +313,7 @@ const mobileNavbar: FC<NavbarProps> = ({
 										}}
 									>
 										<Link
-											className="w-full px-8 py-3 text-sm tracking-widest text-center text-white uppercase bg-transparent rounded-sm hover:bg-pinkRed focus:ring-none focus:ring-pinkRed"
+											className="w-full px-8 py-3 text-sm tracking-widest text-center text-white uppercase bg-transparent rounded-sm hover:bg-blue focus:ring-none focus:ring-blue"
 											href={`/sign-up`}
 										>
 											Get Started

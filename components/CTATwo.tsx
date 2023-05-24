@@ -50,11 +50,14 @@ const CTATwo: FC<IProps> = ({
 							tailwindStyling="w-full lg:max-w-[40rem] mt-4 text-center lg:text-left text-white"
 						/>
 					</motion.div>
-					<motion.div variants={fadeInUp}>
+					<motion.div
+						variants={fadeInUp}
+						className={buttonLink?.url ? `block` : `hidden`}
+					>
 						<Link
 							href={`${buttonLink?.url}`}
 							target={`${buttonLink?.target}`}
-							className="px-12 py-6 mb-3 text-center text-white transition duration-200  xl:px-20 bg-blue hover:bg-goldPrime"
+							className="px-12 py-6 mb-3 text-center text-white transition duration-200 xl:px-20 bg-blue hover:bg-goldPrime"
 						>
 							{buttonLink?.title}
 						</Link>
