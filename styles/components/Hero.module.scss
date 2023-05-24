@@ -22,7 +22,7 @@
 	top: 0;
 	right: 0;
 	bottom: 0;
-	width: 40%;
+	width: 80%;
 	z-index: 998;
 	display: flex;
 	position: fixed;
@@ -33,6 +33,7 @@
 	clip-path: circle(10px at calc(100% - 65px) 65px);
 
 	@media screen and (min-width: 1280px) {
+		width: 40%;
 		display: none;
 	}
 }
