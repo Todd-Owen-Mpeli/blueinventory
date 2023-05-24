@@ -26,12 +26,12 @@ interface IProps {
 
 const TitleThreeContentGrid: FC<IProps> = ({title, contentGrid}) => {
 	return (
-		<section className="overflow-hidden bg-white py-28">
+		<section className="py-12 overflow-hidden bg-white sm:py-28">
 			<div className="container px-4 mx-auto">
-				<div className="pb-20 mb-16 border-b border-grey">
+				<div className="pb-12 mb-16 border-b sm:pb-20 border-grey">
 					<motion.h2
 						variants={fadeInUp}
-						className="text-6xl font-bold leading-[2.75rem] xl:text-6xl tracking-px-n md:max-w-3xl"
+						className="text-xl font-bold leading-normal xl:leading-[2.75rem] xl:text-6xl tracking-px-n md:max-w-3xl"
 					>
 						{title}
 					</motion.h2>

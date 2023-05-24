@@ -21,8 +21,9 @@
 
 // Font Stack Properties
 $fontStyle_dashboard: "Inter", sans-serif;
-$fontStyle_main: "EvolventaBold", sans-serif;
-$fontStyle_body: "SFTSchriftedSansTRIALMedium", sans-serif;
+$fontStyle_main: "EvolventaBold", "SFTSchriftedSansTRIALMedium", "Inter",
+	sans-serif;
+$fontStyle_body: "SFTSchriftedSansTRIALMedium", "Inter", sans-serif;
 
 // Font Sizes
 $fontSize_xSmall: 0.75rem;

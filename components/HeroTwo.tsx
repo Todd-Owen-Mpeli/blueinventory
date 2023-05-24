@@ -90,7 +90,7 @@ const HeroTwo: FC<HeroProps> = ({
 					<div className="max-w-3xl">
 						<motion.h1
 							variants={fadeInUp}
-							className="flex flex-col text-center mb-3 text-6xl md:text-7xl text-white font-bold leading-normal lg:leading-[4rem]"
+							className="flex flex-col text-center mb-0 sm:mb-3 text-2xl sm:text-6xl lg:text-7xl text-white font-bold leading-normal sm:leading-[3.5rem]"
 						>
 							{title}
 						</motion.h1>
