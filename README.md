@@ -14,3 +14,9 @@ This is a Next.js 13 project Inventory Management SAAS (Software as a Service) W
 
 # My Objective
 To further learn Firebase backen, fire cloud storage and Next.js 13 framework.
+
+# Deployment
+
+Deployed with vercel here: 
+
+a). https://blueinventory.vercel.app/
