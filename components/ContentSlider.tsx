@@ -165,10 +165,11 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 	return (
 		<section className="w-full h-full">
 			<div
-				className="h-[100vh] sm:h-[65vh] lg:h-[100vh] grid relative gap-y-[2vh]"
+				className="h-[100vh] sm:h-[65vh] lg:h-[100vh] grid relative gap-y-[2vh] bg-center bg-no-repeat bg-cover"
 				style={{
 					gridTemplateRows: "1fr 3fr 1.5fr",
 					gridTemplateColumns: "50px 1fr 1fr 1fr 1fr 50px",
+					backgroundImage: `url("${content?.singleOperationalInsightPost?.heroSection?.backgroundImage?.sourceUrl}")`,
 				}}
 			>
 				<div
