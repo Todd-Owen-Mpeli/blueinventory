@@ -99,8 +99,8 @@ const HeroTwo: FC<HeroProps> = ({
 					</div>
 					<motion.div
 						initial={initial}
-						viewport={{once: true}}
 						whileInView={fadeInUp}
+						viewport={{once: true}}
 						className="max-w-xl"
 					>
 						<Paragraph

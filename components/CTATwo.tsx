@@ -54,8 +54,8 @@ const CTATwo: FC<IProps> = ({
 					</motion.div>
 					<motion.div
 						initial={initial}
-						viewport={{once: true}}
 						whileInView={fadeInUp}
+						viewport={{once: true}}
 						className={buttonLink?.url ? `block` : `hidden`}
 					>
 						<Link

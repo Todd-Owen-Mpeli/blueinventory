@@ -37,8 +37,8 @@ const titleParagraph: FC<IProps> = ({title, paragraph}) => {
 				<div className="flex flex-col">
 					<motion.div
 						initial={initial}
-						viewport={{once: true}}
 						whileInView={fadeInUp}
+						viewport={{once: true}}
 						className="w-full py-16 mx-auto sm:py-20 lg:max-w-3xl"
 					>
 						<h2 className="text-center tracking-normal leading-[2.75rem] font-[900] text-3xl md:text-4xl">

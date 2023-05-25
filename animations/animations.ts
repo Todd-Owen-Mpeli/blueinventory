@@ -2,30 +2,20 @@
 Custom reusable Animation Properties/variables */
 
 interface FadeInTwo {
-	initial: {
-		opacity: number;
-	};
-	animate: {
-		opacity: number;
-		transition: {
-			duration: number;
-			delay: number;
-			ease: string;
-		};
+	opacity: number;
+	transition: {
+		duration: number;
+		delay: number;
+		ease: string;
 	};
 }
 
 export const fadeInTwo: FadeInTwo = {
-	initial: {
-		opacity: 0,
-	},
-	animate: {
-		opacity: 1,
-		transition: {
-			duration: 1,
-			delay: 2,
-			ease: "easeOut",
-		},
+	opacity: 1,
+	transition: {
+		duration: 1,
+		delay: 2,
+		ease: "easeOut",
 	},
 };
 
@@ -81,7 +71,7 @@ interface Stagger {
 }
 
 export const initial: Initial | any = {
-	y: 60,
+	y: 30,
 	opacity: 0,
 };
 

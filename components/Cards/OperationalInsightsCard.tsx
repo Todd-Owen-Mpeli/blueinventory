@@ -59,8 +59,8 @@ const OperationalInsightsCard: FC<IProps> = ({
 				<Link href={uri ? `operational-insights${uri}` : `/`}>
 					<motion.h2
 						initial={initial}
-						viewport={{once: true}}
 						whileInView={fadeInUp}
+						viewport={{once: true}}
 						className="mb-2 text-xl font-semibold text-darkBlue font-heading"
 					>
 						{title}

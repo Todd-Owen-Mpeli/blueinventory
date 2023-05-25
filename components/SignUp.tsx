@@ -75,13 +75,13 @@ const SignUp: FC<IProps> = ({title, paragraph}) => {
 			>
 				<motion.div
 					initial={initial}
-					viewport={{once: true}}
 					whileInView={stagger}
+					viewport={{once: true}}
 				>
 					<motion.h3
 						initial={initial}
-						viewport={{once: true}}
 						whileInView={fadeInUp}
+						viewport={{once: true}}
 						className="mb-4 text-lg font-semibold text-darkBlue"
 					>
 						{title}
@@ -93,14 +93,14 @@ const SignUp: FC<IProps> = ({title, paragraph}) => {
 				</motion.div>
 				<motion.div
 					initial={initial}
-					viewport={{once: true}}
 					whileInView={stagger}
+					viewport={{once: true}}
 					className="flex items-center gap-4 my-6 -mx-2"
 				>
 					<motion.button
 						initial={initial}
-						viewport={{once: true}}
 						whileInView={fadeInUp}
+						viewport={{once: true}}
 						onClick={handleSignUpWithGoogle}
 					>
 						<span className="flex items-center justify-center w-12 h-12">

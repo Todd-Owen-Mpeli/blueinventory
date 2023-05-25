@@ -48,8 +48,8 @@ const operationalInsights: FC<IProps> = ({
 			<div className="container px-4 mx-auto">
 				<motion.div
 					initial={initial}
-					viewport={{once: true}}
 					whileInView={stagger}
+					viewport={{once: true}}
 					className="max-w-2xl mx-auto mb-24 text-center lg:max-w-5xl"
 				>
 					<motion.h1
@@ -82,8 +82,8 @@ const operationalInsights: FC<IProps> = ({
 
 				<motion.div
 					initial={initial}
-					viewport={{once: true}}
 					whileInView={stagger}
+					viewport={{once: true}}
 					className="grid gap-4 mb-16 -m-4 sm:gap-y-2 sm:gap-x-0 lg:gap-4 grid-col md:grid-cols-2 lg:grid-cols-3"
 				>
 					{operationalInsights.map((keys) => (

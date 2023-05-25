@@ -114,15 +114,15 @@ const Pricing: FC<IProps> = ({
 			<div className="container px-4 mx-auto">
 				<motion.div
 					initial={initial}
-					viewport={{once: true}}
 					whileInView={stagger}
+					viewport={{once: true}}
 					className="mx-auto max-w-8xl"
 				>
 					{/* Payment Options Cards */}
 					<motion.div
 						initial={initial}
-						viewport={{once: true}}
 						whileInView={fadeInUp}
+						viewport={{once: true}}
 						className="mb-16"
 					>
 						<motion.div

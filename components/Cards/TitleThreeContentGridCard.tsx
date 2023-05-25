@@ -25,21 +25,21 @@ const TitleThreeContentGridCard: FC<IProps> = ({
 	return (
 		<motion.div
 			initial={initial}
-			viewport={{once: true}}
 			whileInView={fadeInUp}
+			viewport={{once: true}}
 			className="w-full p-8 md:w-1/3"
 		>
 			<div className="md:max-w-md">
 				<motion.div
 					initial={initial}
-					viewport={{once: true}}
 					whileInView={stagger}
+					viewport={{once: true}}
 					className="flex flex-col justify-between h-full"
 				>
 					<motion.div
 						initial={initial}
-						viewport={{once: true}}
 						whileInView={fadeInUp}
+						viewport={{once: true}}
 						className="mb-7"
 					>
 						<h3 className="text-xl font-semibold leading-snug mb-7">{title}</h3>
@@ -50,8 +50,8 @@ const TitleThreeContentGridCard: FC<IProps> = ({
 					</motion.div>
 					<motion.div
 						initial={initial}
-						viewport={{once: true}}
 						whileInView={fadeInUp}
+						viewport={{once: true}}
 						className={buttonLink?.url ? `block` : `hidden`}
 					>
 						<Link

@@ -59,14 +59,14 @@ const contentImageCard: FC<IProps> = ({
 			>
 				<motion.div
 					initial={initial}
-					viewport={{once: true}}
 					whileInView={stagger}
+					viewport={{once: true}}
 					className="max-w-2xl p-10 bg-white"
 				>
 					<motion.h2
 						initial={initial}
-						viewport={{once: true}}
 						whileInView={fadeInUp}
+						viewport={{once: true}}
 						className="text-flatGreen text-center lg:text-left tracking-normal leading-[2.75rem] font-semibold text-3xl md:text-4xl"
 					>
 						{title}

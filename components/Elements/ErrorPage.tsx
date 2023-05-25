@@ -43,8 +43,8 @@ const ErrorPage: FC<IProps> = ({
 				<div className="container p-0 mx-auto">
 					<motion.h1
 						initial={initial}
-						viewport={{once: true}}
 						whileInView={fadeInUp}
+						viewport={{once: true}}
 						className="mb-4 text-5xl lg:text-7xl text-white text-center font-[600] font-heading leading-tight"
 					>
 						{title}

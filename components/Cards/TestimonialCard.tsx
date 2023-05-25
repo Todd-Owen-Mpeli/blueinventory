@@ -63,14 +63,14 @@ const TestimonialCard: FC<IProps> = ({
 				/>
 				<motion.div
 					initial={initial}
-					viewport={{once: true}}
 					whileInView={stagger}
+					viewport={{once: true}}
 					className="flex items-center"
 				>
 					<motion.div
 						initial={initial}
-						viewport={{once: true}}
 						whileInView={fadeInUp}
+						viewport={{once: true}}
 					>
 						<Image
 							alt={image?.altText}
@@ -82,8 +82,8 @@ const TestimonialCard: FC<IProps> = ({
 					</motion.div>
 					<motion.div
 						initial={initial}
-						viewport={{once: true}}
 						whileInView={fadeInUp}
+						viewport={{once: true}}
 					>
 						<h4 className="text-sm font-medium">{title}</h4>
 						<span className="text-sm text-black">{jobPosition}</span>
