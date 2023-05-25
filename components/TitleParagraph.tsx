@@ -2,7 +2,7 @@
 import {FC} from "react";
 import {motion} from "framer-motion";
 import styled from "styled-components";
-import {fadeInUp} from "../animations/animations";
+import {initial, fadeInUp} from "../animations/animations";
 
 // Components
 import Paragraph from "./Elements/Paragraph";
@@ -36,7 +36,9 @@ const titleParagraph: FC<IProps> = ({title, paragraph}) => {
 			<div className="container p-0 mx-auto">
 				<div className="flex flex-col">
 					<motion.div
-						variants={fadeInUp}
+						initial={initial}
+						viewport={{once: true}}
+						whileInView={fadeInUp}
 						className="w-full py-16 mx-auto sm:py-20 lg:max-w-3xl"
 					>
 						<h2 className="text-center tracking-normal leading-[2.75rem] font-[900] text-3xl md:text-4xl">

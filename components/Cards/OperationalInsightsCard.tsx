@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import {motion} from "framer-motion";
 import DOMPurify from "isomorphic-dompurify";
-import {fadeInUp, stagger} from "../../animations/animations";
+import {initial, fadeInUp, stagger} from "../../animations/animations";
 
 interface IProps {
 	uri: string;
@@ -51,19 +51,27 @@ const OperationalInsightsCard: FC<IProps> = ({
 				</Link>
 			</div>
 			<motion.div
-				variants={stagger}
+				initial={initial}
+				viewport={{once: true}}
+				whileInView={stagger}
 				className="flex flex-col items-baseline justify-between px-4 py-10"
 			>
 				<Link href={uri ? `operational-insights${uri}` : `/`}>
 					<motion.h2
-						variants={fadeInUp}
+						initial={initial}
+						viewport={{once: true}}
+						whileInView={fadeInUp}
 						className="mb-2 text-xl font-semibold text-darkBlue font-heading"
 					>
 						{title}
 					</motion.h2>
 				</Link>
 
-				<motion.div variants={fadeInUp}>
+				<motion.div
+					initial={initial}
+					viewport={{once: true}}
+					whileInView={fadeInUp}
+				>
 					<div
 						className={
 							paragraph
@@ -73,7 +81,11 @@ const OperationalInsightsCard: FC<IProps> = ({
 						dangerouslySetInnerHTML={createTrimmedParagraphMarkup(paragraph)}
 					/>
 				</motion.div>
-				<motion.div variants={fadeInUp}>
+				<motion.div
+					initial={initial}
+					viewport={{once: true}}
+					whileInView={fadeInUp}
+				>
 					<Link
 						href={uri ? `operational-insights${uri}` : `/`}
 						className="underline text-blue hover:text-goldPrime"

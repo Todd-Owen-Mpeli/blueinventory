@@ -2,7 +2,7 @@
 import {FC} from "react";
 import Image from "next/image";
 import {motion} from "framer-motion";
-import {fadeInUp} from "../../animations/animations";
+import {initial, fadeInUp} from "../../animations/animations";
 
 interface IProps {
 	image: {
@@ -17,7 +17,12 @@ interface IProps {
 
 const PaymentProvidersCard: FC<IProps> = ({image}) => {
 	return (
-		<motion.div variants={fadeInUp} className="w-auto">
+		<motion.div
+			initial={initial}
+			viewport={{once: true}}
+			whileInView={fadeInUp}
+			className="w-auto"
+		>
 			<Image
 				alt={image?.altText}
 				src={image?.sourceUrl}

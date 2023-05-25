@@ -4,7 +4,13 @@ import React, {useState, FC} from "react";
 import {sendContactForm} from "../pages/api/contactForm";
 import ReCAPTCHA from "react-google-recaptcha";
 import {useFormik, Formik, Field, Form} from "formik";
-import {fadeIn, fadeInUp, stagger} from "../animations/animations";
+import {
+	initial,
+	initialTwo,
+	fadeIn,
+	fadeInUp,
+	stagger,
+} from "../animations/animations";
 
 // Styling
 import styles from "../styles/components/ContactForm.module.scss";
@@ -134,7 +140,9 @@ const ContactForm: FC<IProps> = ({title, backgroundImage}) => {
 					>
 						<Form className="container mx-auto transition-all ease-in-out duration-[0.5s] md:max-w-xl shadow-12xl">
 							<motion.h3
-								variants={fadeIn}
+								initial={initialTwo}
+								viewport={{once: true}}
+								whileInView={fadeIn}
 								className="mx-auto mb-16 text-xl font-semibold text-center uppercase sm:text-2xl"
 							>
 								{title}
@@ -142,7 +150,9 @@ const ContactForm: FC<IProps> = ({title, backgroundImage}) => {
 
 							{isLoading ? (
 								<motion.div
-									variants={fadeIn}
+									initial={initialTwo}
+									viewport={{once: true}}
+									whileInView={fadeIn}
 									className="flex items-center justify-center my-4 mb-8 gap-x-2"
 								>
 									<h4 className="text-lg font-semibold text-center uppercase text-brightGreen">
@@ -151,8 +161,17 @@ const ContactForm: FC<IProps> = ({title, backgroundImage}) => {
 								</motion.div>
 							) : null}
 
-							<motion.div variants={stagger} className="flex flex-col gap-4">
-								<motion.div variants={fadeInUp}>
+							<motion.div
+								initial={initial}
+								viewport={{once: true}}
+								whileInView={stagger}
+								className="flex flex-col gap-4"
+							>
+								<motion.div
+									initial={initial}
+									viewport={{once: true}}
+									whileInView={fadeInUp}
+								>
 									{formik?.touched?.firstName && formik?.errors?.firstName ? (
 										<div>
 											<p className="py-1 text-left text-tiny text-darkBlue font-[400]">
@@ -170,7 +189,11 @@ const ContactForm: FC<IProps> = ({title, backgroundImage}) => {
 										className="px-4 py-3 w-full text-darkGrey font-[400] placeholder-darkGrey bg-white bg-opacity-50 outline-none border-[1px] border-darkGrey active:border-darkBlue focus:border-darkBlue focus:ring-[1px] focus:ring-darkBlue"
 									/>
 								</motion.div>
-								<motion.div variants={fadeInUp}>
+								<motion.div
+									initial={initial}
+									viewport={{once: true}}
+									whileInView={fadeInUp}
+								>
 									{formik?.touched?.lastName && formik?.errors?.lastName ? (
 										<div>
 											<p className="py-1 text-left text-tiny text-darkBlue font-[400]">
@@ -188,7 +211,11 @@ const ContactForm: FC<IProps> = ({title, backgroundImage}) => {
 										className="px-4 py-3 w-full text-darkGrey font-[400] placeholder-darkGrey bg-white bg-opacity-50 outline-none border-[1px] border-darkGrey active:border-darkBlue focus:border-darkBlue focus:ring-[1px] focus:ring-darkBlue"
 									/>
 								</motion.div>
-								<motion.div variants={fadeInUp}>
+								<motion.div
+									initial={initial}
+									viewport={{once: true}}
+									whileInView={fadeInUp}
+								>
 									{formik?.errors?.email ? (
 										<div>
 											<p className="py-1 text-left text-tiny text-darkBlue font-[400]">
@@ -207,7 +234,11 @@ const ContactForm: FC<IProps> = ({title, backgroundImage}) => {
 										className="px-4 py-3 w-full text-darkGrey font-[400] placeholder-darkGrey bg-white bg-opacity-50 outline-none border-[1px] border-darkGrey active:border-darkBlue focus:border-darkBlue focus:ring-[1px] focus:ring-darkBlue"
 									/>
 								</motion.div>
-								<motion.div variants={fadeInUp}>
+								<motion.div
+									initial={initial}
+									viewport={{once: true}}
+									whileInView={fadeInUp}
+								>
 									{formik?.touched?.subject && formik?.errors?.subject ? (
 										<div>
 											<p className="py-1 text-left text-tiny text-darkBlue font-[400]">
@@ -226,7 +257,11 @@ const ContactForm: FC<IProps> = ({title, backgroundImage}) => {
 										className="px-4 py-3 w-full text-darkGrey font-[400] placeholder-darkGrey bg-white bg-opacity-50 outline-none border-[1px] border-darkGrey active:border-darkBlue focus:border-darkBlue focus:ring-[1px] focus:ring-darkBlue"
 									/>
 								</motion.div>
-								<motion.div variants={fadeInUp}>
+								<motion.div
+									initial={initial}
+									viewport={{once: true}}
+									whileInView={fadeInUp}
+								>
 									{formik?.touched?.message && formik?.errors?.message ? (
 										<div>
 											<p className="py-1 text-left text-tiny text-darkBlue font-[400]">
@@ -245,14 +280,20 @@ const ContactForm: FC<IProps> = ({title, backgroundImage}) => {
 										className="p-4 w-full h-48 font-[400] text-darkGrey placeholder-darkGrey bg-white bg-opacity-50 outline-none border-[1px] border-darkGrey active:border-darkBlue focus:border-darkBlue resize-none focus:ring-[1px] focus:ring-darkBlue"
 									/>
 								</motion.div>
-								<motion.div variants={fadeInUp}>
+								<motion.div
+									initial={initial}
+									viewport={{once: true}}
+									whileInView={fadeInUp}
+								>
 									<ReCAPTCHA
 										sitekey={`6LeJJqwlAAAAAByEDQJTbNFkPL9DSjMBwnE7smkU`}
 										onChange={handleReCaptchaChange}
 									/>
 								</motion.div>
 								<motion.button
-									variants={fadeInUp}
+									initial={initial}
+									viewport={{once: true}}
+									whileInView={fadeInUp}
 									// isLoading={isLoading}
 									onClick={formik.handleSubmit}
 									disabled={

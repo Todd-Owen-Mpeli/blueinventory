@@ -2,7 +2,7 @@
 import {useState} from "react";
 import postHog from "posthog-js";
 import {motion} from "framer-motion";
-import {fadeInUp, stagger} from "../../animations/animations";
+import {initial, fadeInUp, stagger} from "../../animations/animations";
 
 // Components
 import Paragraph from "./Paragraph";
@@ -29,11 +29,15 @@ const CookiePolicyCard = () => {
 			}
 		>
 			<motion.div
-				variants={stagger}
+				initial={initial}
+				viewport={{once: true}}
+				whileInView={stagger}
 				className="px-6 pt-4 pb-6 mb-8 text-white rounded bg-blueTwo"
 			>
 				<motion.h3
-					variants={fadeInUp}
+					initial={initial}
+					viewport={{once: true}}
+					whileInView={fadeInUp}
 					className="tracking-normal text-white uppercase text-medium"
 				>
 					Cookie Policy
@@ -45,19 +49,25 @@ const CookiePolicyCard = () => {
 					tailwindStyling="mt-3 mb-6 text-xs text-left"
 				/>
 				<motion.div
-					variants={stagger}
+					initial={initial}
+					viewport={{once: true}}
+					whileInView={stagger}
 					className="flex items-center justify-center gap-4"
 				>
 					<motion.button
 						onClick={acceptCookies}
-						variants={fadeInUp}
+						initial={initial}
+						viewport={{once: true}}
+						whileInView={fadeInUp}
 						className="px-6 py-3 text-xs leading-none tracking-wider text-white rounded bg-blue hover:bg-goldPrime"
 					>
 						Accept Cookies
 					</motion.button>
 					<motion.button
 						onClick={refuseCookies}
-						variants={fadeInUp}
+						initial={initial}
+						viewport={{once: true}}
+						whileInView={fadeInUp}
 						className="px-6 py-3 text-xs leading-none tracking-wider text-white rounded bg-darkBlue hover:bg-darkerBlue"
 					>
 						Refuse Cookies

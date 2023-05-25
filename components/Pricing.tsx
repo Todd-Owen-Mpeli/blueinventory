@@ -2,7 +2,7 @@
 import {FC} from "react";
 import Link from "next/link";
 import {motion} from "framer-motion";
-import {fadeInUp, stagger} from "../animations/animations";
+import {initial, fadeInUp, stagger} from "../animations/animations";
 
 // Components
 import Paragraph from "./Elements/Paragraph";
@@ -69,22 +69,36 @@ const Pricing: FC<IProps> = ({
 			<div className="pt-32 pb-8">
 				<div className="container px-4 mx-auto">
 					<motion.div
-						variants={stagger}
+						initial={initial}
+						viewport={{once: true}}
+						whileInView={stagger}
 						className="max-w-2xl mx-auto mb-24 text-center lg:max-w-5xl"
 					>
 						<motion.span
-							variants={fadeInUp}
+							initial={initial}
+							viewport={{once: true}}
+							whileInView={fadeInUp}
 							className="inline-block px-3 py-1 mb-4 text-sm font-[400] tracking-widest text-white uppercase rounded-full bg-blue"
 						>
 							Pricing
 						</motion.span>
 						<motion.h1
-							variants={stagger}
+							initial={initial}
+							viewport={{once: true}}
+							whileInView={stagger}
 							className="mb-6 text-4xl font-bold text-darkBlue font-heading sm:text-6xl lg:text-7xl"
 						>
-							<motion.span variants={fadeInUp}>{title}</motion.span>
 							<motion.span
-								variants={fadeInUp}
+								initial={initial}
+								viewport={{once: true}}
+								whileInView={fadeInUp}
+							>
+								{title}
+							</motion.span>
+							<motion.span
+								initial={initial}
+								viewport={{once: true}}
+								whileInView={fadeInUp}
 								className="ml-4 font-serif italic"
 							>
 								{italic}
@@ -98,12 +112,29 @@ const Pricing: FC<IProps> = ({
 				</div>
 			</div>
 			<div className="container px-4 mx-auto">
-				<motion.div variants={stagger} className="mx-auto max-w-8xl">
+				<motion.div
+					initial={initial}
+					viewport={{once: true}}
+					whileInView={stagger}
+					className="mx-auto max-w-8xl"
+				>
 					{/* Payment Options Cards */}
-					<motion.div variants={fadeInUp} className="mb-16">
-						<motion.div variants={stagger} className="flex flex-wrap -mx-4">
+					<motion.div
+						initial={initial}
+						viewport={{once: true}}
+						whileInView={fadeInUp}
+						className="mb-16"
+					>
+						<motion.div
+							initial={initial}
+							viewport={{once: true}}
+							whileInView={stagger}
+							className="flex flex-wrap -mx-4"
+						>
 							<motion.div
-								variants={fadeInUp}
+								initial={initial}
+								viewport={{once: true}}
+								whileInView={fadeInUp}
 								className="w-full px-4 mb-8 lg:w-1/3 lg:pt-16 lg:mb-0"
 							>
 								<div className="max-w-lg p-10 mx-auto bg-white border border-grey rounded-3xl">
@@ -150,7 +181,11 @@ const Pricing: FC<IProps> = ({
 											What&apos;s included:
 										</span>
 										<ul className="mb-10">
-											<motion.ul variants={stagger}>
+											<motion.ul
+												initial={initial}
+												viewport={{once: true}}
+												whileInView={stagger}
+											>
 												{card?.bulletList.map((keys) => (
 													<BulletListCard
 														iconFillColor={`#6BBE66`}
@@ -246,7 +281,9 @@ const Pricing: FC<IProps> = ({
 								</div>
 							</motion.div>
 							<motion.div
-								variants={fadeInUp}
+								initial={initial}
+								viewport={{once: true}}
+								whileInView={fadeInUp}
 								className="w-full px-4 mb-8 lg:w-1/3 lg:mb-0"
 							>
 								<div className="max-w-lg p-10 mx-auto bg-blue rounded-3xl">
@@ -293,7 +330,11 @@ const Pricing: FC<IProps> = ({
 											What&apos;s included:
 										</span>
 										<ul className="mb-10">
-											<motion.ul variants={stagger}>
+											<motion.ul
+												initial={initial}
+												viewport={{once: true}}
+												whileInView={stagger}
+											>
 												{card?.bulletList.map((keys) => (
 													<BulletListCard
 														iconFillColor={`#5ac3ff`}
@@ -389,7 +430,9 @@ const Pricing: FC<IProps> = ({
 								</div>
 							</motion.div>
 							<motion.div
-								variants={fadeInUp}
+								initial={initial}
+								viewport={{once: true}}
+								whileInView={fadeInUp}
 								className="w-full px-4 lg:w-1/3 lg:pt-16"
 							>
 								<div className="max-w-lg p-10 mx-auto bg-white border border-darkBlue rounded-3xl">
@@ -434,7 +477,11 @@ const Pricing: FC<IProps> = ({
 											What&apos;s included:
 										</span>
 										<ul className="mb-10">
-											<motion.ul variants={stagger}>
+											<motion.ul
+												initial={initial}
+												viewport={{once: true}}
+												whileInView={stagger}
+											>
 												{card?.bulletList.map((keys) => (
 													<BulletListCard
 														iconFillColor={`#6BBE66`}
@@ -527,11 +574,15 @@ const Pricing: FC<IProps> = ({
 					</motion.div>
 					{/* Billing Information */}
 					<motion.div
-						variants={stagger}
+						initial={initial}
+						viewport={{once: true}}
+						whileInView={stagger}
 						className="flex flex-col items-baseline justify-center max-w-xs mx-auto mt-12 sm:mx-0 sm:max-w-none sm:items-center gap-y-4 gap-x-8 sm:flex-row"
 					>
 						<motion.div
-							variants={fadeInUp}
+							initial={initial}
+							viewport={{once: true}}
+							whileInView={fadeInUp}
 							className="flex items-center max-w-xs lg:mb-0 lg:mr-24"
 						>
 							<div className="flex items-center justify-center flex-shrink-0 w-12 h-12 mr-4 rounded-full bg-goldPrime">
@@ -558,7 +609,9 @@ const Pricing: FC<IProps> = ({
 							/>
 						</motion.div>
 						<motion.div
-							variants={fadeInUp}
+							initial={initial}
+							viewport={{once: true}}
+							whileInView={fadeInUp}
 							className="flex items-center max-w-xs"
 						>
 							<div className="flex items-center justify-center flex-shrink-0 w-12 h-12 mr-4 rounded-full bg-goldPrime">
@@ -587,7 +640,9 @@ const Pricing: FC<IProps> = ({
 					</motion.div>
 					{/* Payment Providers */}
 					<motion.div
-						variants={stagger}
+						initial={initial}
+						viewport={{once: true}}
+						whileInView={stagger}
 						className="flex flex-wrap justify-center gap-6 mt-20 sm:flex-row lg:flex-row"
 					>
 						{paymentProviders.map((keys) => (

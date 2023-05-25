@@ -2,7 +2,7 @@ import {FC} from "react";
 import {motion} from "framer-motion";
 import styled from "styled-components";
 import Paragraph from "./../Elements/Paragraph";
-import {fadeInUp, stagger} from "../../animations/animations";
+import {initial, fadeInUp, stagger} from "../../animations/animations";
 
 const ContentImageCard = styled.div`
 	ol,
@@ -57,9 +57,16 @@ const contentImageCard: FC<IProps> = ({
 						: `flex flex-col items-end justify-center mx-auto max-w-7xl`
 				}
 			>
-				<motion.div variants={stagger} className="max-w-2xl p-10 bg-white">
+				<motion.div
+					initial={initial}
+					viewport={{once: true}}
+					whileInView={stagger}
+					className="max-w-2xl p-10 bg-white"
+				>
 					<motion.h2
-						variants={fadeInUp}
+						initial={initial}
+						viewport={{once: true}}
+						whileInView={fadeInUp}
 						className="text-flatGreen text-center lg:text-left tracking-normal leading-[2.75rem] font-semibold text-3xl md:text-4xl"
 					>
 						{title}

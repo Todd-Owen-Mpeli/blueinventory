@@ -2,7 +2,7 @@
 import Image from "next/image";
 import {useState, FC} from "react";
 import {motion} from "framer-motion";
-import {fadeInUp} from "../animations/animations";
+import {initial, fadeInUp} from "../animations/animations";
 
 // Components
 import Paragraph from "./Elements/Paragraph";
@@ -89,18 +89,25 @@ const HeroTwo: FC<HeroProps> = ({
 				<div className="container relative flex flex-col items-center justify-center px-4 m-auto text-center z-[995]">
 					<div className="max-w-3xl">
 						<motion.h1
-							variants={fadeInUp}
+							initial={initial}
+							viewport={{once: true}}
+							whileInView={fadeInUp}
 							className="flex flex-col text-center mb-0 sm:mb-3 text-2xl sm:text-6xl lg:text-7xl text-white font-bold leading-normal sm:leading-[3.5rem]"
 						>
 							{title}
 						</motion.h1>
 					</div>
-					<div className="max-w-xl">
+					<motion.div
+						initial={initial}
+						viewport={{once: true}}
+						whileInView={fadeInUp}
+						className="max-w-xl"
+					>
 						<Paragraph
 							content={paragraph}
 							tailwindStyling="mt-6 text-white leading-[1.5rem] text-medium text-center"
 						/>
-					</div>
+					</motion.div>
 				</div>
 			</div>
 		</section>

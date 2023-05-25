@@ -3,7 +3,7 @@ import {FC} from "react";
 import Image from "next/image";
 import {motion} from "framer-motion";
 import DOMPurify from "isomorphic-dompurify";
-import {fadeInUp, stagger} from "../../animations/animations";
+import {initial, fadeInUp, stagger} from "../../animations/animations";
 
 interface IProps {
 	title: string;
@@ -37,7 +37,9 @@ const TestimonialCard: FC<IProps> = ({
 	return (
 		<div className="w-full px-4 mb-8 lg:w-1/3 lg:mb-0">
 			<motion.div
-				variants={stagger}
+				initial={initial}
+				viewport={{once: true}}
+				whileInView={stagger}
 				className="max-w-sm p-10 pb-6 mx-auto rounded-md bg-lightGrey"
 			>
 				<svg
@@ -53,12 +55,23 @@ const TestimonialCard: FC<IProps> = ({
 					></path>
 				</svg>
 				<motion.div
-					variants={fadeInUp}
+					initial={initial}
+					viewport={{once: true}}
+					whileInView={fadeInUp}
 					className={paragraph ? `mt-2 mb-6 text-base text-darkBlue` : `hidden`}
 					dangerouslySetInnerHTML={createTrimmedParagraphMarkup(paragraph)}
 				/>
-				<motion.div variants={stagger} className="flex items-center">
-					<motion.div variants={fadeInUp}>
+				<motion.div
+					initial={initial}
+					viewport={{once: true}}
+					whileInView={stagger}
+					className="flex items-center"
+				>
+					<motion.div
+						initial={initial}
+						viewport={{once: true}}
+						whileInView={fadeInUp}
+					>
 						<Image
 							alt={image?.altText}
 							src={image?.sourceUrl}
@@ -67,7 +80,11 @@ const TestimonialCard: FC<IProps> = ({
 							className="object-cover object-top w-8 h-8 mr-4 rounded-full"
 						/>
 					</motion.div>
-					<motion.div variants={fadeInUp}>
+					<motion.div
+						initial={initial}
+						viewport={{once: true}}
+						whileInView={fadeInUp}
+					>
 						<h4 className="text-sm font-medium">{title}</h4>
 						<span className="text-sm text-black">{jobPosition}</span>
 					</motion.div>

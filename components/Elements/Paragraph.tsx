@@ -2,7 +2,7 @@
 import {FC} from "react";
 import {motion} from "framer-motion";
 import DOMPurify from "isomorphic-dompurify";
-import {fadeIn} from "../../animations/animations";
+import {initial, fadeInUp} from "../../animations/animations";
 
 interface ParagraphProps {
 	content: string;
@@ -18,11 +18,15 @@ const Paragraph: FC<ParagraphProps> = ({content, tailwindStyling}) => {
 	}
 
 	return (
-		<motion.div
-			variants={fadeIn}
-			className={content ? `${tailwindStyling}` : `hidden`}
-			dangerouslySetInnerHTML={createParagraphMarkup(content)}
-		/>
+		<>
+			<motion.div
+				initial={initial}
+				viewport={{once: true}}
+				whileInView={fadeInUp}
+				className={content ? `${tailwindStyling}` : `hidden`}
+				dangerouslySetInnerHTML={createParagraphMarkup(content)}
+			/>
+		</>
 	);
 };
 

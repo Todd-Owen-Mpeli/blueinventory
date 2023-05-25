@@ -5,7 +5,7 @@ import Image from "next/image";
 import {motion} from "framer-motion";
 import {getAuth, signOut} from "firebase/auth";
 import styles from "../styles/components/Hero.module.scss";
-import {fadeInUp, stagger} from "../animations/animations";
+import {initial, fadeInUp, stagger} from "../animations/animations";
 
 // Components
 import NavbarMenuLinks from "./Elements/NavbarMenuLinks";
@@ -78,7 +78,12 @@ const mobileNavbar: FC<NavbarProps> = ({
 				<div>
 					<div className="flex flex-col items-baseline justify-center mb-16">
 						{signedInUser ? (
-							<motion.div variants={fadeInUp} className="relative">
+							<motion.div
+								initial={initial}
+								viewport={{once: true}}
+								whileInView={fadeInUp}
+								className="relative"
+							>
 								<button className="relative">
 									<Image
 										width={500}
@@ -98,7 +103,12 @@ const mobileNavbar: FC<NavbarProps> = ({
 								</button>
 							</motion.div>
 						) : (
-							<motion.div variants={fadeInUp} className="relative">
+							<motion.div
+								initial={initial}
+								viewport={{once: true}}
+								whileInView={fadeInUp}
+								className="relative"
+							>
 								<Link href="/">
 									<Image
 										height={500}
@@ -112,9 +122,15 @@ const mobileNavbar: FC<NavbarProps> = ({
 						)}
 					</div>
 					<div className="mt-20 lg:mt-0">
-						<motion.ul variants={stagger}>
+						<motion.ul
+							initial={initial}
+							viewport={{once: true}}
+							whileInView={stagger}
+						>
 							<motion.li
-								variants={fadeInUp}
+								initial={initial}
+								viewport={{once: true}}
+								whileInView={fadeInUp}
 								className="mb-1 border-b-[1px] border-goldPrime border-opacity-50"
 							>
 								<Link
@@ -126,7 +142,9 @@ const mobileNavbar: FC<NavbarProps> = ({
 							</motion.li>
 							{navbarMenuLinks?.map((keys) => (
 								<motion.li
-									variants={fadeInUp}
+									initial={initial}
+									viewport={{once: true}}
+									whileInView={fadeInUp}
 									key={keys?.node?.id}
 									className="mb-1 border-b-[1px] border-goldPrime border-opacity-50"
 								>
@@ -143,11 +161,15 @@ const mobileNavbar: FC<NavbarProps> = ({
 				<div className="flex flex-col justify-between gap-4 mt-20">
 					<div className="flex flex-col justify-center gap-2">
 						<motion.div
-							variants={stagger}
+							initial={initial}
+							viewport={{once: true}}
+							whileInView={stagger}
 							className="flex flex-col justify-center gap-2 py-6"
 						>
 							<motion.span
-								variants={fadeInUp}
+								initial={initial}
+								viewport={{once: true}}
+								whileInView={fadeInUp}
 								className="flex items-center gap-2 text-white"
 							>
 								Tel:
@@ -159,7 +181,9 @@ const mobileNavbar: FC<NavbarProps> = ({
 								</Link>
 							</motion.span>
 							<motion.span
-								variants={fadeInUp}
+								initial={initial}
+								viewport={{once: true}}
+								whileInView={fadeInUp}
 								className="flex items-center gap-2 text-white"
 							>
 								Email:
@@ -172,10 +196,17 @@ const mobileNavbar: FC<NavbarProps> = ({
 							</motion.span>
 						</motion.div>
 						<motion.ul
-							variants={stagger}
+							initial={initial}
+							viewport={{once: true}}
+							whileInView={stagger}
 							className="flex items-center justify-start gap-4 mb-4 text-center"
 						>
-							<motion.li variants={fadeInUp} className="inline-block px-1">
+							<motion.li
+								initial={initial}
+								viewport={{once: true}}
+								whileInView={fadeInUp}
+								className="inline-block px-1"
+							>
 								<Link href={facebookLink}>
 									<svg
 										height="100%"
@@ -198,7 +229,12 @@ const mobileNavbar: FC<NavbarProps> = ({
 									</svg>
 								</Link>
 							</motion.li>
-							<motion.li variants={fadeInUp} className="inline-block px-1">
+							<motion.li
+								initial={initial}
+								viewport={{once: true}}
+								whileInView={fadeInUp}
+								className="inline-block px-1"
+							>
 								<Link href={twitterLink}>
 									<svg
 										height="100%"
@@ -221,7 +257,12 @@ const mobileNavbar: FC<NavbarProps> = ({
 									</svg>
 								</Link>
 							</motion.li>
-							<motion.li variants={fadeInUp} className="inline-block px-1">
+							<motion.li
+								initial={initial}
+								viewport={{once: true}}
+								whileInView={fadeInUp}
+								className="inline-block px-1"
+							>
 								<Link href={linkedinLink}>
 									<svg
 										height="100%"
@@ -251,11 +292,15 @@ const mobileNavbar: FC<NavbarProps> = ({
 							{signedInUser ? (
 								<div className="flex flex-col items-baseline justify-between gap-x-4 gap-y-8">
 									<motion.div
-										variants={stagger}
+										initial={initial}
+										viewport={{once: true}}
+										whileInView={stagger}
 										className="flex flex-col items-baseline justify-center gap-4 sm:items-center sm:justify-between sm:flex-row"
 									>
 										<motion.div
-											variants={fadeInUp}
+											initial={initial}
+											viewport={{once: true}}
+											whileInView={fadeInUp}
 											className="py-2 bg-center bg-no-repeat bg-cover rounded-sm"
 											style={{
 												backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue-darkblue.svg")`,
@@ -269,7 +314,9 @@ const mobileNavbar: FC<NavbarProps> = ({
 											</Link>
 										</motion.div>
 										<motion.div
-											variants={fadeInUp}
+											initial={initial}
+											viewport={{once: true}}
+											whileInView={fadeInUp}
 											className="bg-center bg-no-repeat bg-cover rounded-sm"
 											style={{
 												backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-pinkRed.svg")`,
@@ -288,11 +335,15 @@ const mobileNavbar: FC<NavbarProps> = ({
 								</div>
 							) : (
 								<motion.div
-									variants={stagger}
+									initial={initial}
+									viewport={{once: true}}
+									whileInView={stagger}
 									className="flex flex-wrap gap-2 -m-2"
 								>
 									<motion.div
-										variants={fadeInUp}
+										initial={initial}
+										viewport={{once: true}}
+										whileInView={fadeInUp}
 										className="py-2 bg-center bg-no-repeat bg-cover rounded-sm"
 										style={{
 											backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-orange-yellow.svg")`,
@@ -306,7 +357,9 @@ const mobileNavbar: FC<NavbarProps> = ({
 										</Link>
 									</motion.div>
 									<motion.div
-										variants={fadeInUp}
+										initial={initial}
+										viewport={{once: true}}
+										whileInView={fadeInUp}
 										className="py-2 bg-center bg-no-repeat bg-cover rounded-sm"
 										style={{
 											backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue-pink-red-yellow.svg")`,

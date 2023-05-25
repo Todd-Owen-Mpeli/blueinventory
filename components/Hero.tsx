@@ -1,7 +1,7 @@
 import {FC} from "react";
 import Link from "next/link";
 import {motion} from "framer-motion";
-import {fadeInUp, stagger} from "../animations/animations";
+import {initial, fadeInUp, stagger} from "../animations/animations";
 
 // Components
 import Paragraph from "./Elements/Paragraph";
@@ -63,7 +63,9 @@ const Hero: FC<HeroProps> = ({
 					<div className="absolute top-0 bottom-0 left-0 flex flex-col items-center justify-center px-8 py-20 mx-auto max-w-7xl">
 						<div className="max-w-2xl px-6 py-10 bg-white rounded-sm sm:p-10">
 							<motion.h1
-								variants={fadeInUp}
+								initial={initial}
+								viewport={{once: true}}
+								whileInView={fadeInUp}
 								className="text-center lg:text-left tracking-normal leading-normal sm:leading-[3.5rem] font-semibold text-2xl sm:text-6xl lg:text-7xl"
 							>
 								{title}
@@ -73,10 +75,16 @@ const Hero: FC<HeroProps> = ({
 								tailwindStyling="w-full lg:max-w-2xl mx-auto mt-6 text-black text-left text-base"
 							/>
 							<motion.div
-								variants={stagger}
+								initial={initial}
+								viewport={{once: true}}
+								whileInView={stagger}
 								className="flex flex-col items-center justify-center gap-6 pt-8 lg:justify-start sm:flex-row"
 							>
-								<motion.button variants={fadeInUp}>
+								<motion.button
+									initial={initial}
+									viewport={{once: true}}
+									whileInView={fadeInUp}
+								>
 									<Link
 										href={buttonLink?.url}
 										target={buttonLink?.target}
@@ -85,7 +93,11 @@ const Hero: FC<HeroProps> = ({
 										{buttonLink?.title}
 									</Link>
 								</motion.button>
-								<motion.button variants={fadeInUp}>
+								<motion.button
+									initial={initial}
+									viewport={{once: true}}
+									whileInView={fadeInUp}
+								>
 									<Link
 										href={buttonLinkTwo?.url}
 										target={buttonLinkTwo?.target}

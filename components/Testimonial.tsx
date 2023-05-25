@@ -3,7 +3,7 @@ import {FC} from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {motion} from "framer-motion";
-import {fadeInUp, stagger} from "../animations/animations";
+import {initial, fadeInUp, stagger} from "../animations/animations";
 
 // Components
 import Paragraph from "./Elements/Paragraph";

@@ -2,7 +2,7 @@
 import {FC} from "react";
 import Link from "next/link";
 import {motion} from "framer-motion";
-import {fadeInUp} from "../../animations/animations";
+import {initial, fadeInUp} from "../../animations/animations";
 
 interface IProps {
 	url: string;
@@ -12,7 +12,12 @@ interface IProps {
 
 const FooterMenuLinks: FC<IProps> = ({url, label, tailwindStyling}) => {
 	return (
-		<motion.li variants={fadeInUp} className="px-0">
+		<motion.li
+			initial={initial}
+			viewport={{once: true}}
+			whileInView={fadeInUp}
+			className="px-0"
+		>
 			<Link className={tailwindStyling} href={url}>
 				{label}
 			</Link>

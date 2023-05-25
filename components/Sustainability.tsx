@@ -1,12 +1,7 @@
 import {FC} from "react";
 import Image from "next/image";
 import {motion} from "framer-motion";
-import {
-	fadeIn,
-	fadeInTwo,
-	fadeInUpTwo,
-	initial,
-} from "../animations/animations";
+import {fadeIn, fadeInUp, initialTwo, initial} from "../animations/animations";
 
 // Components
 import Paragraph from "./Elements/Paragraph";
@@ -49,7 +44,9 @@ const Sustainability: FC<IProps> = ({
 							{subtitle}
 						</span>
 						<motion.h2
-							variants={fadeIn}
+							initial={initialTwo}
+							viewport={{once: true}}
+							whileInView={fadeIn}
 							className="mb-8 text-3xl font-semibold leading-tight text-white sm:text-4xl lg:text-5xl"
 						>
 							{title}
@@ -72,7 +69,8 @@ const Sustainability: FC<IProps> = ({
 
 							<motion.div
 								initial={initial}
-								whileInView={fadeInUpTwo}
+								viewport={{once: true}}
+								whileInView={fadeInUp}
 								className="absolute bg-white -bottom-10 lg:-left-16"
 							>
 								<div className="px-8 py-10">

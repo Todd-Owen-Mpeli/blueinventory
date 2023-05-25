@@ -2,7 +2,7 @@
 import {FC} from "react";
 import Image from "next/image";
 import {motion} from "framer-motion";
-import {fadeIn} from "../../animations/animations";
+import {initialTwo, fadeIn} from "../../animations/animations";
 
 interface IProps {
 	image: {
@@ -17,7 +17,12 @@ interface IProps {
 
 const logoCard: FC<IProps> = ({image}) => {
 	return (
-		<motion.div variants={fadeIn} className="mx-auto">
+		<motion.div
+			initial={initialTwo}
+			viewport={{once: true}}
+			whileInView={fadeIn}
+			className="mx-auto"
+		>
 			<Image
 				alt={image?.altText}
 				src={image?.sourceUrl}

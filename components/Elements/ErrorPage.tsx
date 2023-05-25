@@ -2,7 +2,7 @@ import {FC} from "react";
 import Link from "next/link";
 import {motion} from "framer-motion";
 import Paragraph from "../Elements/Paragraph";
-import {fadeInUp} from "../../animations/animations";
+import {initial, fadeInUp} from "../../animations/animations";
 
 interface IProps {
 	title: string;
@@ -42,7 +42,9 @@ const ErrorPage: FC<IProps> = ({
 			<div className="px-10 my-auto overflow-hidden py-44">
 				<div className="container p-0 mx-auto">
 					<motion.h1
-						variants={fadeInUp}
+						initial={initial}
+						viewport={{once: true}}
+						whileInView={fadeInUp}
 						className="mb-4 text-5xl lg:text-7xl text-white text-center font-[600] font-heading leading-tight"
 					>
 						{title}
@@ -53,7 +55,9 @@ const ErrorPage: FC<IProps> = ({
 					/>
 					<div className="flex flex-col items-center justify-center gap-4 mx-auto sm:flex-row sm md:max-w-max">
 						<motion.button
-							variants={fadeInUp}
+							initial={initial}
+							viewport={{once: true}}
+							whileInView={fadeInUp}
 							type="button"
 							className="m-auto bg-center bg-no-repeat bg-cover"
 							style={{
@@ -87,7 +91,9 @@ const ErrorPage: FC<IProps> = ({
 							</Link>
 						</motion.button>
 						<motion.button
-							variants={fadeInUp}
+							initial={initial}
+							viewport={{once: true}}
+							whileInView={fadeInUp}
 							type="button"
 							className="m-auto bg-center bg-no-repeat bg-cover"
 							style={{

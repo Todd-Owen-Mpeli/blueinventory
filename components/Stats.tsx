@@ -2,7 +2,13 @@
 import {FC} from "react";
 import Image from "next/image";
 import {motion} from "framer-motion";
-import {fadeInUp, fadeIn, stagger} from "../animations/animations";
+import {
+	initial,
+	initialTwo,
+	fadeInUp,
+	fadeIn,
+	stagger,
+} from "../animations/animations";
 
 // Components
 import Paragraph from "./Elements/Paragraph";
@@ -53,11 +59,17 @@ const Stats: FC<IProps> = ({
 								<h2 className="mb-10 text-3xl font-bold text-white lg:text-5xl">
 									{title}
 								</h2>
-								<motion.ul variants={stagger}>
+								<motion.ul
+									initial={initial}
+									viewport={{once: true}}
+									whileInView={stagger}
+								>
 									{bulletPoints?.map((keys) => (
 										<motion.li
 											className="mb-4"
-											variants={fadeInUp}
+											initial={initial}
+											viewport={{once: true}}
+											whileInView={fadeInUp}
 											key={keys?.id || keys?.bulletPoint}
 										>
 											<StatsBulletPointCard
@@ -73,7 +85,9 @@ const Stats: FC<IProps> = ({
 							<div className="relative">
 								<div className="relative max-w-xl px-8 pb-8 mx-auto bg-white rounded-sm lg:mr-0 pt-14 md:px-14">
 									<motion.h4
-										variants={fadeIn}
+										initial={initialTwo}
+										viewport={{once: true}}
+										whileInView={fadeIn}
 										className="block mb-2 text-3xl font-semibold"
 									>
 										{subtitle}
@@ -86,24 +100,32 @@ const Stats: FC<IProps> = ({
 										<div className="flex flex-col items-center justify-center gap-4 -mx-4 lg:flex-row">
 											<div className="w-full p-4 rounded-sm xs:w-1/2 bg-lightGrey">
 												<motion.div
-													variants={stagger}
+													initial={initial}
+													viewport={{once: true}}
+													whileInView={stagger}
 													className="flex flex-col items-center justify-center lg:items-baseline lg:justify-start"
 												>
 													<motion.span
-														variants={fadeInUp}
+														initial={initial}
+														viewport={{once: true}}
+														whileInView={fadeInUp}
 														className="mb-2 text-black"
 													>
 														{column?.title}
 													</motion.span>
 													<div className="flex flex-wrap gap-4">
 														<motion.span
-															variants={fadeInUp}
+															initial={initial}
+															viewport={{once: true}}
+															whileInView={fadeInUp}
 															className="mb-2 text-5xl font-bold "
 														>
 															{column?.values}
 														</motion.span>
 														<motion.span
-															variants={fadeInUp}
+															initial={initial}
+															viewport={{once: true}}
+															whileInView={fadeInUp}
 															className="flex my-auto h-fit py-1 pl-1.5 pr-2 items-center justify-center rounded-md bg-blue"
 														>
 															<Image
@@ -122,24 +144,32 @@ const Stats: FC<IProps> = ({
 											</div>
 											<div className="w-full p-4 rounded-sm xs:w-1/2 bg-lightGrey">
 												<motion.div
-													variants={stagger}
+													initial={initial}
+													viewport={{once: true}}
+													whileInView={stagger}
 													className="flex flex-col items-center justify-center lg:items-baseline lg:justify-start xs:pl-8"
 												>
 													<motion.span
-														variants={fadeInUp}
+														initial={initial}
+														viewport={{once: true}}
+														whileInView={fadeInUp}
 														className="mb-2 text-black"
 													>
 														{columnTwo?.title}
 													</motion.span>
 													<div className="flex flex-wrap gap-4">
 														<motion.span
-															variants={fadeInUp}
+															initial={initial}
+															viewport={{once: true}}
+															whileInView={fadeInUp}
 															className="mb-2 text-5xl font-bold"
 														>
 															{columnTwo?.values}
 														</motion.span>
 														<motion.span
-															variants={fadeInUp}
+															initial={initial}
+															viewport={{once: true}}
+															whileInView={fadeInUp}
 															className="flex my-auto h-fit py-1 pl-1.5 pr-2 items-center justify-center rounded-md bg-goldPrime"
 														>
 															<Image

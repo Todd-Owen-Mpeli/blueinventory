@@ -7,7 +7,13 @@ import {useRouter} from "next/router";
 import {useState, useEffect} from "react";
 import {getAuth, signOut} from "firebase/auth";
 import styles from "../styles/components/Hero.module.scss";
-import {fadeIn, fadeInUp, stagger} from "../animations/animations";
+import {
+	initial,
+	initialTwo,
+	fadeIn,
+	fadeInUp,
+	stagger,
+} from "../animations/animations";
 
 // Components
 import NavbarMenuLinks from "./Elements/NavbarMenuLinks";
@@ -118,7 +124,11 @@ const Navbar: FC<NavbarProps> = ({navbarMenuLinks, themesOptionsContent}) => {
 			<div className="container px-0 mx-auto">
 				<div className="flex flex-row items-center justify-between px-6 py-2 bg-white">
 					<div className="flex items-center justify-start w-full gap-4 px-0 sm:px-4 lg:w-1/3">
-						<motion.div variants={fadeInUp}>
+						<motion.div
+							initial={initial}
+							viewport={{once: true}}
+							whileInView={fadeInUp}
+						>
 							<Link
 								href="/"
 								className="text-lg lg:text-2xl text-darkBlue font-[900]"
@@ -131,7 +141,9 @@ const Navbar: FC<NavbarProps> = ({navbarMenuLinks, themesOptionsContent}) => {
 						<div className="flex flex-wrap items-center">
 							<div className="hidden w-auto xl:block">
 								<motion.ul
-									variants={stagger}
+									initial={initial}
+									viewport={{once: true}}
+									whileInView={stagger}
 									className="flex items-center justify-center gap-6"
 								>
 									{navbarMenuLinks?.map((keys) => (
@@ -154,7 +166,9 @@ const Navbar: FC<NavbarProps> = ({navbarMenuLinks, themesOptionsContent}) => {
 										<div className="flex flex-wrap items-center justify-end gap-8">
 											<>
 												<motion.div
-													variants={fadeInUp}
+													initial={initial}
+													viewport={{once: true}}
+													whileInView={fadeInUp}
 													className="hidden py-2 m-auto bg-center bg-no-repeat bg-cover rounded-sm xl:block"
 													style={{
 														backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue-darkblue.svg")`,
@@ -168,7 +182,12 @@ const Navbar: FC<NavbarProps> = ({navbarMenuLinks, themesOptionsContent}) => {
 													</Link>
 												</motion.div>
 											</>
-											<motion.div variants={fadeIn} className="relative">
+											<motion.div
+												initial={initialTwo}
+												viewport={{once: true}}
+												whileInView={fadeIn}
+												className="relative"
+											>
 												<button
 													onClick={handleRevealUserDropdown}
 													className="relative"
@@ -203,7 +222,9 @@ const Navbar: FC<NavbarProps> = ({navbarMenuLinks, themesOptionsContent}) => {
 															</h2>
 														</div>
 														<motion.ul
-															variants={stagger}
+															initial={initial}
+															viewport={{once: true}}
+															whileInView={stagger}
 															className="py-2 text-sm text-black"
 															aria-labelledby="avatarButton"
 														>
@@ -238,11 +259,15 @@ const Navbar: FC<NavbarProps> = ({navbarMenuLinks, themesOptionsContent}) => {
 										</div>
 									) : (
 										<motion.div
-											variants={stagger}
+											initial={initial}
+											viewport={{once: true}}
+											whileInView={stagger}
 											className="flex flex-wrap gap-2 -m-2"
 										>
 											<motion.div
-												variants={fadeInUp}
+												initial={initial}
+												viewport={{once: true}}
+												whileInView={fadeInUp}
 												className="py-2 m-auto bg-center bg-no-repeat bg-cover rounded-sm"
 												style={{
 													backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-orange-yellow.svg")`,
@@ -256,7 +281,9 @@ const Navbar: FC<NavbarProps> = ({navbarMenuLinks, themesOptionsContent}) => {
 												</Link>
 											</motion.div>
 											<motion.div
-												variants={fadeInUp}
+												initial={initial}
+												viewport={{once: true}}
+												whileInView={fadeInUp}
 												className="py-2 m-auto bg-center bg-no-repeat bg-cover rounded-sm"
 												style={{
 													backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue-pink-red-yellow.svg")`,

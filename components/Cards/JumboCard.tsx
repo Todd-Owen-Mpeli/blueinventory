@@ -1,7 +1,7 @@
 // Imports
 import {FC} from "react";
 import {motion} from "framer-motion";
-import {fadeInUp, stagger} from "../../animations/animations";
+import {initial, fadeInUp, stagger} from "../../animations/animations";
 
 // Components
 import Paragraph from ".././Elements/Paragraph";
@@ -16,11 +16,15 @@ const JumboCard: FC<IProps> = ({title, subtitle, paragraph}) => {
 	return (
 		<div className="w-full p-3 md:w-1/2">
 			<motion.div
-				variants={stagger}
+				initial={initial}
+				viewport={{once: true}}
+				whileInView={stagger}
 				className="h-full p-10 rounded-sm bg-lightGrey"
 			>
 				<motion.div
-					variants={fadeInUp}
+					initial={initial}
+					viewport={{once: true}}
+					whileInView={fadeInUp}
 					className="flex flex-wrap items-center mb-10"
 				>
 					<h4 className="text-lg font-semibold text-goldPrimeDark">
@@ -28,7 +32,9 @@ const JumboCard: FC<IProps> = ({title, subtitle, paragraph}) => {
 					</h4>
 				</motion.div>
 				<motion.h3
-					variants={fadeInUp}
+					initial={initial}
+					viewport={{once: true}}
+					whileInView={fadeInUp}
 					className="mb-4 text-3xl font-semibold font-heading"
 				>
 					{title}

@@ -1,7 +1,7 @@
 // Imports
 import {FC} from "react";
 import {motion} from "framer-motion";
-import {fadeInUp, fadeIn, stagger} from "../animations/animations";
+import {initial, fadeInUp, fadeIn, stagger} from "../animations/animations";
 
 // Components
 import Paragraph from "./Elements/Paragraph";
@@ -45,7 +45,12 @@ const JumboContentTwo: FC<IProps> = ({
 		<section className="overflow-hidden bg-white">
 			<div className="container px-4 mx-auto">
 				<div className="mx-auto max-w-7xl pt-28 pb-36">
-					<motion.div variants={stagger} className="flex flex-wrap -m-3">
+					<motion.div
+						initial={initial}
+						viewport={{once: true}}
+						whileInView={stagger}
+						className="flex flex-wrap -m-3"
+					>
 						{/* Card One */}
 						<div className="w-full p-3 md:w-1/2">
 							<div className="h-full p-10 rounded-sm bg-lightGrey">

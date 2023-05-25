@@ -2,7 +2,7 @@
 import {FC} from "react";
 import Link from "next/link";
 import {motion} from "framer-motion";
-import {fadeInUp, stagger} from "../../animations/animations";
+import {initial, fadeInUp, stagger} from "../../animations/animations";
 
 // Components
 import Paragraph from ".././Elements/Paragraph";
@@ -23,13 +23,25 @@ const TitleThreeContentGridCard: FC<IProps> = ({
 	buttonLink,
 }) => {
 	return (
-		<motion.div variants={fadeInUp} className="w-full p-8 md:w-1/3">
+		<motion.div
+			initial={initial}
+			viewport={{once: true}}
+			whileInView={fadeInUp}
+			className="w-full p-8 md:w-1/3"
+		>
 			<div className="md:max-w-md">
 				<motion.div
-					variants={stagger}
+					initial={initial}
+					viewport={{once: true}}
+					whileInView={stagger}
 					className="flex flex-col justify-between h-full"
 				>
-					<motion.div variants={fadeInUp} className="mb-7">
+					<motion.div
+						initial={initial}
+						viewport={{once: true}}
+						whileInView={fadeInUp}
+						className="mb-7"
+					>
 						<h3 className="text-xl font-semibold leading-snug mb-7">{title}</h3>
 						<Paragraph
 							content={paragraph}
@@ -37,7 +49,9 @@ const TitleThreeContentGridCard: FC<IProps> = ({
 						/>
 					</motion.div>
 					<motion.div
-						variants={fadeInUp}
+						initial={initial}
+						viewport={{once: true}}
+						whileInView={fadeInUp}
 						className={buttonLink?.url ? `block` : `hidden`}
 					>
 						<Link

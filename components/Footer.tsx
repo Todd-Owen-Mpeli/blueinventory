@@ -3,7 +3,7 @@ import {FC} from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {motion} from "framer-motion";
-import {fadeIn, stagger} from "../animations/animations";
+import {initial, initialTwo, fadeIn, stagger} from "../animations/animations";
 
 // Components
 import FooterMenuLinks from "./Elements/FooterMenuLinks";
@@ -63,7 +63,9 @@ const Footer: FC<FooterProps> = ({
 						</div>
 						<div className="flex flex-col items-baseline justify-between w-auto gap-2 py-6 mb-10">
 							<motion.div
-								variants={fadeIn}
+								initial={initialTwo}
+								viewport={{once: true}}
+								whileInView={fadeIn}
 								className="flex items-center justify-center gap-2"
 							>
 								<div className="flex items-center justify-center w-8 h-8 rounded-full bg-goldPrime sm:mr-3">
@@ -91,7 +93,9 @@ const Footer: FC<FooterProps> = ({
 								</Link>
 							</motion.div>
 							<motion.div
-								variants={fadeIn}
+								initial={initialTwo}
+								viewport={{once: true}}
+								whileInView={fadeIn}
 								className="flex items-center justify-center gap-2"
 							>
 								<div className="flex items-center justify-center w-8 h-8 rounded-full bg-goldPrime sm:mr-3">
@@ -120,10 +124,16 @@ const Footer: FC<FooterProps> = ({
 							</motion.div>
 						</div>
 						<motion.div
-							variants={stagger}
+							initial={initial}
+							viewport={{once: true}}
+							whileInView={stagger}
 							className="flex items-center justify-start gap-6 text-center"
 						>
-							<motion.div variants={fadeIn}>
+							<motion.div
+								initial={initialTwo}
+								viewport={{once: true}}
+								whileInView={fadeIn}
+							>
 								<Link className="inline-block text-green" href={facebookLink}>
 									<svg
 										height="100%"
@@ -146,7 +156,11 @@ const Footer: FC<FooterProps> = ({
 									</svg>
 								</Link>
 							</motion.div>
-							<motion.div variants={fadeIn}>
+							<motion.div
+								initial={initialTwo}
+								viewport={{once: true}}
+								whileInView={fadeIn}
+							>
 								<Link className="inline-block text-green" href={twitterLink}>
 									<svg
 										height="100%"
@@ -169,7 +183,11 @@ const Footer: FC<FooterProps> = ({
 									</svg>
 								</Link>
 							</motion.div>
-							<motion.div variants={fadeIn}>
+							<motion.div
+								initial={initialTwo}
+								viewport={{once: true}}
+								whileInView={fadeIn}
+							>
 								<Link className="inline-block text-green" href={linkedinLink}>
 									<svg
 										height="100%"
@@ -200,7 +218,9 @@ const Footer: FC<FooterProps> = ({
 								Company
 							</h4>
 							<motion.ul
-								variants={stagger}
+								initial={initial}
+								viewport={{once: true}}
+								whileInView={stagger}
 								className="flex flex-col gap-2 py-6"
 							>
 								{footerMenuLinks?.map((keys) => (
@@ -218,7 +238,9 @@ const Footer: FC<FooterProps> = ({
 								Industries
 							</h4>
 							<motion.ul
-								variants={stagger}
+								initial={initial}
+								viewport={{once: true}}
+								whileInView={stagger}
 								className="flex flex-col gap-2 py-6"
 							>
 								{industriesMenuLinks?.map((keys) => (
@@ -238,13 +260,28 @@ const Footer: FC<FooterProps> = ({
 				</div>
 				<div className="flex flex-col items-center justify-between -m-6 lg:flex-row">
 					<div className="w-auto p-6">
-						<motion.p variants={fadeIn} className="text-sm text-white">
+						<motion.p
+							initial={initialTwo}
+							viewport={{once: true}}
+							whileInView={fadeIn}
+							className="text-sm text-white"
+						>
 							{copyrightText}
 						</motion.p>
 					</div>
 					<div className="w-auto p-6">
-						<motion.div variants={stagger} className="flex flex-wrap -m-6">
-							<motion.div variants={fadeIn} className="w-auto p-6">
+						<motion.div
+							initial={initial}
+							viewport={{once: true}}
+							whileInView={stagger}
+							className="flex flex-wrap -m-6"
+						>
+							<motion.div
+								initial={initialTwo}
+								viewport={{once: true}}
+								whileInView={fadeIn}
+								className="w-auto p-6"
+							>
 								<Link
 									className="text-sm text-white transition-all duration-200 ease-in-out hover:text-goldPrime"
 									href="/privacy-policy"
@@ -252,7 +289,12 @@ const Footer: FC<FooterProps> = ({
 									Privacy Policy
 								</Link>
 							</motion.div>
-							<motion.div variants={fadeIn} className="w-auto p-6">
+							<motion.div
+								initial={initialTwo}
+								viewport={{once: true}}
+								whileInView={fadeIn}
+								className="w-auto p-6"
+							>
 								<Link
 									href="/terms-conditions"
 									className="text-sm text-white transition-all duration-200 ease-in-out hover:text-goldPrime"

@@ -2,7 +2,7 @@
 import {FC} from "react";
 import Link from "next/link";
 import {motion} from "framer-motion";
-import {fadeInUp, stagger} from "../animations/animations";
+import {initial, fadeInUp, stagger} from "../animations/animations";
 
 // Components
 import Paragraph from "./Elements/Paragraph";
@@ -54,9 +54,16 @@ const CTATwo: FC<IProps> = ({
 				<div className="max-w-md mx-auto lg:max-w-none">
 					<div className="flex flex-wrap items-center -mx-4">
 						<div className="w-full px-4 mb-8 lg:w-1/2 lg:mb-0">
-							<motion.div variants={stagger} className="mx-auto lg:max-w-md">
+							<motion.div
+								initial={initial}
+								viewport={{once: true}}
+								whileInView={stagger}
+								className="mx-auto lg:max-w-md"
+							>
 								<motion.h4
-									variants={fadeInUp}
+									initial={initial}
+									viewport={{once: true}}
+									whileInView={fadeInUp}
 									className="mb-5 text-4xl font-bold text-center text-white sm:text-left"
 								>
 									{title}
@@ -66,11 +73,15 @@ const CTATwo: FC<IProps> = ({
 									tailwindStyling="mb-10 w-full lg:max-w-3xl mt-4 text-center lg:text-left text-white"
 								/>
 								<motion.div
-									variants={stagger}
+									initial={initial}
+									viewport={{once: true}}
+									whileInView={stagger}
 									className="flex flex-col flex-wrap sm:flex-row sm:items-center"
 								>
 									<motion.div
-										variants={fadeInUp}
+										initial={initial}
+										viewport={{once: true}}
+										whileInView={fadeInUp}
 										className={buttonLink?.url ? `block` : `hidden`}
 									>
 										<Link
@@ -82,7 +93,9 @@ const CTATwo: FC<IProps> = ({
 										</Link>
 									</motion.div>
 									<motion.div
-										variants={fadeInUp}
+										initial={initial}
+										viewport={{once: true}}
+										whileInView={fadeInUp}
 										className={buttonLinkTwo?.url ? `block` : `hidden`}
 									>
 										<Link
@@ -97,8 +110,18 @@ const CTATwo: FC<IProps> = ({
 							</motion.div>
 						</div>
 						<div className="w-full px-4 lg:w-1/2">
-							<motion.div variants={stagger} className="flex flex-wrap -mx-4">
-								<motion.div variants={fadeInUp} className="w-full p-8 px-4">
+							<motion.div
+								initial={initial}
+								viewport={{once: true}}
+								whileInView={stagger}
+								className="flex flex-wrap -mx-4"
+							>
+								<motion.div
+									initial={initial}
+									viewport={{once: true}}
+									whileInView={fadeInUp}
+									className="w-full p-8 px-4"
+								>
 									<div className="mb-5">
 										<svg
 											xmlns="http://www.w3.org/2000/svg"

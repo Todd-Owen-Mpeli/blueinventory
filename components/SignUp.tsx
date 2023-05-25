@@ -9,7 +9,7 @@ import {
 	GoogleAuthProvider,
 	OAuthProvider,
 } from "firebase/auth";
-import {fadeInUp, stagger} from "../animations/animations";
+import {initial, fadeInUp, stagger} from "../animations/animations";
 
 // Components
 import Paragraph from "./Elements/Paragraph";
@@ -68,12 +68,20 @@ const SignUp: FC<IProps> = ({title, paragraph}) => {
 	return (
 		<section className="container relative px-0 mx-auto">
 			<motion.div
-				variants={stagger}
+				initial={initial}
+				viewport={{once: true}}
+				whileInView={stagger}
 				className="max-w-md px-10 mx-auto bg-white py-14 rounded-xl"
 			>
-				<motion.div variants={stagger}>
+				<motion.div
+					initial={initial}
+					viewport={{once: true}}
+					whileInView={stagger}
+				>
 					<motion.h3
-						variants={fadeInUp}
+						initial={initial}
+						viewport={{once: true}}
+						whileInView={fadeInUp}
 						className="mb-4 text-lg font-semibold text-darkBlue"
 					>
 						{title}
@@ -84,10 +92,17 @@ const SignUp: FC<IProps> = ({title, paragraph}) => {
 					/>
 				</motion.div>
 				<motion.div
-					variants={stagger}
+					initial={initial}
+					viewport={{once: true}}
+					whileInView={stagger}
 					className="flex items-center gap-4 my-6 -mx-2"
 				>
-					<motion.button variants={fadeInUp} onClick={handleSignUpWithGoogle}>
+					<motion.button
+						initial={initial}
+						viewport={{once: true}}
+						whileInView={fadeInUp}
+						onClick={handleSignUpWithGoogle}
+					>
 						<span className="flex items-center justify-center w-12 h-12">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -115,7 +130,9 @@ const SignUp: FC<IProps> = ({title, paragraph}) => {
 							</svg>
 						</span>
 					</motion.button>
-					{/* <motion.button variants={fadeInUp}>
+					{/* <motion.button initial={initial}
+				viewport={{once: true}}
+					whileInView={fadeInUp}>
 						<Link
 							className="flex items-center justify-center w-12 h-12"
 							href={`/pricing/#Pricing`}
@@ -138,7 +155,9 @@ const SignUp: FC<IProps> = ({title, paragraph}) => {
 							</svg>
 						</Link>
 					</motion.button> */}
-					{/* <motion.button variants={fadeInUp} onClick={handleSignUpWithApple}>
+					{/* <motion.button initial={initial}
+				viewport={{once: true}}
+					whileInView={fadeInUp} onClick={handleSignUpWithApple}>
 						<span className="flex items-center justify-center w-12 h-12">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -156,18 +175,37 @@ const SignUp: FC<IProps> = ({title, paragraph}) => {
 						</span>
 					</motion.button> */}
 				</motion.div>
-				<motion.div variants={fadeInUp} className="flex items-center mb-6">
+				<motion.div
+					initial={initial}
+					viewport={{once: true}}
+					whileInView={fadeInUp}
+					className="flex items-center mb-6"
+				>
 					<div className="w-full h-px bg-darkGrey" />
 					<span className="mx-4 text-sm text-black">Or</span>
 					<div className="w-full h-px bg-darkGrey" />
 				</motion.div>
-				<motion.div variants={fadeInUp}>
+				<motion.div
+					initial={initial}
+					viewport={{once: true}}
+					whileInView={fadeInUp}
+				>
 					<form
 						action=""
 						className="space-y-8 ng-untouched ng-pristine ng-valid"
 					>
-						<motion.div variants={stagger} className="space-y-4">
-							<motion.div variants={fadeInUp} className="space-y-2">
+						<motion.div
+							initial={initial}
+							viewport={{once: true}}
+							whileInView={stagger}
+							className="space-y-4"
+						>
+							<motion.div
+								initial={initial}
+								viewport={{once: true}}
+								whileInView={fadeInUp}
+								className="space-y-2"
+							>
 								<label htmlFor="email" className="block text-sm text-darkBlue">
 									First Name
 								</label>
@@ -179,7 +217,12 @@ const SignUp: FC<IProps> = ({title, paragraph}) => {
 									className="w-full px-3 py-2 border-[1px] rounded-lg border-grey text-darkBlue focus:border-darkBlue"
 								/>
 							</motion.div>
-							<motion.div variants={fadeInUp} className="space-y-2">
+							<motion.div
+								initial={initial}
+								viewport={{once: true}}
+								whileInView={fadeInUp}
+								className="space-y-2"
+							>
 								<label htmlFor="email" className="block text-sm text-darkBlue">
 									Last Name
 								</label>
@@ -191,7 +234,12 @@ const SignUp: FC<IProps> = ({title, paragraph}) => {
 									className="w-full px-3 py-2 border-[1px] rounded-lg border-grey text-darkBlue focus:border-darkBlue"
 								/>
 							</motion.div>
-							<motion.div variants={fadeInUp} className="space-y-2">
+							<motion.div
+								initial={initial}
+								viewport={{once: true}}
+								whileInView={fadeInUp}
+								className="space-y-2"
+							>
 								<label htmlFor="email" className="block text-sm text-darkBlue">
 									Email address
 								</label>
@@ -203,7 +251,12 @@ const SignUp: FC<IProps> = ({title, paragraph}) => {
 									className="w-full px-3 py-2 border-[1px] rounded-lg border-grey text-darkBlue focus:border-darkBlue"
 								/>
 							</motion.div>
-							<motion.div variants={fadeInUp} className="space-y-2">
+							<motion.div
+								initial={initial}
+								viewport={{once: true}}
+								whileInView={fadeInUp}
+								className="space-y-2"
+							>
 								<div className="flex justify-between">
 									<label htmlFor="password" className="text-sm text-darkBlue">
 										Password
@@ -226,7 +279,9 @@ const SignUp: FC<IProps> = ({title, paragraph}) => {
 							</motion.div>
 						</motion.div>
 						<motion.button
-							variants={fadeInUp}
+							initial={initial}
+							viewport={{once: true}}
+							whileInView={fadeInUp}
 							aria-label="Login with Facebook"
 							role="button"
 							type="button"
@@ -245,7 +300,12 @@ const SignUp: FC<IProps> = ({title, paragraph}) => {
 						</motion.button>
 					</form>
 				</motion.div>
-				<motion.div variants={fadeInUp} className="mt-4">
+				<motion.div
+					initial={initial}
+					viewport={{once: true}}
+					whileInView={fadeInUp}
+					className="mt-4"
+				>
 					<p className="text-sm text-center dark:text-grey">
 						Already have an account?
 						<Link

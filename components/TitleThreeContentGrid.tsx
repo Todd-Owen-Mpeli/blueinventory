@@ -1,7 +1,7 @@
 // Imports
 import {FC} from "react";
 import {motion} from "framer-motion";
-import {fadeInUp, stagger} from "../animations/animations";
+import {initial, fadeInUp, stagger} from "../animations/animations";
 
 // Components
 import TitleThreeContentGridCard from "./Cards/TitleThreeContentGridCard";
@@ -30,13 +30,20 @@ const TitleThreeContentGrid: FC<IProps> = ({title, contentGrid}) => {
 			<div className="container px-4 mx-auto">
 				<div className="pb-12 mb-16 border-b sm:pb-20 border-grey">
 					<motion.h2
-						variants={fadeInUp}
+						initial={initial}
+						viewport={{once: true}}
+						whileInView={fadeInUp}
 						className="text-xl font-bold leading-normal xl:leading-[2.75rem] xl:text-6xl tracking-px-n md:max-w-3xl"
 					>
 						{title}
 					</motion.h2>
 				</div>
-				<motion.div variants={stagger} className="flex flex-wrap -m-8">
+				<motion.div
+					initial={initial}
+					viewport={{once: true}}
+					whileInView={stagger}
+					className="flex flex-wrap -m-8"
+				>
 					{contentGrid?.map((keys) => (
 						<TitleThreeContentGridCard
 							title={keys?.card?.title}

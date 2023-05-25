@@ -1,43 +1,5 @@
 /*  FRAMER-MOTION ANIMATIONS
 Custom reusable Animation Properties/variables */
-interface Initial {
-	y: number;
-	opacity: number;
-}
-
-interface FadeInUp {
-	initial: {
-		y: number;
-		opacity: number;
-	};
-	animate: {
-		y: number;
-		opacity: number;
-		transition: {delay: number; duration: number; ease: string};
-	};
-}
-
-interface FadeIn {
-	initial: {
-		opacity: number;
-	};
-	animate: {
-		opacity: number;
-		transition: {
-			duration: number;
-			delay: number;
-			ease: string;
-		};
-	};
-}
-
-interface Stagger {
-	animate: {
-		transition: {
-			staggerChildren: number;
-		};
-	};
-}
 
 interface FadeInTwo {
 	initial: {
@@ -52,49 +14,6 @@ interface FadeInTwo {
 		};
 	};
 }
-
-export const initial: Initial | any = {
-	y: 60,
-	opacity: 0,
-};
-
-export const fadeInUp: FadeInUp | any = {
-	initial: {
-		y: 60,
-		opacity: 0,
-	},
-	animate: {
-		y: 0,
-		opacity: 1,
-		transition: {
-			delay: 0.5,
-			duration: 0.5,
-			ease: "easeInOut",
-		},
-	},
-};
-
-export const fadeIn: FadeIn | any = {
-	initial: {
-		opacity: 0,
-	},
-	animate: {
-		opacity: 1,
-		transition: {
-			duration: 1,
-			delay: 0.5,
-			ease: "easeOut",
-		},
-	},
-};
-
-export const stagger: Stagger | any = {
-	animate: {
-		transition: {
-			staggerChildren: 0.1,
-		},
-	},
-};
 
 export const fadeInTwo: FadeInTwo = {
 	initial: {
@@ -111,8 +30,26 @@ export const fadeInTwo: FadeInTwo = {
 };
 
 // WhileInView
+interface Initial {
+	y: number;
+	opacity: number;
+}
 
-interface FadeInUpTwo {
+interface InitialTwo {
+	y: number;
+	opacity: number;
+}
+
+interface FadeIn {
+	opacity: number;
+	transition: {
+		duration: number;
+		delay: number;
+		ease: string;
+	};
+}
+
+interface FadeInUp {
 	y: number;
 	opacity: number;
 	transition: {
@@ -122,7 +59,17 @@ interface FadeInUpTwo {
 	};
 }
 
-interface StaggerTwo {
+interface FadeInThree {
+	y: number;
+	opacity: number;
+	transition: {
+		delay: number;
+		duration: number;
+		ease: string;
+	};
+}
+
+interface Stagger {
 	y: number;
 	opacity: number;
 	transition: {
@@ -133,7 +80,25 @@ interface StaggerTwo {
 	};
 }
 
-export const fadeInUpTwo: FadeInUpTwo = {
+export const initial: Initial | any = {
+	y: 60,
+	opacity: 0,
+};
+
+export const initialTwo: InitialTwo | any = {
+	opacity: 0,
+};
+
+export const fadeIn: FadeIn | any = {
+	opacity: 1,
+	transition: {
+		duration: 1,
+		delay: 0.5,
+		ease: "easeOut",
+	},
+};
+
+export const fadeInUp: FadeInUp = {
 	y: 0,
 	opacity: 1,
 	transition: {
@@ -143,7 +108,7 @@ export const fadeInUpTwo: FadeInUpTwo = {
 	},
 };
 
-export const staggerTwo: StaggerTwo = {
+export const stagger: Stagger = {
 	y: 0,
 	opacity: 1,
 	transition: {
@@ -151,6 +116,16 @@ export const staggerTwo: StaggerTwo = {
 		duration: 0.5,
 		ease: "easeInOut",
 		staggerChildren: 0.1,
+	},
+};
+
+export const fadeInThree: FadeInThree | any = {
+	y: 0,
+	opacity: 1,
+	transition: {
+		duration: 1,
+		delay: 0.5,
+		ease: "easeOut",
 	},
 };
 

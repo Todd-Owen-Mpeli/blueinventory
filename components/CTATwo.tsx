@@ -2,7 +2,7 @@ import {FC} from "react";
 import Link from "next/link";
 import {motion} from "framer-motion";
 import Paragraph from "./Elements/Paragraph";
-import {fadeInUp, stagger} from "../animations/animations";
+import {initial, fadeInUp, stagger} from "../animations/animations";
 
 interface IProps {
 	title: string;
@@ -39,7 +39,9 @@ const CTATwo: FC<IProps> = ({
 			<div className="container p-0 mx-auto">
 				<div className="flex flex-col items-center justify-between gap-10 px-0 py-8 lg:flex-row lg:px-8">
 					<motion.div
-						variants={stagger}
+						initial={initial}
+						viewport={{once: true}}
+						whileInView={stagger}
 						className="flex flex-col items-center justify-between gap-4 lg:items-start"
 					>
 						<h2 className="max-w-2xl mb-4 text-3xl font-semibold leading-tight text-center text-white md:text-4xl lg:text-left ">
@@ -51,7 +53,9 @@ const CTATwo: FC<IProps> = ({
 						/>
 					</motion.div>
 					<motion.div
-						variants={fadeInUp}
+						initial={initial}
+						viewport={{once: true}}
+						whileInView={fadeInUp}
 						className={buttonLink?.url ? `block` : `hidden`}
 					>
 						<Link
