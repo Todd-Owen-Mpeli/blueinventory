@@ -125,7 +125,7 @@ export const fetchOperationalInsightsPostsContent = async (slug: string) => {
 		return {
 			seo: response?.data?.mainContent?.seo,
 			pageTitle: response?.data?.mainContent?.title,
-			content: response.data?.mainContent?.singleOperationalInsightPost,
+			content: response?.data?.mainContent?.singleOperationalInsightPost,
 		};
 	} catch (error) {
 		console.log(error);

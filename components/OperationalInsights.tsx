@@ -4,9 +4,13 @@ import {motion} from "framer-motion";
 import {fadeInUp, stagger} from "../animations/animations";
 
 // Components
+import Paragraph from "./Elements/Paragraph";
 import OperationalInsightsCard from "./Cards/OperationalInsightsCard";
 
 interface IProps {
+	title: string;
+	italic: string;
+	paragraph: string;
 	operationalInsights: [
 		{
 			node: {
@@ -33,10 +37,34 @@ interface IProps {
 	];
 }
 
-const operationalInsights: FC<IProps> = ({operationalInsights}) => {
+const operationalInsights: FC<IProps> = ({
+	title,
+	italic,
+	paragraph,
+	operationalInsights,
+}) => {
 	return (
 		<section className="py-24 bg-white">
 			<div className="container px-4 mx-auto">
+				<motion.div
+					variants={stagger}
+					className="max-w-2xl mx-auto mb-24 text-center lg:max-w-5xl"
+				>
+					<motion.h1
+						variants={stagger}
+						className="mb-6 text-4xl font-bold text-darkBlue font-heading sm:text-6xl lg:text-7xl"
+					>
+						<motion.span variants={fadeInUp}>{title}</motion.span>
+						<motion.span variants={fadeInUp} className="ml-4 font-serif italic">
+							{italic}
+						</motion.span>
+					</motion.h1>
+					<Paragraph
+						content={paragraph}
+						tailwindStyling="max-w-xl mx-auto text-base mt-10 text-black"
+					/>
+				</motion.div>
+
 				<motion.div
 					variants={stagger}
 					className="grid gap-4 mb-16 -m-4 sm:gap-y-2 sm:gap-x-0 lg:gap-4 grid-col md:grid-cols-2 lg:grid-cols-3"

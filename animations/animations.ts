@@ -1,4 +1,10 @@
-// Custom reusable Animation Properties/variables
+/*  FRAMER-MOTION ANIMATIONS
+Custom reusable Animation Properties/variables */
+interface Initial {
+	y: number;
+	opacity: number;
+}
+
 interface FadeInUp {
 	initial: {
 		y: number;
@@ -7,10 +13,7 @@ interface FadeInUp {
 	animate: {
 		y: number;
 		opacity: number;
-		transition: {
-			duration: number;
-			ease: string;
-		};
+		transition: {delay: number; duration: number; ease: string};
 	};
 }
 
@@ -50,6 +53,11 @@ interface FadeInTwo {
 	};
 }
 
+export const initial: Initial | any = {
+	y: 60,
+	opacity: 0,
+};
+
 export const fadeInUp: FadeInUp | any = {
 	initial: {
 		y: 60,
@@ -58,7 +66,11 @@ export const fadeInUp: FadeInUp | any = {
 	animate: {
 		y: 0,
 		opacity: 1,
-		transition: {duration: 0.5, ease: "easeOut"},
+		transition: {
+			delay: 0.5,
+			duration: 0.5,
+			ease: "easeInOut",
+		},
 	},
 };
 
@@ -84,7 +96,7 @@ export const stagger: Stagger | any = {
 	},
 };
 
-export const fadeInTwo: FadeInTwo | any = {
+export const fadeInTwo: FadeInTwo = {
 	initial: {
 		opacity: 0,
 	},
@@ -95,6 +107,50 @@ export const fadeInTwo: FadeInTwo | any = {
 			delay: 2,
 			ease: "easeOut",
 		},
+	},
+};
+
+// WhileInView
+
+interface FadeInUpTwo {
+	y: number;
+	opacity: number;
+	transition: {
+		delay: number;
+		duration: number;
+		ease: string;
+	};
+}
+
+interface StaggerTwo {
+	y: number;
+	opacity: number;
+	transition: {
+		delay: number;
+		duration: number;
+		ease: string;
+		staggerChildren: number;
+	};
+}
+
+export const fadeInUpTwo: FadeInUpTwo = {
+	y: 0,
+	opacity: 1,
+	transition: {
+		delay: 0.5,
+		duration: 0.5,
+		ease: "easeInOut",
+	},
+};
+
+export const staggerTwo: StaggerTwo = {
+	y: 0,
+	opacity: 1,
+	transition: {
+		delay: 0.25,
+		duration: 0.5,
+		ease: "easeInOut",
+		staggerChildren: 0.1,
 	},
 };
 

@@ -1,7 +1,12 @@
 import {FC} from "react";
 import Image from "next/image";
 import {motion} from "framer-motion";
-import {fadeIn, fadeInTwo} from "../animations/animations";
+import {
+	fadeIn,
+	fadeInTwo,
+	fadeInUpTwo,
+	initial,
+} from "../animations/animations";
 
 // Components
 import Paragraph from "./Elements/Paragraph";
@@ -66,7 +71,8 @@ const Sustainability: FC<IProps> = ({
 							/>
 
 							<motion.div
-								variants={fadeInTwo}
+								initial={initial}
+								whileInView={fadeInUpTwo}
 								className="absolute bg-white -bottom-10 lg:-left-16"
 							>
 								<div className="px-8 py-10">

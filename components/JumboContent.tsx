@@ -1,7 +1,15 @@
 // Imports
 import {FC} from "react";
 import {motion} from "framer-motion";
-import {fadeInUp, fadeIn, stagger} from "../animations/animations";
+import {
+	initial,
+	fadeInUp,
+	fadeInTwo,
+	fadeInUpTwo,
+	fadeIn,
+	stagger,
+	staggerTwo,
+} from "../animations/animations";
 
 // Components
 import Paragraph from "./Elements/Paragraph";
@@ -62,9 +70,14 @@ const JumboContent: FC<IProps> = ({
 		<section className="overflow-hidden bg-white">
 			<div className="container px-4 mx-auto">
 				<div className="max-w-6xl mx-auto pt-28 pb-36">
-					<motion.div variants={stagger} className="mb-20">
+					<motion.div
+						initial={initial}
+						whileInView={staggerTwo}
+						className="mb-20"
+					>
 						<motion.h2
-							variants={fadeInUp}
+							initial={initial}
+							whileInView={fadeInUpTwo}
 							className="max-w-md mb-6 text-3xl font-bold md:text-4xl"
 						>
 							{title}

@@ -5,6 +5,7 @@ import {client} from "../config/apollo";
 import type {NextPage, GetStaticProps} from "next";
 import {getThemesOptionsContent} from "../functions/themesOptions";
 import {getAllOperationalInsightsContent} from "../functions/OperationalInsightsPostsSlugs";
+import {fetchContentSliderOperationalInsightsPostsContent} from "@/functions/ContentSliderPosts";
 import {
 	getMainMenuLinks,
 	getNavbarMenuLinks,
@@ -14,8 +15,8 @@ import {
 
 // Components
 import CTATwo from "../components/CTATwo";
-import HeroTwo from "../components/HeroTwo";
 import Layout from "../components/Layout/Layout";
+import ContentSlider from "@/components/ContentSlider";
 import OperationalInsights from "../components/OperationalInsights";
 
 interface IOperationalInsights {
@@ -50,19 +51,10 @@ interface IOperationalInsights {
 	};
 	pageTitle: string;
 	content: {
-		heroSection: {
+		operationalInsights: {
 			title: string;
+			italic: string;
 			paragraph: string;
-			backgroundVideoUrl: string;
-			backgroundImageOrVideo: string;
-			backgroundImage: {
-				altText: string;
-				sourceUrl: string;
-				mediaDetails: {
-					width: number;
-					height: number;
-				};
-			};
 		};
 		cta: {
 			title: string;
@@ -173,6 +165,79 @@ interface IOperationalInsights {
 			};
 		};
 	};
+	contentSliderPostsContent: {
+		content: [
+			{
+				uri: string;
+				date: string;
+				title: string;
+				singleOperationalInsightPost: {
+					heroSection: {
+						backgroundVideoUrl: string;
+						backgroundImageOrVideo: string;
+						backgroundImage: {
+							altText: string;
+							sourceUrl: string;
+							mediaDetails: {
+								height: number;
+								width: number;
+							};
+						};
+					};
+					titleParagraph: {
+						title: string;
+						paragraph: string;
+					};
+				};
+			},
+			{
+				uri: string;
+				date: string;
+				title: string;
+				singleOperationalInsightPost: {
+					heroSection: {
+						backgroundVideoUrl: string;
+						backgroundImageOrVideo: string;
+						backgroundImage: {
+							altText: string;
+							sourceUrl: string;
+							mediaDetails: {
+								height: number;
+								width: number;
+							};
+						};
+					};
+					titleParagraph: {
+						title: string;
+						paragraph: string;
+					};
+				};
+			},
+			{
+				uri: string;
+				date: string;
+				title: string;
+				singleOperationalInsightPost: {
+					heroSection: {
+						backgroundVideoUrl: string;
+						backgroundImageOrVideo: string;
+						backgroundImage: {
+							altText: string;
+							sourceUrl: string;
+							mediaDetails: {
+								height: number;
+								width: number;
+							};
+						};
+					};
+					titleParagraph: {
+						title: string;
+						paragraph: string;
+					};
+				};
+			}
+		];
+	};
 }
 
 const operationalInsights: NextPage<IOperationalInsights> = ({
@@ -184,6 +249,7 @@ const operationalInsights: NextPage<IOperationalInsights> = ({
 	operationalInsights,
 	industriesMenuLinks,
 	themesOptionsContent,
+	contentSliderPostsContent,
 }) => {
 	return (
 		<motion.div
@@ -201,16 +267,19 @@ const operationalInsights: NextPage<IOperationalInsights> = ({
 				navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks}
 				industriesMenuLinks={industriesMenuLinks?.industriesMenuLinks}
 			>
-				<HeroTwo
-					title={content?.heroSection?.title}
-					paragraph={content?.heroSection?.paragraph}
-					backgroundImage={content?.heroSection?.backgroundImage}
-					backgroundVideoUrl={content?.heroSection?.backgroundVideoUrl}
-					backgroundImageOrVideo={content?.heroSection?.backgroundImageOrVideo}
+				<ContentSlider
+					content={contentSliderPostsContent?.content[0]}
+					contentTwo={contentSliderPostsContent?.content[1]}
+					contentThree={contentSliderPostsContent?.content[2]}
 				/>
 
 				{/* Renders all operational insights blog posts */}
-				<OperationalInsights operationalInsights={operationalInsights} />
+				<OperationalInsights
+					operationalInsights={operationalInsights}
+					title={content?.operationalInsights?.title}
+					italic={content?.operationalInsights?.italic}
+					paragraph={content?.operationalInsights?.paragraph}
+				/>
 
 				<CTATwo
 					title={content?.cta?.title}
@@ -268,19 +337,10 @@ export const getStaticProps: GetStaticProps = async () => {
 							}
 						}
 						operationalInsightsPage {
-							heroSection {
+							operationalInsights {
 								title
+								italic
 								paragraph
-								backgroundVideoUrl
-								backgroundImageOrVideo
-								backgroundImage {
-									altText
-									sourceUrl
-									mediaDetails {
-										height
-										width
-									}
-								}
 							}
 							cta {
 								title
@@ -310,6 +370,8 @@ export const getStaticProps: GetStaticProps = async () => {
 	const industriesMenuLinks: object = await getIndustriesMenuLinks();
 	const themesOptionsContent: object = await getThemesOptionsContent();
 	const operationalInsights: object = await getAllOperationalInsightsContent();
+	const contentSliderPostsContent: object =
+		await fetchContentSliderOperationalInsightsPostsContent();
 
 	return {
 		props: {
@@ -318,6 +380,7 @@ export const getStaticProps: GetStaticProps = async () => {
 			industriesMenuLinks,
 			operationalInsights,
 			themesOptionsContent,
+			contentSliderPostsContent,
 			seo: response?.data?.mainContent?.edges[0]?.node?.seo,
 			pageTitle: response?.data?.title?.edges[0]?.node?.title,
 			content:
