@@ -64,8 +64,8 @@ const Hero: FC<HeroProps> = ({
 						<div className="max-w-2xl px-6 py-10 bg-white rounded-sm sm:p-10">
 							<motion.h1
 								initial={initial}
-								viewport={{once: true}}
 								whileInView={fadeInUp}
+								viewport={{once: true}}
 								className="text-center lg:text-left tracking-normal leading-normal sm:leading-[3.5rem] font-semibold text-2xl sm:text-6xl lg:text-7xl"
 							>
 								{title}
@@ -76,14 +76,14 @@ const Hero: FC<HeroProps> = ({
 							/>
 							<motion.div
 								initial={initial}
-								viewport={{once: true}}
 								whileInView={stagger}
+								viewport={{once: true}}
 								className="flex flex-col items-center justify-center gap-6 pt-8 lg:justify-start sm:flex-row"
 							>
 								<motion.button
 									initial={initial}
-									viewport={{once: true}}
 									whileInView={fadeInUp}
+									viewport={{once: true}}
 								>
 									<Link
 										href={buttonLink?.url}
@@ -95,8 +95,8 @@ const Hero: FC<HeroProps> = ({
 								</motion.button>
 								<motion.button
 									initial={initial}
-									viewport={{once: true}}
 									whileInView={fadeInUp}
+									viewport={{once: true}}
 								>
 									<Link
 										href={buttonLinkTwo?.url}

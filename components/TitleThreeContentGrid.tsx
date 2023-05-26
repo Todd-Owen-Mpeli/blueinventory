@@ -44,12 +44,12 @@ const TitleThreeContentGrid: FC<IProps> = ({title, contentGrid}) => {
 					viewport={{once: true}}
 					className="flex flex-wrap -m-8"
 				>
-					{contentGrid?.map((keys) => (
+					{contentGrid?.map((item, keys) => (
 						<TitleThreeContentGridCard
-							title={keys?.card?.title}
-							paragraph={keys?.card?.paragraph}
-							buttonLink={keys?.card?.buttonLink}
-							key={keys?.card?.id || keys?.card?.title}
+							key={keys}
+							title={item?.card?.title}
+							paragraph={item?.card?.paragraph}
+							buttonLink={item?.card?.buttonLink}
 						/>
 					))}
 				</motion.div>

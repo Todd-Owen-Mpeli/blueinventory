@@ -14,8 +14,8 @@ const FooterMenuLinks: FC<IProps> = ({url, label, tailwindStyling}) => {
 	return (
 		<motion.li
 			initial={initial}
-			viewport={{once: true}}
 			whileInView={fadeInUp}
+			viewport={{once: true}}
 			className="px-0"
 		>
 			<Link className={tailwindStyling} href={url}>

@@ -34,8 +34,8 @@ const ContactInfo: FC<IProps> = ({
 						<div className="max-w-lg">
 							<motion.h2
 								initial={initial}
-								viewport={{once: true}}
 								whileInView={fadeInUp}
+								viewport={{once: true}}
 								className="text-4xl font-semibold"
 							>
 								{title}
@@ -48,8 +48,8 @@ const ContactInfo: FC<IProps> = ({
 					</div>
 					<motion.div
 						initial={initial}
-						viewport={{once: true}}
 						whileInView={stagger}
+						viewport={{once: true}}
 						className="flex flex-col w-full gap-8 px-4 lg:w-auto lg:mr-28"
 					>
 						<motion.div
@@ -59,8 +59,8 @@ const ContactInfo: FC<IProps> = ({
 						>
 							<motion.h3
 								initial={initial}
-								viewport={{once: true}}
 								whileInView={fadeInUp}
+								viewport={{once: true}}
 								className="mb-4 text-2xl font-semibold text-center lg:text-left"
 							>
 								Address
@@ -77,22 +77,22 @@ const ContactInfo: FC<IProps> = ({
 						>
 							<motion.h3
 								initial={initial}
-								viewport={{once: true}}
 								whileInView={fadeInUp}
+								viewport={{once: true}}
 								className="mb-4 text-2xl font-semibold text-center lg:text-left"
 							>
 								Contacts
 							</motion.h3>
 							<motion.div
 								initial={initial}
-								viewport={{once: true}}
 								whileInView={stagger}
+								viewport={{once: true}}
 								className="flex flex-col gap-3 text-center lg:text-left"
 							>
 								<motion.div
 									initial={initial}
-									viewport={{once: true}}
 									whileInView={fadeInUp}
+									viewport={{once: true}}
 								>
 									<Link
 										className="font-medium tracking-wide text-black hover:text-goldPrime"
@@ -103,8 +103,8 @@ const ContactInfo: FC<IProps> = ({
 								</motion.div>
 								<motion.div
 									initial={initial}
-									viewport={{once: true}}
 									whileInView={fadeInUp}
+									viewport={{once: true}}
 								>
 									<Link
 										className="font-medium tracking-wide text-black hover:text-goldPrime"

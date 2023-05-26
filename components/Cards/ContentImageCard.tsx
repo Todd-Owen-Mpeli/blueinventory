@@ -2,7 +2,14 @@ import {FC} from "react";
 import {motion} from "framer-motion";
 import styled from "styled-components";
 import Paragraph from "./../Elements/Paragraph";
-import {initial, fadeInUp, stagger} from "../../animations/animations";
+import {
+	initial,
+	fadeInUp,
+	stagger,
+	slideInRightInitial,
+	slideInLeftInitial,
+	slideInRightFinish,
+} from "../../animations/animations";
 
 const ContentImageCard = styled.div`
 	ol,
@@ -50,7 +57,12 @@ const contentImageCard: FC<IProps> = ({
 						}")`,
 			}}
 		>
-			<div
+			<motion.div
+				initial={
+					contentLocation === "Left" ? slideInLeftInitial : slideInRightInitial
+				}
+				whileInView={slideInRightFinish}
+				viewport={{once: true}}
 				className={
 					contentLocation === "Left"
 						? `flex flex-col items-baseline justify-center mx-auto max-w-7xl`
@@ -76,7 +88,7 @@ const contentImageCard: FC<IProps> = ({
 						tailwindStyling="w-full lg:max-w-2xl mx-auto mt-6 text-black text-left text-base"
 					/>
 				</motion.div>
-			</div>
+			</motion.div>
 		</ContentImageCard>
 	);
 };

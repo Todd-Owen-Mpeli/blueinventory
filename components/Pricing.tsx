@@ -70,8 +70,8 @@ const Pricing: FC<IProps> = ({
 				<div className="container px-4 mx-auto">
 					<motion.div
 						initial={initial}
-						viewport={{once: true}}
 						whileInView={stagger}
+						viewport={{once: true}}
 						className="max-w-2xl mx-auto mb-24 text-center lg:max-w-5xl"
 					>
 						<motion.span
@@ -90,15 +90,15 @@ const Pricing: FC<IProps> = ({
 						>
 							<motion.span
 								initial={initial}
-								viewport={{once: true}}
 								whileInView={fadeInUp}
+								viewport={{once: true}}
 							>
 								{title}
 							</motion.span>
 							<motion.span
 								initial={initial}
-								viewport={{once: true}}
 								whileInView={fadeInUp}
+								viewport={{once: true}}
 								className="ml-4 font-serif italic"
 							>
 								{italic}
@@ -133,12 +133,22 @@ const Pricing: FC<IProps> = ({
 						>
 							<motion.div
 								initial={initial}
-								viewport={{once: true}}
 								whileInView={fadeInUp}
+								viewport={{once: true}}
 								className="w-full px-4 mb-8 lg:w-1/3 lg:pt-16 lg:mb-0"
 							>
-								<div className="max-w-lg p-10 mx-auto bg-white border border-grey rounded-3xl">
-									<div className="flex items-center justify-center w-10 h-10 mb-4 border rounded-full border-darkBlue">
+								<motion.div
+									initial={initial}
+									whileInView={stagger}
+									viewport={{once: true}}
+									className="max-w-lg p-10 mx-auto bg-white border border-grey rounded-3xl"
+								>
+									<motion.div
+										initial={initial}
+										whileInView={fadeInUp}
+										viewport={{once: true}}
+										className="flex items-center justify-center w-10 h-10 mb-4 border rounded-full border-darkBlue"
+									>
 										<svg
 											version="1.1"
 											id="Layer_1"
@@ -160,42 +170,72 @@ const Pricing: FC<IProps> = ({
 												/>
 											</g>
 										</svg>
-									</div>
-									<span className="block mb-2 text-2xl font-semibold text-darkBlue">
+									</motion.div>
+									<motion.span
+										initial={initial}
+										whileInView={fadeInUp}
+										viewport={{once: true}}
+										className="block mb-2 text-2xl font-semibold text-darkBlue"
+									>
 										{stripeStandardPlan?.name}
-									</span>
+									</motion.span>
 									<Paragraph
 										content={stripeStandardPlan?.description}
 										tailwindStyling="mb-6 mt-3 text-black"
 									/>
-									<span className="flex items-end">
+									<motion.span
+										initial={initial}
+										whileInView={fadeInUp}
+										viewport={{once: true}}
+										className="flex items-end"
+									>
 										<span className="text-5xl font-extrabold leading-none text-darkBlue">
 											£{stripeStandardPlan?.price}
 										</span>
 										<span className="text-darkBlue">
 											/{stripeStandardPlan?.paymentRecurringInterval}
 										</span>
-									</span>
-									<div className="mt-6">
-										<span className="block mb-4 text-base text-black">
+									</motion.span>
+									<motion.div
+										initial={initial}
+										whileInView={fadeInUp}
+										viewport={{once: true}}
+										className="mt-6"
+									>
+										<motion.span
+											initial={initial}
+											whileInView={fadeInUp}
+											viewport={{once: true}}
+											className="block mb-4 text-base text-black"
+										>
 											What&apos;s included:
-										</span>
-										<ul className="mb-10">
+										</motion.span>
+										<motion.div
+											initial={initial}
+											whileInView={stagger}
+											viewport={{once: true}}
+											className="mb-10"
+										>
 											<motion.ul
 												initial={initial}
-												viewport={{once: true}}
 												whileInView={stagger}
+												viewport={{once: true}}
 											>
-												{card?.bulletList.map((keys) => (
+												{card?.bulletList.map((item, keys) => (
 													<BulletListCard
+														key={keys}
 														iconFillColor={`#6BBE66`}
-														bulletPoint={keys?.bulletPoint}
-														key={keys?.id || keys?.bulletPoint}
+														bulletPoint={item?.bulletPoint}
 														tailwindStyling="ml-2 text-sm text-black"
 													/>
 												))}
 											</motion.ul>
-											<li className="flex items-center mb-6">
+											<motion.li
+												initial={initial}
+												whileInView={fadeInUp}
+												viewport={{once: true}}
+												className="flex items-center mb-6"
+											>
 												<svg
 													xmlns="http://www.w3.org/2000/svg"
 													viewBox="0 0 26 26"
@@ -211,8 +251,13 @@ const Pricing: FC<IProps> = ({
 												<span className="ml-2 text-sm line-through text-grey">
 													Component Library
 												</span>
-											</li>
-											<li className="flex items-center mb-6">
+											</motion.li>
+											<motion.li
+												initial={initial}
+												whileInView={fadeInUp}
+												viewport={{once: true}}
+												className="flex items-center mb-6"
+											>
 												<svg
 													xmlns="http://www.w3.org/2000/svg"
 													viewBox="0 0 26 26"
@@ -228,8 +273,13 @@ const Pricing: FC<IProps> = ({
 												<span className="ml-2 text-sm line-through text-grey">
 													All limited links
 												</span>
-											</li>
-											<li className="flex items-center mb-6">
+											</motion.li>
+											<motion.li
+												initial={initial}
+												whileInView={fadeInUp}
+												viewport={{once: true}}
+												className="flex items-center mb-6"
+											>
 												<svg
 													xmlns="http://www.w3.org/2000/svg"
 													viewBox="0 0 26 26"
@@ -245,8 +295,13 @@ const Pricing: FC<IProps> = ({
 												<span className="ml-2 text-sm line-through text-grey">
 													Own analytics platform
 												</span>
-											</li>
-											<li className="flex items-center mb-6">
+											</motion.li>
+											<motion.li
+												initial={initial}
+												whileInView={fadeInUp}
+												viewport={{once: true}}
+												className="flex items-center mb-6"
+											>
 												<svg
 													xmlns="http://www.w3.org/2000/svg"
 													viewBox="0 0 26 26"
@@ -262,8 +317,8 @@ const Pricing: FC<IProps> = ({
 												<span className="ml-2 text-sm line-through text-grey">
 													Chat support
 												</span>
-											</li>
-										</ul>
+											</motion.li>
+										</motion.div>
 										<form
 											action="/api/stripe/standardPlanCheckoutSession"
 											method="POST"
@@ -277,17 +332,27 @@ const Pricing: FC<IProps> = ({
 												<span className="relative">Choose Plan</span>
 											</button>
 										</form>
-									</div>
-								</div>
+									</motion.div>
+								</motion.div>
 							</motion.div>
 							<motion.div
 								initial={initial}
-								viewport={{once: true}}
 								whileInView={fadeInUp}
+								viewport={{once: true}}
 								className="w-full px-4 mb-8 lg:w-1/3 lg:mb-0"
 							>
-								<div className="max-w-lg p-10 mx-auto bg-blue rounded-3xl">
-									<div className="flex items-center justify-center w-10 h-10 mb-4 rounded-full bg-goldPrime">
+								<motion.div
+									initial={initial}
+									whileInView={stagger}
+									viewport={{once: true}}
+									className="max-w-lg p-10 mx-auto bg-blue rounded-3xl"
+								>
+									<motion.div
+										initial={initial}
+										whileInView={fadeInUp}
+										viewport={{once: true}}
+										className="flex items-center justify-center w-10 h-10 mb-4 rounded-full bg-goldPrime"
+									>
 										<svg
 											version="1.1"
 											id="Layer_1"
@@ -309,42 +374,72 @@ const Pricing: FC<IProps> = ({
 												/>
 											</g>
 										</svg>
-									</div>
-									<span className="block mb-2 text-2xl font-semibold text-white">
+									</motion.div>
+									<motion.span
+										initial={initial}
+										whileInView={fadeInUp}
+										viewport={{once: true}}
+										className="block mb-2 text-2xl font-semibold text-white"
+									>
 										{stripePremiumPlan?.name}
-									</span>
+									</motion.span>
 									<Paragraph
 										content={stripePremiumPlan?.description}
 										tailwindStyling="mb-6 mt-3 text-white"
 									/>
-									<span className="flex items-end">
+									<motion.span
+										initial={initial}
+										whileInView={fadeInUp}
+										viewport={{once: true}}
+										className="flex items-end"
+									>
 										<span className="text-5xl font-extrabold leading-none text-white">
 											£{stripePremiumPlan?.price}
 										</span>
 										<span className="text-white">
 											/{stripePremiumPlan?.paymentRecurringInterval}
 										</span>
-									</span>
-									<div className="mt-6">
-										<span className="block mb-4 text-base text-white">
+									</motion.span>
+									<motion.div
+										initial={initial}
+										whileInView={fadeInUp}
+										viewport={{once: true}}
+										className="mt-6"
+									>
+										<motion.span
+											initial={initial}
+											whileInView={fadeInUp}
+											viewport={{once: true}}
+											className="block mb-4 text-base text-white"
+										>
 											What&apos;s included:
-										</span>
-										<ul className="mb-10">
+										</motion.span>
+										<motion.div
+											initial={initial}
+											whileInView={stagger}
+											viewport={{once: true}}
+											className="mb-10"
+										>
 											<motion.ul
 												initial={initial}
-												viewport={{once: true}}
 												whileInView={stagger}
+												viewport={{once: true}}
 											>
-												{card?.bulletList.map((keys) => (
+												{card?.bulletList.map((item, keys) => (
 													<BulletListCard
+														key={keys}
 														iconFillColor={`#5ac3ff`}
-														bulletPoint={keys?.bulletPoint}
-														key={keys?.id || keys?.bulletPoint}
+														bulletPoint={item?.bulletPoint}
 														tailwindStyling="ml-2 text-sm text-white"
 													/>
 												))}
 											</motion.ul>
-											<li className="flex items-center mb-6">
+											<motion.li
+												initial={initial}
+												whileInView={fadeInUp}
+												viewport={{once: true}}
+												className="flex items-center mb-6"
+											>
 												<svg
 													xmlns="http://www.w3.org/2000/svg"
 													viewBox="0 0 26 26"
@@ -360,8 +455,13 @@ const Pricing: FC<IProps> = ({
 												<span className="ml-2 text-sm text-white line-through">
 													Component Library
 												</span>
-											</li>
-											<li className="flex items-center mb-6">
+											</motion.li>
+											<motion.li
+												initial={initial}
+												whileInView={fadeInUp}
+												viewport={{once: true}}
+												className="flex items-center mb-6"
+											>
 												<svg
 													xmlns="http://www.w3.org/2000/svg"
 													viewBox="0 0 26 26"
@@ -377,8 +477,13 @@ const Pricing: FC<IProps> = ({
 												<span className="ml-2 text-sm text-white line-through">
 													All limited links
 												</span>
-											</li>
-											<li className="flex items-center mb-6">
+											</motion.li>
+											<motion.li
+												initial={initial}
+												whileInView={fadeInUp}
+												viewport={{once: true}}
+												className="flex items-center mb-6"
+											>
 												<svg
 													xmlns="http://www.w3.org/2000/svg"
 													viewBox="0 0 26 26"
@@ -394,8 +499,13 @@ const Pricing: FC<IProps> = ({
 												<span className="ml-2 text-sm text-white line-through">
 													Own analytics platform
 												</span>
-											</li>
-											<li className="flex items-center mb-6">
+											</motion.li>
+											<motion.li
+												initial={initial}
+												whileInView={fadeInUp}
+												viewport={{once: true}}
+												className="flex items-center mb-6"
+											>
 												<svg
 													xmlns="http://www.w3.org/2000/svg"
 													viewBox="0 0 26 26"
@@ -411,8 +521,8 @@ const Pricing: FC<IProps> = ({
 												<span className="ml-2 text-sm text-white line-through">
 													Chat support
 												</span>
-											</li>
-										</ul>
+											</motion.li>
+										</motion.div>
 										<form
 											action="/api/stripe/premiumPlanCheckoutSession"
 											method="POST"
@@ -426,17 +536,27 @@ const Pricing: FC<IProps> = ({
 												<span className="relative">Choose Plan</span>
 											</button>
 										</form>
-									</div>
-								</div>
+									</motion.div>
+								</motion.div>
 							</motion.div>
 							<motion.div
 								initial={initial}
-								viewport={{once: true}}
 								whileInView={fadeInUp}
+								viewport={{once: true}}
 								className="w-full px-4 lg:w-1/3 lg:pt-16"
 							>
-								<div className="max-w-lg p-10 mx-auto bg-white border border-darkBlue rounded-3xl">
-									<div className="flex items-center justify-center w-10 h-10 mb-4 border rounded-full border-darkBlue">
+								<motion.div
+									initial={initial}
+									whileInView={stagger}
+									viewport={{once: true}}
+									className="max-w-lg p-10 mx-auto bg-white border border-darkBlue rounded-3xl"
+								>
+									<motion.div
+										initial={initial}
+										viewport={{once: true}}
+										whileInView={fadeInUp}
+										className="flex items-center justify-center w-10 h-10 mb-4 border rounded-full border-darkBlue"
+									>
 										<svg
 											version="1.1"
 											id="Layer_1"
@@ -458,40 +578,65 @@ const Pricing: FC<IProps> = ({
 												/>
 											</g>
 										</svg>
-									</div>
-									<span className="block mb-2 text-2xl font-semibold text-darkBlue">
+									</motion.div>
+									<motion.span
+										initial={initial}
+										viewport={{once: true}}
+										whileInView={fadeInUp}
+										className="block mb-2 text-2xl font-semibold text-darkBlue"
+									>
 										Enterprise
-									</span>
+									</motion.span>
 									<Paragraph
 										content={`Simply dummy text of the printing and typesetting industry.`}
 										tailwindStyling="mb-6 mt-3 text-black"
 									/>
-									<span className="flex items-end">
+									<motion.span
+										initial={initial}
+										viewport={{once: true}}
+										whileInView={fadeInUp}
+										className="flex items-end"
+									>
 										<span className="text-5xl font-extrabold leading-none text-darkBlue">
 											Contact Us
 										</span>
 										{/* <span className="text-darkBlue">/month</span> */}
-									</span>
-									<div className="mt-6">
-										<span className="block mb-4 text-base text-black">
+									</motion.span>
+									<motion.div className="mt-6">
+										<motion.span
+											initial={initial}
+											whileInView={fadeInUp}
+											viewport={{once: true}}
+											className="block mb-4 text-base text-black"
+										>
 											What&apos;s included:
-										</span>
-										<ul className="mb-10">
+										</motion.span>
+										<motion.div
+											initial={initial}
+											whileInView={stagger}
+											viewport={{once: true}}
+											className="mb-10"
+										>
 											<motion.ul
 												initial={initial}
-												viewport={{once: true}}
 												whileInView={stagger}
+												viewport={{once: true}}
 											>
-												{card?.bulletList.map((keys) => (
+												{card?.bulletList.map((item, keys) => (
 													<BulletListCard
+														key={keys}
 														iconFillColor={`#6BBE66`}
-														bulletPoint={keys?.bulletPoint}
-														key={keys?.id || keys?.bulletPoint}
+														bulletPoint={item?.bulletPoint}
 														tailwindStyling="ml-2 text-sm text-black"
 													/>
 												))}
 											</motion.ul>
-											<li className="flex items-center mb-6">
+											<motion.li
+												initial={initial}
+												viewport={{once: true}}
+												whileInView={fadeInUp}
+												className="flex items-center mb-6"
+											>
 												<svg
 													xmlns="http://www.w3.org/2000/svg"
 													viewBox="0 0 26 26"
@@ -507,8 +652,13 @@ const Pricing: FC<IProps> = ({
 												<span className="ml-2 text-sm line-through text-grey">
 													Component Library
 												</span>
-											</li>
-											<li className="flex items-center mb-6">
+											</motion.li>
+											<motion.li
+												initial={initial}
+												viewport={{once: true}}
+												whileInView={fadeInUp}
+												className="flex items-center mb-6"
+											>
 												<svg
 													xmlns="http://www.w3.org/2000/svg"
 													viewBox="0 0 26 26"
@@ -524,8 +674,13 @@ const Pricing: FC<IProps> = ({
 												<span className="ml-2 text-sm line-through text-grey">
 													All limited links
 												</span>
-											</li>
-											<li className="flex items-center mb-6">
+											</motion.li>
+											<motion.li
+												initial={initial}
+												viewport={{once: true}}
+												whileInView={fadeInUp}
+												className="flex items-center mb-6"
+											>
 												<svg
 													xmlns="http://www.w3.org/2000/svg"
 													viewBox="0 0 26 26"
@@ -541,8 +696,13 @@ const Pricing: FC<IProps> = ({
 												<span className="ml-2 text-sm line-through text-grey">
 													Own analytics platform
 												</span>
-											</li>
-											<li className="flex items-center mb-6">
+											</motion.li>
+											<motion.li
+												initial={initial}
+												viewport={{once: true}}
+												whileInView={fadeInUp}
+												className="flex items-center mb-6"
+											>
 												<svg
 													xmlns="http://www.w3.org/2000/svg"
 													viewBox="0 0 26 26"
@@ -558,8 +718,8 @@ const Pricing: FC<IProps> = ({
 												<span className="ml-2 text-sm line-through text-grey">
 													Chat support
 												</span>
-											</li>
-										</ul>
+											</motion.li>
+										</motion.div>
 										<Link
 											className="relative inline-block py-4 overflow-hidden text-sm font-semibold text-center transition duration-200 border rounded-full border-grey-200 text-goldPrime hover:text-white group px-7 hover:text-orange"
 											href={`/checkout`}
@@ -567,16 +727,16 @@ const Pricing: FC<IProps> = ({
 											<div className="absolute top-0 w-full h-full transition duration-200 transform bg-goldPrime right-full group-hover:translate-x-full group-hover:scale-102"></div>
 											<span className="relative">Coming soon</span>
 										</Link>
-									</div>
-								</div>
+									</motion.div>
+								</motion.div>
 							</motion.div>
 						</motion.div>
 					</motion.div>
 					{/* Billing Information */}
 					<motion.div
 						initial={initial}
-						viewport={{once: true}}
 						whileInView={stagger}
+						viewport={{once: true}}
 						className="flex flex-col items-baseline justify-center max-w-xs mx-auto mt-12 sm:mx-0 sm:max-w-none sm:items-center gap-y-4 gap-x-8 sm:flex-row"
 					>
 						<motion.div
@@ -641,15 +801,12 @@ const Pricing: FC<IProps> = ({
 					{/* Payment Providers */}
 					<motion.div
 						initial={initial}
-						viewport={{once: true}}
 						whileInView={stagger}
+						viewport={{once: true}}
 						className="flex flex-wrap justify-center gap-6 mt-20 sm:flex-row lg:flex-row"
 					>
-						{paymentProviders.map((keys) => (
-							<PaymentProvidersCard
-								image={keys?.logo}
-								key={keys?.id || keys?.logo?.sourceUrl}
-							/>
+						{paymentProviders.map((item, keys) => (
+							<PaymentProvidersCard key={keys} image={item?.logo} />
 						))}
 					</motion.div>
 				</motion.div>

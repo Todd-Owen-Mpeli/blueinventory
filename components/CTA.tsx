@@ -56,14 +56,14 @@ const CTATwo: FC<IProps> = ({
 						<div className="w-full px-4 mb-8 lg:w-1/2 lg:mb-0">
 							<motion.div
 								initial={initial}
-								viewport={{once: true}}
 								whileInView={stagger}
+								viewport={{once: true}}
 								className="mx-auto lg:max-w-md"
 							>
 								<motion.h4
 									initial={initial}
-									viewport={{once: true}}
 									whileInView={fadeInUp}
+									viewport={{once: true}}
 									className="mb-5 text-4xl font-bold text-center text-white sm:text-left"
 								>
 									{title}
@@ -112,14 +112,14 @@ const CTATwo: FC<IProps> = ({
 						<div className="w-full px-4 lg:w-1/2">
 							<motion.div
 								initial={initial}
-								viewport={{once: true}}
 								whileInView={stagger}
+								viewport={{once: true}}
 								className="flex flex-wrap -mx-4"
 							>
 								<motion.div
 									initial={initial}
-									viewport={{once: true}}
 									whileInView={fadeInUp}
+									viewport={{once: true}}
 									className="w-full p-8 px-4"
 								>
 									<div className="mb-5">

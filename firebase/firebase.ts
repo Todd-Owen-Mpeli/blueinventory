@@ -79,8 +79,6 @@ export const initializeFirebase = () => {
 
 			console.log(`Firebase initialization successful`);
 			return firebaseUser;
-		} else {
-			console.log(`Firebase already initialized successfully`);
 		}
 	} catch (error) {
 		console.log(error);

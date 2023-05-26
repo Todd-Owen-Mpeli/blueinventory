@@ -35,7 +35,12 @@ const TestimonialCard: FC<IProps> = ({
 	}
 
 	return (
-		<div className="w-full px-4 mb-8 lg:w-1/3 lg:mb-0">
+		<motion.div
+			initial={initial}
+			whileInView={fadeInUp}
+			viewport={{once: true}}
+			className="w-full px-4 mb-8 lg:w-1/3 lg:mb-0"
+		>
 			<motion.div
 				initial={initial}
 				viewport={{once: true}}
@@ -90,7 +95,7 @@ const TestimonialCard: FC<IProps> = ({
 					</motion.div>
 				</motion.div>
 			</motion.div>
-		</div>
+		</motion.div>
 	);
 };
 

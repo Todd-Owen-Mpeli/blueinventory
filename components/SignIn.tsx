@@ -200,8 +200,8 @@ const SignIn: FC<IProps> = ({title, paragraph}) => {
 						>
 							<motion.div
 								initial={initial}
-								viewport={{once: true}}
 								whileInView={fadeInUp}
+								viewport={{once: true}}
 								className="space-y-2"
 							>
 								<label htmlFor="email" className="block text-sm text-darkBlue">
@@ -217,8 +217,8 @@ const SignIn: FC<IProps> = ({title, paragraph}) => {
 							</motion.div>
 							<motion.div
 								initial={initial}
-								viewport={{once: true}}
 								whileInView={fadeInUp}
+								viewport={{once: true}}
 								className="space-y-2"
 							>
 								<div className="flex justify-between">

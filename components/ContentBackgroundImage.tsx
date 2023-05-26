@@ -23,13 +23,13 @@ const contentBackgroundImage: FC<IProps> = ({gridContent}) => {
 			className={gridContent ? `px-4 py-10 overflow-hidden bg-white` : `hidden`}
 		>
 			<div className="container flex flex-col gap-4 px-0 mx-auto">
-				{gridContent?.map((keys) => (
+				{gridContent?.map((item, keys) => (
 					<ContentImageCard
-						title={keys?.card?.title}
-						paragraph={keys?.card?.paragraph}
-						contentLocation={keys?.card?.contentLocation}
-						key={keys?.card?.id || keys?.card?.title}
-						backgroundImage={keys?.card?.backgroundImage?.sourceUrl}
+						key={keys}
+						title={item?.card?.title}
+						paragraph={item?.card?.paragraph}
+						contentLocation={item?.card?.contentLocation}
+						backgroundImage={item?.card?.backgroundImage?.sourceUrl}
 					/>
 				))}
 			</div>

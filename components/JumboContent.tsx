@@ -2,13 +2,11 @@
 import {FC} from "react";
 import {motion} from "framer-motion";
 import {
-	fadeIn,
 	stagger,
 	initial,
 	fadeInUp,
-	fadeInTwo,
 	initialTwo,
-	fadeInThree,
+	fadeInTwo,
 } from "../animations/animations";
 
 // Components
@@ -72,8 +70,8 @@ const JumboContent: FC<IProps> = ({
 				<div className="max-w-6xl mx-auto pt-28 pb-36">
 					<motion.div
 						initial={initial}
-						viewport={{once: true}}
 						whileInView={stagger}
+						viewport={{once: true}}
 						className="mb-20"
 					>
 						<motion.h2
@@ -91,24 +89,24 @@ const JumboContent: FC<IProps> = ({
 					</motion.div>
 					<motion.div
 						initial={initial}
-						viewport={{once: true}}
 						whileInView={stagger}
+						viewport={{once: true}}
 						className="flex flex-wrap -m-3"
 					>
 						{/* Card One */}
 						<div className="w-full p-3 md:w-1/2">
 							<motion.div
 								initial={initial}
-								viewport={{once: true}}
 								whileInView={stagger}
+								viewport={{once: true}}
 								className="h-full p-10 rounded-sm bg-lightGrey"
 							>
 								<div className="flex flex-wrap items-center mb-10">
 									<div className="w-auto p-2">
 										<motion.h4
 											initial={initial}
-											viewport={{once: true}}
 											whileInView={fadeInUp}
+											viewport={{once: true}}
 											className="text-lg font-semibold text-goldPrimeDark"
 										>
 											{cardOne?.subtitle}
@@ -117,8 +115,8 @@ const JumboContent: FC<IProps> = ({
 								</div>
 								<motion.h3
 									initial={initial}
-									viewport={{once: true}}
 									whileInView={fadeInUp}
+									viewport={{once: true}}
 									className="mb-4 text-3xl font-semibold"
 								>
 									{cardOne?.title}
@@ -133,7 +131,7 @@ const JumboContent: FC<IProps> = ({
 						<motion.div
 							initial={initialTwo}
 							viewport={{once: true}}
-							whileInView={fadeInThree}
+							whileInView={fadeInTwo}
 							className={
 								cardTwo?.backgroundImage?.sourceUrl
 									? `w-full p-3 md:w-1/2 min-h-[450px]`
@@ -157,30 +155,25 @@ const JumboContent: FC<IProps> = ({
 										whileInView={stagger}
 										className="w-full group"
 									>
-										<motion.div
-											initial={initial}
-											viewport={{once: true}}
-											whileInView={fadeInUp}
-											className="relative z-10 transition duration-500 ease-in-out transform group-hover:-translate-y-6 group-hover:-translate-x-6 pr-7"
-										>
+										<div className="relative z-10 transition duration-500 ease-in-out transform group-hover:-translate-y-6 group-hover:-translate-x-6 pr-7">
 											<motion.div
 												initial={initial}
-												viewport={{once: true}}
 												whileInView={stagger}
+												viewport={{once: true}}
 												className="relative z-10 p-5 text-center bg-white rounded-10 shadow-3xl"
 											>
 												<motion.h4
 													initial={initialTwo}
+													whileInView={fadeInTwo}
 													viewport={{once: true}}
-													whileInView={fadeInThree}
 													className="mb-3 text-3xl font-bold text-black"
 												>
 													{cardThree?.foreground?.subtitle}
 												</motion.h4>
 												<motion.h4
 													initial={initialTwo}
+													whileInView={fadeInTwo}
 													viewport={{once: true}}
-													whileInView={fadeInThree}
 													className="mb-3 text-base font-bold text-black"
 												>
 													{cardThree?.foreground?.title}
@@ -190,31 +183,26 @@ const JumboContent: FC<IProps> = ({
 													tailwindStyling="text-tiny text-black"
 												/>
 											</motion.div>
-										</motion.div>
-										<motion.div
-											initial={initial}
-											viewport={{once: true}}
-											whileInView={fadeInUp}
-											className="transition duration-500 ease-in-out transform group-hover:translate-y-6 group-hover:translate-x-6 -mt-14 pl-7"
-										>
+										</div>
+										<div className="mt-2 transition duration-500 ease-in-out transform group-hover:translate-y-6 group-hover:translate-x-6 pl-7">
 											<motion.div
 												initial={initial}
-												viewport={{once: true}}
 												whileInView={stagger}
+												viewport={{once: true}}
 												className="p-5 text-center bg-white opacity-30 rounded-10 shadow-3xl"
 											>
 												<motion.h4
 													initial={initialTwo}
+													whileInView={fadeInTwo}
 													viewport={{once: true}}
-													whileInView={fadeInThree}
 													className="mb-3 text-3xl font-bold text-black"
 												>
 													{cardThree?.background?.subtitle}
 												</motion.h4>
 												<motion.h4
 													initial={initialTwo}
+													whileInView={fadeInTwo}
 													viewport={{once: true}}
-													whileInView={fadeInThree}
 													className="mb-3 text-base font-bold text-black"
 												>
 													{cardThree?.background?.title}
@@ -224,25 +212,25 @@ const JumboContent: FC<IProps> = ({
 													tailwindStyling="text-tiny text-black"
 												/>
 											</motion.div>
-										</motion.div>
+										</div>
 									</motion.div>
 								</div>
 							</div>
 						</div>
 						{/* Remaining Cards */}
-						{gridContent?.map((keys) => (
+						{gridContent?.map((item, keys) => (
 							<JumboCard
-								title={keys?.card?.title}
-								subtitle={keys?.card?.subtitle}
-								paragraph={keys?.card?.paragraph}
-								key={keys?.card?.id || keys?.card?.title}
+								key={keys}
+								title={item?.card?.title}
+								subtitle={item?.card?.subtitle}
+								paragraph={item?.card?.paragraph}
 							/>
 						))}
 						{/* Last Card */}
 						<motion.div
 							initial={initialTwo}
 							viewport={{once: true}}
-							whileInView={fadeInThree}
+							whileInView={fadeInTwo}
 							className={
 								lastCard?.backgroundImage?.sourceUrl
 									? `w-full p-3 md:w-1/2 min-h-[450px]`

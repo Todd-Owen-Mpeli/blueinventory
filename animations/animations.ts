@@ -1,24 +1,6 @@
 /*  FRAMER-MOTION ANIMATIONS
 Custom reusable Animation Properties/variables */
 
-interface FadeInTwo {
-	opacity: number;
-	transition: {
-		duration: number;
-		delay: number;
-		ease: string;
-	};
-}
-
-export const fadeInTwo: FadeInTwo = {
-	opacity: 1,
-	transition: {
-		duration: 1,
-		delay: 2,
-		ease: "easeOut",
-	},
-};
-
 // WhileInView
 interface Initial {
 	y: number;
@@ -39,7 +21,7 @@ interface FadeIn {
 	};
 }
 
-interface FadeInUp {
+interface FadeInTwo {
 	y: number;
 	opacity: number;
 	transition: {
@@ -49,7 +31,7 @@ interface FadeInUp {
 	};
 }
 
-interface FadeInThree {
+interface FadeInUp {
 	y: number;
 	opacity: number;
 	transition: {
@@ -70,6 +52,30 @@ interface Stagger {
 	};
 }
 
+interface SlideInRightInitial {
+	y: number;
+	x: number;
+	opacity: number;
+}
+
+interface SlideInLeftInitial {
+	y: number;
+	x: number;
+	opacity: number;
+}
+
+interface SlideInRightFinish {
+	x: number;
+	y: 0;
+	opacity: number;
+	transition: {
+		delay: number;
+		duration: number;
+		ease: string;
+		staggerChildren: number;
+	};
+}
+
 export const initial: Initial | any = {
 	y: 30,
 	opacity: 0,
@@ -80,6 +86,16 @@ export const initialTwo: InitialTwo | any = {
 };
 
 export const fadeIn: FadeIn | any = {
+	opacity: 1,
+	transition: {
+		duration: 1,
+		delay: 0.5,
+		ease: "easeOut",
+	},
+};
+
+export const fadeInTwo: FadeInTwo | any = {
+	y: 0,
 	opacity: 1,
 	transition: {
 		duration: 1,
@@ -109,13 +125,28 @@ export const stagger: Stagger = {
 	},
 };
 
-export const fadeInThree: FadeInThree | any = {
+// Slide In Direction (Horizontal)
+export const slideInRightInitial: SlideInRightInitial | any = {
 	y: 0,
+	x: 200,
+	opacity: 0,
+};
+
+export const slideInLeftInitial: SlideInLeftInitial | any = {
+	y: 0,
+	x: -200,
+	opacity: 0,
+};
+
+export const slideInRightFinish: SlideInRightFinish = {
+	y: 0,
+	x: 0,
 	opacity: 1,
 	transition: {
-		duration: 1,
-		delay: 0.5,
-		ease: "easeOut",
+		delay: 0.25,
+		duration: 0.5,
+		ease: "easeInOut",
+		staggerChildren: 0.1,
 	},
 };
 

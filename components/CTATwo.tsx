@@ -40,8 +40,8 @@ const CTATwo: FC<IProps> = ({
 				<div className="flex flex-col items-center justify-between gap-10 px-0 py-8 lg:flex-row lg:px-8">
 					<motion.div
 						initial={initial}
-						viewport={{once: true}}
 						whileInView={stagger}
+						viewport={{once: true}}
 						className="flex flex-col items-center justify-between gap-4 lg:items-start"
 					>
 						<h2 className="max-w-2xl mb-4 text-3xl font-semibold leading-tight text-center text-white md:text-4xl lg:text-left ">
@@ -56,7 +56,7 @@ const CTATwo: FC<IProps> = ({
 						initial={initial}
 						whileInView={fadeInUp}
 						viewport={{once: true}}
-						className={buttonLink?.url ? `block` : `hidden`}
+						className={buttonLink?.url ? `block mt-7 lg:mt-0` : `hidden`}
 					>
 						<Link
 							href={`${buttonLink?.url}`}

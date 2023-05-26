@@ -2,9 +2,10 @@
 import {motion} from "framer-motion";
 import type {NextPage, GetServerSideProps} from "next";
 import {getThemesOptionsContent} from "../functions/themesOptions";
+import {initial, stagger} from "../animations/animations";
 
 // Styling
-import styles from "@/styles/pages/Dashboard.module.scss";
+import styles from "../styles/pages/Dashboard.module.scss";
 
 // Components
 
@@ -46,8 +47,20 @@ const dashboard: NextPage<IDashboard> = ({themesOptionsContent}) => {
 			}}
 			initial="initial"
 			animate="animate"
+			className="min-h-screen bg-darkBlue"
 		>
-			<section className={styles.dashboardContent}>Hello</section>
+			<section className={styles.dashboard}>
+				<div className="container px-4 mx-auto">
+					<motion.h1
+						initial={initial}
+						whileInView={stagger}
+						viewport={{once: true}}
+						className="mb-6 text-4xl font-bold text-white font-heading sm:text-6xl lg:text-7xl"
+					>
+						Hello
+					</motion.h1>
+				</div>
+			</section>
 		</motion.div>
 	);
 };

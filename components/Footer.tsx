@@ -64,8 +64,8 @@ const Footer: FC<FooterProps> = ({
 						<div className="flex flex-col items-baseline justify-between w-auto gap-2 py-6 mb-10">
 							<motion.div
 								initial={initialTwo}
-								viewport={{once: true}}
 								whileInView={fadeIn}
+								viewport={{once: true}}
 								className="flex items-center justify-center gap-2"
 							>
 								<div className="flex items-center justify-center w-8 h-8 rounded-full bg-goldPrime sm:mr-3">
@@ -94,8 +94,8 @@ const Footer: FC<FooterProps> = ({
 							</motion.div>
 							<motion.div
 								initial={initialTwo}
-								viewport={{once: true}}
 								whileInView={fadeIn}
+								viewport={{once: true}}
 								className="flex items-center justify-center gap-2"
 							>
 								<div className="flex items-center justify-center w-8 h-8 rounded-full bg-goldPrime sm:mr-3">
@@ -131,8 +131,8 @@ const Footer: FC<FooterProps> = ({
 						>
 							<motion.div
 								initial={initialTwo}
-								viewport={{once: true}}
 								whileInView={fadeIn}
+								viewport={{once: true}}
 							>
 								<Link className="inline-block text-green" href={facebookLink}>
 									<svg
@@ -158,8 +158,8 @@ const Footer: FC<FooterProps> = ({
 							</motion.div>
 							<motion.div
 								initial={initialTwo}
-								viewport={{once: true}}
 								whileInView={fadeIn}
+								viewport={{once: true}}
 							>
 								<Link className="inline-block text-green" href={twitterLink}>
 									<svg
@@ -185,8 +185,8 @@ const Footer: FC<FooterProps> = ({
 							</motion.div>
 							<motion.div
 								initial={initialTwo}
-								viewport={{once: true}}
 								whileInView={fadeIn}
+								viewport={{once: true}}
 							>
 								<Link className="inline-block text-green" href={linkedinLink}>
 									<svg
@@ -219,15 +219,15 @@ const Footer: FC<FooterProps> = ({
 							</h4>
 							<motion.ul
 								initial={initial}
-								viewport={{once: true}}
 								whileInView={stagger}
+								viewport={{once: true}}
 								className="flex flex-col gap-2 py-6"
 							>
-								{footerMenuLinks?.map((keys) => (
+								{footerMenuLinks?.map((item, keys) => (
 									<FooterMenuLinks
-										key={keys?.node?.id}
-										url={keys?.node?.url}
-										label={keys?.node?.label}
+										key={keys}
+										url={item?.node?.url}
+										label={item?.node?.label}
 										tailwindStyling="text-white text-left hover:text-goldPrime"
 									/>
 								))}
@@ -239,15 +239,15 @@ const Footer: FC<FooterProps> = ({
 							</h4>
 							<motion.ul
 								initial={initial}
-								viewport={{once: true}}
 								whileInView={stagger}
+								viewport={{once: true}}
 								className="flex flex-col gap-2 py-6"
 							>
-								{industriesMenuLinks?.map((keys) => (
+								{industriesMenuLinks?.map((item, keys) => (
 									<FooterMenuLinks
-										key={keys?.node?.id}
-										label={keys?.node?.label}
-										url={`/industries${keys?.node?.url}`}
+										key={keys}
+										label={item?.node?.label}
+										url={`/industries${item?.node?.url}`}
 										tailwindStyling="text-white text-left hover:text-goldPrime"
 									/>
 								))}
@@ -278,8 +278,8 @@ const Footer: FC<FooterProps> = ({
 						>
 							<motion.div
 								initial={initialTwo}
-								viewport={{once: true}}
 								whileInView={fadeIn}
+								viewport={{once: true}}
 								className="w-auto p-6"
 							>
 								<Link
@@ -291,8 +291,8 @@ const Footer: FC<FooterProps> = ({
 							</motion.div>
 							<motion.div
 								initial={initialTwo}
-								viewport={{once: true}}
 								whileInView={fadeIn}
+								viewport={{once: true}}
 								className="w-auto p-6"
 							>
 								<Link

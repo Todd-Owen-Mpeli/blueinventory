@@ -54,8 +54,8 @@ const operationalInsights: FC<IProps> = ({
 				>
 					<motion.h1
 						initial={initial}
-						viewport={{once: true}}
 						whileInView={stagger}
+						viewport={{once: true}}
 						className="mb-6 text-4xl font-bold text-darkBlue font-heading sm:text-6xl lg:text-7xl"
 					>
 						<motion.span
@@ -86,14 +86,14 @@ const operationalInsights: FC<IProps> = ({
 					viewport={{once: true}}
 					className="grid gap-4 mb-16 -m-4 sm:gap-y-2 sm:gap-x-0 lg:gap-4 grid-col md:grid-cols-2 lg:grid-cols-3"
 				>
-					{operationalInsights.map((keys) => (
+					{operationalInsights.map((item, keys) => (
 						<OperationalInsightsCard
-							key={keys?.node?.id}
-							uri={keys?.node?.uri}
-							title={keys?.node?.title}
-							featuredImage={keys?.node?.featuredImage}
+							key={keys}
+							uri={item?.node?.uri}
+							title={item?.node?.title}
+							featuredImage={item?.node?.featuredImage}
 							paragraph={
-								keys?.node?.singleOperationalInsightPost?.titleParagraph
+								item?.node?.singleOperationalInsightPost?.titleParagraph
 									?.paragraph
 							}
 						/>

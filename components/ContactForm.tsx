@@ -1,3 +1,4 @@
+// Imports
 import Image from "next/image";
 import {motion} from "framer-motion";
 import React, {useState, FC} from "react";
@@ -20,57 +21,22 @@ interface IProps {
 	backgroundImage: string;
 }
 
+interface ILoadingState {
+	error: boolean;
+	isLoading: boolean;
+}
+
 const ContactForm: FC<IProps> = ({title, backgroundImage}) => {
-	const initState: {
-		error: string;
-		isLoading: boolean;
-	} = {isLoading: false, error: " "};
+	const initState: ILoadingState = {
+		error: false,
+		isLoading: false,
+	};
 	const [state, setState]: any = useState(initState);
-	const {
-		isLoading,
-		error,
-	}: {
-		error: string;
-		isLoading: boolean;
-	} = state;
+	const {error, isLoading}: ILoadingState = state;
+
 	// A custom validation function. This must return an object
 	// which keys are symmetrical to our values/initialValues
-	const validate: any = (values: any) => {
-		const errors: any = {};
-		if (!values?.firstName) {
-			errors.firstName = "Required*";
-		} else if (values?.firstName.length >= 16) {
-			errors.firstName = "Must be 15 characters or less";
-		}
-
-		if (!values.lastName) {
-			errors.lastName = "Required*";
-		} else if (values.lastName.length >= 21) {
-			errors.lastName = "Must be 20 characters or less";
-		}
-
-		if (!values?.email) {
-			errors.email = "Required*";
-		} else if (
-			!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values?.email)
-		) {
-			errors.email = "Invalid email address";
-		}
-
-		if (!values?.subject) {
-			errors.subject = "Required*";
-		} else if (values?.subject.length <= 0) {
-			errors.subject = "Please inform us about the topic.";
-		}
-
-		if (!values?.message) {
-			errors.message = "Required*";
-		} else if (values?.message.length <= 0) {
-			errors.message = "Please tell us about your enquiry.";
-		}
-
-		return errors;
-	};
+	const validate: any = (values: any) => {};
 
 	// Google ReCaptcha Validation
 	const [reCaptchaResult, setReCaptchaResult] = useState(null);
@@ -97,8 +63,10 @@ const ContactForm: FC<IProps> = ({title, backgroundImage}) => {
 		onSubmit: async (values: any) => {
 			setState((prev: any) => ({
 				...prev,
+				error: false,
 				isLoading: true,
 			}));
+
 			if (reCaptchaResult !== null || reCaptchaResult !== undefined) {
 				try {
 					await sendContactForm(values);
@@ -106,9 +74,13 @@ const ContactForm: FC<IProps> = ({title, backgroundImage}) => {
 				} catch (error) {
 					setState((prev: any) => ({
 						...prev,
+						error: true,
 						isLoading: false,
-						// error: error.message,
 					}));
+					console.log(error);
+					throw new Error(
+						"* Something went wrong sending your request. Please refresh the page and try again."
+					);
 				}
 			} else {
 				console.log(
@@ -139,38 +111,46 @@ const ContactForm: FC<IProps> = ({title, backgroundImage}) => {
 						initialValues={formik?.initialValues}
 					>
 						<Form className="container mx-auto transition-all ease-in-out duration-[0.5s] md:max-w-xl shadow-12xl">
-							<motion.h3
-								initial={initialTwo}
-								viewport={{once: true}}
-								whileInView={fadeIn}
-								className="mx-auto mb-16 text-xl font-semibold text-center uppercase sm:text-2xl"
-							>
-								{title}
-							</motion.h3>
-
 							{isLoading ? (
-								<motion.div
+								<motion.h3
 									initial={initialTwo}
-									viewport={{once: true}}
 									whileInView={fadeIn}
-									className="flex items-center justify-center my-4 mb-8 gap-x-2"
+									viewport={{once: true}}
+									className="mx-auto mb-16 text-xl font-semibold text-center uppercase sm:text-2xl"
 								>
-									<h4 className="text-lg font-semibold text-center uppercase text-brightGreen">
-										Message sent
-									</h4>
-								</motion.div>
-							) : null}
+									Sending Message
+								</motion.h3>
+							) : error ? (
+								<motion.h3
+									initial={initialTwo}
+									whileInView={fadeIn}
+									viewport={{once: true}}
+									className="mx-auto mb-16 text-base font-semibold text-center text-pinkRed sm:text-medium"
+								>
+									* Something went wrong sending your request. Please refresh
+									the page and try again.
+								</motion.h3>
+							) : (
+								<motion.h3
+									initial={initialTwo}
+									whileInView={fadeIn}
+									viewport={{once: true}}
+									className="mx-auto mb-16 text-xl font-semibold text-center uppercase sm:text-2xl"
+								>
+									{title}
+								</motion.h3>
+							)}
 
 							<motion.div
 								initial={initial}
-								viewport={{once: true}}
 								whileInView={stagger}
+								viewport={{once: true}}
 								className="flex flex-col gap-4"
 							>
 								<motion.div
 									initial={initial}
-									viewport={{once: true}}
 									whileInView={fadeInUp}
+									viewport={{once: true}}
 								>
 									{formik?.touched?.firstName && formik?.errors?.firstName ? (
 										<div>
@@ -191,8 +171,8 @@ const ContactForm: FC<IProps> = ({title, backgroundImage}) => {
 								</motion.div>
 								<motion.div
 									initial={initial}
-									viewport={{once: true}}
 									whileInView={fadeInUp}
+									viewport={{once: true}}
 								>
 									{formik?.touched?.lastName && formik?.errors?.lastName ? (
 										<div>
@@ -213,8 +193,8 @@ const ContactForm: FC<IProps> = ({title, backgroundImage}) => {
 								</motion.div>
 								<motion.div
 									initial={initial}
-									viewport={{once: true}}
 									whileInView={fadeInUp}
+									viewport={{once: true}}
 								>
 									{formik?.errors?.email ? (
 										<div>
@@ -236,8 +216,8 @@ const ContactForm: FC<IProps> = ({title, backgroundImage}) => {
 								</motion.div>
 								<motion.div
 									initial={initial}
-									viewport={{once: true}}
 									whileInView={fadeInUp}
+									viewport={{once: true}}
 								>
 									{formik?.touched?.subject && formik?.errors?.subject ? (
 										<div>
@@ -259,8 +239,8 @@ const ContactForm: FC<IProps> = ({title, backgroundImage}) => {
 								</motion.div>
 								<motion.div
 									initial={initial}
-									viewport={{once: true}}
 									whileInView={fadeInUp}
+									viewport={{once: true}}
 								>
 									{formik?.touched?.message && formik?.errors?.message ? (
 										<div>
@@ -282,8 +262,8 @@ const ContactForm: FC<IProps> = ({title, backgroundImage}) => {
 								</motion.div>
 								<motion.div
 									initial={initial}
-									viewport={{once: true}}
 									whileInView={fadeInUp}
+									viewport={{once: true}}
 								>
 									<ReCAPTCHA
 										sitekey={`6LeJJqwlAAAAAByEDQJTbNFkPL9DSjMBwnE7smkU`}
@@ -292,9 +272,8 @@ const ContactForm: FC<IProps> = ({title, backgroundImage}) => {
 								</motion.div>
 								<motion.button
 									initial={initial}
-									viewport={{once: true}}
 									whileInView={fadeInUp}
-									// isLoading={isLoading}
+									viewport={{once: true}}
 									onClick={formik.handleSubmit}
 									disabled={
 										!formik?.values?.firstName ||
@@ -308,7 +287,13 @@ const ContactForm: FC<IProps> = ({title, backgroundImage}) => {
 									className="w-full text-white disabled:bg-opacity-20 disabled:cursor-not-allowed"
 									type="submit"
 								>
-									<span className={` ${styles.submitButton}`}>
+									<span
+										className={
+											isLoading
+												? `${styles.sendingMessage}`
+												: `${styles.submitButton}`
+										}
+									>
 										<span className={styles.span}>
 											<svg
 												width="45px"
@@ -342,9 +327,15 @@ const ContactForm: FC<IProps> = ({title, backgroundImage}) => {
 												</g>
 											</svg>
 										</span>
-										<h3 className="text-white uppercase text-medium">
-											Send Message
-										</h3>
+										{isLoading ? (
+											<h3 className="text-white uppercase text-medium">
+												Sending
+											</h3>
+										) : (
+											<h3 className="text-white uppercase text-medium">
+												Send Message
+											</h3>
+										)}
 									</span>
 								</motion.button>
 							</motion.div>

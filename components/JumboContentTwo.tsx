@@ -47,8 +47,8 @@ const JumboContentTwo: FC<IProps> = ({
 				<div className="mx-auto max-w-7xl pt-28 pb-36">
 					<motion.div
 						initial={initial}
-						viewport={{once: true}}
 						whileInView={stagger}
+						viewport={{once: true}}
 						className="flex flex-wrap -m-3"
 					>
 						{/* Card One */}
@@ -86,12 +86,12 @@ const JumboContentTwo: FC<IProps> = ({
 							/>
 						</div>
 						{/* Remaining Cards */}
-						{gridContent?.map((keys) => (
+						{gridContent?.map((item, keys) => (
 							<JumboCard
-								title={keys?.card?.title}
-								subtitle={keys?.card?.subtitle}
-								paragraph={keys?.card?.paragraph}
-								key={keys?.card?.id || keys?.card?.title}
+								key={keys}
+								title={item?.card?.title}
+								subtitle={item?.card?.subtitle}
+								paragraph={item?.card?.paragraph}
 							/>
 						))}
 						{/* Last Card */}

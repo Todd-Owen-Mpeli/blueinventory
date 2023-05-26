@@ -19,8 +19,8 @@ const logoCard: FC<IProps> = ({image}) => {
 	return (
 		<motion.div
 			initial={initialTwo}
-			viewport={{once: true}}
 			whileInView={fadeIn}
+			viewport={{once: true}}
 			className="mx-auto"
 		>
 			<Image

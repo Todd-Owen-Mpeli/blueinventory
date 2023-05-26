@@ -69,8 +69,8 @@ const Sustainability: FC<IProps> = ({
 
 							<motion.div
 								initial={initial}
-								viewport={{once: true}}
 								whileInView={fadeInUp}
+								viewport={{once: true}}
 								className="absolute bg-white -bottom-10 lg:-left-16"
 							>
 								<div className="px-8 py-10">

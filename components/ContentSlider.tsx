@@ -552,7 +552,7 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 											?.backgroundImageOrVideo
 									}
 								</span>
-								<span className="text-sm text-white uppercase">
+								<span className="text-sm text-white ">
 									{dateFormat(new Date(content?.date), "dddd, mmmm d, yyyy")}
 								</span>
 							</header>
@@ -600,7 +600,7 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 											?.backgroundImageOrVideo
 									}
 								</span>
-								<span className="text-sm text-white uppercase">
+								<span className="text-sm text-white ">
 									{dateFormat(new Date(contentTwo?.date), "dddd, mmmm d, yyyy")}
 								</span>
 							</header>
@@ -651,7 +651,7 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 											?.backgroundImageOrVideo
 									}
 								</span>
-								<span className="text-sm text-white uppercase">
+								<span className="text-sm text-white ">
 									{dateFormat(
 										new Date(contentThree?.date),
 										"dddd, mmmm d, yyyy"

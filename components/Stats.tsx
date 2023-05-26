@@ -2,13 +2,7 @@
 import {FC} from "react";
 import Image from "next/image";
 import {motion} from "framer-motion";
-import {
-	initial,
-	initialTwo,
-	fadeInUp,
-	fadeIn,
-	stagger,
-} from "../animations/animations";
+import {initial, stagger, fadeInUp} from "../animations/animations";
 
 // Components
 import Paragraph from "./Elements/Paragraph";
@@ -56,24 +50,29 @@ const Stats: FC<IProps> = ({
 					<div className="flex flex-wrap items-center -mx-4">
 						<div className="w-full px-4 mb-16 lg:w-1/2 lg:mb-0">
 							<div className="mx-auto lg:max-w-lg lg:mx-0">
-								<h2 className="mb-10 text-3xl font-bold text-white lg:text-5xl">
+								<motion.h2
+									initial={initial}
+									whileInView={fadeInUp}
+									viewport={{once: true}}
+									className="mb-10 text-3xl font-bold text-white lg:text-5xl"
+								>
 									{title}
-								</h2>
+								</motion.h2>
 								<motion.ul
 									initial={initial}
 									viewport={{once: true}}
 									whileInView={stagger}
 								>
-									{bulletPoints?.map((keys) => (
+									{bulletPoints?.map((item, keys) => (
 										<motion.li
+											key={keys}
 											className="mb-4"
 											initial={initial}
-											viewport={{once: true}}
 											whileInView={fadeInUp}
-											key={keys?.id || keys?.bulletPoint}
+											viewport={{once: true}}
 										>
 											<StatsBulletPointCard
-												bulletPointText={keys?.bulletPoint}
+												bulletPointText={item?.bulletPoint}
 												tailwindStyling={`text-white text-base lg:text-medium`}
 											/>
 										</motion.li>
@@ -85,9 +84,9 @@ const Stats: FC<IProps> = ({
 							<div className="relative">
 								<div className="relative max-w-xl px-8 pb-8 mx-auto bg-white rounded-sm lg:mr-0 pt-14 md:px-14">
 									<motion.h4
-										initial={initialTwo}
+										initial={initial}
+										whileInView={fadeInUp}
 										viewport={{once: true}}
-										whileInView={fadeIn}
 										className="block mb-2 text-3xl font-semibold"
 									>
 										{subtitle}
@@ -101,14 +100,14 @@ const Stats: FC<IProps> = ({
 											<div className="w-full p-4 rounded-sm xs:w-1/2 bg-lightGrey">
 												<motion.div
 													initial={initial}
-													viewport={{once: true}}
 													whileInView={stagger}
+													viewport={{once: true}}
 													className="flex flex-col items-center justify-center lg:items-baseline lg:justify-start"
 												>
 													<motion.span
 														initial={initial}
-														viewport={{once: true}}
 														whileInView={fadeInUp}
+														viewport={{once: true}}
 														className="mb-2 text-black"
 													>
 														{column?.title}
@@ -145,14 +144,14 @@ const Stats: FC<IProps> = ({
 											<div className="w-full p-4 rounded-sm xs:w-1/2 bg-lightGrey">
 												<motion.div
 													initial={initial}
-													viewport={{once: true}}
 													whileInView={stagger}
+													viewport={{once: true}}
 													className="flex flex-col items-center justify-center lg:items-baseline lg:justify-start xs:pl-8"
 												>
 													<motion.span
 														initial={initial}
-														viewport={{once: true}}
 														whileInView={fadeInUp}
+														viewport={{once: true}}
 														className="mb-2 text-black"
 													>
 														{columnTwo?.title}

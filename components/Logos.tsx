@@ -41,18 +41,15 @@ const logos: FC<IProps> = ({title, paragraph, logoGrid}) => {
 					content={paragraph}
 					tailwindStyling="my-5 w-full lg:max-w-3xl mx-auto text-left"
 				/>
-				<div className="max-w-6xl mx-auto">
+				<div className="max-w-6xl mx-auto mt-20">
 					<motion.div
 						initial={initial}
-						viewport={{once: true}}
 						whileInView={stagger}
+						viewport={{once: true}}
 						className="grid items-center justify-center grid-cols-2 gap-4 lg:grid-cols-4 lg:justify-between"
 					>
-						{logoGrid.map((keys) => (
-							<LogoCard
-								image={keys?.image}
-								key={keys?.id || keys?.image?.sourceUrl}
-							/>
+						{logoGrid.map((item, keys) => (
+							<LogoCard key={keys} image={item?.image} />
 						))}
 					</motion.div>
 				</div>
