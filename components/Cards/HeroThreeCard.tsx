@@ -24,11 +24,15 @@ interface IProps {
 const HeroThreeCard: FC<IProps> = ({link, image}) => {
 	return (
 		<motion.div
+			className="my-4"
 			initial={initial}
 			whileInView={fadeInUp}
 			viewport={{once: true}}
 		>
-			<Link href={link?.url ? link?.url : `/`} className="rounded-full">
+			<Link
+				href={link?.url ? link?.url : `/`}
+				className="rounded-none sm:rounded-full"
+			>
 				<Image
 					alt={image?.altText}
 					src={image?.sourceUrl}
@@ -36,7 +40,7 @@ const HeroThreeCard: FC<IProps> = ({link, image}) => {
 					height={image?.mediaDetails?.height}
 					className={
 						image?.sourceUrl
-							? `block w-full rounded-full sm:h-[450px] lg:h-[650px] xl:h-[750px] object-cover object-center`
+							? `block w-full rounded-none lg:rounded-full sm:h-[450px] lg:h-[650px] xl:h-[750px] object-cover object-center`
 							: `hidden`
 					}
 				/>
