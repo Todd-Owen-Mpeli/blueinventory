@@ -19,6 +19,7 @@ import Stats from "../components/Stats";
 import Layout from "../components/Layout/Layout";
 import Testimonial from "../components/Testimonial";
 import JumboContent from "../components/JumboContent";
+import HeroThree from "@/components/HeroThree";
 
 interface IHomePage {
 	seo: {
@@ -68,6 +69,29 @@ interface IHomePage {
 			backgroundImage: {
 				sourceUrl: string;
 			};
+		};
+		heroThree: {
+			title: string;
+			paragraph: string;
+			imageGrid: [
+				{
+					card: {
+						link: {
+							url: string;
+							title: string;
+							target: string;
+						};
+						image: {
+							altText: string;
+							sourceUrl: string;
+							mediaDetails: {
+								height: number;
+								width: number;
+							};
+						};
+					};
+				}
+			];
 		};
 		stats: {
 			title: string;
@@ -286,6 +310,12 @@ const HomePage: NextPage<IHomePage> = ({
 				backgroundImage={content?.heroSection?.backgroundImage?.sourceUrl}
 			/>
 
+			<HeroThree
+				title={content?.heroThree?.title}
+				paragraph={content?.heroThree?.paragraph}
+				imageGrid={content?.heroThree?.imageGrid}
+			/>
+
 			<Stats
 				title={content?.stats?.title}
 				column={content?.stats?.column}
@@ -381,6 +411,27 @@ export const getStaticProps: GetStaticProps = async () => {
 									url
 									title
 									target
+								}
+							}
+							heroThree {
+								title
+								paragraph
+								imageGrid {
+									card {
+										link {
+											url
+											title
+											target
+										}
+										image {
+											altText
+											sourceUrl
+											mediaDetails {
+												height
+												width
+											}
+										}
+									}
 								}
 							}
 							stats {
