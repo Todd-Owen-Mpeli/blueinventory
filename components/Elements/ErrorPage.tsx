@@ -45,7 +45,7 @@ const ErrorPage: FC<IProps> = ({
 						initial={initial}
 						whileInView={fadeInUp}
 						viewport={{once: true}}
-						className="mb-4 text-5xl lg:text-7xl text-white text-center font-[600] font-heading leading-tight"
+						className="mb-4 text-5xl lg:text-7xl text-white text-center font-[600] leading-tight"
 					>
 						{title}
 					</motion.h1>

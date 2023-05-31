@@ -49,6 +49,7 @@ interface Stagger {
 		duration: number;
 		ease: string;
 		staggerChildren: number;
+		delayChildren: number;
 	};
 }
 
@@ -122,6 +123,7 @@ export const stagger: Stagger = {
 		duration: 0.5,
 		ease: "easeInOut",
 		staggerChildren: 0.1,
+		delayChildren: 0.3,
 	},
 };
 

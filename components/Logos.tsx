@@ -48,9 +48,13 @@ const logos: FC<IProps> = ({title, paragraph, logoGrid}) => {
 						viewport={{once: true}}
 						className="grid items-center justify-center grid-cols-2 gap-4 lg:grid-cols-4 lg:justify-between"
 					>
-						{logoGrid.map((item, keys) => (
-							<LogoCard key={keys} image={item?.image} />
-						))}
+						{logoGrid?.length > 0 ? (
+							logoGrid.map((item, keys) => (
+								<LogoCard key={keys} image={item?.image} />
+							))
+						) : (
+							<></>
+						)}
 					</motion.div>
 				</div>
 			</div>

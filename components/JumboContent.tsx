@@ -218,14 +218,18 @@ const JumboContent: FC<IProps> = ({
 							</div>
 						</div>
 						{/* Remaining Cards */}
-						{gridContent?.map((item, keys) => (
-							<JumboCard
-								key={keys}
-								title={item?.card?.title}
-								subtitle={item?.card?.subtitle}
-								paragraph={item?.card?.paragraph}
-							/>
-						))}
+						{gridContent?.length > 0 ? (
+							gridContent?.map((item, keys) => (
+								<JumboCard
+									key={keys}
+									title={item?.card?.title}
+									subtitle={item?.card?.subtitle}
+									paragraph={item?.card?.paragraph}
+								/>
+							))
+						) : (
+							<></>
+						)}
 						{/* Last Card */}
 						<motion.div
 							initial={initialTwo}

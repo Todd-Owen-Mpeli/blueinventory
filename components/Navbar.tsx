@@ -146,14 +146,18 @@ const Navbar: FC<NavbarProps> = ({navbarMenuLinks, themesOptionsContent}) => {
 									whileInView={stagger}
 									className="flex items-center justify-center gap-6"
 								>
-									{navbarMenuLinks?.map((item, keys) => (
-										<NavbarMenuLinks
-											key={keys}
-											url={item?.node?.url}
-											label={item?.node?.label}
-											tailwindStyling="text-sm uppercase font-bold tracking-[.15rem] text-darkBlue hover:text-goldPrime transition-all ease-in-out duration-500"
-										/>
-									))}
+									{navbarMenuLinks?.length > 0 ? (
+										navbarMenuLinks?.map((item, keys) => (
+											<NavbarMenuLinks
+												key={keys}
+												url={item?.node?.url}
+												label={item?.node?.label}
+												tailwindStyling="text-sm uppercase font-bold tracking-[.15rem] text-darkBlue hover:text-goldPrime transition-all ease-in-out duration-500"
+											/>
+										))
+									) : (
+										<></>
+									)}
 								</motion.ul>
 							</div>
 						</div>

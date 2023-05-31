@@ -1,7 +1,7 @@
-import {FC} from "react";
-import {motion} from "framer-motion";
+import {FC, useRef} from "react";
 import styled from "styled-components";
 import Paragraph from "./../Elements/Paragraph";
+import {motion, useScroll, useSpring, useTransform} from "framer-motion";
 import {
 	initial,
 	fadeInUp,
@@ -42,8 +42,17 @@ const contentImageCard: FC<IProps> = ({
 	contentLocation,
 	backgroundImage,
 }) => {
+	const ref = useRef(null);
+	const {scrollYProgress} = useScroll({
+		target: ref,
+		offset: ["start start", "end start"],
+	});
+
+	const x = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
 	return (
 		<ContentImageCard
+			ref={ref}
 			className="relative min-h-[450PX] px-8 py-20 bg-center bg-no-repeat bg-cover"
 			style={{
 				backgroundImage: `linear-gradient(
@@ -58,11 +67,12 @@ const contentImageCard: FC<IProps> = ({
 			}}
 		>
 			<motion.div
-				initial={
-					contentLocation === "Left" ? slideInLeftInitial : slideInRightInitial
-				}
-				whileInView={slideInRightFinish}
-				viewport={{once: true}}
+				style={contentLocation === "Left" ? {x} : {x}}
+				// initial={
+				// 	contentLocation === "Left" ? slideInLeftInitial : slideInRightInitial
+				// }
+				// whileInView={slideInRightFinish}
+				// viewport={{once: true}}
 				className={
 					contentLocation === "Left"
 						? `flex flex-col items-baseline justify-center mx-auto max-w-7xl`

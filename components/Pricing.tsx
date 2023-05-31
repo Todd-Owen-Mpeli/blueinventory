@@ -86,7 +86,7 @@ const Pricing: FC<IProps> = ({
 							initial={initial}
 							viewport={{once: true}}
 							whileInView={stagger}
-							className="mb-6 text-4xl font-bold text-darkBlue font-heading sm:text-6xl lg:text-7xl"
+							className="mb-6 text-4xl font-bold text-darkBlue sm:text-6xl lg:text-7xl"
 						>
 							<motion.span
 								initial={initial}
@@ -221,14 +221,18 @@ const Pricing: FC<IProps> = ({
 												whileInView={stagger}
 												viewport={{once: true}}
 											>
-												{card?.bulletList.map((item, keys) => (
-													<BulletListCard
-														key={keys}
-														iconFillColor={`#6BBE66`}
-														bulletPoint={item?.bulletPoint}
-														tailwindStyling="ml-2 text-sm text-black"
-													/>
-												))}
+												{card?.bulletList?.length > 0 ? (
+													card?.bulletList?.map((item, keys) => (
+														<BulletListCard
+															key={keys}
+															iconFillColor={`#6BBE66`}
+															bulletPoint={item?.bulletPoint}
+															tailwindStyling="ml-2 text-sm text-black"
+														/>
+													))
+												) : (
+													<></>
+												)}
 											</motion.ul>
 											<motion.li
 												initial={initial}
@@ -425,14 +429,18 @@ const Pricing: FC<IProps> = ({
 												whileInView={stagger}
 												viewport={{once: true}}
 											>
-												{card?.bulletList.map((item, keys) => (
-													<BulletListCard
-														key={keys}
-														iconFillColor={`#5ac3ff`}
-														bulletPoint={item?.bulletPoint}
-														tailwindStyling="ml-2 text-sm text-white"
-													/>
-												))}
+												{card?.bulletList?.length > 0 ? (
+													card?.bulletList?.map((item, keys) => (
+														<BulletListCard
+															key={keys}
+															iconFillColor={`#5ac3ff`}
+															bulletPoint={item?.bulletPoint}
+															tailwindStyling="ml-2 text-sm text-white"
+														/>
+													))
+												) : (
+													<></>
+												)}
 											</motion.ul>
 											<motion.li
 												initial={initial}
@@ -622,14 +630,18 @@ const Pricing: FC<IProps> = ({
 												whileInView={stagger}
 												viewport={{once: true}}
 											>
-												{card?.bulletList.map((item, keys) => (
-													<BulletListCard
-														key={keys}
-														iconFillColor={`#6BBE66`}
-														bulletPoint={item?.bulletPoint}
-														tailwindStyling="ml-2 text-sm text-black"
-													/>
-												))}
+												{card?.bulletList?.length > 0 ? (
+													card?.bulletList?.map((item, keys) => (
+														<BulletListCard
+															key={keys}
+															iconFillColor={`#6BBE66`}
+															bulletPoint={item?.bulletPoint}
+															tailwindStyling="ml-2 text-sm text-black"
+														/>
+													))
+												) : (
+													<></>
+												)}
 											</motion.ul>
 											<motion.li
 												initial={initial}
@@ -805,9 +817,13 @@ const Pricing: FC<IProps> = ({
 						viewport={{once: true}}
 						className="flex flex-wrap justify-center gap-6 mt-20 sm:flex-row lg:flex-row"
 					>
-						{paymentProviders.map((item, keys) => (
-							<PaymentProvidersCard key={keys} image={item?.logo} />
-						))}
+						{paymentProviders?.length > 0 ? (
+							paymentProviders.map((item, keys) => (
+								<PaymentProvidersCard key={keys} image={item?.logo} />
+							))
+						) : (
+							<></>
+						)}
 					</motion.div>
 				</motion.div>
 			</div>

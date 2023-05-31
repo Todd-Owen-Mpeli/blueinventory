@@ -223,14 +223,18 @@ const Footer: FC<FooterProps> = ({
 								viewport={{once: true}}
 								className="flex flex-col gap-2 py-6"
 							>
-								{footerMenuLinks?.map((item, keys) => (
-									<FooterMenuLinks
-										key={keys}
-										url={item?.node?.url}
-										label={item?.node?.label}
-										tailwindStyling="text-white text-left hover:text-goldPrime"
-									/>
-								))}
+								{footerMenuLinks?.length > 0 ? (
+									footerMenuLinks?.map((item, keys) => (
+										<FooterMenuLinks
+											key={keys}
+											url={item?.node?.url}
+											label={item?.node?.label}
+											tailwindStyling="text-white text-left hover:text-goldPrime"
+										/>
+									))
+								) : (
+									<></>
+								)}
 							</motion.ul>
 						</div>
 						<div className="flex flex-col px-2 sm:px-6">
@@ -243,14 +247,18 @@ const Footer: FC<FooterProps> = ({
 								viewport={{once: true}}
 								className="flex flex-col gap-2 py-6"
 							>
-								{industriesMenuLinks?.map((item, keys) => (
-									<FooterMenuLinks
-										key={keys}
-										label={item?.node?.label}
-										url={`/industries${item?.node?.url}`}
-										tailwindStyling="text-white text-left hover:text-goldPrime"
-									/>
-								))}
+								{industriesMenuLinks?.length > 0 ? (
+									industriesMenuLinks?.map((item, keys) => (
+										<FooterMenuLinks
+											key={keys}
+											label={item?.node?.label}
+											url={`/industries${item?.node?.url}`}
+											tailwindStyling="text-white text-left hover:text-goldPrime"
+										/>
+									))
+								) : (
+									<></>
+								)}
 							</motion.ul>
 						</div>
 					</div>

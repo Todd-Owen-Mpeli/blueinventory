@@ -140,21 +140,25 @@ const mobileNavbar: FC<NavbarProps> = ({
 									Home
 								</Link>
 							</motion.li>
-							{navbarMenuLinks?.map((item, keys) => (
-								<motion.li
-									key={keys}
-									initial={initial}
-									whileInView={fadeInUp}
-									viewport={{once: true}}
-									className="mb-1 border-b-[1px] border-goldPrime border-opacity-50"
-								>
-									<NavbarMenuLinks
-										url={item?.node?.url}
-										label={item?.node?.label}
-										tailwindStyling="block py-4 text-base text-white hover:text-goldPrime"
-									/>
-								</motion.li>
-							))}
+							{navbarMenuLinks?.length > 0 ? (
+								navbarMenuLinks?.map((item, keys) => (
+									<motion.li
+										key={keys}
+										initial={initial}
+										whileInView={fadeInUp}
+										viewport={{once: true}}
+										className="mb-1 border-b-[1px] border-goldPrime border-opacity-50"
+									>
+										<NavbarMenuLinks
+											url={item?.node?.url}
+											label={item?.node?.label}
+											tailwindStyling="block py-4 text-base text-white hover:text-goldPrime"
+										/>
+									</motion.li>
+								))
+							) : (
+								<></>
+							)}
 						</motion.ul>
 					</div>
 				</div>

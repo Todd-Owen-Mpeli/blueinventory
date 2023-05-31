@@ -16,10 +16,10 @@ import CTA from "../components/CTA";
 import Hero from "../components/Hero";
 import Logos from "../components/Logos";
 import Stats from "../components/Stats";
+import HeroThree from "@/components/HeroThree";
 import Layout from "../components/Layout/Layout";
 import Testimonial from "../components/Testimonial";
 import JumboContent from "../components/JumboContent";
-import HeroThree from "@/components/HeroThree";
 
 interface IHomePage {
 	seo: {
@@ -285,79 +285,81 @@ const HomePage: NextPage<IHomePage> = ({
 	navbarMenuLinks,
 	industriesMenuLinks,
 	themesOptionsContent,
-}) => (
-	<motion.div
-		exit={{
-			opacity: 0,
-		}}
-		initial="initial"
-		animate="animate"
-	>
-		<Layout
-			seo={seo}
-			pageTitle={`BlueInventory `}
-			themesOptionsContent={themesOptionsContent}
-			footerMenuLinks={footerMenuLinks?.footerMenuLinks}
-			navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks}
-			industriesMenuLinks={industriesMenuLinks?.industriesMenuLinks}
+}) => {
+	return (
+		<motion.div
+			exit={{
+				opacity: 0,
+			}}
+			initial="initial"
+			animate="animate"
 		>
-			<Hero
-				title={content?.heroSection?.title}
-				subtitle={content?.heroSection?.subtitle}
-				buttonLink={content?.heroSection?.buttonLink}
-				buttonLinkTwo={content?.heroSection?.buttonLinkTwo}
-				backgroundVideoUrl={content?.heroSection?.backgroundVideoUrl}
-				backgroundImage={content?.heroSection?.backgroundImage?.sourceUrl}
-			/>
+			<Layout
+				seo={seo}
+				pageTitle={`BlueInventory `}
+				themesOptionsContent={themesOptionsContent}
+				footerMenuLinks={footerMenuLinks?.footerMenuLinks}
+				navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks}
+				industriesMenuLinks={industriesMenuLinks?.industriesMenuLinks}
+			>
+				<Hero
+					title={content?.heroSection?.title}
+					subtitle={content?.heroSection?.subtitle}
+					buttonLink={content?.heroSection?.buttonLink}
+					buttonLinkTwo={content?.heroSection?.buttonLinkTwo}
+					backgroundVideoUrl={content?.heroSection?.backgroundVideoUrl}
+					backgroundImage={content?.heroSection?.backgroundImage?.sourceUrl}
+				/>
 
-			<HeroThree
-				title={content?.heroThree?.title}
-				paragraph={content?.heroThree?.paragraph}
-				imageGrid={content?.heroThree?.imageGrid}
-			/>
+				<HeroThree
+					title={content?.heroThree?.title}
+					paragraph={content?.heroThree?.paragraph}
+					imageGrid={content?.heroThree?.imageGrid}
+				/>
 
-			<Stats
-				title={content?.stats?.title}
-				column={content?.stats?.column}
-				subtitle={content?.stats?.subtitle}
-				paragraph={content?.stats?.paragraph}
-				columnTwo={content?.stats?.columnTwo}
-				bulletPoints={content?.stats?.bulletPoints}
-			/>
+				<Stats
+					title={content?.stats?.title}
+					column={content?.stats?.column}
+					subtitle={content?.stats?.subtitle}
+					paragraph={content?.stats?.paragraph}
+					columnTwo={content?.stats?.columnTwo}
+					bulletPoints={content?.stats?.bulletPoints}
+				/>
 
-			<JumboContent
-				title={content?.howItWorks?.title}
-				cardOne={content?.howItWorks?.cardOne}
-				cardTwo={content?.howItWorks?.cardTwo}
-				lastCard={content?.howItWorks?.lastCard}
-				cardThree={content?.howItWorks?.cardThree}
-				paragraph={content?.howItWorks?.paragraph}
-				gridContent={content?.howItWorks?.gridContent}
-			/>
+				<JumboContent
+					title={content?.howItWorks?.title}
+					cardOne={content?.howItWorks?.cardOne}
+					cardTwo={content?.howItWorks?.cardTwo}
+					lastCard={content?.howItWorks?.lastCard}
+					cardThree={content?.howItWorks?.cardThree}
+					paragraph={content?.howItWorks?.paragraph}
+					gridContent={content?.howItWorks?.gridContent}
+				/>
 
-			<Logos
-				title={content?.trustedBrands?.title}
-				logoGrid={content?.trustedBrands?.logos}
-				paragraph={content?.trustedBrands?.paragraph}
-			/>
+				<Logos
+					title={content?.trustedBrands?.title}
+					logoGrid={content?.trustedBrands?.logos}
+					paragraph={content?.trustedBrands?.paragraph}
+				/>
 
-			<Testimonial
-				title={content?.testimonial?.title}
-				paragraph={content?.testimonial?.paragraph}
-				contentGrid={content?.testimonial?.contentGrid}
-			/>
+				<Testimonial
+					title={content?.testimonial?.title}
+					paragraph={content?.testimonial?.paragraph}
+					contentGrid={content?.testimonial?.contentGrid}
+				/>
 
-			<CTA
-				title={content?.cta?.title}
-				content={content?.cta?.content}
-				paragraph={content?.cta?.paragraph}
-				buttonLink={content?.cta?.buttonLink}
-				buttonLinkTwo={content?.cta?.buttonLinkTwo}
-				backgroundImage={content?.cta?.backgroundImage?.sourceUrl}
-			/>
-		</Layout>
-	</motion.div>
-);
+				<CTA
+					title={content?.cta?.title}
+					content={content?.cta?.content}
+					paragraph={content?.cta?.paragraph}
+					buttonLink={content?.cta?.buttonLink}
+					buttonLinkTwo={content?.cta?.buttonLinkTwo}
+					backgroundImage={content?.cta?.backgroundImage?.sourceUrl}
+				/>
+			</Layout>
+		</motion.div>
+	);
+};
 
 export const getStaticProps: GetStaticProps = async () => {
 	const getHomePageContent: any = gql`

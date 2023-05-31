@@ -13,10 +13,10 @@ interface IProps {
 const FooterMenuLinks: FC<IProps> = ({url, label, tailwindStyling}) => {
 	return (
 		<motion.li
+			className="px-0"
 			initial={initial}
 			whileInView={fadeInUp}
 			viewport={{once: true}}
-			className="px-0"
 		>
 			<Link className={tailwindStyling} href={url}>
 				{label}

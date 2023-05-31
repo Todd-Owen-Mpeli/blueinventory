@@ -35,7 +35,7 @@ const JumboCard: FC<IProps> = ({title, subtitle, paragraph}) => {
 					initial={initial}
 					viewport={{once: true}}
 					whileInView={fadeInUp}
-					className="mb-4 text-3xl font-semibold font-heading"
+					className="mb-4 text-3xl font-semibold"
 				>
 					{title}
 				</motion.h3>

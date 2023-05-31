@@ -1,8 +1,8 @@
 // Imports
 import {motion} from "framer-motion";
 import type {NextPage, GetServerSideProps} from "next";
-import {getThemesOptionsContent} from "../functions/themesOptions";
 import {initial, stagger} from "../animations/animations";
+import {getThemesOptionsContent} from "../functions/themesOptions";
 
 // Styling
 import styles from "../styles/pages/Dashboard.module.scss";
@@ -55,9 +55,9 @@ const dashboard: NextPage<IDashboard> = ({themesOptionsContent}) => {
 						initial={initial}
 						whileInView={stagger}
 						viewport={{once: true}}
-						className="mb-6 text-4xl font-bold text-white font-heading sm:text-6xl lg:text-7xl"
+						className="mb-6 text-4xl font-bold text-white sm:text-6xl lg:text-7xl"
 					>
-						Hello
+						Dashboard
 					</motion.h1>
 				</div>
 			</section>
@@ -70,11 +70,9 @@ export default dashboard;
 export const getServerSideProps: GetServerSideProps = async () => {
 	const themesOptionsContent: object = await getThemesOptionsContent();
 
-	const props = {
-		themesOptionsContent,
-	};
-
 	return {
-		props,
+		props: {
+			themesOptionsContent,
+		},
 	};
 };

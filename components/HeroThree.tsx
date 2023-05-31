@@ -55,13 +55,17 @@ const HeroThree: FC<HeroProps> = ({title, paragraph, imageGrid}) => {
 					viewport={{once: true}}
 					className="items-center justify-center gap-4 px-4 sm:grid grid-col sm:grid-cols-2 lg:grid-cols-4 lg:justify-between"
 				>
-					{imageGrid.map((item, keys) => (
-						<HeroThreeCard
-							key={keys}
-							link={item?.card?.link}
-							image={item?.card?.image}
-						/>
-					))}
+					{imageGrid?.length > 0 ? (
+						imageGrid.map((item, keys) => (
+							<HeroThreeCard
+								key={keys}
+								link={item?.card?.link}
+								image={item?.card?.image}
+							/>
+						))
+					) : (
+						<></>
+					)}
 				</motion.div>
 			</div>
 		</section>

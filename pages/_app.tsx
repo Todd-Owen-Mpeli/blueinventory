@@ -198,10 +198,10 @@ export default function App({Component, pageProps}: AppProps) {
 						<Component {...pageProps} />
 					</>
 				) : isPublicPage ? (
-					<>
+					<div>
 						<Loading />
 						<Component {...pageProps} />
-					</>
+					</div>
 				) : (
 					<>
 						<Loading />

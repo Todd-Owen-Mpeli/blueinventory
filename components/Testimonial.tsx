@@ -57,15 +57,19 @@ const Testimonial: FC<IProps> = ({title, paragraph, contentGrid}) => {
 					viewport={{once: true}}
 					className="flex flex-col items-center justify-center mx-4 mt-8 lg:mx-10 lg:flex-row"
 				>
-					{contentGrid?.map((item, keys) => (
-						<TestimonialCard
-							key={keys}
-							title={item?.card?.name}
-							image={item?.card?.image}
-							paragraph={item?.card?.paragraph}
-							jobPosition={item?.card?.position}
-						/>
-					))}
+					{contentGrid?.length > 0 ? (
+						contentGrid?.map((item, keys) => (
+							<TestimonialCard
+								key={keys}
+								title={item?.card?.name}
+								image={item?.card?.image}
+								paragraph={item?.card?.paragraph}
+								jobPosition={item?.card?.position}
+							/>
+						))
+					) : (
+						<></>
+					)}
 				</motion.div>
 			</motion.div>
 		</section>

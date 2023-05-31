@@ -63,20 +63,24 @@ const Stats: FC<IProps> = ({
 									viewport={{once: true}}
 									whileInView={stagger}
 								>
-									{bulletPoints?.map((item, keys) => (
-										<motion.li
-											key={keys}
-											className="mb-4"
-											initial={initial}
-											whileInView={fadeInUp}
-											viewport={{once: true}}
-										>
-											<StatsBulletPointCard
-												bulletPointText={item?.bulletPoint}
-												tailwindStyling={`text-white text-base lg:text-medium`}
-											/>
-										</motion.li>
-									))}
+									{bulletPoints?.length > 0 ? (
+										bulletPoints?.map((item, keys) => (
+											<motion.li
+												key={keys}
+												className="mb-4"
+												initial={initial}
+												whileInView={fadeInUp}
+												viewport={{once: true}}
+											>
+												<StatsBulletPointCard
+													bulletPointText={item?.bulletPoint}
+													tailwindStyling={`text-white text-base lg:text-medium`}
+												/>
+											</motion.li>
+										))
+									) : (
+										<></>
+									)}
 								</motion.ul>
 							</div>
 						</div>

@@ -61,7 +61,7 @@ const OperationalInsightsCard: FC<IProps> = ({
 						initial={initial}
 						whileInView={fadeInUp}
 						viewport={{once: true}}
-						className="mb-2 text-xl font-semibold text-darkBlue font-heading"
+						className="mb-2 text-xl font-semibold text-darkBlue"
 					>
 						{title}
 					</motion.h2>
