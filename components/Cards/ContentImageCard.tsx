@@ -1,7 +1,7 @@
 import {FC, useRef} from "react";
 import styled from "styled-components";
 import Paragraph from "./../Elements/Paragraph";
-import {motion, useTransform} from "framer-motion";
+import {motion} from "framer-motion";
 import {
 	initial,
 	fadeInUp,

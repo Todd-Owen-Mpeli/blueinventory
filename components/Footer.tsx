@@ -57,7 +57,7 @@ const Footer: FC<FooterProps> = ({
 				<div className="flex flex-col items-baseline justify-between gap-6 px-6 -m-6 lg:px-4 md:flex-row lg:items-center">
 					<div className="w-full py-6 md:w-auto">
 						<div className="mb-10">
-							<Link href="/" className="text-2xl text-lightBlue font-[900]">
+							<Link href="/" className="text-2xl text-lightBlue font-extrabold">
 								BlueInventory
 							</Link>
 						</div>
@@ -214,7 +214,7 @@ const Footer: FC<FooterProps> = ({
 					</div>
 					<div className="flex flex-col items-start justify-start w-full gap-6 sm:flex-row lg:justify-end md:w-1/2">
 						<div className="flex flex-col px-2 sm:px-6">
-							<h4 className="text-white tracking-normal font-[900] uppercase mb-5 text-left">
+							<h4 className="text-white tracking-normal font-extrabold uppercase mb-5 text-left">
 								Company
 							</h4>
 							<motion.ul
@@ -238,7 +238,7 @@ const Footer: FC<FooterProps> = ({
 							</motion.ul>
 						</div>
 						<div className="flex flex-col px-2 sm:px-6">
-							<h4 className="text-white tracking-normal font-[900] uppercase mb-5 text-left">
+							<h4 className="text-white tracking-normal font-extrabold uppercase mb-5 text-left">
 								Industries
 							</h4>
 							<motion.ul

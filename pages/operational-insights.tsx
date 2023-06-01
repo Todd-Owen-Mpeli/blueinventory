@@ -18,6 +18,7 @@ import CTATwo from "../components/CTATwo";
 import Layout from "../components/Layout/Layout";
 import ContentSlider from "@/components/ContentSlider";
 import OperationalInsights from "../components/OperationalInsights";
+import HeroTwo from "@/components/HeroTwo";
 
 interface IOperationalInsights {
 	seo: {
@@ -51,6 +52,20 @@ interface IOperationalInsights {
 	};
 	pageTitle: string;
 	content: {
+		heroSection: {
+			title: string;
+			paragraph: string;
+			backgroundVideoUrl: string;
+			backgroundImageOrVideo: string;
+			backgroundImage: {
+				altText: string;
+				sourceUrl: string;
+				mediaDetails: {
+					width: number;
+					height: number;
+				};
+			};
+		};
 		operationalInsights: {
 			title: string;
 			italic: string;
@@ -267,6 +282,14 @@ const operationalInsights: NextPage<IOperationalInsights> = ({
 				navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks}
 				industriesMenuLinks={industriesMenuLinks?.industriesMenuLinks}
 			>
+				<HeroTwo
+					title={content?.heroSection?.title}
+					paragraph={content?.heroSection?.paragraph}
+					backgroundImage={content?.heroSection?.backgroundImage}
+					backgroundVideoUrl={content?.heroSection?.backgroundVideoUrl}
+					backgroundImageOrVideo={content?.heroSection?.backgroundImageOrVideo}
+				/>
+
 				<ContentSlider
 					content={contentSliderPostsContent?.content[0]}
 					contentTwo={contentSliderPostsContent?.content[1]}
@@ -295,7 +318,7 @@ const operationalInsights: NextPage<IOperationalInsights> = ({
 export default operationalInsights;
 
 export const getStaticProps: GetStaticProps = async () => {
-	const geOperationalInsightsPageContent: any = gql`
+	const getOperationalInsightsPageContent: any = gql`
 		{
 			title: pages(where: {id: 723}) {
 				edges {
@@ -337,6 +360,20 @@ export const getStaticProps: GetStaticProps = async () => {
 							}
 						}
 						operationalInsightsPage {
+							heroSection {
+								title
+								paragraph
+								backgroundVideoUrl
+								backgroundImageOrVideo
+								backgroundImage {
+									altText
+									sourceUrl
+									mediaDetails {
+										height
+										width
+									}
+								}
+							}
 							operationalInsights {
 								title
 								italic
@@ -362,7 +399,7 @@ export const getStaticProps: GetStaticProps = async () => {
 	`;
 
 	const response: any = await client.query({
-		query: geOperationalInsightsPageContent,
+		query: getOperationalInsightsPageContent,
 	});
 
 	const navbarMenuLinks: object = await getNavbarMenuLinks();

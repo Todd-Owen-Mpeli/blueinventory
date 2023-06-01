@@ -16,8 +16,8 @@ import {
 } from "../animations/animations";
 
 // Components
-import NavbarMenuLinks from "./Elements/NavbarMenuLinks";
 import MobileNavbar from "../components/MobileNavbar";
+import NavbarMenuLinks from "./Elements/NavbarMenuLinks";
 
 interface firebaseUser {
 	uid: string;
@@ -131,7 +131,7 @@ const Navbar: FC<NavbarProps> = ({navbarMenuLinks, themesOptionsContent}) => {
 						>
 							<Link
 								href="/"
-								className="text-lg lg:text-2xl text-darkBlue font-[900]"
+								className="text-lg font-extrabold lg:text-2xl text-darkBlue"
 							>
 								BlueInventory
 							</Link>

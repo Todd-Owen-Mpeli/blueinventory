@@ -85,14 +85,18 @@ textarea {
 p {
 	strong {
 		font-family: $fontStyle_main;
-		@apply tracking-tight font-[900];
+		@apply tracking-tight font-extrabold;
+	}
+
+	a {
+		@apply text-darkBlue transition-all ease-in-out duration-[0.5s] hover:text-goldPrime focus:text-goldPrime;
 	}
 }
 
 h3 {
 	strong {
 		font-family: $fontStyle_main;
-		@apply text-darkBlue tracking-tight text-lg font-[900];
+		@apply text-darkBlue tracking-tight text-lg font-extrabold;
 	}
 }
 

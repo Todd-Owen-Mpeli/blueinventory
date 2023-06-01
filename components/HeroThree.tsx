@@ -1,6 +1,7 @@
 // Imports
 import {FC} from "react";
 import {motion} from "framer-motion";
+
 import {initial, fadeInUp, stagger} from "../animations/animations";
 
 // Components

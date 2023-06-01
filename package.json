@@ -27,7 +27,6 @@
 		"formik": "^2.2.9",
 		"framer-motion": "^10.12.9",
 		"graphql": "^16.6.0",
-		"html-react-parser": "^3.0.15",
 		"isomorphic-dompurify": "^1.3.0",
 		"next": "^13.4.2",
 		"next-themes": "^0.2.1",
