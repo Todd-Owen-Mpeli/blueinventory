@@ -20,6 +20,7 @@ import Layout from "../components/Layout/Layout";
 import ContentSlider from "@/components/ContentSlider";
 import TitleParagraph from "../components/TitleParagraph";
 import Paragraph from "@/components/Elements/Paragraph";
+import FAQ from "@/components/FAQ";
 
 interface IFaq {
 	seo: {
@@ -70,6 +71,16 @@ interface IFaq {
 		titleParagraph: {
 			title: string;
 			paragraph: string;
+		};
+		faq: {
+			title: string;
+			paragraph: string;
+			qagrid: [
+				{
+					title: string;
+					paragraph: string;
+				}
+			];
 		};
 		cta: {
 			title: string;
@@ -270,81 +281,11 @@ const faq: NextPage<IFaq> = ({
 					paragraph={content?.titleParagraph?.paragraph}
 				/>
 
-				<section className="py-20 bg-white">
-					<div className="container px-4 mx-auto">
-						<div className="flex flex-col mb-12 lg:flex-row lg:justify-between lg:items-center">
-							<div className="mb-2 lg:w-1/3 lg:pr-16 lg:mb-8">
-								<h2 className="text-3xl font-extrabold md:text-4xl">
-									How can we help?
-								</h2>
-							</div>
-							<div className="text-sm lg:text-base lg:w-1/3">
-								<p className="text-bluewhite">
-									<span>
-										Can&rsquo;t find the answer you&rsquo;re looking for? Write
-										out to our
-									</span>
-									<Link
-										href={`/contact`}
-										className="ml-1 text-darkBlue transition-all ease-in-out duration-[0.5s] hover:text-goldPrime focus:text-goldPrime"
-									>
-										customer support team.
-									</Link>
-								</p>
-							</div>
-						</div>
-						<div className="flex flex-wrap -m-8">
-							<div className="w-full px-8 py-4 md:w-1/2">
-								<h3 className="mb-3 text-lg font-semibold tracking-tight">
-									What integrations do you support?
-								</h3>
-								<Paragraph
-									content={`Our visual designer lets you quickly and of dragi and drop
-									down your way to custom apps for both keep desktop, mobile
-									&amp; also tab for both of it over $14,000 in additional
-									revenue week. We can support platforms integrated with
-									checkout, billing, and invoicing.`}
-									tailwindStyling="text-base tracking-tight font-medium text-black mb-36"
-								/>
-							</div>
-							<div className="w-full px-8 py-4 md:w-1/2">
-								<h3 className="mb-3 text-lg font-semibold tracking-tight">
-									What is the waiting period for my first payout?
-								</h3>
-								<Paragraph
-									content={`Our visual designer lets you quickly and of dragi and drop
-									down your way to the custom apps for both keep desktop, mobile
-									&amp; also tab for both of it over $14,000 a in additional
-									revenue week. We can support platforms integrated with
-									checkout, billing, and invoicing in contries such as Brazil.`}
-									tailwindStyling="text-base tracking-tight font-medium text-black mb-36"
-								/>
-							</div>
-							<div className="w-full px-8 py-4 md:w-1/2">
-								<h3 className="mb-3 text-lg font-semibold tracking-tight">
-									Can I withdraw my money anytime?
-								</h3>
-								<Paragraph
-									content={`Yes, Stripe allows you to opt for a payout whenever you want.
-									You can also opt for a scheduled payout every month.`}
-									tailwindStyling="text-base tracking-tight font-medium text-black mb-36"
-								/>
-							</div>
-							<div className="w-full px-8 py-4 md:w-1/2">
-								<h3 className="mb-3 text-lg font-semibold tracking-tight">
-									Do you support PO box addresses?
-								</h3>
-								<Paragraph
-									content={`Our visual designer lets you quickly and of dragi and drop
-									down your way to the customapps for both keep desktop, mobile
-									&amp; also tab for both of it over $14,000 a in additional
-									revenue week.`}
-									tailwindStyling="text-base tracking-tight font-medium text-black mb-36"
-								/>
-							</div>
-						</div>
-					</div>
-				</section>
+				<FAQ
+					title={content?.faq?.title}
+					qagrid={content?.faq?.qagrid}
+					paragraph={content?.faq?.paragraph}
+				/>
 
 				<section
 					className="pt-32 overflow-hidden bg-center bg-no-repeat bg-cover bg-darkBlue pb-36"
@@ -525,6 +466,14 @@ export const getStaticProps: GetStaticProps = async () => {
 							titleParagraph {
 								title
 								paragraph
+							}
+							faq {
+								title
+								paragraph
+								qagrid {
+									title
+									paragraph
+								}
 							}
 							cta {
 								title

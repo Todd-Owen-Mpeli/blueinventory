@@ -290,18 +290,18 @@ const operationalInsights: NextPage<IOperationalInsights> = ({
 					backgroundImageOrVideo={content?.heroSection?.backgroundImageOrVideo}
 				/>
 
-				<ContentSlider
-					content={contentSliderPostsContent?.content[0]}
-					contentTwo={contentSliderPostsContent?.content[1]}
-					contentThree={contentSliderPostsContent?.content[2]}
-				/>
-
 				{/* Renders all operational insights blog posts */}
 				<OperationalInsights
 					operationalInsights={operationalInsights}
 					title={content?.operationalInsights?.title}
 					italic={content?.operationalInsights?.italic}
 					paragraph={content?.operationalInsights?.paragraph}
+				/>
+
+				<ContentSlider
+					content={contentSliderPostsContent?.content[0]}
+					contentTwo={contentSliderPostsContent?.content[1]}
+					contentThree={contentSliderPostsContent?.content[2]}
 				/>
 
 				<CTATwo
