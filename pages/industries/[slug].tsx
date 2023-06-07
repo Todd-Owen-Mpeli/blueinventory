@@ -6,12 +6,12 @@ import {
 	getNavbarMenuLinks,
 	getFooterMenuLinks,
 	getIndustriesMenuLinks,
-} from "../../functions/MenuLinks";
+} from "../../functions/GetAllMenuLinks";
 import {
 	fetchIndustriesPageSlugs,
 	fetchIndustriesPageContent,
-} from "../../functions/IndustriesPageSlugs";
-import {getThemesOptionsContent} from "../../functions/themesOptions";
+} from "../../functions/GetAllIndustriesPageSlugs";
+import {getThemesOptionsContent} from "../../functions/GetAllThemesOptions";
 
 // Components
 import CTATwo from "../../components/CTATwo";

@@ -2,7 +2,7 @@
 import {motion} from "framer-motion";
 import type {NextPage, GetServerSideProps} from "next";
 import {initial, stagger} from "../animations/animations";
-import {getThemesOptionsContent} from "../functions/themesOptions";
+import {getThemesOptionsContent} from "../functions/GetAllThemesOptions";
 
 // Styling
 import styles from "../styles/pages/Dashboard.module.scss";

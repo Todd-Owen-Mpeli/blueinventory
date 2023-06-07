@@ -5,14 +5,14 @@ import {motion} from "framer-motion";
 import React, {useEffect} from "react";
 import {client} from "../config/apollo";
 import type {NextPage, GetStaticProps} from "next";
-import {getThemesOptionsContent} from "../functions/themesOptions";
+import {getThemesOptionsContent} from "../functions/GetAllThemesOptions";
 import {fetchStripePaymentPlans} from "../functions/stripe/GetStripePaymentPlans";
 import {
 	getMainMenuLinks,
 	getNavbarMenuLinks,
 	getFooterMenuLinks,
 	getIndustriesMenuLinks,
-} from "../functions/MenuLinks";
+} from "../functions/GetAllMenuLinks";
 
 // Components
 import CTATwo from "../components/CTATwo";

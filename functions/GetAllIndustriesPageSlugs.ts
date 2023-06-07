@@ -4,20 +4,18 @@ import {DocumentNode, gql} from "@apollo/client";
 
 type SlugResponse = {
 	slug: string;
-	modified: string;
 };
 
 interface ISlug extends Array<SlugResponse> {}
 
-// Operational Insights Slugs
-export const fetchOperationalInsightsPostsSlugs = async (): Promise<ISlug> => {
+// Industries Page Slugs
+export const fetchIndustriesPageSlugs = async (): Promise<ISlug> => {
 	try {
 		const content: DocumentNode = gql`
 			{
-				slugs: posts(first: 100, where: {status: PUBLISH}) {
+				industriesPagesSlugs: industries(where: {status: PUBLISH}) {
 					nodes {
 						slug
-						modified
 					}
 				}
 			}
@@ -27,21 +25,21 @@ export const fetchOperationalInsightsPostsSlugs = async (): Promise<ISlug> => {
 			query: content,
 		});
 
-		return response?.data?.slugs?.nodes;
+		return response?.data?.industriesPagesSlugs?.nodes;
 	} catch (error) {
 		console.log(error);
 		throw new Error(
-			"Something went wrong trying to fetch the operational insight slugs"
+			"Something went wrong trying to fetch the industries page slugs"
 		);
 	}
 };
 
-// Operational Insights Posts Content
-export const fetchOperationalInsightsPostsContent = async (slug: string) => {
+// Industries Page Content
+export const fetchIndustriesPageContent = async (slug: string) => {
 	try {
-		const getSingleOperationalInsightContent: DocumentNode = gql`
+		const getIndustriesPageContent: DocumentNode = gql`
 			{
-				mainContent: post(id: "${slug}", idType: SLUG) {
+				mainContent: industry(id: "${slug}", idType: SLUG) {
                     title
                     seo {
 							canonical
@@ -72,7 +70,7 @@ export const fetchOperationalInsightsPostsContent = async (slug: string) => {
 								mediaItemUrl
 							}
 						}
-					singleOperationalInsightPost {
+					industryPage {
 						heroSection {
       					  title
       					  paragraph
@@ -113,41 +111,48 @@ export const fetchOperationalInsightsPostsContent = async (slug: string) => {
 								sourceUrl
 							}
 						}
-					}
-				}
-			}
-		`;
-
-		const response: any = await client.query({
-			query: getSingleOperationalInsightContent,
-		});
-
-		return {
-			seo: response?.data?.mainContent?.seo,
-			pageTitle: response?.data?.mainContent?.title,
-			content: response?.data?.mainContent?.singleOperationalInsightPost,
-		};
-	} catch (error) {
-		console.log(error);
-		throw new Error(
-			"Something went wrong trying to fetch the operational insight slugs content"
-		);
-	}
-};
-
-// All Operational Insights
-export async function getAllOperationalInsightsContent() {
-	try {
-		const content: DocumentNode = gql`
-			{
-				mainContent: posts(where: {status: PUBLISH}, last: 10) {
-					edges {
-						node {
-							id
-							uri
-							title(format: RENDERED)
-							featuredImage {
-								node {
+						imageGrid {
+								image {
+									altText
+									sourceUrl
+									mediaDetails {
+										height
+										width
+									}
+								}
+								imageTwo {
+									altText
+									sourceUrl
+									mediaDetails {
+										height
+										width
+									}
+								}
+								imageThree {
+									altText
+									sourceUrl
+									mediaDetails {
+										height
+										width
+									}
+								}
+								imageFour {
+									altText
+									sourceUrl
+									mediaDetails {
+										height
+										width
+									}
+								}
+								imageFive {
+									altText
+									sourceUrl
+									mediaDetails {
+										height
+										width
+									}
+								}
+								imageSix {
 									altText
 									sourceUrl
 									mediaDetails {
@@ -156,26 +161,24 @@ export async function getAllOperationalInsightsContent() {
 									}
 								}
 							}
-							singleOperationalInsightPost {
-								titleParagraph {
-									paragraph
-								}
-							}
-						}
 					}
 				}
 			}
 		`;
 
 		const response: any = await client.query({
-			query: content,
+			query: getIndustriesPageContent,
 		});
 
-		return response?.data?.mainContent?.edges;
+		return {
+			seo: response?.data?.mainContent?.seo,
+			pageTitle: response?.data?.mainContent?.title,
+			content: response.data?.mainContent?.industryPage,
+		};
 	} catch (error) {
 		console.log(error);
 		throw new Error(
-			"Something went wrong trying to fetch all the operational insight posts"
+			"Something went wrong trying to fetch the industries page content"
 		);
 	}
-}
+};

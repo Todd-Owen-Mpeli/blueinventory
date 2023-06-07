@@ -3,13 +3,13 @@ import {gql} from "@apollo/client";
 import {motion} from "framer-motion";
 import {client} from "../config/apollo";
 import type {NextPage, GetStaticProps} from "next";
-import {getThemesOptionsContent} from "../functions/themesOptions";
+import {getThemesOptionsContent} from "../functions/GetAllThemesOptions";
 import {
 	getMainMenuLinks,
 	getNavbarMenuLinks,
 	getFooterMenuLinks,
 	getIndustriesMenuLinks,
-} from "../functions/MenuLinks";
+} from "../functions/GetAllMenuLinks";
 
 // Components
 import CTATwo from "../components/CTATwo";

@@ -2,13 +2,13 @@
 import Head from "next/head";
 import {motion} from "framer-motion";
 import type {NextPage, GetStaticProps} from "next";
-import {getThemesOptionsContent} from "../functions/themesOptions";
+import {getThemesOptionsContent} from "../functions/GetAllThemesOptions";
 import {
 	getMainMenuLinks,
 	getNavbarMenuLinks,
 	getFooterMenuLinks,
 	getIndustriesMenuLinks,
-} from "../functions/MenuLinks";
+} from "../functions/GetAllMenuLinks";
 
 // Components
 import SignUp from "@/components/SignUp";

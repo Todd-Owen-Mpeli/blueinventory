@@ -1,4 +1,3 @@
-// Imports
 import {client} from "../config/apollo";
 import {DocumentNode, gql} from "@apollo/client";
 
@@ -9,12 +8,12 @@ type SlugResponse = {
 
 interface ISlug extends Array<SlugResponse> {}
 
-// Fetches All Pages Slugs
-export async function fetchAllPagesSlugs(): Promise<ISlug> {
+/* PAGES SLUGS (URLS) */
+export const getAllPagesSlugs = async (): Promise<ISlug> => {
 	try {
 		const content: DocumentNode = gql`
 			{
-				pages: pages(first: 100, where: {status: PUBLISH}) {
+				pageURLs: pages(where: {status: PUBLISH}) {
 					nodes {
 						slug
 						modified
@@ -27,9 +26,9 @@ export async function fetchAllPagesSlugs(): Promise<ISlug> {
 			query: content,
 		});
 
-		return response?.data?.pages?.nodes;
+		return response?.data?.pageURLs?.nodes;
 	} catch (error) {
 		console.log(error);
-		throw new Error("Something went wrong trying to fetch the pages slug");
+		throw new Error("Something went wrong trying to fetch all pages urls");
 	}
-}
+};

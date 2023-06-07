@@ -3,15 +3,15 @@ import {gql} from "@apollo/client";
 import {motion} from "framer-motion";
 import {client} from "../config/apollo";
 import type {NextPage, GetStaticProps} from "next";
-import {getThemesOptionsContent} from "../functions/themesOptions";
-import {getAllOperationalInsightsContent} from "../functions/OperationalInsightsPostsSlugs";
-import {fetchContentSliderOperationalInsightsPostsContent} from "@/functions/ContentSliderPosts";
+import {getThemesOptionsContent} from "../functions/GetAllThemesOptions";
+import {getAllOperationalInsightsContent} from "../functions/GetAllOperationalInsightsPostsSlugs";
+import {fetchContentSliderOperationalInsightsPostsContent} from "@/functions/GetAllContentSliderPosts";
 import {
 	getMainMenuLinks,
 	getNavbarMenuLinks,
 	getFooterMenuLinks,
 	getIndustriesMenuLinks,
-} from "../functions/MenuLinks";
+} from "../functions/GetAllMenuLinks";
 
 // Components
 import CTATwo from "../components/CTATwo";
