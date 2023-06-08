@@ -74,7 +74,7 @@ interface IStripePremiumPlan {
 }
 
 // Fetches All Stripe Payment Plans
-export const fetchStripePaymentPlans = async (): Promise<
+export const getAllStripePaymentPlans = async (): Promise<
 	IStripePaymentPlans | any
 > => {
 	try {

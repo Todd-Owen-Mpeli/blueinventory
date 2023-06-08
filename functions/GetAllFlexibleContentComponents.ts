@@ -16,384 +16,384 @@ export async function getAllPagesFlexibleContentComponents(slug: string) {
 					}
 				}
         mainContent: pages(where: {name: "${slug}", status: PUBLISH}) {
-    edges {
-      node {
-        template {
-          ... on DefaultTemplate {
-            flexibleContent {
-              flexibleContent {
-                ... on DefaultTemplate_Flexiblecontent_FlexibleContent_HeroSection {
-                  backgroundVideoUrl
-                  fieldGroupName
-                  title
-                  subtitle
-                  buttonLink {
-                    url
-                    title
-                    target
-                  }
-                  buttonLinkTwo {
-                    url
-                    title
-                    target
-                  }
-                  backgroundImage {
-                    sourceUrl
-                  }
-                }
-                ... on DefaultTemplate_Flexiblecontent_FlexibleContent_HeroSectionTwo {
-                  backgroundImageOrVideo
-                  backgroundVideoUrl
-                  title
-                  paragraph
-                  fieldGroupName
-                  backgroundImage {
-                    altText
-                    sourceUrl
-                    mediaDetails {
-                      height
-                      width
-                    }
-                  }
-                }
-                ... on DefaultTemplate_Flexiblecontent_FlexibleContent_TitleParagraph {
-                  fieldGroupName
-                  paragraph
-                  title
-                }
-                ... on DefaultTemplate_Flexiblecontent_FlexibleContent_IntroContent {
-                  fieldGroupName
-                  title
-                  contentGrid {
-                    card {
-                      title
-                      paragraph
-                      buttonLink {
-                        url
+          edges {
+            node {
+              template {
+                ... on DefaultTemplate {
+                  flexibleContent {
+                    flexibleContent {
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_HeroSection {
+                        backgroundVideoUrl
+                        fieldGroupName
                         title
-                        target
+                        subtitle
+                        buttonLink {
+                          url
+                          title
+                          target
+                        }
+                        buttonLinkTwo {
+                          url
+                          title
+                          target
+                        }
+                        backgroundImage {
+                          sourceUrl
+                        }
                       }
-                    }
-                  }
-                }
-                ... on DefaultTemplate_Flexiblecontent_FlexibleContent_FeaturesGrid {
-                  fieldGroupName
-                  paragraph
-                  title
-                  cardOne {
-                    title
-                    subtitle
-                    paragraph
-                  }
-                  cardTwo {
-                    backgroundImage {
-                      altText
-                      sourceUrl
-                      mediaDetails {
-                        height
-                        width
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_HeroSectionTwo {
+                        backgroundImageOrVideo
+                        backgroundVideoUrl
+                        title
+                        paragraph
+                        fieldGroupName
+                        backgroundImage {
+                          altText
+                          sourceUrl
+                          mediaDetails {
+                            height
+                            width
+                          }
+                        }
                       }
-                    }
-                  }
-                  cardThree {
-                    foreground {
-                      title
-                      subtitle
-                      paragraph
-                    }
-                    background {
-                      title
-                      subtitle
-                      paragraph
-                    }
-                  }
-                  lastCard {
-                    backgroundImage {
-                      altText
-                      sourceUrl
-                      mediaDetails {
-                        height
-                        width
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_TitleParagraph {
+                        fieldGroupName
+                        paragraph
+                        title
                       }
-                    }
-                  }
-                  gridContent {
-                    card {
-                      title
-                      subtitle
-                      paragraph
-                    }
-                  }
-                }
-                ... on DefaultTemplate_Flexiblecontent_FlexibleContent_FeaturesGridTwo {
-                  fieldGroupName
-                  cardOne {
-                    title
-                    subtitle
-                    paragraph
-                  }
-                  cardTwo {
-                    backgroundImage {
-                      altText
-                      sourceUrl
-                      mediaDetails {
-                        height
-                        width
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_IntroContent {
+                        fieldGroupName
+                        title
+                        contentGrid {
+                          card {
+                            title
+                            paragraph
+                            buttonLink {
+                              url
+                              title
+                              target
+                            }
+                          }
+                        }
                       }
-                    }
-                  }
-                  lastCard {
-                    backgroundImage {
-                      altText
-                      sourceUrl
-                      mediaDetails {
-                        height
-                        width
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_FeaturesGrid {
+                        fieldGroupName
+                        paragraph
+                        title
+                        cardOne {
+                          title
+                          subtitle
+                          paragraph
+                        }
+                        cardTwo {
+                          backgroundImage {
+                            altText
+                            sourceUrl
+                            mediaDetails {
+                              height
+                              width
+                            }
+                          }
+                        }
+                        cardThree {
+                          foreground {
+                            title
+                            subtitle
+                            paragraph
+                          }
+                          background {
+                            title
+                            subtitle
+                            paragraph
+                          }
+                        }
+                        lastCard {
+                          backgroundImage {
+                            altText
+                            sourceUrl
+                            mediaDetails {
+                              height
+                              width
+                            }
+                          }
+                        }
+                        gridContent {
+                          card {
+                            title
+                            subtitle
+                            paragraph
+                          }
+                        }
                       }
-                    }
-                  }
-                  gridContent {
-                    card {
-                      title
-                      subtitle
-                      paragraph
-                    }
-                  }
-                }
-                ... on DefaultTemplate_Flexiblecontent_FlexibleContent_Pricing {
-                  fieldGroupName
-                  italic
-                  title
-                  pointTwo
-                  pointOne
-                  paragraph
-                  paymentProviders {
-                    logo {
-                      altText
-                      sourceUrl
-                      mediaDetails {
-                        height
-                        width
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_FeaturesGridTwo {
+                        fieldGroupName
+                        cardOne {
+                          title
+                          subtitle
+                          paragraph
+                        }
+                        cardTwo {
+                          backgroundImage {
+                            altText
+                            sourceUrl
+                            mediaDetails {
+                              height
+                              width
+                            }
+                          }
+                        }
+                        lastCard {
+                          backgroundImage {
+                            altText
+                            sourceUrl
+                            mediaDetails {
+                              height
+                              width
+                            }
+                          }
+                        }
+                        gridContent {
+                          card {
+                            title
+                            subtitle
+                            paragraph
+                          }
+                        }
                       }
-                    }
-                  }
-                  card {
-                    bulletList {
-                      bulletPoint
-                    }
-                  }
-                }
-                ... on DefaultTemplate_Flexiblecontent_FlexibleContent_ContentStats {
-                  fieldGroupName
-                  paragraph
-                  title
-                  subtitle
-                  column {
-                    title
-                    values
-                    percentage
-                  }
-                  columnTwo {
-                    title
-                    values
-                    percentage
-                  }
-                  bulletPoints {
-                    bulletPoint
-                  }
-                }
-                ... on DefaultTemplate_Flexiblecontent_FlexibleContent_ContentImageGrid {
-                  fieldGroupName
-                  gridContent {
-                    card {
-                      title
-                      paragraph
-                      contentLocation
-                      backgroundImage {
-                        sourceUrl
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_Pricing {
+                        fieldGroupName
+                        italic
+                        title
+                        pointTwo
+                        pointOne
+                        paragraph
+                        paymentProviders {
+                          logo {
+                            altText
+                            sourceUrl
+                            mediaDetails {
+                              height
+                              width
+                            }
+                          }
+                        }
+                        card {
+                          bulletList {
+                            bulletPoint
+                          }
+                        }
                       }
-                    }
-                  }
-                }
-                ... on DefaultTemplate_Flexiblecontent_FlexibleContent_ContentSliderAuto {
-                  fieldGroupName
-                }
-                ... on DefaultTemplate_Flexiblecontent_FlexibleContent_TrustedBrands {
-                  fieldGroupName
-                  paragraph
-                  title
-                  logos {
-                    image {
-                      altText
-                      sourceUrl
-                      mediaDetails {
-                        height
-                        width
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_ContentStats {
+                        fieldGroupName
+                        paragraph
+                        title
+                        subtitle
+                        column {
+                          title
+                          values
+                          percentage
+                        }
+                        columnTwo {
+                          title
+                          values
+                          percentage
+                        }
+                        bulletPoints {
+                          bulletPoint
+                        }
                       }
-                    }
-                  }
-                }
-                ... on DefaultTemplate_Flexiblecontent_FlexibleContent_ImageGrid {
-                  fieldGroupName
-                  image {
-                    altText
-                    sourceUrl
-                    mediaDetails {
-                      height
-                      width
-                    }
-                  }
-                  imageTwo {
-                    altText
-                    sourceUrl
-                    mediaDetails {
-                      height
-                      width
-                    }
-                  }
-                  imageThree {
-                    altText
-                    sourceUrl
-                    mediaDetails {
-                      height
-                      width
-                    }
-                  }
-                  imageFour {
-                    altText
-                    sourceUrl
-                    mediaDetails {
-                      height
-                      width
-                    }
-                  }
-                  imageFive {
-                    altText
-                    sourceUrl
-                    mediaDetails {
-                      height
-                      width
-                    }
-                  }
-                  imageSix {
-                    altText
-                    sourceUrl
-                    mediaDetails {
-                      height
-                      width
-                    }
-                  }
-                }
-                ... on DefaultTemplate_Flexiblecontent_FlexibleContent_Sustainability {
-                  fieldGroupName
-                  imageText
-                  title
-                  subtitle
-                  percentage
-                  paragraph
-                  image {
-                    altText
-                    sourceUrl
-                    mediaDetails {
-                      height
-                      width
-                    }
-                  }
-                }
-                ... on DefaultTemplate_Flexiblecontent_FlexibleContent_Faq {
-                  fieldGroupName
-                  paragraph
-                  title
-                  qagrid {
-                    title
-                    paragraph
-                  }
-                }
-                ... on DefaultTemplate_Flexiblecontent_FlexibleContent_OperationalInsights {
-                  fieldGroupName
-                  italic
-                  title
-                  paragraph
-                }
-                ... on DefaultTemplate_Flexiblecontent_FlexibleContent_Testimonial {
-                  fieldGroupName
-                  paragraph
-                  title
-                  contentGrid {
-                    card {
-                      name
-                      position
-                      paragraph
-                      image {
-                        altText
-                        sourceUrl
-                        mediaDetails {
-                          height
-                          width
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_ContentImageGrid {
+                        fieldGroupName
+                        gridContent {
+                          card {
+                            title
+                            paragraph
+                            contentLocation
+                            backgroundImage {
+                              sourceUrl
+                            }
+                          }
+                        }
+                      }
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_ContentSliderAuto {
+                        fieldGroupName
+                      }
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_TrustedBrands {
+                        fieldGroupName
+                        paragraph
+                        title
+                        logos {
+                          image {
+                            altText
+                            sourceUrl
+                            mediaDetails {
+                              height
+                              width
+                            }
+                          }
+                        }
+                      }
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_ImageGrid {
+                        fieldGroupName
+                        image {
+                          altText
+                          sourceUrl
+                          mediaDetails {
+                            height
+                            width
+                          }
+                        }
+                        imageTwo {
+                          altText
+                          sourceUrl
+                          mediaDetails {
+                            height
+                            width
+                          }
+                        }
+                        imageThree {
+                          altText
+                          sourceUrl
+                          mediaDetails {
+                            height
+                            width
+                          }
+                        }
+                        imageFour {
+                          altText
+                          sourceUrl
+                          mediaDetails {
+                            height
+                            width
+                          }
+                        }
+                        imageFive {
+                          altText
+                          sourceUrl
+                          mediaDetails {
+                            height
+                            width
+                          }
+                        }
+                        imageSix {
+                          altText
+                          sourceUrl
+                          mediaDetails {
+                            height
+                            width
+                          }
+                        }
+                      }
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_Sustainability {
+                        fieldGroupName
+                        imageText
+                        title
+                        subtitle
+                        percentage
+                        paragraph
+                        image {
+                          altText
+                          sourceUrl
+                          mediaDetails {
+                            height
+                            width
+                          }
+                        }
+                      }
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_Faq {
+                        fieldGroupName
+                        paragraph
+                        title
+                        qagrid {
+                          title
+                          paragraph
+                        }
+                      }
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_OperationalInsights {
+                        fieldGroupName
+                        italic
+                        title
+                        paragraph
+                      }
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_Testimonial {
+                        fieldGroupName
+                        paragraph
+                        title
+                        contentGrid {
+                          card {
+                            name
+                            position
+                            paragraph
+                            image {
+                              altText
+                              sourceUrl
+                              mediaDetails {
+                                height
+                                width
+                              }
+                            }
+                          }
+                        }
+                      }
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_ContactInfo {
+                        fieldGroupName
+                        paragraph
+                        title
+                      }
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_ContactForm {
+                        fieldGroupName
+                        title
+                        backgroundImage {
+                          altText
+                          sourceUrl
+                          mediaDetails {
+                            height
+                            width
+                          }
+                        }
+                      }
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_Cta {
+                        fieldGroupName
+                        paragraph
+                        title
+                        buttonLink {
+                          url
+                          title
+                          target
+                        }
+                        buttonLinkTwo {
+                          url
+                          title
+                          target
+                        }
+                        backgroundImage {
+                          sourceUrl
+                        }
+                        content {
+                          title
+                          paragraph
+                        }
+                      }
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_CtaTwo {
+                        fieldGroupName
+                        paragraph
+                        title
+                        buttonLink {
+                          url
+                          title
+                          target
+                        }
+                        backgroundImage {
+                          sourceUrl
                         }
                       }
                     }
-                  }
-                }
-                ... on DefaultTemplate_Flexiblecontent_FlexibleContent_ContactInfo {
-                  fieldGroupName
-                  paragraph
-                  title
-                }
-                ... on DefaultTemplate_Flexiblecontent_FlexibleContent_ContactForm {
-                  fieldGroupName
-                  title
-                  backgroundImage {
-                    altText
-                    sourceUrl
-                    mediaDetails {
-                      height
-                      width
-                    }
-                  }
-                }
-                ... on DefaultTemplate_Flexiblecontent_FlexibleContent_Cta {
-                  fieldGroupName
-                  paragraph
-                  title
-                  buttonLink {
-                    url
-                    title
-                    target
-                  }
-                  buttonLinkTwo {
-                    url
-                    title
-                    target
-                  }
-                  backgroundImage {
-                    sourceUrl
-                  }
-                  content {
-                    title
-                    paragraph
-                  }
-                }
-                ... on DefaultTemplate_Flexiblecontent_FlexibleContent_CtaTwo {
-                  fieldGroupName
-                  paragraph
-                  title
-                  buttonLink {
-                    url
-                    title
-                    target
-                  }
-                  backgroundImage {
-                    sourceUrl
                   }
                 }
               }
             }
           }
         }
-      }
-    }
-  }
 			}
 		`;
 
@@ -415,10 +415,12 @@ export async function getAllPagesFlexibleContentComponents(slug: string) {
 	}
 }
 
-/* BLOGS POSTS */
+/* OPERATIONAL INSIGHTS POSTS */
 /* Fetch all Flexible Content Components 
-(For every flexible content Blog Post) */
-export async function getAllBlogPostFlexibleContentComponents(slug: string) {
+(For every flexible content Operational Insights Posts) */
+export async function getAllOperationalInsightsPostsFlexibleContentComponents(
+	slug: string
+) {
 	try {
 		const content: DocumentNode = gql`
 			{
@@ -437,18 +439,10 @@ export async function getAllBlogPostFlexibleContentComponents(slug: string) {
                   flexibleContent {
                     flexibleContent {
                       ... on DefaultTemplate_Flexiblecontent_FlexibleContent_HeroSection {
-                        fieldGroupName
-                        paragraph
-                        title
-                        backgroundImage {
-                          sourceUrl
-                        }
-                      }
-                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_HeroSectionTwo {
-                        fieldGroupName
-                        title
-                        paragraph
                         backgroundVideoUrl
+                        fieldGroupName
+                        title
+                        subtitle
                         buttonLink {
                           url
                           title
@@ -463,12 +457,12 @@ export async function getAllBlogPostFlexibleContentComponents(slug: string) {
                           sourceUrl
                         }
                       }
-                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_HeroSectionThree {
-                        fieldGroupName
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_HeroSectionTwo {
                         backgroundImageOrVideo
                         backgroundVideoUrl
                         title
                         paragraph
+                        fieldGroupName
                         backgroundImage {
                           altText
                           sourceUrl
@@ -483,17 +477,32 @@ export async function getAllBlogPostFlexibleContentComponents(slug: string) {
                         paragraph
                         title
                       }
-                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_ContentSection {
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_IntroContent {
                         fieldGroupName
-                        subtitle
                         title
-                        bottomContent {
+                        contentGrid {
+                          card {
+                            title
+                            paragraph
+                            buttonLink {
+                              url
+                              title
+                              target
+                            }
+                          }
+                        }
+                      }
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_FeaturesGrid {
+                        fieldGroupName
+                        paragraph
+                        title
+                        cardOne {
                           title
-                          titleTwo
+                          subtitle
                           paragraph
-                          paragraphTwo
-                          mainContent
-                          image {
+                        }
+                        cardTwo {
+                          backgroundImage {
                             altText
                             sourceUrl
                             mediaDetails {
@@ -502,29 +511,91 @@ export async function getAllBlogPostFlexibleContentComponents(slug: string) {
                             }
                           }
                         }
-                      }
-                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_JumboContentSection {
-                        fieldGroupName
-                        contentSection {
-                          content {
+                        cardThree {
+                          foreground {
                             title
                             subtitle
                             paragraph
-                            imageLocation
-                            backgroundDisplay
-                            buttonLink {
-                              url
-                              title
-                              target
+                          }
+                          background {
+                            title
+                            subtitle
+                            paragraph
+                          }
+                        }
+                        lastCard {
+                          backgroundImage {
+                            altText
+                            sourceUrl
+                            mediaDetails {
+                              height
+                              width
                             }
-                            image {
-                              altText
-                              sourceUrl
-                              mediaDetails {
-                                height
-                                width
-                              }
+                          }
+                        }
+                        gridContent {
+                          card {
+                            title
+                            subtitle
+                            paragraph
+                          }
+                        }
+                      }
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_FeaturesGridTwo {
+                        fieldGroupName
+                        cardOne {
+                          title
+                          subtitle
+                          paragraph
+                        }
+                        cardTwo {
+                          backgroundImage {
+                            altText
+                            sourceUrl
+                            mediaDetails {
+                              height
+                              width
                             }
+                          }
+                        }
+                        lastCard {
+                          backgroundImage {
+                            altText
+                            sourceUrl
+                            mediaDetails {
+                              height
+                              width
+                            }
+                          }
+                        }
+                        gridContent {
+                          card {
+                            title
+                            subtitle
+                            paragraph
+                          }
+                        }
+                      }
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_Pricing {
+                        fieldGroupName
+                        italic
+                        title
+                        pointTwo
+                        pointOne
+                        paragraph
+                        paymentProviders {
+                          logo {
+                            altText
+                            sourceUrl
+                            mediaDetails {
+                              height
+                              width
+                            }
+                          }
+                        }
+                        card {
+                          bulletList {
+                            bulletPoint
                           }
                         }
                       }
@@ -532,61 +603,40 @@ export async function getAllBlogPostFlexibleContentComponents(slug: string) {
                         fieldGroupName
                         paragraph
                         title
-                        statsOne {
-                          title
-                          subtitle
-                          paragraph
-                        }
-                        statsTwo {
-                          title
-                          subtitle
-                          paragraph
-                        }
-                      }
-                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_ProductGrid {
-                        fieldGroupName
-                        title
-                        services {
-                          title
-                          link {
-                            url
-                            title
-                            target
-                          }
-                          image {
-                            altText
-                            sourceUrl
-                            mediaDetails {
-                              height
-                              width
-                            }
-                          }
-                        }
-                      }
-                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_ProductGridTwo {
-                        fieldGroupName
-                        paragraph
-                        title
                         subtitle
-                        products {
+                        column {
                           title
-                          link {
-                            url
+                          values
+                          percentage
+                        }
+                        columnTwo {
+                          title
+                          values
+                          percentage
+                        }
+                        bulletPoints {
+                          bulletPoint
+                        }
+                      }
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_ContentImageGrid {
+                        fieldGroupName
+                        gridContent {
+                          card {
                             title
-                            target
-                          }
-                          image {
-                            altText
-                            sourceUrl
-                            mediaDetails {
-                              height
-                              width
+                            paragraph
+                            contentLocation
+                            backgroundImage {
+                              sourceUrl
                             }
                           }
                         }
+                      }
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_ContentSliderAuto {
+                        fieldGroupName
                       }
                       ... on DefaultTemplate_Flexiblecontent_FlexibleContent_TrustedBrands {
                         fieldGroupName
+                        paragraph
                         title
                         logos {
                           image {
@@ -599,62 +649,148 @@ export async function getAllBlogPostFlexibleContentComponents(slug: string) {
                           }
                         }
                       }
-                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_ContentSlider {
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_ImageGrid {
                         fieldGroupName
+                        image {
+                          altText
+                          sourceUrl
+                          mediaDetails {
+                            height
+                            width
+                          }
+                        }
+                        imageTwo {
+                          altText
+                          sourceUrl
+                          mediaDetails {
+                            height
+                            width
+                          }
+                        }
+                        imageThree {
+                          altText
+                          sourceUrl
+                          mediaDetails {
+                            height
+                            width
+                          }
+                        }
+                        imageFour {
+                          altText
+                          sourceUrl
+                          mediaDetails {
+                            height
+                            width
+                          }
+                        }
+                        imageFive {
+                          altText
+                          sourceUrl
+                          mediaDetails {
+                            height
+                            width
+                          }
+                        }
+                        imageSix {
+                          altText
+                          sourceUrl
+                          mediaDetails {
+                            height
+                            width
+                          }
+                        }
                       }
-                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_ContentSliderTwo {
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_Sustainability {
                         fieldGroupName
+                        imageText
+                        title
+                        subtitle
+                        percentage
+                        paragraph
+                        image {
+                          altText
+                          sourceUrl
+                          mediaDetails {
+                            height
+                            width
+                          }
+                        }
+                      }
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_Faq {
+                        fieldGroupName
+                        paragraph
+                        title
+                        qagrid {
+                          title
+                          paragraph
+                        }
+                      }
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_OperationalInsights {
+                        fieldGroupName
+                        italic
+                        title
+                        paragraph
+                      }
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_Testimonial {
+                        fieldGroupName
+                        paragraph
+                        title
+                        contentGrid {
+                          card {
+                            name
+                            position
+                            paragraph
+                            image {
+                              altText
+                              sourceUrl
+                              mediaDetails {
+                                height
+                                width
+                              }
+                            }
+                          }
+                        }
+                      }
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_ContactInfo {
+                        fieldGroupName
+                        paragraph
+                        title
+                      }
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_ContactForm {
+                        fieldGroupName
+                        title
+                        backgroundImage {
+                          altText
+                          sourceUrl
+                          mediaDetails {
+                            height
+                            width
+                          }
+                        }
+                      }
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_Cta {
+                        fieldGroupName
+                        paragraph
+                        title
+                        buttonLink {
+                          url
+                          title
+                          target
+                        }
+                        buttonLinkTwo {
+                          url
+                          title
+                          target
+                        }
+                        backgroundImage {
+                          sourceUrl
+                        }
                         content {
                           title
-                          tag
-                          publishedDate
                           paragraph
-                          backgroundVideoUrl
-                          backgroundImageOrVideo
-                          buttonLink {
-                            url
-                            title
-                            target
-                          }
-                          backgroundImage {
-                            sourceUrl
-                          }
-                        }
-                        contentTwo {
-                          title
-                          tag
-                          publishedDate
-                          paragraph
-                          backgroundVideoUrl
-                          backgroundImageOrVideo
-                          buttonLink {
-                            url
-                            title
-                            target
-                          }
-                          backgroundImage {
-                            sourceUrl
-                          }
-                        }
-                        contentThree {
-                          title
-                          tag
-                          backgroundVideoUrl
-                          backgroundImageOrVideo
-                          buttonLink {
-                            url
-                            title
-                            target
-                          }
-                          backgroundImage {
-                            sourceUrl
-                          }
                         }
                       }
-                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_BlogsGrid {
-                        fieldGroupName
-                      }
-                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_ContactBanner {
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_CtaTwo {
                         fieldGroupName
                         paragraph
                         title
@@ -667,6 +803,370 @@ export async function getAllBlogPostFlexibleContentComponents(slug: string) {
                           sourceUrl
                         }
                       }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+			}
+		`;
+
+		const response: any = await client.query({
+			query: content,
+		});
+
+		return {
+			pageTitle: response?.data?.pageTitle?.edges[0]?.node?.title,
+			content:
+				response.data?.mainContent?.edges[0]?.node?.template?.flexibleContent
+					?.flexibleContent,
+		};
+	} catch (error) {
+		console.log(error);
+		throw new Error(
+			"Something went wrong trying to fetch all flexible content components"
+		);
+	}
+}
+
+/* INDUSTRY PAGES */
+/* Fetch all Flexible Content Components 
+(For every flexible content Industries page) */
+export async function getAllIndustriesPagesFlexibleContentComponents(
+	slug: string
+) {
+	try {
+		const content: DocumentNode = gql`
+			{
+				pageTitle: industries(where: {name: "${slug}", status: PUBLISH}) {
+					edges {
+						node {
+							title
+						}
+					}
+				}
+        mainContent: industries(where: {name: "${slug}", status: PUBLISH}) {
+          edges {
+            node {
+              template {
+                ... on DefaultTemplate {
+                  flexibleContent {
+                    flexibleContent {
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_HeroSection {
+                        backgroundVideoUrl
+                        fieldGroupName
+                        title
+                        subtitle
+                        buttonLink {
+                          url
+                          title
+                          target
+                        }
+                        buttonLinkTwo {
+                          url
+                          title
+                          target
+                        }
+                        backgroundImage {
+                          sourceUrl
+                        }
+                      }
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_HeroSectionTwo {
+                        backgroundImageOrVideo
+                        backgroundVideoUrl
+                        title
+                        paragraph
+                        fieldGroupName
+                        backgroundImage {
+                          altText
+                          sourceUrl
+                          mediaDetails {
+                            height
+                            width
+                          }
+                        }
+                      }
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_TitleParagraph {
+                        fieldGroupName
+                        paragraph
+                        title
+                      }
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_IntroContent {
+                        fieldGroupName
+                        title
+                        contentGrid {
+                          card {
+                            title
+                            paragraph
+                            buttonLink {
+                              url
+                              title
+                              target
+                            }
+                          }
+                        }
+                      }
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_FeaturesGrid {
+                        fieldGroupName
+                        paragraph
+                        title
+                        cardOne {
+                          title
+                          subtitle
+                          paragraph
+                        }
+                        cardTwo {
+                          backgroundImage {
+                            altText
+                            sourceUrl
+                            mediaDetails {
+                              height
+                              width
+                            }
+                          }
+                        }
+                        cardThree {
+                          foreground {
+                            title
+                            subtitle
+                            paragraph
+                          }
+                          background {
+                            title
+                            subtitle
+                            paragraph
+                          }
+                        }
+                        lastCard {
+                          backgroundImage {
+                            altText
+                            sourceUrl
+                            mediaDetails {
+                              height
+                              width
+                            }
+                          }
+                        }
+                        gridContent {
+                          card {
+                            title
+                            subtitle
+                            paragraph
+                          }
+                        }
+                      }
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_FeaturesGridTwo {
+                        fieldGroupName
+                        cardOne {
+                          title
+                          subtitle
+                          paragraph
+                        }
+                        cardTwo {
+                          backgroundImage {
+                            altText
+                            sourceUrl
+                            mediaDetails {
+                              height
+                              width
+                            }
+                          }
+                        }
+                        lastCard {
+                          backgroundImage {
+                            altText
+                            sourceUrl
+                            mediaDetails {
+                              height
+                              width
+                            }
+                          }
+                        }
+                        gridContent {
+                          card {
+                            title
+                            subtitle
+                            paragraph
+                          }
+                        }
+                      }
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_Pricing {
+                        fieldGroupName
+                        italic
+                        title
+                        pointTwo
+                        pointOne
+                        paragraph
+                        paymentProviders {
+                          logo {
+                            altText
+                            sourceUrl
+                            mediaDetails {
+                              height
+                              width
+                            }
+                          }
+                        }
+                        card {
+                          bulletList {
+                            bulletPoint
+                          }
+                        }
+                      }
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_ContentStats {
+                        fieldGroupName
+                        paragraph
+                        title
+                        subtitle
+                        column {
+                          title
+                          values
+                          percentage
+                        }
+                        columnTwo {
+                          title
+                          values
+                          percentage
+                        }
+                        bulletPoints {
+                          bulletPoint
+                        }
+                      }
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_ContentImageGrid {
+                        fieldGroupName
+                        gridContent {
+                          card {
+                            title
+                            paragraph
+                            contentLocation
+                            backgroundImage {
+                              sourceUrl
+                            }
+                          }
+                        }
+                      }
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_ContentSliderAuto {
+                        fieldGroupName
+                      }
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_TrustedBrands {
+                        fieldGroupName
+                        paragraph
+                        title
+                        logos {
+                          image {
+                            altText
+                            sourceUrl
+                            mediaDetails {
+                              height
+                              width
+                            }
+                          }
+                        }
+                      }
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_ImageGrid {
+                        fieldGroupName
+                        image {
+                          altText
+                          sourceUrl
+                          mediaDetails {
+                            height
+                            width
+                          }
+                        }
+                        imageTwo {
+                          altText
+                          sourceUrl
+                          mediaDetails {
+                            height
+                            width
+                          }
+                        }
+                        imageThree {
+                          altText
+                          sourceUrl
+                          mediaDetails {
+                            height
+                            width
+                          }
+                        }
+                        imageFour {
+                          altText
+                          sourceUrl
+                          mediaDetails {
+                            height
+                            width
+                          }
+                        }
+                        imageFive {
+                          altText
+                          sourceUrl
+                          mediaDetails {
+                            height
+                            width
+                          }
+                        }
+                        imageSix {
+                          altText
+                          sourceUrl
+                          mediaDetails {
+                            height
+                            width
+                          }
+                        }
+                      }
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_Sustainability {
+                        fieldGroupName
+                        imageText
+                        title
+                        subtitle
+                        percentage
+                        paragraph
+                        image {
+                          altText
+                          sourceUrl
+                          mediaDetails {
+                            height
+                            width
+                          }
+                        }
+                      }
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_Faq {
+                        fieldGroupName
+                        paragraph
+                        title
+                        qagrid {
+                          title
+                          paragraph
+                        }
+                      }
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_OperationalInsights {
+                        fieldGroupName
+                        italic
+                        title
+                        paragraph
+                      }
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_Testimonial {
+                        fieldGroupName
+                        paragraph
+                        title
+                        contentGrid {
+                          card {
+                            name
+                            position
+                            paragraph
+                            image {
+                              altText
+                              sourceUrl
+                              mediaDetails {
+                                height
+                                width
+                              }
+                            }
+                          }
+                        }
+                      }
                       ... on DefaultTemplate_Flexiblecontent_FlexibleContent_ContactInfo {
                         fieldGroupName
                         paragraph
@@ -675,13 +1175,38 @@ export async function getAllBlogPostFlexibleContentComponents(slug: string) {
                       ... on DefaultTemplate_Flexiblecontent_FlexibleContent_ContactForm {
                         fieldGroupName
                         title
+                        backgroundImage {
+                          altText
+                          sourceUrl
+                          mediaDetails {
+                            height
+                            width
+                          }
+                        }
                       }
-                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_OurLocation {
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_Cta {
                         fieldGroupName
                         paragraph
                         title
+                        buttonLink {
+                          url
+                          title
+                          target
+                        }
+                        buttonLinkTwo {
+                          url
+                          title
+                          target
+                        }
+                        backgroundImage {
+                          sourceUrl
+                        }
+                        content {
+                          title
+                          paragraph
+                        }
                       }
-                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_ErrorPageContent {
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_CtaTwo {
                         fieldGroupName
                         paragraph
                         title

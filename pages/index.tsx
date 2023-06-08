@@ -1,9 +1,11 @@
 // Imports
-import {gql} from "@apollo/client";
 import {motion} from "framer-motion";
-import {client} from "../config/apollo";
 import type {NextPage, GetStaticProps} from "next";
+import {getAllSeoPagesContent} from "@/functions/GetAllSeoPagesContent";
 import {getThemesOptionsContent} from "../functions/GetAllThemesOptions";
+import {getAllStripePaymentPlans} from "@/functions/stripe/GetStripePaymentPlans";
+import {getContentSliderBlogPostsPostsContent} from "@/functions/GetAllContentSliderPosts";
+import {getAllPagesFlexibleContentComponents} from "@/functions/GetAllFlexibleContentComponents";
 import {
 	getMainMenuLinks,
 	getNavbarMenuLinks,
@@ -12,14 +14,8 @@ import {
 } from "../functions/GetAllMenuLinks";
 
 // Components
-import CTA from "../components/CTA";
-import Hero from "../components/Hero";
-import Logos from "../components/Logos";
-import Stats from "../components/Stats";
-import HeroThree from "@/components/HeroThree";
 import Layout from "../components/Layout/Layout";
-import Testimonial from "../components/Testimonial";
-import JumboContent from "../components/JumboContent";
+import RenderFlexibleContent from "@/components/FlexibleContent/RenderFlexibleContent";
 
 interface IHomePage {
 	seo: {
@@ -51,169 +47,70 @@ interface IHomePage {
 			mediaItemUrl: string;
 		};
 	};
-	content: {
-		heroSection: {
-			title: string;
-			subtitle: string;
-			backgroundVideoUrl: string;
-			buttonLink: {
-				url: string;
-				title: string;
-				target: string;
-			};
-			buttonLinkTwo: {
-				url: string;
-				title: string;
-				target: string;
-			};
-			backgroundImage: {
-				sourceUrl: string;
-			};
-		};
-		heroThree: {
-			title: string;
-			paragraph: string;
-			imageGrid: [
-				{
-					card: {
-						link: {
-							url: string;
-							title: string;
-							target: string;
-						};
-						image: {
-							altText: string;
-							sourceUrl: string;
-							mediaDetails: {
-								height: number;
-								width: number;
-							};
-						};
-					};
-				}
-			];
-		};
-		stats: {
-			title: string;
-			subtitle: string;
-			paragraph: string;
-			bulletPoints: [
-				{
-					id: string;
-					bulletPoint: string;
-				}
-			];
-			column: {
-				title: string;
-				values: string;
-				percentage: string;
-			};
-			columnTwo: {
-				title: string;
-				values: string;
-				percentage: string;
-			};
-		};
-		howItWorks: {
-			title: string;
-			paragraph: string;
-			cardOne: {
-				title: string;
-				subtitle: string;
-				paragraph: string;
-			};
-			cardTwo: {
-				backgroundImage: {
-					sourceUrl: string;
-				};
-			};
-			cardThree: {
-				foreground: {
-					title: string;
-					subtitle: string;
-					paragraph: string;
-				};
-				background: {
-					title: string;
-					subtitle: string;
-					paragraph: string;
-				};
-			};
-			gridContent: [
-				{
-					card: {
+	content: any;
+	pageTitle: any;
+	stripePlans: {
+		stripePrices:
+			| [
+					{
 						id: string;
-						title: string;
-						subtitle: string;
-						paragraph: string;
-					};
-				}
-			];
-			lastCard: {
-				backgroundImage: {
-					sourceUrl: string;
-				};
-			};
-		};
-		trustedBrands: {
-			title: string;
-			paragraph: string;
-			logos: [
-				{
-					id: string;
-					image: {
-						altText: string;
-						sourceUrl: string;
-						mediaDetails: {
-							height: number;
-							width: number;
+						object: string;
+						active: boolean;
+						billing_scheme: string;
+						created: number;
+						currency: string;
+						custom_unit_amount: any;
+						livemode: boolean;
+						lookup_key: any;
+						metadata: any;
+						nickname: any;
+						product: {
+							id: string;
+							object: string;
+							active: boolean;
+							attributes: [];
+							created: number;
+							default_price: string;
+							description: string;
+							images: [any];
+							livemode: boolean;
+							metadata: any;
+							name: string;
+							package_dimensions: any;
+							shippable: any;
+							statement_descriptor: any;
+							tax_code: any;
+							type: string;
+							unit_label: any;
+							updated: number;
+							url: any;
 						};
-					};
-				}
-			];
-		};
-		testimonial: {
-			title: string;
-			paragraph: string;
-			contentGrid: [
-				{
-					card: {
-						id: string;
-						name: string;
-						position: string;
-						paragraph: string;
-						image: {
-							altText: string;
-							sourceUrl: string;
-							mediaDetails: {
-								height: number;
-								width: number;
-							};
+						recurring: {
+							aggregate_usage: any;
+							interval: string;
+							interval_count: number;
+							trial_period_days: any;
+							usage_type: string;
 						};
-					};
-				}
-			];
+						tax_behavior: string;
+						tiers_mode: any;
+						transform_quantity: any;
+						type: string;
+						unit_amount: number;
+						unit_amount_decimal: string;
+					}
+			  ];
+		stripePremiumPlan: {
+			name: string;
+			description: string;
+			price: number;
+			paymentRecurringInterval: string;
 		};
-		cta: {
-			title: string;
-			paragraph: string;
-			backgroundImage: {
-				sourceUrl: string;
-			};
-			buttonLink: {
-				url: string;
-				title: string;
-				target: string;
-			};
-			buttonLinkTwo: {
-				url: string;
-				title: string;
-				target: string;
-			};
-			content: {
-				title: string;
-				paragraph: string;
-			};
+		stripeStandardPlan: {
+			name: string;
+			description: string;
+			price: number;
+			paymentRecurringInterval: string;
 		};
 	};
 	footerMenuLinks: {
@@ -251,6 +148,7 @@ interface IHomePage {
 	};
 	themesOptionsContent: {
 		email: string;
+		address: string;
 		emailTwo: string;
 		phoneNumber: string;
 		phoneNumberTwo: string;
@@ -276,15 +174,133 @@ interface IHomePage {
 			};
 		};
 	};
+	operationalInsights: [
+		{
+			node: {
+				id: string;
+				uri: string;
+				title: string;
+				singleOperationalInsightPost: {
+					titleParagraph: {
+						paragraph: string;
+					};
+				};
+				featuredImage: {
+					node: {
+						altText: string;
+						sourceUrl: string;
+						mediaDetails: {
+							width: number;
+							height: number;
+						};
+					};
+				};
+			};
+		}
+	];
+	contentSliderPostsContent: {
+		content: [
+			{
+				uri: string;
+				date: string;
+				title: string;
+				template: {
+					flexibleContent: {
+						flexibleContent: [
+							{
+								fieldGroupName: string;
+								backgroundVideoUrl: string;
+								backgroundImageOrVideo: string;
+								backgroundImage: {
+									altText: string;
+									sourceUrl: string;
+									mediaDetails: {
+										height: number;
+										width: number;
+									};
+								};
+							},
+							{
+								fieldGroupName: string;
+								paragraph: string;
+								title: string;
+							}
+						];
+					};
+				};
+			},
+			{
+				uri: string;
+				date: string;
+				title: string;
+				template: {
+					flexibleContent: {
+						flexibleContent: [
+							{
+								fieldGroupName: string;
+								backgroundVideoUrl: string;
+								backgroundImageOrVideo: string;
+								backgroundImage: {
+									altText: string;
+									sourceUrl: string;
+									mediaDetails: {
+										height: number;
+										width: number;
+									};
+								};
+							},
+							{
+								fieldGroupName: string;
+								paragraph: string;
+								title: string;
+							}
+						];
+					};
+				};
+			},
+			{
+				uri: string;
+				date: string;
+				title: string;
+				template: {
+					flexibleContent: {
+						flexibleContent: [
+							{
+								fieldGroupName: string;
+								backgroundVideoUrl: string;
+								backgroundImageOrVideo: string;
+								backgroundImage: {
+									altText: string;
+									sourceUrl: string;
+									mediaDetails: {
+										height: number;
+										width: number;
+									};
+								};
+							},
+							{
+								fieldGroupName: string;
+								paragraph: string;
+								title: string;
+							}
+						];
+					};
+				};
+			}
+		];
+	};
 }
 
 const HomePage: NextPage<IHomePage> = ({
 	seo,
 	content,
-	footerMenuLinks,
+	stripePlans,
 	navbarMenuLinks,
+	footerMenuLinks,
 	industriesMenuLinks,
+	operationalInsights,
 	themesOptionsContent,
+	contentSliderPostsContent,
 }) => {
 	return (
 		<motion.div
@@ -302,59 +318,13 @@ const HomePage: NextPage<IHomePage> = ({
 				navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks}
 				industriesMenuLinks={industriesMenuLinks?.industriesMenuLinks}
 			>
-				<Hero
-					title={content?.heroSection?.title}
-					subtitle={content?.heroSection?.subtitle}
-					buttonLink={content?.heroSection?.buttonLink}
-					buttonLinkTwo={content?.heroSection?.buttonLinkTwo}
-					backgroundVideoUrl={content?.heroSection?.backgroundVideoUrl}
-					backgroundImage={content?.heroSection?.backgroundImage?.sourceUrl}
-				/>
-
-				<HeroThree
-					title={content?.heroThree?.title}
-					paragraph={content?.heroThree?.paragraph}
-					imageGrid={content?.heroThree?.imageGrid}
-				/>
-
-				<Stats
-					title={content?.stats?.title}
-					column={content?.stats?.column}
-					subtitle={content?.stats?.subtitle}
-					paragraph={content?.stats?.paragraph}
-					columnTwo={content?.stats?.columnTwo}
-					bulletPoints={content?.stats?.bulletPoints}
-				/>
-
-				<JumboContent
-					title={content?.howItWorks?.title}
-					cardOne={content?.howItWorks?.cardOne}
-					cardTwo={content?.howItWorks?.cardTwo}
-					lastCard={content?.howItWorks?.lastCard}
-					cardThree={content?.howItWorks?.cardThree}
-					paragraph={content?.howItWorks?.paragraph}
-					gridContent={content?.howItWorks?.gridContent}
-				/>
-
-				<Logos
-					title={content?.trustedBrands?.title}
-					logoGrid={content?.trustedBrands?.logos}
-					paragraph={content?.trustedBrands?.paragraph}
-				/>
-
-				<Testimonial
-					title={content?.testimonial?.title}
-					paragraph={content?.testimonial?.paragraph}
-					contentGrid={content?.testimonial?.contentGrid}
-				/>
-
-				<CTA
-					title={content?.cta?.title}
-					content={content?.cta?.content}
-					paragraph={content?.cta?.paragraph}
-					buttonLink={content?.cta?.buttonLink}
-					buttonLinkTwo={content?.cta?.buttonLinkTwo}
-					backgroundImage={content?.cta?.backgroundImage?.sourceUrl}
+				<RenderFlexibleContent
+					content={content}
+					operationalInsights={operationalInsights}
+					themesOptionsContent={themesOptionsContent}
+					stripePremiumPlan={stripePlans?.stripePremiumPlan}
+					stripeStandardPlan={stripePlans?.stripeStandardPlan}
+					contentSliderPostsContent={contentSliderPostsContent}
 				/>
 			</Layout>
 		</motion.div>
@@ -362,214 +332,43 @@ const HomePage: NextPage<IHomePage> = ({
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-	const getHomePageContent: any = gql`
-		{
-			mainContent: pages(where: {id: 49, status: PUBLISH}) {
-				edges {
-					node {
-						seo {
-							canonical
-							cornerstone
-							focuskw
-							fullHead
-							metaDesc
-							metaKeywords
-							metaRobotsNofollow
-							metaRobotsNoindex
-							opengraphAuthor
-							opengraphDescription
-							opengraphImage {
-								mediaItemUrl
-							}
-							opengraphModifiedTime
-							opengraphPublishedTime
-							opengraphPublisher
-							opengraphSiteName
-							opengraphTitle
-							opengraphType
-							opengraphUrl
-							readingTime
-							title
-							twitterDescription
-							twitterTitle
-							twitterImage {
-								mediaItemUrl
-							}
-						}
-						homePage {
-							heroSection {
-								title
-								subtitle
-								backgroundVideoUrl
-								backgroundImage {
-									sourceUrl
-								}
-								buttonLink {
-									url
-									title
-									target
-								}
-								buttonLinkTwo {
-									url
-									title
-									target
-								}
-							}
-							heroThree {
-								title
-								paragraph
-								imageGrid {
-									card {
-										link {
-											url
-											title
-											target
-										}
-										image {
-											altText
-											sourceUrl
-											mediaDetails {
-												height
-												width
-											}
-										}
-									}
-								}
-							}
-							stats {
-								title
-								subtitle
-								paragraph
-								bulletPoints {
-									bulletPoint
-								}
-								column {
-									title
-									values
-									percentage
-								}
-								columnTwo {
-									title
-									values
-									percentage
-								}
-							}
-							howItWorks {
-								title
-								paragraph
-								cardOne {
-									title
-									subtitle
-									paragraph
-								}
-								cardTwo {
-									backgroundImage {
-										sourceUrl
-									}
-								}
-								lastCard {
-									backgroundImage {
-										sourceUrl
-									}
-								}
-								cardThree {
-									foreground {
-										title
-										subtitle
-										paragraph
-									}
-									background {
-										title
-										subtitle
-										paragraph
-									}
-								}
-								gridContent {
-									card {
-										title
-										subtitle
-										paragraph
-									}
-								}
-							}
-							trustedBrands {
-								title
-								paragraph
-								logos {
-									image {
-										altText
-										sourceUrl
-										mediaDetails {
-											height
-											width
-										}
-									}
-								}
-							}
-							testimonial {
-								title
-								paragraph
-								contentGrid {
-									card {
-										name
-										paragraph
-										position
-										image {
-											altText
-											sourceUrl
-											mediaDetails {
-												height
-												width
-											}
-										}
-									}
-								}
-							}
-							cta {
-								title
-								paragraph
-								buttonLink {
-									url
-									title
-									target
-								}
-								buttonLinkTwo {
-									url
-									title
-									target
-								}
-								content {
-									title
-									paragraph
-								}
-								backgroundImage {
-									sourceUrl
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	`;
+	// Fetch priority content
+	const seoContent: any = await getAllSeoPagesContent("Home");
 
-	const response: any = await client.query({
-		query: getHomePageContent,
-	});
+	const flexibleContentComponents: any =
+		await getAllPagesFlexibleContentComponents("Home");
 
-	const navbarMenuLinks: object = await getNavbarMenuLinks();
-	const footerMenuLinks: object = await getFooterMenuLinks();
-	const industriesMenuLinks: object = await getIndustriesMenuLinks();
-	const themesOptionsContent: object = await getThemesOptionsContent();
+	// Fetch remaining content simultaneously
+	const [
+		stripePlans,
+		mainMenuLinks,
+		navbarMenuLinks,
+		footerMenuLinks,
+		themesOptionsContent,
+		industriesMenuLinks,
+		contentSliderPostsContent,
+	] = await Promise.all([
+		getAllStripePaymentPlans(),
+		getMainMenuLinks(),
+		getNavbarMenuLinks(),
+		getFooterMenuLinks(),
+		getThemesOptionsContent(),
+		getIndustriesMenuLinks(),
+		getContentSliderBlogPostsPostsContent(),
+	]);
 
 	return {
 		props: {
+			stripePlans,
+			mainMenuLinks,
 			navbarMenuLinks,
 			footerMenuLinks,
+			seo: seoContent,
 			industriesMenuLinks,
 			themesOptionsContent,
-			seo: response?.data?.mainContent?.edges[0]?.node?.seo,
-			content: response.data?.mainContent?.edges[0]?.node?.homePage,
+			contentSliderPostsContent,
+			content: flexibleContentComponents?.content,
+			pageTitle: flexibleContentComponents?.pageTitle,
 		},
 		revalidate: 60,
 	};

@@ -10,7 +10,7 @@ type SlugResponse = {
 interface ISlug extends Array<SlugResponse> {}
 
 // Operational Insights Slugs
-export const fetchOperationalInsightsPostsSlugs = async (): Promise<ISlug> => {
+export const getAllOperationalInsightsPostsSlugs = async (): Promise<ISlug> => {
 	try {
 		const content: DocumentNode = gql`
 			{
@@ -36,105 +36,6 @@ export const fetchOperationalInsightsPostsSlugs = async (): Promise<ISlug> => {
 	}
 };
 
-// Operational Insights Posts Content
-export const fetchOperationalInsightsPostsContent = async (slug: string) => {
-	try {
-		const getSingleOperationalInsightContent: DocumentNode = gql`
-			{
-				mainContent: post(id: "${slug}", idType: SLUG) {
-                    title
-                    seo {
-							canonical
-							cornerstone
-							focuskw
-							fullHead
-							metaDesc
-							metaKeywords
-							metaRobotsNofollow
-							metaRobotsNoindex
-							opengraphAuthor
-							opengraphDescription
-							opengraphImage {
-								mediaItemUrl
-							}
-							opengraphModifiedTime
-							opengraphPublishedTime
-							opengraphPublisher
-							opengraphSiteName
-							opengraphTitle
-							opengraphType
-							opengraphUrl
-							readingTime
-							title
-							twitterDescription
-							twitterTitle
-							twitterImage {
-								mediaItemUrl
-							}
-						}
-					singleOperationalInsightPost {
-						heroSection {
-      					  title
-      					  paragraph
-      					  backgroundVideoUrl
-      					  backgroundImageOrVideo
-      					  backgroundImage {
-      					    altText
-          					sourceUrl
-          					mediaDetails {
-          					  height
-          					  width
-          					}
-      					  }
-      					}
-						titleParagraph {
-							title
-							paragraph
-						}
-						gridContent {
-								card {
-									title
-									paragraph
-									contentLocation
-									backgroundImage {
-										sourceUrl
-									}
-								}
-							}
-						cta {
-							title
-							paragraph
-							buttonLink {
-								url
-								title
-								target
-							}
-							backgroundImage {
-								sourceUrl
-							}
-						}
-					}
-				}
-			}
-		`;
-
-		const response: any = await client.query({
-			query: getSingleOperationalInsightContent,
-		});
-
-		return {
-			seo: response?.data?.mainContent?.seo,
-			pageTitle: response?.data?.mainContent?.title,
-			content: response?.data?.mainContent?.singleOperationalInsightPost,
-		};
-	} catch (error) {
-		console.log(error);
-		throw new Error(
-			"Something went wrong trying to fetch the operational insight slugs content"
-		);
-	}
-};
-
 // All Operational Insights
 export async function getAllOperationalInsightsContent() {
 	try {
@@ -156,9 +57,18 @@ export async function getAllOperationalInsightsContent() {
 									}
 								}
 							}
-							singleOperationalInsightPost {
-								titleParagraph {
-									paragraph
+							template {
+								... on DefaultTemplate {
+									templateName
+									flexibleContent {
+										flexibleContent {
+											... on DefaultTemplate_Flexiblecontent_FlexibleContent_HeroSectionTwo {
+												fieldGroupName
+												paragraph
+												title
+											}
+										}
+									}
 								}
 							}
 						}

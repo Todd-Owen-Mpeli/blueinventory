@@ -1,14 +1,22 @@
-// Import
+// Imports
 import {motion} from "framer-motion";
 import type {NextPage, GetStaticProps} from "next";
-import {getAllPagesSlugs} from "@/functions/GetAllPagesSlugs";
-import {getAllSeoPagesContent} from "@/functions/GetAllSeoPagesContent";
 import {getContentSliderBlogPostsPostsContent} from "@/functions/GetAllContentSliderPosts";
 import {getAllPagesFlexibleContentComponents} from "@/functions/GetAllFlexibleContentComponents";
+import {
+	getMainMenuLinks,
+	getNavbarMenuLinks,
+	getFooterMenuLinks,
+	getIndustriesMenuLinks,
+} from "../functions/GetAllMenuLinks";
+import {getThemesOptionsContent} from "../functions/GetAllThemesOptions";
 
 // Components
-import Layout from "@/components/Layout/Layout";
+import Layout from "../components/Layout/Layout";
 import RenderFlexibleContent from "@/components/FlexibleContent/RenderFlexibleContent";
+import {getAllPagesSlugs} from "@/functions/GetAllPagesSlugs";
+import {getAllSeoPagesContent} from "@/functions/GetAllSeoPagesContent";
+import {getAllStripePaymentPlans} from "@/functions/stripe/GetStripePaymentPlans";
 
 interface IDynamicPages {
 	seo: {
@@ -40,47 +48,105 @@ interface IDynamicPages {
 			mediaItemUrl: string;
 		};
 	};
-	pageTitle: string;
 	content: any;
-	stripePremiumPlan: {
-		name: string;
-		description: string;
-		price: number;
-		paymentRecurringInterval: string;
+	pageTitle: any;
+	stripePlans: {
+		stripePrices:
+			| [
+					{
+						id: string;
+						object: string;
+						active: boolean;
+						billing_scheme: string;
+						created: number;
+						currency: string;
+						custom_unit_amount: any;
+						livemode: boolean;
+						lookup_key: any;
+						metadata: any;
+						nickname: any;
+						product: {
+							id: string;
+							object: string;
+							active: boolean;
+							attributes: [];
+							created: number;
+							default_price: string;
+							description: string;
+							images: [any];
+							livemode: boolean;
+							metadata: any;
+							name: string;
+							package_dimensions: any;
+							shippable: any;
+							statement_descriptor: any;
+							tax_code: any;
+							type: string;
+							unit_label: any;
+							updated: number;
+							url: any;
+						};
+						recurring: {
+							aggregate_usage: any;
+							interval: string;
+							interval_count: number;
+							trial_period_days: any;
+							usage_type: string;
+						};
+						tax_behavior: string;
+						tiers_mode: any;
+						transform_quantity: any;
+						type: string;
+						unit_amount: number;
+						unit_amount_decimal: string;
+					}
+			  ];
+		stripePremiumPlan: {
+			name: string;
+			description: string;
+			price: number;
+			paymentRecurringInterval: string;
+		};
+		stripeStandardPlan: {
+			name: string;
+			description: string;
+			price: number;
+			paymentRecurringInterval: string;
+		};
 	};
-	stripeStandardPlan: {
-		name: string;
-		description: string;
-		price: number;
-		paymentRecurringInterval: string;
+	footerMenuLinks: {
+		footerMenuLinks: [
+			{
+				node: {
+					id: string;
+					url: string;
+					label: string;
+				};
+			}
+		];
 	};
-	footerMenuLinks: [
-		{
-			node: {
-				id: string;
-				url: string;
-				label: string;
-			};
-		}
-	];
-	navbarMenuLinks: [
-		{
-			node: {
-				id: string;
-				url: string;
-				label: string;
-			};
-		}
-	];
-	industriesMenuLinks: [
-		{
-			node: {
-				id: string;
-				url: string;
-				label: string;
-			};
-		}
-	];
+	navbarMenuLinks: {
+		navbarMenuLinks: [
+			{
+				node: {
+					id: string;
+					url: string;
+					label: string;
+				};
+			}
+		];
+	};
+	industriesMenuLinks: {
+		industriesMenuLinks: [
+			{
+				node: {
+					id: string;
+					url: string;
+					label: string;
+				};
+			}
+		];
+	};
 	themesOptionsContent: {
 		email: string;
 		address: string;
@@ -139,45 +205,28 @@ interface IDynamicPages {
 				uri: string;
 				date: string;
 				title: string;
-				singleOperationalInsightPost: {
-					heroSection: {
-						backgroundVideoUrl: string;
-						backgroundImageOrVideo: string;
-						backgroundImage: {
-							altText: string;
-							sourceUrl: string;
-							mediaDetails: {
-								height: number;
-								width: number;
-							};
-						};
-					};
-					titleParagraph: {
-						title: string;
-						paragraph: string;
-					};
-				};
-			},
-			{
-				uri: string;
-				date: string;
-				title: string;
-				singleOperationalInsightPost: {
-					heroSection: {
-						backgroundVideoUrl: string;
-						backgroundImageOrVideo: string;
-						backgroundImage: {
-							altText: string;
-							sourceUrl: string;
-							mediaDetails: {
-								height: number;
-								width: number;
-							};
-						};
-					};
-					titleParagraph: {
-						title: string;
-						paragraph: string;
+				template: {
+					flexibleContent: {
+						flexibleContent: [
+							{
+								fieldGroupName: string;
+								backgroundVideoUrl: string;
+								backgroundImageOrVideo: string;
+								backgroundImage: {
+									altText: string;
+									sourceUrl: string;
+									mediaDetails: {
+										height: number;
+										width: number;
+									};
+								};
+							},
+							{
+								fieldGroupName: string;
+								paragraph: string;
+								title: string;
+							}
+						];
 					};
 				};
 			},
@@ -185,22 +234,57 @@ interface IDynamicPages {
 				uri: string;
 				date: string;
 				title: string;
-				singleOperationalInsightPost: {
-					heroSection: {
-						backgroundVideoUrl: string;
-						backgroundImageOrVideo: string;
-						backgroundImage: {
-							altText: string;
-							sourceUrl: string;
-							mediaDetails: {
-								height: number;
-								width: number;
-							};
-						};
+				template: {
+					flexibleContent: {
+						flexibleContent: [
+							{
+								fieldGroupName: string;
+								backgroundVideoUrl: string;
+								backgroundImageOrVideo: string;
+								backgroundImage: {
+									altText: string;
+									sourceUrl: string;
+									mediaDetails: {
+										height: number;
+										width: number;
+									};
+								};
+							},
+							{
+								fieldGroupName: string;
+								paragraph: string;
+								title: string;
+							}
+						];
 					};
-					titleParagraph: {
-						title: string;
-						paragraph: string;
+				};
+			},
+			{
+				uri: string;
+				date: string;
+				title: string;
+				template: {
+					flexibleContent: {
+						flexibleContent: [
+							{
+								fieldGroupName: string;
+								backgroundVideoUrl: string;
+								backgroundImageOrVideo: string;
+								backgroundImage: {
+									altText: string;
+									sourceUrl: string;
+									mediaDetails: {
+										height: number;
+										width: number;
+									};
+								};
+							},
+							{
+								fieldGroupName: string;
+								paragraph: string;
+								title: string;
+							}
+						];
 					};
 				};
 			}
@@ -212,10 +296,9 @@ const dynamicPages: NextPage<IDynamicPages> = ({
 	seo,
 	content,
 	pageTitle,
+	stripePlans,
 	navbarMenuLinks,
 	footerMenuLinks,
-	stripePremiumPlan,
-	stripeStandardPlan,
 	industriesMenuLinks,
 	operationalInsights,
 	themesOptionsContent,
@@ -232,20 +315,17 @@ const dynamicPages: NextPage<IDynamicPages> = ({
 			<Layout
 				seo={seo}
 				pageTitle={pageTitle}
-				navbarMenuLinks={navbarMenuLinks}
-				footerMenuLinks={footerMenuLinks}
-				industriesMenuLinks={industriesMenuLinks}
 				themesOptionsContent={themesOptionsContent}
+				footerMenuLinks={footerMenuLinks?.footerMenuLinks}
+				navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks}
+				industriesMenuLinks={industriesMenuLinks?.industriesMenuLinks}
 			>
 				<RenderFlexibleContent
 					content={content}
-					navbarMenuLinks={navbarMenuLinks}
-					footerMenuLinks={footerMenuLinks}
-					stripePremiumPlan={stripePremiumPlan}
-					stripeStandardPlan={stripeStandardPlan}
-					industriesMenuLinks={industriesMenuLinks}
 					operationalInsights={operationalInsights}
 					themesOptionsContent={themesOptionsContent}
+					stripePremiumPlan={stripePlans?.stripePremiumPlan}
+					stripeStandardPlan={stripePlans?.stripeStandardPlan}
 					contentSliderPostsContent={contentSliderPostsContent}
 				/>
 			</Layout>
@@ -273,28 +353,31 @@ export const getStaticProps: GetStaticProps = async ({params}: any) => {
 
 	// Fetch remaining content simultaneously
 	const [
-		blogs,
+		stripePlans,
 		mainMenuLinks,
 		navbarMenuLinks,
 		footerMenuLinks,
 		themesOptionsContent,
+		industriesMenuLinks,
 		contentSliderPostsContent,
 	] = await Promise.all([
-		getAllBlogsContent(),
+		getAllStripePaymentPlans(),
 		getMainMenuLinks(),
 		getNavbarMenuLinks(),
 		getFooterMenuLinks(),
 		getThemesOptionsContent(),
+		getIndustriesMenuLinks(),
 		getContentSliderBlogPostsPostsContent(),
 	]);
 
 	return {
 		props: {
-			blogs,
+			stripePlans,
 			mainMenuLinks,
 			navbarMenuLinks,
 			footerMenuLinks,
 			seo: seoContent,
+			industriesMenuLinks,
 			themesOptionsContent,
 			contentSliderPostsContent,
 			content: flexibleContentComponents?.content,

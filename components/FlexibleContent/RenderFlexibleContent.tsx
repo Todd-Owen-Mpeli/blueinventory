@@ -2,26 +2,27 @@
 import {FC} from "react";
 
 // Components
-import HeroTwo from "@/components/HeroTwo";
-import ErrorPage from "../Elements/ErrorPage";
+import CTA from "../CTA";
+import FAQ from "../FAQ";
 import Hero from "../Hero";
 import Stats from "../Stats";
-import ImageGrid from "../ImageGrid";
-import ContentSlider from "../ContentSlider";
 import Logos from "../Logos";
-import ContentBackgroundImage from "../ContentBackgroundImage";
+import CTATwo from "../CTATwo";
 import Pricing from "../Pricing";
-import JumboContent from "../JumboContent";
-import TitleThreeContentGrid from "../TitleThreeContentGrid";
-import TitleParagraph from "../TitleParagraph";
-import Sustainability from "../Sustainability";
-import FAQ from "../FAQ";
-import OperationalInsights from "../OperationalInsights";
+import ImageGrid from "../ImageGrid";
 import Testimonial from "../Testimonial";
 import ContactInfo from "../ContactInfo";
 import ContactForm from "../ContactForm";
-import CTA from "../CTA";
-import CTATwo from "../CTATwo";
+import HeroTwo from "@/components/HeroTwo";
+import JumboContent from "../JumboContent";
+import ContentSlider from "../ContentSlider";
+import ErrorPage from "../Elements/ErrorPage";
+import TitleParagraph from "../TitleParagraph";
+import Sustainability from "../Sustainability";
+import JumboContentTwo from "../JumboContentTwo";
+import OperationalInsights from "../OperationalInsights";
+import TitleThreeContentGrid from "../TitleThreeContentGrid";
+import ContentBackgroundImage from "../ContentBackgroundImage";
 
 interface IFlexibleContent {
 	content: any;
@@ -36,39 +37,6 @@ interface IFlexibleContent {
 		description: string;
 		price: number;
 		paymentRecurringInterval: string;
-	};
-	footerMenuLinks: {
-		footerMenuLinks: [
-			{
-				node: {
-					id: string;
-					url: string;
-					label: string;
-				};
-			}
-		];
-	};
-	navbarMenuLinks: {
-		navbarMenuLinks: [
-			{
-				node: {
-					id: string;
-					url: string;
-					label: string;
-				};
-			}
-		];
-	};
-	industriesMenuLinks: {
-		industriesMenuLinks: [
-			{
-				node: {
-					id: string;
-					url: string;
-					label: string;
-				};
-			}
-		];
 	};
 	themesOptionsContent: {
 		email: string;
@@ -128,45 +96,28 @@ interface IFlexibleContent {
 				uri: string;
 				date: string;
 				title: string;
-				singleOperationalInsightPost: {
-					heroSection: {
-						backgroundVideoUrl: string;
-						backgroundImageOrVideo: string;
-						backgroundImage: {
-							altText: string;
-							sourceUrl: string;
-							mediaDetails: {
-								height: number;
-								width: number;
-							};
-						};
-					};
-					titleParagraph: {
-						title: string;
-						paragraph: string;
-					};
-				};
-			},
-			{
-				uri: string;
-				date: string;
-				title: string;
-				singleOperationalInsightPost: {
-					heroSection: {
-						backgroundVideoUrl: string;
-						backgroundImageOrVideo: string;
-						backgroundImage: {
-							altText: string;
-							sourceUrl: string;
-							mediaDetails: {
-								height: number;
-								width: number;
-							};
-						};
-					};
-					titleParagraph: {
-						title: string;
-						paragraph: string;
+				template: {
+					flexibleContent: {
+						flexibleContent: [
+							{
+								fieldGroupName: string;
+								backgroundVideoUrl: string;
+								backgroundImageOrVideo: string;
+								backgroundImage: {
+									altText: string;
+									sourceUrl: string;
+									mediaDetails: {
+										height: number;
+										width: number;
+									};
+								};
+							},
+							{
+								fieldGroupName: string;
+								paragraph: string;
+								title: string;
+							}
+						];
 					};
 				};
 			},
@@ -174,22 +125,57 @@ interface IFlexibleContent {
 				uri: string;
 				date: string;
 				title: string;
-				singleOperationalInsightPost: {
-					heroSection: {
-						backgroundVideoUrl: string;
-						backgroundImageOrVideo: string;
-						backgroundImage: {
-							altText: string;
-							sourceUrl: string;
-							mediaDetails: {
-								height: number;
-								width: number;
-							};
-						};
+				template: {
+					flexibleContent: {
+						flexibleContent: [
+							{
+								fieldGroupName: string;
+								backgroundVideoUrl: string;
+								backgroundImageOrVideo: string;
+								backgroundImage: {
+									altText: string;
+									sourceUrl: string;
+									mediaDetails: {
+										height: number;
+										width: number;
+									};
+								};
+							},
+							{
+								fieldGroupName: string;
+								paragraph: string;
+								title: string;
+							}
+						];
 					};
-					titleParagraph: {
-						title: string;
-						paragraph: string;
+				};
+			},
+			{
+				uri: string;
+				date: string;
+				title: string;
+				template: {
+					flexibleContent: {
+						flexibleContent: [
+							{
+								fieldGroupName: string;
+								backgroundVideoUrl: string;
+								backgroundImageOrVideo: string;
+								backgroundImage: {
+									altText: string;
+									sourceUrl: string;
+									mediaDetails: {
+										height: number;
+										width: number;
+									};
+								};
+							},
+							{
+								fieldGroupName: string;
+								paragraph: string;
+								title: string;
+							}
+						];
 					};
 				};
 			}
@@ -265,7 +251,14 @@ const RenderFlexibleContent: FC<IFlexibleContent> = ({
 							</>
 						) : item?.fieldGroupName ===
 						  `${FlexibleContentComponent}_FeaturesGridTwo` ? (
-							<></>
+							<>
+								<JumboContentTwo
+									cardOne={item?.cardOne}
+									cardTwo={item?.cardTwo}
+									lastCard={item?.lastCard}
+									gridContent={item?.gridContent}
+								/>
+							</>
 						) : item?.fieldGroupName ===
 						  `${FlexibleContentComponent}_Pricing` ? (
 							<>

@@ -1,13 +1,13 @@
 // Imports
-import {fetchAllPagesSlugs} from "@/functions/GetAllPagesSlugs";
-import {fetchOperationalInsightsPostsSlugs} from "@/functions/GetAllOperationalInsightsPostsSlugs";
+import {getAllPagesSlugs} from "@/functions/GetAllPagesSlugs";
+import {getAllOperationalInsightsPostsSlugs} from "@/functions/GetAllOperationalInsightsPostsSlugs";
 
 const {SitemapStream, streamToPromise} = require("sitemap");
 const {Readable} = require("stream");
 
 const sitemap = async (req: any, res: any) => {
-	const pagesSlugs = await fetchAllPagesSlugs();
-	const postsSlugs = await fetchOperationalInsightsPostsSlugs();
+	const pagesSlugs = await getAllPagesSlugs();
+	const postsSlugs = await getAllOperationalInsightsPostsSlugs();
 
 	// Pages & Operational Insights Arrays
 	const pagesLinks: any = [];

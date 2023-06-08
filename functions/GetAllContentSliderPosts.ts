@@ -17,7 +17,7 @@ export const getContentSliderBlogPostsPostsContent = async () => {
 								templateName
 								flexibleContent {
 									flexibleContent {
-										... on DefaultTemplate_Flexiblecontent_FlexibleContent_HeroSectionThree {
+										... on DefaultTemplate_Flexiblecontent_FlexibleContent_HeroSectionTwo {
 											fieldGroupName
 											backgroundVideoUrl
 											backgroundImageOrVideo

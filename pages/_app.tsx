@@ -42,20 +42,13 @@ const firebaseConfig = {
 users to sign-in to view them */
 const publicPages: Array<string> = [
 	"/",
-	"/faq",
 	"/404",
-	"/about",
-	"/pricing",
+	"/[slug]",
 	"/sign-in",
-	"/contact",
 	"/sign-up",
-	"/features",
 	"/checkout",
-	"/privacy-policy",
 	"/api/sitemap.xml",
-	"/terms-conditions",
 	"/industries/[slug]",
-	"/operational-insights",
 	"/operational-insights/[slug]",
 ];
 

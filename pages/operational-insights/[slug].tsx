@@ -7,20 +7,18 @@ import {
 	getFooterMenuLinks,
 	getIndustriesMenuLinks,
 } from "../../functions/GetAllMenuLinks";
-import {
-	fetchOperationalInsightsPostsSlugs,
-	fetchOperationalInsightsPostsContent,
-} from "../../functions/GetAllOperationalInsightsPostsSlugs";
 import {getThemesOptionsContent} from "../../functions/GetAllThemesOptions";
+import {getAllStripePaymentPlans} from "@/functions/stripe/GetStripePaymentPlans";
+import {getContentSliderBlogPostsPostsContent} from "@/functions/GetAllContentSliderPosts";
+import {getAllSeoOperationalInsightsPostsContent} from "@/functions/GetAllSeoPagesContent";
+import {getAllOperationalInsightsPostsSlugs} from "../../functions/GetAllOperationalInsightsPostsSlugs";
+import {getAllOperationalInsightsPostsFlexibleContentComponents} from "@/functions/GetAllFlexibleContentComponents";
 
 // Components
-import CTATwo from "../../components/CTATwo";
-import HeroTwo from "../../components/HeroTwo";
 import Layout from "../../components/Layout/Layout";
-import TitleParagraph from "../../components/TitleParagraph";
-import ContentBackgroundImage from "../../components/ContentBackgroundImage";
+import RenderFlexibleContent from "@/components/FlexibleContent/RenderFlexibleContent";
 
-interface ISinglePost {
+interface IDynamicOperationalInsightsPosts {
 	seo: {
 		canonical: string;
 		cornerstone: Boolean;
@@ -50,77 +48,74 @@ interface ISinglePost {
 			mediaItemUrl: string;
 		};
 	};
-	pageTitle: string;
-	content: {
-		heroSection: {
-			title: string;
-			paragraph: string;
-			backgroundVideoUrl: string;
-			backgroundImageOrVideo: string;
-			backgroundImage: {
-				altText: string;
-				sourceUrl: string;
-				mediaDetails: {
-					width: number;
-					height: number;
-				};
-			};
+	content: any;
+	pageTitle: any;
+	stripePlans: {
+		stripePrices:
+			| [
+					{
+						id: string;
+						object: string;
+						active: boolean;
+						billing_scheme: string;
+						created: number;
+						currency: string;
+						custom_unit_amount: any;
+						livemode: boolean;
+						lookup_key: any;
+						metadata: any;
+						nickname: any;
+						product: {
+							id: string;
+							object: string;
+							active: boolean;
+							attributes: [];
+							created: number;
+							default_price: string;
+							description: string;
+							images: [any];
+							livemode: boolean;
+							metadata: any;
+							name: string;
+							package_dimensions: any;
+							shippable: any;
+							statement_descriptor: any;
+							tax_code: any;
+							type: string;
+							unit_label: any;
+							updated: number;
+							url: any;
+						};
+						recurring: {
+							aggregate_usage: any;
+							interval: string;
+							interval_count: number;
+							trial_period_days: any;
+							usage_type: string;
+						};
+						tax_behavior: string;
+						tiers_mode: any;
+						transform_quantity: any;
+						type: string;
+						unit_amount: number;
+						unit_amount_decimal: string;
+					}
+			  ];
+		stripePremiumPlan: {
+			name: string;
+			description: string;
+			price: number;
+			paymentRecurringInterval: string;
 		};
-		titleParagraph: {
-			title: string;
-			paragraph: string;
-		};
-		gridContent: [
-			{
-				card: {
-					id: string;
-					title: string;
-					paragraph: string;
-					contentLocation: string;
-					backgroundImage: {
-						sourceUrl: string;
-					};
-				};
-			}
-		];
-		cta: {
-			title: string;
-			paragraph: string;
-			backgroundImage: {
-				sourceUrl: string;
-			};
-			buttonLink: {
-				url: string;
-				title: string;
-				target: string;
-			};
-			buttonLinkTwo: {
-				url: string;
-				title: string;
-				target: string;
-			};
-			content: {
-				title: string;
-				paragraph: string;
-				backgroundImage: {
-					sourceUrl: string;
-				};
-			};
+		stripeStandardPlan: {
+			name: string;
+			description: string;
+			price: number;
+			paymentRecurringInterval: string;
 		};
 	};
 	footerMenuLinks: {
 		footerMenuLinks: [
-			{
-				node: {
-					id: string;
-					url: string;
-					label: string;
-				};
-			}
-		];
-	};
-	mainMenuLinks: {
-		mainMenuLinks: [
 			{
 				node: {
 					id: string;
@@ -154,6 +149,7 @@ interface ISinglePost {
 	};
 	themesOptionsContent: {
 		email: string;
+		address: string;
 		emailTwo: string;
 		phoneNumber: string;
 		phoneNumberTwo: string;
@@ -179,17 +175,136 @@ interface ISinglePost {
 			};
 		};
 	};
+	operationalInsights: [
+		{
+			node: {
+				id: string;
+				uri: string;
+				title: string;
+				singleOperationalInsightPost: {
+					titleParagraph: {
+						paragraph: string;
+					};
+				};
+				featuredImage: {
+					node: {
+						altText: string;
+						sourceUrl: string;
+						mediaDetails: {
+							width: number;
+							height: number;
+						};
+					};
+				};
+			};
+		}
+	];
+	contentSliderPostsContent: {
+		content: [
+			{
+				uri: string;
+				date: string;
+				title: string;
+				template: {
+					flexibleContent: {
+						flexibleContent: [
+							{
+								fieldGroupName: string;
+								backgroundVideoUrl: string;
+								backgroundImageOrVideo: string;
+								backgroundImage: {
+									altText: string;
+									sourceUrl: string;
+									mediaDetails: {
+										height: number;
+										width: number;
+									};
+								};
+							},
+							{
+								fieldGroupName: string;
+								paragraph: string;
+								title: string;
+							}
+						];
+					};
+				};
+			},
+			{
+				uri: string;
+				date: string;
+				title: string;
+				template: {
+					flexibleContent: {
+						flexibleContent: [
+							{
+								fieldGroupName: string;
+								backgroundVideoUrl: string;
+								backgroundImageOrVideo: string;
+								backgroundImage: {
+									altText: string;
+									sourceUrl: string;
+									mediaDetails: {
+										height: number;
+										width: number;
+									};
+								};
+							},
+							{
+								fieldGroupName: string;
+								paragraph: string;
+								title: string;
+							}
+						];
+					};
+				};
+			},
+			{
+				uri: string;
+				date: string;
+				title: string;
+				template: {
+					flexibleContent: {
+						flexibleContent: [
+							{
+								fieldGroupName: string;
+								backgroundVideoUrl: string;
+								backgroundImageOrVideo: string;
+								backgroundImage: {
+									altText: string;
+									sourceUrl: string;
+									mediaDetails: {
+										height: number;
+										width: number;
+									};
+								};
+							},
+							{
+								fieldGroupName: string;
+								paragraph: string;
+								title: string;
+							}
+						];
+					};
+				};
+			}
+		];
+	};
 }
 
-const singlePost: NextPage<ISinglePost> = ({
+const dynamicOperationalInsightsPosts: NextPage<
+	IDynamicOperationalInsightsPosts
+> = ({
 	seo,
 	content,
 	pageTitle,
-	mainMenuLinks,
+	stripePlans,
 	navbarMenuLinks,
 	footerMenuLinks,
 	industriesMenuLinks,
+	operationalInsights,
 	themesOptionsContent,
+	contentSliderPostsContent,
 }) => {
 	return (
 		<motion.div
@@ -207,40 +322,24 @@ const singlePost: NextPage<ISinglePost> = ({
 				navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks}
 				industriesMenuLinks={industriesMenuLinks?.industriesMenuLinks}
 			>
-				<HeroTwo
-					title={content?.heroSection?.title}
-					paragraph={content?.heroSection?.paragraph}
-					backgroundImage={content?.heroSection?.backgroundImage}
-					backgroundVideoUrl={content?.heroSection?.backgroundVideoUrl}
-					backgroundImageOrVideo={content?.heroSection?.backgroundImageOrVideo}
-				/>
-
-				<TitleParagraph
-					title={content?.titleParagraph?.title}
-					paragraph={content?.titleParagraph?.paragraph}
-				/>
-
-				<ContentBackgroundImage gridContent={content?.gridContent} />
-
-				<CTATwo
-					title={content?.cta?.title}
-					paragraph={content?.cta?.paragraph}
-					buttonLink={content?.cta?.buttonLink}
-					backgroundImage={content?.cta?.backgroundImage?.sourceUrl}
+				<RenderFlexibleContent
+					content={content}
+					operationalInsights={operationalInsights}
+					themesOptionsContent={themesOptionsContent}
+					stripePremiumPlan={stripePlans?.stripePremiumPlan}
+					stripeStandardPlan={stripePlans?.stripeStandardPlan}
+					contentSliderPostsContent={contentSliderPostsContent}
 				/>
 			</Layout>
 		</motion.div>
 	);
 };
 
-export default singlePost;
-
 export async function getStaticPaths() {
-	const data = await fetchOperationalInsightsPostsSlugs();
-
-	const paths = data.map((slugUrl) => ({
+	const data = await getAllOperationalInsightsPostsSlugs();
+	const paths = data.map((item) => ({
 		params: {
-			slug: slugUrl?.slug as String,
+			slug: item?.slug as String,
 		},
 	}));
 
@@ -248,27 +347,47 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps: GetStaticProps = async ({params}: any) => {
-	const response: any = await fetchOperationalInsightsPostsContent(
+	// Fetch priority content
+	const seoContent: any = await getAllSeoOperationalInsightsPostsContent(
 		params?.slug
 	);
 
-	const mainMenuLinks: object = await getMainMenuLinks();
-	const navbarMenuLinks: object = await getNavbarMenuLinks();
-	const footerMenuLinks: object = await getFooterMenuLinks();
-	const industriesMenuLinks: object = await getIndustriesMenuLinks();
-	const themesOptionsContent: object = await getThemesOptionsContent();
+	const flexibleContentComponents: any =
+		await getAllOperationalInsightsPostsFlexibleContentComponents(params?.slug);
 
+	// Fetch remaining content simultaneously
+	const [
+		stripePlans,
+		mainMenuLinks,
+		navbarMenuLinks,
+		footerMenuLinks,
+		themesOptionsContent,
+		industriesMenuLinks,
+		contentSliderPostsContent,
+	] = await Promise.all([
+		getAllStripePaymentPlans(),
+		getMainMenuLinks(),
+		getNavbarMenuLinks(),
+		getFooterMenuLinks(),
+		getThemesOptionsContent(),
+		getIndustriesMenuLinks(),
+		getContentSliderBlogPostsPostsContent(),
+	]);
 	return {
 		props: {
+			stripePlans,
 			mainMenuLinks,
 			navbarMenuLinks,
 			footerMenuLinks,
+			seo: seoContent,
 			industriesMenuLinks,
 			themesOptionsContent,
-			seo: response?.seo,
-			content: response?.content,
-			pageTitle: response?.pageTitle,
+			contentSliderPostsContent,
+			content: flexibleContentComponents?.content,
+			pageTitle: flexibleContentComponents?.pageTitle,
 		},
 		revalidate: 60,
 	};
 };
+
+export default dynamicOperationalInsightsPosts;
