@@ -1,4 +1,11 @@
 // Imports
+import {
+	initial,
+	initialTwo,
+	fadeIn,
+	fadeInUp,
+	stagger,
+} from "../animations/animations";
 import {FC} from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -7,13 +14,6 @@ import {useRouter} from "next/router";
 import {useState, useEffect} from "react";
 import {getAuth, signOut} from "firebase/auth";
 import styles from "../styles/components/Hero.module.scss";
-import {
-	initial,
-	initialTwo,
-	fadeIn,
-	fadeInUp,
-	stagger,
-} from "../animations/animations";
 
 // Components
 import MobileNavbar from "../components/MobileNavbar";
@@ -47,23 +47,6 @@ interface NavbarProps {
 		facebookLink: string;
 		linkedinLink: string;
 		copyrightText: string;
-		errorPageContent: {
-			title: string;
-			paragraph: string;
-			buttonLink: {
-				url: string;
-				title: string;
-				target: string;
-			};
-			buttonLinkTwo: {
-				url: string;
-				title: string;
-				target: string;
-			};
-			backgroundImage: {
-				sourceUrl: string;
-			};
-		};
 	};
 }
 
@@ -317,6 +300,7 @@ const Navbar: FC<NavbarProps> = ({navbarMenuLinks, themesOptionsContent}) => {
 						</div>
 					</div>
 				</div>
+
 				{/* Mobile Navbar */}
 				<MobileNavbar
 					user={user}

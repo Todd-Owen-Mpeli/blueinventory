@@ -48,23 +48,6 @@ interface IFlexibleContent {
 		facebookLink: string;
 		linkedinLink: string;
 		copyrightText: string;
-		errorPageContent: {
-			title: string;
-			paragraph: string;
-			buttonLink: {
-				url: string;
-				title: string;
-				target: string;
-			};
-			buttonLinkTwo: {
-				url: string;
-				title: string;
-				target: string;
-			};
-			backgroundImage: {
-				sourceUrl: string;
-			};
-		};
 	};
 	operationalInsights: [
 		{
@@ -72,11 +55,6 @@ interface IFlexibleContent {
 				id: string;
 				uri: string;
 				title: string;
-				singleOperationalInsightPost: {
-					titleParagraph: {
-						paragraph: string;
-					};
-				};
 				featuredImage: {
 					node: {
 						altText: string;
@@ -85,6 +63,17 @@ interface IFlexibleContent {
 							width: number;
 							height: number;
 						};
+					};
+				};
+				template: {
+					flexibleContent: {
+						flexibleContent: [
+							{
+								fieldGroupName: string;
+								paragraph: string;
+								title: string;
+							}
+						];
 					};
 				};
 			};
@@ -182,6 +171,7 @@ interface IFlexibleContent {
 		];
 	};
 }
+
 const RenderFlexibleContent: FC<IFlexibleContent> = ({
 	content,
 	stripePremiumPlan,
@@ -289,7 +279,7 @@ const RenderFlexibleContent: FC<IFlexibleContent> = ({
 						) : item?.fieldGroupName ===
 						  `${FlexibleContentComponent}_ContentImageGrid` ? (
 							<>
-								<ContentBackgroundImage gridContent={content?.gridContent} />
+								<ContentBackgroundImage gridContent={item?.gridContent} />
 							</>
 						) : item?.fieldGroupName ===
 						  `${FlexibleContentComponent}_ContentSliderAuto` ? (
@@ -345,10 +335,10 @@ const RenderFlexibleContent: FC<IFlexibleContent> = ({
 						  `${FlexibleContentComponent}_OperationalInsights` ? (
 							<>
 								<OperationalInsights
-									operationalInsights={operationalInsights}
 									title={item?.title}
 									italic={item?.italic}
 									paragraph={item?.paragraph}
+									operationalInsights={operationalInsights}
 								/>
 							</>
 						) : item?.fieldGroupName ===

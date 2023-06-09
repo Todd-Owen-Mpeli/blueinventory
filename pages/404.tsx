@@ -1,21 +1,119 @@
 // Imports
-import Head from "next/head";
-import {motion} from "framer-motion";
-import type {NextPage, GetStaticProps} from "next";
-import {getThemesOptionsContent} from "../functions/GetAllThemesOptions";
 import {
 	getMainMenuLinks,
 	getNavbarMenuLinks,
 	getFooterMenuLinks,
 	getIndustriesMenuLinks,
 } from "../functions/GetAllMenuLinks";
+import {motion} from "framer-motion";
+import type {NextPage, GetStaticProps} from "next";
+import {getAllSeoPagesContent} from "@/functions/GetAllSeoPagesContent";
+import {getThemesOptionsContent} from "../functions/GetAllThemesOptions";
+import {getAllStripePaymentPlans} from "@/functions/stripe/GetStripePaymentPlans";
+import {getContentSliderBlogPostsPostsContent} from "@/functions/GetAllContentSliderPosts";
+import {getAllPagesFlexibleContentComponents} from "@/functions/GetAllFlexibleContentComponents";
+import {getAllOperationalInsightsContent} from "@/functions/GetAllOperationalInsightsPostsSlugs";
 
 // Components
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
-import ErrorPage from "../components/Elements/ErrorPage";
+import Layout from "@/components/Layout/Layout";
+import RenderFlexibleContent from "@/components/FlexibleContent/RenderFlexibleContent";
 
 interface INoPageExits {
+	seo: {
+		canonical: string;
+		cornerstone: Boolean;
+		focuskw: string;
+		fullHead: string;
+		metaDesc: string;
+		metaKeywords: string;
+		metaRobotsNofollow: string;
+		metaRobotsNoindex: string;
+		opengraphAuthor: string;
+		opengraphDescription: string;
+		opengraphImage: {
+			mediaItemUrl: string;
+		};
+		opengraphModifiedTime: string;
+		opengraphPublishedTime: string;
+		opengraphPublisher: string;
+		opengraphSiteName: string;
+		opengraphTitle: string;
+		opengraphType: string;
+		opengraphUrl: string;
+		readingTime: number;
+		title: string;
+		twitterDescription: string;
+		twitterTitle: string;
+		twitterImage: {
+			mediaItemUrl: string;
+		};
+	};
+	content: any;
+	pageTitle: any;
+	stripePlans: {
+		stripePrices:
+			| [
+					{
+						id: string;
+						object: string;
+						active: boolean;
+						billing_scheme: string;
+						created: number;
+						currency: string;
+						custom_unit_amount: any;
+						livemode: boolean;
+						lookup_key: any;
+						metadata: any;
+						nickname: any;
+						product: {
+							id: string;
+							object: string;
+							active: boolean;
+							attributes: [];
+							created: number;
+							default_price: string;
+							description: string;
+							images: [any];
+							livemode: boolean;
+							metadata: any;
+							name: string;
+							package_dimensions: any;
+							shippable: any;
+							statement_descriptor: any;
+							tax_code: any;
+							type: string;
+							unit_label: any;
+							updated: number;
+							url: any;
+						};
+						recurring: {
+							aggregate_usage: any;
+							interval: string;
+							interval_count: number;
+							trial_period_days: any;
+							usage_type: string;
+						};
+						tax_behavior: string;
+						tiers_mode: any;
+						transform_quantity: any;
+						type: string;
+						unit_amount: number;
+						unit_amount_decimal: string;
+					}
+			  ];
+		stripePremiumPlan: {
+			name: string;
+			description: string;
+			price: number;
+			paymentRecurringInterval: string;
+		};
+		stripeStandardPlan: {
+			name: string;
+			description: string;
+			price: number;
+			paymentRecurringInterval: string;
+		};
+	};
 	footerMenuLinks: {
 		footerMenuLinks: [
 			{
@@ -51,6 +149,7 @@ interface INoPageExits {
 	};
 	themesOptionsContent: {
 		email: string;
+		address: string;
 		emailTwo: string;
 		phoneNumber: string;
 		phoneNumberTwo: string;
@@ -58,31 +157,141 @@ interface INoPageExits {
 		facebookLink: string;
 		linkedinLink: string;
 		copyrightText: string;
-		errorPageContent: {
-			title: string;
-			paragraph: string;
-			buttonLink: {
-				url: string;
+	};
+	operationalInsights: [
+		{
+			node: {
+				id: string;
+				uri: string;
 				title: string;
-				target: string;
+				featuredImage: {
+					node: {
+						altText: string;
+						sourceUrl: string;
+						mediaDetails: {
+							width: number;
+							height: number;
+						};
+					};
+				};
+				template: {
+					flexibleContent: {
+						flexibleContent: [
+							{
+								fieldGroupName: string;
+								paragraph: string;
+								title: string;
+							}
+						];
+					};
+				};
 			};
-			buttonLinkTwo: {
-				url: string;
+		}
+	];
+	contentSliderPostsContent: {
+		content: [
+			{
+				uri: string;
+				date: string;
 				title: string;
-				target: string;
-			};
-			backgroundImage: {
-				sourceUrl: string;
-			};
-		};
+				template: {
+					flexibleContent: {
+						flexibleContent: [
+							{
+								fieldGroupName: string;
+								backgroundVideoUrl: string;
+								backgroundImageOrVideo: string;
+								backgroundImage: {
+									altText: string;
+									sourceUrl: string;
+									mediaDetails: {
+										height: number;
+										width: number;
+									};
+								};
+							},
+							{
+								fieldGroupName: string;
+								paragraph: string;
+								title: string;
+							}
+						];
+					};
+				};
+			},
+			{
+				uri: string;
+				date: string;
+				title: string;
+				template: {
+					flexibleContent: {
+						flexibleContent: [
+							{
+								fieldGroupName: string;
+								backgroundVideoUrl: string;
+								backgroundImageOrVideo: string;
+								backgroundImage: {
+									altText: string;
+									sourceUrl: string;
+									mediaDetails: {
+										height: number;
+										width: number;
+									};
+								};
+							},
+							{
+								fieldGroupName: string;
+								paragraph: string;
+								title: string;
+							}
+						];
+					};
+				};
+			},
+			{
+				uri: string;
+				date: string;
+				title: string;
+				template: {
+					flexibleContent: {
+						flexibleContent: [
+							{
+								fieldGroupName: string;
+								backgroundVideoUrl: string;
+								backgroundImageOrVideo: string;
+								backgroundImage: {
+									altText: string;
+									sourceUrl: string;
+									mediaDetails: {
+										height: number;
+										width: number;
+									};
+								};
+							},
+							{
+								fieldGroupName: string;
+								paragraph: string;
+								title: string;
+							}
+						];
+					};
+				};
+			}
+		];
 	};
 }
 
 const noPageExits: NextPage<INoPageExits> = ({
-	footerMenuLinks,
+	seo,
+	content,
+	pageTitle,
+	stripePlans,
 	navbarMenuLinks,
+	footerMenuLinks,
 	industriesMenuLinks,
+	operationalInsights,
 	themesOptionsContent,
+	contentSliderPostsContent,
 }) => {
 	return (
 		<motion.div
@@ -96,57 +305,71 @@ const noPageExits: NextPage<INoPageExits> = ({
 				backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue-pink-red-yellow.svg")`,
 			}}
 		>
-			<Head>
-				<title>404 Page Not Found | Inventory Management Software</title>
-				<meta name="description" content="Generated by create next app" />
-				<link rel="icon" href="/img/Logos/BlueInventory favicon Two.png" />
-			</Head>
-
-			<Navbar
+			<Layout
+				seo={seo}
+				pageTitle={pageTitle}
 				themesOptionsContent={themesOptionsContent}
-				navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks}
-			/>
-
-			<ErrorPage
-				title={themesOptionsContent?.errorPageContent?.title}
-				paragraph={themesOptionsContent?.errorPageContent?.paragraph}
-				buttonLink={themesOptionsContent?.errorPageContent?.buttonLink}
-				buttonLinkTwo={themesOptionsContent?.errorPageContent?.buttonLinkTwo}
-				backgroundImage={
-					themesOptionsContent?.errorPageContent?.backgroundImage?.sourceUrl
-				}
-			/>
-			<Footer
-				email={themesOptionsContent?.email}
-				emailTwo={themesOptionsContent?.emailTwo}
-				phoneNumber={themesOptionsContent?.phoneNumber}
-				twitterLink={themesOptionsContent?.twitterLink}
-				facebookLink={themesOptionsContent?.facebookLink}
-				linkedinLink={themesOptionsContent?.linkedinLink}
 				footerMenuLinks={footerMenuLinks?.footerMenuLinks}
-				copyrightText={themesOptionsContent?.copyrightText}
-				phoneNumberTwo={themesOptionsContent?.phoneNumberTwo}
+				navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks}
 				industriesMenuLinks={industriesMenuLinks?.industriesMenuLinks}
-			/>
+			>
+				<RenderFlexibleContent
+					content={content}
+					operationalInsights={operationalInsights}
+					themesOptionsContent={themesOptionsContent}
+					stripePremiumPlan={stripePlans?.stripePremiumPlan}
+					stripeStandardPlan={stripePlans?.stripeStandardPlan}
+					contentSliderPostsContent={contentSliderPostsContent}
+				/>
+			</Layout>
 		</motion.div>
 	);
 };
 
-export default noPageExits;
-
 export const getStaticProps: GetStaticProps = async () => {
-	const navbarMenuLinks: object = await getNavbarMenuLinks();
-	const footerMenuLinks: object = await getFooterMenuLinks();
-	const industriesMenuLinks: object = await getIndustriesMenuLinks();
-	const themesOptionsContent: object = await getThemesOptionsContent();
+	// Fetch priority content
+	const seoContent: any = await getAllSeoPagesContent("error-page");
+
+	const flexibleContentComponents: any =
+		await getAllPagesFlexibleContentComponents("error-page");
+
+	// Fetch remaining content simultaneously
+	const [
+		stripePlans,
+		mainMenuLinks,
+		navbarMenuLinks,
+		footerMenuLinks,
+		industriesMenuLinks,
+		themesOptionsContent,
+		operationalInsights,
+		contentSliderPostsContent,
+	] = await Promise.all([
+		getAllStripePaymentPlans(),
+		getMainMenuLinks(),
+		getNavbarMenuLinks(),
+		getFooterMenuLinks(),
+		getIndustriesMenuLinks(),
+		getThemesOptionsContent(),
+		getAllOperationalInsightsContent(),
+		getContentSliderBlogPostsPostsContent(),
+	]);
 
 	return {
 		props: {
+			stripePlans,
+			mainMenuLinks,
 			navbarMenuLinks,
 			footerMenuLinks,
+			seo: seoContent,
+			operationalInsights,
 			industriesMenuLinks,
 			themesOptionsContent,
+			contentSliderPostsContent,
+			content: flexibleContentComponents?.content,
+			pageTitle: flexibleContentComponents?.pageTitle,
 		},
 		revalidate: 60,
 	};
 };
+
+export default noPageExits;

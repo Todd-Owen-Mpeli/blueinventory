@@ -1,6 +1,7 @@
 // Imports
 import {FC} from "react";
 import Image from "next/image";
+import Paragraph from "../Elements/Paragraph";
 
 interface IProps {
 	bulletPointText: string;
@@ -20,9 +21,10 @@ const StatsBulletPointCard: FC<IProps> = ({
 				className="w-6 h-6 mr-3"
 				src="/svg/green-checkmark-icon.svg"
 			/>
-			<span className={tailwindStyling ? tailwindStyling : `hidden`}>
-				{bulletPointText}
-			</span>
+			<Paragraph
+				content={bulletPointText}
+				tailwindStyling={tailwindStyling ? tailwindStyling : `hidden`}
+			/>
 		</span>
 	);
 };

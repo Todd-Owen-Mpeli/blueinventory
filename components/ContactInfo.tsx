@@ -27,7 +27,7 @@ const ContactInfo: FC<IProps> = ({
 	phoneNumberTwo,
 }) => {
 	return (
-		<section className="py-20 bg-white">
+		<section className="py-20 bg-white lg:px-4">
 			<div className="container px-4 mx-auto">
 				<div className="flex flex-wrap items-center justify-around -mx-4">
 					<div className="w-full px-4 lg:w-auto lg:mb-0">

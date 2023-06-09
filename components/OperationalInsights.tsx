@@ -17,11 +17,6 @@ interface IProps {
 				id: string;
 				uri: string;
 				title: string;
-				singleOperationalInsightPost: {
-					titleParagraph: {
-						paragraph: string;
-					};
-				};
 				featuredImage: {
 					node: {
 						altText: string;
@@ -30,6 +25,17 @@ interface IProps {
 							width: number;
 							height: number;
 						};
+					};
+				};
+				template: {
+					flexibleContent: {
+						flexibleContent: [
+							{
+								fieldGroupName: string;
+								paragraph: string;
+								title: string;
+							}
+						];
 					};
 				};
 			};
@@ -91,10 +97,13 @@ const operationalInsights: FC<IProps> = ({
 							<OperationalInsightsCard
 								key={keys}
 								uri={item?.node?.uri}
-								title={item?.node?.title}
 								featuredImage={item?.node?.featuredImage}
+								title={
+									item?.node?.template?.flexibleContent?.flexibleContent[0]
+										?.title
+								}
 								paragraph={
-									item?.node?.singleOperationalInsightPost?.titleParagraph
+									item?.node?.template?.flexibleContent?.flexibleContent[0]
 										?.paragraph
 								}
 							/>

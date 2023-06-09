@@ -9,7 +9,6 @@ import {initial, fadeInUp, stagger} from "../animations/animations";
 
 // Components
 import NavbarMenuLinks from "./Elements/NavbarMenuLinks";
-import {useRouter} from "next/router";
 
 interface NavbarProps {
 	user: {

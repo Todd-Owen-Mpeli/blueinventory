@@ -26,7 +26,7 @@ interface IProps {
 
 const TitleThreeContentGrid: FC<IProps> = ({title, contentGrid}) => {
 	return (
-		<section className="py-12 overflow-hidden bg-white sm:py-28">
+		<section className="py-12 overflow-hidden bg-white lg:px-4 sm:py-28">
 			<div className="container px-4 mx-auto">
 				<div className="pb-12 mb-16 border-b sm:pb-20 border-grey">
 					<motion.h2

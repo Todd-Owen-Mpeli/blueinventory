@@ -22,23 +22,6 @@ export async function getThemesOptionsContent() {
 								businessHours {
 									content
 								}
-								errorPageContent {
-									title
-									paragraph
-									buttonLink {
-										url
-										title
-										target
-									}
-									buttonLinkTwo {
-										url
-										title
-										target
-									}
-									backgroundImage {
-										sourceUrl
-									}
-								}
 							}
 						}
 					}

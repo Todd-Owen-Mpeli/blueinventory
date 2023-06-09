@@ -1,7 +1,8 @@
+// Imports
 import Link from "next/link";
 import Image from "next/image";
-import DOMPurify from "isomorphic-dompurify";
 import dateFormat from "dateformat";
+import DOMPurify from "isomorphic-dompurify";
 import React, {useEffect, useRef, FC} from "react";
 import styles from "../styles/components/ContentSlider.module.scss";
 

@@ -1,7 +1,7 @@
 // Imports
 import {FC} from "react";
 import {motion} from "framer-motion";
-import {initial, fadeInUp, fadeIn, stagger} from "../animations/animations";
+import {initial, stagger} from "../animations/animations";
 
 // Components
 import Paragraph from "./Elements/Paragraph";
@@ -42,7 +42,7 @@ const JumboContentTwo: FC<IProps> = ({
 	gridContent,
 }) => {
 	return (
-		<section className="overflow-hidden bg-white">
+		<section className="overflow-hidden bg-white lg:px-4">
 			<div className="container px-4 mx-auto">
 				<div className="mx-auto max-w-7xl pt-28 pb-36">
 					<motion.div

@@ -1,14 +1,14 @@
 // Imports
+import {
+	getAuth,
+	OAuthProvider,
+	signInWithPopup,
+	GoogleAuthProvider,
+} from "firebase/auth";
 import {FC} from "react";
 import Link from "next/link";
 import {motion} from "framer-motion";
 import {useRouter} from "next/router";
-import {
-	getAuth,
-	signInWithPopup,
-	GoogleAuthProvider,
-	OAuthProvider,
-} from "firebase/auth";
 import {initial, fadeInUp, stagger} from "../animations/animations";
 
 // Components

@@ -1,17 +1,36 @@
 // Imports
+import {Readable} from "stream";
+import {SitemapStream, streamToPromise} from "sitemap";
 import {getAllPagesSlugs} from "@/functions/GetAllPagesSlugs";
+import {getAllIndustriesPageSlugs} from "@/functions/GetAllIndustriesPageSlugs";
 import {getAllOperationalInsightsPostsSlugs} from "@/functions/GetAllOperationalInsightsPostsSlugs";
 
-const {SitemapStream, streamToPromise} = require("sitemap");
-const {Readable} = require("stream");
-
 const sitemap = async (req: any, res: any) => {
-	const pagesSlugs = await getAllPagesSlugs();
-	const postsSlugs = await getAllOperationalInsightsPostsSlugs();
+	const [pagesSlugs, industriesSlugs, postsSlugs] = await Promise.all([
+		getAllPagesSlugs(),
+		getAllIndustriesPageSlugs(),
+		getAllOperationalInsightsPostsSlugs(),
+	]);
 
-	// Pages & Operational Insights Arrays
+	/* Pages & Operational Insights & 
+	Industries Pages Arrays */
 	const pagesLinks: any = [];
 	const postsLinks: any = [];
+	const industriesLinks: any = [];
+	const signInAndSignUpLinks: any = [
+		{
+			url: `sign-in`,
+			changefreq: "monthly",
+			lastmod: `2023-06-08T18:45:02.000Z`,
+			priority: 0.8,
+		},
+		{
+			url: `sign-up`,
+			changefreq: "monthly",
+			lastmod: `2023-06-08T18:45:02.000Z`,
+			priority: 0.8,
+		},
+	];
 
 	// Pages Dynamic Links
 	pagesSlugs?.map((keys: any) => {
@@ -25,11 +44,23 @@ const sitemap = async (req: any, res: any) => {
 		pagesLinks.push(object);
 	});
 
+	// Industries Pages Dynamic Links
+	industriesSlugs?.map((keys: any) => {
+		const object = {
+			url: `/industries/${keys?.slug}`,
+			changefreq: "monthly",
+			lastmod: `${keys?.modified}`,
+			priority: 0.8,
+		};
+
+		industriesLinks.push(object);
+	});
+
 	// Operational Insights Dynamic Links
 	postsSlugs?.map((keys: any) => {
 		const object = {
 			url: `/operational-insights/${keys?.slug}`,
-			changefreq: "daily",
+			changefreq: "monthly",
 			lastmod: `${keys?.modified}`,
 			priority: 0.8,
 		};
@@ -38,7 +69,12 @@ const sitemap = async (req: any, res: any) => {
 	});
 
 	// Arrays with your all dynamic links
-	const allLinks: any = [...pagesLinks, ...postsLinks];
+	const allLinks: any = [
+		...pagesLinks,
+		...signInAndSignUpLinks,
+		...industriesLinks,
+		...postsLinks,
+	];
 
 	// Create a stream to write to
 	const stream = new SitemapStream({hostname: process.env.SITE_URL});

@@ -19,23 +19,6 @@ interface IDashboard {
 		facebookLink: string;
 		linkedinLink: string;
 		copyrightText: string;
-		errorPageContent: {
-			title: string;
-			paragraph: string;
-			buttonLink: {
-				url: string;
-				title: string;
-				target: string;
-			};
-			buttonLinkTwo: {
-				url: string;
-				title: string;
-				target: string;
-			};
-			backgroundImage: {
-				sourceUrl: string;
-			};
-		};
 	};
 }
 
@@ -65,8 +48,6 @@ const dashboard: NextPage<IDashboard> = ({themesOptionsContent}) => {
 	);
 };
 
-export default dashboard;
-
 export const getServerSideProps: GetServerSideProps = async () => {
 	const themesOptionsContent: object = await getThemesOptionsContent();
 
@@ -76,3 +57,5 @@ export const getServerSideProps: GetServerSideProps = async () => {
 		},
 	};
 };
+
+export default dashboard;

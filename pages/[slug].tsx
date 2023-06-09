@@ -1,22 +1,23 @@
 // Imports
 import {motion} from "framer-motion";
-import type {NextPage, GetStaticProps} from "next";
-import {getContentSliderBlogPostsPostsContent} from "@/functions/GetAllContentSliderPosts";
-import {getAllPagesFlexibleContentComponents} from "@/functions/GetAllFlexibleContentComponents";
 import {
 	getMainMenuLinks,
 	getNavbarMenuLinks,
 	getFooterMenuLinks,
 	getIndustriesMenuLinks,
 } from "../functions/GetAllMenuLinks";
+import type {NextPage, GetStaticProps} from "next";
+import {getAllPagesSlugs} from "@/functions/GetAllPagesSlugs";
+import {getAllSeoPagesContent} from "@/functions/GetAllSeoPagesContent";
 import {getThemesOptionsContent} from "../functions/GetAllThemesOptions";
+import {getAllStripePaymentPlans} from "@/functions/stripe/GetStripePaymentPlans";
+import {getContentSliderBlogPostsPostsContent} from "@/functions/GetAllContentSliderPosts";
+import {getAllOperationalInsightsContent} from "@/functions/GetAllOperationalInsightsPostsSlugs";
+import {getAllPagesFlexibleContentComponents} from "@/functions/GetAllFlexibleContentComponents";
 
 // Components
 import Layout from "../components/Layout/Layout";
 import RenderFlexibleContent from "@/components/FlexibleContent/RenderFlexibleContent";
-import {getAllPagesSlugs} from "@/functions/GetAllPagesSlugs";
-import {getAllSeoPagesContent} from "@/functions/GetAllSeoPagesContent";
-import {getAllStripePaymentPlans} from "@/functions/stripe/GetStripePaymentPlans";
 
 interface IDynamicPages {
 	seo: {
@@ -157,23 +158,6 @@ interface IDynamicPages {
 		facebookLink: string;
 		linkedinLink: string;
 		copyrightText: string;
-		errorPageContent: {
-			title: string;
-			paragraph: string;
-			buttonLink: {
-				url: string;
-				title: string;
-				target: string;
-			};
-			buttonLinkTwo: {
-				url: string;
-				title: string;
-				target: string;
-			};
-			backgroundImage: {
-				sourceUrl: string;
-			};
-		};
 	};
 	operationalInsights: [
 		{
@@ -181,11 +165,6 @@ interface IDynamicPages {
 				id: string;
 				uri: string;
 				title: string;
-				singleOperationalInsightPost: {
-					titleParagraph: {
-						paragraph: string;
-					};
-				};
 				featuredImage: {
 					node: {
 						altText: string;
@@ -194,6 +173,17 @@ interface IDynamicPages {
 							width: number;
 							height: number;
 						};
+					};
+				};
+				template: {
+					flexibleContent: {
+						flexibleContent: [
+							{
+								fieldGroupName: string;
+								paragraph: string;
+								title: string;
+							}
+						];
 					};
 				};
 			};
@@ -357,16 +347,18 @@ export const getStaticProps: GetStaticProps = async ({params}: any) => {
 		mainMenuLinks,
 		navbarMenuLinks,
 		footerMenuLinks,
-		themesOptionsContent,
 		industriesMenuLinks,
+		themesOptionsContent,
+		operationalInsights,
 		contentSliderPostsContent,
 	] = await Promise.all([
 		getAllStripePaymentPlans(),
 		getMainMenuLinks(),
 		getNavbarMenuLinks(),
 		getFooterMenuLinks(),
-		getThemesOptionsContent(),
 		getIndustriesMenuLinks(),
+		getThemesOptionsContent(),
+		getAllOperationalInsightsContent(),
 		getContentSliderBlogPostsPostsContent(),
 	]);
 
@@ -377,6 +369,7 @@ export const getStaticProps: GetStaticProps = async ({params}: any) => {
 			navbarMenuLinks,
 			footerMenuLinks,
 			seo: seoContent,
+			operationalInsights,
 			industriesMenuLinks,
 			themesOptionsContent,
 			contentSliderPostsContent,

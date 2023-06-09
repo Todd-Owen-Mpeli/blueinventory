@@ -1,17 +1,16 @@
 // Imports
-import Image from "next/image";
+import {
+	fadeIn,
+	stagger,
+	initial,
+	fadeInUp,
+	initialTwo,
+} from "../animations/animations";
 import {motion} from "framer-motion";
 import React, {useState, FC} from "react";
-import {sendContactForm} from "../pages/api/contactForm";
 import ReCAPTCHA from "react-google-recaptcha";
 import {useFormik, Formik, Field, Form} from "formik";
-import {
-	initial,
-	initialTwo,
-	fadeIn,
-	fadeInUp,
-	stagger,
-} from "../animations/animations";
+import {sendContactForm} from "../pages/api/contactForm";
 
 // Styling
 import styles from "../styles/components/ContactForm.module.scss";
@@ -140,7 +139,6 @@ const ContactForm: FC<IProps> = ({title, backgroundImage}) => {
 									{title}
 								</motion.h3>
 							)}
-
 							<motion.div
 								initial={initial}
 								whileInView={stagger}

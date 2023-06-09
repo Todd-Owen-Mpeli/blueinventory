@@ -4,6 +4,7 @@ import {DocumentNode, gql} from "@apollo/client";
 
 type SlugResponse = {
 	slug: string;
+	modified: string;
 };
 
 interface ISlug extends Array<SlugResponse> {}
@@ -16,6 +17,7 @@ export const getAllIndustriesPageSlugs = async (): Promise<ISlug> => {
 				industriesPagesSlugs: industries(where: {status: PUBLISH}) {
 					nodes {
 						slug
+						modified
 					}
 				}
 			}

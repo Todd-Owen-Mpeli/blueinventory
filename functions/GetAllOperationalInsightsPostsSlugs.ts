@@ -59,13 +59,12 @@ export async function getAllOperationalInsightsContent() {
 							}
 							template {
 								... on DefaultTemplate {
-									templateName
 									flexibleContent {
 										flexibleContent {
 											... on DefaultTemplate_Flexiblecontent_FlexibleContent_HeroSectionTwo {
 												fieldGroupName
-												paragraph
 												title
+												paragraph
 											}
 										}
 									}

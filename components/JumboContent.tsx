@@ -5,13 +5,13 @@ import {
 	stagger,
 	initial,
 	fadeInUp,
-	initialTwo,
 	fadeInTwo,
+	initialTwo,
 } from "../animations/animations";
 
 // Components
-import Paragraph from "./Elements/Paragraph";
 import JumboCard from "./Cards/JumboCard";
+import Paragraph from "./Elements/Paragraph";
 
 interface IProps {
 	title: string;
@@ -65,7 +65,7 @@ const JumboContent: FC<IProps> = ({
 	gridContent,
 }) => {
 	return (
-		<section className="overflow-hidden bg-white">
+		<section className="overflow-hidden bg-white lg:px-4">
 			<div className="container px-4 mx-auto">
 				<div className="max-w-6xl mx-auto pt-28 pb-36">
 					<motion.div

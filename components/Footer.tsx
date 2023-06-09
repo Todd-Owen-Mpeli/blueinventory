@@ -1,7 +1,6 @@
 // Imports
 import {FC} from "react";
 import Link from "next/link";
-import Image from "next/image";
 import {motion} from "framer-motion";
 import {initial, initialTwo, fadeIn, stagger} from "../animations/animations";
 
@@ -43,16 +42,16 @@ const Footer: FC<FooterProps> = ({
 	email,
 	emailTwo,
 	phoneNumber,
-	phoneNumberTwo,
 	twitterLink,
 	facebookLink,
 	linkedinLink,
 	copyrightText,
+	phoneNumberTwo,
 	footerMenuLinks,
 	industriesMenuLinks,
 }) => {
 	return (
-		<section className="py-20 overflow-hidden bg-darkerBlueTwo">
+		<section className="py-20 overflow-hidden lg:px-4 bg-darkerBlueTwo">
 			<div className="container px-4 mx-auto">
 				<div className="flex flex-col items-baseline justify-between gap-6 px-6 -m-6 lg:px-4 md:flex-row lg:items-center">
 					<div className="w-full py-6 md:w-auto">

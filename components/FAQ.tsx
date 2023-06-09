@@ -4,8 +4,8 @@ import {motion} from "framer-motion";
 import {initial, fadeInUp, stagger} from "../animations/animations";
 
 // Components
-import Paragraph from "./Elements/Paragraph";
 import FAQCard from "./Cards/FAQCard";
+import Paragraph from "./Elements/Paragraph";
 
 interface IFaq {
 	title: string;
@@ -20,7 +20,7 @@ interface IFaq {
 
 const FAQ: FC<IFaq> = ({title, paragraph, qagrid}) => {
 	return (
-		<section className="py-20 bg-white">
+		<section className="px-4 py-20 bg-white">
 			<motion.div
 				initial={initial}
 				whileInView={stagger}
@@ -47,7 +47,7 @@ const FAQ: FC<IFaq> = ({title, paragraph, qagrid}) => {
 					initial={initial}
 					whileInView={stagger}
 					viewport={{once: true}}
-					className="grid grid-cols-1 gap-4 -m-8 sm:grid-cols-2 xl:grid-cols-3"
+					className="grid grid-cols-1 gap-4 px-4 -m-8 sm:grid-cols-2 xl:grid-cols-3"
 				>
 					{qagrid?.length > 0 ? (
 						qagrid?.map((item, keys) => (

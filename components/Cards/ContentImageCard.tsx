@@ -1,4 +1,4 @@
-import {FC, useRef} from "react";
+import {FC} from "react";
 import styled from "styled-components";
 import Paragraph from "./../Elements/Paragraph";
 import {motion} from "framer-motion";

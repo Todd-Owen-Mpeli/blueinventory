@@ -42,11 +42,11 @@ export async function getAllPagesFlexibleContentComponents(slug: string) {
                         }
                       }
                       ... on DefaultTemplate_Flexiblecontent_FlexibleContent_HeroSectionTwo {
-                        backgroundImageOrVideo
-                        backgroundVideoUrl
+                        fieldGroupName
                         title
                         paragraph
-                        fieldGroupName
+                        backgroundVideoUrl
+                        backgroundImageOrVideo
                         backgroundImage {
                           altText
                           sourceUrl
@@ -387,13 +387,31 @@ export async function getAllPagesFlexibleContentComponents(slug: string) {
                           sourceUrl
                         }
                       }
-                    }
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_ErrorPageContent {
+                        fieldGroupName
+                        paragraph
+                        title
+                        buttonLink {
+                          url
+                          title
+                          target
+                        }
+                        buttonLinkTwo {
+                          url
+                          title
+                          target
+                        }
+                        backgroundImage {
+                          sourceUrl
+                        }
+                      }
                   }
                 }
               }
             }
           }
         }
+			}
 			}
 		`;
 
