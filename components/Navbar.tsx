@@ -6,13 +6,13 @@ import {
 	fadeInUp,
 	stagger,
 } from "../animations/animations";
-import {FC} from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {motion} from "framer-motion";
 import {useRouter} from "next/router";
 import {useState, useEffect} from "react";
 import {getAuth, signOut} from "firebase/auth";
+import {useContentContext} from "@/context/context";
 import styles from "../styles/components/Hero.module.scss";
 
 // Components
@@ -28,29 +28,9 @@ interface firebaseUser {
 	profileImageURL: string;
 }
 
-interface NavbarProps {
-	navbarMenuLinks: [
-		{
-			node: {
-				id: string;
-				url: string;
-				label: string;
-			};
-		}
-	];
-	themesOptionsContent: {
-		email: string;
-		emailTwo: string;
-		phoneNumber: string;
-		phoneNumberTwo: string;
-		twitterLink: string;
-		facebookLink: string;
-		linkedinLink: string;
-		copyrightText: string;
-	};
-}
+const Navbar = () => {
+	const content = useContentContext();
 
-const Navbar: FC<NavbarProps> = ({navbarMenuLinks, themesOptionsContent}) => {
 	const auth = getAuth();
 	const router = useRouter();
 	const [signedInUser, setSignedInUser] = useState(false);
@@ -129,15 +109,17 @@ const Navbar: FC<NavbarProps> = ({navbarMenuLinks, themesOptionsContent}) => {
 									whileInView={stagger}
 									className="flex items-center justify-center gap-6"
 								>
-									{navbarMenuLinks?.length > 0 ? (
-										navbarMenuLinks?.map((item, keys) => (
-											<NavbarMenuLinks
-												key={keys}
-												url={item?.node?.url}
-												label={item?.node?.label}
-												tailwindStyling="text-sm uppercase font-bold tracking-[.15rem] text-darkBlue hover:text-goldPrime transition-all ease-in-out duration-500"
-											/>
-										))
+									{content.navbarMenuLinks.navbarMenuLinks?.length > 0 ? (
+										content.navbarMenuLinks.navbarMenuLinks?.map(
+											(item, keys) => (
+												<NavbarMenuLinks
+													key={keys}
+													url={item?.node?.url}
+													label={item?.node?.label}
+													tailwindStyling="text-sm uppercase font-bold tracking-[.15rem] text-darkBlue hover:text-goldPrime transition-all ease-in-out duration-500"
+												/>
+											)
+										)
 									) : (
 										<></>
 									)}
@@ -305,13 +287,7 @@ const Navbar: FC<NavbarProps> = ({navbarMenuLinks, themesOptionsContent}) => {
 				<MobileNavbar
 					user={user}
 					signedInUser={signedInUser}
-					navbarMenuLinks={navbarMenuLinks}
 					revealMobileMenu={revealMobileMenu}
-					email={themesOptionsContent?.email}
-					phoneNumber={themesOptionsContent?.phoneNumber}
-					twitterLink={themesOptionsContent?.twitterLink}
-					facebookLink={themesOptionsContent?.facebookLink}
-					linkedinLink={themesOptionsContent?.linkedinLink}
 				/>
 			</div>
 		</nav>

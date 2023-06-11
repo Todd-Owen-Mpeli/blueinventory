@@ -1,55 +1,14 @@
 // Imports
-import {FC} from "react";
 import Link from "next/link";
 import {motion} from "framer-motion";
+import {useContentContext} from "@/context/context";
 import {initial, initialTwo, fadeIn, stagger} from "../animations/animations";
 
 // Components
 import FooterMenuLinks from "./Elements/FooterMenuLinks";
 
-interface FooterProps {
-	email: string;
-	emailTwo: string;
-	phoneNumber: string;
-	phoneNumberTwo: string;
-	twitterLink: string;
-	facebookLink: string;
-	linkedinLink: string;
-	copyrightText: string;
-
-	// Menu Links
-	footerMenuLinks: [
-		{
-			node: {
-				id: string;
-				url: string;
-				label: string;
-			};
-		}
-	];
-	industriesMenuLinks: [
-		{
-			node: {
-				id: string;
-				url: string;
-				label: string;
-			};
-		}
-	];
-}
-
-const Footer: FC<FooterProps> = ({
-	email,
-	emailTwo,
-	phoneNumber,
-	twitterLink,
-	facebookLink,
-	linkedinLink,
-	copyrightText,
-	phoneNumberTwo,
-	footerMenuLinks,
-	industriesMenuLinks,
-}) => {
+const Footer = () => {
+	const content = useContentContext();
 	return (
 		<section className="py-20 overflow-hidden lg:px-4 bg-darkerBlueTwo">
 			<div className="container px-4 mx-auto">
@@ -86,9 +45,9 @@ const Footer: FC<FooterProps> = ({
 								</div>
 								<Link
 									className="font-medium tracking-wide text-white hover:text-goldPrime"
-									href={`mailto:${email}`}
+									href={`mailto:${content.themesOptionsContent.email}`}
 								>
-									{email}
+									{content.themesOptionsContent.email}
 								</Link>
 							</motion.div>
 							<motion.div
@@ -116,9 +75,9 @@ const Footer: FC<FooterProps> = ({
 								</div>
 								<Link
 									className="font-medium tracking-wide text-white hover:text-goldPrime"
-									href={`mailto:${emailTwo}`}
+									href={`mailto:${content.themesOptionsContent.emailTwo}`}
 								>
-									{emailTwo}
+									{content.themesOptionsContent.emailTwo}
 								</Link>
 							</motion.div>
 						</div>
@@ -133,7 +92,10 @@ const Footer: FC<FooterProps> = ({
 								whileInView={fadeIn}
 								viewport={{once: true}}
 							>
-								<Link className="inline-block text-green" href={facebookLink}>
+								<Link
+									className="inline-block text-green"
+									href={content.themesOptionsContent.facebookLink}
+								>
 									<svg
 										height="100%"
 										className="w-5 h-5"
@@ -160,7 +122,10 @@ const Footer: FC<FooterProps> = ({
 								whileInView={fadeIn}
 								viewport={{once: true}}
 							>
-								<Link className="inline-block text-green" href={twitterLink}>
+								<Link
+									className="inline-block text-green"
+									href={content.themesOptionsContent.twitterLink}
+								>
 									<svg
 										height="100%"
 										className="w-5 h-5"
@@ -187,7 +152,10 @@ const Footer: FC<FooterProps> = ({
 								whileInView={fadeIn}
 								viewport={{once: true}}
 							>
-								<Link className="inline-block text-green" href={linkedinLink}>
+								<Link
+									className="inline-block text-green"
+									href={content.themesOptionsContent.linkedinLink}
+								>
 									<svg
 										height="100%"
 										style={{
@@ -222,8 +190,8 @@ const Footer: FC<FooterProps> = ({
 								viewport={{once: true}}
 								className="flex flex-col gap-2 py-6"
 							>
-								{footerMenuLinks?.length > 0 ? (
-									footerMenuLinks?.map((item, keys) => (
+								{content.footerMenuLinks.footerMenuLinks?.length > 0 ? (
+									content.footerMenuLinks.footerMenuLinks?.map((item, keys) => (
 										<FooterMenuLinks
 											key={keys}
 											url={item?.node?.url}
@@ -246,15 +214,17 @@ const Footer: FC<FooterProps> = ({
 								viewport={{once: true}}
 								className="flex flex-col gap-2 py-6"
 							>
-								{industriesMenuLinks?.length > 0 ? (
-									industriesMenuLinks?.map((item, keys) => (
-										<FooterMenuLinks
-											key={keys}
-											label={item?.node?.label}
-											url={`/industries${item?.node?.url}`}
-											tailwindStyling="text-white text-left hover:text-goldPrime"
-										/>
-									))
+								{content.industriesMenuLinks.industriesMenuLinks?.length > 0 ? (
+									content.industriesMenuLinks.industriesMenuLinks?.map(
+										(item, keys) => (
+											<FooterMenuLinks
+												key={keys}
+												label={item?.node?.label}
+												url={`/industries${item?.node?.url}`}
+												tailwindStyling="text-white text-left hover:text-goldPrime"
+											/>
+										)
+									)
 								) : (
 									<></>
 								)}
@@ -273,7 +243,7 @@ const Footer: FC<FooterProps> = ({
 							whileInView={fadeIn}
 							className="text-sm text-white"
 						>
-							{copyrightText}
+							{content.themesOptionsContent.copyrightText}
 						</motion.p>
 					</div>
 					<div className="w-auto p-6">

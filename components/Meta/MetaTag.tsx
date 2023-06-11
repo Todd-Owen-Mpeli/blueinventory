@@ -1,111 +1,63 @@
 // Imports
 import Head from "next/head";
-import {FunctionComponent} from "react";
+import {useContentContext} from "@/context/context";
 
-interface IProps {
-	title: string;
-	seo: {
-		canonical: string;
-		cornerstone: Boolean;
-		focuskw: string;
-		fullHead: string;
-		metaDesc: string;
-		metaKeywords: string;
-		metaRobotsNofollow: string;
-		metaRobotsNoindex: string;
-		opengraphAuthor: string;
-		opengraphDescription: string;
-		opengraphImage: {
-			mediaItemUrl: string;
-		};
-		opengraphModifiedTime: string;
-		opengraphPublishedTime: string;
-		opengraphPublisher: string;
-		opengraphSiteName: string;
-		opengraphTitle: string;
-		opengraphType: string;
-		opengraphUrl: string;
-		readingTime: number;
-		title: string;
-		twitterDescription: string;
-		twitterTitle: string;
-		twitterImage: {
-			mediaItemUrl: string;
-		};
-	};
-}
+const MetaTag = () => {
+	const content = useContentContext();
 
-const MetaTag: FunctionComponent<IProps> = ({seo, title}) => {
 	return (
 		<Head>
 			{/* Website Title */}
-			<title key="title">{`${title} | Inventory Management Software`}</title>
-			<meta name="description" content={seo?.metaDesc} />
+			<title key="title">{`${content.seo.title} | Inventory Management Software`}</title>
+			<meta name="description" content={content.seo?.metaDesc} />
 			{/* Website Icon */}
 			<link rel="icon" href="/img/Logos/BlueInventory favicon Two.png" />
-			{/* PreLoading fonts for IOS devices */}
-			<link
-				rel="preload"
-				as="font"
-				href="../../styles/fonts/Inter-VariableFont_wght.ttf"
-			/>
-			<link
-				rel="preload"
-				as="font"
-				href="../../styles/fonts/Evolventa-Regular-VariableFont_wght.ttf"
-			/>
-			<link
-				rel="preload"
-				as="font"
-				href="../../styles/fonts/Evolventa-Bold-VariableFont_wght.ttf"
-			/>
-			<link
-				rel="preload"
-				as="font"
-				href="../../styles/fonts/SFTSchriftedSansTRIAL-Medium-VariableFont_wght.ttf"
-			/>
 			{/* Meta Robots */}
 			<meta
 				name="robots"
-				content={`${seo?.metaRobotsNoindex} , ${seo?.metaRobotsNofollow}`}
+				content={`${content.seo?.metaRobotsNoindex} , ${content.seo?.metaRobotsNofollow}`}
 				key="metaRobots"
 			/>
-			<link rel="canonical" href={seo?.canonical} key="metaCanonical" />
+			<link rel="canonical" href={content.seo?.canonical} key="metaCanonical" />
 
 			{/* OpenGraph */}
-			<meta property="og:title" content={seo?.opengraphTitle} key="ogTitle" />
-			<meta name="og:url" content={seo?.opengraphUrl} key="ogUrl" />
+			<meta
+				property="og:title"
+				content={content.seo?.opengraphTitle}
+				key="ogTitle"
+			/>
+			<meta name="og:url" content={content.seo?.opengraphUrl} key="ogUrl" />
 			<meta
 				name="og:image"
-				content={seo?.opengraphImage?.mediaItemUrl}
+				content={content.seo?.opengraphImage?.mediaItemUrl}
 				key="ogImage"
 			/>
 			<meta
 				name="image"
 				property="og:image"
-				content={seo?.opengraphImage?.mediaItemUrl}
+				content={content.seo?.opengraphImage?.mediaItemUrl}
 				key="ogLinkedInImage"
 			/>
 			<meta
 				name="og:description"
-				content={seo?.opengraphDescription}
+				content={content.seo?.opengraphDescription}
 				key="ogDesc"
 			/>
 
 			{/* Twitter */}
 			<meta
 				name="twitter:title"
-				content={seo?.twitterTitle}
+				content={content.seo?.twitterTitle}
 				key="twitterTitle"
 			/>
 			<meta
 				name="twitter:description"
-				content={seo?.twitterDescription}
+				content={content.seo?.twitterDescription}
 				key="twitterDesc"
 			/>
 			<meta
 				name="twitter:image"
-				content={seo?.twitterImage?.mediaItemUrl}
+				content={content.seo?.twitterImage?.mediaItemUrl}
 				key="twitterImage"
 			/>
 			<meta

@@ -6,6 +6,7 @@ import {
 	getIndustriesMenuLinks,
 } from "../functions/GetAllMenuLinks";
 import {motion} from "framer-motion";
+import {ContentContext} from "@/context/context";
 import type {NextPage, GetStaticProps} from "next";
 import {getAllSeoPagesContent} from "@/functions/GetAllSeoPagesContent";
 import {getThemesOptionsContent} from "../functions/GetAllThemesOptions";
@@ -292,31 +293,31 @@ const HomePage: NextPage<IHomePage> = ({
 	contentSliderPostsContent,
 }) => {
 	return (
-		<motion.div
-			exit={{
-				opacity: 0,
+		<ContentContext.Provider
+			value={{
+				seo: seo,
+				content: content,
+				stripePlans: stripePlans,
+				navbarMenuLinks: navbarMenuLinks,
+				footerMenuLinks: footerMenuLinks,
+				industriesMenuLinks: industriesMenuLinks,
+				operationalInsights: operationalInsights,
+				themesOptionsContent: themesOptionsContent,
+				contentSliderPostsContent: contentSliderPostsContent,
 			}}
-			initial="initial"
-			animate="animate"
 		>
-			<Layout
-				seo={seo}
-				pageTitle={`BlueInventory `}
-				themesOptionsContent={themesOptionsContent}
-				footerMenuLinks={footerMenuLinks?.footerMenuLinks}
-				navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks}
-				industriesMenuLinks={industriesMenuLinks?.industriesMenuLinks}
+			<motion.div
+				exit={{
+					opacity: 0,
+				}}
+				initial="initial"
+				animate="animate"
 			>
-				<RenderFlexibleContent
-					content={content}
-					operationalInsights={operationalInsights}
-					themesOptionsContent={themesOptionsContent}
-					stripePremiumPlan={stripePlans?.stripePremiumPlan}
-					stripeStandardPlan={stripePlans?.stripeStandardPlan}
-					contentSliderPostsContent={contentSliderPostsContent}
-				/>
-			</Layout>
-		</motion.div>
+				<Layout>
+					<RenderFlexibleContent />
+				</Layout>
+			</motion.div>
+		</ContentContext.Provider>
 	);
 };
 

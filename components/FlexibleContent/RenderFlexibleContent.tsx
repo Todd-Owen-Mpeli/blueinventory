@@ -1,5 +1,5 @@
 // Import
-import {FC} from "react";
+import {useContentContext} from "@/context/context";
 
 // Components
 import CTA from "../CTA";
@@ -24,168 +24,15 @@ import OperationalInsights from "../OperationalInsights";
 import TitleThreeContentGrid from "../TitleThreeContentGrid";
 import ContentBackgroundImage from "../ContentBackgroundImage";
 
-interface IFlexibleContent {
-	content: any;
-	stripePremiumPlan: {
-		name: string;
-		description: string;
-		price: number;
-		paymentRecurringInterval: string;
-	};
-	stripeStandardPlan: {
-		name: string;
-		description: string;
-		price: number;
-		paymentRecurringInterval: string;
-	};
-	themesOptionsContent: {
-		email: string;
-		address: string;
-		emailTwo: string;
-		phoneNumber: string;
-		phoneNumberTwo: string;
-		twitterLink: string;
-		facebookLink: string;
-		linkedinLink: string;
-		copyrightText: string;
-	};
-	operationalInsights: [
-		{
-			node: {
-				id: string;
-				uri: string;
-				title: string;
-				featuredImage: {
-					node: {
-						altText: string;
-						sourceUrl: string;
-						mediaDetails: {
-							width: number;
-							height: number;
-						};
-					};
-				};
-				template: {
-					flexibleContent: {
-						flexibleContent: [
-							{
-								fieldGroupName: string;
-								paragraph: string;
-								title: string;
-							}
-						];
-					};
-				};
-			};
-		}
-	];
-	contentSliderPostsContent: {
-		content: [
-			{
-				uri: string;
-				date: string;
-				title: string;
-				template: {
-					flexibleContent: {
-						flexibleContent: [
-							{
-								fieldGroupName: string;
-								backgroundVideoUrl: string;
-								backgroundImageOrVideo: string;
-								backgroundImage: {
-									altText: string;
-									sourceUrl: string;
-									mediaDetails: {
-										height: number;
-										width: number;
-									};
-								};
-							},
-							{
-								fieldGroupName: string;
-								paragraph: string;
-								title: string;
-							}
-						];
-					};
-				};
-			},
-			{
-				uri: string;
-				date: string;
-				title: string;
-				template: {
-					flexibleContent: {
-						flexibleContent: [
-							{
-								fieldGroupName: string;
-								backgroundVideoUrl: string;
-								backgroundImageOrVideo: string;
-								backgroundImage: {
-									altText: string;
-									sourceUrl: string;
-									mediaDetails: {
-										height: number;
-										width: number;
-									};
-								};
-							},
-							{
-								fieldGroupName: string;
-								paragraph: string;
-								title: string;
-							}
-						];
-					};
-				};
-			},
-			{
-				uri: string;
-				date: string;
-				title: string;
-				template: {
-					flexibleContent: {
-						flexibleContent: [
-							{
-								fieldGroupName: string;
-								backgroundVideoUrl: string;
-								backgroundImageOrVideo: string;
-								backgroundImage: {
-									altText: string;
-									sourceUrl: string;
-									mediaDetails: {
-										height: number;
-										width: number;
-									};
-								};
-							},
-							{
-								fieldGroupName: string;
-								paragraph: string;
-								title: string;
-							}
-						];
-					};
-				};
-			}
-		];
-	};
-}
+const RenderFlexibleContent = () => {
+	const content = useContentContext();
 
-const RenderFlexibleContent: FC<IFlexibleContent> = ({
-	content,
-	stripePremiumPlan,
-	stripeStandardPlan,
-	operationalInsights,
-	themesOptionsContent,
-	contentSliderPostsContent,
-}) => {
 	const FlexibleContentComponent =
 		"DefaultTemplate_Flexiblecontent_FlexibleContent";
 	return (
 		<>
-			{content?.length > 0 ? (
-				content.map((item: any, keys: any) => (
+			{content.content?.length > 0 ? (
+				content.content.map((item: any, keys: any) => (
 					<div key={keys}>
 						{item?.fieldGroupName ===
 						`${FlexibleContentComponent}_HeroSection` ? (
@@ -259,8 +106,6 @@ const RenderFlexibleContent: FC<IFlexibleContent> = ({
 									pointOne={item?.pointOne}
 									pointTwo={item?.pointTwo}
 									paragraph={item?.paragraph}
-									stripePremiumPlan={stripePremiumPlan}
-									stripeStandardPlan={stripeStandardPlan}
 									paymentProviders={item?.paymentProviders}
 								/>
 							</>
@@ -284,11 +129,7 @@ const RenderFlexibleContent: FC<IFlexibleContent> = ({
 						) : item?.fieldGroupName ===
 						  `${FlexibleContentComponent}_ContentSliderAuto` ? (
 							<>
-								<ContentSlider
-									content={contentSliderPostsContent?.content[0]}
-									contentTwo={contentSliderPostsContent?.content[1]}
-									contentThree={contentSliderPostsContent?.content[2]}
-								/>
+								<ContentSlider />
 							</>
 						) : item?.fieldGroupName ===
 						  `${FlexibleContentComponent}_TrustedBrands` ? (
@@ -338,7 +179,6 @@ const RenderFlexibleContent: FC<IFlexibleContent> = ({
 									title={item?.title}
 									italic={item?.italic}
 									paragraph={item?.paragraph}
-									operationalInsights={operationalInsights}
 								/>
 							</>
 						) : item?.fieldGroupName ===
@@ -353,15 +193,7 @@ const RenderFlexibleContent: FC<IFlexibleContent> = ({
 						) : item?.fieldGroupName ===
 						  `${FlexibleContentComponent}_ContactInfo` ? (
 							<>
-								<ContactInfo
-									title={item?.title}
-									paragraph={item?.paragraph}
-									email={themesOptionsContent?.email}
-									address={themesOptionsContent?.address}
-									emailTwo={themesOptionsContent?.emailTwo}
-									phoneNumber={themesOptionsContent?.phoneNumber}
-									phoneNumberTwo={themesOptionsContent?.phoneNumberTwo}
-								/>
+								<ContactInfo title={item?.title} paragraph={item?.paragraph} />
 							</>
 						) : item?.fieldGroupName ===
 						  `${FlexibleContentComponent}_ContactForm` ? (

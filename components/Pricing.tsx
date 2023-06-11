@@ -2,6 +2,7 @@
 import {FC} from "react";
 import Link from "next/link";
 import {motion} from "framer-motion";
+import {useContentContext} from "@/context/context";
 import {initial, fadeInUp, stagger} from "../animations/animations";
 
 // Components
@@ -22,18 +23,6 @@ interface IProps {
 				bulletPoint: string;
 			}
 		];
-	};
-	stripePremiumPlan: {
-		name: string;
-		description: string;
-		price: number;
-		paymentRecurringInterval: string;
-	};
-	stripeStandardPlan: {
-		name: string;
-		description: string;
-		price: number;
-		paymentRecurringInterval: string;
 	};
 	paymentProviders: [
 		{
@@ -58,9 +47,9 @@ const Pricing: FC<IProps> = ({
 	pointTwo,
 	paragraph,
 	paymentProviders,
-	stripePremiumPlan,
-	stripeStandardPlan,
 }) => {
+	const content = useContentContext();
+
 	return (
 		<section
 			id="Pricing"
@@ -177,10 +166,12 @@ const Pricing: FC<IProps> = ({
 										viewport={{once: true}}
 										className="block mb-2 text-2xl font-semibold text-darkBlue"
 									>
-										{stripeStandardPlan?.name}
+										{content.stripePlans.stripeStandardPlan?.name}
 									</motion.span>
 									<Paragraph
-										content={stripeStandardPlan?.description}
+										content={
+											content.stripePlans.stripeStandardPlan?.description
+										}
 										tailwindStyling="mb-6 mt-3 text-black"
 									/>
 									<motion.span
@@ -190,10 +181,14 @@ const Pricing: FC<IProps> = ({
 										className="flex items-end"
 									>
 										<span className="text-5xl font-extrabold leading-none text-darkBlue">
-											£{stripeStandardPlan?.price}
+											£{content.stripePlans.stripeStandardPlan?.price}
 										</span>
 										<span className="text-darkBlue">
-											/{stripeStandardPlan?.paymentRecurringInterval}
+											/
+											{
+												content.stripePlans.stripeStandardPlan
+													?.paymentRecurringInterval
+											}
 										</span>
 									</motion.span>
 									<motion.div
@@ -385,10 +380,10 @@ const Pricing: FC<IProps> = ({
 										viewport={{once: true}}
 										className="block mb-2 text-2xl font-semibold text-white"
 									>
-										{stripePremiumPlan?.name}
+										{content.stripePlans.stripePremiumPlan?.name}
 									</motion.span>
 									<Paragraph
-										content={stripePremiumPlan?.description}
+										content={content.stripePlans.stripePremiumPlan?.description}
 										tailwindStyling="mb-6 mt-3 text-white"
 									/>
 									<motion.span
@@ -398,10 +393,14 @@ const Pricing: FC<IProps> = ({
 										className="flex items-end"
 									>
 										<span className="text-5xl font-extrabold leading-none text-white">
-											£{stripePremiumPlan?.price}
+											£{content.stripePlans.stripePremiumPlan?.price}
 										</span>
 										<span className="text-white">
-											/{stripePremiumPlan?.paymentRecurringInterval}
+											/
+											{
+												content.stripePlans.stripePremiumPlan
+													?.paymentRecurringInterval
+											}
 										</span>
 									</motion.span>
 									<motion.div

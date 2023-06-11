@@ -1,16 +1,17 @@
 // Imports
-import {motion} from "framer-motion";
 import {
 	getMainMenuLinks,
 	getNavbarMenuLinks,
 	getFooterMenuLinks,
 	getIndustriesMenuLinks,
 } from "../../functions/GetAllMenuLinks";
-import type {NextPage, GetStaticProps} from "next";
 import {
 	getAllOperationalInsightsContent,
 	getAllOperationalInsightsPostsSlugs,
 } from "../../functions/GetAllOperationalInsightsPostsSlugs";
+import {motion} from "framer-motion";
+import {ContentContext} from "@/context/context";
+import type {NextPage, GetStaticProps} from "next";
 import {getThemesOptionsContent} from "../../functions/GetAllThemesOptions";
 import {getAllStripePaymentPlans} from "@/functions/stripe/GetStripePaymentPlans";
 import {getContentSliderBlogPostsPostsContent} from "@/functions/GetAllContentSliderPosts";
@@ -289,7 +290,6 @@ const dynamicOperationalInsightsPosts: NextPage<
 > = ({
 	seo,
 	content,
-	pageTitle,
 	stripePlans,
 	navbarMenuLinks,
 	footerMenuLinks,
@@ -299,31 +299,31 @@ const dynamicOperationalInsightsPosts: NextPage<
 	contentSliderPostsContent,
 }) => {
 	return (
-		<motion.div
-			exit={{
-				opacity: 0,
+		<ContentContext.Provider
+			value={{
+				seo: seo,
+				content: content,
+				stripePlans: stripePlans,
+				navbarMenuLinks: navbarMenuLinks,
+				footerMenuLinks: footerMenuLinks,
+				industriesMenuLinks: industriesMenuLinks,
+				operationalInsights: operationalInsights,
+				themesOptionsContent: themesOptionsContent,
+				contentSliderPostsContent: contentSliderPostsContent,
 			}}
-			initial="initial"
-			animate="animate"
 		>
-			<Layout
-				seo={seo}
-				pageTitle={pageTitle}
-				themesOptionsContent={themesOptionsContent}
-				footerMenuLinks={footerMenuLinks?.footerMenuLinks}
-				navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks}
-				industriesMenuLinks={industriesMenuLinks?.industriesMenuLinks}
+			<motion.div
+				exit={{
+					opacity: 0,
+				}}
+				initial="initial"
+				animate="animate"
 			>
-				<RenderFlexibleContent
-					content={content}
-					operationalInsights={operationalInsights}
-					themesOptionsContent={themesOptionsContent}
-					stripePremiumPlan={stripePlans?.stripePremiumPlan}
-					stripeStandardPlan={stripePlans?.stripeStandardPlan}
-					contentSliderPostsContent={contentSliderPostsContent}
-				/>
-			</Layout>
-		</motion.div>
+				<Layout>
+					<RenderFlexibleContent />
+				</Layout>
+			</motion.div>
+		</ContentContext.Provider>
 	);
 };
 

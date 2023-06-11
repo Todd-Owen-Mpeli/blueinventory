@@ -2,30 +2,20 @@
 import {FC} from "react";
 import Link from "next/link";
 import {motion} from "framer-motion";
+import {useContentContext} from "@/context/context";
 import {initial, fadeInUp, stagger} from "../animations/animations";
 
 // Components
 import Paragraph from "./Elements/Paragraph";
 
 interface IProps {
-	email: string;
 	title: string;
-	address: string;
-	emailTwo: string;
 	paragraph: string;
-	phoneNumber: string;
-	phoneNumberTwo: string;
 }
 
-const ContactInfo: FC<IProps> = ({
-	email,
-	title,
-	address,
-	emailTwo,
-	paragraph,
-	phoneNumber,
-	phoneNumberTwo,
-}) => {
+const ContactInfo: FC<IProps> = ({title, paragraph}) => {
+	const content = useContentContext();
+
 	return (
 		<section className="py-20 bg-white lg:px-4">
 			<div className="container px-4 mx-auto">
@@ -66,7 +56,7 @@ const ContactInfo: FC<IProps> = ({
 								Address
 							</motion.h3>
 							<Paragraph
-								content={address}
+								content={content.themesOptionsContent.address}
 								tailwindStyling="w-full lg:max-w-3xl text-center lg:text-left text-black"
 							/>
 						</motion.div>
@@ -96,9 +86,9 @@ const ContactInfo: FC<IProps> = ({
 								>
 									<Link
 										className="font-medium tracking-wide text-black hover:text-goldPrime"
-										href={`mailto:${email}`}
+										href={`mailto:${content.themesOptionsContent.email}`}
 									>
-										{email}
+										{content.themesOptionsContent.email}
 									</Link>
 								</motion.div>
 								<motion.div
@@ -108,9 +98,9 @@ const ContactInfo: FC<IProps> = ({
 								>
 									<Link
 										className="font-medium tracking-wide text-black hover:text-goldPrime"
-										href={`mailto:${emailTwo}`}
+										href={`mailto:${content.themesOptionsContent.emailTwo}`}
 									>
-										{emailTwo}
+										{content.themesOptionsContent.emailTwo}
 									</Link>
 								</motion.div>
 							</motion.div>

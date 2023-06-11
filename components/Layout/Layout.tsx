@@ -9,80 +9,19 @@ import MetaTag from "../Meta/MetaTag";
 import CookiePolicyCard from "../Elements/CookiePolicyCard";
 
 interface ILayout {
-	seo: any;
-	pageTitle: string;
-	footerMenuLinks: [
-		{
-			node: {
-				id: string;
-				url: string;
-				label: string;
-			};
-		}
-	];
-	navbarMenuLinks: [
-		{
-			node: {
-				id: string;
-				url: string;
-				label: string;
-			};
-		}
-	];
-	industriesMenuLinks: [
-		{
-			node: {
-				id: string;
-				url: string;
-				label: string;
-			};
-		}
-	];
-	themesOptionsContent: {
-		email: string;
-		emailTwo: string;
-		phoneNumber: string;
-		phoneNumberTwo: string;
-		twitterLink: string;
-		facebookLink: string;
-		linkedinLink: string;
-		copyrightText: string;
-	};
 	children: React.ReactNode;
 }
 
-const Layout: FC<ILayout> = ({
-	seo,
-	children,
-	pageTitle,
-	footerMenuLinks,
-	navbarMenuLinks,
-	industriesMenuLinks,
-	themesOptionsContent,
-}) => {
+const Layout: FC<ILayout> = ({children}) => {
 	return (
 		<>
-			<MetaTag title={pageTitle} seo={seo} />
+			<MetaTag />
 
-			<Navbar
-				navbarMenuLinks={navbarMenuLinks}
-				themesOptionsContent={themesOptionsContent}
-			/>
+			<Navbar />
 
 			<section className="pt-16">{children}</section>
 
-			<Footer
-				footerMenuLinks={footerMenuLinks}
-				email={themesOptionsContent?.email}
-				industriesMenuLinks={industriesMenuLinks}
-				emailTwo={themesOptionsContent?.emailTwo}
-				phoneNumber={themesOptionsContent?.phoneNumber}
-				twitterLink={themesOptionsContent?.twitterLink}
-				facebookLink={themesOptionsContent?.facebookLink}
-				linkedinLink={themesOptionsContent?.linkedinLink}
-				copyrightText={themesOptionsContent?.copyrightText}
-				phoneNumberTwo={themesOptionsContent?.phoneNumberTwo}
-			/>
+			<Footer />
 
 			{/* Cookie Policy Pop Up */}
 			{postHog.has_opted_in_capturing() ||

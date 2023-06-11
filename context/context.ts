@@ -1,20 +1,6 @@
-// Imports
-import {
-	getNavbarMenuLinks,
-	getFooterMenuLinks,
-	getIndustriesMenuLinks,
-} from "@/functions/GetAllMenuLinks";
-import {motion} from "framer-motion";
-import {ContentContext} from "@/context/context";
-import type {GetStaticProps, NextPage} from "next";
+import {createContext, useContext} from "react";
 
-// Components
-import SignUp from "@/components/SignUp";
-import LayoutTwo from "@/components/Layout/LayoutTwo";
-
-import {getThemesOptionsContent} from "@/functions/GetAllThemesOptions";
-
-interface ISignUpPage {
+interface IDynamicContent {
 	seo: {
 		canonical: string;
 		cornerstone: Boolean;
@@ -276,76 +262,16 @@ interface ISignUpPage {
 	};
 }
 
-const signUpPage: NextPage<ISignUpPage> = ({
-	seo,
-	content,
-	stripePlans,
-	navbarMenuLinks,
-	footerMenuLinks,
-	industriesMenuLinks,
-	operationalInsights,
-	themesOptionsContent,
-	contentSliderPostsContent,
-}) => (
-	<ContentContext.Provider
-		value={{
-			seo: seo,
-			content: content,
-			stripePlans: stripePlans,
-			navbarMenuLinks: navbarMenuLinks,
-			footerMenuLinks: footerMenuLinks,
-			industriesMenuLinks: industriesMenuLinks,
-			operationalInsights: operationalInsights,
-			themesOptionsContent: themesOptionsContent,
-			contentSliderPostsContent: contentSliderPostsContent,
-		}}
-	>
-		<motion.div
-			exit={{
-				opacity: 0,
-			}}
-			initial="initial"
-			animate="animate"
-			className="min-h-screen bg-white bg-center bg-no-repeat bg-cover"
-			style={{
-				backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue-pink-red-yellow.svg")`,
-			}}
-		>
-			<LayoutTwo pageTitle={`Sign Up`}>
-				<section className="container flex flex-col items-center justify-center min-h-screen px-4 py-10 mx-auto overflow-hidden">
-					<SignUp
-						title={`Sign Up today`}
-						paragraph={`We kindly request you to enter your details.`}
-					/>
-				</section>
-			</LayoutTwo>
-		</motion.div>
-	</ContentContext.Provider>
+export const ContentContext = createContext<IDynamicContent | undefined>(
+	undefined
 );
 
-export const getStaticProps: GetStaticProps = async () => {
-	// Fetch remaining content simultaneously
-	const [
-		navbarMenuLinks,
-		footerMenuLinks,
-		industriesMenuLinks,
-		themesOptionsContent,
-	] = await Promise.all([
-		getNavbarMenuLinks(),
-		getFooterMenuLinks(),
-		getIndustriesMenuLinks(),
-		getThemesOptionsContent(),
-	]);
+export const useContentContext = () => {
+	const content = useContext(ContentContext);
 
-	return {
-		props: {
-			navbarMenuLinks,
-			footerMenuLinks,
-			industriesMenuLinks,
-			themesOptionsContent,
-		},
-		revalidate: 60,
-	};
+	if (content === undefined) {
+		throw new Error(`useDynamicPagesContext must be used to render content.`);
+	}
+
+	return content;
 };
-
-export default signUpPage;

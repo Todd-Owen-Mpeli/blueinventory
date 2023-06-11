@@ -1,6 +1,7 @@
 // Imports
 import {FC} from "react";
 import {motion} from "framer-motion";
+import {useContentContext} from "@/context/context";
 import {initial, fadeInUp, stagger} from "../animations/animations";
 
 // Components
@@ -11,44 +12,11 @@ interface IProps {
 	title: string;
 	italic: string;
 	paragraph: string;
-	operationalInsights: [
-		{
-			node: {
-				id: string;
-				uri: string;
-				title: string;
-				featuredImage: {
-					node: {
-						altText: string;
-						sourceUrl: string;
-						mediaDetails: {
-							width: number;
-							height: number;
-						};
-					};
-				};
-				template: {
-					flexibleContent: {
-						flexibleContent: [
-							{
-								fieldGroupName: string;
-								paragraph: string;
-								title: string;
-							}
-						];
-					};
-				};
-			};
-		}
-	];
 }
 
-const operationalInsights: FC<IProps> = ({
-	title,
-	italic,
-	paragraph,
-	operationalInsights,
-}) => {
+const operationalInsights: FC<IProps> = ({title, italic, paragraph}) => {
+	// eslint-disable-next-line react-hooks/rules-of-hooks
+	const content = useContentContext();
 	return (
 		<section className="py-24 bg-white">
 			<div className="container px-4 mx-auto">
@@ -92,8 +60,8 @@ const operationalInsights: FC<IProps> = ({
 					viewport={{once: true}}
 					className="grid gap-4 mb-16 -m-4 sm:gap-y-2 sm:gap-x-0 lg:gap-4 grid-col md:grid-cols-2 lg:grid-cols-3"
 				>
-					{operationalInsights?.length > 0 ? (
-						operationalInsights.map((item, keys) => (
+					{content.operationalInsights?.length > 0 ? (
+						content.operationalInsights.map((item, keys) => (
 							<OperationalInsightsCard
 								key={keys}
 								uri={item?.node?.uri}

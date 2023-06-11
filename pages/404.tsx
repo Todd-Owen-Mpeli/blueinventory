@@ -7,6 +7,7 @@ import {
 } from "../functions/GetAllMenuLinks";
 import {motion} from "framer-motion";
 import type {NextPage, GetStaticProps} from "next";
+import {ContentContext} from "@/context/context";
 import {getAllSeoPagesContent} from "@/functions/GetAllSeoPagesContent";
 import {getThemesOptionsContent} from "../functions/GetAllThemesOptions";
 import {getAllStripePaymentPlans} from "@/functions/stripe/GetStripePaymentPlans";
@@ -49,7 +50,6 @@ interface INoPageExits {
 		};
 	};
 	content: any;
-	pageTitle: any;
 	stripePlans: {
 		stripePrices:
 			| [
@@ -284,7 +284,6 @@ interface INoPageExits {
 const noPageExits: NextPage<INoPageExits> = ({
 	seo,
 	content,
-	pageTitle,
 	stripePlans,
 	navbarMenuLinks,
 	footerMenuLinks,
@@ -294,35 +293,35 @@ const noPageExits: NextPage<INoPageExits> = ({
 	contentSliderPostsContent,
 }) => {
 	return (
-		<motion.div
-			exit={{
-				opacity: 0,
-			}}
-			initial="initial"
-			animate="animate"
-			className="min-h-screen bg-white bg-center bg-no-repeat bg-cover"
-			style={{
-				backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue-pink-red-yellow.svg")`,
+		<ContentContext.Provider
+			value={{
+				seo: seo,
+				content: content,
+				stripePlans: stripePlans,
+				navbarMenuLinks: navbarMenuLinks,
+				footerMenuLinks: footerMenuLinks,
+				industriesMenuLinks: industriesMenuLinks,
+				operationalInsights: operationalInsights,
+				themesOptionsContent: themesOptionsContent,
+				contentSliderPostsContent: contentSliderPostsContent,
 			}}
 		>
-			<Layout
-				seo={seo}
-				pageTitle={pageTitle}
-				themesOptionsContent={themesOptionsContent}
-				footerMenuLinks={footerMenuLinks?.footerMenuLinks}
-				navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks}
-				industriesMenuLinks={industriesMenuLinks?.industriesMenuLinks}
+			<motion.div
+				exit={{
+					opacity: 0,
+				}}
+				initial="initial"
+				animate="animate"
+				className="min-h-screen bg-white bg-center bg-no-repeat bg-cover"
+				style={{
+					backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue-pink-red-yellow.svg")`,
+				}}
 			>
-				<RenderFlexibleContent
-					content={content}
-					operationalInsights={operationalInsights}
-					themesOptionsContent={themesOptionsContent}
-					stripePremiumPlan={stripePlans?.stripePremiumPlan}
-					stripeStandardPlan={stripePlans?.stripeStandardPlan}
-					contentSliderPostsContent={contentSliderPostsContent}
-				/>
-			</Layout>
-		</motion.div>
+				<Layout>
+					<RenderFlexibleContent />
+				</Layout>
+			</motion.div>
+		</ContentContext.Provider>
 	);
 };
 

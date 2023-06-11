@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import {motion} from "framer-motion";
 import {getAuth, signOut} from "firebase/auth";
+import {useContentContext} from "@/context/context";
 import styles from "../styles/components/Hero.module.scss";
 import {initial, fadeInUp, stagger} from "../animations/animations";
 
@@ -19,35 +20,18 @@ interface NavbarProps {
 		displayName: string;
 		profileImageURL: string;
 	};
-	email: string;
-	phoneNumber: string;
-	twitterLink: string;
-	facebookLink: string;
-	linkedinLink: string;
 	signedInUser: boolean;
 	revealMobileMenu: boolean;
-	navbarMenuLinks: [
-		{
-			node: {
-				id: string;
-				url: string;
-				label: string;
-			};
-		}
-	];
 }
 
 const mobileNavbar: FC<NavbarProps> = ({
 	user,
-	email,
-	phoneNumber,
-	twitterLink,
-	facebookLink,
-	linkedinLink,
 	signedInUser,
-	navbarMenuLinks,
 	revealMobileMenu,
 }) => {
+	// eslint-disable-next-line react-hooks/rules-of-hooks
+	const content = useContentContext();
+
 	const auth = getAuth();
 
 	// Handles User Logout
@@ -139,8 +123,8 @@ const mobileNavbar: FC<NavbarProps> = ({
 									Home
 								</Link>
 							</motion.li>
-							{navbarMenuLinks?.length > 0 ? (
-								navbarMenuLinks?.map((item, keys) => (
+							{content.navbarMenuLinks.navbarMenuLinks?.length > 0 ? (
+								content.navbarMenuLinks.navbarMenuLinks?.map((item, keys) => (
 									<motion.li
 										key={keys}
 										initial={initial}
@@ -178,9 +162,9 @@ const mobileNavbar: FC<NavbarProps> = ({
 								Tel:
 								<Link
 									className="leading-none text-white transition-all duration-500 ease-in-out text-tiny hover:text-goldPrime"
-									href={`tel:${phoneNumber}`}
+									href={`tel:${content.themesOptionsContent.phoneNumber}`}
 								>
-									{phoneNumber}
+									{content.themesOptionsContent.phoneNumber}
 								</Link>
 							</motion.span>
 							<motion.span
@@ -192,9 +176,9 @@ const mobileNavbar: FC<NavbarProps> = ({
 								Email:
 								<Link
 									className="leading-none text-white transition-all duration-500 ease-in-out text-tiny hover:text-goldPrime"
-									href={`mailto:${email}`}
+									href={`mailto:${content.themesOptionsContent.email}`}
 								>
-									{email}
+									{content.themesOptionsContent.email}
 								</Link>
 							</motion.span>
 						</motion.div>
@@ -210,7 +194,7 @@ const mobileNavbar: FC<NavbarProps> = ({
 								viewport={{once: true}}
 								className="inline-block px-1"
 							>
-								<Link href={facebookLink}>
+								<Link href={content.themesOptionsContent.facebookLink}>
 									<svg
 										height="100%"
 										className="w-5 h-5"
@@ -238,7 +222,7 @@ const mobileNavbar: FC<NavbarProps> = ({
 								viewport={{once: true}}
 								className="inline-block px-1"
 							>
-								<Link href={twitterLink}>
+								<Link href={content.themesOptionsContent.twitterLink}>
 									<svg
 										height="100%"
 										className="w-5 h-5"
@@ -266,7 +250,7 @@ const mobileNavbar: FC<NavbarProps> = ({
 								viewport={{once: true}}
 								className="inline-block px-1"
 							>
-								<Link href={linkedinLink}>
+								<Link href={content.themesOptionsContent.linkedinLink}>
 									<svg
 										height="100%"
 										style={{

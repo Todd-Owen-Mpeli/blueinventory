@@ -3,100 +3,126 @@ import Link from "next/link";
 import Image from "next/image";
 import dateFormat from "dateformat";
 import DOMPurify from "isomorphic-dompurify";
-import React, {useEffect, useRef, FC} from "react";
+import React, {useEffect, useRef} from "react";
+import {useContentContext} from "@/context/context";
 import styles from "../styles/components/ContentSlider.module.scss";
 
-interface IProps {
-	content: {
-		uri: string;
-		date: string;
-		title: string;
-		template: {
-			flexibleContent: {
-				flexibleContent: [
-					{
-						fieldGroupName: string;
-						backgroundVideoUrl: string;
-						backgroundImageOrVideo: string;
-						backgroundImage: {
-							altText: string;
-							sourceUrl: string;
-							mediaDetails: {
-								height: number;
-								width: number;
-							};
-						};
-					},
-					{
-						fieldGroupName: string;
-						paragraph: string;
-						title: string;
-					}
-				];
-			};
-		};
-	};
-	contentTwo: {
-		uri: string;
-		date: string;
-		title: string;
-		template: {
-			flexibleContent: {
-				flexibleContent: [
-					{
-						fieldGroupName: string;
-						backgroundVideoUrl: string;
-						backgroundImageOrVideo: string;
-						backgroundImage: {
-							altText: string;
-							sourceUrl: string;
-							mediaDetails: {
-								height: number;
-								width: number;
-							};
-						};
-					},
-					{
-						fieldGroupName: string;
-						paragraph: string;
-						title: string;
-					}
-				];
-			};
-		};
-	};
-	contentThree: {
-		uri: string;
-		date: string;
-		title: string;
-		template: {
-			flexibleContent: {
-				flexibleContent: [
-					{
-						fieldGroupName: string;
-						backgroundVideoUrl: string;
-						backgroundImageOrVideo: string;
-						backgroundImage: {
-							altText: string;
-							sourceUrl: string;
-							mediaDetails: {
-								height: number;
-								width: number;
-							};
-						};
-					},
-					{
-						fieldGroupName: string;
-						paragraph: string;
-						title: string;
-					}
-				];
-			};
-		};
-	};
-}
+const ContentSlider = () => {
+	const content = useContentContext();
 
-const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
+	// Content Slide One
+	const contentOne = {
+		uri: content.contentSliderPostsContent?.content[0]?.uri,
+		date: content.contentSliderPostsContent?.content[0]?.date,
+		title: content.contentSliderPostsContent?.content[0]?.title,
+		paragraph:
+			content.contentSliderPostsContent?.content[0].template.flexibleContent
+				.flexibleContent[1].paragraph,
+		titleTwo:
+			content.contentSliderPostsContent?.content[0].template.flexibleContent
+				.flexibleContent[1].title,
+
+		backgroundVideoUrl:
+			content.contentSliderPostsContent?.content[0]?.template.flexibleContent
+				.flexibleContent[0].backgroundVideoUrl,
+		backgroundImageOrVideo:
+			content.contentSliderPostsContent?.content[0]?.template.flexibleContent
+				.flexibleContent[0].backgroundImageOrVideo,
+		backgroundImage: {
+			altText:
+				content.contentSliderPostsContent?.content[0]?.template.flexibleContent
+					.flexibleContent[0].backgroundImage.altText,
+			sourceUrl:
+				content.contentSliderPostsContent?.content[0]?.template.flexibleContent
+					.flexibleContent[0].backgroundImage.sourceUrl,
+			mediaDetails: {
+				height:
+					content.contentSliderPostsContent?.content[0]?.template
+						.flexibleContent.flexibleContent[0].backgroundImage.mediaDetails
+						.height,
+				width:
+					content.contentSliderPostsContent?.content[0]?.template
+						.flexibleContent.flexibleContent[0].backgroundImage.mediaDetails
+						.width,
+			},
+		},
+	};
+
+	// Content Slide Two
+	const contentTwo = {
+		uri: content.contentSliderPostsContent?.content[1]?.uri,
+		date: content.contentSliderPostsContent?.content[1]?.date,
+		title: content.contentSliderPostsContent?.content[1]?.title,
+		paragraph:
+			content.contentSliderPostsContent?.content[1].template.flexibleContent
+				.flexibleContent[1].paragraph,
+		titleTwo:
+			content.contentSliderPostsContent?.content[1].template.flexibleContent
+				.flexibleContent[1].title,
+
+		backgroundVideoUrl:
+			content.contentSliderPostsContent?.content[1]?.template.flexibleContent
+				.flexibleContent[0]?.backgroundVideoUrl,
+		backgroundImageOrVideo:
+			content.contentSliderPostsContent?.content[1]?.template.flexibleContent
+				.flexibleContent[0].backgroundImageOrVideo,
+		backgroundImage: {
+			altText:
+				content.contentSliderPostsContent?.content[1]?.template.flexibleContent
+					.flexibleContent[0].backgroundImage.altText,
+			sourceUrl:
+				content.contentSliderPostsContent?.content[1]?.template.flexibleContent
+					.flexibleContent[0].backgroundImage.sourceUrl,
+			mediaDetails: {
+				height:
+					content.contentSliderPostsContent?.content[1]?.template
+						.flexibleContent.flexibleContent[0].backgroundImage.mediaDetails
+						.height,
+				width:
+					content.contentSliderPostsContent?.content[1]?.template
+						.flexibleContent.flexibleContent[0].backgroundImage.mediaDetails
+						.width,
+			},
+		},
+	};
+
+	// Content Slide Three
+	const contentThree = {
+		uri: content.contentSliderPostsContent?.content[2]?.uri,
+		date: content.contentSliderPostsContent?.content[2]?.date,
+		title: content.contentSliderPostsContent?.content[2]?.title,
+		paragraph:
+			content.contentSliderPostsContent?.content[2].template.flexibleContent
+				.flexibleContent[1].paragraph,
+		titleTwo:
+			content.contentSliderPostsContent?.content[2].template.flexibleContent
+				.flexibleContent[1].title,
+
+		backgroundVideoUrl:
+			content.contentSliderPostsContent?.content[2]?.template.flexibleContent
+				.flexibleContent[0]?.backgroundVideoUrl,
+		backgroundImageOrVideo:
+			content.contentSliderPostsContent?.content[2]?.template.flexibleContent
+				.flexibleContent[0].backgroundImageOrVideo,
+		backgroundImage: {
+			altText:
+				content.contentSliderPostsContent?.content[2]?.template.flexibleContent
+					.flexibleContent[0].backgroundImage.altText,
+			sourceUrl:
+				content.contentSliderPostsContent?.content[2]?.template.flexibleContent
+					.flexibleContent[0].backgroundImage.sourceUrl,
+			mediaDetails: {
+				height:
+					content.contentSliderPostsContent?.content[2]?.template
+						.flexibleContent.flexibleContent[0].backgroundImage.mediaDetails
+						.height,
+				width:
+					content.contentSliderPostsContent?.content[2]?.template
+						.flexibleContent.flexibleContent[0].backgroundImage.mediaDetails
+						.width,
+			},
+		},
+	};
 	/* Sanitize the WYSIWYG paragraph content */
 	function createTrimmedParagraphMarkup(paragraphContent: string) {
 		const sanitizedContent: string = DOMPurify.sanitize(paragraphContent);
@@ -206,7 +232,7 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 							<div
 								className="absolute top-0 bottom-0 left-0 w-full h-full overflow-hidden bg-center bg-no-repeat bg-cover main-post__image"
 								style={{
-									backgroundImage: `url("${content?.template?.flexibleContent?.flexibleContent[0]?.backgroundImage?.sourceUrl}")`,
+									backgroundImage: `url("${contentOne.backgroundImage?.sourceUrl}")`,
 								}}
 							>
 								{/* Background Video */}
@@ -215,69 +241,51 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 										<iframe
 											allowFullScreen
 											className={
-												content?.template?.flexibleContent?.flexibleContent[0]
-													?.backgroundImageOrVideo === "Video"
+												contentOne.backgroundImageOrVideo === "Video"
 													? "absolute top-0 left-0 border-none w-full h-full"
 													: `hidden`
 											}
-											src={
-												content?.template?.flexibleContent?.flexibleContent[0]
-													?.backgroundVideoUrl
-											}
+											src={contentOne.backgroundVideoUrl}
 										/>
 									</div>
 								</div>
 
 								{/* Image */}
 								<Image
-									width={
-										content?.template?.flexibleContent?.flexibleContent[0]
-											?.backgroundImage?.mediaDetails?.width
-									}
-									height={
-										content?.template?.flexibleContent?.flexibleContent[0]
-											?.backgroundImage?.mediaDetails?.height
-									}
+									width={contentOne.backgroundImage?.mediaDetails?.width}
+									height={contentOne.backgroundImage?.mediaDetails?.height}
 									className={
-										content?.template?.flexibleContent?.flexibleContent[0]
-											?.backgroundImageOrVideo === "Image"
+										contentOne.backgroundImageOrVideo === "Image"
 											? `block ${mainImageVideoTailwindcss}`
 											: ` hidden`
 									}
-									src={
-										content?.template?.flexibleContent?.flexibleContent[0]
-											?.backgroundImage?.sourceUrl
-									}
-									alt={`${content?.template?.flexibleContent?.flexibleContent[0]?.backgroundImage?.altText} image`}
+									src={contentOne.backgroundImage?.sourceUrl}
+									alt={`${contentOne.backgroundImage?.altText} image`}
 								/>
 							</div>
 							<div className="absolute top-[35%] sm:top-[50%] lg:top-[20%] xl:top-[25%] :top-[35%] left-[4%] transform translate-y-[-40%] text-white w-[90%]">
 								<div className="inline-flex m-0 overflow-hidden tag">
 									<span className="py-[6px] px-6 bg-goldPrime">
-										{
-											content?.template?.flexibleContent?.flexibleContent[0]
-												?.backgroundImageOrVideo
-										}
+										{contentOne.backgroundImageOrVideo}
 									</span>
 								</div>
 								<h2
 									className="title py-4 lg:py-8 text-white text-6xl md:text-7xl lg:text-8xl w-full lg:w-[55rem] leading-[3rem] lg:leading-[4rem]"
 									style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
 								>
-									{content?.title}
+									{contentOne?.title}
 								</h2>
 								<Link
 									href={
-										content?.uri
-											? `/operational-insights${content?.uri}`
+										contentOne?.uri
+											? `/operational-insights${contentOne?.uri}`
 											: `/operational-insights`
 									}
 									className="postLink text-white uppercase tracking-[0.25rem] inline-flex items-center no-underline hover:text-goldPrime hover:stroke-goldPrime"
 								>
 									<svg
 										className={
-											content?.template?.flexibleContent?.flexibleContent[0]
-												?.backgroundImageOrVideo === "Video"
+											contentOne.backgroundImageOrVideo === "Video"
 												? `block mr-[12px]`
 												: ` hidden`
 										}
@@ -297,7 +305,7 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 										<path d="M14 10L8 6V14L14 10Z" fill="white" />
 									</svg>
 									<span className="font-semibold text-medium hover:text-blue">
-										{content?.title}
+										{contentOne.title}
 									</span>
 									<svg
 										className="ml-[12px]"
@@ -321,7 +329,7 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 							<div
 								className="absolute top-0 bottom-0 left-0 w-full h-full overflow-hidden bg-center bg-no-repeat bg-cover"
 								style={{
-									backgroundImage: `url("${contentTwo?.template?.flexibleContent?.flexibleContent[0]?.backgroundImage?.sourceUrl}")`,
+									backgroundImage: `url("${contentTwo.backgroundImage?.sourceUrl}")`,
 								}}
 							>
 								{/* Background Video */}
@@ -330,50 +338,32 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 										<iframe
 											allowFullScreen
 											className={
-												contentTwo?.template?.flexibleContent
-													?.flexibleContent[0]?.backgroundImageOrVideo ===
-												"Video"
+												contentTwo.backgroundImageOrVideo === "Video"
 													? "absolute top-0 left-0 border-none w-full h-full"
 													: `hidden`
 											}
-											src={
-												contentTwo?.template?.flexibleContent
-													?.flexibleContent[0]?.backgroundVideoUrl
-											}
+											src={contentTwo.backgroundVideoUrl}
 										/>
 									</div>
 								</div>
 
 								{/* Image */}
 								<Image
-									width={
-										contentTwo?.template?.flexibleContent?.flexibleContent[0]
-											?.backgroundImage?.mediaDetails?.width
-									}
-									height={
-										contentTwo?.template?.flexibleContent?.flexibleContent[0]
-											?.backgroundImage?.mediaDetails?.height
-									}
+									width={contentTwo.backgroundImage?.mediaDetails?.width}
+									height={contentTwo.backgroundImage?.mediaDetails?.height}
 									className={
-										contentTwo?.template?.flexibleContent?.flexibleContent[0]
-											?.backgroundImageOrVideo === "Image"
+										contentTwo.backgroundImageOrVideo === "Image"
 											? `block ${mainImageVideoTailwindcss}`
 											: ` hidden`
 									}
-									src={
-										contentTwo?.template?.flexibleContent?.flexibleContent[0]
-											?.backgroundImage?.sourceUrl
-									}
-									alt={`${contentTwo?.template?.flexibleContent?.flexibleContent[0]?.backgroundImage?.altText} image`}
+									src={contentTwo.backgroundImage?.sourceUrl}
+									alt={`${contentTwo.backgroundImage?.altText} image`}
 								/>
 							</div>
 							<div className="absolute top-[35%] sm:top-[50%] lg:top-[20%] xl:top-[25%] :top-[35%] left-[4%] transform translate-y-[-40%] text-white w-[90%]">
 								<div className="inline-flex m-0 overflow-hidden tag">
 									<span className="py-[6px] px-6 bg-goldPrime">
-										{
-											contentTwo?.template?.flexibleContent?.flexibleContent[0]
-												?.backgroundImageOrVideo
-										}
+										{contentTwo.backgroundImageOrVideo}
 									</span>
 								</div>
 								<h2
@@ -392,8 +382,7 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 								>
 									<svg
 										className={
-											contentTwo?.template?.flexibleContent?.flexibleContent[0]
-												?.backgroundImageOrVideo === "Video"
+											contentTwo.backgroundImageOrVideo === "Video"
 												? `block mr-[12px]`
 												: ` hidden`
 										}
@@ -437,7 +426,7 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 							<div
 								className="absolute top-0 bottom-0 left-0 w-full h-full overflow-hidden bg-center bg-no-repeat bg-cover"
 								style={{
-									backgroundImage: `url("${contentThree?.template?.flexibleContent?.flexibleContent[0]?.backgroundImage?.sourceUrl}")`,
+									backgroundImage: `url("${contentThree.backgroundImage?.sourceUrl}")`,
 								}}
 							>
 								{/* Background Video */}
@@ -446,50 +435,32 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 										<iframe
 											allowFullScreen
 											className={
-												contentThree?.template?.flexibleContent
-													?.flexibleContent[0]?.backgroundImageOrVideo ===
-												"Video"
+												contentThree.backgroundImageOrVideo === "Video"
 													? "absolute top-0 left-0 border-none w-full h-full"
 													: `hidden`
 											}
-											src={
-												contentThree?.template?.flexibleContent
-													?.flexibleContent[0]?.backgroundVideoUrl
-											}
+											src={contentThree.backgroundVideoUrl}
 										/>
 									</div>
 								</div>
 
 								{/* Image */}
 								<Image
-									width={
-										contentThree?.template?.flexibleContent?.flexibleContent[0]
-											?.backgroundImage?.mediaDetails?.width
-									}
-									height={
-										contentThree?.template?.flexibleContent?.flexibleContent[0]
-											?.backgroundImage?.mediaDetails?.height
-									}
+									width={contentThree.backgroundImage?.mediaDetails?.width}
+									height={contentThree.backgroundImage?.mediaDetails?.height}
 									className={
-										contentThree?.template?.flexibleContent?.flexibleContent[0]
-											?.backgroundImageOrVideo === "Image"
+										contentThree.backgroundImageOrVideo === "Image"
 											? `block ${mainImageVideoTailwindcss}`
 											: ` hidden`
 									}
-									src={
-										contentThree?.template?.flexibleContent?.flexibleContent[0]
-											?.backgroundImage?.sourceUrl
-									}
-									alt={`${contentThree?.template?.flexibleContent?.flexibleContent[0]?.backgroundImage?.altText} image`}
+									src={contentThree.backgroundImage?.sourceUrl}
+									alt={`${contentThree.backgroundImage?.altText} image`}
 								/>
 							</div>
 							<div className="absolute top-[35%] sm:top-[50%] lg:top-[20%] xl:top-[25%] :top-[35%] left-[4%] transform translate-y-[-40%] text-white w-[90%]">
 								<div className="inline-flex m-0 overflow-hidden tag">
 									<span className="py-[6px] px-6 bg-goldPrime">
-										{
-											contentThree?.template?.flexibleContent
-												?.flexibleContent[0]?.backgroundImageOrVideo
-										}
+										{contentThree.backgroundImageOrVideo}
 									</span>
 								</div>
 								<h2
@@ -508,8 +479,7 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 								>
 									<svg
 										className={
-											contentThree?.template?.flexibleContent
-												?.flexibleContent[0]?.backgroundImageOrVideo === "Video"
+											contentThree.backgroundImageOrVideo === "Video"
 												? `block mr-[12px]`
 												: ` hidden`
 										}
@@ -556,8 +526,8 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 					>
 						<Link
 							href={
-								content?.uri
-									? `/operational-insights${content?.uri}`
+								contentOne?.uri
+									? `/operational-insights${contentOne?.uri}`
 									: `/operational-insights`
 							}
 						>
@@ -568,13 +538,10 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 							</div>
 							<header className="flex items-center justify-between header">
 								<span className="text-sm text-white uppercase">
-									{
-										content?.template?.flexibleContent?.flexibleContent[0]
-											?.backgroundImageOrVideo
-									}
+									{contentOne.backgroundImageOrVideo}
 								</span>
 								<span className="text-sm text-white ">
-									{dateFormat(new Date(content?.date), "dddd, mmmm d, yyyy")}
+									{dateFormat(new Date(contentOne?.date), "dddd, mmmm d, yyyy")}
 								</span>
 							</header>
 							<div className="flex flex-col justify-between gap-4">
@@ -582,21 +549,16 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 									className="title py-4 mt-8 text-white text-xl leading-[2rem]"
 									style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
 								>
-									{
-										content?.template?.flexibleContent?.flexibleContent[1]
-											?.title
-									}
+									{contentOne.title}
 								</h3>
 								<div
 									className={
-										content?.template?.flexibleContent?.flexibleContent[1]
-											?.paragraph
+										contentOne.paragraph
 											? `block paragraph mt-2 text-white text-base text-left leading-[1.5rem]`
 											: `hidden`
 									}
 									dangerouslySetInnerHTML={createTrimmedParagraphMarkup(
-										content?.template?.flexibleContent?.flexibleContent[1]
-											?.paragraph
+										contentOne.paragraph
 									)}
 								/>
 							</div>
@@ -619,10 +581,7 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 							</div>
 							<header className="flex items-center justify-between header">
 								<span className="text-sm text-white uppercase">
-									{
-										contentTwo?.template?.flexibleContent?.flexibleContent[0]
-											?.backgroundImageOrVideo
-									}
+									{contentTwo.backgroundImageOrVideo}
 								</span>
 								<span className="text-sm text-white ">
 									{dateFormat(new Date(contentTwo?.date), "dddd, mmmm d, yyyy")}
@@ -633,21 +592,16 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 									className="title py-4 mt-8 text-white text-xl leading-[2rem]"
 									style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
 								>
-									{
-										contentTwo?.template?.flexibleContent?.flexibleContent[1]
-											?.title
-									}
+									{contentTwo.title}
 								</h3>
 								<div
 									className={
-										contentTwo?.template?.flexibleContent?.flexibleContent[1]
-											?.paragraph
+										contentTwo.paragraph
 											? `block paragraph mt-2 text-white text-base text-left leading-[1.5rem]`
 											: `hidden`
 									}
 									dangerouslySetInnerHTML={createTrimmedParagraphMarkup(
-										contentTwo?.template?.flexibleContent?.flexibleContent[1]
-											?.paragraph
+										contentTwo.paragraph
 									)}
 								/>
 							</div>
@@ -670,10 +624,7 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 							</div>
 							<header className="flex items-center justify-between header">
 								<span className="text-sm text-white uppercase">
-									{
-										contentThree?.template?.flexibleContent?.flexibleContent[0]
-											?.backgroundImageOrVideo
-									}
+									{contentThree.backgroundImageOrVideo}
 								</span>
 								<span className="text-sm text-white ">
 									{dateFormat(
@@ -687,21 +638,16 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 									className="title py-4 mt-8 text-white text-xl leading-[2rem]"
 									style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
 								>
-									{
-										contentThree?.template?.flexibleContent?.flexibleContent[1]
-											?.title
-									}
+									{contentThree.title}
 								</h3>
 								<div
 									className={
-										contentThree?.template?.flexibleContent?.flexibleContent[1]
-											?.paragraph
+										contentThree.paragraph
 											? `block paragraph mt-2 text-white text-base text-left leading-[1.5rem]`
 											: `hidden`
 									}
 									dangerouslySetInnerHTML={createTrimmedParagraphMarkup(
-										contentThree?.template?.flexibleContent?.flexibleContent[1]
-											?.paragraph
+										contentThree.paragraph
 									)}
 								/>
 							</div>
