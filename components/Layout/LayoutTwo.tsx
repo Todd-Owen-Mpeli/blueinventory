@@ -24,7 +24,7 @@ const Layout: FC<ILayout> = ({children, pageTitle}) => {
 
 			<section className="pt-16">{children}</section>
 
-			{/* <Footer /> */}
+			<Footer />
 		</>
 	);
 };
