@@ -1,15 +1,18 @@
-import {FC} from "react";
-import styled from "styled-components";
-import Paragraph from "./../Elements/Paragraph";
-import {motion} from "framer-motion";
+// Imports
 import {
 	initial,
-	fadeInUp,
 	stagger,
-	slideInRightInitial,
+	fadeInUp,
 	slideInLeftInitial,
 	slideInRightFinish,
+	slideInRightInitial,
 } from "../../animations/animations";
+import {FC} from "react";
+import {motion} from "framer-motion";
+import styled from "styled-components";
+
+// Components
+import Paragraph from "./../Elements/Paragraph";
 
 const ContentImageCard = styled.div`
 	ol,

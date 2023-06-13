@@ -1,4 +1,7 @@
+// Imports
 import {FC} from "react";
+
+// Components
 import ContentImageCard from "./Cards/ContentImageCard";
 
 interface IProps {
