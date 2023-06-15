@@ -1,14 +1,12 @@
 // Imports
 import {FC} from "react";
 import Image from "next/image";
-import Paragraph from "../Elements/Paragraph";
+import {IStatsBulletPointCard} from "@/components/types";
 
-interface IProps {
-	bulletPointText: string;
-	tailwindStyling: string;
-}
+// Components
+import Paragraph from "@/components/Elements/Paragraph";
 
-const StatsBulletPointCard: FC<IProps> = ({
+const StatsBulletPointCard: FC<IStatsBulletPointCard> = ({
 	bulletPointText,
 	tailwindStyling,
 }) => {

@@ -1,28 +1,13 @@
 import {FC} from "react";
 import Image from "next/image";
 import {motion} from "framer-motion";
-import {fadeIn, fadeInUp, initialTwo, initial} from "../animations/animations";
+import {ISustainability} from "@/components/types";
+import {fadeIn, fadeInUp, initialTwo, initial} from "@/animations/animations";
 
 // Components
-import Paragraph from "./Elements/Paragraph";
+import Paragraph from "@/components/Elements/Paragraph";
 
-interface IProps {
-	title: string;
-	subtitle: string;
-	paragraph: string;
-	percentage: string;
-	imageText: string;
-	image: {
-		altText: string;
-		sourceUrl: string;
-		mediaDetails: {
-			height: number;
-			width: number;
-		};
-	};
-}
-
-const Sustainability: FC<IProps> = ({
+const Sustainability: FC<ISustainability> = ({
 	title,
 	subtitle,
 	paragraph,

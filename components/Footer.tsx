@@ -2,10 +2,10 @@
 import Link from "next/link";
 import {motion} from "framer-motion";
 import {useContentContext} from "@/context/context";
-import {initial, initialTwo, fadeIn, stagger} from "../animations/animations";
+import {initial, initialTwo, fadeIn, stagger} from "@/animations/animations";
 
 // Components
-import FooterMenuLinks from "./Elements/FooterMenuLinks";
+import FooterMenuLinks from "@/components/Elements/FooterMenuLinks";
 
 const Footer = () => {
 	const content = useContentContext();

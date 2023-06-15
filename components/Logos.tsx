@@ -1,31 +1,14 @@
 // Imports
 import {FC} from "react";
 import {motion} from "framer-motion";
-import {initial, initialTwo, fadeIn, stagger} from "../animations/animations";
+import {ILogos} from "@/components/types";
+import {initial, initialTwo, fadeIn, stagger} from "@/animations/animations";
 
 // Components
-import Paragraph from "./Elements/Paragraph";
-import LogoCard from "../components/Cards/LogoCard";
+import LogoCard from "@/components/Cards/LogoCard";
+import Paragraph from "@/components/Elements/Paragraph";
 
-interface IProps {
-	title: string;
-	paragraph: string;
-	logoGrid: [
-		{
-			id: string;
-			image: {
-				altText: string;
-				sourceUrl: string;
-				mediaDetails: {
-					height: number;
-					width: number;
-				};
-			};
-		}
-	];
-}
-
-const logos: FC<IProps> = ({title, paragraph, logoGrid}) => {
+const logos: FC<ILogos> = ({title, paragraph, logoGrid}) => {
 	return (
 		<section className="px-4 py-10 bg-white lg:px-0">
 			<div className="container px-0 mx-auto">

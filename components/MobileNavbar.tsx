@@ -4,27 +4,15 @@ import Link from "next/link";
 import Image from "next/image";
 import {motion} from "framer-motion";
 import {getAuth, signOut} from "firebase/auth";
+import {IMobileNavbar} from "@/components/types";
 import {useContentContext} from "@/context/context";
-import styles from "../styles/components/Hero.module.scss";
-import {initial, fadeInUp, stagger} from "../animations/animations";
+import styles from "@/styles/components/Hero.module.scss";
+import {initial, fadeInUp, stagger} from "@/animations/animations";
 
 // Components
-import NavbarMenuLinks from "./Elements/NavbarMenuLinks";
+import NavbarMenuLinks from "@/components/Elements/NavbarMenuLinks";
 
-interface NavbarProps {
-	user: {
-		uid: string;
-		email: string;
-		metadata: string;
-		phoneNumber: string;
-		displayName: string;
-		profileImageURL: string;
-	};
-	signedInUser: boolean;
-	revealMobileMenu: boolean;
-}
-
-const mobileNavbar: FC<NavbarProps> = ({
+const mobileNavbar: FC<IMobileNavbar> = ({
 	user,
 	signedInUser,
 	revealMobileMenu,

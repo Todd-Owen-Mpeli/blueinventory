@@ -1,26 +1,13 @@
 import {FC} from "react";
 import Link from "next/link";
 import {motion} from "framer-motion";
-import Paragraph from "../Elements/Paragraph";
-import {initial, fadeInUp} from "../../animations/animations";
+import {IErrorPage} from "@/components/types";
+import {initial, fadeInUp} from "@/animations/animations";
 
-interface IProps {
-	title: string;
-	paragraph: string;
-	backgroundImage: string;
-	buttonLink: {
-		url: string;
-		title: string;
-		target: string;
-	};
-	buttonLinkTwo: {
-		url: string;
-		title: string;
-		target: string;
-	};
-}
+// Components
+import Paragraph from "@/components/Elements/Paragraph";
 
-const ErrorPage: FC<IProps> = ({
+const ErrorPage: FC<IErrorPage> = ({
 	title,
 	paragraph,
 	buttonLink,

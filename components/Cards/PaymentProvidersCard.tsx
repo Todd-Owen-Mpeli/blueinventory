@@ -2,20 +2,10 @@
 import {FC} from "react";
 import Image from "next/image";
 import {motion} from "framer-motion";
-import {initial, fadeInUp} from "../../animations/animations";
+import {IPaymentProvidersCard} from "@/components/types";
+import {initial, fadeInUp} from "@/animations/animations";
 
-interface IProps {
-	image: {
-		altText: string;
-		sourceUrl: string;
-		mediaDetails: {
-			height: number;
-			width: number;
-		};
-	};
-}
-
-const PaymentProvidersCard: FC<IProps> = ({image}) => {
+const PaymentProvidersCard: FC<IPaymentProvidersCard> = ({image}) => {
 	return (
 		<motion.div
 			initial={initial}

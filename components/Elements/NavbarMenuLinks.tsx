@@ -1,13 +1,12 @@
 import {FC} from "react";
 import Link from "next/link";
+import {INavbarMenuLinks} from "@/components/types";
 
-interface IProps {
-	url: string;
-	label: string;
-	tailwindStyling: string;
-}
-
-const NavbarMenuLinks: FC<IProps> = ({url, label, tailwindStyling}) => {
+const NavbarMenuLinks: FC<INavbarMenuLinks> = ({
+	url,
+	label,
+	tailwindStyling,
+}) => {
 	return (
 		<>
 			<Link className={tailwindStyling} href={url}>

@@ -2,20 +2,10 @@
 import {FC} from "react";
 import Image from "next/image";
 import {motion} from "framer-motion";
-import {initialTwo, fadeIn} from "../../animations/animations";
+import {ILogoCard} from "@/components/types";
+import {initialTwo, fadeIn} from "@/animations/animations";
 
-interface IProps {
-	image: {
-		altText: string;
-		sourceUrl: string;
-		mediaDetails: {
-			height: number;
-			width: number;
-		};
-	};
-}
-
-const logoCard: FC<IProps> = ({image}) => {
+const logoCard: FC<ILogoCard> = ({image}) => {
 	return (
 		<motion.div
 			initial={initialTwo}

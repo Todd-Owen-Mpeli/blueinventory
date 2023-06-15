@@ -2,10 +2,11 @@
 import {FC} from "react";
 import {motion} from "framer-motion";
 import styled from "styled-components";
-import {initial, fadeInUp} from "../animations/animations";
+import {ITitleParagraph} from "@/components/types";
+import {initial, fadeInUp} from "@/animations/animations";
 
 // Components
-import Paragraph from "./Elements/Paragraph";
+import Paragraph from "@/components/Elements/Paragraph";
 
 const TitleParagraph = styled.div`
 	ol,
@@ -25,12 +26,7 @@ const TitleParagraph = styled.div`
 	}
 `;
 
-interface IProps {
-	title: string;
-	paragraph: string;
-}
-
-const titleParagraph: FC<IProps> = ({title, paragraph}) => {
+const titleParagraph: FC<ITitleParagraph> = ({title, paragraph}) => {
 	return (
 		<TitleParagraph className="px-4 py-10 bg-white">
 			<div className="container p-0 mx-auto">

@@ -9,17 +9,13 @@ import {FC} from "react";
 import Link from "next/link";
 import {motion} from "framer-motion";
 import {useRouter} from "next/router";
-import {initial, fadeInUp, stagger} from "../animations/animations";
+import {ISignUp} from "@/components/types";
+import {initial, fadeInUp, stagger} from "@/animations/animations";
 
 // Components
-import Paragraph from "./Elements/Paragraph";
+import Paragraph from "@/components/Elements/Paragraph";
 
-interface IProps {
-	title: string;
-	paragraph: string;
-}
-
-const SignUp: FC<IProps> = ({title, paragraph}) => {
+const SignUp: FC<ISignUp> = ({title, paragraph}) => {
 	const auth = getAuth();
 	const router = useRouter();
 	const providerGoogle = new GoogleAuthProvider();
@@ -38,7 +34,7 @@ const SignUp: FC<IProps> = ({title, paragraph}) => {
 				router.push("/pricing#Pricing");
 
 				// IdP data available using getAdditionalUserInfo(result)
-				// ...
+				// @.
 			})
 			.catch((error) => {
 				console.log(error);
@@ -58,7 +54,7 @@ const SignUp: FC<IProps> = ({title, paragraph}) => {
 				router.push("/pricing#Pricing");
 
 				// IdP data available using getAdditionalUserInfo(result)
-				// ...
+				// @.
 			})
 			.catch((error) => {
 				console.log(error);

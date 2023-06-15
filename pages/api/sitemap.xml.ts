@@ -6,16 +6,17 @@ import {getAllIndustriesPageSlugs} from "@/functions/GetAllIndustriesPageSlugs";
 import {getAllOperationalInsightsPostsSlugs} from "@/functions/GetAllOperationalInsightsPostsSlugs";
 
 const sitemap = async (req: any, res: any) => {
-	const [pagesSlugs, industriesSlugs, postsSlugs] = await Promise.all([
-		getAllPagesSlugs(),
-		getAllIndustriesPageSlugs(),
-		getAllOperationalInsightsPostsSlugs(),
-	]);
+	const [pagesSlugs, industriesSlugs, operationalInsightsSlugs] =
+		await Promise.all([
+			getAllPagesSlugs(),
+			getAllIndustriesPageSlugs(),
+			getAllOperationalInsightsPostsSlugs(),
+		]);
 
 	/* Pages & Operational Insights & 
 	Industries Pages Arrays */
 	const pagesLinks: any = [];
-	const postsLinks: any = [];
+	const OperationalInsightsLinks: any = [];
 	const industriesLinks: any = [];
 	const signInAndSignUpLinks: any = [
 		{
@@ -57,7 +58,7 @@ const sitemap = async (req: any, res: any) => {
 	});
 
 	// Operational Insights Dynamic Links
-	postsSlugs?.map((keys: any) => {
+	operationalInsightsSlugs?.map((keys: any) => {
 		const object = {
 			url: `/operational-insights/${keys?.slug}`,
 			changefreq: "monthly",
@@ -65,19 +66,19 @@ const sitemap = async (req: any, res: any) => {
 			priority: 0.8,
 		};
 
-		postsLinks.push(object);
+		OperationalInsightsLinks.push(object);
 	});
 
 	// Arrays with your all dynamic links
 	const allLinks: any = [
 		...pagesLinks,
-		...signInAndSignUpLinks,
 		...industriesLinks,
-		...postsLinks,
+		...signInAndSignUpLinks,
+		...OperationalInsightsLinks,
 	];
 
 	// Create a stream to write to
-	const stream = new SitemapStream({hostname: process.env.SITE_URL});
+	const stream = new SitemapStream({hostname: process.env.CMS_SITE_URL});
 
 	req;
 

@@ -2,18 +2,14 @@
 import {FC} from "react";
 import Link from "next/link";
 import {motion} from "framer-motion";
+import {IContactInfo} from "@/components/types";
 import {useContentContext} from "@/context/context";
-import {initial, fadeInUp, stagger} from "../animations/animations";
+import {initial, fadeInUp, stagger} from "@/animations/animations";
 
 // Components
-import Paragraph from "./Elements/Paragraph";
+import Paragraph from "@/components/Elements/Paragraph";
 
-interface IProps {
-	title: string;
-	paragraph: string;
-}
-
-const ContactInfo: FC<IProps> = ({title, paragraph}) => {
+const ContactInfo: FC<IContactInfo> = ({title, paragraph}) => {
 	const content = useContentContext();
 
 	return (

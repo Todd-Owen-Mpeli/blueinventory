@@ -3,22 +3,13 @@ import {getAuth} from "firebase/auth";
 import {getAnalytics} from "firebase/analytics";
 import {getApps, initializeApp} from "firebase/app";
 import {getPerformance} from "firebase/performance";
+import {IFirebaseConfig, IFirebaseUser} from "@/components/types";
 
 /* TODO: Add SDKs for Firebase products that you want to use
  https://firebase.google.com/docs/web/setup#available-libraries
 
  Your web app's Firebase configuration
  For Firebase JS SDK v7.20.0 and later, measurementId is optional */
-
-interface IFirebaseConfig {
-	apiKey: string;
-	authDomain: string;
-	projectId: string;
-	storageBucket: string;
-	messagingSenderId: string;
-	appId: string;
-	measurementId: string;
-}
 
 // FireBase Web App Configuration
 export const firebaseConfig: IFirebaseConfig = {
@@ -30,15 +21,6 @@ export const firebaseConfig: IFirebaseConfig = {
 	appId: `${process.env.NEXT_PUBLIC_FIREBASE_APP_ID}`,
 	measurementId: `${process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID}`,
 };
-
-interface IFirebaseUser {
-	uid: string;
-	email: string;
-	metadata: string;
-	phoneNumber: string;
-	displayName: string;
-	profileImageURL: string;
-}
 
 // Firebase User Details
 export const firebaseUser: IFirebaseUser = {

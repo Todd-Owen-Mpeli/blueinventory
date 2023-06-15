@@ -4,25 +4,10 @@ import Link from "next/link";
 import Image from "next/image";
 import {motion} from "framer-motion";
 import DOMPurify from "isomorphic-dompurify";
-import {initial, fadeInUp, stagger} from "../../animations/animations";
+import {IOperationalInsightsCard} from "@/components/types";
+import {initial, fadeInUp, stagger} from "@/animations/animations";
 
-interface IProps {
-	uri: string;
-	title: string;
-	paragraph: string;
-	featuredImage: {
-		node: {
-			altText: string;
-			sourceUrl: string;
-			mediaDetails: {
-				width: number;
-				height: number;
-			};
-		};
-	};
-}
-
-const OperationalInsightsCard: FC<IProps> = ({
+const OperationalInsightsCard: FC<IOperationalInsightsCard> = ({
 	uri,
 	title,
 	paragraph,

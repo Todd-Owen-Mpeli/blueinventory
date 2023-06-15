@@ -2,30 +2,16 @@
 import Image from "next/image";
 import {useState, FC} from "react";
 import {motion} from "framer-motion";
-import {initial, fadeInUp} from "../animations/animations";
+import {IHeroTwo} from "@/components/types";
+import {initial, fadeInUp} from "@/animations/animations";
 
 // Components
-import Paragraph from "./Elements/Paragraph";
+import Paragraph from "@/components/Elements/Paragraph";
 
 // Styling
-import styles from "../styles/components/Hero.module.scss";
+import styles from "@/styles/components/Hero.module.scss";
 
-interface HeroProps {
-	title: string;
-	paragraph: string;
-	backgroundVideoUrl: string;
-	backgroundImageOrVideo: string;
-	backgroundImage: {
-		altText: string;
-		sourceUrl: string;
-		mediaDetails: {
-			width: number;
-			height: number;
-		};
-	};
-}
-
-const HeroTwo: FC<HeroProps> = ({
+const HeroTwo: FC<IHeroTwo> = ({
 	title,
 	paragraph,
 	backgroundImage,

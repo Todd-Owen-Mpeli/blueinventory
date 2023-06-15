@@ -1,13 +1,8 @@
 // Imports
 import {FC} from "react";
+import {IBulletListCard} from "@/components/types";
 
-interface IProps {
-	bulletPoint: string;
-	iconFillColor: string;
-	tailwindStyling: string;
-}
-
-const BulletListCard: FC<IProps> = ({
+const BulletListCard: FC<IBulletListCard> = ({
 	bulletPoint,
 	iconFillColor,
 	tailwindStyling,

@@ -1,22 +1,12 @@
 // Imports
 import {FC} from "react";
 import {motion} from "framer-motion";
-import {initial, fadeInUp, stagger} from "../animations/animations";
+import {IFaq} from "@/components/types";
+import {initial, fadeInUp, stagger} from "@/animations/animations";
 
 // Components
-import FAQCard from "./Cards/FAQCard";
-import Paragraph from "./Elements/Paragraph";
-
-interface IFaq {
-	title: string;
-	paragraph: string;
-	qagrid: [
-		{
-			title: string;
-			paragraph: string;
-		}
-	];
-}
+import FAQCard from "@/components/Cards/FAQCard";
+import Paragraph from "@/components/Elements/Paragraph";
 
 const FAQ: FC<IFaq> = ({title, paragraph, qagrid}) => {
 	return (

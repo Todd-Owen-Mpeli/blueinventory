@@ -5,7 +5,7 @@ import dateFormat from "dateformat";
 import DOMPurify from "isomorphic-dompurify";
 import React, {useEffect, useRef} from "react";
 import {useContentContext} from "@/context/context";
-import styles from "../styles/components/ContentSlider.module.scss";
+import styles from "@/styles/components/ContentSlider.module.scss";
 
 const ContentSlider = () => {
 	const content = useContentContext();

@@ -1,36 +1,14 @@
 // Imports
 import {FC} from "react";
 import {motion} from "framer-motion";
-import {initial, fadeInUp, stagger} from "../animations/animations";
+import {ITestimonial} from "@/components/types";
+import {initial, fadeInUp, stagger} from "@/animations/animations";
 
 // Components
-import Paragraph from "./Elements/Paragraph";
-import TestimonialCard from "./Cards/TestimonialCard";
+import Paragraph from "@/components/Elements/Paragraph";
+import TestimonialCard from "@/components/Cards/TestimonialCard";
 
-interface IProps {
-	title: string;
-	paragraph: string;
-	contentGrid: [
-		{
-			card: {
-				id: string;
-				name: string;
-				position: string;
-				paragraph: string;
-				image: {
-					altText: string;
-					sourceUrl: string;
-					mediaDetails: {
-						height: number;
-						width: number;
-					};
-				};
-			};
-		}
-	];
-}
-
-const Testimonial: FC<IProps> = ({title, paragraph, contentGrid}) => {
+const Testimonial: FC<ITestimonial> = ({title, paragraph, contentGrid}) => {
 	return (
 		<section className="pt-24 overflow-hidden bg-white pb-36">
 			<motion.div

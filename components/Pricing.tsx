@@ -2,44 +2,16 @@
 import {FC} from "react";
 import Link from "next/link";
 import {motion} from "framer-motion";
+import {IPricing} from "@/components/types";
 import {useContentContext} from "@/context/context";
-import {initial, fadeInUp, stagger} from "../animations/animations";
+import {initial, fadeInUp, stagger} from "@/animations/animations";
 
 // Components
-import Paragraph from "./Elements/Paragraph";
-import BulletListCard from "./Cards/BulletListCard";
-import PaymentProvidersCard from "./Cards/PaymentProvidersCard";
+import Paragraph from "@/components/Elements/Paragraph";
+import BulletListCard from "@/components/Cards/BulletListCard";
+import PaymentProvidersCard from "@/components/Cards/PaymentProvidersCard";
 
-interface IProps {
-	title: string;
-	italic: string;
-	pointOne: string;
-	pointTwo: string;
-	paragraph: string;
-	card: {
-		bulletList: [
-			{
-				id: string;
-				bulletPoint: string;
-			}
-		];
-	};
-	paymentProviders: [
-		{
-			id: string;
-			logo: {
-				altText: string;
-				sourceUrl: string;
-				mediaDetails: {
-					height: number;
-					width: number;
-				};
-			};
-		}
-	];
-}
-
-const Pricing: FC<IProps> = ({
+const Pricing: FC<IPricing> = ({
 	card,
 	title,
 	italic,

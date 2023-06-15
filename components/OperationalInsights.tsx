@@ -1,20 +1,19 @@
 // Imports
 import {FC} from "react";
 import {motion} from "framer-motion";
+import {IOperationalInsights} from "@/components/types";
 import {useContentContext} from "@/context/context";
-import {initial, fadeInUp, stagger} from "../animations/animations";
+import {initial, fadeInUp, stagger} from "@/animations/animations";
 
 // Components
-import Paragraph from "./Elements/Paragraph";
-import OperationalInsightsCard from "./Cards/OperationalInsightsCard";
+import Paragraph from "@/components/Elements/Paragraph";
+import OperationalInsightsCard from "@/components/Cards/OperationalInsightsCard";
 
-interface IProps {
-	title: string;
-	italic: string;
-	paragraph: string;
-}
-
-const operationalInsights: FC<IProps> = ({title, italic, paragraph}) => {
+const operationalInsights: FC<IOperationalInsights> = ({
+	title,
+	italic,
+	paragraph,
+}) => {
 	// eslint-disable-next-line react-hooks/rules-of-hooks
 	const content = useContentContext();
 	return (

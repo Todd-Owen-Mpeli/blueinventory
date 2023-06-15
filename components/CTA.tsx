@@ -2,32 +2,13 @@
 import {FC} from "react";
 import Link from "next/link";
 import {motion} from "framer-motion";
-import {initial, fadeInUp, stagger} from "../animations/animations";
+import {ICTA} from "@/components/types";
+import {initial, fadeInUp, stagger} from "@/animations/animations";
 
 // Components
-import Paragraph from "./Elements/Paragraph";
+import Paragraph from "@/components/Elements/Paragraph";
 
-interface IProps {
-	title: string;
-	paragraph: string;
-	backgroundImage: string;
-	buttonLink: {
-		url: string;
-		title: string;
-		target: string;
-	};
-	buttonLinkTwo: {
-		url: string;
-		title: string;
-		target: string;
-	};
-	content: {
-		title: string;
-		paragraph: string;
-	};
-}
-
-const CTATwo: FC<IProps> = ({
+const CTATwo: FC<ICTA> = ({
 	title,
 	content,
 	paragraph,

@@ -2,15 +2,14 @@
 import {FC} from "react";
 import Link from "next/link";
 import {motion} from "framer-motion";
-import {initial, fadeInUp} from "../../animations/animations";
+import {IFooterMenuLinks} from "@/components/types";
+import {initial, fadeInUp} from "@/animations/animations";
 
-interface IProps {
-	url: string;
-	label: string;
-	tailwindStyling: string;
-}
-
-const FooterMenuLinks: FC<IProps> = ({url, label, tailwindStyling}) => {
+const FooterMenuLinks: FC<IFooterMenuLinks> = ({
+	url,
+	label,
+	tailwindStyling,
+}) => {
 	return (
 		<motion.li
 			className="px-0"

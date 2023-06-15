@@ -5,28 +5,20 @@ import {
 	fadeIn,
 	fadeInUp,
 	stagger,
-} from "../animations/animations";
+} from "@/animations/animations";
 import Link from "next/link";
 import Image from "next/image";
 import {motion} from "framer-motion";
 import {useRouter} from "next/router";
 import {useState, useEffect} from "react";
 import {getAuth, signOut} from "firebase/auth";
+import {IFirebaseUser} from "@/components/types";
 import {useContentContext} from "@/context/context";
-import styles from "../styles/components/Hero.module.scss";
+import styles from "@/styles/components/Hero.module.scss";
 
 // Components
-import MobileNavbar from "../components/MobileNavbar";
-import NavbarMenuLinks from "./Elements/NavbarMenuLinks";
-
-interface firebaseUser {
-	uid: string;
-	email: string;
-	metadata: string;
-	phoneNumber: string;
-	displayName: string;
-	profileImageURL: string;
-}
+import MobileNavbar from "@/components/MobileNavbar";
+import NavbarMenuLinks from "@/components/Elements/NavbarMenuLinks";
 
 const Navbar = () => {
 	const content = useContentContext();
@@ -48,7 +40,7 @@ const Navbar = () => {
 	};
 
 	// Firebase User Details
-	const user: firebaseUser = {
+	const user: IFirebaseUser = {
 		uid: `${auth?.currentUser?.uid}`,
 		email: `${auth?.currentUser?.email}`,
 		metadata: `${auth?.currentUser?.metadata}`,

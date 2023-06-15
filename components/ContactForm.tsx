@@ -5,33 +5,33 @@ import {
 	initial,
 	fadeInUp,
 	initialTwo,
-} from "../animations/animations";
+} from "@/animations/animations";
 import {motion} from "framer-motion";
-import React, {useState, FC} from "react";
 import ReCAPTCHA from "react-google-recaptcha";
+import React, {useState, FC, useEffect} from "react";
 import {useFormik, Formik, Field, Form} from "formik";
-import {sendContactForm} from "../pages/api/contactForm";
+import {sendContactForm} from "@/pages/api/contactForm";
+import {IContactForm, ILoadingState} from "@/components/types";
 
 // Styling
-import styles from "../styles/components/ContactForm.module.scss";
+import styles from "@/styles/components/ContactForm.module.scss";
 
-interface IProps {
-	title: string;
-	backgroundImage: string;
-}
+// Components
+import Spinner from "@/components/Elements/Spinner";
 
-interface ILoadingState {
-	error: boolean;
-	isLoading: boolean;
-}
-
-const ContactForm: FC<IProps> = ({title, backgroundImage}) => {
+const ContactForm: FC<IContactForm> = ({title, backgroundImage}) => {
 	const initState: ILoadingState = {
 		error: false,
 		isLoading: false,
 	};
 	const [state, setState]: any = useState(initState);
 	const {error, isLoading}: ILoadingState = state;
+
+	useEffect(() => {
+		if (isLoading === false) {
+			!isLoading;
+		}
+	}, [isLoading]);
 
 	// A custom validation function. This must return an object
 	// which keys are symmetrical to our values/initialValues
@@ -111,14 +111,17 @@ const ContactForm: FC<IProps> = ({title, backgroundImage}) => {
 					>
 						<Form className="container mx-auto transition-all ease-in-out duration-[0.5s] md:max-w-xl shadow-12xl">
 							{isLoading ? (
-								<motion.h3
-									initial={initialTwo}
-									whileInView={fadeIn}
-									viewport={{once: true}}
-									className="mx-auto mb-16 text-xl font-semibold text-center uppercase sm:text-2xl"
-								>
-									Sending Message
-								</motion.h3>
+								<>
+									<motion.h3
+										initial={initialTwo}
+										whileInView={fadeIn}
+										viewport={{once: true}}
+										className="mx-auto mb-16 text-xl font-semibold text-center uppercase text-darkBlue sm:text-2xl"
+									>
+										Sending Message
+									</motion.h3>
+									<Spinner />
+								</>
 							) : error ? (
 								<motion.h3
 									initial={initialTwo}
@@ -326,9 +329,12 @@ const ContactForm: FC<IProps> = ({title, backgroundImage}) => {
 											</svg>
 										</span>
 										{isLoading ? (
-											<h3 className="text-white uppercase text-medium">
-												Sending
-											</h3>
+											<>
+												<h3 className="text-white uppercase text-medium">
+													Sending
+												</h3>
+												<Spinner />
+											</>
 										) : (
 											<h3 className="text-white uppercase text-medium">
 												Send Message

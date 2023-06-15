@@ -2,35 +2,14 @@
 import {FC} from "react";
 import Image from "next/image";
 import {motion} from "framer-motion";
-import {initial, stagger, fadeInUp} from "../animations/animations";
+import {IStats} from "@/components/types";
+import {initial, stagger, fadeInUp} from "@/animations/animations";
 
 // Components
-import Paragraph from "./Elements/Paragraph";
-import StatsBulletPointCard from "./Cards/StatsBulletPointCard";
+import Paragraph from "@/components/Elements/Paragraph";
+import StatsBulletPointCard from "@/components/Cards/StatsBulletPointCard";
 
-interface IProps {
-	title: string;
-	subtitle: string;
-	paragraph: string;
-	bulletPoints: [
-		{
-			id: string;
-			bulletPoint: string;
-		}
-	];
-	column: {
-		title: string;
-		values: string;
-		percentage: string;
-	};
-	columnTwo: {
-		title: string;
-		values: string;
-		percentage: string;
-	};
-}
-
-const Stats: FC<IProps> = ({
+const Stats: FC<IStats> = ({
 	title,
 	column,
 	subtitle,

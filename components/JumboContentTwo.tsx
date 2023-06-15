@@ -1,41 +1,14 @@
 // Imports
 import {FC} from "react";
 import {motion} from "framer-motion";
-import {initial, stagger} from "../animations/animations";
+import {IJumboContentTwo} from "@/components/types";
+import {initial, stagger} from "@/animations/animations";
 
 // Components
-import Paragraph from "./Elements/Paragraph";
-import JumboCard from "./Cards/JumboCard";
+import JumboCard from "@/components/Cards/JumboCard";
+import Paragraph from "@/components/Elements/Paragraph";
 
-interface IProps {
-	cardOne: {
-		title: string;
-		subtitle: string;
-		paragraph: string;
-	};
-	cardTwo: {
-		backgroundImage: {
-			sourceUrl: string;
-		};
-	};
-	gridContent: [
-		{
-			card: {
-				id: string;
-				title: string;
-				subtitle: string;
-				paragraph: string;
-			};
-		}
-	];
-	lastCard: {
-		backgroundImage: {
-			sourceUrl: string;
-		};
-	};
-}
-
-const JumboContentTwo: FC<IProps> = ({
+const JumboContentTwo: FC<IJumboContentTwo> = ({
 	cardOne,
 	cardTwo,
 	lastCard,

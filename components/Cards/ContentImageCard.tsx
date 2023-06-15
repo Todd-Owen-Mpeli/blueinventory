@@ -6,13 +6,14 @@ import {
 	slideInLeftInitial,
 	slideInRightFinish,
 	slideInRightInitial,
-} from "../../animations/animations";
+} from "@/animations/animations";
 import {FC} from "react";
 import {motion} from "framer-motion";
 import styled from "styled-components";
+import {IContentImageCard} from "@/components/types";
 
 // Components
-import Paragraph from "./../Elements/Paragraph";
+import Paragraph from "@/components/Elements/Paragraph";
 
 const ContentImageCard = styled.div`
 	ol,
@@ -32,14 +33,7 @@ const ContentImageCard = styled.div`
 	}
 `;
 
-interface IProps {
-	title: string;
-	paragraph: string;
-	contentLocation: string;
-	backgroundImage: string;
-}
-
-const contentImageCard: FC<IProps> = ({
+const contentImageCard: FC<IContentImageCard> = ({
 	title,
 	paragraph,
 	contentLocation,

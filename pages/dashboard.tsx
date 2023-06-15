@@ -2,12 +2,12 @@
 import {motion} from "framer-motion";
 import {DashboardContext} from "@/context/dashboard";
 import type {NextPage, GetServerSideProps} from "next";
-import {initial, stagger} from "../animations/animations";
-import {getThemesOptionsContent} from "../functions/GetAllThemesOptions";
+import {initial, stagger} from "@/animations/animations";
+import {getThemesOptionsContent} from "@/functions/GetAllThemesOptions";
+import {getAllStripePaymentPlans} from "@/functions/stripe/GetStripePaymentPlans";
 
 // Styling
-import styles from "../styles/pages/Dashboard.module.scss";
-import {getAllStripePaymentPlans} from "@/functions/stripe/GetStripePaymentPlans";
+import styles from "@/styles/pages/Dashboard.module.scss";
 
 // Components
 

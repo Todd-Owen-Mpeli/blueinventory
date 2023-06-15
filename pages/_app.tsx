@@ -48,6 +48,7 @@ const protectedPages: Array<string> = [
 ];
 
 export default function App({Component, pageProps}: AppProps) {
+	// FIREBASE //
 	// Initializing Firebase
 	initializeFirebase();
 
@@ -67,6 +68,7 @@ export default function App({Component, pageProps}: AppProps) {
 		};
 	}, [signedInUser, auth]);
 
+	// PROTECTED PAGES //
 	// Public Pages: Get the pathname
 	const {pathname} = useRouter();
 
@@ -74,6 +76,7 @@ export default function App({Component, pageProps}: AppProps) {
 	const isPublicPage = publicPages.includes(pathname);
 	const isProtectedPage = protectedPages.includes(pathname);
 
+	// NOT SIGNED-IN ERROR PAGE //
 	// Error Page Content
 	const errorPageContent = {
 		title: "Something went wrong!",
@@ -93,6 +96,7 @@ export default function App({Component, pageProps}: AppProps) {
 			"https://cmsblueinventory.com/wp-content/uploads/2023/05/pexels-proxyclick-visitor-management-system-2451566-min-scaled.jpg",
 	};
 
+	// COOKIES POLICY //
 	// PostHog Cookies Policy
 	const router = useRouter();
 
@@ -107,6 +111,7 @@ export default function App({Component, pageProps}: AppProps) {
 		};
 	});
 
+	// PAGE LOADING ANIMATION //
 	// Page Animation Loader
 	function Loading() {
 		const router: any = useRouter();

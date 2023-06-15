@@ -3,25 +3,10 @@ import {FC} from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {motion} from "framer-motion";
-import {initial, fadeInUp} from "../../animations/animations";
+import {IHeroThreeCard} from "@/components/types";
+import {initial, fadeInUp} from "@/animations/animations";
 
-interface IProps {
-	link: {
-		url: string;
-		title: string;
-		target: string;
-	};
-	image: {
-		altText: string;
-		sourceUrl: string;
-		mediaDetails: {
-			height: number;
-			width: number;
-		};
-	};
-}
-
-const HeroThreeCard: FC<IProps> = ({link, image}) => {
+const HeroThreeCard: FC<IHeroThreeCard> = ({link, image}) => {
 	return (
 		<motion.div
 			className="my-4"

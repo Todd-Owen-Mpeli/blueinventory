@@ -1,37 +1,14 @@
 // Imports
 import {FC} from "react";
 import {motion} from "framer-motion";
-import {initial, fadeInUp, stagger} from "../animations/animations";
+import {initial, fadeInUp, stagger} from "@/animations/animations";
 
 // Components
-import Paragraph from "./Elements/Paragraph";
-import HeroThreeCard from "./Cards/HeroThreeCard";
+import {IHeroThreeProps} from "@/components/types";
+import Paragraph from "@/components/Elements/Paragraph";
+import HeroThreeCard from "@/components/Cards/HeroThreeCard";
 
-interface HeroProps {
-	title: string;
-	paragraph: string;
-	imageGrid: [
-		{
-			card: {
-				link: {
-					url: string;
-					title: string;
-					target: string;
-				};
-				image: {
-					altText: string;
-					sourceUrl: string;
-					mediaDetails: {
-						height: number;
-						width: number;
-					};
-				};
-			};
-		}
-	];
-}
-
-const HeroThree: FC<HeroProps> = ({title, paragraph, imageGrid}) => {
+const HeroThree: FC<IHeroThreeProps> = ({title, paragraph, imageGrid}) => {
 	return (
 		<section className="px-4 py-10 bg-white lg:px-0">
 			<div className="container px-0 mx-auto">

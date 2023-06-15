@@ -1,30 +1,16 @@
 // Imports
 import {FC} from "react";
 import {motion} from "framer-motion";
-import {initial, fadeInUp, stagger} from "../animations/animations";
+import {ITitleThreeContentGrid} from "@/components/types";
+import {initial, fadeInUp, stagger} from "@/animations/animations";
 
 // Components
-import TitleThreeContentGridCard from "./Cards/TitleThreeContentGridCard";
+import TitleThreeContentGridCard from "@/components/Cards/TitleThreeContentGridCard";
 
-interface IProps {
-	title: string;
-	contentGrid: [
-		{
-			card: {
-				id: string;
-				title: string;
-				paragraph: string;
-				buttonLink: {
-					url: string;
-					title: string;
-					target: string;
-				};
-			};
-		}
-	];
-}
-
-const TitleThreeContentGrid: FC<IProps> = ({title, contentGrid}) => {
+const TitleThreeContentGrid: FC<ITitleThreeContentGrid> = ({
+	title,
+	contentGrid,
+}) => {
 	return (
 		<section className="py-12 overflow-hidden bg-white lg:px-4 sm:py-28">
 			<div className="container px-4 mx-auto">

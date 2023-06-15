@@ -1,58 +1,8 @@
 import {FC} from "react";
 import Image from "next/image";
+import {IImageGrid} from "@/components/types";
 
-interface IProps {
-	image: {
-		altText: string;
-		sourceUrl: string;
-		mediaDetails: {
-			height: number;
-			width: number;
-		};
-	};
-	imageTwo: {
-		altText: string;
-		sourceUrl: string;
-		mediaDetails: {
-			height: number;
-			width: number;
-		};
-	};
-	imageThree: {
-		altText: string;
-		sourceUrl: string;
-		mediaDetails: {
-			height: number;
-			width: number;
-		};
-	};
-	imageFour: {
-		altText: string;
-		sourceUrl: string;
-		mediaDetails: {
-			height: number;
-			width: number;
-		};
-	};
-	imageFive: {
-		altText: string;
-		sourceUrl: string;
-		mediaDetails: {
-			height: number;
-			width: number;
-		};
-	};
-	imageSix: {
-		altText: string;
-		sourceUrl: string;
-		mediaDetails: {
-			height: number;
-			width: number;
-		};
-	};
-}
-
-const ImageGrid: FC<IProps> = ({
+const ImageGrid: FC<IImageGrid> = ({
 	image,
 	imageTwo,
 	imageThree,

@@ -1,15 +1,11 @@
 // Imports
 import {FC} from "react";
 import {motion} from "framer-motion";
-import {initial, fadeInUp} from "../../animations/animations";
+import {initial, fadeInUp} from "@/animations/animations";
 
 // Components
-import Paragraph from "../Elements/Paragraph";
-
-interface IFaqCard {
-	title: string;
-	paragraph: string;
-}
+import {IFaqCard} from "@/components/types";
+import Paragraph from "@/components/Elements/Paragraph";
 
 const FAQCard: FC<IFaqCard> = ({title, paragraph}) => {
 	return (

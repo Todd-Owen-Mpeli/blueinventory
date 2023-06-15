@@ -2,22 +2,13 @@
 import {FC} from "react";
 import Link from "next/link";
 import {motion} from "framer-motion";
-import {initial, fadeInUp, stagger} from "../../animations/animations";
+import {ITitleThreeContentGridCard} from "@/components/types";
+import {initial, fadeInUp, stagger} from "@/animations/animations";
 
 // Components
-import Paragraph from ".././Elements/Paragraph";
+import Paragraph from "@/components/Elements/Paragraph";
 
-interface IProps {
-	title: string;
-	paragraph: string;
-	buttonLink: {
-		url: string;
-		title: string;
-		target: string;
-	};
-}
-
-const TitleThreeContentGridCard: FC<IProps> = ({
+const TitleThreeContentGridCard: FC<ITitleThreeContentGridCard> = ({
 	title,
 	paragraph,
 	buttonLink,

@@ -3,23 +3,10 @@ import {FC} from "react";
 import Image from "next/image";
 import {motion} from "framer-motion";
 import DOMPurify from "isomorphic-dompurify";
-import {initial, fadeInUp, stagger} from "../../animations/animations";
+import {ITestimonialCard} from "@/components/types";
+import {initial, fadeInUp, stagger} from "@/animations/animations";
 
-interface IProps {
-	title: string;
-	paragraph: string;
-	jobPosition: string;
-	image: {
-		altText: string;
-		sourceUrl: string;
-		mediaDetails: {
-			height: number;
-			width: number;
-		};
-	};
-}
-
-const TestimonialCard: FC<IProps> = ({
+const TestimonialCard: FC<ITestimonialCard> = ({
 	title,
 	image,
 	paragraph,

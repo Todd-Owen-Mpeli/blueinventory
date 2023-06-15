@@ -1,16 +1,13 @@
 // Imports
 import {FC} from "react";
 import postHog from "posthog-js";
+import {ILayout} from "@/components/types";
 
 // Components
-import Footer from "../Footer";
-import Navbar from "../Navbar";
-import MetaTag from "../Meta/MetaTag";
-import CookiePolicyCard from "../Elements/CookiePolicyCard";
-
-interface ILayout {
-	children: React.ReactNode;
-}
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
+import MetaTag from "@/components/Meta/MetaTag";
+import CookiePolicyCard from "@/components/Elements/CookiePolicyCard";
 
 const Layout: FC<ILayout> = ({children}) => {
 	return (

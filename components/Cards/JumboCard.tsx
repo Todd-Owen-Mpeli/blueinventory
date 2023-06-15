@@ -1,18 +1,13 @@
 // Imports
 import {FC} from "react";
 import {motion} from "framer-motion";
-import {initial, fadeInUp, stagger} from "../../animations/animations";
+import {IJumboCard} from "@/components/types";
+import {initial, fadeInUp, stagger} from "@/animations/animations";
 
 // Components
-import Paragraph from ".././Elements/Paragraph";
+import Paragraph from "@/components/Elements/Paragraph";
 
-interface IProps {
-	title: string;
-	subtitle: string;
-	paragraph: string;
-}
-
-const JumboCard: FC<IProps> = ({title, subtitle, paragraph}) => {
+const JumboCard: FC<IJumboCard> = ({title, subtitle, paragraph}) => {
 	return (
 		<div className="w-full p-3 md:w-1/2">
 			<motion.div

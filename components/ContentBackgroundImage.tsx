@@ -1,26 +1,11 @@
 // Imports
 import {FC} from "react";
+import {IContentBackgroundImage} from "@/components/types";
 
 // Components
-import ContentImageCard from "./Cards/ContentImageCard";
+import ContentImageCard from "@/components/Cards/ContentImageCard";
 
-interface IProps {
-	gridContent: [
-		{
-			card: {
-				id: string;
-				title: string;
-				paragraph: string;
-				contentLocation: string;
-				backgroundImage: {
-					sourceUrl: string;
-				};
-			};
-		}
-	];
-}
-
-const contentBackgroundImage: FC<IProps> = ({gridContent}) => {
+const contentBackgroundImage: FC<IContentBackgroundImage> = ({gridContent}) => {
 	return (
 		<section
 			className={gridContent ? `px-4 py-10 overflow-hidden bg-white` : `hidden`}

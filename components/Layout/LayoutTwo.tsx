@@ -1,17 +1,13 @@
 // Imports
 import {FC} from "react";
 import Head from "next/head";
+import {ILayoutTwo} from "@/components/types";
 
 // Components
-import Footer from "../Footer";
-import Navbar from "../Navbar";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 
-interface ILayout {
-	pageTitle: any;
-	children: React.ReactNode;
-}
-
-const Layout: FC<ILayout> = ({children, pageTitle}) => {
+const Layout: FC<ILayoutTwo> = ({children, pageTitle}) => {
 	return (
 		<>
 			<Head>
