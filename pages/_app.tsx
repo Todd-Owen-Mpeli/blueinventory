@@ -3,7 +3,7 @@ import postHog from "posthog-js";
 import {useRouter} from "next/router";
 import {getAuth} from "firebase/auth";
 import type {AppProps} from "next/app";
-import {client} from "../config/apollo";
+import {client} from "@/config/apollo";
 import {useState, useEffect} from "react";
 import {PostHogProvider} from "posthog-js/react";
 import {ApolloProvider} from "@apollo/client/react";
@@ -31,12 +31,15 @@ users to sign-in to view them */
 const publicPages: Array<string> = [
 	"/",
 	"/404",
+	"/login",
 	"/[slug]",
 	"/sign-in",
 	"/sign-up",
 	"/checkout",
 	"/api/sitemap.xml",
 	"/industries/[slug]",
+	"/page/preview/pageId=/[id]",
+	"/blogs/preview/postId=/[id]",
 	"/operational-insights/[slug]",
 ];
 

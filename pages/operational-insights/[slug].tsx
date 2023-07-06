@@ -1,24 +1,25 @@
 // Imports
+import {motion} from "framer-motion";
+import {ContentContext} from "@/context/context";
+import {IContentContext} from "@/context/context";
+import type {NextPage, GetStaticProps} from "next";
+import {getAllStripePaymentPlans} from "@/functions/stripe/GetStripePaymentPlans";
+
+// Queries Functions
 import {
 	getMainMenuLinks,
 	getNavbarMenuLinks,
 	getFooterMenuLinks,
 	getIndustriesMenuLinks,
-} from "@/functions/GetAllMenuLinks";
-
-import {motion} from "framer-motion";
-import {ContentContext} from "@/context/context";
-import type {NextPage, GetStaticProps} from "next";
+} from "@/functions/graphql/Queries/GetAllMenuLinks";
 import {
 	getAllOperationalInsightsContent,
 	getAllOperationalInsightsPostsSlugs,
-} from "@/functions/GetAllOperationalInsightsPostsSlugs";
-import {IContentContext} from "@/components/types/index";
-import {getThemesOptionsContent} from "@/functions/GetAllThemesOptions";
-import {getAllStripePaymentPlans} from "@/functions/stripe/GetStripePaymentPlans";
-import {getContentSliderBlogPostsPostsContent} from "@/functions/GetAllContentSliderPosts";
-import {getAllSeoOperationalInsightsPostsContent} from "@/functions/GetAllSeoPagesContent";
-import {getAllOperationalInsightsPostsFlexibleContentComponents} from "@/functions/GetAllFlexibleContentComponents";
+} from "@/functions/graphql/Queries/GetAllOperationalInsightsPostsSlugs";
+import {getThemesOptionsContent} from "@/functions/graphql/Queries/GetAllThemesOptions";
+import {getContentSliderBlogPostsPostsContent} from "@/functions/graphql/Queries/GetAllContentSliderPosts";
+import {getAllSeoOperationalInsightsPostsContent} from "@/functions/graphql/Queries/GetAllSeoPagesContent";
+import {getAllOperationalInsightsPostsFlexibleContentComponents} from "@/functions/graphql/Queries/GetAllFlexibleContentComponents";
 
 // Components
 import Layout from "@/components/Layout/Layout";

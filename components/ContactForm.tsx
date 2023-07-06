@@ -1,41 +1,68 @@
 // Imports
 import {
 	fadeIn,
-	stagger,
 	initial,
+	stagger,
 	fadeInUp,
 	initialTwo,
-} from "@/animations/animations";
+} from "../animations/animations";
 import {motion} from "framer-motion";
+import {IContactForm} from "./types";
+import {useRouter} from "next/router";
+import React, {useState, FC} from "react";
 import ReCAPTCHA from "react-google-recaptcha";
-import React, {useState, FC, useEffect} from "react";
 import {useFormik, Formik, Field, Form} from "formik";
 import {sendContactForm} from "@/pages/api/contactForm";
-import {IContactForm, ILoadingState} from "@/components/types";
 
 // Styling
 import styles from "@/styles/components/ContactForm.module.scss";
 
-// Components
-import Spinner from "@/components/Elements/Spinner";
-
 const ContactForm: FC<IContactForm> = ({title, backgroundImage}) => {
-	const initState: ILoadingState = {
-		error: false,
-		isLoading: false,
-	};
-	const [state, setState]: any = useState(initState);
-	const {error, isLoading}: ILoadingState = state;
+	const router = useRouter();
 
-	useEffect(() => {
-		if (isLoading === false) {
-			!isLoading;
-		}
-	}, [isLoading]);
+	// Loading, Send & Error Message States
+	const [loading, setLoading] = useState(false);
+	const [messageSent, setMessageSent] = useState(false);
+	const [errorMessage, setErrorMessage] = useState(false);
 
 	// A custom validation function. This must return an object
 	// which keys are symmetrical to our values/initialValues
-	const validate: any = (values: any) => {};
+	const validate: any = (values: any) => {
+		const errors: any = {};
+		if (!values?.firstName) {
+			errors.firstName = "Required*";
+		} else if (values?.firstName.length >= 16) {
+			errors.firstName = "Must be 15 characters or less";
+		}
+
+		if (!values.lastName) {
+			errors.lastName = "Required*";
+		} else if (values.lastName.length >= 21) {
+			errors.lastName = "Must be 20 characters or less";
+		}
+
+		if (!values?.email) {
+			errors.email = "Required*";
+		} else if (
+			!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values?.email)
+		) {
+			errors.email = "Invalid email address";
+		}
+
+		if (!values?.subject) {
+			errors.subject = "Required*";
+		} else if (values?.subject.length <= 0) {
+			errors.subject = "Please inform us about the topic.";
+		}
+
+		if (!values?.message) {
+			errors.message = "Required*";
+		} else if (values?.message.length <= 0) {
+			errors.message = "Please tell us about your enquiry.";
+		}
+
+		return errors;
+	};
 
 	// Google ReCaptcha Validation
 	const [reCaptchaResult, setReCaptchaResult] = useState(null);
@@ -60,34 +87,49 @@ const ContactForm: FC<IContactForm> = ({title, backgroundImage}) => {
 		},
 		validate,
 		onSubmit: async (values: any) => {
-			setState((prev: any) => ({
-				...prev,
-				error: false,
-				isLoading: true,
-			}));
-
-			if (reCaptchaResult !== null || reCaptchaResult !== undefined) {
+			if (reCaptchaResult) {
 				try {
 					await sendContactForm(values);
-					setState(initState);
 				} catch (error) {
-					setState((prev: any) => ({
-						...prev,
-						error: true,
-						isLoading: false,
-					}));
-					console.log(error);
+					setErrorMessage(true);
 					throw new Error(
-						"* Something went wrong sending your request. Please refresh the page and try again."
+						"Error Message: Something went wrong with Sending your Message. Please try again."
 					);
 				}
 			} else {
-				console.log(
+				throw new Error(
 					"Error Message: Something went wrong with your Google Recaptcha validation. Please try again."
 				);
 			}
 		},
 	});
+
+	// Form Submission
+	const onFormSubmit = (event: any) => {
+		event.preventDefault();
+		setErrorMessage(false);
+		if (reCaptchaResult) {
+			try {
+				setLoading(true);
+				/* Send Form Content */
+				formik.handleSubmit();
+				setLoading(false);
+				setMessageSent(true);
+				setTimeout(() => {
+					router.reload();
+				}, 3000);
+			} catch (error) {
+				setErrorMessage(true);
+				throw new Error(
+					"Error Message: Something went wrong with Sending your Message. Please try again."
+				);
+			}
+		} else {
+			throw new Error(
+				"Error Message: Something went wrong with your Google Recaptcha validation. Please try again."
+			);
+		}
+	};
 
 	return (
 		<section
@@ -110,28 +152,34 @@ const ContactForm: FC<IContactForm> = ({title, backgroundImage}) => {
 						initialValues={formik?.initialValues}
 					>
 						<Form className="container mx-auto transition-all ease-in-out duration-[0.5s] md:max-w-xl shadow-12xl">
-							{isLoading ? (
-								<>
-									<motion.h3
-										initial={initialTwo}
-										whileInView={fadeIn}
-										viewport={{once: true}}
-										className="mx-auto mb-16 text-xl font-semibold text-center uppercase text-darkBlue sm:text-2xl"
-									>
-										Sending Message
-									</motion.h3>
-									<Spinner />
-								</>
-							) : error ? (
-								<motion.h3
-									initial={initialTwo}
-									whileInView={fadeIn}
-									viewport={{once: true}}
-									className="mx-auto mb-16 text-base font-semibold text-center text-pinkRed sm:text-medium"
+							{loading ? (
+								<motion.div
+									variants={fadeIn}
+									className="flex items-center justify-center my-4 mb-8 gap-x-2"
 								>
-									* Something went wrong sending your request. Please refresh
-									the page and try again.
-								</motion.h3>
+									<h4 className="text-xl font-semibold text-center uppercase text-blue">
+										Sending Message...
+									</h4>
+								</motion.div>
+							) : messageSent ? (
+								<motion.div
+									variants={fadeIn}
+									className="flex items-center justify-center my-4 mb-8 gap-x-2"
+								>
+									<h4 className="text-xl font-semibold text-center uppercase text-goldPrime">
+										Message Sent
+									</h4>
+								</motion.div>
+							) : errorMessage ? (
+								<motion.div
+									variants={fadeIn}
+									className="flex items-center justify-center my-4 mb-8 gap-x-2"
+								>
+									<h4 className="text-xl font-semibold text-center uppercase text-darkBlue">
+										Error Message: Something went wrong with sending your
+										message. Please try again.
+									</h4>
+								</motion.div>
 							) : (
 								<motion.h3
 									initial={initialTwo}
@@ -142,6 +190,7 @@ const ContactForm: FC<IContactForm> = ({title, backgroundImage}) => {
 									{title}
 								</motion.h3>
 							)}
+
 							<motion.div
 								initial={initial}
 								whileInView={stagger}
@@ -275,7 +324,7 @@ const ContactForm: FC<IContactForm> = ({title, backgroundImage}) => {
 									initial={initial}
 									whileInView={fadeInUp}
 									viewport={{once: true}}
-									onClick={formik.handleSubmit}
+									onClick={onFormSubmit}
 									disabled={
 										!formik?.values?.firstName ||
 										!formik?.values?.lastName ||
@@ -290,8 +339,8 @@ const ContactForm: FC<IContactForm> = ({title, backgroundImage}) => {
 								>
 									<span
 										className={
-											isLoading
-												? `${styles.sendingMessage}`
+											messageSent
+												? `${styles.messageSent}`
 												: `${styles.submitButton}`
 										}
 									>
@@ -328,18 +377,15 @@ const ContactForm: FC<IContactForm> = ({title, backgroundImage}) => {
 												</g>
 											</svg>
 										</span>
-										{isLoading ? (
-											<>
-												<h3 className="text-white uppercase text-medium">
-													Sending
-												</h3>
-												<Spinner />
-											</>
-										) : (
-											<h3 className="text-white uppercase text-medium">
-												Send Message
-											</h3>
-										)}
+										<h3 className="text-base tracking-widest text-white uppercase sm:tracking-wider sm:text-medium">
+											{loading
+												? "Sending Message..."
+												: messageSent
+												? "Message Sent!"
+												: errorMessage
+												? "Sending Error!"
+												: "Send Message"}
+										</h3>
 									</span>
 								</motion.button>
 							</motion.div>

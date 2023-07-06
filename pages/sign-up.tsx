@@ -1,22 +1,24 @@
 // Imports
+import {motion} from "framer-motion";
+import {ContentContext} from "@/context/context";
+import {IContentContext} from "@/context/context";
+import type {GetStaticProps, NextPage} from "next";
+import {getAllStripePaymentPlans} from "@/functions/stripe/GetStripePaymentPlans";
+
+// Queries Functions
 import {
+	getMainMenuLinks,
 	getNavbarMenuLinks,
 	getFooterMenuLinks,
 	getIndustriesMenuLinks,
-	getMainMenuLinks,
-} from "@/functions/GetAllMenuLinks";
-import {motion} from "framer-motion";
-import type {GetStaticProps, NextPage} from "next";
-import {IContentContext} from "@/components/types";
-import {getThemesOptionsContent} from "@/functions/GetAllThemesOptions";
+} from "@/functions/graphql/Queries/GetAllMenuLinks";
+import {getThemesOptionsContent} from "@/functions/graphql/Queries/GetAllThemesOptions";
+import {getContentSliderBlogPostsPostsContent} from "@/functions/graphql/Queries/GetAllContentSliderPosts";
+import {getAllOperationalInsightsContent} from "@/functions/graphql/Queries/GetAllOperationalInsightsPostsSlugs";
 
 // Components
 import SignUp from "@/components/SignUp";
-import {ContentContext} from "@/context/context";
 import LayoutTwo from "@/components/Layout/LayoutTwo";
-import {getAllStripePaymentPlans} from "@/functions/stripe/GetStripePaymentPlans";
-import {getContentSliderBlogPostsPostsContent} from "@/functions/GetAllContentSliderPosts";
-import {getAllOperationalInsightsContent} from "@/functions/GetAllOperationalInsightsPostsSlugs";
 
 const signUpPage: NextPage<IContentContext> = ({
 	seo,

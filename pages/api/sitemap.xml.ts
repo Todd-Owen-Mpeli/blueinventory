@@ -1,9 +1,9 @@
 // Imports
 import {Readable} from "stream";
 import {SitemapStream, streamToPromise} from "sitemap";
-import {getAllPagesSlugs} from "@/functions/GetAllPagesSlugs";
-import {getAllIndustriesPageSlugs} from "@/functions/GetAllIndustriesPageSlugs";
-import {getAllOperationalInsightsPostsSlugs} from "@/functions/GetAllOperationalInsightsPostsSlugs";
+import {getAllPagesSlugs} from "@/functions/graphql/Queries/GetAllPagesSlugs";
+import {getAllIndustriesPageSlugs} from "@/functions/graphql/Queries/GetAllIndustriesPageSlugs";
+import {getAllOperationalInsightsPostsSlugs} from "@/functions/graphql/Queries/GetAllOperationalInsightsPostsSlugs";
 
 const sitemap = async (req: any, res: any) => {
 	const [pagesSlugs, industriesSlugs, operationalInsightsSlugs] =

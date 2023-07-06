@@ -1,10 +1,10 @@
-import {gql} from "@apollo/client";
-import {client} from "../config/apollo";
+import {client} from "@/config/apollo";
+import {DocumentNode, gql} from "@apollo/client";
 
 // Main Menu Links
 export async function getMainMenuLinks() {
 	try {
-		const content: any = gql`
+		const content: DocumentNode = gql`
 			{
 				mainMenuLinks: menuItems(where: {location: PRIMARY}) {
 					edges {
@@ -36,7 +36,7 @@ export async function getMainMenuLinks() {
 // Navbar Menu Links
 export async function getNavbarMenuLinks() {
 	try {
-		const content: any = gql`
+		const content: DocumentNode = gql`
 			{
 				navbarMenuLinks: menuItems(where: {location: SECONDARY}) {
 					edges {
@@ -68,7 +68,7 @@ export async function getNavbarMenuLinks() {
 // Footer Menu Links
 export async function getFooterMenuLinks() {
 	try {
-		const content: any = gql`
+		const content: DocumentNode = gql`
 			{
 				footerMenuLinks: menuItems(where: {location: FOOTER}) {
 					edges {
@@ -100,7 +100,7 @@ export async function getFooterMenuLinks() {
 // Industries Menu Links
 export async function getIndustriesMenuLinks() {
 	try {
-		const content: any = gql`
+		const content: DocumentNode = gql`
 			{
 				industriesMenuLinks: menuItems(where: {location: INDUSTRIES}) {
 					edges {

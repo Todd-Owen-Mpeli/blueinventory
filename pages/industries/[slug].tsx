@@ -1,21 +1,23 @@
 // Imports
+import {motion} from "framer-motion";
+import {ContentContext} from "@/context/context";
+import {IContentContext} from "@/context/context";
+import type {NextPage, GetStaticProps} from "next";
+
+// Queries Functions
 import {
 	getMainMenuLinks,
 	getNavbarMenuLinks,
 	getFooterMenuLinks,
 	getIndustriesMenuLinks,
-} from "@/functions/GetAllMenuLinks";
-import {motion} from "framer-motion";
-import {ContentContext} from "@/context/context";
-import type {NextPage, GetStaticProps} from "next";
-import {IContentContext} from "@/components/types/index";
-import {getThemesOptionsContent} from "@/functions/GetAllThemesOptions";
+} from "@/functions/graphql/Queries/GetAllMenuLinks";
 import {getAllStripePaymentPlans} from "@/functions/stripe/GetStripePaymentPlans";
-import {getAllSeoIndustriesPagesContent} from "@/functions/GetAllSeoPagesContent";
-import {getAllIndustriesPageSlugs} from "@/functions/GetAllIndustriesPageSlugs";
-import {getContentSliderBlogPostsPostsContent} from "@/functions/GetAllContentSliderPosts";
-import {getAllOperationalInsightsContent} from "@/functions/GetAllOperationalInsightsPostsSlugs";
-import {getAllIndustriesPagesFlexibleContentComponents} from "@/functions/GetAllFlexibleContentComponents";
+import {getThemesOptionsContent} from "@/functions/graphql/Queries/GetAllThemesOptions";
+import {getAllSeoIndustriesPagesContent} from "@/functions/graphql/Queries/GetAllSeoPagesContent";
+import {getAllIndustriesPageSlugs} from "@/functions/graphql/Queries/GetAllIndustriesPageSlugs";
+import {getContentSliderBlogPostsPostsContent} from "@/functions/graphql/Queries/GetAllContentSliderPosts";
+import {getAllOperationalInsightsContent} from "@/functions/graphql/Queries/GetAllOperationalInsightsPostsSlugs";
+import {getAllIndustriesPagesFlexibleContentComponents} from "@/functions/graphql/Queries/GetAllFlexibleContentComponents";
 
 // Components
 import Layout from "@/components/Layout/Layout";

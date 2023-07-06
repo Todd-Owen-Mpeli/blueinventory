@@ -1,4 +1,4 @@
-import {client} from "../config/apollo";
+import {client} from "@/config/apollo";
 import {DocumentNode, gql} from "@apollo/client";
 
 // Themes Options Content

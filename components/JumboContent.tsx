@@ -110,8 +110,8 @@ const JumboContent: FC<IJumboContent> = ({
 								<div className="flex flex-wrap items-center justify-center h-full">
 									<motion.div
 										initial={initial}
-										viewport={{once: true}}
 										whileInView={stagger}
+										viewport={{once: true}}
 										className="w-full group"
 									>
 										<div className="relative z-10 transition duration-500 ease-in-out transform group-hover:-translate-y-6 group-hover:-translate-x-6 pr-7">

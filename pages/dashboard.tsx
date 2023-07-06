@@ -3,8 +3,10 @@ import {motion} from "framer-motion";
 import {DashboardContext} from "@/context/dashboard";
 import type {NextPage, GetServerSideProps} from "next";
 import {initial, stagger} from "@/animations/animations";
-import {getThemesOptionsContent} from "@/functions/GetAllThemesOptions";
 import {getAllStripePaymentPlans} from "@/functions/stripe/GetStripePaymentPlans";
+
+// Queries Functions
+import {getThemesOptionsContent} from "@/functions/graphql/Queries/GetAllThemesOptions";
 
 // Styling
 import styles from "@/styles/pages/Dashboard.module.scss";

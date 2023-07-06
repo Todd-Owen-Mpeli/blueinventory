@@ -1,8 +1,9 @@
 // Imports
 import {motion} from "framer-motion";
+import {NextPage, GetStaticProps} from "next";
+import Layout from "@/components/Layout/Layout";
 import {ContentContext} from "@/context/context";
 import {IContentContext} from "@/context/context";
-import type {NextPage, GetStaticProps} from "next";
 import {getAllStripePaymentPlans} from "@/functions/stripe/GetStripePaymentPlans";
 
 // Queries Functions
@@ -19,10 +20,9 @@ import {getAllPagesFlexibleContentComponents} from "@/functions/graphql/Queries/
 import {getAllOperationalInsightsContent} from "@/functions/graphql/Queries/GetAllOperationalInsightsPostsSlugs";
 
 // Components
-import Layout from "@/components/Layout/Layout";
-import RenderFlexibleContent from "@/components/FlexibleContent/RenderFlexibleContent";
+import Login from "@/components/Login";
 
-const noPageExits: NextPage<IContentContext> = ({
+const login: NextPage<IContentContext> = ({
 	seo,
 	content,
 	stripePlans,
@@ -53,13 +53,9 @@ const noPageExits: NextPage<IContentContext> = ({
 				}}
 				initial="initial"
 				animate="animate"
-				className="min-h-screen bg-white bg-center bg-no-repeat bg-cover"
-				style={{
-					backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue-pink-red-yellow.svg")`,
-				}}
 			>
 				<Layout>
-					<RenderFlexibleContent />
+					<Login />
 				</Layout>
 			</motion.div>
 		</ContentContext.Provider>
@@ -68,10 +64,10 @@ const noPageExits: NextPage<IContentContext> = ({
 
 export const getStaticProps: GetStaticProps = async () => {
 	// Fetch priority content
-	const seoContent: any = await getAllSeoPagesContent("error-page");
+	const seoContent: any = await getAllSeoPagesContent("Home");
 
 	const flexibleContentComponents: any =
-		await getAllPagesFlexibleContentComponents("error-page");
+		await getAllPagesFlexibleContentComponents("Home");
 
 	// Fetch remaining content simultaneously
 	const [
@@ -112,4 +108,4 @@ export const getStaticProps: GetStaticProps = async () => {
 	};
 };
 
-export default noPageExits;
+export default login;
