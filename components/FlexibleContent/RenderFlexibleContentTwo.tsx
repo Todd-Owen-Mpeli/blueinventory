@@ -1,4 +1,5 @@
 // Import
+import {FC} from "react";
 import {useContentContext} from "@/context/context";
 
 // Components
@@ -24,16 +25,17 @@ import OperationalInsights from "../OperationalInsights";
 import TitleThreeContentGrid from "../TitleThreeContentGrid";
 import ContentBackgroundImage from "../ContentBackgroundImage";
 
-const RenderFlexibleContent = () => {
+const RenderFlexibleContent: FC = () => {
 	const content = useContentContext();
 
-	const postTemplate = "Post_Flexiblecontent_FlexibleContent";
+	const postTypeFlexiblecontent = content.postTypeFlexiblecontent;
 	return (
 		<>
 			{content.content.length > 0 ? (
 				content.content.map((item: any, keys: any) => (
 					<div key={keys}>
-						{item?.fieldGroupName === `${postTemplate}_HeroSection` ? (
+						{item?.fieldGroupName ===
+						`${postTypeFlexiblecontent}_HeroSection` ? (
 							<>
 								<Hero
 									title={item?.title}
@@ -44,7 +46,8 @@ const RenderFlexibleContent = () => {
 									backgroundImage={item?.backgroundImage?.sourceUrl}
 								/>
 							</>
-						) : item?.fieldGroupName === `${postTemplate}_HeroSectionTwo` ? (
+						) : item?.fieldGroupName ===
+						  `${postTypeFlexiblecontent}_HeroSectionTwo` ? (
 							<>
 								<HeroTwo
 									title={item?.title}
@@ -54,21 +57,24 @@ const RenderFlexibleContent = () => {
 									backgroundImageOrVideo={item?.backgroundImageOrVideo}
 								/>
 							</>
-						) : item?.fieldGroupName === `${postTemplate}_TitleParagraph` ? (
+						) : item?.fieldGroupName ===
+						  `${postTypeFlexiblecontent}_TitleParagraph` ? (
 							<>
 								<TitleParagraph
 									title={item?.title}
 									paragraph={item?.paragraph}
 								/>
 							</>
-						) : item?.fieldGroupName === `${postTemplate}_IntroContent` ? (
+						) : item?.fieldGroupName ===
+						  `${postTypeFlexiblecontent}_IntroContent` ? (
 							<>
 								<TitleThreeContentGrid
 									title={item?.title}
 									contentGrid={item?.contentGrid}
 								/>
 							</>
-						) : item?.fieldGroupName === `${postTemplate}_FeaturesGrid` ? (
+						) : item?.fieldGroupName ===
+						  `${postTypeFlexiblecontent}_FeaturesGrid` ? (
 							<>
 								<JumboContent
 									title={item?.title}
@@ -80,7 +86,8 @@ const RenderFlexibleContent = () => {
 									gridContent={item?.gridContent}
 								/>
 							</>
-						) : item?.fieldGroupName === `${postTemplate}_FeaturesGridTwo` ? (
+						) : item?.fieldGroupName ===
+						  `${postTypeFlexiblecontent}_FeaturesGridTwo` ? (
 							<>
 								<JumboContentTwo
 									cardOne={item?.cardOne}
@@ -89,7 +96,8 @@ const RenderFlexibleContent = () => {
 									gridContent={item?.gridContent}
 								/>
 							</>
-						) : item?.fieldGroupName === `${postTemplate}_Pricing` ? (
+						) : item?.fieldGroupName ===
+						  `${postTypeFlexiblecontent}_Pricing` ? (
 							<>
 								<Pricing
 									card={item?.card}
@@ -101,7 +109,8 @@ const RenderFlexibleContent = () => {
 									paymentProviders={item?.paymentProviders}
 								/>
 							</>
-						) : item?.fieldGroupName === `${postTemplate}_ContentStats` ? (
+						) : item?.fieldGroupName ===
+						  `${postTypeFlexiblecontent}_ContentStats` ? (
 							<>
 								<Stats
 									title={item?.title}
@@ -112,15 +121,18 @@ const RenderFlexibleContent = () => {
 									bulletPoints={item?.bulletPoints}
 								/>
 							</>
-						) : item?.fieldGroupName === `${postTemplate}_ContentImageGrid` ? (
+						) : item?.fieldGroupName ===
+						  `${postTypeFlexiblecontent}_ContentImageGrid` ? (
 							<>
 								<ContentBackgroundImage gridContent={item?.gridContent} />
 							</>
-						) : item?.fieldGroupName === `${postTemplate}_ContentSliderAuto` ? (
+						) : item?.fieldGroupName ===
+						  `${postTypeFlexiblecontent}_ContentSliderAuto` ? (
 							<>
 								<ContentSlider />
 							</>
-						) : item?.fieldGroupName === `${postTemplate}_TrustedBrands` ? (
+						) : item?.fieldGroupName ===
+						  `${postTypeFlexiblecontent}_TrustedBrands` ? (
 							<>
 								<Logos
 									title={item?.title}
@@ -128,7 +140,8 @@ const RenderFlexibleContent = () => {
 									paragraph={item?.paragraph}
 								/>
 							</>
-						) : item?.fieldGroupName === `${postTemplate}_ImageGrid` ? (
+						) : item?.fieldGroupName ===
+						  `${postTypeFlexiblecontent}_ImageGrid` ? (
 							<>
 								<ImageGrid
 									image={item?.image}
@@ -139,7 +152,8 @@ const RenderFlexibleContent = () => {
 									imageSix={item?.imageSix}
 								/>
 							</>
-						) : item?.fieldGroupName === `${postTemplate}_Sustainability` ? (
+						) : item?.fieldGroupName ===
+						  `${postTypeFlexiblecontent}_Sustainability` ? (
 							<>
 								<Sustainability
 									image={item?.image}
@@ -150,7 +164,7 @@ const RenderFlexibleContent = () => {
 									percentage={item?.percentage}
 								/>
 							</>
-						) : item?.fieldGroupName === `${postTemplate}_Faq` ? (
+						) : item?.fieldGroupName === `${postTypeFlexiblecontent}_Faq` ? (
 							<>
 								<FAQ
 									title={item?.title}
@@ -159,7 +173,7 @@ const RenderFlexibleContent = () => {
 								/>
 							</>
 						) : item?.fieldGroupName ===
-						  `${postTemplate}_OperationalInsights` ? (
+						  `${postTypeFlexiblecontent}_OperationalInsights` ? (
 							<>
 								<OperationalInsights
 									title={item?.title}
@@ -167,7 +181,8 @@ const RenderFlexibleContent = () => {
 									paragraph={item?.paragraph}
 								/>
 							</>
-						) : item?.fieldGroupName === `${postTemplate}_Testimonial` ? (
+						) : item?.fieldGroupName ===
+						  `${postTypeFlexiblecontent}_Testimonial` ? (
 							<>
 								<Testimonial
 									title={item?.title}
@@ -175,18 +190,20 @@ const RenderFlexibleContent = () => {
 									contentGrid={item?.contentGrid}
 								/>
 							</>
-						) : item?.fieldGroupName === `${postTemplate}_ContactInfo` ? (
+						) : item?.fieldGroupName ===
+						  `${postTypeFlexiblecontent}_ContactInfo` ? (
 							<>
 								<ContactInfo title={item?.title} paragraph={item?.paragraph} />
 							</>
-						) : item?.fieldGroupName === `${postTemplate}_ContactForm` ? (
+						) : item?.fieldGroupName ===
+						  `${postTypeFlexiblecontent}_ContactForm` ? (
 							<>
 								<ContactForm
 									title={item?.title}
 									backgroundImage={item?.backgroundImage?.sourceUrl}
 								/>
 							</>
-						) : item?.fieldGroupName === `${postTemplate}_Cta` ? (
+						) : item?.fieldGroupName === `${postTypeFlexiblecontent}_Cta` ? (
 							<>
 								<CTA
 									title={item?.title}
@@ -197,7 +214,7 @@ const RenderFlexibleContent = () => {
 									backgroundImage={item?.backgroundImage?.sourceUrl}
 								/>
 							</>
-						) : item?.fieldGroupName === `${postTemplate}_CtaTwo` ? (
+						) : item?.fieldGroupName === `${postTypeFlexiblecontent}_CtaTwo` ? (
 							<>
 								<CTATwo
 									title={item?.title}
@@ -206,7 +223,8 @@ const RenderFlexibleContent = () => {
 									backgroundImage={item?.backgroundImage?.sourceUrl}
 								/>
 							</>
-						) : item?.fieldGroupName === `${postTemplate}_ErrorPageContent` ? (
+						) : item?.fieldGroupName ===
+						  `${postTypeFlexiblecontent}_ErrorPageContent` ? (
 							<>
 								<ErrorPage
 									title={item?.title}

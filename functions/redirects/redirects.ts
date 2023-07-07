@@ -11,9 +11,11 @@ export const getPreviewRedirectUrl = (
 
 	switch (postType) {
 		case "post":
-			return `/blogs/preview/postId=/${previewPostId}/`;
+			return `/operational-insights/preview/postId=/${previewPostId}/`;
 		case "page":
 			return `/page/preview/pageId=/${previewPostId}/`;
+		case "industries":
+			return `/industries/preview/pageId=/${previewPostId}/`;
 		default:
 			return "/";
 	}

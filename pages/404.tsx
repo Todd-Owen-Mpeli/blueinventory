@@ -31,6 +31,7 @@ const noPageExits: NextPage<IContentContext> = ({
 	industriesMenuLinks,
 	operationalInsights,
 	themesOptionsContent,
+	postTypeFlexiblecontent,
 	contentSliderPostsContent,
 }) => {
 	return (
@@ -44,6 +45,7 @@ const noPageExits: NextPage<IContentContext> = ({
 				industriesMenuLinks: industriesMenuLinks,
 				operationalInsights: operationalInsights,
 				themesOptionsContent: themesOptionsContent,
+				postTypeFlexiblecontent: postTypeFlexiblecontent,
 				contentSliderPostsContent: contentSliderPostsContent,
 			}}
 		>
@@ -67,6 +69,9 @@ const noPageExits: NextPage<IContentContext> = ({
 };
 
 export const getStaticProps: GetStaticProps = async () => {
+	const postTypeFlexiblecontent: string =
+		"DefaultTemplate_Flexiblecontent_FlexibleContent";
+
 	// Fetch priority content
 	const seoContent: any = await getAllSeoPagesContent("error-page");
 
@@ -104,9 +109,9 @@ export const getStaticProps: GetStaticProps = async () => {
 			operationalInsights,
 			industriesMenuLinks,
 			themesOptionsContent,
+			postTypeFlexiblecontent,
 			contentSliderPostsContent,
 			content: flexibleContentComponents?.content,
-			pageTitle: flexibleContentComponents?.pageTitle,
 		},
 		revalidate: 60,
 	};

@@ -154,7 +154,9 @@ const ContactForm: FC<IContactForm> = ({title, backgroundImage}) => {
 						<Form className="container mx-auto transition-all ease-in-out duration-[0.5s] md:max-w-xl shadow-12xl">
 							{loading ? (
 								<motion.div
-									variants={fadeIn}
+									initial={initialTwo}
+									whileInView={fadeIn}
+									viewport={{once: true}}
 									className="flex items-center justify-center my-4 mb-8 gap-x-2"
 								>
 									<h4 className="text-xl font-semibold text-center uppercase text-blue">
@@ -163,7 +165,9 @@ const ContactForm: FC<IContactForm> = ({title, backgroundImage}) => {
 								</motion.div>
 							) : messageSent ? (
 								<motion.div
-									variants={fadeIn}
+									initial={initialTwo}
+									whileInView={fadeIn}
+									viewport={{once: true}}
 									className="flex items-center justify-center my-4 mb-8 gap-x-2"
 								>
 									<h4 className="text-xl font-semibold text-center uppercase text-goldPrime">
@@ -172,7 +176,9 @@ const ContactForm: FC<IContactForm> = ({title, backgroundImage}) => {
 								</motion.div>
 							) : errorMessage ? (
 								<motion.div
-									variants={fadeIn}
+									initial={initialTwo}
+									whileInView={fadeIn}
+									viewport={{once: true}}
 									className="flex items-center justify-center my-4 mb-8 gap-x-2"
 								>
 									<h4 className="text-xl font-semibold text-center uppercase text-darkBlue">

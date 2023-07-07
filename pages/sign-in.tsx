@@ -29,6 +29,7 @@ const signInPage: NextPage<IContentContext> = ({
 	industriesMenuLinks,
 	operationalInsights,
 	themesOptionsContent,
+	postTypeFlexiblecontent,
 	contentSliderPostsContent,
 }) => {
 	return (
@@ -42,6 +43,7 @@ const signInPage: NextPage<IContentContext> = ({
 				industriesMenuLinks: industriesMenuLinks,
 				operationalInsights: operationalInsights,
 				themesOptionsContent: themesOptionsContent,
+				postTypeFlexiblecontent: postTypeFlexiblecontent,
 				contentSliderPostsContent: contentSliderPostsContent,
 			}}
 		>
@@ -70,6 +72,9 @@ const signInPage: NextPage<IContentContext> = ({
 };
 
 export const getStaticProps: GetStaticProps = async () => {
+	const postTypeFlexiblecontent: string =
+		"DefaultTemplate_Flexiblecontent_FlexibleContent";
+
 	// Fetch remaining content simultaneously
 	const [
 		stripePlans,
@@ -103,6 +108,7 @@ export const getStaticProps: GetStaticProps = async () => {
 			operationalInsights,
 			industriesMenuLinks,
 			themesOptionsContent,
+			postTypeFlexiblecontent,
 			contentSliderPostsContent,
 		},
 		revalidate: 60,

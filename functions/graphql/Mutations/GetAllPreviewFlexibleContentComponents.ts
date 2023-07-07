@@ -2,289 +2,222 @@
 import {client} from "@/config/apollo";
 import {DocumentNode, gql} from "@apollo/client";
 
-/* PREVIEW PAGES */
+/* PREVIEW PAGES, BLOGS INDUSTRIES */
 /* Fetch all Flexible Content Components 
 (For every flexible content page) */
-export const getAllPreviewPagesFlexibleContentComponents = async (
+export const getAllPreviewFlexibleContentComponents = async (
 	id: number,
 	authToken: string,
-	loginRedirectURL: string
+	postType: string,
+	postTypeFlexiblecontent: string
 ) => {
 	try {
 		const content: DocumentNode = gql`
 			{
-				mainContent: page(id: ${id}, idType: DATABASE_ID) {
+				mainContent: ${postType}(id: ${id}, idType: DATABASE_ID) {
 					flexibleContent {
 						flexibleContent {
-							... on Page_Flexiblecontent_FlexibleContent_HeroSection {
-								backgroundVideoUrl
-								fieldGroupName
-								title
-								subtitle
-								buttonLink {
+							... on ${postTypeFlexiblecontent}_HeroSection {
+							backgroundVideoUrl
+							fieldGroupName
+							title
+							subtitle
+							buttonLink {
 								url
 								title
 								target
-								}
-								buttonLinkTwo {
-								url
-								title
-								target
-								}
-								backgroundImage {
-								sourceUrl
-								}
 							}
-							... on Page_Flexiblecontent_FlexibleContent_HeroSectionTwo {
-								fieldGroupName
+							buttonLinkTwo {
+								url
 								title
-								paragraph
-								backgroundVideoUrl
-								backgroundImageOrVideo
-								backgroundImage {
+								target
+							}
+							backgroundImage {
+								sourceUrl
+							}
+							}
+							... on ${postTypeFlexiblecontent}_HeroSectionTwo {
+							fieldGroupName
+							title
+							paragraph
+							backgroundVideoUrl
+							backgroundImageOrVideo
+							backgroundImage {
 								altText
 								sourceUrl
 								mediaDetails {
-									height
-									width
-								}
+								height
+								width
 								}
 							}
-							... on Page_Flexiblecontent_FlexibleContent_TitleParagraph {
-								fieldGroupName
-								paragraph
-								title
 							}
-							... on Page_Flexiblecontent_FlexibleContent_IntroContent {
-								fieldGroupName
-								title
-								contentGrid {
+							... on ${postTypeFlexiblecontent}_TitleParagraph {
+							fieldGroupName
+							paragraph
+							title
+							}
+							... on ${postTypeFlexiblecontent}_IntroContent {
+							fieldGroupName
+							title
+							contentGrid {
 								card {
-									title
-									paragraph
-									buttonLink {
+								title
+								paragraph
+								buttonLink {
 									url
 									title
 									target
-									}
 								}
 								}
 							}
-							... on Page_Flexiblecontent_FlexibleContent_FeaturesGrid {
-								fieldGroupName
-								paragraph
-								title
-								cardOne {
+							}
+							... on ${postTypeFlexiblecontent}_FeaturesGrid {
+							fieldGroupName
+							paragraph
+							title
+							cardOne {
 								title
 								subtitle
 								paragraph
-								}
-								cardTwo {
+							}
+							cardTwo {
 								backgroundImage {
-									altText
-									sourceUrl
-									mediaDetails {
+								altText
+								sourceUrl
+								mediaDetails {
 									height
 									width
-									}
 								}
 								}
-								cardThree {
+							}
+							cardThree {
 								foreground {
-									title
-									subtitle
-									paragraph
+								title
+								subtitle
+								paragraph
 								}
 								background {
-									title
-									subtitle
-									paragraph
-								}
-								}
-								lastCard {
-								backgroundImage {
-									altText
-									sourceUrl
-									mediaDetails {
-									height
-									width
-									}
-								}
-								}
-								gridContent {
-								card {
-									title
-									subtitle
-									paragraph
-								}
-								}
-							}
-							... on Page_Flexiblecontent_FlexibleContent_FeaturesGridTwo {
-								fieldGroupName
-								cardOne {
 								title
 								subtitle
 								paragraph
 								}
-								cardTwo {
+							}
+							lastCard {
 								backgroundImage {
-									altText
-									sourceUrl
-									mediaDetails {
+								altText
+								sourceUrl
+								mediaDetails {
 									height
 									width
-									}
-								}
-								}
-								lastCard {
-								backgroundImage {
-									altText
-									sourceUrl
-									mediaDetails {
-									height
-									width
-									}
-								}
-								}
-								gridContent {
-								card {
-									title
-									subtitle
-									paragraph
 								}
 								}
 							}
-							... on Page_Flexiblecontent_FlexibleContent_Pricing {
-								fieldGroupName
-								italic
+							gridContent {
+								card {
 								title
-								pointTwo
-								pointOne
+								subtitle
 								paragraph
-								paymentProviders {
+								}
+							}
+							}
+							... on ${postTypeFlexiblecontent}_FeaturesGridTwo {
+							fieldGroupName
+							cardOne {
+								title
+								subtitle
+								paragraph
+							}
+							cardTwo {
+								backgroundImage {
+								altText
+								sourceUrl
+								mediaDetails {
+									height
+									width
+								}
+								}
+							}
+							lastCard {
+								backgroundImage {
+								altText
+								sourceUrl
+								mediaDetails {
+									height
+									width
+								}
+								}
+							}
+							gridContent {
+								card {
+								title
+								subtitle
+								paragraph
+								}
+							}
+							}
+							... on ${postTypeFlexiblecontent}_Pricing {
+							fieldGroupName
+							italic
+							title
+							pointTwo
+							pointOne
+							paragraph
+							paymentProviders {
 								logo {
-									altText
-									sourceUrl
-									mediaDetails {
+								altText
+								sourceUrl
+								mediaDetails {
 									height
 									width
-									}
-								}
-								}
-								card {
-								bulletList {
-									bulletPoint
 								}
 								}
 							}
-							... on Page_Flexiblecontent_FlexibleContent_ContentStats {
-								fieldGroupName
-								paragraph
-								title
-								subtitle
-								column {
-								title
-								values
-								percentage
-								}
-								columnTwo {
-								title
-								values
-								percentage
-								}
-								bulletPoints {
+							card {
+								bulletList {
 								bulletPoint
 								}
 							}
-							... on Page_Flexiblecontent_FlexibleContent_ContentImageGrid {
-								fieldGroupName
-								gridContent {
-								card {
-									title
-									paragraph
-									contentLocation
-									backgroundImage {
-									sourceUrl
-									}
-								}
-								}
 							}
-							... on Page_Flexiblecontent_FlexibleContent_ContentSliderAuto {
-								fieldGroupName
-							}
-							... on Page_Flexiblecontent_FlexibleContent_TrustedBrands {
-								fieldGroupName
-								paragraph
+							... on ${postTypeFlexiblecontent}_ContentStats {
+							fieldGroupName
+							paragraph
+							title
+							subtitle
+							column {
 								title
-								logos {
-								image {
-									altText
-									sourceUrl
-									mediaDetails {
-									height
-									width
-									}
-								}
-								}
-							}
-							... on Page_Flexiblecontent_FlexibleContent_ImageGrid {
-								fieldGroupName
-								image {
-								altText
-								sourceUrl
-								mediaDetails {
-									height
-									width
-								}
-								}
-								imageTwo {
-								altText
-								sourceUrl
-								mediaDetails {
-									height
-									width
-								}
-								}
-								imageThree {
-								altText
-								sourceUrl
-								mediaDetails {
-									height
-									width
-								}
-								}
-								imageFour {
-								altText
-								sourceUrl
-								mediaDetails {
-									height
-									width
-								}
-								}
-								imageFive {
-								altText
-								sourceUrl
-								mediaDetails {
-									height
-									width
-								}
-								}
-								imageSix {
-								altText
-								sourceUrl
-								mediaDetails {
-									height
-									width
-								}
-								}
-							}
-							... on Page_Flexiblecontent_FlexibleContent_Sustainability {
-								fieldGroupName
-								imageText
-								title
-								subtitle
+								values
 								percentage
+							}
+							columnTwo {
+								title
+								values
+								percentage
+							}
+							bulletPoints {
+								bulletPoint
+							}
+							}
+							... on ${postTypeFlexiblecontent}_ContentImageGrid {
+							fieldGroupName
+							gridContent {
+								card {
+								title
 								paragraph
+								contentLocation
+								backgroundImage {
+									sourceUrl
+								}
+								}
+							}
+							}
+							... on ${postTypeFlexiblecontent}_ContentSliderAuto {
+							fieldGroupName
+							}
+							... on ${postTypeFlexiblecontent}_TrustedBrands {
+							fieldGroupName
+							paragraph
+							title
+							logos {
 								image {
 								altText
 								sourceUrl
@@ -294,110 +227,178 @@ export const getAllPreviewPagesFlexibleContentComponents = async (
 								}
 								}
 							}
-							... on Page_Flexiblecontent_FlexibleContent_Faq {
-								fieldGroupName
-								paragraph
-								title
-								qagrid {
-								title
-								paragraph
-								}
 							}
-							... on Page_Flexiblecontent_FlexibleContent_OperationalInsights {
-								fieldGroupName
-								italic
-								title
-								paragraph
-							}
-							... on Page_Flexiblecontent_FlexibleContent_Testimonial {
-								fieldGroupName
-								paragraph
-								title
-								contentGrid {
-								card {
-									name
-									position
-									paragraph
-									image {
-									altText
-									sourceUrl
-									mediaDetails {
-										height
-										width
-									}
-									}
-								}
-								}
-							}
-							... on Page_Flexiblecontent_FlexibleContent_ContactInfo {
-								fieldGroupName
-								paragraph
-								title
-							}
-							... on Page_Flexiblecontent_FlexibleContent_ContactForm {
-								fieldGroupName
-								title
-								backgroundImage {
+							... on ${postTypeFlexiblecontent}_ImageGrid {
+							fieldGroupName
+							image {
 								altText
 								sourceUrl
 								mediaDetails {
+								height
+								width
+								}
+							}
+							imageTwo {
+								altText
+								sourceUrl
+								mediaDetails {
+								height
+								width
+								}
+							}
+							imageThree {
+								altText
+								sourceUrl
+								mediaDetails {
+								height
+								width
+								}
+							}
+							imageFour {
+								altText
+								sourceUrl
+								mediaDetails {
+								height
+								width
+								}
+							}
+							imageFive {
+								altText
+								sourceUrl
+								mediaDetails {
+								height
+								width
+								}
+							}
+							imageSix {
+								altText
+								sourceUrl
+								mediaDetails {
+								height
+								width
+								}
+							}
+							}
+							... on ${postTypeFlexiblecontent}_Sustainability {
+							fieldGroupName
+							imageText
+							title
+							subtitle
+							percentage
+							paragraph
+							image {
+								altText
+								sourceUrl
+								mediaDetails {
+								height
+								width
+								}
+							}
+							}
+							... on ${postTypeFlexiblecontent}_Faq {
+							fieldGroupName
+							paragraph
+							title
+							qagrid {
+								title
+								paragraph
+							}
+							}
+							... on ${postTypeFlexiblecontent}_OperationalInsights {
+							fieldGroupName
+							italic
+							title
+							paragraph
+							}
+							... on ${postTypeFlexiblecontent}_Testimonial {
+							fieldGroupName
+							paragraph
+							title
+							contentGrid {
+								card {
+								name
+								position
+								paragraph
+								image {
+									altText
+									sourceUrl
+									mediaDetails {
 									height
 									width
+									}
 								}
 								}
 							}
-							... on Page_Flexiblecontent_FlexibleContent_Cta {
-								fieldGroupName
-								paragraph
-								title
-								buttonLink {
-								url
-								title
-								target
-								}
-								buttonLinkTwo {
-								url
-								title
-								target
-								}
-								backgroundImage {
+							}
+							... on ${postTypeFlexiblecontent}_ContactInfo {
+							fieldGroupName
+							paragraph
+							title
+							}
+							... on ${postTypeFlexiblecontent}_ContactForm {
+							fieldGroupName
+							title
+							backgroundImage {
+								altText
 								sourceUrl
-								}
-								content {
-								title
-								paragraph
+								mediaDetails {
+								height
+								width
 								}
 							}
-							... on Page_Flexiblecontent_FlexibleContent_CtaTwo {
-								fieldGroupName
-								paragraph
-								title
-								buttonLink {
-								url
-								title
-								target
-								}
-								backgroundImage {
-								sourceUrl
-								}
 							}
-							... on Page_Flexiblecontent_FlexibleContent_ErrorPageContent {
-								fieldGroupName
-								paragraph
-								title
-								buttonLink {
+							... on ${postTypeFlexiblecontent}_Cta {
+							fieldGroupName
+							paragraph
+							title
+							buttonLink {
 								url
 								title
 								target
-								}
-								buttonLinkTwo {
+							}
+							buttonLinkTwo {
 								url
 								title
 								target
-								}
-								backgroundImage {
+							}
+							backgroundImage {
 								sourceUrl
-								}
+							}
+							content {
+								title
+								paragraph
+							}
+							}
+							... on ${postTypeFlexiblecontent}_CtaTwo {
+							fieldGroupName
+							paragraph
+							title
+							buttonLink {
+								url
+								title
+								target
+							}
+							backgroundImage {
+								sourceUrl
+							}
+							}
+							... on ${postTypeFlexiblecontent}_ErrorPageContent {
+							fieldGroupName
+							paragraph
+							title
+							buttonLink {
+								url
+								title
+								target
+							}
+							buttonLinkTwo {
+								url
+								title
+								target
+							}
+							backgroundImage {
+								sourceUrl
+							}
 							}
 						}
 					}
@@ -421,439 +422,9 @@ export const getAllPreviewPagesFlexibleContentComponents = async (
 			content: response?.data?.mainContent?.flexibleContent?.flexibleContent,
 		};
 	} catch (error) {
-		return {
-			redirect: {
-				destination: loginRedirectURL || "/",
-				statusCode: 307,
-			},
-		};
-	}
-};
-
-/* PREVIEW BLOGS POSTS */
-/* Fetch all Flexible Content Components 
-(For every flexible content Blog Post) */
-export const getAllPreviewPostsFlexibleContentComponents = async (
-	id: number,
-	authToken: string,
-	loginRedirectURL: string
-) => {
-	try {
-		const content: DocumentNode = gql`
-			{
-				mainContent: post(id: ${id}, idType: DATABASE_ID) {
-					flexibleContent {
-						flexibleContent {
-							... on Post_Flexiblecontent_FlexibleContent_HeroSection {
-								backgroundVideoUrl
-								fieldGroupName
-								title
-								subtitle
-								buttonLink {
-								url
-								title
-								target
-								}
-								buttonLinkTwo {
-								url
-								title
-								target
-								}
-								backgroundImage {
-								sourceUrl
-								}
-							}
-							... on Post_Flexiblecontent_FlexibleContent_HeroSectionTwo {
-								fieldGroupName
-								title
-								paragraph
-								backgroundVideoUrl
-								backgroundImageOrVideo
-								backgroundImage {
-								altText
-								sourceUrl
-								mediaDetails {
-									height
-									width
-								}
-								}
-							}
-							... on Post_Flexiblecontent_FlexibleContent_TitleParagraph {
-								fieldGroupName
-								paragraph
-								title
-							}
-							... on Post_Flexiblecontent_FlexibleContent_IntroContent {
-								fieldGroupName
-								title
-								contentGrid {
-								card {
-									title
-									paragraph
-									buttonLink {
-									url
-									title
-									target
-									}
-								}
-								}
-							}
-							... on Post_Flexiblecontent_FlexibleContent_FeaturesGrid {
-								fieldGroupName
-								paragraph
-								title
-								cardOne {
-								title
-								subtitle
-								paragraph
-								}
-								cardTwo {
-								backgroundImage {
-									altText
-									sourceUrl
-									mediaDetails {
-									height
-									width
-									}
-								}
-								}
-								cardThree {
-								foreground {
-									title
-									subtitle
-									paragraph
-								}
-								background {
-									title
-									subtitle
-									paragraph
-								}
-								}
-								lastCard {
-								backgroundImage {
-									altText
-									sourceUrl
-									mediaDetails {
-									height
-									width
-									}
-								}
-								}
-								gridContent {
-								card {
-									title
-									subtitle
-									paragraph
-								}
-								}
-							}
-							... on Post_Flexiblecontent_FlexibleContent_FeaturesGridTwo {
-								fieldGroupName
-								cardOne {
-								title
-								subtitle
-								paragraph
-								}
-								cardTwo {
-								backgroundImage {
-									altText
-									sourceUrl
-									mediaDetails {
-									height
-									width
-									}
-								}
-								}
-								lastCard {
-								backgroundImage {
-									altText
-									sourceUrl
-									mediaDetails {
-									height
-									width
-									}
-								}
-								}
-								gridContent {
-								card {
-									title
-									subtitle
-									paragraph
-								}
-								}
-							}
-							... on Post_Flexiblecontent_FlexibleContent_Pricing {
-								fieldGroupName
-								italic
-								title
-								pointTwo
-								pointOne
-								paragraph
-								paymentProviders {
-								logo {
-									altText
-									sourceUrl
-									mediaDetails {
-									height
-									width
-									}
-								}
-								}
-								card {
-								bulletList {
-									bulletPoint
-								}
-								}
-							}
-							... on Post_Flexiblecontent_FlexibleContent_ContentStats {
-								fieldGroupName
-								paragraph
-								title
-								subtitle
-								column {
-								title
-								values
-								percentage
-								}
-								columnTwo {
-								title
-								values
-								percentage
-								}
-								bulletPoints {
-								bulletPoint
-								}
-							}
-							... on Post_Flexiblecontent_FlexibleContent_ContentImageGrid {
-								fieldGroupName
-								gridContent {
-								card {
-									title
-									paragraph
-									contentLocation
-									backgroundImage {
-									sourceUrl
-									}
-								}
-								}
-							}
-							... on Post_Flexiblecontent_FlexibleContent_ContentSliderAuto {
-								fieldGroupName
-							}
-							... on Post_Flexiblecontent_FlexibleContent_TrustedBrands {
-								fieldGroupName
-								paragraph
-								title
-								logos {
-								image {
-									altText
-									sourceUrl
-									mediaDetails {
-									height
-									width
-									}
-								}
-								}
-							}
-							... on Post_Flexiblecontent_FlexibleContent_ImageGrid {
-								fieldGroupName
-								image {
-								altText
-								sourceUrl
-								mediaDetails {
-									height
-									width
-								}
-								}
-								imageTwo {
-								altText
-								sourceUrl
-								mediaDetails {
-									height
-									width
-								}
-								}
-								imageThree {
-								altText
-								sourceUrl
-								mediaDetails {
-									height
-									width
-								}
-								}
-								imageFour {
-								altText
-								sourceUrl
-								mediaDetails {
-									height
-									width
-								}
-								}
-								imageFive {
-								altText
-								sourceUrl
-								mediaDetails {
-									height
-									width
-								}
-								}
-								imageSix {
-								altText
-								sourceUrl
-								mediaDetails {
-									height
-									width
-								}
-								}
-							}
-							... on Post_Flexiblecontent_FlexibleContent_Sustainability {
-								fieldGroupName
-								imageText
-								title
-								subtitle
-								percentage
-								paragraph
-								image {
-								altText
-								sourceUrl
-								mediaDetails {
-									height
-									width
-								}
-								}
-							}
-							... on Post_Flexiblecontent_FlexibleContent_Faq {
-								fieldGroupName
-								paragraph
-								title
-								qagrid {
-								title
-								paragraph
-								}
-							}
-							... on Post_Flexiblecontent_FlexibleContent_OperationalInsights {
-								fieldGroupName
-								italic
-								title
-								paragraph
-							}
-							... on Post_Flexiblecontent_FlexibleContent_Testimonial {
-								fieldGroupName
-								paragraph
-								title
-								contentGrid {
-								card {
-									name
-									position
-									paragraph
-									image {
-									altText
-									sourceUrl
-									mediaDetails {
-										height
-										width
-									}
-									}
-								}
-								}
-							}
-							... on Post_Flexiblecontent_FlexibleContent_ContactInfo {
-								fieldGroupName
-								paragraph
-								title
-							}
-							... on Post_Flexiblecontent_FlexibleContent_ContactForm {
-								fieldGroupName
-								title
-								backgroundImage {
-								altText
-								sourceUrl
-								mediaDetails {
-									height
-									width
-								}
-								}
-							}
-							... on Post_Flexiblecontent_FlexibleContent_Cta {
-								fieldGroupName
-								paragraph
-								title
-								buttonLink {
-								url
-								title
-								target
-								}
-								buttonLinkTwo {
-								url
-								title
-								target
-								}
-								backgroundImage {
-								sourceUrl
-								}
-								content {
-								title
-								paragraph
-								}
-							}
-							... on Post_Flexiblecontent_FlexibleContent_CtaTwo {
-								fieldGroupName
-								paragraph
-								title
-								buttonLink {
-								url
-								title
-								target
-								}
-								backgroundImage {
-								sourceUrl
-								}
-							}
-							... on Post_Flexiblecontent_FlexibleContent_ErrorPageContent {
-								fieldGroupName
-								paragraph
-								title
-								buttonLink {
-								url
-								title
-								target
-								}
-								buttonLinkTwo {
-								url
-								title
-								target
-								}
-								backgroundImage {
-								sourceUrl
-								}
-							}
-						}
-					}
-				}
-			}
-		`;
-
-		const response: any = await client.query({
-			query: content,
-			variables: {
-				id: id,
-			},
-			context: {
-				headers: {
-					authorization: authToken ? `Bearer ${authToken}` : "",
-				},
-			},
-		});
-
-		return {
-			content: response?.data?.mainContent?.flexibleContent?.flexibleContent,
-		};
-	} catch (error) {
-		return {
-			redirect: {
-				destination: loginRedirectURL || "/",
-				statusCode: 307,
-			},
-		};
+		console.log(error);
+		throw new Error(
+			`Something went wrong trying to get preview ${postType} flexible content components`
+		);
 	}
 };

@@ -39,8 +39,9 @@ const publicPages: Array<string> = [
 	"/api/sitemap.xml",
 	"/industries/[slug]",
 	"/page/preview/pageId=/[id]",
-	"/blogs/preview/postId=/[id]",
 	"/operational-insights/[slug]",
+	"/industries/preview/postId=/[id]",
+	"/operational-insights/preview/postId=/[id]",
 ];
 
 const protectedPages: Array<string> = [

@@ -32,6 +32,7 @@ const dynamicPages: NextPage<IContentContext> = ({
 	industriesMenuLinks,
 	operationalInsights,
 	themesOptionsContent,
+	postTypeFlexiblecontent,
 	contentSliderPostsContent,
 }) => {
 	return (
@@ -45,6 +46,7 @@ const dynamicPages: NextPage<IContentContext> = ({
 				industriesMenuLinks: industriesMenuLinks,
 				operationalInsights: operationalInsights,
 				themesOptionsContent: themesOptionsContent,
+				postTypeFlexiblecontent: postTypeFlexiblecontent,
 				contentSliderPostsContent: contentSliderPostsContent,
 			}}
 		>
@@ -75,6 +77,9 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps: GetStaticProps = async ({params}: any) => {
+	const postTypeFlexiblecontent: string =
+		"DefaultTemplate_Flexiblecontent_FlexibleContent";
+
 	// Fetch priority content
 	const seoContent: any = await getAllSeoPagesContent(params?.slug);
 
@@ -112,9 +117,9 @@ export const getStaticProps: GetStaticProps = async ({params}: any) => {
 			operationalInsights,
 			industriesMenuLinks,
 			themesOptionsContent,
+			postTypeFlexiblecontent,
 			contentSliderPostsContent,
 			content: flexibleContentComponents?.content,
-			pageTitle: flexibleContentComponents?.pageTitle,
 		},
 		revalidate: 60,
 	};

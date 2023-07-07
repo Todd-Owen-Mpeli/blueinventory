@@ -9,7 +9,6 @@ import {getAllStripePaymentPlans} from "@/functions/stripe/GetStripePaymentPlans
 
 // Mutations Functions
 import {getAllPreviewFlexibleContentComponents} from "@/functions/graphql/Mutations/GetAllPreviewFlexibleContentComponents";
-import {getAllPreviewSeoContent} from "@/functions/graphql/Mutations/GetAllPreviewSeoContent";
 
 // Queries Functions
 import {
@@ -19,6 +18,7 @@ import {
 	getIndustriesMenuLinks,
 } from "@/functions/graphql/Queries/GetAllMenuLinks";
 import {getThemesOptionsContent} from "@/functions/graphql/Queries/GetAllThemesOptions";
+import {getAllPreviewSeoContent} from "@/functions/graphql/Mutations/GetAllPreviewSeoContent";
 import {getContentSliderBlogPostsPostsContent} from "@/functions/graphql/Queries/GetAllContentSliderPosts";
 import {getAllOperationalInsightsContent} from "@/functions/graphql/Queries/GetAllOperationalInsightsPostsSlugs";
 
@@ -71,9 +71,9 @@ const dynamicPreviewPosts: NextPage<IContentContext> = ({
 export const getServerSideProps: GetServerSideProps = async (context: any) => {
 	const authToken: string = getAuthToken(context.req);
 	const {params}: any = context || {};
-	const postType: string = "page";
+	const postType: string = "post";
 	const postTypeFlexiblecontent: string =
-		"Page_Flexiblecontent_FlexibleContent";
+		"Post_Flexiblecontent_FlexibleContent";
 	const loginRedirectURL: string = getLoginPreviewRedirectUrl(
 		postType,
 		params?.id

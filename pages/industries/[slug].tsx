@@ -3,6 +3,7 @@ import {motion} from "framer-motion";
 import {ContentContext} from "@/context/context";
 import {IContentContext} from "@/context/context";
 import type {NextPage, GetStaticProps} from "next";
+import {getAllStripePaymentPlans} from "@/functions/stripe/GetStripePaymentPlans";
 
 // Queries Functions
 import {
@@ -11,7 +12,6 @@ import {
 	getFooterMenuLinks,
 	getIndustriesMenuLinks,
 } from "@/functions/graphql/Queries/GetAllMenuLinks";
-import {getAllStripePaymentPlans} from "@/functions/stripe/GetStripePaymentPlans";
 import {getThemesOptionsContent} from "@/functions/graphql/Queries/GetAllThemesOptions";
 import {getAllSeoIndustriesPagesContent} from "@/functions/graphql/Queries/GetAllSeoPagesContent";
 import {getAllIndustriesPageSlugs} from "@/functions/graphql/Queries/GetAllIndustriesPageSlugs";
@@ -32,6 +32,7 @@ const dynamicIndustriesPages: NextPage<IContentContext> = ({
 	industriesMenuLinks,
 	operationalInsights,
 	themesOptionsContent,
+	postTypeFlexiblecontent,
 	contentSliderPostsContent,
 }) => {
 	return (
@@ -45,6 +46,7 @@ const dynamicIndustriesPages: NextPage<IContentContext> = ({
 				industriesMenuLinks: industriesMenuLinks,
 				operationalInsights: operationalInsights,
 				themesOptionsContent: themesOptionsContent,
+				postTypeFlexiblecontent: postTypeFlexiblecontent,
 				contentSliderPostsContent: contentSliderPostsContent,
 			}}
 		>
@@ -75,6 +77,9 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps: GetStaticProps = async ({params}: any) => {
+	const postTypeFlexiblecontent: string =
+		"DefaultTemplate_Flexiblecontent_FlexibleContent";
+
 	// Fetch priority content
 	const seoContent: any = await getAllSeoIndustriesPagesContent(params?.slug);
 
@@ -112,9 +117,9 @@ export const getStaticProps: GetStaticProps = async ({params}: any) => {
 			industriesMenuLinks,
 			operationalInsights,
 			themesOptionsContent,
+			postTypeFlexiblecontent,
 			contentSliderPostsContent,
 			content: flexibleContentComponents?.content,
-			pageTitle: flexibleContentComponents?.pageTitle,
 		},
 		revalidate: 60,
 	};

@@ -31,6 +31,7 @@ const login: NextPage<IContentContext> = ({
 	industriesMenuLinks,
 	operationalInsights,
 	themesOptionsContent,
+	postTypeFlexiblecontent,
 	contentSliderPostsContent,
 }) => {
 	return (
@@ -44,6 +45,7 @@ const login: NextPage<IContentContext> = ({
 				industriesMenuLinks: industriesMenuLinks,
 				operationalInsights: operationalInsights,
 				themesOptionsContent: themesOptionsContent,
+				postTypeFlexiblecontent: postTypeFlexiblecontent,
 				contentSliderPostsContent: contentSliderPostsContent,
 			}}
 		>
@@ -53,6 +55,10 @@ const login: NextPage<IContentContext> = ({
 				}}
 				initial="initial"
 				animate="animate"
+				className="bg-center bg-no-repeat bg-cover "
+				style={{
+					backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-orange-yellow-pinkRed.svg")`,
+				}}
 			>
 				<Layout>
 					<Login />
@@ -63,6 +69,9 @@ const login: NextPage<IContentContext> = ({
 };
 
 export const getStaticProps: GetStaticProps = async () => {
+	const postTypeFlexiblecontent: string =
+		"DefaultTemplate_Flexiblecontent_FlexibleContent";
+
 	// Fetch priority content
 	const seoContent: any = await getAllSeoPagesContent("Home");
 
@@ -100,9 +109,9 @@ export const getStaticProps: GetStaticProps = async () => {
 			operationalInsights,
 			industriesMenuLinks,
 			themesOptionsContent,
+			postTypeFlexiblecontent,
 			contentSliderPostsContent,
 			content: flexibleContentComponents?.content,
-			pageTitle: flexibleContentComponents?.pageTitle,
 		},
 		revalidate: 60,
 	};

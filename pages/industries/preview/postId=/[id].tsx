@@ -3,12 +3,12 @@ import {isEmpty} from "lodash";
 import {motion} from "framer-motion";
 import type {GetServerSideProps, NextPage} from "next";
 import {getAuthToken} from "@/functions/cookies/cookies";
+import {ContentContext, IContentContext} from "@/context/context";
 import {getLoginPreviewRedirectUrl} from "@/functions/redirects/redirects";
-import {IPreviewContentContext, PreviewContentContext} from "@/context/context";
 import {getAllStripePaymentPlans} from "@/functions/stripe/GetStripePaymentPlans";
 
 // Mutations Functions
-import {getAllPreviewPostsFlexibleContentComponents} from "@/functions/graphql/Mutations/GetAllPreviewFlexibleContentComponents";
+import {getAllPreviewFlexibleContentComponents} from "@/functions/graphql/Mutations/GetAllPreviewFlexibleContentComponents";
 
 // Queries Functions
 import {
@@ -18,31 +18,39 @@ import {
 	getIndustriesMenuLinks,
 } from "@/functions/graphql/Queries/GetAllMenuLinks";
 import {getThemesOptionsContent} from "@/functions/graphql/Queries/GetAllThemesOptions";
-import {getAllPreviewSeoBlogPostsContent} from "@/functions/graphql/Mutations/GetAllPreviewSeoContent";
+import {getAllPreviewSeoContent} from "@/functions/graphql/Mutations/GetAllPreviewSeoContent";
 import {getContentSliderBlogPostsPostsContent} from "@/functions/graphql/Queries/GetAllContentSliderPosts";
 import {getAllOperationalInsightsContent} from "@/functions/graphql/Queries/GetAllOperationalInsightsPostsSlugs";
 
 // Components
 import Layout from "@/components/Layout/Layout";
-import RenderFlexibleContentTwo from "@/components/FlexibleContent/RenderFlexibleContentTwo";
+import RenderFlexibleContent from "@/components/FlexibleContent/RenderFlexibleContent";
 
-const dynamicPreviewPosts: NextPage<IPreviewContentContext> = ({
-	defaultProps,
+const dynamicPreviewPosts: NextPage<IContentContext> = ({
+	seo,
+	content,
+	stripePlans,
+	footerMenuLinks,
+	navbarMenuLinks,
+	industriesMenuLinks,
+	operationalInsights,
+	themesOptionsContent,
+	postTypeFlexiblecontent,
+	contentSliderPostsContent,
 }) => {
 	return (
-		<PreviewContentContext.Provider
+		<ContentContext.Provider
 			value={{
-				defaultProps: {
-					seo: defaultProps?.seo,
-					content: defaultProps?.content,
-					stripePlans: defaultProps?.stripePlans,
-					navbarMenuLinks: defaultProps?.navbarMenuLinks,
-					footerMenuLinks: defaultProps?.footerMenuLinks,
-					industriesMenuLinks: defaultProps?.industriesMenuLinks,
-					operationalInsights: defaultProps?.operationalInsights,
-					themesOptionsContent: defaultProps?.themesOptionsContent,
-					contentSliderPostsContent: defaultProps?.contentSliderPostsContent,
-				},
+				seo: seo,
+				content: content,
+				stripePlans: stripePlans,
+				navbarMenuLinks: navbarMenuLinks,
+				footerMenuLinks: footerMenuLinks,
+				industriesMenuLinks: industriesMenuLinks,
+				operationalInsights: operationalInsights,
+				themesOptionsContent: themesOptionsContent,
+				postTypeFlexiblecontent: postTypeFlexiblecontent,
+				contentSliderPostsContent: contentSliderPostsContent,
 			}}
 		>
 			<motion.div
@@ -53,42 +61,46 @@ const dynamicPreviewPosts: NextPage<IPreviewContentContext> = ({
 				animate="animate"
 			>
 				<Layout>
-					<RenderFlexibleContentTwo />
+					<RenderFlexibleContent />
 				</Layout>
 			</motion.div>
-		</PreviewContentContext.Provider>
+		</ContentContext.Provider>
 	);
 };
 
 export const getServerSideProps: GetServerSideProps = async (context: any) => {
 	const authToken: string = getAuthToken(context.req);
 	const {params}: any = context || {};
+	const postType: string = "industries";
+	const postTypeFlexiblecontent: string =
+		"Industry_Flexiblecontent_FlexibleContent";
 	const loginRedirectURL: string = getLoginPreviewRedirectUrl(
-		"post",
+		postType,
 		params?.id
 	);
 	if (isEmpty(authToken)) {
 		return {
 			redirect: {
 				permanent: false,
-				destination: "/login",
+				destination: loginRedirectURL || "/login",
 			},
 		};
 	} else {
 		// Fetch priority content
 		/* PREVIEW BLOGS POSTS SEO CONTENT */
-		const seoContent: any = await getAllPreviewSeoBlogPostsContent(
+		const seoContent: any = await getAllPreviewSeoContent(
 			params?.id,
 			authToken,
-			loginRedirectURL
+			postType
 		);
 
 		/* PREVIEW BLOGS POSTS FLEXIBLE CONTENT */
 		const flexibleContentComponents: any =
-			await getAllPreviewPostsFlexibleContentComponents(
+			await getAllPreviewFlexibleContentComponents(
 				params?.id,
 				authToken,
-				loginRedirectURL
+				postType,
+				postTypeFlexiblecontent
 			);
 
 		// Fetch remaining content simultaneously
@@ -112,33 +124,21 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 			getContentSliderBlogPostsPostsContent(),
 		]);
 
-		const defaultProps = {
-			stripePlans,
-			mainMenuLinks,
-			navbarMenuLinks,
-			footerMenuLinks,
-			seo: seoContent,
-			operationalInsights,
-			industriesMenuLinks,
-			themesOptionsContent,
-			contentSliderPostsContent,
-			content: flexibleContentComponents?.content,
+		return {
+			props: {
+				stripePlans,
+				mainMenuLinks,
+				navbarMenuLinks,
+				footerMenuLinks,
+				seo: seoContent,
+				operationalInsights,
+				industriesMenuLinks,
+				themesOptionsContent,
+				postTypeFlexiblecontent,
+				contentSliderPostsContent,
+				content: flexibleContentComponents?.content,
+			},
 		};
-
-		if (isEmpty(authToken || defaultProps.content)) {
-			return {
-				redirect: {
-					permanent: false,
-					destination: "/login",
-				},
-			};
-		} else {
-			return {
-				props: {
-					defaultProps,
-				},
-			};
-		}
 	}
 };
 

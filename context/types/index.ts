@@ -178,6 +178,10 @@ export type IThemesOptionsContent = {
 	copyrightText: string;
 };
 
+export type IPostTypeFlexiblecontent = {
+	postTypeFlexiblecontent: string;
+};
+
 export type IContentSliderPostsContent = {
 	content: [
 		{

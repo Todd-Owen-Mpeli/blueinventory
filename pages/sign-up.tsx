@@ -29,6 +29,7 @@ const signUpPage: NextPage<IContentContext> = ({
 	industriesMenuLinks,
 	operationalInsights,
 	themesOptionsContent,
+	postTypeFlexiblecontent,
 	contentSliderPostsContent,
 }) => (
 	<ContentContext.Provider
@@ -41,6 +42,7 @@ const signUpPage: NextPage<IContentContext> = ({
 			industriesMenuLinks: industriesMenuLinks,
 			operationalInsights: operationalInsights,
 			themesOptionsContent: themesOptionsContent,
+			postTypeFlexiblecontent: postTypeFlexiblecontent,
 			contentSliderPostsContent: contentSliderPostsContent,
 		}}
 	>
@@ -68,6 +70,9 @@ const signUpPage: NextPage<IContentContext> = ({
 );
 
 export const getStaticProps: GetStaticProps = async () => {
+	const postTypeFlexiblecontent: string =
+		"DefaultTemplate_Flexiblecontent_FlexibleContent";
+
 	// Fetch remaining content simultaneously
 	const [
 		stripePlans,
@@ -101,6 +106,7 @@ export const getStaticProps: GetStaticProps = async () => {
 			operationalInsights,
 			industriesMenuLinks,
 			themesOptionsContent,
+			postTypeFlexiblecontent,
 			contentSliderPostsContent,
 		},
 		revalidate: 60,

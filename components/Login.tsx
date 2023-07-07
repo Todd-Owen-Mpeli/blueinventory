@@ -1,9 +1,15 @@
 // Imports
+import {
+	fadeIn,
+	stagger,
+	initial,
+	fadeInUp,
+	initialTwo,
+} from "../animations/animations";
 import {isEmpty} from "lodash";
 import {FC, useState} from "react";
 import {motion} from "framer-motion";
 import {useRouter} from "next/router";
-import {stagger, initial, fadeInUp} from "../animations/animations";
 import {getPreviewRedirectUrl} from "@/functions/redirects/redirects";
 import validateAndSanitizeLoginForm from "@/functions/validator/login";
 
@@ -13,6 +19,7 @@ import Paragraph from "@/components/Elements/Paragraph";
 
 // Styling
 import styles from "@/styles/components/ContactForm.module.scss";
+import {title} from "process";
 
 const Login: FC = () => {
 	const router = useRouter();
@@ -21,12 +28,13 @@ const Login: FC = () => {
 		password: "",
 	});
 
-	const [errorMessage, setErrorMessage] = useState(null);
 	const [loading, setLoading] = useState(false);
+	const [errorMessage, setErrorMessage] = useState(false);
+	const [loginSuccessful, setLoginSuccessful] = useState(false);
 
 	const onFormSubmit = (event: any) => {
 		event.preventDefault();
-		setErrorMessage(null);
+		setErrorMessage(false);
 		const {postType, previewPostId} = router?.query ?? {};
 
 		// Validation and Sanitization.
@@ -35,6 +43,9 @@ const Login: FC = () => {
 			password: loginFields?.password ?? "",
 		});
 
+		console.log(loginFields?.username, loginFields?.password);
+
+		// Username && Password
 		if (validationResult.isValid) {
 			setLoading(true);
 			return fetch("/api/login", {
@@ -43,6 +54,7 @@ const Login: FC = () => {
 			})
 				.then((data) => {
 					setLoading(false);
+					setLoginSuccessful(true);
 
 					if (postType && previewPostId) {
 						// Redirects User after logging in
@@ -57,6 +69,7 @@ const Login: FC = () => {
 					return false;
 				});
 		} else {
+			setErrorMessage(true);
 			setClientSideError(validationResult);
 		}
 	};
@@ -97,14 +110,54 @@ const Login: FC = () => {
 	};
 
 	return (
-		<section className="flex flex-col items-center justify-center h-screen bg-white">
-			<div className="w-5/12 p-8 m-auto">
-				<h4 className="block mb-5 text-lg font-medium text-black">Login</h4>
-				{!isEmpty(errorMessage) && (
-					<Paragraph
-						content={""}
-						tailwindStyling="mx-auto mb-16 text-lg font-semibold text-center sm:text-xl md:text-2xl"
-					/>
+		<section className="flex flex-col items-center justify-center h-screen px-4">
+			<div className="w-full p-16 m-auto bg-white rounded-lg lg:w-5/12">
+				{loading ? (
+					<motion.div
+						initial={initialTwo}
+						whileInView={fadeIn}
+						viewport={{once: true}}
+						className="flex items-center justify-center my-4 mb-8 gap-x-2"
+					>
+						<h4 className="text-xl font-semibold text-center uppercase text-blue">
+							Logging In...
+						</h4>
+					</motion.div>
+				) : loginSuccessful ? (
+					<motion.div
+						initial={initialTwo}
+						whileInView={fadeIn}
+						viewport={{once: true}}
+						className="flex items-center justify-center my-4 mb-8 gap-x-2"
+					>
+						<h4 className="text-xl font-semibold text-center uppercase text-goldPrime">
+							Logged In Successful!
+						</h4>
+					</motion.div>
+				) : errorMessage ? (
+					<motion.div
+						initial={initialTwo}
+						whileInView={fadeIn}
+						viewport={{once: true}}
+						className="flex items-center justify-center my-4 mb-8 gap-x-2"
+					>
+						<h4 className="font-semibold text-center text-medium text-pinkRed">
+							Error Message: Something went wrong. Please try again.
+						</h4>
+					</motion.div>
+				) : (
+					<motion.div
+						initial={initialTwo}
+						whileInView={fadeIn}
+						viewport={{once: true}}
+						className="flex items-center justify-center my-4 mb-8 gap-x-2"
+					>
+						<h4 className="mb-5 text-center">
+							<strong className="text-xl font-[900] uppercase text-darkBlue">
+								Login
+							</strong>
+						</h4>
+					</motion.div>
 				)}
 				<motion.form
 					className="mb-4"
@@ -162,7 +215,6 @@ const Login: FC = () => {
 						initial={initial}
 						whileInView={fadeInUp}
 						viewport={{once: true}}
-						// isLoading={isLoading}
 						disabled={
 							!username ||
 							!password ||
@@ -172,7 +224,15 @@ const Login: FC = () => {
 						className="w-full mt-4 text-white disabled:bg-opacity-20 disabled:cursor-not-allowed"
 						type="submit"
 					>
-						<span className={` ${styles.loginSubmitButton}`}>
+						<span
+							className={
+								loginSuccessful
+									? `${styles.loginSuccessfulButton}`
+									: errorMessage
+									? `${styles.loginErrorButton}`
+									: `${styles.loginSubmitButton}`
+							}
+						>
 							<span className={styles.span}>
 								<svg
 									width="45px"
@@ -207,7 +267,13 @@ const Login: FC = () => {
 								</svg>
 							</span>
 							<h3 className="text-base tracking-widest text-white uppercase sm:tracking-wider sm:text-medium">
-								{loading ? "Logging In..." : "Login"}
+								{loading
+									? "Logging In..."
+									: loginSuccessful
+									? "Logged In Successful!"
+									: errorMessage
+									? "Login Error!"
+									: "Login"}
 							</h3>
 						</span>
 					</motion.button>
