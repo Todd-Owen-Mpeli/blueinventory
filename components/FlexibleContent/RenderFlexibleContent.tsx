@@ -1,4 +1,5 @@
 // Import
+import {FC} from "react";
 import {useContentContext} from "@/context/context";
 
 // Components
@@ -24,7 +25,7 @@ import OperationalInsights from "../OperationalInsights";
 import TitleThreeContentGrid from "../TitleThreeContentGrid";
 import ContentBackgroundImage from "../ContentBackgroundImage";
 
-const RenderFlexibleContent = () => {
+const RenderFlexibleContent: FC = () => {
 	const content = useContentContext();
 
 	const Flexiblecontent = content.postTypeFlexiblecontent;
