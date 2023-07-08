@@ -71,13 +71,14 @@ const dynamicPreviewPosts: NextPage<IContentContext> = ({
 export const getServerSideProps: GetServerSideProps = async (context: any) => {
 	const authToken: string = getAuthToken(context.req);
 	const {params}: any = context || {};
-	const postType: string = "industries";
+	const postType: string = "industry";
 	const postTypeFlexiblecontent: string =
 		"Industry_Flexiblecontent_FlexibleContent";
 	const loginRedirectURL: string = getLoginPreviewRedirectUrl(
 		postType,
 		params?.id
 	);
+
 	if (isEmpty(authToken)) {
 		return {
 			redirect: {

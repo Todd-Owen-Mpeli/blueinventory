@@ -40,7 +40,7 @@ const publicPages: Array<string> = [
 	"/industries/[slug]",
 	"/page/preview/pageId=/[id]",
 	"/operational-insights/[slug]",
-	"/industries/preview/postId=/[id]",
+	"/industries/preview/pageId=/[id]",
 	"/operational-insights/preview/postId=/[id]",
 ];
 
