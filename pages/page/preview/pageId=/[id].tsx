@@ -83,7 +83,8 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 		return {
 			redirect: {
 				permanent: false,
-				destination: loginRedirectURL || "/login",
+				destination: loginRedirectURL || `/login`,
+				query: {postType, previewPostId: params?.id},
 			},
 		};
 	} else {
@@ -92,7 +93,8 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 		const seoContent: any = await getAllPreviewSeoContent(
 			params?.id,
 			authToken,
-			postType
+			postType,
+			loginRedirectURL
 		);
 
 		/* PREVIEW BLOGS POSTS FLEXIBLE CONTENT */
@@ -101,7 +103,8 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 				params?.id,
 				authToken,
 				postType,
-				postTypeFlexiblecontent
+				postTypeFlexiblecontent,
+				loginRedirectURL
 			);
 
 		// Fetch remaining content simultaneously
@@ -125,21 +128,31 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 			getContentSliderBlogPostsPostsContent(),
 		]);
 
-		return {
-			props: {
-				stripePlans,
-				mainMenuLinks,
-				navbarMenuLinks,
-				footerMenuLinks,
-				seo: seoContent,
-				operationalInsights,
-				industriesMenuLinks,
-				themesOptionsContent,
-				postTypeFlexiblecontent,
-				contentSliderPostsContent,
-				content: flexibleContentComponents?.content,
-			},
-		};
+		if (seoContent || flexibleContentComponents.content) {
+			return {
+				redirect: {
+					permanent: false,
+					destination: loginRedirectURL || `/login`,
+					query: {postType, previewPostId: params?.id},
+				},
+			};
+		} else {
+			return {
+				props: {
+					stripePlans,
+					mainMenuLinks,
+					navbarMenuLinks,
+					footerMenuLinks,
+					seo: seoContent,
+					operationalInsights,
+					industriesMenuLinks,
+					themesOptionsContent,
+					postTypeFlexiblecontent,
+					contentSliderPostsContent,
+					content: flexibleContentComponents?.content,
+				},
+			};
+		}
 	}
 };
 

@@ -9,6 +9,7 @@ export const getAllPreviewFlexibleContentComponents = async (
 	id: number,
 	authToken: string,
 	postType: string,
+	loginRedirectURL: string,
 	postTypeFlexiblecontent: string
 ) => {
 	try {
@@ -422,9 +423,6 @@ export const getAllPreviewFlexibleContentComponents = async (
 			content: response?.data?.mainContent?.flexibleContent?.flexibleContent,
 		};
 	} catch (error) {
-		console.log(error);
-		throw new Error(
-			`Something went wrong trying to get preview ${postType} flexible content components`
-		);
+		return loginRedirectURL;
 	}
 };

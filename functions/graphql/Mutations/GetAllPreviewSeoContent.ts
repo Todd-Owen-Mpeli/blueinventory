@@ -6,7 +6,8 @@ import {DocumentNode, gql} from "@apollo/client";
 export async function getAllPreviewSeoContent(
 	id: number,
 	authToken: string,
-	postType: string
+	postType: string,
+	loginRedirectURL: string
 ) {
 	try {
 		const content: DocumentNode = gql`
@@ -59,9 +60,6 @@ export async function getAllPreviewSeoContent(
 
 		return response?.data?.mainContent?.seo;
 	} catch (error) {
-		console.log(error);
-		throw new Error(
-			`Something went wrong trying to get preview ${postType} seo content`
-		);
+		return loginRedirectURL;
 	}
 }

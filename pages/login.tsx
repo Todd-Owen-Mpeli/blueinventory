@@ -1,7 +1,6 @@
 // Imports
 import {motion} from "framer-motion";
-import {NextPage, GetStaticProps} from "next";
-import Layout from "@/components/Layout/Layout";
+import {NextPage, GetStaticProps, GetServerSideProps} from "next";
 import {ContentContext} from "@/context/context";
 import {IContentContext} from "@/context/context";
 import {getAllStripePaymentPlans} from "@/functions/stripe/GetStripePaymentPlans";
@@ -21,6 +20,7 @@ import {getAllOperationalInsightsContent} from "@/functions/graphql/Queries/GetA
 
 // Components
 import Login from "@/components/Login";
+import Layout from "@/components/Layout/Layout";
 
 const login: NextPage<IContentContext> = ({
 	seo,
@@ -68,7 +68,7 @@ const login: NextPage<IContentContext> = ({
 	);
 };
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
 	const postTypeFlexiblecontent: string =
 		"DefaultTemplate_Flexiblecontent_FlexibleContent";
 
@@ -106,14 +106,13 @@ export const getStaticProps: GetStaticProps = async () => {
 			navbarMenuLinks,
 			footerMenuLinks,
 			seo: seoContent,
-			operationalInsights,
 			industriesMenuLinks,
+			operationalInsights,
 			themesOptionsContent,
 			postTypeFlexiblecontent,
 			contentSliderPostsContent,
 			content: flexibleContentComponents?.content,
 		},
-		revalidate: 60,
 	};
 };
 
