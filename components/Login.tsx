@@ -6,6 +6,7 @@ import {
 	fadeInUp,
 	initialTwo,
 } from "../animations/animations";
+import {isEmpty} from "lodash";
 import {FC, useState} from "react";
 import {motion} from "framer-motion";
 import {useRouter} from "next/router";
@@ -14,35 +15,19 @@ import validateAndSanitizeLoginForm from "@/functions/validator/login";
 
 // Components
 import ReCAPTCHA from "react-google-recaptcha";
+import Paragraph from "@/components/Elements/Paragraph";
 
 // Styling
 import styles from "@/styles/components/ContactForm.module.scss";
+import {title} from "process";
 
 const Login: FC = () => {
 	const router = useRouter();
-	let previewUrl: string = "";
-	const {postType, previewPostId} = router?.query;
 	const [loginFields, setLoginFields] = useState({
 		username: "",
 		password: "",
 	});
 
-	switch (postType) {
-		case "post":
-			previewUrl = `/operational-insights/preview/postId=/${previewPostId}`;
-			break;
-		case "page":
-			previewUrl = `/page/preview/pageId=/${previewPostId}`;
-			break;
-		case "industry":
-			previewUrl = `/industries/preview/pageId=/${previewPostId}`;
-	}
-
-	console.log("postType:", postType);
-	console.log("previewPostId:", previewPostId);
-	console.log("previewUrl:", `${previewUrl}`);
-
-	// Form Status
 	const [loading, setLoading] = useState(false);
 	const [errorMessage, setErrorMessage] = useState(false);
 	const [loginSuccessful, setLoginSuccessful] = useState(false);
@@ -50,6 +35,7 @@ const Login: FC = () => {
 	const onFormSubmit = (event: any) => {
 		event.preventDefault();
 		setErrorMessage(false);
+		const {postType, previewPostId} = router?.query ?? {};
 
 		// Validation and Sanitization.
 		const validationResult = validateAndSanitizeLoginForm({
@@ -57,27 +43,25 @@ const Login: FC = () => {
 			password: loginFields?.password ?? "",
 		});
 
+		console.log(loginFields?.username, loginFields?.password);
+
 		// Username && Password
 		if (validationResult.isValid) {
 			setLoading(true);
-
 			return fetch("/api/login", {
 				method: "post",
 				body: JSON.stringify(validationResult?.sanitizedData, null, 2),
 			})
 				.then((data) => {
 					setLoading(false);
-					try {
-						if (postType && previewPostId) {
-							// Redirects User after logging in
-							setLoginSuccessful(true);
+					setLoginSuccessful(true);
 
-							router.push(`${previewUrl}`);
-						} else {
-							router.push(`/`);
-						}
-					} catch (error) {
-						throw new Error(`Failed to redirect user.`);
+					if (postType && previewPostId) {
+						// Redirects User after logging in
+						const previewUrl = getPreviewRedirectUrl(postType, previewPostId);
+						router.push(previewUrl);
+					} else {
+						router.push(`/`);
 					}
 				})
 				.catch(() => {
@@ -147,7 +131,7 @@ const Login: FC = () => {
 						className="flex items-center justify-center my-4 mb-8 gap-x-2"
 					>
 						<h4 className="text-xl font-semibold text-center uppercase text-goldPrime">
-							Logged In Successful!
+							Log In Successful!
 						</h4>
 					</motion.div>
 				) : errorMessage ? (
@@ -286,7 +270,7 @@ const Login: FC = () => {
 								{loading
 									? "Logging In..."
 									: loginSuccessful
-									? "Logged In Successful!"
+									? "Log In Successful!"
 									: errorMessage
 									? "Login Error!"
 									: "Login"}

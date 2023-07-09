@@ -1,6 +1,7 @@
 // Imports
 import {motion} from "framer-motion";
 import {NextPage, GetStaticProps, GetServerSideProps} from "next";
+import Layout from "@/components/Layout/Layout";
 import {ContentContext} from "@/context/context";
 import {IContentContext} from "@/context/context";
 import {getAllStripePaymentPlans} from "@/functions/stripe/GetStripePaymentPlans";
@@ -20,7 +21,6 @@ import {getAllOperationalInsightsContent} from "@/functions/graphql/Queries/GetA
 
 // Components
 import Login from "@/components/Login";
-import Layout from "@/components/Layout/Layout";
 
 const login: NextPage<IContentContext> = ({
 	seo,
@@ -106,8 +106,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
 			navbarMenuLinks,
 			footerMenuLinks,
 			seo: seoContent,
-			industriesMenuLinks,
 			operationalInsights,
+			industriesMenuLinks,
 			themesOptionsContent,
 			postTypeFlexiblecontent,
 			contentSliderPostsContent,

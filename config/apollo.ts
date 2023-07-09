@@ -36,9 +36,6 @@ const cache = new InMemoryCache({
 				page: {
 					merge: customMergeFunction,
 				},
-				industry: {
-					merge: customMergeFunction,
-				},
 			},
 		},
 	},
