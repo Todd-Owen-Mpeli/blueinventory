@@ -201,24 +201,25 @@ const Login: FC = () => {
 							className="w-full px-3 py-1 mb-8 text-base leading-8 transition-colors duration-200 ease-in-out bg-white border rounded outline-none text-grey border-darkRed focus:border-darkRed focus:ring-2 focus:ring-darkRed"
 						/>
 					</motion.label>
-					{/* <motion.div
+					<motion.div
 						initial={initial}
 						whileInView={fadeInUp}
 						viewport={{once: true}}
 					>
 						<ReCAPTCHA
-							sitekey={`6LfkXm4lAAAAACFUoSeHOLpzuXrR5YYPxnVrbSXt`}
+							sitekey={`6LeJJqwlAAAAAByEDQJTbNFkPL9DSjMBwnE7smkU`}
 							onChange={handleReCaptchaChange}
 						/>
-					</motion.div> */}
+					</motion.div>
 					<motion.button
 						initial={initial}
 						whileInView={fadeInUp}
 						viewport={{once: true}}
 						disabled={
-							!username || !password
-							// reCaptchaResult === null ||
-							// reCaptchaResult === undefined
+							!username ||
+							!password ||
+							reCaptchaResult === null ||
+							reCaptchaResult === undefined
 						}
 						className="w-full mt-4 text-white disabled:bg-opacity-20 disabled:cursor-not-allowed"
 						type="submit"
