@@ -1,6 +1,10 @@
 // Imports
+import {
+	postType,
+	ContentContext,
+	postTypeFlexiblecontent,
+} from "@/context/context";
 import {motion} from "framer-motion";
-import {ContentContext} from "@/context/context";
 import {IContentContext} from "@/context/context";
 import type {NextPage, GetStaticProps} from "next";
 import {getAllStripePaymentPlans} from "@/functions/stripe/GetStripePaymentPlans";
@@ -16,10 +20,10 @@ import {
 	getAllOperationalInsightsContent,
 	getAllOperationalInsightsPostsSlugs,
 } from "@/functions/graphql/Queries/GetAllOperationalInsightsPostsSlugs";
+import {getAllSeoContent} from "@/functions/graphql/Queries/GetAllSeoPagesContent";
 import {getThemesOptionsContent} from "@/functions/graphql/Queries/GetAllThemesOptions";
 import {getContentSliderBlogPostsPostsContent} from "@/functions/graphql/Queries/GetAllContentSliderPosts";
-import {getAllSeoOperationalInsightsPostsContent} from "@/functions/graphql/Queries/GetAllSeoPagesContent";
-import {getAllOperationalInsightsPostsFlexibleContentComponents} from "@/functions/graphql/Queries/GetAllFlexibleContentComponents";
+import {getAllFlexibleContentComponents} from "@/functions/graphql/Queries/GetAllFlexibleContentComponents";
 
 // Components
 import Layout from "@/components/Layout/Layout";
@@ -79,16 +83,14 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps: GetStaticProps = async ({params}: any) => {
-	const postTypeFlexiblecontent: string =
-		"DefaultTemplate_Flexiblecontent_FlexibleContent";
-
 	// Fetch priority content
-	const seoContent: any = await getAllSeoOperationalInsightsPostsContent(
-		params?.slug
-	);
+	const seoContent: any = await getAllSeoContent(params?.slug, postType.posts);
 
-	const flexibleContentComponents: any =
-		await getAllOperationalInsightsPostsFlexibleContentComponents(params?.slug);
+	const flexibleContentComponents: any = await getAllFlexibleContentComponents(
+		params?.slug,
+		postType.posts,
+		postTypeFlexiblecontent
+	);
 
 	// Fetch remaining content simultaneously
 	const [

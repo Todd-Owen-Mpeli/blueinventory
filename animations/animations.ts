@@ -31,6 +31,16 @@ interface FadeInTwo {
 	};
 }
 
+interface FadeInThree {
+	y: number;
+	opacity: number;
+	transition: {
+		delay: number;
+		duration: number;
+		ease: string;
+	};
+}
+
 interface FadeInUp {
 	y: number;
 	opacity: number;
@@ -88,6 +98,14 @@ export const initialTwo: InitialTwo | any = {
 
 export const fadeIn: FadeIn | any = {
 	opacity: 1,
+	transition: {
+		duration: 1,
+		delay: 0.5,
+		ease: "easeOut",
+	},
+};
+export const fadeInThree: FadeInThree | any = {
+	opacity: 0.7,
 	transition: {
 		duration: 1,
 		delay: 0.5,

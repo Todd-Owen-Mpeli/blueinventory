@@ -1,9 +1,9 @@
 // Imports
 import {motion} from "framer-motion";
-import {NextPage, GetStaticProps, GetServerSideProps} from "next";
 import Layout from "@/components/Layout/Layout";
 import {ContentContext} from "@/context/context";
 import {IContentContext} from "@/context/context";
+import {NextPage, GetServerSideProps} from "next";
 import {getAllStripePaymentPlans} from "@/functions/stripe/GetStripePaymentPlans";
 
 // Queries Functions
@@ -13,10 +13,10 @@ import {
 	getFooterMenuLinks,
 	getIndustriesMenuLinks,
 } from "@/functions/graphql/Queries/GetAllMenuLinks";
-import {getAllSeoPagesContent} from "@/functions/graphql/Queries/GetAllSeoPagesContent";
+import {getAllSeoContent} from "@/functions/graphql/Queries/GetAllSeoPagesContent";
 import {getThemesOptionsContent} from "@/functions/graphql/Queries/GetAllThemesOptions";
 import {getContentSliderBlogPostsPostsContent} from "@/functions/graphql/Queries/GetAllContentSliderPosts";
-import {getAllPagesFlexibleContentComponents} from "@/functions/graphql/Queries/GetAllFlexibleContentComponents";
+import {getAllFlexibleContentComponents} from "@/functions/graphql/Queries/GetAllFlexibleContentComponents";
 import {getAllOperationalInsightsContent} from "@/functions/graphql/Queries/GetAllOperationalInsightsPostsSlugs";
 
 // Components
@@ -69,14 +69,18 @@ const login: NextPage<IContentContext> = ({
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
+	const postType: string = "pages";
 	const postTypeFlexiblecontent: string =
 		"DefaultTemplate_Flexiblecontent_FlexibleContent";
 
 	// Fetch priority content
-	const seoContent: any = await getAllSeoPagesContent("Home");
+	const seoContent: any = await getAllSeoContent("Home", postType);
 
-	const flexibleContentComponents: any =
-		await getAllPagesFlexibleContentComponents("Home");
+	const flexibleContentComponents: any = await getAllFlexibleContentComponents(
+		"Home",
+		postType,
+		postTypeFlexiblecontent
+	);
 
 	// Fetch remaining content simultaneously
 	const [

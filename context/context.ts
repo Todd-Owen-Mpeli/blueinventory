@@ -26,8 +26,24 @@ export interface IContentContext {
 	contentSliderPostsContent: IContentSliderPostsContent;
 }
 
+interface IPostTypes {
+	pages: string;
+	posts: string;
+	industry: string;
+}
+
 /* PUBLIC PAGES & POSTS */
 /* PREVIEW PAGES & POSTS */
+export const postType: IPostTypes = {
+	pages: "pages",
+	posts: "posts",
+	industry: "industries",
+};
+export const homePage: string = "Home";
+export const errorPage: string = "error-page";
+export const postTypeFlexiblecontent: string =
+	"DefaultTemplate_Flexiblecontent_FlexibleContent";
+
 export const ContentContext = createContext<IContentContext | undefined>(
 	undefined
 );

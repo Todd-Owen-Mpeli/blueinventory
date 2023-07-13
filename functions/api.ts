@@ -14,8 +14,16 @@ export const sendContactForm = async (data: any) => {
 	});
 };
 
-/* LOGIN USER
- Mutations Function */
+/* LOGIN USER */
+export const loginForm = async (data: any) => {
+	fetch("/api/login", {
+		method: "post",
+		body: JSON.stringify(data, null, 2),
+	});
+};
+
+/* LOGIN USER */
+/* Mutations Function */
 export async function loginUser(username: String, password: String) {
 	const LoginMutation: DocumentNode = gql`
 		mutation LOGIN($input: LoginInput!) {
