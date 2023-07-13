@@ -1,11 +1,11 @@
 // Imports
-import {motion} from "framer-motion";
 import {
 	homePage,
 	postType,
 	ContentContext,
-	postTypeFlexiblecontent,
+	flexiblecontentType,
 } from "@/context/context";
+import {motion} from "framer-motion";
 import {IContentContext} from "@/context/context";
 import type {NextPage, GetStaticProps} from "next";
 import {getAllStripePaymentPlans} from "@/functions/stripe/GetStripePaymentPlans";
@@ -71,12 +71,12 @@ const HomePage: NextPage<IContentContext> = ({
 
 export const getStaticProps: GetStaticProps = async () => {
 	// Fetch priority content
-	const seoContent: any = await getAllSeoContent(homePage, postType.pages);
+	const seoContent: any = await getAllSeoContent(homePage, postType?.pages);
 
 	const flexibleContentComponents: any = await getAllFlexibleContentComponents(
 		homePage,
-		postType.pages,
-		postTypeFlexiblecontent
+		postType?.pages,
+		flexiblecontentType?.pages
 	);
 
 	// Fetch remaining content simultaneously
@@ -110,9 +110,9 @@ export const getStaticProps: GetStaticProps = async () => {
 			operationalInsights,
 			industriesMenuLinks,
 			themesOptionsContent,
-			postTypeFlexiblecontent,
 			contentSliderPostsContent,
 			content: flexibleContentComponents?.content,
+			postTypeFlexiblecontent: flexiblecontentType?.pages,
 		},
 		revalidate: 60,
 	};

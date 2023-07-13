@@ -1,9 +1,14 @@
 // Imports
+import {
+	postType,
+	ContentContext,
+	IContentContext,
+	flexiblecontentType,
+} from "@/context/context";
 import {isEmpty} from "lodash";
 import {motion} from "framer-motion";
 import type {GetServerSideProps, NextPage} from "next";
 import {getAuthToken} from "@/functions/cookies/cookies";
-import {ContentContext, IContentContext} from "@/context/context";
 import {getLoginPreviewRedirectUrl} from "@/functions/redirects/redirects";
 import {getAllStripePaymentPlans} from "@/functions/stripe/GetStripePaymentPlans";
 
@@ -71,11 +76,8 @@ const dynamicPreviewPosts: NextPage<IContentContext> = ({
 export const getServerSideProps: GetServerSideProps = async (context: any) => {
 	const authToken: string = getAuthToken(context.req);
 	const {params}: any = context || {};
-	const postType: string = "post";
-	const postTypeFlexiblecontent: string =
-		"Post_Flexiblecontent_FlexibleContent";
 	const loginRedirectURL: string = getLoginPreviewRedirectUrl(
-		postType,
+		postType?.posts,
 		params?.id
 	);
 
@@ -93,7 +95,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 		const seoContent: any = await getAllPreviewSeoContent(
 			params?.id,
 			authToken,
-			postType,
+			postType?.posts,
 			loginRedirectURL
 		);
 
@@ -102,9 +104,9 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 			await getAllPreviewFlexibleContentComponents(
 				params?.id,
 				authToken,
-				postType,
+				postType?.posts,
 				loginRedirectURL,
-				postTypeFlexiblecontent
+				flexiblecontentType?.posts
 			);
 
 		// Fetch remaining content simultaneously
@@ -138,9 +140,9 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 				operationalInsights,
 				industriesMenuLinks,
 				themesOptionsContent,
-				postTypeFlexiblecontent,
 				contentSliderPostsContent,
 				content: flexibleContentComponents?.content,
+				postTypeFlexiblecontent: flexiblecontentType?.posts,
 			},
 		};
 	}

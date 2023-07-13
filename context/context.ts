@@ -32,6 +32,12 @@ interface IPostTypes {
 	industry: string;
 }
 
+interface IPostTypesFlexiblecontent {
+	pages: string;
+	posts: string;
+	industry: string;
+}
+
 /* PUBLIC PAGES & POSTS */
 /* PREVIEW PAGES & POSTS */
 export const postType: IPostTypes = {
@@ -41,8 +47,11 @@ export const postType: IPostTypes = {
 };
 export const homePage: string = "Home";
 export const errorPage: string = "error-page";
-export const postTypeFlexiblecontent: string =
-	"DefaultTemplate_Flexiblecontent_FlexibleContent";
+export const flexiblecontentType: IPostTypesFlexiblecontent = {
+	pages: "DefaultTemplate_Flexiblecontent_FlexibleContent",
+	posts: "Post_Flexiblecontent_FlexibleContent",
+	industry: "Industry_Flexiblecontent_FlexibleContent",
+};
 
 export const ContentContext = createContext<IContentContext | undefined>(
 	undefined

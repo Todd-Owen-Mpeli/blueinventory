@@ -1,12 +1,8 @@
 // Imports
-import {
-	postType,
-	ContentContext,
-	postTypeFlexiblecontent,
-} from "@/context/context";
 import {motion} from "framer-motion";
 import {IContentContext} from "@/context/context";
 import type {NextPage, GetStaticProps} from "next";
+import {postType, ContentContext, flexiblecontentType} from "@/context/context";
 import {getAllStripePaymentPlans} from "@/functions/stripe/GetStripePaymentPlans";
 
 // Queries Functions
@@ -82,12 +78,12 @@ export async function getStaticPaths() {
 
 export const getStaticProps: GetStaticProps = async ({params}: any) => {
 	// Fetch priority content
-	const seoContent: any = await getAllSeoContent(params?.slug, postType.pages);
+	const seoContent: any = await getAllSeoContent(params?.slug, postType?.pages);
 
 	const flexibleContentComponents: any = await getAllFlexibleContentComponents(
 		params?.slug,
-		postType.pages,
-		postTypeFlexiblecontent
+		postType?.pages,
+		flexiblecontentType?.pages
 	);
 
 	// Fetch remaining content simultaneously
@@ -121,9 +117,9 @@ export const getStaticProps: GetStaticProps = async ({params}: any) => {
 			operationalInsights,
 			industriesMenuLinks,
 			themesOptionsContent,
-			postTypeFlexiblecontent,
 			contentSliderPostsContent,
 			content: flexibleContentComponents?.content,
+			postTypeFlexiblecontent: flexiblecontentType?.pages,
 		},
 		revalidate: 60,
 	};
