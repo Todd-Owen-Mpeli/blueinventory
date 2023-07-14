@@ -3,7 +3,7 @@ import {
 	postType,
 	ContentContext,
 	IContentContext,
-	flexiblecontentType,
+	flexibleContentType,
 } from "@/context/context";
 import {isEmpty} from "lodash";
 import {motion} from "framer-motion";
@@ -77,7 +77,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 	const authToken: string = getAuthToken(context.req);
 	const {params}: any = context || {};
 	const loginRedirectURL: string = getLoginPreviewRedirectUrl(
-		postType?.industry,
+		postType?.previewIndustry,
 		params?.id
 	);
 	if (isEmpty(authToken)) {
@@ -94,7 +94,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 		const seoContent: any = await getAllPreviewSeoContent(
 			params?.id,
 			authToken,
-			postType?.industry,
+			postType?.previewIndustry,
 			loginRedirectURL
 		);
 
@@ -103,9 +103,9 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 			await getAllPreviewFlexibleContentComponents(
 				params?.id,
 				authToken,
-				postType?.industry,
+				postType?.previewIndustry,
 				loginRedirectURL,
-				flexiblecontentType?.industry
+				flexibleContentType?.previewIndustry
 			);
 
 		// Fetch remaining content simultaneously
@@ -141,7 +141,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 				themesOptionsContent,
 				contentSliderPostsContent,
 				content: flexibleContentComponents?.content,
-				postTypeFlexiblecontent: flexiblecontentType?.industry,
+				postTypeFlexiblecontent: flexibleContentType?.previewIndustry,
 			},
 		};
 	}

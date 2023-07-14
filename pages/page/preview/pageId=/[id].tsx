@@ -2,7 +2,7 @@
 import {
 	ContentContext,
 	IContentContext,
-	flexiblecontentType,
+	flexibleContentType,
 	postType,
 } from "@/context/context";
 import {isEmpty} from "lodash";
@@ -77,7 +77,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 	const authToken: string = getAuthToken(context.req);
 	const {params}: any = context || {};
 	const loginRedirectURL: string = getLoginPreviewRedirectUrl(
-		postType?.pages,
+		postType?.previewPage,
 		params?.id
 	);
 
@@ -95,7 +95,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 		const seoContent: any = await getAllPreviewSeoContent(
 			params?.id,
 			authToken,
-			postType?.pages,
+			postType?.previewPage,
 			loginRedirectURL
 		);
 
@@ -104,9 +104,9 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 			await getAllPreviewFlexibleContentComponents(
 				params?.id,
 				authToken,
-				postType?.pages,
+				postType?.previewPage,
 				loginRedirectURL,
-				flexiblecontentType?.pages
+				flexibleContentType?.previewPage
 			);
 
 		// Fetch remaining content simultaneously
@@ -142,7 +142,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 				themesOptionsContent,
 				contentSliderPostsContent,
 				content: flexibleContentComponents?.content,
-				postTypeFlexiblecontent: flexiblecontentType?.pages,
+				postTypeFlexiblecontent: flexibleContentType?.previewPage,
 			},
 		};
 	}

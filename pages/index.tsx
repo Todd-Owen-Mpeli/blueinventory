@@ -3,7 +3,7 @@ import {
 	homePage,
 	postType,
 	ContentContext,
-	flexiblecontentType,
+	flexibleContentType,
 } from "@/context/context";
 import {motion} from "framer-motion";
 import {IContentContext} from "@/context/context";
@@ -76,7 +76,7 @@ export const getStaticProps: GetStaticProps = async () => {
 	const flexibleContentComponents: any = await getAllFlexibleContentComponents(
 		homePage,
 		postType?.pages,
-		flexiblecontentType?.pages
+		flexibleContentType?.pages
 	);
 
 	// Fetch remaining content simultaneously
@@ -112,7 +112,7 @@ export const getStaticProps: GetStaticProps = async () => {
 			themesOptionsContent,
 			contentSliderPostsContent,
 			content: flexibleContentComponents?.content,
-			postTypeFlexiblecontent: flexiblecontentType?.pages,
+			postTypeFlexiblecontent: flexibleContentType?.pages,
 		},
 		revalidate: 60,
 	};

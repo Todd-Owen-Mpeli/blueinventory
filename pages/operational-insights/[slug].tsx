@@ -2,7 +2,7 @@
 import {motion} from "framer-motion";
 import {IContentContext} from "@/context/context";
 import type {NextPage, GetStaticProps} from "next";
-import {postType, ContentContext, flexiblecontentType} from "@/context/context";
+import {postType, ContentContext, flexibleContentType} from "@/context/context";
 import {getAllStripePaymentPlans} from "@/functions/stripe/GetStripePaymentPlans";
 
 // Queries Functions
@@ -85,7 +85,7 @@ export const getStaticProps: GetStaticProps = async ({params}: any) => {
 	const flexibleContentComponents: any = await getAllFlexibleContentComponents(
 		params?.slug,
 		postType.posts,
-		flexiblecontentType?.pages
+		flexibleContentType?.pages
 	);
 
 	// Fetch remaining content simultaneously
@@ -121,7 +121,7 @@ export const getStaticProps: GetStaticProps = async ({params}: any) => {
 			themesOptionsContent,
 			contentSliderPostsContent,
 			content: flexibleContentComponents?.content,
-			postTypeFlexiblecontent: flexiblecontentType?.pages,
+			postTypeFlexiblecontent: flexibleContentType?.pages,
 		},
 		revalidate: 60,
 	};

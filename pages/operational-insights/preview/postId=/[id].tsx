@@ -3,7 +3,7 @@ import {
 	postType,
 	ContentContext,
 	IContentContext,
-	flexiblecontentType,
+	flexibleContentType,
 } from "@/context/context";
 import {isEmpty} from "lodash";
 import {motion} from "framer-motion";
@@ -13,6 +13,7 @@ import {getLoginPreviewRedirectUrl} from "@/functions/redirects/redirects";
 import {getAllStripePaymentPlans} from "@/functions/stripe/GetStripePaymentPlans";
 
 // Mutations Functions
+import {getAllPreviewSeoContent} from "@/functions/graphql/Mutations/GetAllPreviewSeoContent";
 import {getAllPreviewFlexibleContentComponents} from "@/functions/graphql/Mutations/GetAllPreviewFlexibleContentComponents";
 
 // Queries Functions
@@ -23,7 +24,6 @@ import {
 	getIndustriesMenuLinks,
 } from "@/functions/graphql/Queries/GetAllMenuLinks";
 import {getThemesOptionsContent} from "@/functions/graphql/Queries/GetAllThemesOptions";
-import {getAllPreviewSeoContent} from "@/functions/graphql/Mutations/GetAllPreviewSeoContent";
 import {getContentSliderBlogPostsPostsContent} from "@/functions/graphql/Queries/GetAllContentSliderPosts";
 import {getAllOperationalInsightsContent} from "@/functions/graphql/Queries/GetAllOperationalInsightsPostsSlugs";
 
@@ -77,7 +77,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 	const authToken: string = getAuthToken(context.req);
 	const {params}: any = context || {};
 	const loginRedirectURL: string = getLoginPreviewRedirectUrl(
-		postType?.posts,
+		postType?.previewPost,
 		params?.id
 	);
 
@@ -95,7 +95,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 		const seoContent: any = await getAllPreviewSeoContent(
 			params?.id,
 			authToken,
-			postType?.posts,
+			postType?.previewPost,
 			loginRedirectURL
 		);
 
@@ -104,9 +104,9 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 			await getAllPreviewFlexibleContentComponents(
 				params?.id,
 				authToken,
-				postType?.posts,
+				postType?.previewPost,
 				loginRedirectURL,
-				flexiblecontentType?.posts
+				flexibleContentType?.previewPost
 			);
 
 		// Fetch remaining content simultaneously
@@ -142,7 +142,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 				themesOptionsContent,
 				contentSliderPostsContent,
 				content: flexibleContentComponents?.content,
-				postTypeFlexiblecontent: flexiblecontentType?.posts,
+				postTypeFlexiblecontent: flexibleContentType?.previewPost,
 			},
 		};
 	}
