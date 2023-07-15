@@ -60,10 +60,26 @@ export async function getAllFlexibleContentComponents(
                       ... on ${postTypeFlexiblecontent}_IntroContent {
                         fieldGroupName
                         title
+                        icon {
+                            altText
+                            sourceUrl
+                            mediaDetails {
+                              height
+                              width
+                            }
+                          }
                         contentGrid {
                           card {
                             title
                             paragraph
+                            icon {
+                              altText
+                              sourceUrl
+                              mediaDetails {
+                                height
+                                width
+                              }
+                            }
                             buttonLink {
                               url
                               title

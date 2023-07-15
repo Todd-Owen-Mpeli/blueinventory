@@ -119,6 +119,14 @@ export interface ITestimonialCard {
 export interface ITitleThreeContentGridCard {
 	title: string;
 	paragraph: string;
+	icon: {
+		altText: string;
+		sourceUrl: string;
+		mediaDetails: {
+			height: number;
+			width: number;
+		};
+	};
 	buttonLink: {
 		url: string;
 		title: string;
@@ -565,12 +573,28 @@ export interface ITitleParagraph {
 
 export interface ITitleThreeContentGrid {
 	title: string;
+	icon: {
+		altText: string;
+		sourceUrl: string;
+		mediaDetails: {
+			height: number;
+			width: number;
+		};
+	};
 	contentGrid: [
 		{
 			card: {
 				id: string;
 				title: string;
 				paragraph: string;
+				icon: {
+					altText: string;
+					sourceUrl: string;
+					mediaDetails: {
+						height: number;
+						width: number;
+					};
+				};
 				buttonLink: {
 					url: string;
 					title: string;

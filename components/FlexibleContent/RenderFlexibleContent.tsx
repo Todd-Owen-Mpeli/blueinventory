@@ -65,6 +65,7 @@ const RenderFlexibleContent: FC = () => {
 						) : item?.fieldGroupName === `${Flexiblecontent}_IntroContent` ? (
 							<>
 								<TitleThreeContentGrid
+									icon={item?.icon}
 									title={item?.title}
 									contentGrid={item?.contentGrid}
 								/>
