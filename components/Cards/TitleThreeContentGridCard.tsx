@@ -51,9 +51,9 @@ const TitleThreeContentGridCard: FC<ITitleThreeContentGridCard> = ({
 							initial={initial}
 							whileInView={fadeInUp}
 							viewport={{once: true}}
-							className="mb-7"
+							className="mt-2 mb-7"
 						>
-							<h3 className="text-xl font-semibold leading-snug mb-7">
+							<h3 className="text-xl font-semibold leading-snug text-center lg:text-left mb-7">
 								{title}
 							</h3>
 							<Paragraph
