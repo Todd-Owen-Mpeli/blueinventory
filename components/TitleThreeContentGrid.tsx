@@ -14,7 +14,12 @@ const TitleThreeContentGrid: FC<ITitleThreeContentGrid> = ({
 	contentGrid,
 }) => {
 	return (
-		<section className="py-12 overflow-hidden bg-white lg:px-4 sm:py-28">
+		<section
+			className="py-12 overflow-hidden bg-white bg-center bg-no-repeat bg-cover lg:px-4 sm:py-28"
+			style={{
+				backgroundImage: `url("${`/svg/backgroundSVG/blob-scene-haikei.svg`}")`,
+			}}
+		>
 			<div className="container px-4 mx-auto">
 				<motion.div
 					initial={initial}

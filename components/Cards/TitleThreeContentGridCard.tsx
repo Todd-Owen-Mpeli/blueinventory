@@ -71,7 +71,7 @@ const TitleThreeContentGridCard: FC<ITitleThreeContentGridCard> = ({
 						<Link
 							href={buttonLink?.url ? buttonLink?.url : `/`}
 							target={buttonLink?.target}
-							className="inline-flex items-center transition-all duration-200 ease-in-out text-blue max-w-max hover:text-goldPrime"
+							className="inline-flex items-center transition-all duration-200 ease-in-out text-blue max-w-max hover:text-darkBlue"
 						>
 							<span className="mr-2 font-semibold">{buttonLink?.title}</span>
 							<svg
