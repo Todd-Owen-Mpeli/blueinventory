@@ -42,7 +42,7 @@ const TitleThreeContentGridCard: FC<ITitleThreeContentGridCard> = ({
 								height={icon?.mediaDetails?.height}
 								className={
 									icon?.sourceUrl
-										? `block w-full max-w-[125px] h-[50px] sm:h-[100px] object-contain object-center`
+										? `block w-full max-w-[125px] h-[100px] object-contain object-center`
 										: `hidden`
 								}
 							/>
