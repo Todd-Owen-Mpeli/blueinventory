@@ -235,7 +235,7 @@ const Footer = () => {
 				<div className="py-9">
 					<div className="border-b border-goldPrime"></div>
 				</div>
-				<div className="flex flex-col items-center justify-between -m-6 lg:flex-row">
+				<div className="flex flex-col-reverse items-center justify-between -m-6 lg:flex-row">
 					<div className="w-auto p-6">
 						<motion.p
 							initial={initialTwo}
