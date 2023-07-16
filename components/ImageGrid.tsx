@@ -1,6 +1,6 @@
 import {FC} from "react";
 import Image from "next/image";
-import {IImageGrid} from "@/components/types";
+import {IImageGrid} from "@/types/components/public";
 
 const ImageGrid: FC<IImageGrid> = ({
 	image,

@@ -2,7 +2,7 @@
 import {FC} from "react";
 import Link from "next/link";
 import {motion} from "framer-motion";
-import {ICTA} from "@/components/types";
+import {ICTA} from "@/types/components/public";
 import {initial, fadeInUp, stagger} from "@/animations/animations";
 
 // Components

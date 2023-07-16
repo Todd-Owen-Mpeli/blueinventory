@@ -1,92 +1,20 @@
 /*  FRAMER-MOTION ANIMATIONS
 Custom reusable Animation Properties/variables */
 
+import {
+	FadeIn,
+	Initial,
+	Stagger,
+	FadeInUp,
+	FadeInTwo,
+	InitialTwo,
+	FadeInThree,
+	SlideInLeftInitial,
+	SlideInRightFinish,
+	SlideInRightInitial,
+} from "@/types/animations";
+
 // WhileInView
-interface Initial {
-	y: number;
-	opacity: number;
-}
-
-interface InitialTwo {
-	y: number;
-	opacity: number;
-}
-
-interface FadeIn {
-	opacity: number;
-	transition: {
-		duration: number;
-		delay: number;
-		ease: string;
-	};
-}
-
-interface FadeInTwo {
-	y: number;
-	opacity: number;
-	transition: {
-		delay: number;
-		duration: number;
-		ease: string;
-	};
-}
-
-interface FadeInThree {
-	y: number;
-	opacity: number;
-	transition: {
-		delay: number;
-		duration: number;
-		ease: string;
-	};
-}
-
-interface FadeInUp {
-	y: number;
-	opacity: number;
-	transition: {
-		delay: number;
-		duration: number;
-		ease: string;
-	};
-}
-
-interface Stagger {
-	y: number;
-	opacity: number;
-	transition: {
-		delay: number;
-		duration: number;
-		ease: string;
-		staggerChildren: number;
-		delayChildren: number;
-	};
-}
-
-interface SlideInRightInitial {
-	y: number;
-	x: number;
-	opacity: number;
-}
-
-interface SlideInLeftInitial {
-	y: number;
-	x: number;
-	opacity: number;
-}
-
-interface SlideInRightFinish {
-	x: number;
-	y: 0;
-	opacity: number;
-	transition: {
-		delay: number;
-		duration: number;
-		ease: string;
-		staggerChildren: number;
-	};
-}
-
 export const initial: Initial | any = {
 	y: 30,
 	opacity: 0,

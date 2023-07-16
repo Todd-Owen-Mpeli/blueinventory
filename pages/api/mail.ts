@@ -1,20 +1,9 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+// Imports
 import {mailOptions, transporter} from "../../config/nodemailer";
+import {IContactMessageFields, IGenerateEmailContent} from "@/types/mail/index";
 
-interface contactMessageFields {
-	firstName: string;
-	lastName: string;
-	email: string;
-	subject: string;
-	message: string;
-}
-
-interface generateEmailContent {
-	text: string;
-	html: string;
-}
-
-const contactMessageFields: contactMessageFields | any = {
+const contactMessageFields: IContactMessageFields | any = {
 	firstName: "First Name",
 	lastName: "Last Name",
 	email: "Email",
@@ -22,7 +11,7 @@ const contactMessageFields: contactMessageFields | any = {
 	message: "Message",
 };
 
-const generateEmailContent = (data: any): generateEmailContent => {
+const generateEmailContent = (data: any): IGenerateEmailContent => {
 	/* Collects all input data 
 	and returns as a long string */
 	const stringData: string = Object.entries(data).reduce(

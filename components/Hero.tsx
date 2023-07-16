@@ -1,7 +1,7 @@
 import {FC} from "react";
 import Link from "next/link";
 import {motion} from "framer-motion";
-import {IHero} from "@/components/types";
+import {IHero} from "@/types/components/public";
 import {initial, fadeInUp, stagger} from "@/animations/animations";
 
 // Components

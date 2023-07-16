@@ -1,18 +1,18 @@
 // Imports
 import {
 	initial,
-	initialTwo,
 	fadeIn,
-	fadeInUp,
 	stagger,
+	fadeInUp,
+	initialTwo,
 } from "@/animations/animations";
 import Link from "next/link";
 import Image from "next/image";
 import {motion} from "framer-motion";
 import {useRouter} from "next/router";
-import {useState, useEffect} from "react";
+import {useState, useEffect, FC} from "react";
+import {IFirebaseUser} from "@/types/firebase";
 import {getAuth, signOut} from "firebase/auth";
-import {IFirebaseUser} from "@/components/types";
 import {useContentContext} from "@/context/context";
 import styles from "@/styles/components/Hero.module.scss";
 
@@ -20,11 +20,10 @@ import styles from "@/styles/components/Hero.module.scss";
 import MobileNavbar from "@/components/MobileNavbar";
 import NavbarMenuLinks from "@/components/Elements/NavbarMenuLinks";
 
-const Navbar = () => {
-	const content = useContentContext();
-
+const Navbar: FC = () => {
 	const auth = getAuth();
 	const router = useRouter();
+	const content = useContentContext();
 	const [signedInUser, setSignedInUser] = useState(false);
 	const [revealMobileMenu, setRevealMobileMenu] = useState(false);
 	const [revealUserDropdown, setRevealUserDropdown] = useState(false);
@@ -46,7 +45,7 @@ const Navbar = () => {
 		metadata: `${auth?.currentUser?.metadata}`,
 		phoneNumber: `${auth?.currentUser?.phoneNumber}`,
 		displayName: `${auth?.currentUser?.displayName}`,
-		profileImageURL: `https://cmsblueinventory.com/wp-content/uploads/2023/04/pexels-linkedin-sales-navigator-2182970-scaled.jpg`,
+		profileImageURL: `https://cmsblueinventory.com/wp-content/uploads/2023/04/pexels-sora-shimazaki-5668790-min-scaled.jpg`,
 	};
 
 	/* Check if user is SIGNED IN if 

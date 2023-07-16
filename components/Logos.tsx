@@ -1,7 +1,7 @@
 // Imports
 import {FC} from "react";
 import {motion} from "framer-motion";
-import {ILogos} from "@/components/types";
+import {ILogos} from "@/types/components/public";
 import {initial, initialTwo, fadeIn, stagger} from "@/animations/animations";
 
 // Components

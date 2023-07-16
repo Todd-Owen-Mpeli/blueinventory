@@ -3,7 +3,7 @@ import {FC} from "react";
 import Image from "next/image";
 import {motion} from "framer-motion";
 import DOMPurify from "isomorphic-dompurify";
-import {ITestimonialCard} from "@/components/types";
+import {ITestimonialCard} from "@/types/components/public";
 import {initial, fadeInUp, stagger} from "@/animations/animations";
 
 const TestimonialCard: FC<ITestimonialCard> = ({

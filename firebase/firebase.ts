@@ -3,7 +3,7 @@ import {getAuth} from "firebase/auth";
 import {getAnalytics} from "firebase/analytics";
 import {getApps, initializeApp} from "firebase/app";
 import {getPerformance} from "firebase/performance";
-import {IFirebaseConfig, IFirebaseUser} from "@/components/types";
+import {IFirebaseConfig, IFirebaseUser} from "@/types/firebase";
 
 /* TODO: Add SDKs for Firebase products that you want to use
  https://firebase.google.com/docs/web/setup#available-libraries

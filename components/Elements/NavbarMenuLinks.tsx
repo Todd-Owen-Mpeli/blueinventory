@@ -1,6 +1,6 @@
 import {FC} from "react";
 import Link from "next/link";
-import {INavbarMenuLinks} from "@/components/types";
+import {INavbarMenuLinks} from "@/types/components/public";
 
 const NavbarMenuLinks: FC<INavbarMenuLinks> = ({
 	url,

@@ -2,7 +2,7 @@
 import {FC} from "react";
 import Image from "next/image";
 import {motion} from "framer-motion";
-import {IPaymentProvidersCard} from "@/components/types";
+import {IPaymentProvidersCard} from "@/types/components/public";
 import {initial, fadeInUp} from "@/animations/animations";
 
 const PaymentProvidersCard: FC<IPaymentProvidersCard> = ({image}) => {

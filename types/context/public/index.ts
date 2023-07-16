@@ -1,3 +1,6 @@
+// Imports
+import {IStripePlans} from "@/types/stripe";
+
 export type ISeo = {
 	canonical: string;
 	cornerstone: Boolean;
@@ -34,69 +37,13 @@ export type IContent = [
 	}
 ];
 
-export type IStripePlans = {
-	stripePrices:
-		| [
-				{
-					id: string;
-					object: string;
-					active: boolean;
-					billing_scheme: string;
-					created: number;
-					currency: string;
-					custom_unit_amount: any;
-					livemode: boolean;
-					lookup_key: any;
-					metadata: any;
-					nickname: any;
-					product: {
-						id: string;
-						object: string;
-						active: boolean;
-						attributes: [];
-						created: number;
-						default_price: string;
-						description: string;
-						images: [any];
-						livemode: boolean;
-						metadata: any;
-						name: string;
-						package_dimensions: any;
-						shippable: any;
-						statement_descriptor: any;
-						tax_code: any;
-						type: string;
-						unit_label: any;
-						updated: number;
-						url: any;
-					};
-					recurring: {
-						aggregate_usage: any;
-						interval: string;
-						interval_count: number;
-						trial_period_days: any;
-						usage_type: string;
-					};
-					tax_behavior: string;
-					tiers_mode: any;
-					transform_quantity: any;
-					type: string;
-					unit_amount: number;
-					unit_amount_decimal: string;
-				}
-		  ];
-	stripePremiumPlan: {
-		name: string;
-		description: string;
-		price: number;
-		paymentRecurringInterval: string;
-	};
-	stripeStandardPlan: {
-		name: string;
-		description: string;
-		price: number;
-		paymentRecurringInterval: string;
-	};
+export type IPostTypes = {
+	pages: string;
+	posts: string;
+	industry: string;
+	previewPage: string;
+	previewPost: string;
+	previewIndustry: string;
 };
 
 export type IFooterMenuLinks = {
@@ -122,6 +69,35 @@ export type INavbarMenuLinks = {
 		}
 	];
 };
+
+export type IErrorPageContent = {
+	title: string;
+	buttonLink: {
+		url: string;
+		title: string;
+		target: string;
+	};
+	buttonLinkTwo: {
+		url: string;
+		title: string;
+		target: string;
+	};
+	paragraph: string;
+	backgroundImage: string;
+};
+
+export interface IContentContext {
+	seo: ISeo;
+	content: IContent;
+	stripePlans: IStripePlans;
+	navbarMenuLinks: INavbarMenuLinks;
+	footerMenuLinks: IFooterMenuLinks;
+	industriesMenuLinks: IIndustriesMenuLinks;
+	operationalInsights: IOperationalInsights;
+	themesOptionsContent: IThemesOptionsContent;
+	postTypeFlexiblecontent: IPostTypeFlexiblecontent;
+	contentSliderPostsContent: IContentSliderPostsContent;
+}
 
 export type IIndustriesMenuLinks = {
 	industriesMenuLinks: [
@@ -180,6 +156,13 @@ export type IThemesOptionsContent = {
 
 export type IPostTypeFlexiblecontent = {
 	postTypeFlexiblecontent: string;
+};
+
+export type IPostTypesFlexiblecontent = {
+	pages: string;
+	previewPage: string;
+	previewPost: string;
+	previewIndustry: string;
 };
 
 export type IContentSliderPostsContent = {

@@ -4,8 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 import {motion} from "framer-motion";
 import {getAuth, signOut} from "firebase/auth";
-import {IMobileNavbar} from "@/components/types";
 import {useContentContext} from "@/context/context";
+import {IMobileNavbar} from "@/types/components/public";
 import styles from "@/styles/components/Hero.module.scss";
 import {initial, fadeInUp, stagger} from "@/animations/animations";
 

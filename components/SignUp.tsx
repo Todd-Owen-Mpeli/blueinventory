@@ -9,7 +9,7 @@ import {FC} from "react";
 import Link from "next/link";
 import {motion} from "framer-motion";
 import {useRouter} from "next/router";
-import {ISignUp} from "@/components/types";
+import {ISignUp} from "@/types/components/public";
 import {initial, fadeInUp, stagger} from "@/animations/animations";
 
 // Components

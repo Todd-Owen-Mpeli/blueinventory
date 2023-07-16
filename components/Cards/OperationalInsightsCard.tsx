@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import {motion} from "framer-motion";
 import DOMPurify from "isomorphic-dompurify";
-import {IOperationalInsightsCard} from "@/components/types";
+import {IOperationalInsightsCard} from "@/types/components/public";
 import {initial, fadeInUp, stagger} from "@/animations/animations";
 
 const OperationalInsightsCard: FC<IOperationalInsightsCard> = ({

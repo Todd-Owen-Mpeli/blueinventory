@@ -1,7 +1,7 @@
 // Imports
 import {FC} from "react";
 import Head from "next/head";
-import {ILayoutTwo} from "@/components/types";
+import {ILayoutTwo} from "@/types/components/public";
 
 // Components
 import Footer from "@/components/Footer";

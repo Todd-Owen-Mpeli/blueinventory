@@ -1,7 +1,7 @@
 // Imports
 import {FC} from "react";
 import postHog from "posthog-js";
-import {ILayout} from "@/components/types";
+import {ILayout} from "@/types/components/public";
 
 // Components
 import Footer from "@/components/Footer";

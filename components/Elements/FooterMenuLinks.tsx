@@ -2,7 +2,7 @@
 import {FC} from "react";
 import Link from "next/link";
 import {motion} from "framer-motion";
-import {IFooterMenuLinks} from "@/components/types";
+import {IFooterMenuLinks} from "@/types/components/public";
 import {initial, fadeInUp} from "@/animations/animations";
 
 const FooterMenuLinks: FC<IFooterMenuLinks> = ({

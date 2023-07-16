@@ -8,7 +8,7 @@ import {
 	initialTwo,
 } from "../animations/animations";
 import {motion} from "framer-motion";
-import {IJumboContent} from "@/components/types";
+import {IJumboContent} from "@/types/components/public";
 
 // Components
 import JumboCard from "@/components/Cards/JumboCard";

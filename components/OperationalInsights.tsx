@@ -1,8 +1,8 @@
 // Imports
 import {FC} from "react";
 import {motion} from "framer-motion";
-import {IOperationalInsights} from "@/components/types";
 import {useContentContext} from "@/context/context";
+import {IOperationalInsights} from "@/types/components/public";
 import {initial, fadeInUp, stagger} from "@/animations/animations";
 
 // Components

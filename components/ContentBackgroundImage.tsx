@@ -1,6 +1,6 @@
 // Imports
 import {FC} from "react";
-import {IContentBackgroundImage} from "@/components/types";
+import {IContentBackgroundImage} from "@/types/components/public";
 
 // Components
 import ContentImageCard from "@/components/Cards/ContentImageCard";

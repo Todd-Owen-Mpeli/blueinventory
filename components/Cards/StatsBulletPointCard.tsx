@@ -1,7 +1,7 @@
 // Imports
 import {FC} from "react";
 import Image from "next/image";
-import {IStatsBulletPointCard} from "@/components/types";
+import {IStatsBulletPointCard} from "@/types/components/public";
 
 // Components
 import Paragraph from "@/components/Elements/Paragraph";

@@ -2,7 +2,7 @@
 import {FC} from "react";
 import Image from "next/image";
 import {motion} from "framer-motion";
-import {ITitleThreeContentGrid} from "@/components/types";
+import {ITitleThreeContentGrid} from "@/types/components/public";
 import {initial, fadeInUp, stagger} from "@/animations/animations";
 
 // Components

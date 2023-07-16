@@ -2,7 +2,7 @@
 import Image from "next/image";
 import {useState, FC} from "react";
 import {motion} from "framer-motion";
-import {IHeroTwo} from "@/components/types";
+import {IHeroTwo} from "@/types/components/public";
 import {initial, fadeInUp} from "@/animations/animations";
 
 // Components

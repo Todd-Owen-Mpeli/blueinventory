@@ -1,13 +1,14 @@
 // Imports
 import postHog from "posthog-js";
-import {useRouter} from "next/router";
-import {getAuth} from "firebase/auth";
 import type {AppProps} from "next/app";
 import {client} from "@/config/apollo";
 import {useState, useEffect} from "react";
+import {Auth, getAuth} from "firebase/auth";
 import {PostHogProvider} from "posthog-js/react";
+import {NextRouter, useRouter} from "next/router";
 import {ApolloProvider} from "@apollo/client/react";
 import initializeFirebase from "@/firebase/firebase";
+import {IErrorPageContent} from "@/types/context/public";
 
 // Styling
 import "../styles/globals.scss";
@@ -52,12 +53,13 @@ const protectedPages: Array<string> = [
 ];
 
 export default function App({Component, pageProps}: AppProps) {
+	const router: NextRouter = useRouter();
 	// FIREBASE //
 	// Initializing Firebase
 	initializeFirebase();
 
 	// Retrieving Firebase User Details
-	const auth = getAuth();
+	const auth: Auth = getAuth();
 	const [signedInUser, setSignedInUser] = useState(false);
 
 	/* Check if user is SIGNED IN if 
@@ -77,12 +79,12 @@ export default function App({Component, pageProps}: AppProps) {
 	const {pathname} = useRouter();
 
 	// Public Pages: Check if the current route matches a public page
-	const isPublicPage = publicPages.includes(pathname);
-	const isProtectedPage = protectedPages.includes(pathname);
+	const isPublicPage: boolean = publicPages.includes(pathname);
+	const isProtectedPage: boolean = protectedPages.includes(pathname);
 
 	// NOT SIGNED-IN ERROR PAGE //
 	// Error Page Content
-	const errorPageContent = {
+	const errorPageContent: IErrorPageContent = {
 		title: "Something went wrong!",
 		buttonLink: {
 			url: "/",
@@ -102,9 +104,6 @@ export default function App({Component, pageProps}: AppProps) {
 
 	// COOKIES POLICY //
 	// PostHog Cookies Policy
-	const router = useRouter();
-
-	// PostHog Cookies Policy
 	useEffect(() => {
 		// Track page views
 		const handleRouteChange = () => postHog?.capture("$pageview");
@@ -118,8 +117,6 @@ export default function App({Component, pageProps}: AppProps) {
 	// PAGE LOADING ANIMATION //
 	// Page Animation Loader
 	function Loading() {
-		const router: any = useRouter();
-
 		const [loading, setLoading]: any = useState(false);
 
 		useEffect(() => {

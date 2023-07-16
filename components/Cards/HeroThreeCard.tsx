@@ -3,7 +3,7 @@ import {FC} from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {motion} from "framer-motion";
-import {IHeroThreeCard} from "@/components/types";
+import {IHeroThreeCard} from "@/types/components/public";
 import {initial, fadeInUp} from "@/animations/animations";
 
 const HeroThreeCard: FC<IHeroThreeCard> = ({link, image}) => {

@@ -2,7 +2,7 @@
 import {FC} from "react";
 import Image from "next/image";
 import {motion} from "framer-motion";
-import {IStats} from "@/components/types";
+import {IStats} from "@/types/components/public";
 import {initial, stagger, fadeInUp} from "@/animations/animations";
 
 // Components

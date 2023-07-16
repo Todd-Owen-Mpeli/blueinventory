@@ -1,10 +1,6 @@
+// Imports
 import {createContext, useContext} from "react";
-import {IStripePlans, IThemesOptionsContent} from "./types";
-
-interface IDashboardContent {
-	stripePlans: IStripePlans;
-	themesOptionsContent: IThemesOptionsContent;
-}
+import {IDashboardContent} from "@/types/context/dashboard";
 
 export const DashboardContext = createContext<IDashboardContent | undefined>(
 	undefined

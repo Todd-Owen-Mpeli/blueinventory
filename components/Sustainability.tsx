@@ -1,7 +1,7 @@
 import {FC} from "react";
 import Image from "next/image";
 import {motion} from "framer-motion";
-import {ISustainability} from "@/components/types";
+import {ISustainability} from "@/types/components/public";
 import {fadeIn, fadeInUp, initialTwo, initial} from "@/animations/animations";
 
 // Components

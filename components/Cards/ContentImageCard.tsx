@@ -10,7 +10,7 @@ import {
 import {FC} from "react";
 import {motion} from "framer-motion";
 import styled from "styled-components";
-import {IContentImageCard} from "@/components/types";
+import {IContentImageCard} from "@/types/components/public";
 
 // Components
 import Paragraph from "@/components/Elements/Paragraph";

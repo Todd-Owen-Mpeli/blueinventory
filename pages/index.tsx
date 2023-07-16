@@ -6,7 +6,7 @@ import {
 	flexibleContentType,
 } from "@/context/context";
 import {motion} from "framer-motion";
-import {IContentContext} from "@/context/context";
+import {IContentContext} from "@/types/context/public/index";
 import type {NextPage, GetStaticProps} from "next";
 import {getAllStripePaymentPlans} from "@/functions/stripe/GetStripePaymentPlans";
 

@@ -1,7 +1,7 @@
 import {FC} from "react";
 import Link from "next/link";
 import {motion} from "framer-motion";
-import {IErrorPage} from "@/components/types";
+import {IErrorPage} from "@/types/components/public";
 import {initial, fadeInUp} from "@/animations/animations";
 
 // Components

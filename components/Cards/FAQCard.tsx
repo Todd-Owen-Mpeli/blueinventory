@@ -4,7 +4,7 @@ import {motion} from "framer-motion";
 import {initial, fadeInUp} from "@/animations/animations";
 
 // Components
-import {IFaqCard} from "@/components/types";
+import {IFaqCard} from "@/types/components/public";
 import Paragraph from "@/components/Elements/Paragraph";
 
 const FAQCard: FC<IFaqCard> = ({title, paragraph}) => {

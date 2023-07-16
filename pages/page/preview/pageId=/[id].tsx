@@ -1,15 +1,11 @@
 // Imports
-import {
-	ContentContext,
-	IContentContext,
-	flexibleContentType,
-	postType,
-} from "@/context/context";
 import {isEmpty} from "lodash";
 import {motion} from "framer-motion";
 import type {GetServerSideProps, NextPage} from "next";
+import {IContentContext} from "@/types/context/public";
 import {getAuthToken} from "@/functions/cookies/cookies";
 import {getLoginPreviewRedirectUrl} from "@/functions/redirects/redirects";
+import {postType, ContentContext, flexibleContentType} from "@/context/context";
 import {getAllStripePaymentPlans} from "@/functions/stripe/GetStripePaymentPlans";
 
 // Mutations Functions

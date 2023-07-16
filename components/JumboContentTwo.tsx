@@ -1,8 +1,8 @@
 // Imports
 import {FC} from "react";
 import {motion} from "framer-motion";
-import {IJumboContentTwo} from "@/components/types";
 import {initial, stagger} from "@/animations/animations";
+import {IJumboContentTwo} from "@/types/components/public";
 
 // Components
 import JumboCard from "@/components/Cards/JumboCard";

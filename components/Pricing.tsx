@@ -2,7 +2,7 @@
 import {FC} from "react";
 import Link from "next/link";
 import {motion} from "framer-motion";
-import {IPricing} from "@/components/types";
+import {IPricing} from "@/types/components/public";
 import {useContentContext} from "@/context/context";
 import {initial, fadeInUp, stagger} from "@/animations/animations";
 

@@ -2,7 +2,7 @@
 import {FC} from "react";
 import {motion} from "framer-motion";
 import DOMPurify from "isomorphic-dompurify";
-import {IParagraphProps} from "@/components/types";
+import {IParagraphProps} from "@/types/components/public";
 import {initial, fadeInUp} from "@/animations/animations";
 
 const Paragraph: FC<IParagraphProps> = ({content, tailwindStyling}) => {

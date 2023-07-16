@@ -2,7 +2,7 @@
 import {FC} from "react";
 import {motion} from "framer-motion";
 import styled from "styled-components";
-import {ITitleParagraph} from "@/components/types";
+import {ITitleParagraph} from "@/types/components/public";
 import {initial, fadeInUp} from "@/animations/animations";
 
 // Components

@@ -1,10 +1,10 @@
 // Imports
 import {FC} from "react";
 import {motion} from "framer-motion";
+import {IHeroThreeProps} from "@/types/components/public";
 import {initial, fadeInUp, stagger} from "@/animations/animations";
 
 // Components
-import {IHeroThreeProps} from "@/components/types";
 import Paragraph from "@/components/Elements/Paragraph";
 import HeroThreeCard from "@/components/Cards/HeroThreeCard";
 

@@ -1,46 +1,10 @@
 // Imports
 import {
-	ISeo,
-	IContent,
-	IStripePlans,
-	IFooterMenuLinks,
-	INavbarMenuLinks,
-	IIndustriesMenuLinks,
-	IOperationalInsights,
-	IThemesOptionsContent,
-	IPostTypeFlexiblecontent,
-	IContentSliderPostsContent,
-} from "./types";
+	IPostTypes,
+	IContentContext,
+	IPostTypesFlexiblecontent,
+} from "@/types/context/public";
 import {createContext, useContext} from "react";
-
-export interface IContentContext {
-	seo: ISeo;
-	content: IContent;
-	stripePlans: IStripePlans;
-	navbarMenuLinks: INavbarMenuLinks;
-	footerMenuLinks: IFooterMenuLinks;
-	industriesMenuLinks: IIndustriesMenuLinks;
-	operationalInsights: IOperationalInsights;
-	themesOptionsContent: IThemesOptionsContent;
-	postTypeFlexiblecontent: IPostTypeFlexiblecontent;
-	contentSliderPostsContent: IContentSliderPostsContent;
-}
-
-type IPostTypes = {
-	pages: string;
-	posts: string;
-	industry: string;
-	previewPage: string;
-	previewPost: string;
-	previewIndustry: string;
-};
-
-type IPostTypesFlexiblecontent = {
-	pages: string;
-	previewPage: string;
-	previewPost: string;
-	previewIndustry: string;
-};
 
 /* PUBLIC PAGES & POSTS */
 /* PREVIEW PAGES & POSTS */

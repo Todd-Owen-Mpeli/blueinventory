@@ -7,11 +7,11 @@ import {
 	initialTwo,
 } from "../animations/animations";
 import {motion} from "framer-motion";
-import {IContactForm} from "./types";
 import {useRouter} from "next/router";
 import React, {useState, FC} from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import {useFormik, Formik, Field, Form} from "formik";
+import {IContactForm} from "@/types/components/public";
 import {sendContactForm} from "@/pages/api/contactForm";
 
 // Styling

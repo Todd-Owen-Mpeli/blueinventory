@@ -2,8 +2,8 @@
 import {motion} from "framer-motion";
 import Layout from "@/components/Layout/Layout";
 import {ContentContext} from "@/context/context";
-import {IContentContext} from "@/context/context";
 import {NextPage, GetServerSideProps} from "next";
+import {IContentContext} from "@/types/context/public/index";
 import {getAllStripePaymentPlans} from "@/functions/stripe/GetStripePaymentPlans";
 
 // Queries Functions

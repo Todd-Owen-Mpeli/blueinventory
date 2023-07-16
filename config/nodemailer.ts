@@ -1,12 +1,9 @@
+// Imports
 import nodemailer from "nodemailer";
+import {IMailOptions} from "@/types/mail/index";
 
-interface mailOptions {
-	from: string;
-	to: string;
-}
-
-const email = process.env.EMAIL_USER;
-const pass = process.env.EMAIL_PASS;
+const email: string | undefined = process.env.EMAIL_USER;
+const pass: string | undefined = process.env.EMAIL_PASS;
 
 export const transporter: any = nodemailer.createTransport({
 	host: "gmail",
@@ -22,7 +19,7 @@ export const transporter: any = nodemailer.createTransport({
 	debug: true,
 });
 
-export const mailOptions: mailOptions = {
+export const mailOptions: IMailOptions = {
 	from: "info@blueinventory.com",
 	to: `${email}`,
 };

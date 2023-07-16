@@ -1,6 +1,6 @@
 // Imports
 import {FC} from "react";
-import {IBulletListCard} from "@/components/types";
+import {IBulletListCard} from "@/types/components/public";
 
 const BulletListCard: FC<IBulletListCard> = ({
 	bulletPoint,
