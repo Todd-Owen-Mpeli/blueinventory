@@ -1,3 +1,5 @@
+"use client";
+
 // Imports
 import {useState} from "react";
 import postHog from "posthog-js";
@@ -55,18 +57,18 @@ const CookiePolicyCard = () => {
 					className="flex items-center justify-center gap-4"
 				>
 					<motion.button
-						onClick={acceptCookies}
 						initial={initial}
 						whileInView={fadeInUp}
+						onClick={acceptCookies}
 						viewport={{once: true}}
 						className="px-6 py-3 text-xs leading-none tracking-wider text-white rounded bg-blue hover:bg-goldPrime"
 					>
 						Accept Cookies
 					</motion.button>
 					<motion.button
-						onClick={refuseCookies}
 						initial={initial}
 						whileInView={fadeInUp}
+						onClick={refuseCookies}
 						viewport={{once: true}}
 						className="px-6 py-3 text-xs leading-none tracking-wider text-white rounded bg-darkBlue hover:bg-darkerBlue"
 					>

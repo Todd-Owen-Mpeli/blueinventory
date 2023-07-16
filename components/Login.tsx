@@ -1,3 +1,5 @@
+"use client";
+
 // Imports
 import {
 	fadeIn,

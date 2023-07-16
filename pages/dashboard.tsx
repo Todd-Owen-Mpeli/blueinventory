@@ -11,6 +11,7 @@ import {getThemesOptionsContent} from "@/functions/graphql/Queries/GetAllThemesO
 
 // Styling
 import styles from "@/styles/pages/Dashboard.module.scss";
+import WelcomePopUp from "@/components/Dashboard/PopUp/WelcomePopUp";
 
 // Components
 
@@ -43,6 +44,8 @@ const dashboard: NextPage<IDashboard> = ({
 						>
 							Dashboard
 						</motion.h1>
+
+						<WelcomePopUp />
 					</div>
 				</section>
 			</motion.div>
