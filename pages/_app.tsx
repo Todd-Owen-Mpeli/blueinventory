@@ -37,8 +37,6 @@ const publicPages: Array<string> = [
 	"/sign-in",
 	"/sign-up",
 	"/checkout",
-	"/wp-admin/",
-	"/wp-login",
 	"/api/sitemap.xml",
 	"/industries/[slug]",
 	"/page/preview/pageId=/[id]",
@@ -182,7 +180,7 @@ export default function App({Component, pageProps}: AppProps) {
 	return (
 		<ApolloProvider client={client}>
 			<PostHogProvider client={postHog}>
-				{isProtectedPage && signedInUser ? (
+				{/* {isProtectedPage && signedInUser ? (
 					<>
 						<Loading />
 						<Component {...pageProps} />
@@ -203,7 +201,11 @@ export default function App({Component, pageProps}: AppProps) {
 							backgroundImage={errorPageContent?.backgroundImage}
 						/>
 					</>
-				)}
+				)} */}
+				<>
+					<Loading />
+					<Component {...pageProps} />
+				</>
 			</PostHogProvider>
 		</ApolloProvider>
 	);
