@@ -37,6 +37,7 @@ const publicPages: Array<string> = [
 	"/sign-in",
 	"/sign-up",
 	"/checkout",
+	"/wp-admin/",
 	"/api/sitemap.xml",
 	"/industries/[slug]",
 	"/page/preview/pageId=/[id]",
