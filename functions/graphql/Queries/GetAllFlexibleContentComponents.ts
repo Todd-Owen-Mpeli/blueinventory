@@ -432,7 +432,6 @@ export async function getAllFlexibleContentComponents(
 		});
 
 		return {
-			pageTitle: response?.data?.pageTitle?.edges[0]?.node?.title,
 			content:
 				response.data?.mainContent?.edges[0]?.node?.template?.flexibleContent
 					?.flexibleContent,
