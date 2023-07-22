@@ -1,8 +1,8 @@
 // Imports
 import {motion} from "framer-motion";
-import {ContentContext} from "@/context/context";
 import type {GetStaticProps, NextPage} from "next";
 import {IContentContext} from "@/types/context/public/index";
+import {ContentContext, flexibleContentType} from "@/context/context";
 import {getAllStripePaymentPlans} from "@/functions/stripe/GetStripePaymentPlans";
 
 // Queries Functions
@@ -70,9 +70,6 @@ const signUpPage: NextPage<IContentContext> = ({
 );
 
 export const getStaticProps: GetStaticProps = async () => {
-	const postTypeFlexiblecontent: string =
-		"DefaultTemplate_Flexiblecontent_FlexibleContent";
-
 	// Fetch remaining content simultaneously
 	const [
 		stripePlans,
@@ -106,8 +103,8 @@ export const getStaticProps: GetStaticProps = async () => {
 			operationalInsights,
 			industriesMenuLinks,
 			themesOptionsContent,
-			postTypeFlexiblecontent,
 			contentSliderPostsContent,
+			postTypeFlexiblecontent: flexibleContentType?.pages,
 		},
 		revalidate: 60,
 	};
