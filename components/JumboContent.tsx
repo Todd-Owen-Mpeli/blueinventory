@@ -39,19 +39,19 @@ const JumboContent: FC<IJumboContent> = ({
 							initial={initial}
 							viewport={{once: true}}
 							whileInView={fadeInUp}
-							className="max-w-md mb-6 text-3xl font-bold md:text-4xl"
+							className="relative z-50 max-w-md mb-6 text-3xl font-bold md:text-4xl"
 						>
 							{title}
 						</motion.h2>
 						<Paragraph
 							content={paragraph}
-							tailwindStyling="max-w-2xl px-0 mb-10 text-base text-black"
+							tailwindStyling="max-w-2xl px-0 mb-10 text-base text-black relative z-50"
 						/>
 						<motion.div
 							initial={initial}
 							viewport={{once: true}}
 							whileInView={fadeInUp}
-							className="absolute top-[-140px] right-[145px]"
+							className="absolute top-[-140px] right-[-35px] md:right-[145px]"
 						>
 							<Image
 								alt={icon?.altText}

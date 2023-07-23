@@ -11,12 +11,12 @@ import Paragraph from "@/components/Elements/Paragraph";
 
 const FAQ: FC<IFaq> = ({icon, title, paragraph, qagrid}) => {
 	return (
-		<section className="relative px-4 py-20 bg-white">
+		<section className="relative px-4 py-20 overflow-hidden bg-white">
 			<motion.div
 				initial={initial}
 				viewport={{once: true}}
 				whileInView={fadeInUp}
-				className="absolute top-[30px] right-[145px]"
+				className="absolute top-[30px] right-[-75px] md:right-[145px]"
 			>
 				<Image
 					alt={icon?.altText}

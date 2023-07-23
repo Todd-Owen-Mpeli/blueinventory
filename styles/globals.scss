@@ -10,6 +10,7 @@ html,
 body {
 	padding: 0;
 	margin: 0;
+	overflow-x: hidden;
 	background-color: $blue;
 	scroll-behavior: smooth;
 	font-family: -apple-system, $fontStyle_dashboard, $fontStyle_main,

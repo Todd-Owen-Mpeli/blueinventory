@@ -11,7 +11,7 @@ const Footer = () => {
 	const content = useContentContext();
 	return (
 		<section className="relative py-20 overflow-hidden lg:px-4 bg-darkerBlueTwo">
-			<div className="absolute top-[-140px] right-[-145px] opacity-10">
+			<div className="absolute top-[15px] md:top-[-140px] right-[-220px] md:right-[-145px] opacity-10">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					width="954.39"
