@@ -17,7 +17,7 @@ const operationalInsights: FC<IOperationalInsights> = ({
 	// eslint-disable-next-line react-hooks/rules-of-hooks
 	const content = useContentContext();
 	return (
-		<section className="py-24 bg-white">
+		<div className="py-24 bg-white">
 			<div className="container px-4 mx-auto">
 				<motion.div
 					initial={initial}
@@ -90,7 +90,7 @@ const operationalInsights: FC<IOperationalInsights> = ({
 					</button>
 				</motion.div>
 			</div>
-		</section>
+		</div>
 	);
 };
 

@@ -62,7 +62,7 @@ const SignUp: FC<ISignUp> = ({title, paragraph}) => {
 	};
 
 	return (
-		<section className="container relative px-0 mx-auto">
+		<div className="container relative px-0 mx-auto">
 			<motion.div
 				initial={initial}
 				viewport={{once: true}}
@@ -314,7 +314,7 @@ const SignUp: FC<ISignUp> = ({title, paragraph}) => {
 					</p>
 				</motion.div>
 			</motion.div>
-		</section>
+		</div>
 	);
 };
 

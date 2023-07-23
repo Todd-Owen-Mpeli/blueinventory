@@ -10,7 +10,7 @@ import Paragraph from "@/components/Elements/Paragraph";
 
 const logos: FC<ILogos> = ({title, paragraph, logoGrid}) => {
 	return (
-		<section className="px-4 py-10 bg-white lg:px-0">
+		<div className="px-4 py-10 bg-white lg:px-0">
 			<div className="container px-0 mx-auto">
 				<motion.h2
 					initial={initialTwo}
@@ -41,7 +41,7 @@ const logos: FC<ILogos> = ({title, paragraph, logoGrid}) => {
 					</motion.div>
 				</div>
 			</div>
-		</section>
+		</div>
 	);
 };
 

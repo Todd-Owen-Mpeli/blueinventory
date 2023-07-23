@@ -134,7 +134,7 @@ const ContactForm: FC<IContactForm> = ({title, backgroundImage}) => {
 	};
 
 	return (
-		<section
+		<div
 			id="contactForm"
 			className="px-4 py-20 mx-auto overflow-hidden bg-center bg-no-repeat bg-cover bg-darkBlue"
 			style={{
@@ -401,7 +401,7 @@ const ContactForm: FC<IContactForm> = ({title, backgroundImage}) => {
 					</Formik>
 				</div>
 			</div>
-		</section>
+		</div>
 	);
 };
 

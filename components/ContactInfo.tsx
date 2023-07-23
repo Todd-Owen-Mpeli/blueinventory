@@ -13,7 +13,7 @@ const ContactInfo: FC<IContactInfo> = ({title, paragraph}) => {
 	const content = useContentContext();
 
 	return (
-		<section className="py-20 bg-white lg:px-4">
+		<div className="py-20 bg-white lg:px-4">
 			<div className="container px-4 mx-auto">
 				<div className="flex flex-wrap items-center justify-around -mx-4">
 					<div className="w-full px-4 lg:w-auto lg:mb-0">
@@ -104,7 +104,7 @@ const ContactInfo: FC<IContactInfo> = ({title, paragraph}) => {
 					</motion.div>
 				</div>
 			</div>
-		</section>
+		</div>
 	);
 };
 

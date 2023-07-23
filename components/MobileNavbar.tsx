@@ -37,7 +37,7 @@ const mobileNavbar: FC<IMobileNavbar> = ({
 	};
 
 	return (
-		<section
+		<div
 			className={
 				revealMobileMenu
 					? `${styles.navReveal} ${styles.nav}`
@@ -353,7 +353,7 @@ const mobileNavbar: FC<IMobileNavbar> = ({
 					</div>
 				</div>
 			</nav>
-		</section>
+		</div>
 	);
 };
 

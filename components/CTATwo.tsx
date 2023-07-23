@@ -14,7 +14,7 @@ const CTATwo: FC<ICTATwo> = ({
 	backgroundImage,
 }) => {
 	return (
-		<section
+		<div
 			className="px-4 bg-no-repeat bg-cover py-10bg-center lg:px-0"
 			style={{
 				backgroundImage: `linear-gradient(
@@ -60,7 +60,7 @@ const CTATwo: FC<ICTATwo> = ({
 					</motion.div>
 				</div>
 			</div>
-		</section>
+		</div>
 	);
 };
 

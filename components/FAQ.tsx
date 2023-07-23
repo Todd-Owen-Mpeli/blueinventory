@@ -11,7 +11,7 @@ import Paragraph from "@/components/Elements/Paragraph";
 
 const FAQ: FC<IFaq> = ({icon, title, paragraph, qagrid}) => {
 	return (
-		<section className="relative px-4 py-20 overflow-hidden bg-white">
+		<div className="relative px-4 py-20 overflow-hidden bg-white">
 			<motion.div
 				initial={initial}
 				viewport={{once: true}}
@@ -71,7 +71,7 @@ const FAQ: FC<IFaq> = ({icon, title, paragraph, qagrid}) => {
 					)}
 				</motion.div>
 			</motion.div>
-		</section>
+		</div>
 	);
 };
 

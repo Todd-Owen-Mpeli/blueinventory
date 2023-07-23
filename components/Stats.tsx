@@ -18,7 +18,7 @@ const Stats: FC<IStats> = ({
 	bulletPoints,
 }) => {
 	return (
-		<section
+		<div
 			className="py-10 overflow-hidden bg-center bg-no-repeat bg-cover"
 			style={{
 				backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue.svg")`,
@@ -28,12 +28,12 @@ const Stats: FC<IStats> = ({
 				<div className="mx-auto max-w-7xl">
 					<div className="flex flex-wrap items-center -mx-4">
 						<div className="w-full px-4 mb-16 lg:w-1/2 lg:mb-0">
-							<div className="mx-auto lg:max-w-lg lg:mx-0">
+							<div className="mx-auto text-center lg:max-w-lg lg:mx-0">
 								<motion.h2
 									initial={initial}
 									whileInView={fadeInUp}
 									viewport={{once: true}}
-									className="mb-10 text-3xl font-bold text-white lg:text-5xl"
+									className="mb-10 text-3xl font-bold text-center text-white lg:text-5xl lg:text-left"
 								>
 									{title}
 								</motion.h2>
@@ -46,10 +46,10 @@ const Stats: FC<IStats> = ({
 										bulletPoints?.map((item, keys) => (
 											<motion.li
 												key={keys}
-												className="mb-4"
 												initial={initial}
 												whileInView={fadeInUp}
 												viewport={{once: true}}
+												className="flex flex-col items-center justify-between mb-4 lg:items-start"
 											>
 												<StatsBulletPointCard
 													bulletPointText={item?.bulletPoint}
@@ -176,7 +176,7 @@ const Stats: FC<IStats> = ({
 					</div>
 				</div>
 			</div>
-		</section>
+		</div>
 	);
 };
 

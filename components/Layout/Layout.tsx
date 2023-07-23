@@ -16,7 +16,7 @@ const Layout: FC<ILayout> = ({children}) => {
 
 			<Navbar />
 
-			<section className="pt-16">{children}</section>
+			<div className="pt-16">{children}</div>
 
 			<Footer />
 

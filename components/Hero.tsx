@@ -16,8 +16,8 @@ const Hero: FC<IHero> = ({
 	backgroundVideoUrl,
 }) => {
 	return (
-		<section className="px-4 pt-16 pb-10 overflow-hidden bg-white">
-			<div className="container px-0 mx-auto">
+		<div className="p-0 overflow-hidden bg-white lg:px-4 lg:pt-16 lg:pb-10">
+			<div className="px-0 mx-auto lg:container">
 				<div
 					className="relative w-full h-[600px] overflow-hidden bg-center bg-no-repeat bg-cover rounded-sm"
 					style={{
@@ -95,7 +95,7 @@ const Hero: FC<IHero> = ({
 					</div>
 				</div>
 			</div>
-		</section>
+		</div>
 	);
 };
 

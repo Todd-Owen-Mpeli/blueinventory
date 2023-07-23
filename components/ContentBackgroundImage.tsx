@@ -7,7 +7,7 @@ import ContentImageCard from "@/components/Cards/ContentImageCard";
 
 const contentBackgroundImage: FC<IContentBackgroundImage> = ({gridContent}) => {
 	return (
-		<section
+		<div
 			className={gridContent ? `px-4 py-10 overflow-hidden bg-white` : `hidden`}
 		>
 			<div className="container flex flex-col gap-4 px-0 mx-auto">
@@ -21,7 +21,7 @@ const contentBackgroundImage: FC<IContentBackgroundImage> = ({gridContent}) => {
 					/>
 				))}
 			</div>
-		</section>
+		</div>
 	);
 };
 

@@ -16,7 +16,7 @@ const Sustainability: FC<ISustainability> = ({
 	image,
 }) => {
 	return (
-		<section
+		<div
 			className={`py-16 bg-darkBlue bg-cover bg-center bg-no-repeat`}
 			style={{
 				backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue.svg")`,
@@ -71,7 +71,7 @@ const Sustainability: FC<ISustainability> = ({
 					</div>
 				</div>
 			</div>
-		</section>
+		</div>
 	);
 };
 

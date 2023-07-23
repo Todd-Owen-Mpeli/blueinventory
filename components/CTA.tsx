@@ -17,7 +17,7 @@ const CTATwo: FC<ICTA> = ({
 	backgroundImage,
 }) => {
 	return (
-		<section
+		<div
 			className="py-10 bg-center bg-no-repeat bg-cover"
 			style={{
 				backgroundImage: `linear-gradient(
@@ -134,7 +134,7 @@ const CTATwo: FC<ICTA> = ({
 					</div>
 				</div>
 			</div>
-		</section>
+		</div>
 	);
 };
 

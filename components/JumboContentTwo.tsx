@@ -15,7 +15,7 @@ const JumboContentTwo: FC<IJumboContentTwo> = ({
 	gridContent,
 }) => {
 	return (
-		<section className="overflow-hidden bg-white lg:px-4">
+		<div className="overflow-hidden bg-white lg:px-4">
 			<div className="container px-4 mx-auto">
 				<div className="mx-auto max-w-7xl pt-28 pb-36">
 					<motion.div
@@ -89,7 +89,7 @@ const JumboContentTwo: FC<IJumboContentTwo> = ({
 					</motion.div>
 				</div>
 			</div>
-		</section>
+		</div>
 	);
 };
 

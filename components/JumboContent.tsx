@@ -26,7 +26,7 @@ const JumboContent: FC<IJumboContent> = ({
 	gridContent,
 }) => {
 	return (
-		<section className="overflow-hidden bg-white lg:px-4">
+		<div className="overflow-hidden bg-white lg:px-4">
 			<div className="container px-4 mx-auto">
 				<div className="max-w-6xl mx-auto pt-28 pb-36">
 					<motion.div
@@ -39,7 +39,7 @@ const JumboContent: FC<IJumboContent> = ({
 							initial={initial}
 							viewport={{once: true}}
 							whileInView={fadeInUp}
-							className="relative z-50 max-w-md mb-6 text-3xl font-bold md:text-4xl"
+							className="relative z-50 max-w-md mb-6 text-3xl font-bold text-center md:text-4xl lg:text-left"
 						>
 							{title}
 						</motion.h2>
@@ -126,7 +126,12 @@ const JumboContent: FC<IJumboContent> = ({
 						</motion.div>
 						{/* Card Three */}
 						<div className="w-full p-3 md:w-1/2">
-							<div className="h-full p-16 rounded-sm bg-lightBlue">
+							<div
+								className="h-full p-16 bg-center bg-no-repeat bg-cover rounded-sm bg-darkBlue"
+								style={{
+									backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-orange-yellow.svg")`,
+								}}
+							>
 								<div className="flex flex-wrap items-center justify-center h-full">
 									<motion.div
 										initial={initial}
@@ -230,7 +235,7 @@ const JumboContent: FC<IJumboContent> = ({
 					</motion.div>
 				</div>
 			</div>
-		</section>
+		</div>
 	);
 };
 

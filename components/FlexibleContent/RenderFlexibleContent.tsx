@@ -33,7 +33,7 @@ const RenderFlexibleContent: FC = () => {
 		<>
 			{content.content?.length > 0 ? (
 				content.content.map((item: any, keys: any) => (
-					<div key={keys}>
+					<section key={keys}>
 						{item?.fieldGroupName === `${Flexiblecontent}_HeroSection` ? (
 							<>
 								<Hero
@@ -227,7 +227,7 @@ const RenderFlexibleContent: FC = () => {
 						) : (
 							<></>
 						)}
-					</div>
+					</section>
 				))
 			) : (
 				<></>

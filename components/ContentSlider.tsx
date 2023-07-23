@@ -219,7 +219,7 @@ const ContentSlider = () => {
 	}, [mainActive, mainNotActive, postActive, postNotActive]);
 
 	return (
-		<section
+		<div
 			className="w-full h-full bg-center bg-no-repeat bg-cover"
 			style={{
 				backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue.svg")`,
@@ -753,7 +753,7 @@ const ContentSlider = () => {
 					</motion.article>
 				</div>
 			</div>
-		</section>
+		</div>
 	);
 };
 

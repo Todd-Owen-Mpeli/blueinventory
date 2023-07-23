@@ -11,7 +11,7 @@ const ImageGrid: FC<IImageGrid> = ({
 	imageSix,
 }) => {
 	return (
-		<section
+		<div
 			className={
 				image?.sourceUrl ? `py-2 overflow-hidden bg-darkBlue` : `hidden`
 			}
@@ -76,7 +76,7 @@ const ImageGrid: FC<IImageGrid> = ({
 					</div>
 				</div>
 			</div>
-		</section>
+		</div>
 	);
 };
 

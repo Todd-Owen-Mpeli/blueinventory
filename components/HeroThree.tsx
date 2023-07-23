@@ -10,7 +10,7 @@ import HeroThreeCard from "@/components/Cards/HeroThreeCard";
 
 const HeroThree: FC<IHeroThreeProps> = ({title, paragraph, imageGrid}) => {
 	return (
-		<section className="px-4 py-10 bg-white lg:px-0">
+		<div className="px-4 py-10 bg-white lg:px-0">
 			<div className="container px-0 mx-auto">
 				<div className="py-10">
 					<motion.h2
@@ -45,7 +45,7 @@ const HeroThree: FC<IHeroThreeProps> = ({title, paragraph, imageGrid}) => {
 					)}
 				</motion.div>
 			</div>
-		</section>
+		</div>
 	);
 };
 

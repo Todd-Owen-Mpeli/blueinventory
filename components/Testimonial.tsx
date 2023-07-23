@@ -10,7 +10,7 @@ import TestimonialCard from "@/components/Cards/TestimonialCard";
 
 const Testimonial: FC<ITestimonial> = ({title, paragraph, contentGrid}) => {
 	return (
-		<section className="pt-24 overflow-hidden bg-white pb-36">
+		<div className="pt-24 overflow-hidden bg-white pb-36">
 			<motion.div
 				initial={initial}
 				whileInView={stagger}
@@ -50,7 +50,7 @@ const Testimonial: FC<ITestimonial> = ({title, paragraph, contentGrid}) => {
 					)}
 				</motion.div>
 			</motion.div>
-		</section>
+		</div>
 	);
 };
 

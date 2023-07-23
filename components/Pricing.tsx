@@ -23,10 +23,7 @@ const Pricing: FC<IPricing> = ({
 	const content = useContentContext();
 
 	return (
-		<section
-			id="Pricing"
-			className="relative pb-24 overflow-hidden bg-lightGrey"
-		>
+		<div id="Pricing" className="relative pb-24 overflow-hidden bg-lightGrey">
 			<div className="pt-32 pb-8">
 				<div className="container px-4 mx-auto">
 					<motion.div
@@ -798,7 +795,7 @@ const Pricing: FC<IPricing> = ({
 					</motion.div>
 				</motion.div>
 			</div>
-		</section>
+		</div>
 	);
 };
 
