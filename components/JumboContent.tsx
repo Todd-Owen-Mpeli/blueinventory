@@ -51,7 +51,7 @@ const JumboContent: FC<IJumboContent> = ({
 							initial={initial}
 							viewport={{once: true}}
 							whileInView={fadeInUp}
-							className="absolute top-[-140px] right-[-35px] md:right-[145px]"
+							className="absolute top-[-140px] right-[-35px] md:right-[30px] lg:right-[145px]"
 						>
 							<Image
 								alt={icon?.altText}

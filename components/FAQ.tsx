@@ -16,7 +16,7 @@ const FAQ: FC<IFaq> = ({icon, title, paragraph, qagrid}) => {
 				initial={initial}
 				viewport={{once: true}}
 				whileInView={fadeInUp}
-				className="absolute top-[30px] right-[-75px] md:right-[145px]"
+				className="absolute top-[-100px] md:top-[-130px] lg:top-[30px] right-[100px] md:right-[30px] lg:right-[145px]"
 			>
 				<Image
 					alt={icon?.altText}
