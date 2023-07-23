@@ -61,13 +61,13 @@ export async function getAllFlexibleContentComponents(
                         fieldGroupName
                         title
                         icon {
-                            altText
-                            sourceUrl
-                            mediaDetails {
-                              height
-                              width
-                            }
+                          altText
+                          sourceUrl
+                          mediaDetails {
+                            height
+                            width
                           }
+                        }
                         contentGrid {
                           card {
                             title
@@ -90,8 +90,16 @@ export async function getAllFlexibleContentComponents(
                       }
                       ... on ${postTypeFlexiblecontent}_FeaturesGrid {
                         fieldGroupName
-                        paragraph
                         title
+                        paragraph
+                        icon {
+                          altText
+                          sourceUrl
+                          mediaDetails {
+                            height
+                            width
+                          }
+                        }
                         cardOne {
                           title
                           subtitle
@@ -314,8 +322,16 @@ export async function getAllFlexibleContentComponents(
                       }
                       ... on ${postTypeFlexiblecontent}_Faq {
                         fieldGroupName
-                        paragraph
                         title
+                        paragraph
+                        icon {
+                          altText
+                          sourceUrl
+                          mediaDetails {
+                            height
+                            width
+                          }
+                        }
                         qagrid {
                           title
                           paragraph

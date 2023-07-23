@@ -224,6 +224,14 @@ export interface ICTATwo {
 export interface IFaq {
 	title: string;
 	paragraph: string;
+	icon: {
+		altText: string;
+		sourceUrl: string;
+		mediaDetails: {
+			height: number;
+			width: number;
+		};
+	};
 	qagrid: [
 		{
 			title: string;
@@ -342,6 +350,14 @@ export interface IImageGrid {
 export interface IJumboContent {
 	title: string;
 	paragraph: string;
+	icon: {
+		altText: string;
+		sourceUrl: string;
+		mediaDetails: {
+			height: number;
+			width: number;
+		};
+	};
 	cardOne: {
 		title: string;
 		subtitle: string;

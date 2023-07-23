@@ -1,5 +1,6 @@
 // Imports
 import {FC} from "react";
+import Image from "next/image";
 import {motion} from "framer-motion";
 import {IFaq} from "@/types/components/public";
 import {initial, fadeInUp, stagger} from "@/animations/animations";
@@ -8,14 +9,32 @@ import {initial, fadeInUp, stagger} from "@/animations/animations";
 import FAQCard from "@/components/Cards/FAQCard";
 import Paragraph from "@/components/Elements/Paragraph";
 
-const FAQ: FC<IFaq> = ({title, paragraph, qagrid}) => {
+const FAQ: FC<IFaq> = ({icon, title, paragraph, qagrid}) => {
 	return (
-		<section className="px-4 py-20 bg-white">
+		<section className="relative px-4 py-20 bg-white">
+			<motion.div
+				initial={initial}
+				viewport={{once: true}}
+				whileInView={fadeInUp}
+				className="absolute top-[30px] right-[145px]"
+			>
+				<Image
+					alt={icon?.altText}
+					src={icon?.sourceUrl}
+					width={icon?.mediaDetails?.width}
+					height={icon?.mediaDetails?.height}
+					className={
+						icon?.sourceUrl
+							? `block w-full max-w-[250px] h-[500px] object-contain object-center`
+							: `hidden`
+					}
+				/>
+			</motion.div>
 			<motion.div
 				initial={initial}
 				whileInView={stagger}
 				viewport={{once: true}}
-				className="container px-4 mx-auto"
+				className="container relative z-50 px-4 mx-auto"
 			>
 				<motion.div
 					initial={initial}

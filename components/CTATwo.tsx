@@ -15,7 +15,7 @@ const CTATwo: FC<ICTATwo> = ({
 }) => {
 	return (
 		<section
-			className="px-4 py-10 bg-center bg-no-repeat bg-cover lg:px-0"
+			className="px-4 bg-no-repeat bg-cover py-10bg-center lg:px-0"
 			style={{
 				backgroundImage: `linear-gradient(
 							0deg,

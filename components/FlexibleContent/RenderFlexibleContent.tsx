@@ -73,6 +73,7 @@ const RenderFlexibleContent: FC = () => {
 						) : item?.fieldGroupName === `${Flexiblecontent}_FeaturesGrid` ? (
 							<>
 								<JumboContent
+									icon={item?.icon}
 									title={item?.title}
 									cardOne={item?.cardOne}
 									cardTwo={item?.cardTwo}
@@ -158,6 +159,7 @@ const RenderFlexibleContent: FC = () => {
 						) : item?.fieldGroupName === `${Flexiblecontent}_Faq` ? (
 							<>
 								<FAQ
+									icon={item?.icon}
 									title={item?.title}
 									qagrid={item?.qagrid}
 									paragraph={item?.paragraph}

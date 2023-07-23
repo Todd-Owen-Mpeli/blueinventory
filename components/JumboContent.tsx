@@ -1,5 +1,4 @@
 // Imports
-import {FC} from "react";
 import {
 	stagger,
 	initial,
@@ -7,6 +6,8 @@ import {
 	fadeInTwo,
 	initialTwo,
 } from "../animations/animations";
+import {FC} from "react";
+import Image from "next/image";
 import {motion} from "framer-motion";
 import {IJumboContent} from "@/types/components/public";
 
@@ -16,6 +17,7 @@ import Paragraph from "@/components/Elements/Paragraph";
 
 const JumboContent: FC<IJumboContent> = ({
 	title,
+	icon,
 	cardOne,
 	cardTwo,
 	lastCard,
@@ -31,7 +33,7 @@ const JumboContent: FC<IJumboContent> = ({
 						initial={initial}
 						whileInView={stagger}
 						viewport={{once: true}}
-						className="mb-20"
+						className="relative mb-20"
 					>
 						<motion.h2
 							initial={initial}
@@ -45,12 +47,30 @@ const JumboContent: FC<IJumboContent> = ({
 							content={paragraph}
 							tailwindStyling="max-w-2xl px-0 mb-10 text-base text-black"
 						/>
+						<motion.div
+							initial={initial}
+							viewport={{once: true}}
+							whileInView={fadeInUp}
+							className="absolute top-[-140px] right-[145px]"
+						>
+							<Image
+								alt={icon?.altText}
+								src={icon?.sourceUrl}
+								width={icon?.mediaDetails?.width}
+								height={icon?.mediaDetails?.height}
+								className={
+									icon?.sourceUrl
+										? `block rotate-[35deg] w-full max-w-[250px] h-[500px] object-contain object-center`
+										: `hidden`
+								}
+							/>
+						</motion.div>
 					</motion.div>
 					<motion.div
 						initial={initial}
 						whileInView={stagger}
 						viewport={{once: true}}
-						className="flex flex-wrap -m-3"
+						className="relative z-50 flex flex-wrap -m-3"
 					>
 						{/* Card One */}
 						<div className="w-full p-3 md:w-1/2">

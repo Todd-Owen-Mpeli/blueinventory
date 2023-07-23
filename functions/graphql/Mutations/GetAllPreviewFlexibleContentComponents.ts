@@ -90,8 +90,16 @@ export const getAllPreviewFlexibleContentComponents = async (
 							}
 							... on ${postTypeFlexiblecontent}_FeaturesGrid {
 							fieldGroupName
-							paragraph
 							title
+							paragraph
+							icon {
+                        	  altText
+                        	  sourceUrl
+                        	  mediaDetails {
+                        	    height
+                        	    width
+                        	  }
+                        	}
 							cardOne {
 								title
 								subtitle
@@ -314,8 +322,16 @@ export const getAllPreviewFlexibleContentComponents = async (
 							}
 							... on ${postTypeFlexiblecontent}_Faq {
 							fieldGroupName
-							paragraph
 							title
+							paragraph
+							icon {
+                        	  altText
+                        	  sourceUrl
+                        	  mediaDetails {
+                        	    height
+                        	    width
+                        	  }
+                        	}
 							qagrid {
 								title
 								paragraph
