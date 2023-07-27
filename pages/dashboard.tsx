@@ -11,8 +11,7 @@ import {getThemesOptionsContent} from "@/functions/graphql/Queries/GetAllThemesO
 
 // Styling
 import styles from "@/styles/pages/Dashboard.module.scss";
-import WelcomePopUp from "@/components/Dashboard/PopUp/WelcomePopUp";
-import Tables from "@/components/Dashboard/components/Tables";
+import MainNavigation from "@/components/Dashboard/MainNavigation";
 
 // Components
 
@@ -33,21 +32,15 @@ const dashboard: NextPage<IDashboard> = ({
 				}}
 				initial="initial"
 				animate="animate"
-				className="min-h-screen bg-darkBlue"
+				className="min-h-screen bg-darkerBlue"
 			>
 				<section className={styles.dashboard}>
 					<div className="container px-4 mx-auto">
 						<div className="flex flex-col items-center justify-between">
-							<motion.h1
-								initial={initial}
-								whileInView={stagger}
-								viewport={{once: true}}
-								className="mb-6 text-4xl font-bold text-white sm:text-6xl lg:text-7xl"
-							>
-								Dashboard
-							</motion.h1>
-
-							<Tables />
+							<div className="w-[30%]">
+								<MainNavigation />
+							</div>
+							<div className="w-[70%]"></div>
 						</div>
 					</div>
 				</section>

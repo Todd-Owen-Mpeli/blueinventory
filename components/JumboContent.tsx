@@ -168,7 +168,7 @@ const JumboContent: FC<IJumboContent> = ({
 												/>
 											</motion.div>
 										</div>
-										<div className="mt-2 transition duration-500 ease-in-out transform group-hover:translate-y-6 group-hover:translate-x-6 pl-7">
+										<div className="mt-2 transition-all duration-500 ease-in-out transform group-hover:translate-y-6 group-hover:translate-x-6 pl-7">
 											<motion.div
 												initial={initial}
 												whileInView={stagger}
