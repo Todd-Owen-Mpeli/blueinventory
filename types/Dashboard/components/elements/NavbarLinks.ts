@@ -1,13 +1,11 @@
 export interface INavbarLinks {
-	url: string;
+	path: string;
 	label: string;
 	tailwindStyling: string;
 	icon: {
-		altText: string;
-		sourceUrl: string;
-		mediaDetails: {
-			height: number;
-			width: number;
-		};
+		alt: string;
+		src: string;
+		height: number;
+		width: number;
 	};
 }

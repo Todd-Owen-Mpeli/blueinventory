@@ -2,5 +2,17 @@
 @import "../fonts";
 
 .dashboard {
+	@apply flex flex-row min-h-screen bg-lightGrey;
 	font-family: $fontStyle_dashboard;
+}
+
+.mainNavigation {
+	button {
+		font-family: $fontStyle_body;
+
+		a,
+		span {
+			font-family: $fontStyle_body;
+		}
+	}
 }

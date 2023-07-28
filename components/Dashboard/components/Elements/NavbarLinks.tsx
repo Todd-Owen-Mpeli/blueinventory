@@ -8,23 +8,28 @@ import {initialTwo, fadeIn} from "@/animations/animations";
 // Components
 import {INavbarLinks} from "@/types/Dashboard/components/elements/NavbarLinks";
 
-const NavbarLinks: FC<INavbarLinks> = ({url, icon, label, tailwindStyling}) => {
+const NavbarLinks: FC<INavbarLinks> = ({
+	path,
+	icon,
+	label,
+	tailwindStyling,
+}) => {
 	return (
 		<>
-			<Link className={tailwindStyling} href={url}>
+			<Link className={tailwindStyling} href={`/dashboard${path}`}>
 				<motion.span
 					initial={initialTwo}
 					whileInView={fadeIn}
-					className="inline-block mr-3"
+					className="flex items-center"
 				>
 					<Image
-						alt={icon?.altText}
-						src={icon?.sourceUrl}
-						width={icon?.mediaDetails?.width}
-						height={icon?.mediaDetails?.height}
+						alt={icon?.alt}
+						src={icon?.src}
+						width={icon?.width}
+						height={icon?.height}
 						className={
-							icon?.sourceUrl
-								? `block w-5 h-5 object-contain object-center`
+							icon?.src
+								? `block mr-3 w-5 h-5 object-contain object-center`
 								: `hidden`
 						}
 					/>
