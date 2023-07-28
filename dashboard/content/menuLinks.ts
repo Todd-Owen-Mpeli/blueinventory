@@ -8,7 +8,7 @@ export const dashboardMainMenuLinks: IMenuLinks[] = [
 		path: "/documents",
 		icon: {
 			alt: " ",
-			src: "/svg/dashboard/icons/file-manager.svg",
+			src: "../svg/dashboard/icons/file-manager.svg",
 			width: 500,
 			height: 500,
 		},
@@ -19,7 +19,7 @@ export const dashboardMainMenuLinks: IMenuLinks[] = [
 		path: "/items",
 		icon: {
 			alt: " ",
-			src: "/svg/dashboard/icons/data-list.svg",
+			src: "../svg/dashboard/icons/data-list.svg",
 			width: 500,
 			height: 500,
 		},
@@ -30,7 +30,7 @@ export const dashboardMainMenuLinks: IMenuLinks[] = [
 		path: "/categories",
 		icon: {
 			alt: " ",
-			src: "/svg/dashboard/icons/documents.svg",
+			src: "../svg/dashboard/icons/documents.svg",
 			width: 500,
 			height: 500,
 		},
