@@ -15,6 +15,7 @@ import {getAuth, signOut} from "firebase/auth";
 import {dashboardMainMenuLinks} from "@/dashboard/content/menuLinks";
 
 // Components
+import Paragraph from "../Elements/Paragraph";
 import NavbarLinks from "./components/Elements/NavbarLinks";
 
 // Styling
@@ -53,16 +54,16 @@ const MainNavigation: FC = () => {
 	return (
 		<>
 			<div className={styles.mainNavigation}>
-				<div className="relative z-50 hidden lg:block">
-					<nav className="flex flex-col justify-between h-full min-h-screen pt-4 pb-4 bg-darkerBlueTwo lg:w-80 sm:max-w-xs">
+				<div className="hidden h-full lg:block">
+					<nav className="flex flex-col justify-between h-full min-h-screen pt-4 pb-4 lg:w-80 sm:max-w-[15rem]">
 						<div className="flex flex-col justify-between px-4">
-							<div className="flex items-center w-full px-2 pb-4 mb-10 border-goldPrimeDarker lg:border-b">
+							<div className="flex items-center w-full px-2 pb-4 mb-10 border-goldPrime lg:border-b">
 								<Link className="font-semibold text-white" href={`/dashboard`}>
 									<motion.div
 										initial={initialTwo}
 										viewport={{once: true}}
 										whileInView={fadeIn}
-										className="transition-all duration-500 ease-in-out text-medium lg:text-lg text-goldPrime hover:text-blue"
+										className="transition-all ease-in-out duration text-medium lg:text-lg text-goldPrime hover:text-blue"
 									>
 										BlueInventory
 									</motion.div>
@@ -82,12 +83,13 @@ const MainNavigation: FC = () => {
 										className="px-0"
 									>
 										<Link
-											className="flex items-center py-3 pl-3 pr-4 text-white rounded hover:text-white hover:bg-goldPrimeDarker"
+											className="flex items-center py-3 pl-3 pr-4 text-white rounded hover:text-white hover:bg-goldPrime"
 											href={`/dashboard`}
 										>
 											<motion.span
 												initial={initialTwo}
 												whileInView={fadeIn}
+												viewport={{once: true}}
 												className="flex items-center"
 											>
 												<Image
@@ -135,8 +137,46 @@ const MainNavigation: FC = () => {
 							initial={initial}
 							whileInView={stagger}
 							viewport={{once: true}}
-							className="flex flex-col justify-between px-4 "
+							className="flex flex-col justify-between px-4"
 						>
+							<motion.div
+								initial={initialTwo}
+								whileInView={fadeIn}
+								viewport={{once: true}}
+								className="mt-auto"
+							>
+								<Link
+									className="block py-6 pl-6 pr-8 mb-4 transition duration-200 bg-blue group hover:bg-goldPrimeDark rounded-xl"
+									href={`/dashboard/settings`}
+								>
+									<div className="flex items-center justify-center w-12 h-12 mb-4 bg-darkBlue group-hover:bg-goldPrime rounded-xl">
+										<svg
+											width="10"
+											height="12"
+											viewBox="0 0 10 12"
+											fill="none"
+											xmlns="http://www.w3.org/2000/svg"
+										>
+											<path
+												d="M5.70978 6.53994C5.61681 6.44621 5.50621 6.37182 5.38435 6.32105C5.2625 6.27028 5.13179 6.24414 4.99978 6.24414C4.86777 6.24414 4.73706 6.27028 4.6152 6.32105C4.49334 6.37182 4.38274 6.44621 4.28978 6.53994L1.28978 9.53994C1.09617 9.72824 0.985294 9.98574 0.981544 10.2558C0.977793 10.5258 1.08147 10.7863 1.26978 10.9799C1.45808 11.1735 1.71558 11.2844 1.98564 11.2882C2.25569 11.2919 2.51617 11.1882 2.70978 10.9999L4.99978 8.65994L7.28978 10.9999C7.38274 11.0937 7.49334 11.1681 7.6152 11.2188C7.73706 11.2696 7.86777 11.2957 7.99978 11.2957C8.13179 11.2957 8.2625 11.2696 8.38435 11.2188C8.50621 11.1681 8.61681 11.0937 8.70978 10.9999C8.80351 10.907 8.8779 10.7964 8.92867 10.6745C8.97944 10.5527 9.00558 10.422 9.00558 10.2899C9.00558 10.1579 8.97944 10.0272 8.92867 9.90536C8.8779 9.7835 8.80351 9.6729 8.70978 9.57994L5.70978 6.53994ZM2.70978 5.45994L4.99978 3.15994L7.28978 5.45994C7.38274 5.55367 7.49334 5.62806 7.6152 5.67883C7.73706 5.7296 7.86777 5.75574 7.99978 5.75574C8.13179 5.75574 8.2625 5.7296 8.38435 5.67883C8.50621 5.62806 8.61681 5.55367 8.70978 5.45994C8.80351 5.36698 8.8779 5.25637 8.92867 5.13452C8.97944 5.01266 9.00558 4.88195 9.00558 4.74994C9.00558 4.61793 8.97944 4.48722 8.92867 4.36536C8.8779 4.2435 8.80351 4.1329 8.70978 4.03994L5.70978 1.03994C5.61681 0.946211 5.50621 0.871816 5.38435 0.821048C5.2625 0.770279 5.13179 0.744141 4.99978 0.744141C4.86777 0.744141 4.73706 0.770279 4.6152 0.821048C4.49334 0.871816 4.38274 0.946211 4.28978 1.03994L1.28978 4.03994C1.10147 4.22824 0.995686 4.48364 0.995686 4.74994C0.995686 5.01624 1.10147 5.27164 1.28978 5.45994C1.47808 5.64824 1.73348 5.75403 1.99978 5.75403C2.26608 5.75403 2.52147 5.64824 2.70978 5.45994Z"
+												fill="white"
+											></path>
+										</svg>
+									</div>
+									<motion.h5
+										initial={initialTwo}
+										whileInView={fadeIn}
+										viewport={{once: true}}
+										className="mb-2 text-sm font-medium text-white uppercase"
+									>
+										Upgrade to Premium
+									</motion.h5>
+									<Paragraph
+										content={`Unlock more features, One year support and monthly updates.`}
+										tailwindStyling="text-sm text-white"
+									/>
+								</Link>
+							</motion.div>
 							<motion.div
 								initial={initialTwo}
 								whileInView={fadeIn}
@@ -144,7 +184,33 @@ const MainNavigation: FC = () => {
 							>
 								<Link
 									className="flex items-center py-3 pl-3 pr-2 text-base text-white transition-all duration-200 ease-in-out rounded hover:bg-darkBlue"
-									href={``}
+									href={`/contact/#contactForm`}
+								>
+									<span className="inline-block mr-4">
+										<svg
+											width="24"
+											height="24"
+											viewBox="0 0 24 24"
+											fill="none"
+											xmlns="http://www.w3.org/2000/svg"
+										>
+											<path
+												d="M12 6C11.7348 6 11.4804 6.10536 11.2929 6.29289C11.1054 6.48043 11 6.73478 11 7V17C11 17.2652 11.1054 17.5196 11.2929 17.7071C11.4804 17.8946 11.7348 18 12 18C12.2652 18 12.5196 17.8946 12.7071 17.7071C12.8946 17.5196 13 17.2652 13 17V7C13 6.73478 12.8946 6.48043 12.7071 6.29289C12.5196 6.10536 12.2652 6 12 6ZM7 12C6.73478 12 6.48043 12.1054 6.29289 12.2929C6.10536 12.4804 6 12.7348 6 13V17C6 17.2652 6.10536 17.5196 6.29289 17.7071C6.48043 17.8946 6.73478 18 7 18C7.26522 18 7.51957 17.8946 7.70711 17.7071C7.89464 17.5196 8 17.2652 8 17V13C8 12.7348 7.89464 12.4804 7.70711 12.2929C7.51957 12.1054 7.26522 12 7 12ZM17 10C16.7348 10 16.4804 10.1054 16.2929 10.2929C16.1054 10.4804 16 10.7348 16 11V17C16 17.2652 16.1054 17.5196 16.2929 17.7071C16.4804 17.8946 16.7348 18 17 18C17.2652 18 17.5196 17.8946 17.7071 17.7071C17.8946 17.5196 18 17.2652 18 17V11C18 10.7348 17.8946 10.4804 17.7071 10.2929C17.5196 10.1054 17.2652 10 17 10ZM19 2H5C4.20435 2 3.44129 2.31607 2.87868 2.87868C2.31607 3.44129 2 4.20435 2 5V19C2 19.7956 2.31607 20.5587 2.87868 21.1213C3.44129 21.6839 4.20435 22 5 22H19C19.7956 22 20.5587 21.6839 21.1213 21.1213C21.6839 20.5587 22 19.7956 22 19V5C22 4.20435 21.6839 3.44129 21.1213 2.87868C20.5587 2.31607 19.7956 2 19 2ZM20 19C20 19.2652 19.8946 19.5196 19.7071 19.7071C19.5196 19.8946 19.2652 20 19 20H5C4.73478 20 4.48043 19.8946 4.29289 19.7071C4.10536 19.5196 4 19.2652 4 19V5C4 4.73478 4.10536 4.48043 4.29289 4.29289C4.48043 4.10536 4.73478 4 5 4H19C19.2652 4 19.5196 4.10536 19.7071 4.29289C19.8946 4.48043 20 4.73478 20 5V19Z"
+												fill="currentColor"
+											></path>
+										</svg>
+									</span>
+									<span>Give feedback</span>
+								</Link>
+							</motion.div>
+							<motion.div
+								initial={initialTwo}
+								whileInView={fadeIn}
+								viewport={{once: true}}
+							>
+								<Link
+									className="flex items-center py-3 pl-3 pr-2 text-base text-white transition-all duration-200 ease-in-out rounded hover:bg-darkBlue"
+									href={`/dashboard/settings`}
 								>
 									<span className="inline-block mr-4">
 										<svg

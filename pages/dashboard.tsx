@@ -36,7 +36,7 @@ const dashboard: NextPage<IDashboard> = ({
 				className={styles.dashboard}
 			>
 				<MainNavigation />
-				<div className="flex flex-col items-center justify-between">
+				<div className="flex flex-col items-center w-full">
 					<TopNavigation />
 					<MainContent />
 				</div>

@@ -1,5 +1,6 @@
 // Imports
 @import "../fonts";
+@import "../_colors";
 
 .dashboard {
 	@apply flex flex-row min-h-screen bg-lightGrey;
@@ -7,6 +8,8 @@
 }
 
 .mainNavigation {
+	@apply bg-darkerBlueTwo;
+
 	button {
 		font-family: $fontStyle_body;
 
@@ -15,4 +18,18 @@
 			font-family: $fontStyle_body;
 		}
 	}
+}
+
+.topNavigation {
+	@apply px-4 py-0 bg-darkerBlueTwo overflow-hidden w-full;
+
+	svg:hover {
+		path {
+			fill: $goldPrime;
+		}
+	}
+}
+
+.mainContent {
+	@apply w-full bg-lightGrey flex flex-col;
 }
