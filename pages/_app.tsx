@@ -101,7 +101,7 @@ export default function App({Component, pageProps}: AppProps) {
 		paragraph:
 			"The page you are looking for is not accessible! Please login in or go back to homepage.",
 		backgroundImage:
-			"https://cmsblueinventory.com/wp-content/uploads/2023/05/pexels-proxyclick-visitor-management-system-2451566-min-scaled.jpg",
+			"/svg/backgroundSVG/stacked-waves-haikei-blue-darkblue.svg",
 	};
 
 	// COOKIES POLICY //
