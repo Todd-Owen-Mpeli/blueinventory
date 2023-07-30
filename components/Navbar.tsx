@@ -47,7 +47,7 @@ const Navbar: FC = () => {
 		metadata: `${auth?.currentUser?.metadata}`,
 		phoneNumber: `${auth?.currentUser?.phoneNumber}`,
 		displayName: `${auth?.currentUser?.displayName}`,
-		profileImageURL: `https://cmsblueinventory.com/wp-content/uploads/2023/04/pexels-sora-shimazaki-5668790-min-scaled.jpg`,
+		profileImageURL: `${auth?.currentUser?.photoURL}`,
 	};
 
 	/* Check if user is SIGNED IN if 
@@ -159,7 +159,7 @@ const Navbar: FC = () => {
 													id="avatarButton"
 													data-dropdown-toggle="userDropdown"
 													data-dropdown-placement="bottom-start"
-													className="object-cover object-top w-10 h-10 transition-all duration-200 ease-in-out rounded-full cursor-pointer ring-4 ring-lightBlue hover:ring-goldPrime"
+													className="object-cover object-top w-10 h-10 transition-all duration-200 ease-in-out rounded-full cursor-pointer ring-4 ring-brightGreenDash hover:ring-lightBlue"
 													src={
 														user?.profileImageURL
 															? user?.profileImageURL

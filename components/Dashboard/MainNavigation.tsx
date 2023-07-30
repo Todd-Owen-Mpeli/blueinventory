@@ -12,6 +12,7 @@ import {motion} from "framer-motion";
 import {useRouter} from "next/router";
 import {FC, useEffect, useState} from "react";
 import {getAuth, signOut} from "firebase/auth";
+import {IFirebaseUser} from "@/types/firebase";
 import {dashboardMainMenuLinks} from "@/dashboard/content/menuLinks";
 
 // Components
@@ -25,6 +26,20 @@ const MainNavigation: FC = () => {
 	const auth = getAuth();
 	const router = useRouter();
 	const [signedInUser, setSignedInUser] = useState(false);
+
+	// Firebase User Details
+	const user: IFirebaseUser = {
+		uid: `${auth?.currentUser?.uid}`,
+		email: `${auth?.currentUser?.email}`,
+		metadata: `${auth?.currentUser?.metadata}`,
+		phoneNumber: `${auth?.currentUser?.phoneNumber}`,
+		displayName: `${auth?.currentUser?.displayName}`,
+		profileImageURL: `${auth?.currentUser?.photoURL}`,
+	};
+
+	// User sign in styling
+	const ringStyling =
+		"object-cover object-top w-[60px] h-[60px] transition-all duration-200 ease-in-out rounded-full ring-4";
 
 	/* Check if user is SIGNED IN if 
 	True Displays Signed In Navbar */
@@ -57,17 +72,61 @@ const MainNavigation: FC = () => {
 				<div className="hidden h-full lg:block">
 					<nav className="flex flex-col justify-between h-full min-h-screen pt-4 pb-4 lg:w-80 sm:max-w-[15rem]">
 						<div className="flex flex-col justify-between px-4">
-							<div className="flex items-center w-full px-2 pb-4 mb-10 border-goldPrime lg:border-b">
-								<Link className="font-semibold text-white" href={`/dashboard`}>
-									<motion.div
-										initial={initialTwo}
-										viewport={{once: true}}
-										whileInView={fadeIn}
-										className="transition-all ease-in-out duration text-medium lg:text-lg text-goldPrime hover:text-blue"
-									>
-										BlueInventory
-									</motion.div>
-								</Link>
+							<div className="flex flex-col items-center w-full px-2 pb-4 mb-10 border-blue lg:border-b">
+								<motion.div
+									initial={initialTwo}
+									whileInView={fadeIn}
+									viewport={{once: true}}
+									className="w-auto p-3"
+								>
+									<div className="flex flex-wrap items-center -m-2">
+										<div className="w-auto p-2">
+											<div className="flex flex-wrap -m-2">
+												<motion.div
+													initial={initialTwo}
+													viewport={{once: true}}
+													whileInView={fadeIn}
+													className="w-auto p-2 mx-auto"
+												>
+													<Image
+														width={500}
+														height={500}
+														className={
+															user?.uid
+																? `${ringStyling} ring-brightGreenDash`
+																: `${ringStyling} ring-pinkRed`
+														}
+														src={
+															user?.profileImageURL
+																? user?.profileImageURL
+																: `/img/Logos/default-avatar-profile.jpg`
+														}
+														alt={`${user?.displayName} profile image`}
+													/>
+												</motion.div>
+												<motion.div
+													initial={initial}
+													viewport={{once: true}}
+													whileInView={stagger}
+													className="flex flex-col w-auto p-2 my-auto"
+												>
+													<motion.h3
+														initial={initial}
+														whileInView={fadeInUp}
+														viewport={{once: true}}
+														className="mb-1 font-semibold text-center text-white text-medium"
+													>
+														{user?.displayName}
+													</motion.h3>
+													<Paragraph
+														content={user?.email}
+														tailwindStyling="text-xs text-center font-medium text-darkGrey hidden sm:block"
+													/>
+												</motion.div>
+											</div>
+										</div>
+									</div>
+								</motion.div>
 							</div>
 							<div className="flex flex-col">
 								<motion.ul

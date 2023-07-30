@@ -13,7 +13,6 @@ import styles from "@/styles/pages/Dashboard.module.scss";
 
 // Components
 import MainContent from "@/components/Dashboard/MainContent";
-import TopNavigation from "@/components/Dashboard/TopNavigation";
 import MainNavigation from "@/components/Dashboard/MainNavigation";
 
 const dashboard: NextPage<IDashboard> = ({
@@ -36,8 +35,7 @@ const dashboard: NextPage<IDashboard> = ({
 				className={styles.dashboard}
 			>
 				<MainNavigation />
-				<div className="flex flex-col items-center w-full">
-					<TopNavigation />
+				<div className="flex flex-col items-center w-full border-[10px] border-pureBlack rounded-3xl bg-lightGrey">
 					<MainContent />
 				</div>
 			</motion.section>

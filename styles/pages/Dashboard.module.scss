@@ -3,12 +3,33 @@
 @import "../_colors";
 
 .dashboard {
-	@apply flex flex-row min-h-screen bg-lightGrey;
-	font-family: $fontStyle_dashboard;
+	@apply flex flex-row min-h-screen bg-black;
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	a,
+	p,
+	ul,
+	li,
+	div,
+	span,
+	input,
+	label,
+	strong,
+	button,
+	textarea {
+		@apply tracking-wide font-[500];
+
+		font-family: $fontStyle_body;
+	}
 }
 
 .mainNavigation {
-	@apply bg-darkerBlueTwo;
+	@apply bg-pureBlack;
 
 	button {
 		font-family: $fontStyle_body;
@@ -20,16 +41,6 @@
 	}
 }
 
-.topNavigation {
-	@apply px-4 py-0 bg-darkerBlueTwo overflow-hidden w-full;
-
-	svg:hover {
-		path {
-			fill: $goldPrime;
-		}
-	}
-}
-
 .mainContent {
-	@apply w-full bg-lightGrey flex flex-col;
+	@apply w-full h-full flex flex-col rounded-b-3xl;
 }
