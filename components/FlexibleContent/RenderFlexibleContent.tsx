@@ -28,7 +28,7 @@ import ContentBackgroundImage from "../ContentBackgroundImage";
 const RenderFlexibleContent: FC = () => {
 	const content = useContentContext();
 
-	const Flexiblecontent = content.postTypeFlexiblecontent;
+	const Flexiblecontent = content.postTypeFlexibleContent;
 	return (
 		<>
 			{content.content?.length > 0 ? (

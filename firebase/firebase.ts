@@ -1,10 +1,10 @@
 // Imports
 import {getAuth} from "firebase/auth";
 import {getAnalytics} from "firebase/analytics";
+import {getFirestore} from "firebase/firestore";
 import {getApps, initializeApp} from "firebase/app";
 import {getPerformance} from "firebase/performance";
 import {IFirebaseConfig, IFirebaseUser} from "@/types/firebase";
-
 /* TODO: Add SDKs for Firebase products that you want to use
  https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -41,6 +41,9 @@ export const initializeFirebase = () => {
 			// Creating auth for Authentication
 			const auth = getAuth(app);
 
+			// Initialize Cloud Firestore and get a reference to the service
+			const db = getFirestore(app);
+
 			// Firebase User Details
 			const firebaseUser: IFirebaseUser = {
 				uid: `${auth?.currentUser?.uid}`,
@@ -48,7 +51,7 @@ export const initializeFirebase = () => {
 				metadata: `${auth?.currentUser?.metadata}`,
 				phoneNumber: `${auth?.currentUser?.phoneNumber}`,
 				displayName: `${auth?.currentUser?.displayName}`,
-				profileImageURL: `/${auth?.currentUser?.photoURL}`,
+				profileImageURL: `${auth?.currentUser?.photoURL}`,
 			};
 
 			// Initializing Firebase Analytics & Performance

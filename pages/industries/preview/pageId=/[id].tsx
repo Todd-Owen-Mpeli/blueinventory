@@ -36,7 +36,7 @@ const dynamicPreviewPosts: NextPage<IContentContext> = ({
 	industriesMenuLinks,
 	operationalInsights,
 	themesOptionsContent,
-	postTypeFlexiblecontent,
+	postTypeFlexibleContent,
 	contentSliderPostsContent,
 }) => {
 	return (
@@ -50,7 +50,7 @@ const dynamicPreviewPosts: NextPage<IContentContext> = ({
 				industriesMenuLinks: industriesMenuLinks,
 				operationalInsights: operationalInsights,
 				themesOptionsContent: themesOptionsContent,
-				postTypeFlexiblecontent: postTypeFlexiblecontent,
+				postTypeFlexibleContent: postTypeFlexibleContent,
 				contentSliderPostsContent: contentSliderPostsContent,
 			}}
 		>
@@ -137,7 +137,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 				themesOptionsContent,
 				contentSliderPostsContent,
 				content: flexibleContentComponents?.content,
-				postTypeFlexiblecontent: flexibleContentType?.previewIndustry,
+				postTypeFlexibleContent: flexibleContentType?.previewIndustry,
 			},
 		};
 	}

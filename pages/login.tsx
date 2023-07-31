@@ -31,7 +31,7 @@ const login: NextPage<IContentContext> = ({
 	industriesMenuLinks,
 	operationalInsights,
 	themesOptionsContent,
-	postTypeFlexiblecontent,
+	postTypeFlexibleContent,
 	contentSliderPostsContent,
 }) => {
 	return (
@@ -45,7 +45,7 @@ const login: NextPage<IContentContext> = ({
 				industriesMenuLinks: industriesMenuLinks,
 				operationalInsights: operationalInsights,
 				themesOptionsContent: themesOptionsContent,
-				postTypeFlexiblecontent: postTypeFlexiblecontent,
+				postTypeFlexibleContent: postTypeFlexibleContent,
 				contentSliderPostsContent: contentSliderPostsContent,
 			}}
 		>
@@ -70,7 +70,7 @@ const login: NextPage<IContentContext> = ({
 
 export const getServerSideProps: GetServerSideProps = async () => {
 	const postType: string = "pages";
-	const postTypeFlexiblecontent: string =
+	const postTypeFlexibleContent: string =
 		"DefaultTemplate_Flexiblecontent_FlexibleContent";
 
 	// Fetch priority content
@@ -79,7 +79,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 	const flexibleContentComponents: any = await getAllFlexibleContentComponents(
 		"Home",
 		postType,
-		postTypeFlexiblecontent
+		postTypeFlexibleContent
 	);
 
 	// Fetch remaining content simultaneously
@@ -113,7 +113,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 			operationalInsights,
 			industriesMenuLinks,
 			themesOptionsContent,
-			postTypeFlexiblecontent,
+			postTypeFlexibleContent,
 			contentSliderPostsContent,
 			content: flexibleContentComponents?.content,
 		},

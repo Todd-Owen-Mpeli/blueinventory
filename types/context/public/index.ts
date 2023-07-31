@@ -95,7 +95,7 @@ export interface IContentContext {
 	industriesMenuLinks: IIndustriesMenuLinks;
 	operationalInsights: IOperationalInsights;
 	themesOptionsContent: IThemesOptionsContent;
-	postTypeFlexiblecontent: IPostTypeFlexiblecontent;
+	postTypeFlexibleContent: IpostTypeFlexibleContent;
 	contentSliderPostsContent: IContentSliderPostsContent;
 }
 
@@ -154,8 +154,8 @@ export type IThemesOptionsContent = {
 	copyrightText: string;
 };
 
-export type IPostTypeFlexiblecontent = {
-	postTypeFlexiblecontent: string;
+export type IpostTypeFlexibleContent = {
+	postTypeFlexibleContent: string;
 };
 
 export type IPostTypesFlexiblecontent = {

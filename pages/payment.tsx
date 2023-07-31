@@ -1,9 +1,8 @@
 // Imports
 import {motion} from "framer-motion";
-import type {GetStaticProps, NextPage} from "next";
-import {IContentContext} from "@/types/context/public/index";
+import {NextPage, GetStaticProps} from "next";
+import {IContentContext} from "@/types/context/public";
 import {ContentContext, flexibleContentType} from "@/context/context";
-import {getAllStripePaymentPlans} from "@/functions/stripe/GetStripePaymentPlans";
 
 // Queries Functions
 import {
@@ -16,11 +15,14 @@ import {getThemesOptionsContent} from "@/functions/graphql/Queries/GetAllThemesO
 import {getContentSliderBlogPostsPostsContent} from "@/functions/graphql/Queries/GetAllContentSliderPosts";
 import {getAllOperationalInsightsContent} from "@/functions/graphql/Queries/GetAllOperationalInsightsPostsSlugs";
 
-// Components
-import SignUp from "@/components/SignUp";
-import LayoutTwo from "@/components/Layout/LayoutTwo";
+// Stripe
+import {getAllStripePaymentPlans} from "@/functions/stripe/GetStripePaymentPlans";
 
-const signUpPage: NextPage<IContentContext> = ({
+// Components
+import LayoutTwo from "@/components/Layout/LayoutTwo";
+import Payments from "@/components/Payments";
+
+const payment: NextPage<IContentContext> = ({
 	seo,
 	content,
 	stripePlans,
@@ -46,26 +48,20 @@ const signUpPage: NextPage<IContentContext> = ({
 			contentSliderPostsContent: contentSliderPostsContent,
 		}}
 	>
-		<motion.div
+		<motion.section
 			exit={{
 				opacity: 0,
 			}}
 			initial="initial"
 			animate="animate"
-			className="min-h-screen bg-white bg-center bg-no-repeat bg-cover"
-			style={{
-				backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue-pink-red-yellow.svg")`,
-			}}
+			className="min-h-screen bg-white"
 		>
-			<LayoutTwo pageTitle={`Sign Up`}>
-				<section className="container flex flex-col items-center justify-center min-h-screen px-4 py-10 mx-auto overflow-hidden">
-					<SignUp
-						title={`Sign Up today`}
-						paragraph={`We kindly request you to enter your details.`}
-					/>
-				</section>
+			<LayoutTwo pageTitle={`Payments`}>
+				<div className="container px-4 pt-16 mx-auto">
+					<Payments />
+				</div>
 			</LayoutTwo>
-		</motion.div>
+		</motion.section>
 	</ContentContext.Provider>
 );
 
@@ -110,4 +106,4 @@ export const getStaticProps: GetStaticProps = async () => {
 	};
 };
 
-export default signUpPage;
+export default payment;

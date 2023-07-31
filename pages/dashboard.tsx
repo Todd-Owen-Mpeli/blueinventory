@@ -44,6 +44,8 @@ const dashboard: NextPage<IDashboard> = ({
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
+	// [email, firstName, lastName, password, profileImage]
+
 	const [stripePlans, themesOptionsContent] = await Promise.all([
 		getAllStripePaymentPlans(),
 		getThemesOptionsContent(),

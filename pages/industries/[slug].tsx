@@ -32,7 +32,7 @@ const dynamicIndustriesPages: NextPage<IContentContext> = ({
 	industriesMenuLinks,
 	operationalInsights,
 	themesOptionsContent,
-	postTypeFlexiblecontent,
+	postTypeFlexibleContent,
 	contentSliderPostsContent,
 }) => {
 	return (
@@ -46,7 +46,7 @@ const dynamicIndustriesPages: NextPage<IContentContext> = ({
 				industriesMenuLinks: industriesMenuLinks,
 				operationalInsights: operationalInsights,
 				themesOptionsContent: themesOptionsContent,
-				postTypeFlexiblecontent: postTypeFlexiblecontent,
+				postTypeFlexibleContent: postTypeFlexibleContent,
 				contentSliderPostsContent: contentSliderPostsContent,
 			}}
 		>
@@ -122,7 +122,7 @@ export const getStaticProps: GetStaticProps = async ({params}: any) => {
 			themesOptionsContent,
 			contentSliderPostsContent,
 			content: flexibleContentComponents?.content,
-			postTypeFlexiblecontent: flexibleContentType?.pages,
+			postTypeFlexibleContent: flexibleContentType?.pages,
 		},
 		revalidate: 60,
 	};

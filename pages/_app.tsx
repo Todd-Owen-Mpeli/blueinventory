@@ -35,6 +35,7 @@ const publicPages: Array<string> = [
 	"/login",
 	"/[slug]",
 	"/sign-in",
+	"/payment",
 	"/sign-up",
 	"/checkout",
 	"/wp-admin/",
@@ -50,8 +51,11 @@ const publicPages: Array<string> = [
 const protectedPages: Array<string> = [
 	"/dashboard",
 	"/dashboard/items",
-	"/dashboard/[slug]",
 	"/dashboard/settings",
+	"/dashboard/documents",
+	"/dashboard/items/add",
+	"/dashboard/items/[id]",
+	"/dashboard/categories",
 ];
 
 export default function App({Component, pageProps}: AppProps) {

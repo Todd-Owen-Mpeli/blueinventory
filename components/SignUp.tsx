@@ -31,7 +31,7 @@ const SignUp: FC<ISignUp> = ({title, paragraph}) => {
 				/* Collect Users inserted google Details 
 				and send it ot the Database */
 				console.log(user);
-				router.push("/pricing#Pricing");
+				router.push("/payment");
 
 				// IdP data available using getAdditionalUserInfo(result)
 				// @.

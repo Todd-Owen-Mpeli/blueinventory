@@ -287,19 +287,16 @@ const Pricing: FC<IPricing> = ({
 												</span>
 											</motion.li>
 										</motion.div>
-										<form
-											action="/api/stripe/standardPlanCheckoutSession"
-											method="POST"
-										>
+										<Link href={`/sign-up`}>
 											<button
 												type="submit"
 												role="link"
 												className="relative inline-block py-4 overflow-hidden text-sm font-semibold text-center transition duration-200 border rounded-full border-grey-200 text-goldPrime hover:text-white group px-7 hover:text-orange"
 											>
 												<div className="absolute top-0 w-full h-full transition duration-200 transform bg-goldPrime right-full group-hover:translate-x-full group-hover:scale-102"></div>
-												<span className="relative">Choose Plan</span>
+												<span className="relative">Get Started</span>
 											</button>
-										</form>
+										</Link>
 									</motion.div>
 								</motion.div>
 							</motion.div>
@@ -499,19 +496,16 @@ const Pricing: FC<IPricing> = ({
 												</span>
 											</motion.li>
 										</motion.div>
-										<form
-											action="/api/stripe/premiumPlanCheckoutSession"
-											method="POST"
-										>
+										<Link href={`/sign-up`}>
 											<button
 												type="submit"
 												role="link"
 												className="relative inline-block py-4 overflow-hidden text-sm font-semibold text-center text-white transition duration-200 rounded-full bg-goldPrime group px-7 hover:text-goldPrime"
 											>
 												<div className="absolute top-0 w-full h-full transition duration-200 transform bg-darkBlue right-full group-hover:translate-x-full group-hover:scale-102"></div>
-												<span className="relative">Choose Plan</span>
+												<span className="relative">Get Started</span>
 											</button>
-										</form>
+										</Link>
 									</motion.div>
 								</motion.div>
 							</motion.div>

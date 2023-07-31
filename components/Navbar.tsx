@@ -159,7 +159,7 @@ const Navbar: FC = () => {
 													id="avatarButton"
 													data-dropdown-toggle="userDropdown"
 													data-dropdown-placement="bottom-start"
-													className="object-cover object-top w-10 h-10 transition-all duration-200 ease-in-out rounded-full cursor-pointer ring-4 ring-brightGreenDash hover:ring-lightBlue"
+													className="object-cover object-top w-10 h-10 transition-all duration-200 ease-in-out rounded-full cursor-pointer ring-4 ring-darkBlue hover:ring-lightBlue"
 													src={
 														user?.profileImageURL
 															? user?.profileImageURL

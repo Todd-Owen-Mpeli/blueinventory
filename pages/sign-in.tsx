@@ -29,7 +29,7 @@ const signInPage: NextPage<IContentContext> = ({
 	industriesMenuLinks,
 	operationalInsights,
 	themesOptionsContent,
-	postTypeFlexiblecontent,
+	postTypeFlexibleContent,
 	contentSliderPostsContent,
 }) => {
 	return (
@@ -43,7 +43,7 @@ const signInPage: NextPage<IContentContext> = ({
 				industriesMenuLinks: industriesMenuLinks,
 				operationalInsights: operationalInsights,
 				themesOptionsContent: themesOptionsContent,
-				postTypeFlexiblecontent: postTypeFlexiblecontent,
+				postTypeFlexibleContent: postTypeFlexibleContent,
 				contentSliderPostsContent: contentSliderPostsContent,
 			}}
 		>
@@ -106,7 +106,7 @@ export const getStaticProps: GetStaticProps = async () => {
 			industriesMenuLinks,
 			themesOptionsContent,
 			contentSliderPostsContent,
-			postTypeFlexiblecontent: flexibleContentType?.pages,
+			postTypeFlexibleContent: flexibleContentType?.pages,
 		},
 		revalidate: 60,
 	};

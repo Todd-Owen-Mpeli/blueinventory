@@ -10,7 +10,7 @@ export const getAllPreviewFlexibleContentComponents = async (
 	authToken: string,
 	postType: string,
 	loginRedirectURL: string,
-	postTypeFlexiblecontent: string
+	postTypeFlexibleContent: string
 ) => {
 	try {
 		const content: DocumentNode = gql`
@@ -18,7 +18,7 @@ export const getAllPreviewFlexibleContentComponents = async (
 				mainContent: ${postType}(id: ${id}, idType: DATABASE_ID) {
 					flexibleContent {
 						flexibleContent {
-							... on ${postTypeFlexiblecontent}_HeroSection {
+							... on ${postTypeFlexibleContent}_HeroSection {
 							backgroundVideoUrl
 							fieldGroupName
 							title
@@ -37,7 +37,7 @@ export const getAllPreviewFlexibleContentComponents = async (
 								sourceUrl
 							}
 							}
-							... on ${postTypeFlexiblecontent}_HeroSectionTwo {
+							... on ${postTypeFlexibleContent}_HeroSectionTwo {
 							fieldGroupName
 							title
 							paragraph
@@ -52,12 +52,12 @@ export const getAllPreviewFlexibleContentComponents = async (
 								}
 							}
 							}
-							... on ${postTypeFlexiblecontent}_TitleParagraph {
+							... on ${postTypeFlexibleContent}_TitleParagraph {
 							fieldGroupName
 							paragraph
 							title
 							}
-							... on ${postTypeFlexiblecontent}_IntroContent {
+							... on ${postTypeFlexibleContent}_IntroContent {
 							fieldGroupName
 							title
 							icon {
@@ -88,7 +88,7 @@ export const getAllPreviewFlexibleContentComponents = async (
 								}
 							}
 							}
-							... on ${postTypeFlexiblecontent}_FeaturesGrid {
+							... on ${postTypeFlexibleContent}_FeaturesGrid {
 							fieldGroupName
 							title
 							paragraph
@@ -145,7 +145,7 @@ export const getAllPreviewFlexibleContentComponents = async (
 								}
 							}
 							}
-							... on ${postTypeFlexiblecontent}_FeaturesGridTwo {
+							... on ${postTypeFlexibleContent}_FeaturesGridTwo {
 							fieldGroupName
 							cardOne {
 								title
@@ -180,7 +180,7 @@ export const getAllPreviewFlexibleContentComponents = async (
 								}
 							}
 							}
-							... on ${postTypeFlexiblecontent}_Pricing {
+							... on ${postTypeFlexibleContent}_Pricing {
 							fieldGroupName
 							italic
 							title
@@ -203,7 +203,7 @@ export const getAllPreviewFlexibleContentComponents = async (
 								}
 							}
 							}
-							... on ${postTypeFlexiblecontent}_ContentStats {
+							... on ${postTypeFlexibleContent}_ContentStats {
 							fieldGroupName
 							paragraph
 							title
@@ -222,7 +222,7 @@ export const getAllPreviewFlexibleContentComponents = async (
 								bulletPoint
 							}
 							}
-							... on ${postTypeFlexiblecontent}_ContentImageGrid {
+							... on ${postTypeFlexibleContent}_ContentImageGrid {
 							fieldGroupName
 							gridContent {
 								card {
@@ -235,10 +235,10 @@ export const getAllPreviewFlexibleContentComponents = async (
 								}
 							}
 							}
-							... on ${postTypeFlexiblecontent}_ContentSliderAuto {
+							... on ${postTypeFlexibleContent}_ContentSliderAuto {
 							fieldGroupName
 							}
-							... on ${postTypeFlexiblecontent}_TrustedBrands {
+							... on ${postTypeFlexibleContent}_TrustedBrands {
 							fieldGroupName
 							paragraph
 							title
@@ -253,7 +253,7 @@ export const getAllPreviewFlexibleContentComponents = async (
 								}
 							}
 							}
-							... on ${postTypeFlexiblecontent}_ImageGrid {
+							... on ${postTypeFlexibleContent}_ImageGrid {
 							fieldGroupName
 							image {
 								altText
@@ -304,7 +304,7 @@ export const getAllPreviewFlexibleContentComponents = async (
 								}
 							}
 							}
-							... on ${postTypeFlexiblecontent}_Sustainability {
+							... on ${postTypeFlexibleContent}_Sustainability {
 							fieldGroupName
 							imageText
 							title
@@ -320,7 +320,7 @@ export const getAllPreviewFlexibleContentComponents = async (
 								}
 							}
 							}
-							... on ${postTypeFlexiblecontent}_Faq {
+							... on ${postTypeFlexibleContent}_Faq {
 							fieldGroupName
 							title
 							paragraph
@@ -337,13 +337,13 @@ export const getAllPreviewFlexibleContentComponents = async (
 								paragraph
 							}
 							}
-							... on ${postTypeFlexiblecontent}_OperationalInsights {
+							... on ${postTypeFlexibleContent}_OperationalInsights {
 							fieldGroupName
 							italic
 							title
 							paragraph
 							}
-							... on ${postTypeFlexiblecontent}_Testimonial {
+							... on ${postTypeFlexibleContent}_Testimonial {
 							fieldGroupName
 							paragraph
 							title
@@ -363,12 +363,12 @@ export const getAllPreviewFlexibleContentComponents = async (
 								}
 							}
 							}
-							... on ${postTypeFlexiblecontent}_ContactInfo {
+							... on ${postTypeFlexibleContent}_ContactInfo {
 							fieldGroupName
 							paragraph
 							title
 							}
-							... on ${postTypeFlexiblecontent}_ContactForm {
+							... on ${postTypeFlexibleContent}_ContactForm {
 							fieldGroupName
 							title
 							backgroundImage {
@@ -380,7 +380,7 @@ export const getAllPreviewFlexibleContentComponents = async (
 								}
 							}
 							}
-							... on ${postTypeFlexiblecontent}_Cta {
+							... on ${postTypeFlexibleContent}_Cta {
 							fieldGroupName
 							paragraph
 							title
@@ -402,7 +402,7 @@ export const getAllPreviewFlexibleContentComponents = async (
 								paragraph
 							}
 							}
-							... on ${postTypeFlexiblecontent}_CtaTwo {
+							... on ${postTypeFlexibleContent}_CtaTwo {
 							fieldGroupName
 							paragraph
 							title
@@ -415,7 +415,7 @@ export const getAllPreviewFlexibleContentComponents = async (
 								sourceUrl
 							}
 							}
-							... on ${postTypeFlexiblecontent}_ErrorPageContent {
+							... on ${postTypeFlexibleContent}_ErrorPageContent {
 							fieldGroupName
 							paragraph
 							title
