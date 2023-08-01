@@ -2,10 +2,12 @@
 export interface IFirebaseUser {
 	uid: string;
 	email: string;
-	metadata: string;
+	photoURL: string;
+	providerId: string;
 	phoneNumber: string;
 	displayName: string;
-	profileImageURL: string;
+	creationTime: string | undefined;
+	lastSignInTime: string;
 }
 
 export interface IFirebaseConfig {

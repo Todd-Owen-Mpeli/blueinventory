@@ -1,16 +1,19 @@
 // Imports
-import {
-	getAuth,
-	OAuthProvider,
-	signInWithPopup,
-	GoogleAuthProvider,
-} from "firebase/auth";
 import {FC} from "react";
 import Link from "next/link";
 import {motion} from "framer-motion";
 import {useRouter} from "next/router";
 import {ISignUp} from "@/types/components/public";
 import {initial, fadeInUp, stagger} from "@/animations/animations";
+
+// Firebase
+import {
+	getAuth,
+	OAuthProvider,
+	signInWithPopup,
+	GoogleAuthProvider,
+} from "firebase/auth";
+import {addNewFirebaseUserDocument} from "@/firebase/functions/addDocument";
 
 // Components
 import Paragraph from "@/components/Elements/Paragraph";
@@ -26,11 +29,13 @@ const SignUp: FC<ISignUp> = ({title, paragraph}) => {
 		signInWithPopup(auth, providerGoogle)
 			.then((result) => {
 				// The signed-in user info.
-				const user = result.user;
+				const newUser = result.user;
 
-				/* Collect Users inserted google Details 
-				and send it ot the Database */
-				console.log(user);
+				/* Collect Users google account Details 
+				and send it ot the cloud Firestore Database */
+				// await addNewFirebaseUserDocument(newUser);
+
+				// Redirects the user to the next page
 				router.push("/payment");
 
 				// IdP data available using getAdditionalUserInfo(result)
@@ -38,6 +43,13 @@ const SignUp: FC<ISignUp> = ({title, paragraph}) => {
 			})
 			.catch((error) => {
 				console.log(error);
+				// Handle Errors here.
+				const errorCode = error.code;
+				const errorMessage = error.message;
+				// The email of the user's account used.
+				const email = error.customData.email;
+				// The AuthCredential type that was used.
+				const credential = GoogleAuthProvider.credentialFromError(error);
 			});
 	};
 
@@ -50,7 +62,7 @@ const SignUp: FC<ISignUp> = ({title, paragraph}) => {
 
 				/* Collect Users inserted google Details 
 				and send it ot the Database */
-				console.log(user);
+				// console.log(user);
 				router.push("/pricing#Pricing");
 
 				// IdP data available using getAdditionalUserInfo(result)

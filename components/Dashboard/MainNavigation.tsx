@@ -31,10 +31,12 @@ const MainNavigation: FC = () => {
 	const user: IFirebaseUser = {
 		uid: `${auth?.currentUser?.uid}`,
 		email: `${auth?.currentUser?.email}`,
-		metadata: `${auth?.currentUser?.metadata}`,
+		photoURL: `${auth?.currentUser?.photoURL}`,
+		providerId: `${auth?.currentUser?.providerId}`,
 		phoneNumber: `${auth?.currentUser?.phoneNumber}`,
 		displayName: `${auth?.currentUser?.displayName}`,
-		profileImageURL: `${auth?.currentUser?.photoURL}`,
+		creationTime: `${auth?.currentUser?.metadata.creationTime}`,
+		lastSignInTime: `${auth?.currentUser?.metadata.lastSignInTime}`,
 	};
 
 	// User sign in styling
@@ -97,8 +99,8 @@ const MainNavigation: FC = () => {
 																: `${ringStyling} ring-pinkRed`
 														}
 														src={
-															user?.profileImageURL
-																? user?.profileImageURL
+															user?.photoURL
+																? user?.photoURL
 																: `/img/Logos/default-avatar-profile.jpg`
 														}
 														alt={`${user?.displayName} profile image`}

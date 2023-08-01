@@ -64,8 +64,8 @@ const mobileNavbar: FC<IMobileNavbar> = ({
 										data-dropdown-placement="bottom-start"
 										className="object-cover object-top w-10 h-10 transition-all duration-200 ease-in-out rounded-full cursor-pointer ring-4 ring-lightBlue hover:ring-goldPrime"
 										src={
-											user?.profileImageURL
-												? user?.profileImageURL
+											user?.photoURL
+												? user?.photoURL
 												: `/img/Logos/BlueInventory favicon Two.png`
 										}
 										alt={`${user?.displayName} profile image`}

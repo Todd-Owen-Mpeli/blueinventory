@@ -380,9 +380,9 @@ const Tables: FC = () => {
 												<path
 													d="M6 10.6666L1.33333 5.99998L6 1.33331"
 													stroke="#71717A"
-													stroke-width="1.5"
-													stroke-linecap="round"
-													stroke-linejoin="round"
+													strokeWidth="1.5"
+													strokeLinecap="round"
+													strokeLinejoin="round"
 												></path>
 											</svg>
 										</Link>
@@ -440,9 +440,9 @@ const Tables: FC = () => {
 												<path
 													d="M1 1.33335L5.66667 6.00002L1 10.6667"
 													stroke="#71717A"
-													stroke-width="1.5"
-													stroke-linecap="round"
-													stroke-linejoin="round"
+													strokeWidth="1.5"
+													strokeLinecap="round"
+													strokeLinejoin="round"
 												></path>
 											</svg>
 										</Link>
@@ -462,9 +462,9 @@ const Tables: FC = () => {
 												<path
 													d="M1 1.33335L5.66667 6.00002L1 10.6667"
 													stroke="#71717A"
-													stroke-width="1.5"
-													stroke-linecap="round"
-													stroke-linejoin="round"
+													strokeWidth="1.5"
+													strokeLinecap="round"
+													strokeLinejoin="round"
 												></path>
 											</svg>
 											<svg
@@ -477,9 +477,9 @@ const Tables: FC = () => {
 												<path
 													d="M1 1.33335L5.66667 6.00002L1 10.6667"
 													stroke="#71717A"
-													stroke-width="1.5"
-													stroke-linecap="round"
-													stroke-linejoin="round"
+													strokeWidth="1.5"
+													strokeLinecap="round"
+													strokeLinejoin="round"
 												></path>
 											</svg>
 										</Link>

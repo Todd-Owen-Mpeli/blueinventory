@@ -13,14 +13,17 @@ import Image from "next/image";
 import {motion} from "framer-motion";
 import {useRouter} from "next/router";
 import {useState, useEffect, FC} from "react";
-import {IFirebaseUser} from "@/types/firebase";
-import {getAuth, signOut} from "firebase/auth";
 import {useContentContext} from "@/context/context";
 import styles from "@/styles/components/Hero.module.scss";
+
+// Firebase
+import {IFirebaseUser} from "@/types/firebase";
+import {getAuth, signOut} from "firebase/auth";
 
 // Components
 import MobileNavbar from "@/components/MobileNavbar";
 import NavbarMenuLinks from "@/components/Elements/NavbarMenuLinks";
+import {getAllUsersDocument} from "@/firebase/functions/getAllUsers";
 
 const Navbar: FC = () => {
 	const auth = getAuth();
@@ -44,10 +47,12 @@ const Navbar: FC = () => {
 	const user: IFirebaseUser = {
 		uid: `${auth?.currentUser?.uid}`,
 		email: `${auth?.currentUser?.email}`,
-		metadata: `${auth?.currentUser?.metadata}`,
+		photoURL: `${auth?.currentUser?.photoURL}`,
+		providerId: `${auth?.currentUser?.providerId}`,
 		phoneNumber: `${auth?.currentUser?.phoneNumber}`,
 		displayName: `${auth?.currentUser?.displayName}`,
-		profileImageURL: `${auth?.currentUser?.photoURL}`,
+		creationTime: `${auth?.currentUser?.metadata.creationTime}`,
+		lastSignInTime: `${auth?.currentUser?.metadata.lastSignInTime}`,
 	};
 
 	/* Check if user is SIGNED IN if 
@@ -74,6 +79,8 @@ const Navbar: FC = () => {
 				// An error happened.
 			});
 	};
+
+	// console.log(getAllUsersDocument);
 
 	return (
 		<nav className="fixed z-[999] w-full py-4 bg-white">
@@ -125,24 +132,22 @@ const Navbar: FC = () => {
 							<div className="hidden w-auto xl:block">
 								{signedInUser ? (
 									<div className="flex flex-wrap items-center justify-end gap-8">
-										<>
-											<motion.div
-												initial={initial}
-												viewport={{once: true}}
-												whileInView={fadeInUp}
-												className="hidden py-2 m-auto bg-center bg-no-repeat bg-cover rounded-sm xl:block"
-												style={{
-													backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue-darkblue.svg")`,
-												}}
+										<motion.div
+											initial={initial}
+											viewport={{once: true}}
+											whileInView={fadeInUp}
+											className="hidden py-2 m-auto bg-center bg-no-repeat bg-cover rounded-sm xl:block"
+											style={{
+												backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue-darkblue.svg")`,
+											}}
+										>
+											<Link
+												className="w-full px-8 py-3 text-sm text-base tracking-widest text-center text-white uppercase bg-transparent hover:bg-blue focus:ring-none focus:ring-blue"
+												href={`/dashboard`}
 											>
-												<Link
-													className="w-full px-8 py-3 text-sm text-base tracking-widest text-center text-white uppercase bg-transparent hover:bg-blue focus:ring-none focus:ring-blue"
-													href={`/dashboard`}
-												>
-													Dashboard
-												</Link>
-											</motion.div>
-										</>
+												Dashboard
+											</Link>
+										</motion.div>
 										<motion.div
 											initial={initialTwo}
 											viewport={{once: true}}
@@ -161,8 +166,8 @@ const Navbar: FC = () => {
 													data-dropdown-placement="bottom-start"
 													className="object-cover object-top w-10 h-10 transition-all duration-200 ease-in-out rounded-full cursor-pointer ring-4 ring-darkBlue hover:ring-lightBlue"
 													src={
-														user?.profileImageURL
-															? user?.profileImageURL
+														user?.photoURL
+															? user?.photoURL
 															: `/img/Logos/BlueInventory favicon Two.png`
 													}
 													alt={`${user?.displayName} profile image`}

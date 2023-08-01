@@ -1,8 +1,8 @@
 // Imports
-import {getAuth} from "firebase/auth";
+import {Auth, getAuth} from "firebase/auth";
 import {getAnalytics} from "firebase/analytics";
-import {getFirestore} from "firebase/firestore";
-import {getApps, initializeApp} from "firebase/app";
+import {Firestore, getFirestore} from "firebase/firestore";
+import {FirebaseApp, getApps, initializeApp} from "firebase/app";
 import {getPerformance} from "firebase/performance";
 import {IFirebaseConfig, IFirebaseUser} from "@/types/firebase";
 /* TODO: Add SDKs for Firebase products that you want to use
@@ -26,32 +26,36 @@ export const firebaseConfig: IFirebaseConfig = {
 export const firebaseUser: IFirebaseUser = {
 	uid: ``,
 	email: ``,
-	metadata: ``,
+	providerId: ``,
 	phoneNumber: ``,
 	displayName: ``,
-	profileImageURL: ``,
+	creationTime: ``,
+	lastSignInTime: ``,
+	photoURL: ``,
 };
 
 export const initializeFirebase = () => {
 	try {
 		if (!getApps().length) {
 			// Initializing Firebase
-			const app = initializeApp(firebaseConfig);
+			const app: FirebaseApp = initializeApp(firebaseConfig);
 
 			// Creating auth for Authentication
-			const auth = getAuth(app);
+			const auth: Auth = getAuth(app);
 
 			// Initialize Cloud Firestore and get a reference to the service
-			const db = getFirestore(app);
+			const db: Firestore = getFirestore(app);
 
 			// Firebase User Details
 			const firebaseUser: IFirebaseUser = {
 				uid: `${auth?.currentUser?.uid}`,
 				email: `${auth?.currentUser?.email}`,
-				metadata: `${auth?.currentUser?.metadata}`,
+				providerId: `${auth?.currentUser?.providerId}`,
 				phoneNumber: `${auth?.currentUser?.phoneNumber}`,
 				displayName: `${auth?.currentUser?.displayName}`,
-				profileImageURL: `${auth?.currentUser?.photoURL}`,
+				creationTime: `${auth?.currentUser?.metadata.creationTime}`,
+				lastSignInTime: `${auth?.currentUser?.metadata.lastSignInTime}`,
+				photoURL: `${auth?.currentUser?.photoURL}`,
 			};
 
 			// Initializing Firebase Analytics & Performance

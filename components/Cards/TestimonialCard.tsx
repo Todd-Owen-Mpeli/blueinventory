@@ -1,3 +1,5 @@
+"use client";
+
 // Imports
 import {FC} from "react";
 import Image from "next/image";
