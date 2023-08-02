@@ -17,10 +17,9 @@ const mobileNavbar: FC<IMobileNavbar> = ({
 	signedInUser,
 	revealMobileMenu,
 }) => {
+	const auth = getAuth();
 	// eslint-disable-next-line react-hooks/rules-of-hooks
 	const content = useContentContext();
-
-	const auth = getAuth();
 
 	// Handles User Logout
 	const handleLogout = () => {

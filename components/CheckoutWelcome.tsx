@@ -20,6 +20,7 @@ import Paragraph from "@/components/Elements/Paragraph";
 const CheckoutWelcome: FC = () => {
 	const auth = getAuth();
 	const [signedInUser, setSignedInUser] = useState(false);
+	const [user, setUser] = useState<IFirebaseUser | null>(null);
 	const paragraph: string =
 		"Unlock your ambitions & true potential. An accurate inventory management system can improve an organization’s efficiency and productivity.";
 
@@ -27,27 +28,29 @@ const CheckoutWelcome: FC = () => {
 	const ringStyling =
 		"object-cover object-top w-[75px] h-[75px] mb-8 transition-all duration-200 ease-in-out rounded-full ring-4";
 
-	// Firebase User Details
-	const user: IFirebaseUser = {
-		uid: `${auth?.currentUser?.uid}`,
-		email: `${auth?.currentUser?.email}`,
-		photoURL: `${auth?.currentUser?.photoURL}`,
-		providerId: `${auth?.currentUser?.providerId}`,
-		phoneNumber: `${auth?.currentUser?.phoneNumber}`,
-		displayName: `${auth?.currentUser?.displayName}`,
-		creationTime: `${auth?.currentUser?.metadata.creationTime}`,
-		lastSignInTime: `${auth?.currentUser?.metadata.lastSignInTime}`,
-	};
-
 	/* Check if user is SIGNED IN if 
-	True Displays Signed In Navbar */
+  	True Displays Signed In Navbar */
 	useEffect(() => {
-		auth?.onAuthStateChanged((currentUser) => {
+		const unsubscribe = auth?.onAuthStateChanged((currentUser) => {
 			currentUser ? setSignedInUser(true) : setSignedInUser(false);
+
+			// Firebase User Details
+			const userDetails: IFirebaseUser = {
+				uid: `${currentUser?.uid}`,
+				email: `${currentUser?.email}`,
+				photoURL: `${currentUser?.photoURL}`,
+				providerId: `${currentUser?.providerId}`,
+				phoneNumber: `${currentUser?.phoneNumber}`,
+				displayName: `${currentUser?.displayName}`,
+				creationTime: `${currentUser?.metadata.creationTime}`,
+				lastSignInTime: `${currentUser?.metadata.lastSignInTime}`,
+			};
+
+			setUser(userDetails);
 		});
 
 		return () => {
-			signedInUser;
+			unsubscribe();
 		};
 	}, [signedInUser, auth]);
 
@@ -82,7 +85,7 @@ const CheckoutWelcome: FC = () => {
 								}
 								src={
 									user?.photoURL
-										? `/img/Logos/default-avatar-profile.jpg`
+										? user?.photoURL
 										: `/img/Logos/default-avatar-profile.jpg`
 								}
 								alt={`${user?.displayName} profile image`}

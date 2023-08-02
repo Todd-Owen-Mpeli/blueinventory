@@ -50,12 +50,12 @@ export const initializeFirebase = () => {
 			const firebaseUser: IFirebaseUser = {
 				uid: `${auth?.currentUser?.uid}`,
 				email: `${auth?.currentUser?.email}`,
+				photoURL: `${auth?.currentUser?.photoURL}`,
 				providerId: `${auth?.currentUser?.providerId}`,
 				phoneNumber: `${auth?.currentUser?.phoneNumber}`,
 				displayName: `${auth?.currentUser?.displayName}`,
 				creationTime: `${auth?.currentUser?.metadata.creationTime}`,
 				lastSignInTime: `${auth?.currentUser?.metadata.lastSignInTime}`,
-				photoURL: `${auth?.currentUser?.photoURL}`,
 			};
 
 			// Initializing Firebase Analytics & Performance

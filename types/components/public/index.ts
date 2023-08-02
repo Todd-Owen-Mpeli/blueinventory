@@ -1,3 +1,6 @@
+// Imports
+import {IFirebaseUser} from "@/types/firebase";
+
 // Components Card
 export interface IBulletListCard {
 	bulletPoint: string;
@@ -444,16 +447,7 @@ export interface ILogos {
 }
 
 export interface IMobileNavbar {
-	user: {
-		uid: string;
-		email: string;
-		photoURL: string;
-		providerId: string;
-		phoneNumber: string;
-		displayName: string;
-		creationTime: string | undefined;
-		lastSignInTime: string;
-	};
+	user: IFirebaseUser | null;
 	signedInUser: boolean;
 	revealMobileMenu: boolean;
 }

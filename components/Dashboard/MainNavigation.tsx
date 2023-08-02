@@ -11,9 +11,11 @@ import Image from "next/image";
 import {motion} from "framer-motion";
 import {useRouter} from "next/router";
 import {FC, useEffect, useState} from "react";
+import {dashboardMainMenuLinks} from "@/dashboard/content/menuLinks";
+
+// Firebase
 import {getAuth, signOut} from "firebase/auth";
 import {IFirebaseUser} from "@/types/firebase";
-import {dashboardMainMenuLinks} from "@/dashboard/content/menuLinks";
 
 // Components
 import Paragraph from "../Elements/Paragraph";
@@ -26,32 +28,31 @@ const MainNavigation: FC = () => {
 	const auth = getAuth();
 	const router = useRouter();
 	const [signedInUser, setSignedInUser] = useState(false);
-
-	// Firebase User Details
-	const user: IFirebaseUser = {
-		uid: `${auth?.currentUser?.uid}`,
-		email: `${auth?.currentUser?.email}`,
-		photoURL: `${auth?.currentUser?.photoURL}`,
-		providerId: `${auth?.currentUser?.providerId}`,
-		phoneNumber: `${auth?.currentUser?.phoneNumber}`,
-		displayName: `${auth?.currentUser?.displayName}`,
-		creationTime: `${auth?.currentUser?.metadata.creationTime}`,
-		lastSignInTime: `${auth?.currentUser?.metadata.lastSignInTime}`,
-	};
-
-	// User sign in styling
-	const ringStyling =
-		"object-cover object-top w-[60px] h-[60px] transition-all duration-200 ease-in-out rounded-full ring-4";
+	const [user, setUser] = useState<IFirebaseUser | null>(null);
 
 	/* Check if user is SIGNED IN if 
-	True Displays Signed In Navbar */
+  	True Displays Signed In Navbar */
 	useEffect(() => {
-		auth?.onAuthStateChanged((currentUser) => {
+		const unsubscribe = auth?.onAuthStateChanged((currentUser) => {
 			currentUser ? setSignedInUser(true) : setSignedInUser(false);
+
+			// Firebase User Details
+			const userDetails: IFirebaseUser = {
+				uid: `${currentUser?.uid}`,
+				email: `${currentUser?.email}`,
+				photoURL: `${currentUser?.photoURL}`,
+				providerId: `${currentUser?.providerId}`,
+				phoneNumber: `${currentUser?.phoneNumber}`,
+				displayName: `${currentUser?.displayName}`,
+				creationTime: `${currentUser?.metadata.creationTime}`,
+				lastSignInTime: `${currentUser?.metadata.lastSignInTime}`,
+			};
+
+			setUser(userDetails);
 		});
 
 		return () => {
-			signedInUser;
+			unsubscribe();
 		};
 	}, [signedInUser, auth]);
 
@@ -67,6 +68,10 @@ const MainNavigation: FC = () => {
 				// An error happened.
 			});
 	};
+
+	// User sign in styling
+	const ringStyling =
+		"object-cover object-top w-[60px] h-[60px] transition-all duration-200 ease-in-out rounded-full ring-4";
 
 	return (
 		<>
@@ -121,7 +126,7 @@ const MainNavigation: FC = () => {
 														{user?.displayName}
 													</motion.h3>
 													<Paragraph
-														content={user?.email}
+														content={`${user?.email}`}
 														tailwindStyling="text-xs text-center font-medium text-darkGrey hidden sm:block"
 													/>
 												</motion.div>

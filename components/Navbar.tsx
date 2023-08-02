@@ -30,6 +30,7 @@ const Navbar: FC = () => {
 	const router = useRouter();
 	const content = useContentContext();
 	const [signedInUser, setSignedInUser] = useState(false);
+	const [user, setUser] = useState<IFirebaseUser | null>(null);
 	const [revealMobileMenu, setRevealMobileMenu] = useState(false);
 	const [revealUserDropdown, setRevealUserDropdown] = useState(false);
 
@@ -43,27 +44,29 @@ const Navbar: FC = () => {
 		setRevealUserDropdown(!revealUserDropdown);
 	};
 
-	// Firebase User Details
-	const user: IFirebaseUser = {
-		uid: `${auth?.currentUser?.uid}`,
-		email: `${auth?.currentUser?.email}`,
-		photoURL: `${auth?.currentUser?.photoURL}`,
-		providerId: `${auth?.currentUser?.providerId}`,
-		phoneNumber: `${auth?.currentUser?.phoneNumber}`,
-		displayName: `${auth?.currentUser?.displayName}`,
-		creationTime: `${auth?.currentUser?.metadata.creationTime}`,
-		lastSignInTime: `${auth?.currentUser?.metadata.lastSignInTime}`,
-	};
-
 	/* Check if user is SIGNED IN if 
-	True Displays Signed In Navbar */
+  	True Displays Signed In Navbar */
 	useEffect(() => {
-		auth?.onAuthStateChanged((currentUser) => {
+		const unsubscribe = auth?.onAuthStateChanged((currentUser) => {
 			currentUser ? setSignedInUser(true) : setSignedInUser(false);
+
+			// Firebase User Details
+			const userDetails: IFirebaseUser = {
+				uid: `${currentUser?.uid}`,
+				email: `${currentUser?.email}`,
+				photoURL: `${currentUser?.photoURL}`,
+				providerId: `${currentUser?.providerId}`,
+				phoneNumber: `${currentUser?.phoneNumber}`,
+				displayName: `${currentUser?.displayName}`,
+				creationTime: `${currentUser?.metadata.creationTime}`,
+				lastSignInTime: `${currentUser?.metadata.lastSignInTime}`,
+			};
+
+			setUser(userDetails);
 		});
 
 		return () => {
-			signedInUser;
+			unsubscribe();
 		};
 	}, [signedInUser, auth]);
 
@@ -79,8 +82,6 @@ const Navbar: FC = () => {
 				// An error happened.
 			});
 	};
-
-	// console.log(getAllUsersDocument);
 
 	return (
 		<nav className="fixed z-[999] w-full py-4 bg-white">
@@ -142,7 +143,7 @@ const Navbar: FC = () => {
 											}}
 										>
 											<Link
-												className="w-full px-8 py-3 text-sm text-base tracking-widest text-center text-white uppercase bg-transparent hover:bg-blue focus:ring-none focus:ring-blue"
+												className="w-full px-8 py-3 text-sm tracking-widest text-center text-white uppercase bg-transparent hover:bg-blue focus:ring-none focus:ring-blue"
 												href={`/dashboard`}
 											>
 												Dashboard

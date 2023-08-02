@@ -1,14 +1,53 @@
+"use client";
+
 // Imports
-import {FC} from "react";
 import {motion} from "framer-motion";
+import {FC, useEffect, useState} from "react";
 import {useContentContext} from "@/context/context";
 import {initial, stagger, fadeInUp} from "@/animations/animations";
+
+// Firebase
+import {getAuth} from "firebase/auth";
+import {IFirebaseUser} from "@/types/firebase";
 
 // Components
 import Paragraph from "@/components/Elements/Paragraph";
 
 const Premium: FC = () => {
+	const auth = getAuth();
 	const content = useContentContext();
+	const [signedInUser, setSignedInUser] = useState(false);
+	const [user, setUser] = useState<IFirebaseUser | null>(null);
+
+	// Stripe
+	const path: string = "/api/stripe/checkoutSession";
+	const method: string = "POST";
+
+	/* Check if user is SIGNED IN if 
+  	True Displays Signed In Navbar */
+	useEffect(() => {
+		const unsubscribe = auth?.onAuthStateChanged((currentUser) => {
+			currentUser ? setSignedInUser(true) : setSignedInUser(false);
+
+			// Firebase User Details
+			const userDetails: IFirebaseUser = {
+				uid: `${currentUser?.uid}`,
+				email: `${currentUser?.email}`,
+				photoURL: `${currentUser?.photoURL}`,
+				providerId: `${currentUser?.providerId}`,
+				phoneNumber: `${currentUser?.phoneNumber}`,
+				displayName: `${currentUser?.displayName}`,
+				creationTime: `${currentUser?.metadata.creationTime}`,
+				lastSignInTime: `${currentUser?.metadata.lastSignInTime}`,
+			};
+
+			setUser(userDetails);
+		});
+
+		return () => {
+			unsubscribe();
+		};
+	}, [signedInUser, auth]);
 
 	return (
 		<>
@@ -89,16 +128,18 @@ const Premium: FC = () => {
 							/{content.stripePlans.stripePremiumPlan?.paymentRecurringInterval}
 						</span>
 					</motion.span>
-					<form
-						action="/api/stripe/checkoutSession"
-						method="POST"
-						className="w-full"
-					>
+					<form className="w-full" action={path} method={method}>
 						<input
 							className="hidden"
 							type="hidden"
 							name="plan"
 							value="premium"
+						/>
+						<input
+							className="hidden"
+							type="hidden"
+							name="user"
+							value={`${user}`}
 						/>
 						<button
 							type="submit"

@@ -5,6 +5,9 @@ import {DashboardContext} from "@/context/dashboard";
 import type {NextPage, GetServerSideProps} from "next";
 import {getAllStripePaymentPlans} from "@/functions/stripe/GetStripePaymentPlans";
 
+// Firebase
+import {getAllUsersDocument} from "@/firebase/functions/getAllUsers";
+
 // Queries Functions
 import {getThemesOptionsContent} from "@/functions/graphql/Queries/GetAllThemesOptions";
 
@@ -45,6 +48,8 @@ const dashboard: NextPage<IDashboard> = ({
 
 export const getServerSideProps: GetServerSideProps = async () => {
 	// [email, firstName, lastName, password, profileImage]
+
+	// const getAllUsersDocument: any = await getAllUsersDocument();
 
 	const [stripePlans, themesOptionsContent] = await Promise.all([
 		getAllStripePaymentPlans(),
