@@ -15,6 +15,7 @@ import {getThemesOptionsContent} from "@/functions/graphql/Queries/GetAllThemesO
 import styles from "@/styles/pages/Dashboard.module.scss";
 
 // Components
+import Layout from "@/components/Dashboard/Layout/Layout";
 import MainContent from "@/components/Dashboard/MainContent";
 import MainNavigation from "@/components/Dashboard/MainNavigation";
 
@@ -29,19 +30,21 @@ const dashboard: NextPage<IDashboard> = ({
 				themesOptionsContent: themesOptionsContent,
 			}}
 		>
-			<motion.section
-				exit={{
-					opacity: 0,
-				}}
-				initial="initial"
-				animate="animate"
-				className={styles.dashboard}
-			>
-				<MainNavigation />
-				<div className="flex flex-col items-center w-full border-[10px] border-pureBlack rounded-3xl bg-lightGrey">
-					<MainContent />
-				</div>
-			</motion.section>
+			<Layout pageTitle={`Dashboard`}>
+				<motion.section
+					exit={{
+						opacity: 0,
+					}}
+					initial="initial"
+					animate="animate"
+					className={styles.dashboard}
+				>
+					<MainNavigation />
+					<div className="flex flex-col items-center w-full border-[10px] border-pureBlack rounded-3xl bg-lightGrey">
+						<MainContent />
+					</div>
+				</motion.section>
+			</Layout>
 		</DashboardContext.Provider>
 	);
 };

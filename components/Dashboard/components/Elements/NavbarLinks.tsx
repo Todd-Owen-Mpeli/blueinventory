@@ -12,6 +12,7 @@ const NavbarLinks: FC<INavbarLinks> = ({
 	path,
 	icon,
 	label,
+	displayMenuText,
 	tailwindStyling,
 }) => {
 	return (
@@ -20,24 +21,23 @@ const NavbarLinks: FC<INavbarLinks> = ({
 				<motion.span
 					initial={initialTwo}
 					whileInView={fadeIn}
-					className="flex items-center"
+					className={
+						displayMenuText ? `flex items-center` : `flex items-center`
+					}
 				>
 					<Image
 						alt={icon?.alt}
 						src={icon?.src}
 						width={icon?.width}
 						height={icon?.height}
-						className={
-							icon?.src
-								? `block mr-3 w-5 h-5 object-contain object-center`
-								: `hidden`
-						}
+						className="w-[20px] h-[20px] object-contain object-center"
 					/>
 				</motion.span>
 				<motion.span
 					initial={initialTwo}
 					whileInView={fadeIn}
 					viewport={{once: true}}
+					className={displayMenuText ? `block` : `hidden`}
 				>
 					{label}
 				</motion.span>

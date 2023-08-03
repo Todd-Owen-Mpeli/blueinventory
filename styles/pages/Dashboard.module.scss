@@ -29,7 +29,7 @@
 }
 
 .mainNavigation {
-	@apply bg-pureBlack;
+	@apply bg-pureBlack bg-no-repeat bg-cover bg-center;
 
 	button {
 		font-family: $fontStyle_body;
