@@ -16,7 +16,7 @@ const Layout: FC<IDashBoardLayout> = ({children}) => {
 
 			<div className={styles.dashboard}>
 				<Navigation />
-				<div className="flex flex-col items-center w-full border-[10px] p-4 border-pureBlack rounded-3xl bg-lightGrey">
+				<div className="flex flex-col w-full border-[10px] p-4 border-pureBlack rounded-3xl bg-lightGrey">
 					{children}
 				</div>
 			</div>
