@@ -27,7 +27,7 @@
 }
 
 .mainNavigation {
-	@apply bg-pureBlack bg-no-repeat bg-cover bg-center hidden lg:inline-block rounded-2xl m-2;
+	@apply bg-pureBlack bg-no-repeat bg-cover bg-center rounded-2xl m-2;
 
 	button {
 		font-family: $fontStyle_body;
