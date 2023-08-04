@@ -2,7 +2,7 @@
 import {FC} from "react";
 import {motion} from "framer-motion";
 import {ICard} from "@/types/Dashboard/components/Cards";
-import {initial, fadeIn, stagger, initialTwo} from "@/animations/animations";
+import {initial, stagger, fadeInUp} from "@/animations/animations";
 
 const Card: FC<ICard> = ({
 	text,
@@ -54,9 +54,9 @@ const Card: FC<ICard> = ({
 				}}
 			>
 				<motion.h3
-					initial={initialTwo}
+					initial={initial}
 					viewport={{once: true}}
-					whileInView={fadeIn}
+					whileInView={fadeInUp}
 					className={
 						displayBackgroundImage
 							? tailwindStyling.h3 + "text-white"
@@ -66,9 +66,9 @@ const Card: FC<ICard> = ({
 					{text}
 				</motion.h3>
 				<motion.h4
-					initial={initialTwo}
+					initial={initial}
 					viewport={{once: true}}
-					whileInView={fadeIn}
+					whileInView={fadeInUp}
 					className={
 						displayBackgroundImage
 							? tailwindStyling.h4 + "text-white"
@@ -78,9 +78,9 @@ const Card: FC<ICard> = ({
 					{value}
 				</motion.h4>
 				<motion.p
-					initial={initialTwo}
+					initial={initial}
 					viewport={{once: true}}
-					whileInView={fadeIn}
+					whileInView={fadeInUp}
 					className={
 						displayBackgroundImage
 							? tailwindStyling.paragraph + "text-white"
