@@ -8,7 +8,7 @@ import {
 import {motion} from "framer-motion";
 import type {NextPage, GetStaticProps} from "next";
 import {IContentContext} from "@/types/context/public/index";
-import {getAllStripePaymentPlans} from "@/functions/stripe/GetStripePaymentPlans";
+import {getAllStripePaymentPlans} from "@/functions/Backend/stripe/GetStripePaymentPlans";
 
 // Queries Functions
 import {
@@ -16,16 +16,16 @@ import {
 	getNavbarMenuLinks,
 	getFooterMenuLinks,
 	getIndustriesMenuLinks,
-} from "@/functions/graphql/Queries/GetAllMenuLinks";
-import {getAllSeoContent} from "@/functions/graphql/Queries/GetAllSeoPagesContent";
-import {getThemesOptionsContent} from "@/functions/graphql/Queries/GetAllThemesOptions";
-import {getContentSliderBlogPostsPostsContent} from "@/functions/graphql/Queries/GetAllContentSliderPosts";
-import {getAllFlexibleContentComponents} from "@/functions/graphql/Queries/GetAllFlexibleContentComponents";
-import {getAllOperationalInsightsContent} from "@/functions/graphql/Queries/GetAllOperationalInsightsPostsSlugs";
+} from "@/functions/Frontend/graphql/Queries/GetAllMenuLinks";
+import {getAllSeoContent} from "@/functions/Frontend/graphql/Queries/GetAllSeoPagesContent";
+import {getThemesOptionsContent} from "@/functions/Frontend/graphql/Queries/GetAllThemesOptions";
+import {getContentSliderBlogPostsPostsContent} from "@/functions/Frontend/graphql/Queries/GetAllContentSliderPosts";
+import {getAllFlexibleContentComponents} from "@/functions/Frontend/graphql/Queries/GetAllFlexibleContentComponents";
+import {getAllOperationalInsightsContent} from "@/functions/Frontend/graphql/Queries/GetAllOperationalInsightsPostsSlugs";
 
 // Components
-import Layout from "@/components/Layout/Layout";
-import RenderFlexibleContent from "@/components/FlexibleContent/RenderFlexibleContent";
+import Layout from "@/components/Frontend/Layout/Layout";
+import RenderFlexibleContent from "@/components/Frontend/FlexibleContent/RenderFlexibleContent";
 
 const noPageExits: NextPage<IContentContext> = ({
 	seo,

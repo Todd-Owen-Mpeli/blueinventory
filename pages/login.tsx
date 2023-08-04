@@ -1,10 +1,16 @@
 // Imports
+import {
+	homePage,
+	postType,
+	ContentContext,
+	flexibleContentType,
+} from "@/context/context";
 import {motion} from "framer-motion";
-import Layout from "@/components/Layout/Layout";
-import {ContentContext} from "@/context/context";
 import {NextPage, GetServerSideProps} from "next";
+import Layout from "@/components/Frontend/Layout/Layout";
 import {IContentContext} from "@/types/context/public/index";
-import {getAllStripePaymentPlans} from "@/functions/stripe/GetStripePaymentPlans";
+
+import {getAllStripePaymentPlans} from "@/functions/Backend/stripe/GetStripePaymentPlans";
 
 // Queries Functions
 import {
@@ -12,15 +18,15 @@ import {
 	getNavbarMenuLinks,
 	getFooterMenuLinks,
 	getIndustriesMenuLinks,
-} from "@/functions/graphql/Queries/GetAllMenuLinks";
-import {getAllSeoContent} from "@/functions/graphql/Queries/GetAllSeoPagesContent";
-import {getThemesOptionsContent} from "@/functions/graphql/Queries/GetAllThemesOptions";
-import {getContentSliderBlogPostsPostsContent} from "@/functions/graphql/Queries/GetAllContentSliderPosts";
-import {getAllFlexibleContentComponents} from "@/functions/graphql/Queries/GetAllFlexibleContentComponents";
-import {getAllOperationalInsightsContent} from "@/functions/graphql/Queries/GetAllOperationalInsightsPostsSlugs";
+} from "@/functions/Frontend/graphql/Queries/GetAllMenuLinks";
+import {getAllSeoContent} from "@/functions/Frontend/graphql/Queries/GetAllSeoPagesContent";
+import {getThemesOptionsContent} from "@/functions/Frontend/graphql/Queries/GetAllThemesOptions";
+import {getContentSliderBlogPostsPostsContent} from "@/functions/Frontend/graphql/Queries/GetAllContentSliderPosts";
+import {getAllFlexibleContentComponents} from "@/functions/Frontend/graphql/Queries/GetAllFlexibleContentComponents";
+import {getAllOperationalInsightsContent} from "@/functions/Frontend/graphql/Queries/GetAllOperationalInsightsPostsSlugs";
 
 // Components
-import Login from "@/components/Login";
+import Login from "@/components/Frontend/Login";
 
 const login: NextPage<IContentContext> = ({
 	seo,
@@ -69,17 +75,13 @@ const login: NextPage<IContentContext> = ({
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
-	const postType: string = "pages";
-	const postTypeFlexibleContent: string =
-		"DefaultTemplate_Flexiblecontent_FlexibleContent";
-
 	// Fetch priority content
-	const seoContent: any = await getAllSeoContent("Home", postType);
+	const seoContent: any = await getAllSeoContent(homePage, postType?.pages);
 
 	const flexibleContentComponents: any = await getAllFlexibleContentComponents(
-		"Home",
-		postType,
-		postTypeFlexibleContent
+		homePage,
+		postType?.pages,
+		flexibleContentType?.pages
 	);
 
 	// Fetch remaining content simultaneously
@@ -113,9 +115,9 @@ export const getServerSideProps: GetServerSideProps = async () => {
 			operationalInsights,
 			industriesMenuLinks,
 			themesOptionsContent,
-			postTypeFlexibleContent,
 			contentSliderPostsContent,
 			content: flexibleContentComponents?.content,
+			postTypeFlexibleContent: flexibleContentType?.pages,
 		},
 	};
 };

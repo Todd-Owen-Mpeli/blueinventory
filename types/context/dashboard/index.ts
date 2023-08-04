@@ -4,6 +4,7 @@ import {IThemesOptionsContent} from "@/types/context/public/index";
 
 /* DASHBOARD CONTEXT PAGES */
 export interface IDashboardContent {
+	pageTitle: string;
 	stripePlans: IStripePlans;
 	themesOptionsContent: IThemesOptionsContent;
 }

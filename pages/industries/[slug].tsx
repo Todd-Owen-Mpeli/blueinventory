@@ -1,9 +1,9 @@
 // Imports
 import {motion} from "framer-motion";
-import {IContentContext} from "@/types/context/public/index";
 import type {NextPage, GetStaticProps} from "next";
+import {IContentContext} from "@/types/context/public/index";
 import {postType, ContentContext, flexibleContentType} from "@/context/context";
-import {getAllStripePaymentPlans} from "@/functions/stripe/GetStripePaymentPlans";
+import {getAllStripePaymentPlans} from "@/functions/Backend/stripe/GetStripePaymentPlans";
 
 // Queries Functions
 import {
@@ -11,17 +11,17 @@ import {
 	getNavbarMenuLinks,
 	getFooterMenuLinks,
 	getIndustriesMenuLinks,
-} from "@/functions/graphql/Queries/GetAllMenuLinks";
-import {getAllSeoContent} from "@/functions/graphql/Queries/GetAllSeoPagesContent";
-import {getThemesOptionsContent} from "@/functions/graphql/Queries/GetAllThemesOptions";
-import {getAllIndustriesPageSlugs} from "@/functions/graphql/Queries/GetAllIndustriesPageSlugs";
-import {getContentSliderBlogPostsPostsContent} from "@/functions/graphql/Queries/GetAllContentSliderPosts";
-import {getAllOperationalInsightsContent} from "@/functions/graphql/Queries/GetAllOperationalInsightsPostsSlugs";
-import {getAllFlexibleContentComponents} from "@/functions/graphql/Queries/GetAllFlexibleContentComponents";
+} from "@/functions/Frontend/graphql/Queries/GetAllMenuLinks";
+import {getAllSeoContent} from "@/functions/Frontend/graphql/Queries/GetAllSeoPagesContent";
+import {getThemesOptionsContent} from "@/functions/Frontend/graphql/Queries/GetAllThemesOptions";
+import {getAllIndustriesPageSlugs} from "@/functions/Frontend/graphql/Queries/GetAllIndustriesPageSlugs";
+import {getContentSliderBlogPostsPostsContent} from "@/functions/Frontend/graphql/Queries/GetAllContentSliderPosts";
+import {getAllOperationalInsightsContent} from "@/functions/Frontend/graphql/Queries/GetAllOperationalInsightsPostsSlugs";
+import {getAllFlexibleContentComponents} from "@/functions/Frontend/graphql/Queries/GetAllFlexibleContentComponents";
 
 // Components
-import Layout from "@/components/Layout/Layout";
-import RenderFlexibleContent from "@/components/FlexibleContent/RenderFlexibleContent";
+import Layout from "@/components/Frontend/Layout/Layout";
+import RenderFlexibleContent from "@/components/Frontend/FlexibleContent/RenderFlexibleContent";
 
 const dynamicIndustriesPages: NextPage<IContentContext> = ({
 	seo,

@@ -1,6 +1,6 @@
 // Imports
 import cookie from "cookie";
-import {loginUser} from "@/functions/api";
+import {loginUser} from "@/functions/Backend/api";
 
 export default async function login(req: any, res: any) {
 	const body: any = JSON.parse(req.body);

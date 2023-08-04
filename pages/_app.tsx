@@ -14,7 +14,7 @@ import {IErrorPageContent} from "@/types/context/public";
 import "../styles/globals.scss";
 
 // Components
-import ErrorPage from "@/components/Elements/ErrorPage";
+import ErrorPage from "@/components/Frontend/Elements/ErrorPage";
 
 // Check that PostHog is client-side (used to handle Next.js SSR)
 if (typeof window !== "undefined") {

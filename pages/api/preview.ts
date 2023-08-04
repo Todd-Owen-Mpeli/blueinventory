@@ -1,7 +1,7 @@
 // Imports
 import {isEmpty} from "lodash";
-import {getAuthToken} from "@/functions/cookies/cookies";
-import {getPreviewRedirectUrl} from "@/functions/redirects/redirects";
+import {getAuthToken} from "@/functions/Frontend/cookies/cookies";
+import {getPreviewRedirectUrl} from "@/functions/Frontend/redirects/redirects";
 
 /**
  * http://localhost:3000/api/preview/?postType=page&postId=30

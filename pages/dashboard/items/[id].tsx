@@ -3,53 +3,46 @@ import {motion} from "framer-motion";
 import {IDashboard} from "@/types/context/dashboard";
 import {DashboardContext} from "@/context/dashboard";
 import type {NextPage, GetServerSideProps} from "next";
-import {getAllStripePaymentPlans} from "@/functions/stripe/GetStripePaymentPlans";
+import {getAllStripePaymentPlans} from "@/functions/Backend/stripe/GetStripePaymentPlans";
 
 // Firebase
 import {getAllUsersDocument} from "@/firebase/functions/getAllUsers";
 
 // Queries Functions
-import {getThemesOptionsContent} from "@/functions/graphql/Queries/GetAllThemesOptions";
+import {getThemesOptionsContent} from "@/functions/Frontend/graphql/Queries/GetAllThemesOptions";
 
 // Styling
 import styles from "@/styles/pages/Dashboard.module.scss";
 
 // Components
-import Layout from "@/components/Dashboard/Layout/Layout";
-import MainContent from "@/components/Dashboard/MainContent";
-import MainNavigation from "@/components/Dashboard/MainNavigation";
+import Layout from "@/components/Backend/Dashboard/Layout/Layout";
 
 const id: NextPage<IDashboard> = ({stripePlans, themesOptionsContent}) => {
 	return (
 		<DashboardContext.Provider
 			value={{
+				pageTitle: "Add id",
 				stripePlans: stripePlans,
 				themesOptionsContent: themesOptionsContent,
 			}}
 		>
-			<Layout pageTitle={`Id`}>
-				<motion.section
-					exit={{
-						opacity: 0,
-					}}
-					initial="initial"
-					animate="animate"
-					className={styles.dashboard}
-				>
-					<MainNavigation />
-					<div className="flex flex-col items-center w-full border-[10px] border-pureBlack rounded-3xl bg-lightGrey">
-						<MainContent />
-					</div>
-				</motion.section>
-			</Layout>
+			<motion.section
+				exit={{
+					opacity: 0,
+				}}
+				initial="initial"
+				animate="animate"
+			>
+				<Layout>
+					<h1>Add id</h1>
+				</Layout>
+			</motion.section>
 		</DashboardContext.Provider>
 	);
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
 	// [email, firstName, lastName, password, profileImage]
-
-	// const getAllUsersDocument: any = await getAllUsersDocument();
 
 	const [stripePlans, themesOptionsContent] = await Promise.all([
 		getAllStripePaymentPlans(),

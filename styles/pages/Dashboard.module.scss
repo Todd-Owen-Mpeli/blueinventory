@@ -22,14 +22,12 @@
 	strong,
 	button,
 	textarea {
-		@apply tracking-wide font-[500];
-
 		font-family: $fontStyle_body;
 	}
 }
 
 .mainNavigation {
-	@apply bg-pureBlack bg-no-repeat bg-cover bg-center;
+	@apply bg-pureBlack bg-no-repeat bg-cover bg-center hidden lg:inline-block rounded-2xl m-2;
 
 	button {
 		font-family: $fontStyle_body;
@@ -39,8 +37,4 @@
 			font-family: $fontStyle_body;
 		}
 	}
-}
-
-.mainContent {
-	@apply w-full h-full flex flex-col rounded-b-3xl;
 }

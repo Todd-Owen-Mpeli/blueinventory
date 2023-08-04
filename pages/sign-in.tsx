@@ -3,22 +3,21 @@ import {motion} from "framer-motion";
 import type {NextPage, GetStaticProps} from "next";
 import {IContentContext} from "@/types/context/public/index";
 import {ContentContext, flexibleContentType} from "@/context/context";
-import {getAllStripePaymentPlans} from "@/functions/stripe/GetStripePaymentPlans";
-
+import {getAllStripePaymentPlans} from "@/functions/Backend/stripe/GetStripePaymentPlans";
 // Queries Functions
 import {
 	getMainMenuLinks,
 	getNavbarMenuLinks,
 	getFooterMenuLinks,
 	getIndustriesMenuLinks,
-} from "@/functions/graphql/Queries/GetAllMenuLinks";
-import {getThemesOptionsContent} from "@/functions/graphql/Queries/GetAllThemesOptions";
-import {getContentSliderBlogPostsPostsContent} from "@/functions/graphql/Queries/GetAllContentSliderPosts";
-import {getAllOperationalInsightsContent} from "@/functions/graphql/Queries/GetAllOperationalInsightsPostsSlugs";
+} from "@/functions/Frontend/graphql/Queries/GetAllMenuLinks";
+import {getThemesOptionsContent} from "@/functions/Frontend/graphql/Queries/GetAllThemesOptions";
+import {getContentSliderBlogPostsPostsContent} from "@/functions/Frontend/graphql/Queries/GetAllContentSliderPosts";
+import {getAllOperationalInsightsContent} from "@/functions/Frontend/graphql/Queries/GetAllOperationalInsightsPostsSlugs";
 
 // Components
-import SignIn from "@/components/SignIn";
-import LayoutTwo from "@/components/Layout/LayoutTwo";
+import SignIn from "@/components/Frontend/SignIn";
+import LayoutTwo from "@/components/Frontend/Layout/LayoutTwo";
 
 const signInPage: NextPage<IContentContext> = ({
 	seo,
