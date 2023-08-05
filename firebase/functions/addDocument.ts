@@ -51,17 +51,17 @@ export const addNewFirebaseUserDocument = async (user: any) => {
 			creationTime: `${user.metadata.creationTime}`,
 			lastSignInTime: `${user.metadata.lastSignInTime}`,
 			// Stripe
-			stripeStatus: `${stripe.status}`,
-			stripeCreated: `${stripe.created}`,
-			stripeCurrency: `${stripe.currency}`,
-			stripeCustomer: `${stripe.customer}`,
-			stripeId: `${stripe.stripeSessionId}`,
-			stripePaymentStatus: `${stripe.paymentStatus}`,
-			stripePaymentMethodTypes: `${stripe.paymentMethodTypes}`,
-			stripeCustomerDetailsName: `${stripe.customerDetailsName}`,
-			stripeCustomerDetailsEmail: `${stripe.customerDetailsEmail}`,
-			stripeCustomerDetailsPhone: `${stripe.customerDetailsPhone}`,
-			stripeCustomerDetailsAddress: `${stripe.customerDetailsAddress}`,
+			// stripeStatus: `${stripe.status}`,
+			// stripeCreated: `${stripe.created}`,
+			// stripeCurrency: `${stripe.currency}`,
+			// stripeCustomer: `${stripe.customer}`,
+			// stripeId: `${stripe.stripeSessionId}`,
+			// stripePaymentStatus: `${stripe.paymentStatus}`,
+			// stripePaymentMethodTypes: `${stripe.paymentMethodTypes}`,
+			// stripeCustomerDetailsName: `${stripe.customerDetailsName}`,
+			// stripeCustomerDetailsEmail: `${stripe.customerDetailsEmail}`,
+			// stripeCustomerDetailsPhone: `${stripe.customerDetailsPhone}`,
+			// stripeCustomerDetailsAddress: `${stripe.customerDetailsAddress}`,
 		});
 		console.log("Document written with ID: ", docRef.id);
 	} catch (e) {

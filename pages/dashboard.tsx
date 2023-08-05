@@ -6,7 +6,8 @@ import type {NextPage, GetServerSideProps} from "next";
 import {getAllStripePaymentPlans} from "@/functions/Backend/stripe/GetStripePaymentPlans";
 
 // Firebase
-import {getAllUsersDocument} from "@/firebase/functions/getAllUsers";
+import {ICurrentUserData} from "@/types/firebase";
+import {getUserDocument} from "@/firebase/functions/getUserDocument";
 
 // Queries Functions
 import {getThemesOptionsContent} from "@/functions/Frontend/graphql/Queries/GetAllThemesOptions";
@@ -17,12 +18,14 @@ import Tables from "@/components/Backend/Dashboard/components/Tables";
 import CardGrid from "@/components/Backend/Dashboard/components/CardGrid";
 
 const dashboard: NextPage<IDashboard> = ({
+	userData,
 	stripePlans,
 	themesOptionsContent,
 }) => {
 	return (
 		<DashboardContext.Provider
 			value={{
+				userData: userData,
 				pageTitle: "Dashboard",
 				stripePlans: stripePlans,
 				themesOptionsContent: themesOptionsContent,
@@ -47,9 +50,11 @@ const dashboard: NextPage<IDashboard> = ({
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
-	// [email, firstName, lastName, password, profileImage]
-
-	// const getAllUsersDocument: any = await getAllUsersDocument();
+	/* Gets Current Signed-in user's document
+	data from cloud firestore database */
+	const userData: ICurrentUserData = await getUserDocument(
+		`kscB8NgfOhiEawloNMgW`
+	);
 
 	const [stripePlans, themesOptionsContent] = await Promise.all([
 		getAllStripePaymentPlans(),
@@ -58,6 +63,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
 	return {
 		props: {
+			userData,
 			stripePlans,
 			themesOptionsContent,
 		},

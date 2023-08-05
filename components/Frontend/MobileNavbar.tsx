@@ -19,7 +19,7 @@ const mobileNavbar: FC<IMobileNavbar> = ({
 }) => {
 	const auth = getAuth();
 	// eslint-disable-next-line react-hooks/rules-of-hooks
-	const content = useContentContext();
+	const context = useContentContext();
 
 	// Handles User Logout
 	const handleLogout = () => {
@@ -110,8 +110,8 @@ const mobileNavbar: FC<IMobileNavbar> = ({
 									Home
 								</Link>
 							</motion.li>
-							{content.navbarMenuLinks.navbarMenuLinks?.length > 0 ? (
-								content.navbarMenuLinks.navbarMenuLinks?.map((item, keys) => (
+							{context.navbarMenuLinks.navbarMenuLinks?.length > 0 ? (
+								context.navbarMenuLinks.navbarMenuLinks?.map((item, keys) => (
 									<motion.li
 										key={keys}
 										initial={initial}
@@ -149,9 +149,9 @@ const mobileNavbar: FC<IMobileNavbar> = ({
 								Tel:
 								<Link
 									className="leading-none text-white transition-all duration-500 ease-in-out text-tiny hover:text-goldPrime"
-									href={`tel:${content.themesOptionsContent.phoneNumber}`}
+									href={`tel:${context.themesOptionsContent.phoneNumber}`}
 								>
-									{content.themesOptionsContent.phoneNumber}
+									{context.themesOptionsContent.phoneNumber}
 								</Link>
 							</motion.span>
 							<motion.span
@@ -163,9 +163,9 @@ const mobileNavbar: FC<IMobileNavbar> = ({
 								Email:
 								<Link
 									className="leading-none text-white transition-all duration-500 ease-in-out text-tiny hover:text-goldPrime"
-									href={`mailto:${content.themesOptionsContent.email}`}
+									href={`mailto:${context.themesOptionsContent.email}`}
 								>
-									{content.themesOptionsContent.email}
+									{context.themesOptionsContent.email}
 								</Link>
 							</motion.span>
 						</motion.div>
@@ -181,7 +181,7 @@ const mobileNavbar: FC<IMobileNavbar> = ({
 								viewport={{once: true}}
 								className="inline-block px-1"
 							>
-								<Link href={content.themesOptionsContent.facebookLink}>
+								<Link href={context.themesOptionsContent.facebookLink}>
 									<svg
 										height="100%"
 										className="w-5 h-5"
@@ -209,7 +209,7 @@ const mobileNavbar: FC<IMobileNavbar> = ({
 								viewport={{once: true}}
 								className="inline-block px-1"
 							>
-								<Link href={content.themesOptionsContent.twitterLink}>
+								<Link href={context.themesOptionsContent.twitterLink}>
 									<svg
 										height="100%"
 										className="w-5 h-5"
@@ -237,7 +237,7 @@ const mobileNavbar: FC<IMobileNavbar> = ({
 								viewport={{once: true}}
 								className="inline-block px-1"
 							>
-								<Link href={content.themesOptionsContent.linkedinLink}>
+								<Link href={context.themesOptionsContent.linkedinLink}>
 									<svg
 										height="100%"
 										style={{

@@ -9,7 +9,7 @@ import {initial, initialTwo, fadeIn, stagger} from "@/animations/animations";
 import FooterMenuLinks from "@/components/Frontend/Elements/FooterMenuLinks";
 
 const Footer = () => {
-	const content = useContentContext();
+	const context = useContentContext();
 	return (
 		<section className="relative px-0 overflow-hidden bg-darkerBlueTwo">
 			<div className="absolute top-[15px] md:top-[-140px] right-[-220px] md:right-[-145px] opacity-10">
@@ -13540,9 +13540,9 @@ const Footer = () => {
 								</div>
 								<Link
 									className="font-medium tracking-wide text-white hover:text-goldPrime"
-									href={`mailto:${content.themesOptionsContent.email}`}
+									href={`mailto:${context.themesOptionsContent.email}`}
 								>
-									{content.themesOptionsContent.email}
+									{context.themesOptionsContent.email}
 								</Link>
 							</motion.div>
 							<motion.div
@@ -13570,9 +13570,9 @@ const Footer = () => {
 								</div>
 								<Link
 									className="font-medium tracking-wide text-white hover:text-goldPrime"
-									href={`mailto:${content.themesOptionsContent.emailTwo}`}
+									href={`mailto:${context.themesOptionsContent.emailTwo}`}
 								>
-									{content.themesOptionsContent.emailTwo}
+									{context.themesOptionsContent.emailTwo}
 								</Link>
 							</motion.div>
 						</div>
@@ -13589,7 +13589,7 @@ const Footer = () => {
 							>
 								<Link
 									className="inline-block text-green"
-									href={content.themesOptionsContent.facebookLink}
+									href={context.themesOptionsContent.facebookLink}
 								>
 									<svg
 										height="100%"
@@ -13619,7 +13619,7 @@ const Footer = () => {
 							>
 								<Link
 									className="inline-block text-green"
-									href={content.themesOptionsContent.twitterLink}
+									href={context.themesOptionsContent.twitterLink}
 								>
 									<svg
 										height="100%"
@@ -13649,7 +13649,7 @@ const Footer = () => {
 							>
 								<Link
 									className="inline-block text-green"
-									href={content.themesOptionsContent.linkedinLink}
+									href={context.themesOptionsContent.linkedinLink}
 								>
 									<svg
 										height="100%"
@@ -13685,8 +13685,8 @@ const Footer = () => {
 								viewport={{once: true}}
 								className="flex flex-col gap-2 py-6"
 							>
-								{content.footerMenuLinks.footerMenuLinks?.length > 0 ? (
-									content.footerMenuLinks.footerMenuLinks?.map((item, keys) => (
+								{context.footerMenuLinks.footerMenuLinks?.length > 0 ? (
+									context.footerMenuLinks.footerMenuLinks?.map((item, keys) => (
 										<FooterMenuLinks
 											key={keys}
 											url={item?.node?.url}
@@ -13709,8 +13709,8 @@ const Footer = () => {
 								viewport={{once: true}}
 								className="flex flex-col gap-2 py-6"
 							>
-								{content.industriesMenuLinks.industriesMenuLinks?.length > 0 ? (
-									content.industriesMenuLinks.industriesMenuLinks?.map(
+								{context.industriesMenuLinks.industriesMenuLinks?.length > 0 ? (
+									context.industriesMenuLinks.industriesMenuLinks?.map(
 										(item, keys) => (
 											<FooterMenuLinks
 												key={keys}
@@ -13738,7 +13738,7 @@ const Footer = () => {
 							whileInView={fadeIn}
 							className="text-sm text-white"
 						>
-							{content.themesOptionsContent.copyrightText}
+							{context.themesOptionsContent.copyrightText}
 						</motion.p>
 					</div>
 					<div className="w-auto p-6">

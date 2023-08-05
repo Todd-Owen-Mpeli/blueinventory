@@ -19,3 +19,15 @@ export interface IFirebaseConfig {
 	appId: string;
 	measurementId: string;
 }
+
+export interface ICurrentUserData {
+	email: string;
+	uid: string;
+	phoneNumber: string;
+	lastSignInTime: string;
+	photoURL: string;
+	emailVerified: string;
+	displayName: string;
+	providerId: string;
+	creationTime: string;
+}

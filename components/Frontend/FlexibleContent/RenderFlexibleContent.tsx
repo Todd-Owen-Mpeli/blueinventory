@@ -26,13 +26,13 @@ import TitleThreeContentGrid from "@/components/Frontend/TitleThreeContentGrid";
 import ContentBackgroundImage from "@/components/Frontend/ContentBackgroundImage";
 
 const RenderFlexibleContent: FC = () => {
-	const content = useContentContext();
+	const context = useContentContext();
 
-	const Flexiblecontent = content.postTypeFlexibleContent;
+	const Flexiblecontent = context.postTypeFlexibleContent;
 	return (
 		<>
-			{content.content?.length > 0 ? (
-				content.content.map((item: any, keys: any) => (
+			{context.content?.length > 0 ? (
+				context.content.map((item: any, keys: any) => (
 					<section key={keys}>
 						{item?.fieldGroupName === `${Flexiblecontent}_HeroSection` ? (
 							<>

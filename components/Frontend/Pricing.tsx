@@ -20,7 +20,7 @@ const Pricing: FC<IPricing> = ({
 	paragraph,
 	paymentProviders,
 }) => {
-	const content = useContentContext();
+	const context = useContentContext();
 
 	return (
 		<div id="Pricing" className="relative pb-24 overflow-hidden bg-lightGrey">
@@ -135,11 +135,11 @@ const Pricing: FC<IPricing> = ({
 										viewport={{once: true}}
 										className="block mb-2 text-2xl font-semibold text-darkBlue"
 									>
-										{content.stripePlans.stripeStandardPlan?.name}
+										{context.stripePlans.stripeStandardPlan?.name}
 									</motion.span>
 									<Paragraph
 										content={
-											content.stripePlans.stripeStandardPlan?.description
+											context.stripePlans.stripeStandardPlan?.description
 										}
 										tailwindStyling="mb-6 mt-3 text-black"
 									/>
@@ -150,12 +150,12 @@ const Pricing: FC<IPricing> = ({
 										className="flex items-end"
 									>
 										<span className="text-5xl font-extrabold leading-none text-darkBlue">
-											£{content.stripePlans.stripeStandardPlan?.price}
+											£{context.stripePlans.stripeStandardPlan?.price}
 										</span>
 										<span className="text-darkBlue">
 											/
 											{
-												content.stripePlans.stripeStandardPlan
+												context.stripePlans.stripeStandardPlan
 													?.paymentRecurringInterval
 											}
 										</span>
@@ -346,10 +346,10 @@ const Pricing: FC<IPricing> = ({
 										viewport={{once: true}}
 										className="block mb-2 text-2xl font-semibold text-white"
 									>
-										{content.stripePlans.stripePremiumPlan?.name}
+										{context.stripePlans.stripePremiumPlan?.name}
 									</motion.span>
 									<Paragraph
-										content={content.stripePlans.stripePremiumPlan?.description}
+										content={context.stripePlans.stripePremiumPlan?.description}
 										tailwindStyling="mb-6 mt-3 text-white"
 									/>
 									<motion.span
@@ -359,12 +359,12 @@ const Pricing: FC<IPricing> = ({
 										className="flex items-end"
 									>
 										<span className="text-5xl font-extrabold leading-none text-white">
-											£{content.stripePlans.stripePremiumPlan?.price}
+											£{context.stripePlans.stripePremiumPlan?.price}
 										</span>
 										<span className="text-white">
 											/
 											{
-												content.stripePlans.stripePremiumPlan
+												context.stripePlans.stripePremiumPlan
 													?.paymentRecurringInterval
 											}
 										</span>

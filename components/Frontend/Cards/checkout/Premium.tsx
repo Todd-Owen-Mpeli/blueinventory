@@ -15,7 +15,7 @@ import Paragraph from "@/components/Frontend/Elements/Paragraph";
 
 const Premium: FC = () => {
 	const auth = getAuth();
-	const content = useContentContext();
+	const context = useContentContext();
 	const [signedInUser, setSignedInUser] = useState(false);
 	const [user, setUser] = useState<IFirebaseUser | null>(null);
 
@@ -59,10 +59,10 @@ const Premium: FC = () => {
 			>
 				<div className="self-center px-3">
 					<h3 className="mb-4 text-3xl font-bold text-center">
-						{content.stripePlans.stripePremiumPlan?.name}
+						{context.stripePlans.stripePremiumPlan?.name}
 					</h3>
 					<Paragraph
-						content={content.stripePlans.stripePremiumPlan?.description}
+						content={context.stripePlans.stripePremiumPlan?.description}
 						tailwindStyling="text-base my-4 text-darkBlue max-w-sm text-center"
 					/>
 				</div>
@@ -122,10 +122,10 @@ const Premium: FC = () => {
 						viewport={{once: true}}
 					>
 						<span className="text-5xl font-extrabold leading-none text-darkBlue">
-							£{content.stripePlans.stripePremiumPlan?.price}
+							£{context.stripePlans.stripePremiumPlan?.price}
 						</span>
 						<span className="text-darkBlue">
-							/{content.stripePlans.stripePremiumPlan?.paymentRecurringInterval}
+							/{context.stripePlans.stripePremiumPlan?.paymentRecurringInterval}
 						</span>
 					</motion.span>
 					<form className="w-full" action={path} method={method}>

@@ -27,7 +27,7 @@ import NavbarMenuLinks from "@/components/Frontend/Elements/NavbarMenuLinks";
 const Navbar: FC = () => {
 	const auth = getAuth();
 	const router = useRouter();
-	const content = useContentContext();
+	const context = useContentContext();
 	const [signedInUser, setSignedInUser] = useState(false);
 	const [user, setUser] = useState<IFirebaseUser | null>(null);
 	const [revealMobileMenu, setRevealMobileMenu] = useState(false);
@@ -109,8 +109,8 @@ const Navbar: FC = () => {
 									whileInView={stagger}
 									className="flex items-center justify-center gap-6"
 								>
-									{content.navbarMenuLinks.navbarMenuLinks?.length > 0 ? (
-										content.navbarMenuLinks.navbarMenuLinks?.map(
+									{context.navbarMenuLinks.navbarMenuLinks?.length > 0 ? (
+										context.navbarMenuLinks.navbarMenuLinks?.map(
 											(item, keys) => (
 												<NavbarMenuLinks
 													key={keys}

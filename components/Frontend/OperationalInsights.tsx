@@ -15,7 +15,7 @@ const operationalInsights: FC<IOperationalInsights> = ({
 	paragraph,
 }) => {
 	// eslint-disable-next-line react-hooks/rules-of-hooks
-	const content = useContentContext();
+	const context = useContentContext();
 	return (
 		<div className="py-24 bg-white">
 			<div className="container px-4 mx-auto">
@@ -59,8 +59,8 @@ const operationalInsights: FC<IOperationalInsights> = ({
 					viewport={{once: true}}
 					className="grid gap-4 mb-16 -m-4 sm:gap-y-2 sm:gap-x-0 lg:gap-4 grid-col md:grid-cols-2 lg:grid-cols-3"
 				>
-					{content.operationalInsights?.length > 0 ? (
-						content.operationalInsights.map((item, keys) => (
+					{context.operationalInsights?.length > 0 ? (
+						context.operationalInsights.map((item, keys) => (
 							<OperationalInsightsCard
 								key={keys}
 								uri={item?.node?.uri}

@@ -10,7 +10,7 @@ import {initial, fadeInUp, stagger} from "@/animations/animations";
 import Paragraph from "@/components/Frontend/Elements/Paragraph";
 
 const ContactInfo: FC<IContactInfo> = ({title, paragraph}) => {
-	const content = useContentContext();
+	const context = useContentContext();
 
 	return (
 		<div className="py-20 bg-white lg:px-4">
@@ -52,7 +52,7 @@ const ContactInfo: FC<IContactInfo> = ({title, paragraph}) => {
 								Address
 							</motion.h3>
 							<Paragraph
-								content={content.themesOptionsContent.address}
+								content={context.themesOptionsContent.address}
 								tailwindStyling="w-full lg:max-w-3xl text-center lg:text-left text-black"
 							/>
 						</motion.div>
@@ -82,9 +82,9 @@ const ContactInfo: FC<IContactInfo> = ({title, paragraph}) => {
 								>
 									<Link
 										className="font-medium tracking-wide text-black hover:text-goldPrime"
-										href={`mailto:${content.themesOptionsContent.email}`}
+										href={`mailto:${context.themesOptionsContent.email}`}
 									>
-										{content.themesOptionsContent.email}
+										{context.themesOptionsContent.email}
 									</Link>
 								</motion.div>
 								<motion.div
@@ -94,9 +94,9 @@ const ContactInfo: FC<IContactInfo> = ({title, paragraph}) => {
 								>
 									<Link
 										className="font-medium tracking-wide text-black hover:text-goldPrime"
-										href={`mailto:${content.themesOptionsContent.emailTwo}`}
+										href={`mailto:${context.themesOptionsContent.emailTwo}`}
 									>
-										{content.themesOptionsContent.emailTwo}
+										{context.themesOptionsContent.emailTwo}
 									</Link>
 								</motion.div>
 							</motion.div>

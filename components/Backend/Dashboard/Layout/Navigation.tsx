@@ -8,15 +8,15 @@ import {
 } from "@/animations/animations";
 import Link from "next/link";
 import Image from "next/image";
+import {FC, useState} from "react";
 import {motion} from "framer-motion";
 import {useRouter} from "next/router";
-import {FC, useEffect, useState} from "react";
+import {useDashboardContext} from "@/context/dashboard";
 import {ITailwindStyling} from "@/types/Dashboard/components";
 import {dashboardMainMenuLinks} from "@/dashboard/content/menuLinks";
 
 // Firebase
 import {getAuth, signOut} from "firebase/auth";
-import {IFirebaseUser} from "@/types/firebase";
 
 // Components
 import NavbarLinks from "../components/Elements/NavbarLinks";
@@ -27,35 +27,8 @@ import styles from "@/styles/pages/Dashboard.module.scss";
 const MainNavigation: FC = () => {
 	const auth = getAuth();
 	const router = useRouter();
-	const [signedInUser, setSignedInUser] = useState(false);
-	const [user, setUser] = useState<IFirebaseUser | null>(null);
+	const context = useDashboardContext();
 	const [displayMenuText, setDisplayMenuText] = useState(false);
-
-	/* Check if user is SIGNED IN if 
-  	True Displays Signed In Navbar */
-	useEffect(() => {
-		const unsubscribe = auth?.onAuthStateChanged((currentUser) => {
-			currentUser ? setSignedInUser(true) : setSignedInUser(false);
-
-			// Firebase User Details
-			const userDetails: IFirebaseUser = {
-				uid: `${currentUser?.uid}`,
-				email: `${currentUser?.email}`,
-				photoURL: `${currentUser?.photoURL}`,
-				providerId: `${currentUser?.providerId}`,
-				phoneNumber: `${currentUser?.phoneNumber}`,
-				displayName: `${currentUser?.displayName}`,
-				creationTime: `${currentUser?.metadata.creationTime}`,
-				lastSignInTime: `${currentUser?.metadata.lastSignInTime}`,
-			};
-
-			setUser(userDetails);
-		});
-
-		return () => {
-			unsubscribe();
-		};
-	}, [signedInUser, auth]);
 
 	// Handles User Logout
 	const handleLogout = () => {
@@ -79,7 +52,7 @@ const MainNavigation: FC = () => {
 	const tailwindStyling: ITailwindStyling = {
 		// User sign in styling
 		ringStyling:
-			"object-cover object-top w-[40px] h-[40px] transition-all duration-200 ease-in-out rounded-full ring-2",
+			"object-cover object-center w-[40px] h-[40px] transition-all duration-200 ease-in-out rounded-full ring-2",
 
 		// Nav styling
 		UlStyling: "flex flex-col items-center gap-2 text-base font-medium",
@@ -96,7 +69,7 @@ const MainNavigation: FC = () => {
 				className={
 					displayMenuText
 						? styles.mainNavigation + ` px-2 ml-2 mr-0 lg:w-40`
-						: styles.mainNavigation + ` px-0 lg:w-fit`
+						: styles.mainNavigation + ` px-0 ml-2 mr-0 lg:w-fit`
 				}
 				style={{
 					backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue-darkblue.svg")`,
@@ -132,17 +105,17 @@ const MainNavigation: FC = () => {
 											width={500}
 											height={500}
 											className={
-												user?.uid
+												context.userData.uid
 													? tailwindStyling.ringStyling +
 													  ` ring-brightGreenDash`
 													: tailwindStyling.ringStyling + ` ring-pinkRed`
 											}
 											src={
-												user?.photoURL
-													? user?.photoURL
+												context.userData.photoURL
+													? context.userData.photoURL
 													: `/img/Logos/default-avatar-profile.jpg`
 											}
-											alt={`${user?.displayName} profile image`}
+											alt={`${context.userData.displayName} profile image`}
 										/>
 									</motion.div>
 									<motion.h3
@@ -151,11 +124,11 @@ const MainNavigation: FC = () => {
 										viewport={{once: true}}
 										className={
 											displayMenuText
-												? `block font-semibold text-center text-white text-base`
+												? `block font-medium text-center text-white text-base`
 												: `hidden`
 										}
 									>
-										{user?.displayName}
+										{context.userData.displayName}
 									</motion.h3>
 								</div>
 							</div>
@@ -214,7 +187,7 @@ const MainNavigation: FC = () => {
 														}}
 														transform=" translate(-9, -9)"
 														d="M 7.33329 9.83329 L 1.49996 9.83329 C 1.27895 9.83329 1.06698 9.92109 0.910704 10.0774 C 0.754423 10.2337 0.666626 10.4456 0.666626 10.6666 L 0.666626 16.5 C 0.666626 16.721 0.754423 16.9329 0.910704 17.0892 C 1.06698 17.2455 1.27895 17.3333 1.49996 17.3333 L 7.33329 17.3333 C 7.55431 17.3333 7.76627 17.2455 7.92255 17.0892 C 8.07883 16.9329 8.16663 16.721 8.16663 16.5 L 8.16663 10.6666 C 8.16663 10.4456 8.07883 10.2337 7.92255 10.0774 C 7.76627 9.92109 7.55431 9.83329 7.33329 9.83329 Z M 6.49996 15.6666 L 2.33329 15.6666 L 2.33329 11.5 L 6.49996 11.5 L 6.49996 15.6666 Z M 16.5 0.666626 L 10.6666 0.666626 C 10.4456 0.666626 10.2337 0.754423 10.0774 0.910704 C 9.92109 1.06698 9.83329 1.27895 9.83329 1.49996 L 9.83329 7.33329 C 9.83329 7.55431 9.92109 7.76627 10.0774 7.92255 C 10.2337 8.07883 10.4456 8.16663 10.6666 8.16663 L 16.5 8.16663 C 16.721 8.16663 16.9329 8.07883 17.0892 7.92255 C 17.2455 7.76627 17.3333 7.55431 17.3333 7.33329 L 17.3333 1.49996 C 17.3333 1.27895 17.2455 1.06698 17.0892 0.910704 C 16.9329 0.754423 16.721 0.666626 16.5 0.666626 Z M 15.6666 6.49996 L 11.5 6.49996 L 11.5 2.33329 L 15.6666 2.33329 L 15.6666 6.49996 Z M 16.5 9.83329 L 10.6666 9.83329 C 10.4456 9.83329 10.2337 9.92109 10.0774 10.0774 C 9.92109 10.2337 9.83329 10.4456 9.83329 10.6666 L 9.83329 16.5 C 9.83329 16.721 9.92109 16.9329 10.0774 17.0892 C 10.2337 17.2455 10.4456 17.3333 10.6666 17.3333 L 16.5 17.3333 C 16.721 17.3333 16.9329 17.2455 17.0892 17.0892 C 17.2455 16.9329 17.3333 16.721 17.3333 16.5 L 17.3333 10.6666 C 17.3333 10.4456 17.2455 10.2337 17.0892 10.0774 C 16.9329 9.92109 16.721 9.83329 16.5 9.83329 Z M 15.6666 15.6666 L 11.5 15.6666 L 11.5 11.5 L 15.6666 11.5 L 15.6666 15.6666 Z M 7.33329 0.666626 L 1.49996 0.666626 C 1.27895 0.666626 1.06698 0.754423 0.910704 0.910704 C 0.754423 1.06698 0.666626 1.27895 0.666626 1.49996 L 0.666626 7.33329 C 0.666626 7.55431 0.754423 7.76627 0.910704 7.92255 C 1.06698 8.07883 1.27895 8.16663 1.49996 8.16663 L 7.33329 8.16663 C 7.55431 8.16663 7.76627 8.07883 7.92255 7.92255 C 8.07883 7.76627 8.16663 7.55431 8.16663 7.33329 L 8.16663 1.49996 C 8.16663 1.27895 8.07883 1.06698 7.92255 0.910704 C 7.76627 0.754423 7.55431 0.666626 7.33329 0.666626 Z M 6.49996 6.49996 L 2.33329 6.49996 L 2.33329 2.33329 L 6.49996 2.33329 L 6.49996 6.49996 Z"
-														stroke-linecap="round"
+														strokeLinecap="round"
 														fill="#ffffff"
 													/>
 												</g>
