@@ -13,7 +13,9 @@ import {
 	signInWithPopup,
 	GoogleAuthProvider,
 } from "firebase/auth";
-import {addNewFirebaseUserDocument} from "@/firebase/functions/addDocument";
+import {getUserDocument} from "@/functions/Backend/firebase/getUserDocument";
+import {addNewFirebaseUserDocument} from "@/functions/Backend/firebase/addDocument";
+import {validateAccountAlreadyExist} from "@/functions/Backend/firebase/validateAccountAlreadyExist";
 
 // Components
 import Paragraph from "@/components/Frontend/Elements/Paragraph";
@@ -31,14 +33,23 @@ const SignUp: FC<ISignUp> = ({title, paragraph}) => {
 				// The signed-in user info.
 				const newUser = result.user;
 
-				// console.log(newUser);
+				/* New User validation
+				Validates if user already exist */
+				const userAccountAlreadyExist = await validateAccountAlreadyExist(
+					newUser.uid
+				);
 
-				/* Collect Users google account Details 
-				and send it ot the cloud Firestore Database */
-				await addNewFirebaseUserDocument(newUser);
+				if (userAccountAlreadyExist) {
+					// Redirects the user to the next page
+					router.push("/dashboard");
+				} else {
+					/* Collect Users google account Details and 
+					send it ot the cloud Firestore Database */
+					// await addNewFirebaseUserDocument(newUser);
 
-				// Redirects the user to the next page
-				router.push("/payment");
+					// Redirects the user to the next page
+					router.push("/payment");
+				}
 
 				// IdP data available using getAdditionalUserInfo(result)
 				// @.
@@ -46,10 +57,10 @@ const SignUp: FC<ISignUp> = ({title, paragraph}) => {
 			.catch((error) => {
 				console.log(error);
 				// Handle Errors here.
-				const errorCode = error.code;
-				const errorMessage = error.message;
+				// const errorCode = error.code;
+				// const errorMessage = error.message;
 				// The email of the user's account used.
-				const email = error.customData.email;
+				// const email = error.customData.email;
 				// The AuthCredential type that was used.
 				const credential = GoogleAuthProvider.credentialFromError(error);
 			});

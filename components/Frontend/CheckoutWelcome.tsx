@@ -56,7 +56,7 @@ const CheckoutWelcome: FC = () => {
 
 	return (
 		<>
-			<div className="w-full p-8 md:w-1/2">
+			<div className="w-full p-8 h-fit md:w-1/2">
 				<div
 					className="flex flex-col justify-end h-full px-8 py-16 text-center bg-no-repeat bg-cover rounded-3xl bg-bg-center"
 					style={{

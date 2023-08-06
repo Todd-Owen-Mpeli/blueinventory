@@ -1,16 +1,20 @@
 // Imports
-import {
-	getAuth,
-	OAuthProvider,
-	signInWithPopup,
-	GoogleAuthProvider,
-} from "firebase/auth";
+
 import {FC} from "react";
 import Link from "next/link";
 import {motion} from "framer-motion";
 import {useRouter} from "next/router";
 import {ISignIn} from "@/types/components/public";
 import {initial, fadeInUp, stagger} from "@/animations/animations";
+
+// Firebase
+import {
+	getAuth,
+	OAuthProvider,
+	signInWithPopup,
+	GoogleAuthProvider,
+} from "firebase/auth";
+import {validateAccountAlreadyExist} from "@/functions/Backend/firebase/validateAccountAlreadyExist";
 
 // Components
 import Paragraph from "@/components/Frontend/Elements/Paragraph";
@@ -24,14 +28,27 @@ const SignIn: FC<ISignIn> = ({title, paragraph}) => {
 	// Sign In with Google
 	const handleSignInWithGoogle = async () => {
 		signInWithPopup(auth, providerGoogle)
-			.then((result) => {
+			.then(async (result) => {
 				// The signed-in user info.
 				const user = result.user;
 
-				/* Collect Users inserted google Details 
-				and send it ot the Database */
-				// console.log(user);
-				router.push("/dashboard");
+				/* New User validation
+				Validates if user already exist */
+				const userAccountAlreadyExist = await validateAccountAlreadyExist(
+					user.uid
+				);
+
+				if (userAccountAlreadyExist) {
+					// Redirects the user to the next page
+					router.push("/dashboard");
+				} else {
+					/* Collect Users google account Details and 
+					send it ot the cloud Firestore Database */
+					// await addNewFirebaseUserDocument(newUser);
+
+					// Redirects the user to the next page
+					router.push("/payment");
+				}
 				// IdP data available using getAdditionalUserInfo(result)
 				// @.
 			})

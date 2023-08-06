@@ -14,7 +14,7 @@ const Payments = () => {
 				initial={initial}
 				whileInView={stagger}
 				viewport={{once: true}}
-				className="flex flex-row justify-between gap-4"
+				className="flex flex-row items-center justify-between gap-4"
 			>
 				<CheckoutWelcome />
 				<div className="flex flex-col w-full gap-4 py-16">
