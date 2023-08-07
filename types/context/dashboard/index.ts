@@ -5,7 +5,8 @@ import {IThemesOptionsContent} from "@/types/context/public/index";
 
 /* DASHBOARD CONTEXT PAGES */
 export interface IDashboardContent {
-	userData: ICurrentUserData;
+	userData: any;
+	// userData: ICurrentUserData;
 	pageTitle: string;
 	stripePlans: IStripePlans;
 	themesOptionsContent: IThemesOptionsContent;
@@ -13,7 +14,6 @@ export interface IDashboardContent {
 
 /* PUBLIC PAGES */
 export interface IDashboard {
-	userData: ICurrentUserData;
 	stripePlans: IStripePlans;
 	themesOptionsContent: IThemesOptionsContent;
 }

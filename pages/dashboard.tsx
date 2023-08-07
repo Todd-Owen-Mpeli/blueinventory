@@ -1,11 +1,15 @@
+"use client";
+
 // Imports
 import {motion} from "framer-motion";
+import React, {useState, useEffect} from "react";
+import {NextPage, GetServerSideProps} from "next";
 import {IDashboard} from "@/types/context/dashboard";
 import {DashboardContext} from "@/context/dashboard";
-import type {NextPage, GetServerSideProps} from "next";
 import {getAllStripePaymentPlans} from "@/functions/Backend/stripe/GetStripePaymentPlans";
 
 // Firebase
+import {getAuth} from "firebase/auth";
 import {getUserDocument} from "@/functions/Backend/firebase/getUserDocument";
 
 // Queries Functions
@@ -17,10 +21,36 @@ import Tables from "@/components/Backend/Dashboard/components/Tables";
 import CardGrid from "@/components/Backend/Dashboard/components/CardGrid";
 
 const dashboard: NextPage<IDashboard> = ({
-	userData,
 	stripePlans,
 	themesOptionsContent,
 }) => {
+	const auth = getAuth();
+	const authUserUid: any = auth.currentUser?.uid;
+	// eslint-disable-next-line react-hooks/rules-of-hooks
+	const [userData, setUserData] = useState(null);
+
+	/* Gets Current Signed-in user's document
+	data from cloud firestore database */
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	const getCurrentUserData = async () => {
+		const userData: any = await getUserDocument(authUserUid);
+		return userData;
+	};
+
+	// eslint-disable-next-line react-hooks/rules-of-hooks
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				const data = await getCurrentUserData();
+				setUserData(data);
+			} catch (error) {
+				console.error("Error occurred:", error);
+				setUserData(null);
+			}
+		};
+		fetchData();
+	}, [getCurrentUserData]);
+
 	return (
 		<DashboardContext.Provider
 			value={{
@@ -49,20 +79,13 @@ const dashboard: NextPage<IDashboard> = ({
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
-	/* Gets Current Signed-in user's document
-	data from cloud firestore database */
-	// const userData: any = "";
-	const userData: any = await getUserDocument();
-
-	console.log(userData);
-
 	const [stripePlans, themesOptionsContent] = await Promise.all([
 		getAllStripePaymentPlans(),
 		getThemesOptionsContent(),
 	]);
 
 	return {
-		props: {userData, stripePlans, themesOptionsContent},
+		props: {stripePlans, themesOptionsContent},
 	};
 };
 

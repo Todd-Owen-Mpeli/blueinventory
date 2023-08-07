@@ -56,7 +56,7 @@ const payment: NextPage<IContentContext> = ({
 			className="min-h-screen bg-white"
 		>
 			<LayoutTwo pageTitle={`Payments`}>
-				<div className="container min-h-full px-4 pt-16 mx-auto">
+				<div className="container min-h-full px-4 pt-8 mx-auto lg:pt-16">
 					<Payments />
 				</div>
 			</LayoutTwo>

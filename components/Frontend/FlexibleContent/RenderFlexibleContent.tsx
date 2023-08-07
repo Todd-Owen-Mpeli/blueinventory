@@ -24,6 +24,7 @@ import JumboContentTwo from "@/components/Frontend/JumboContentTwo";
 import OperationalInsights from "@/components/Frontend/OperationalInsights";
 import TitleThreeContentGrid from "@/components/Frontend/TitleThreeContentGrid";
 import ContentBackgroundImage from "@/components/Frontend/ContentBackgroundImage";
+import GoogleIntegration from "../GoogleIntegration";
 
 const RenderFlexibleContent: FC = () => {
 	const context = useContentContext();
@@ -69,6 +70,7 @@ const RenderFlexibleContent: FC = () => {
 									title={item?.title}
 									contentGrid={item?.contentGrid}
 								/>
+								<GoogleIntegration />
 							</>
 						) : item?.fieldGroupName === `${Flexiblecontent}_FeaturesGrid` ? (
 							<>

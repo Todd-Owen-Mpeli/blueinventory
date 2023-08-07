@@ -1,5 +1,6 @@
 // Imports
 import Stripe from "stripe";
+import {NextApiRequest, NextApiResponse} from "next";
 
 // Initialize Stripe
 const stripe = new Stripe(`${process.env.STRIPE_SECRET_KEY}`, {
@@ -8,8 +9,8 @@ const stripe = new Stripe(`${process.env.STRIPE_SECRET_KEY}`, {
 
 // Creates a stripe checkout session
 export default async function newCheckoutSessionHandler(
-	req: any,
-	res: any
+	req: NextApiRequest | any,
+	res: NextApiResponse | any
 ): Promise<any> {
 	if (req.method === "POST") {
 		// Subscription Plan (Standard or Premium)

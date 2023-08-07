@@ -61,6 +61,11 @@ const signUpPage: NextPage<IContentContext> = ({
 					<SignUp
 						title={`Sign Up today`}
 						paragraph={`We kindly request you to enter your details.`}
+						paragraphTwo={`We have partnered with google to provide to ensure your online experience is secure and hassle-free.
+						<br/>
+						<br/>
+						We're committed to providing you with a top-notch user experience. It's all about making your journey with us secure, convenient, and enjoyable.
+						`}
 					/>
 				</section>
 			</LayoutTwo>

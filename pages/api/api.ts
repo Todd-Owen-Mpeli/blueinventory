@@ -1,4 +1,10 @@
-export default async function handler(req: any, res: any) {
+// Imports
+import {NextApiRequest, NextApiResponse} from "next";
+
+export default async function handler(
+	req: NextApiRequest,
+	res: NextApiResponse
+) {
 	const amount = req?.body?.amount;
 	const body = req?.body;
 	if (req?.method === "POST") {

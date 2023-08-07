@@ -105,17 +105,17 @@ const MainNavigation: FC = () => {
 											width={500}
 											height={500}
 											className={
-												context.userData.uid
+												context.userData?.uid
 													? tailwindStyling.ringStyling +
 													  ` ring-brightGreenDash`
 													: tailwindStyling.ringStyling + ` ring-pinkRed`
 											}
 											src={
-												context.userData.photoURL
-													? context.userData.photoURL
+												context.userData?.photoURL
+													? context.userData?.photoURL
 													: `/img/Logos/default-avatar-profile.jpg`
 											}
-											alt={`${context.userData.displayName} profile image`}
+											alt={`${context.userData?.displayName} profile image`}
 										/>
 									</motion.div>
 									<motion.h3
@@ -128,7 +128,7 @@ const MainNavigation: FC = () => {
 												: `hidden`
 										}
 									>
-										{context.userData.displayName}
+										{context.userData?.displayName}
 									</motion.h3>
 								</div>
 							</div>

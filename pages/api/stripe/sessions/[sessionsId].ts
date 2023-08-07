@@ -1,5 +1,6 @@
 // Imports
 import Stripe from "stripe";
+import {NextApiRequest, NextApiResponse} from "next";
 
 // Initialize Stripe
 const stripe = new Stripe(`${process.env.STRIPE_SECRET_KEY}`, {
@@ -8,8 +9,8 @@ const stripe = new Stripe(`${process.env.STRIPE_SECRET_KEY}`, {
 
 // Retrieve's a stripe checkout session
 export default async function retrieveSessionHandler(
-	req: any,
-	res: any
+	req: NextApiRequest | any,
+	res: NextApiResponse | any
 ): Promise<any> {
 	if (req.method === "GET") {
 		try {

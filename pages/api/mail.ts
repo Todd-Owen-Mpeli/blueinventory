@@ -1,5 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 // Imports
+import {NextApiRequest, NextApiResponse} from "next";
 import {mailOptions, transporter} from "../../config/nodemailer";
 import {IContactMessageFields, IGenerateEmailContent} from "@/types/mail/index";
 
@@ -178,7 +179,10 @@ const generateEmailContent = (data: any): IGenerateEmailContent => {
 	};
 };
 
-export default async function handler(req: any, res: any) {
+export default async function handler(
+	req: NextApiRequest,
+	res: NextApiResponse
+) {
 	if (req.method === "POST") {
 		const body: any = JSON.parse(req.body);
 		// Contact Form HTML Template

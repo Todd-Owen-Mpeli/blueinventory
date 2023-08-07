@@ -490,11 +490,13 @@ export interface IPricing {
 export interface ISignIn {
 	title: string;
 	paragraph: string;
+	paragraphTwo: string;
 }
 
 export interface ISignUp {
 	title: string;
 	paragraph: string;
+	paragraphTwo: string;
 }
 
 export interface IStats {

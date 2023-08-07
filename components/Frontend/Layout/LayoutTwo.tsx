@@ -5,7 +5,7 @@ import {ILayoutTwo} from "@/types/components/public";
 
 // Components
 import Footer from "@/components/Frontend/Footer";
-import Navbar from "@/components/Frontend/Navbar";
+import NavbarTwo from "@/components/Frontend/NavbarTwo";
 
 const Layout: FC<ILayoutTwo> = ({children, pageTitle}) => {
 	return (
@@ -16,7 +16,7 @@ const Layout: FC<ILayoutTwo> = ({children, pageTitle}) => {
 				<link rel="icon" href="/img/Logos/BlueInventory favicon Two.png" />
 			</Head>
 
-			<Navbar />
+			<NavbarTwo />
 
 			<div className="pt-16">{children}</div>
 

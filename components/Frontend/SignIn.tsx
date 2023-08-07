@@ -1,11 +1,16 @@
 // Imports
-
+import {
+	fadeIn,
+	initial,
+	stagger,
+	fadeInUp,
+	initialTwo,
+} from "@/animations/animations";
 import {FC} from "react";
 import Link from "next/link";
 import {motion} from "framer-motion";
 import {useRouter} from "next/router";
 import {ISignIn} from "@/types/components/public";
-import {initial, fadeInUp, stagger} from "@/animations/animations";
 
 // Firebase
 import {
@@ -19,7 +24,7 @@ import {validateAccountAlreadyExist} from "@/functions/Backend/firebase/validate
 // Components
 import Paragraph from "@/components/Frontend/Elements/Paragraph";
 
-const SignIn: FC<ISignIn> = ({title, paragraph}) => {
+const SignIn: FC<ISignIn> = ({title, paragraph, paragraphTwo}) => {
 	const auth = getAuth();
 	const router = useRouter();
 	const providerGoogle = new GoogleAuthProvider();
@@ -141,9 +146,33 @@ const SignIn: FC<ISignIn> = ({title, paragraph}) => {
 							</svg>
 						</span>
 					</motion.button>
-					{/* <motion.button initial={initial}
-				viewport={{once: true}}
-					whileInView={fadeInUp}>
+					<motion.button
+						initial={initialTwo}
+						viewport={{once: true}}
+						whileInView={fadeIn}
+						onClick={handleSignInWithGoogle}
+						aria-label="Login with Google"
+						role="button"
+						type="button"
+						className="relative flex items-center justify-center w-full px-4 py-2 space-x-4 overflow-hidden text-white transition duration-200 bg-center bg-no-repeat bg-cover rounded-md border-darkBlue group focus:ring-2 focus:ring-offset-1 hover:text-white hover:border-white focus:ring-white"
+						style={{
+							backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue-darkblue.svg")`,
+						}}
+					>
+						<div
+							className="absolute top-0 w-full h-full transition duration-200 transform bg-bottom bg-no-repeat bg-cover bg-darkBlue right-full group-hover:translate-x-full group-hover:scale-102"
+							style={{
+								backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-orange-yellow-pinkRed.svg")`,
+							}}
+						/>
+						<p className="relative">Sign up with Google</p>
+					</motion.button>
+					{/* Facebook */}
+					{/* <motion.button
+						initial={initial}
+						viewport={{once: true}}
+						whileInView={fadeInUp}
+					>
 						<Link
 							className="flex items-center justify-center w-12 h-12"
 							href={`/pricing/#Pricing`}
@@ -165,10 +194,14 @@ const SignIn: FC<ISignIn> = ({title, paragraph}) => {
 								/>
 							</svg>
 						</Link>
-					</motion.button> */}
-					{/* <motion.button initial={initial}
-				viewport={{once: true}}
-					whileInView={fadeInUp} onClick={handleSignInWithApple}>
+					</motion.button>
+					// Apple sign-up
+					<motion.button
+						initial={initial}
+						viewport={{once: true}}
+						whileInView={fadeInUp}
+						onClick={handleSignInWithApple}
+					>
 						<span className="flex items-center justify-center w-12 h-12">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -197,6 +230,18 @@ const SignIn: FC<ISignIn> = ({title, paragraph}) => {
 					<div className="w-full h-px bg-darkGrey" />
 				</motion.div>
 				<motion.div
+					initial={initial}
+					viewport={{once: true}}
+					whileInView={fadeInUp}
+					className="flex items-center mb-6"
+				>
+					<Paragraph
+						content={paragraphTwo}
+						tailwindStyling="mb-4 text-base text-darkBlue"
+					/>
+				</motion.div>
+				{/* Sign Up Form */}
+				{/* <motion.div
 					initial={initial}
 					viewport={{once: true}}
 					whileInView={fadeInUp}
@@ -276,7 +321,7 @@ const SignIn: FC<ISignIn> = ({title, paragraph}) => {
 							<p className="relative">Sign in</p>
 						</motion.button>
 					</form>
-				</motion.div>
+				</motion.div> */}
 				<motion.div
 					initial={initial}
 					viewport={{once: true}}

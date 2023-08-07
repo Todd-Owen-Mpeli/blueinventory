@@ -1,12 +1,14 @@
 // Imports
 import {Readable} from "stream";
+import {NextApiRequest, NextApiResponse} from "next";
 import {SitemapStream, streamToPromise} from "sitemap";
-import {getAllPagesSlugs} from "@/functions/Frontend/graphql/Queries/GetAllPagesSlugs";
 
+// Queries
+import {getAllPagesSlugs} from "@/functions/Frontend/graphql/Queries/GetAllPagesSlugs";
 import {getAllIndustriesPageSlugs} from "@/functions/Frontend/graphql/Queries/GetAllIndustriesPageSlugs";
 import {getAllOperationalInsightsPostsSlugs} from "@/functions/Frontend/graphql/Queries/GetAllOperationalInsightsPostsSlugs";
 
-const sitemap = async (req: any, res: any) => {
+const sitemap = async (req: NextApiRequest, res: NextApiResponse) => {
 	const [pagesSlugs, industriesSlugs, operationalInsightsSlugs] =
 		await Promise.all([
 			getAllPagesSlugs(),

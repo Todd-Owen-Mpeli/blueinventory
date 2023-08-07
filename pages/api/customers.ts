@@ -1,5 +1,6 @@
 // Imports
 import Stripe from "stripe";
+import {NextApiRequest, NextApiResponse} from "next";
 import {IStripeCustomer, IStripeCustomers} from "@/types/stripe";
 
 // Initialize Stripe
@@ -8,8 +9,8 @@ const stripe = new Stripe(`${process.env.STRIPE_SECRET_KEY}`, {
 });
 
 export default async function retrieveAllStripeCustomers(
-	req: any,
-	res: any
+	req: NextApiRequest,
+	res: NextApiResponse
 ): Promise<any> {
 	if (req?.method === "GET") {
 		try {

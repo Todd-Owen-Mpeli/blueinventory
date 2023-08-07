@@ -1,5 +1,6 @@
 // Imports
 import {isEmpty} from "lodash";
+import {NextApiRequest, NextApiResponse} from "next";
 import {getAuthToken} from "@/functions/Frontend/cookies/cookies";
 import {getPreviewRedirectUrl} from "@/functions/Frontend/redirects/redirects";
 
@@ -10,7 +11,10 @@ import {getPreviewRedirectUrl} from "@/functions/Frontend/redirects/redirects";
  * @returns {Promise<void>}
  */
 
-export default async function preview(req: any, res: any) {
+export default async function preview(
+	req: NextApiRequest,
+	res: NextApiResponse
+) {
 	const {postType, postId} = req.query;
 
 	const authToken = getAuthToken(req);

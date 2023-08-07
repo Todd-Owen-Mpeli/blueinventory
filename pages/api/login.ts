@@ -1,8 +1,9 @@
 // Imports
 import cookie from "cookie";
 import {loginUser} from "@/functions/Backend/api";
+import {NextApiRequest, NextApiResponse} from "next";
 
-export default async function login(req: any, res: any) {
+export default async function login(req: NextApiRequest, res: NextApiResponse) {
 	const body: any = JSON.parse(req.body);
 
 	const username: String = body?.username;

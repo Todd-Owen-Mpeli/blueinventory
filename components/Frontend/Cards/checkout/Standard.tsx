@@ -55,7 +55,7 @@ const Standard: FC = () => {
 				initial={initial}
 				whileInView={stagger}
 				viewport={{once: true}}
-				className="flex flex-row items-center gap-6 p-8 mb-8 bg-white border-[1px] w-fit border-goldPrime"
+				className="flex flex-col lg:flex-row items-center gap-6 p-8 bg-white border-[1px] w-fit border-goldPrime"
 			>
 				<div className="self-center px-3">
 					<h3 className="mb-4 text-3xl font-bold text-center">
