@@ -62,7 +62,7 @@ const signInPage: NextPage<IContentContext> = ({
 						<SignIn
 							title={`Login in to your account`}
 							paragraph={`Welcome Back! We kindly request you to enter your details.`}
-							paragraphTwo={`We have partnered with google to provide to ensure your online experience is secure and hassle-free.
+							paragraphTwo={`We have partnered with google to provide and ensure your online experience is secure and hassle-free.
 							<br/>
 							<br/>
 							We're committed to providing you with a top-notch user experience. It's all about making your journey with us secure, convenient, and enjoyable.
