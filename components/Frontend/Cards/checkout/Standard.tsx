@@ -17,7 +17,7 @@ const Standard: FC = () => {
 	const auth = getAuth();
 	const context = useContentContext();
 	const [signedInUser, setSignedInUser] = useState(false);
-	const [user, setUser] = useState<IFirebaseUser | null>(null);
+	const [user, setUser] = useState<IFirebaseUser | null | any>(null);
 
 	// Stripe
 	const path: string = "/api/stripe/checkoutSession";
@@ -134,14 +134,9 @@ const Standard: FC = () => {
 							className="hidden"
 							type="hidden"
 							name="plan"
-							value="standard"
+							value={`${context.stripePlans.stripeStandardPlan?.name}`}
 						/>
-						<input
-							className="hidden"
-							type="hidden"
-							name="user"
-							value={`${user}`}
-						/>
+						<input className="hidden" type="hidden" name="user" value={user} />
 						<button
 							type="submit"
 							role="link"
