@@ -2,52 +2,19 @@
 
 // Imports
 import {motion} from "framer-motion";
-import {FC, useEffect, useState} from "react";
+import {FC} from "react";
 import {useContentContext} from "@/context/context";
 import {initial, stagger, fadeInUp} from "@/animations/animations";
-
-// Firebase
-import {getAuth} from "firebase/auth";
-import {IFirebaseUser} from "@/types/firebase";
 
 // Components
 import Paragraph from "@/components/Frontend/Elements/Paragraph";
 
 const Premium: FC = () => {
-	const auth = getAuth();
 	const context = useContentContext();
-	const [signedInUser, setSignedInUser] = useState(false);
-	const [user, setUser] = useState<IFirebaseUser | null | any>(null);
 
 	// Stripe
 	const path: string = "/api/stripe/checkoutSession";
 	const method: string = "POST";
-
-	/* Check if user is SIGNED IN if 
-  	True Displays Signed In Navbar */
-	useEffect(() => {
-		const unsubscribe = auth?.onAuthStateChanged((currentUser) => {
-			currentUser ? setSignedInUser(true) : setSignedInUser(false);
-
-			// Firebase User Details
-			const userDetails: IFirebaseUser = {
-				uid: `${currentUser?.uid}`,
-				email: `${currentUser?.email}`,
-				photoURL: `${currentUser?.photoURL}`,
-				providerId: `${currentUser?.providerId}`,
-				phoneNumber: `${currentUser?.phoneNumber}`,
-				displayName: `${currentUser?.displayName}`,
-				creationTime: `${currentUser?.metadata.creationTime}`,
-				lastSignInTime: `${currentUser?.metadata.lastSignInTime}`,
-			};
-
-			setUser(userDetails);
-		});
-
-		return () => {
-			unsubscribe();
-		};
-	}, [signedInUser, auth]);
 
 	return (
 		<>
@@ -135,7 +102,6 @@ const Premium: FC = () => {
 							name="plan"
 							value={`${context.stripePlans.stripePremiumPlan?.name}`}
 						/>
-						<input className="hidden" type="hidden" name="user" value={user} />
 						<button
 							type="submit"
 							role="link"

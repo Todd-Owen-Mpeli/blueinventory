@@ -36,6 +36,7 @@ const publicPages: Array<string> = [
 	"/[slug]",
 	"/sign-in",
 	"/payment",
+	"/success",
 	"/sign-up",
 	"/checkout",
 	"/wp-admin/",

@@ -16,7 +16,11 @@ const Payments = () => {
 				viewport={{once: true}}
 				className="flex flex-col items-center justify-between gap-4 lg:flex-row"
 			>
-				<CheckoutWelcome />
+				<CheckoutWelcome
+					title={`Welcome`}
+					stripeSuccess={false}
+					paragraph={`Unlock your ambitions & true potential. An accurate inventory management system can improve an organization’s efficiency and productivity.`}
+				/>
 				<div className="flex flex-col w-full py-16 gap-y-12">
 					<Standard />
 					<Premium />

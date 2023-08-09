@@ -1,9 +1,15 @@
 // Imports
 import {motion} from "framer-motion";
+import {useRouter} from "next/router";
+import {useEffect, useState} from "react";
 import type {NextPage, GetStaticProps} from "next";
 import {IContentContext} from "@/types/context/public/index";
 import {ContentContext, flexibleContentType} from "@/context/context";
 import {getAllStripePaymentPlans} from "@/functions/Backend/stripe/GetStripePaymentPlans";
+
+// Firebase
+import {getAuth} from "firebase/auth";
+import {IFirebaseUser} from "@/types/firebase";
 
 // Queries Functions
 import {
@@ -17,10 +23,10 @@ import {getContentSliderBlogPostsPostsContent} from "@/functions/Frontend/graphq
 import {getAllOperationalInsightsContent} from "@/functions/Frontend/graphql/Queries/GetAllOperationalInsightsPostsSlugs";
 
 // Components
-import SignIn from "@/components/Frontend/SignIn";
 import LayoutTwo from "@/components/Frontend/Layout/LayoutTwo";
+import CheckoutWelcome from "@/components/Frontend/CheckoutWelcome";
 
-const signInPage: NextPage<IContentContext> = ({
+const success: NextPage<IContentContext> = ({
 	seo,
 	content,
 	stripePlans,
@@ -32,6 +38,47 @@ const signInPage: NextPage<IContentContext> = ({
 	postTypeFlexibleContent,
 	contentSliderPostsContent,
 }) => {
+	const auth = getAuth();
+	const router = useRouter();
+	const [signedInUser, setSignedInUser] = useState(false);
+	const [user, setUser] = useState<IFirebaseUser | null | any>(null);
+
+	const {session_id} = router.query;
+	/* Check if user is SIGNED IN if 
+  	True Displays Signed In Navbar */
+	useEffect(() => {
+		const unsubscribe = auth?.onAuthStateChanged((currentUser) => {
+			currentUser ? setSignedInUser(true) : setSignedInUser(false);
+
+			// Firebase User Details
+			const userDetails: IFirebaseUser = {
+				uid: `${currentUser?.uid}`,
+				email: `${currentUser?.email}`,
+				photoURL: `${currentUser?.photoURL}`,
+				providerId: `${currentUser?.providerId}`,
+				phoneNumber: `${currentUser?.phoneNumber}`,
+				displayName: `${currentUser?.displayName}`,
+				creationTime: `${currentUser?.metadata.creationTime}`,
+				lastSignInTime: `${currentUser?.metadata.lastSignInTime}`,
+			};
+
+			setUser(userDetails);
+		});
+
+		if (session_id) {
+			console.log("Session ID:", session_id);
+
+			// Send user to the
+			setTimeout(() => {
+				router.push(`/dashboard`).catch(console.error);
+			}, 30000);
+		}
+
+		return () => {
+			unsubscribe();
+		};
+	}, [signedInUser, auth]);
+
 	return (
 		<ContentContext.Provider
 			value={{
@@ -55,19 +102,18 @@ const signInPage: NextPage<IContentContext> = ({
 				animate="animate"
 				className="min-h-screen bg-white bg-center bg-no-repeat bg-cover"
 				style={{
-					backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-orange-yellow.svg")`,
+					backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue-darkblue.svg")`,
 				}}
 			>
-				<LayoutTwo pageTitle={`Sign In`}>
+				<LayoutTwo pageTitle={`Success`}>
 					<section className="container flex flex-col items-center justify-center min-h-screen px-4 py-10 mx-auto overflow-hidden">
-						<SignIn
-							title={`Login in to your account`}
-							paragraph={`Welcome Back! We kindly request you to enter your details.`}
-							paragraphTwo={`We have partnered with google to provide and ensure your online experience is secure and hassle-free.
-							<br/>
-							<br/>
-							We're committed to providing you with a top-notch user experience. It's all about making your journey with us secure, convenient, and enjoyable.
-							`}
+						<CheckoutWelcome
+							stripeSuccess={true}
+							title={`Ready to get started?`}
+							paragraph={`We're thrilled to have you on board and can't wait to see the insights and decisions you'll uncover using your new dashboard.
+                            <br/>
+                            <br/>
+                            Whether you're tracking key performance metrics, analyzing trends, or making important decisions, this dashboard will be your go-to tool.`}
 						/>
 					</section>
 				</LayoutTwo>
@@ -117,4 +163,4 @@ export const getStaticProps: GetStaticProps = async () => {
 	};
 };
 
-export default signInPage;
+export default success;

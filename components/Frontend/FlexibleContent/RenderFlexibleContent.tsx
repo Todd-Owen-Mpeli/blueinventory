@@ -70,7 +70,7 @@ const RenderFlexibleContent: FC = () => {
 									title={item?.title}
 									contentGrid={item?.contentGrid}
 								/>
-								<GoogleIntegration />
+								{/* <GoogleIntegration /> */}
 							</>
 						) : item?.fieldGroupName === `${Flexiblecontent}_FeaturesGrid` ? (
 							<>

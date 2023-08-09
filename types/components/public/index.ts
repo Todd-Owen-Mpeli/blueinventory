@@ -162,6 +162,12 @@ export interface ILayoutTwo {
 }
 
 // Components
+export interface ICheckoutWelcome {
+	title: string;
+	paragraph: string;
+	stripeSuccess: boolean;
+}
+
 export interface IContactForm {
 	title: string;
 	backgroundImage: string;
