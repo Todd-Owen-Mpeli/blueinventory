@@ -115,15 +115,16 @@ const CheckoutWelcome: FC<ICheckoutWelcome> = ({
 							aria-label="Login with Google"
 							role="button"
 							type="button"
-							className="relative flex items-center justify-center w-full px-4 py-3 space-x-4 overflow-hidden text-white transition duration-200 bg-bottom bg-no-repeat bg-cover rounded-md border-darkBlue group focus:ring-2 focus:ring-offset-1 hover:text-white hover:border-white focus:ring-white"
+							className={
+								stripeSuccess
+									? `relative flex items-center justify-center w-full px-4 py-3 space-x-4 overflow-hidden text-white transition duration-200 bg-bottom bg-no-repeat bg-cover rounded-md border-darkBlue group focus:ring-2 focus:ring-offset-1 hover:text-white hover:border-white focus:ring-white`
+									: `hidden`
+							}
 							style={{
 								backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue.svg")`,
 							}}
 						>
-							<Link
-								href="/dashboard"
-								className={stripeSuccess ? `block` : `hidden`}
-							>
+							<Link href="/dashboard">
 								<div
 									className="absolute top-0 w-full h-full transition duration-200 transform bg-bottom bg-no-repeat bg-cover bg-darkBlue right-full group-hover:translate-x-full group-hover:scale-102"
 									style={{
