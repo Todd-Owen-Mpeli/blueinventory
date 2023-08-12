@@ -1,7 +1,6 @@
 // Imports
 import Stripe from "stripe";
 import {NextApiRequest, NextApiResponse} from "next";
-import {addNewFirebaseUserDocument} from "@/functions/Backend/firebase/addDocument";
 
 // Initialize Stripe
 const stripe = new Stripe(`${process.env.STRIPE_SECRET_KEY}`, {

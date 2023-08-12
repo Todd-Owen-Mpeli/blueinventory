@@ -165,7 +165,7 @@ const SignIn: FC<ISignIn> = ({title, paragraph, paragraphTwo}) => {
 								backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-orange-yellow-pinkRed.svg")`,
 							}}
 						/>
-						<p className="relative">Sign up with Google</p>
+						<p className="relative">Sign in with Google</p>
 					</motion.button>
 					{/* Facebook */}
 					{/* <motion.button

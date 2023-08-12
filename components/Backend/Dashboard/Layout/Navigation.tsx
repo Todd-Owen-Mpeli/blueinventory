@@ -52,7 +52,7 @@ const MainNavigation: FC = () => {
 	const tailwindStyling: ITailwindStyling = {
 		// User sign in styling
 		ringStyling:
-			"object-cover object-center w-[40px] h-[40px] transition-all duration-200 ease-in-out rounded-full ring-2",
+			"object-cover object-center w-[40px] h-[40px] rounded-full ring-4",
 
 		// Nav styling
 		UlStyling: "flex flex-col items-center gap-2 text-base font-medium",
@@ -68,8 +68,8 @@ const MainNavigation: FC = () => {
 			<nav
 				className={
 					displayMenuText
-						? styles.mainNavigation + ` px-2 ml-2 mr-0 lg:w-40`
-						: styles.mainNavigation + ` px-0 ml-2 mr-0 lg:w-fit`
+						? styles.mainNavigation + ` px-2 lg:w-24`
+						: styles.mainNavigation + ` px-0 lg:w-fit`
 				}
 				style={{
 					backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue-darkblue.svg")`,
@@ -106,8 +106,7 @@ const MainNavigation: FC = () => {
 											height={500}
 											className={
 												context.userData?.uid
-													? tailwindStyling.ringStyling +
-													  ` ring-brightGreenDash`
+													? tailwindStyling.ringStyling + ` ring-darkBlue`
 													: tailwindStyling.ringStyling + ` ring-pinkRed`
 											}
 											src={
@@ -270,7 +269,9 @@ const MainNavigation: FC = () => {
 										></path>
 									</svg>
 								</span>
-								<span className={displayMenuText ? `block` : `hidden`}>
+								<span
+									className={displayMenuText ? `block text-center` : `hidden`}
+								>
 									Give feedback
 								</span>
 							</Link>
