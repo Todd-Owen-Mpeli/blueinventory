@@ -18,12 +18,11 @@ const ErrorPage: FC<IErrorPage> = ({
 		<section
 			className="h-[100vh] bg-cover bg-center bg-[no-repeat] flex flex-col justify-center items-center"
 			style={{
-				backgroundImage: `linear-gradient(0deg,rgba(1, 42, 45, 0.65),rgba(1, 42, 45, 0.65)),
-									url("${
-										backgroundImage
-											? backgroundImage
-											: `/svg/backgroundSVG/stacked-waves-haikei-orange-yellow.svg`
-									}")`,
+				backgroundImage: `url("${
+					backgroundImage
+						? backgroundImage
+						: `/svg/backgroundSVG/stacked-waves-haikei-orange-yellow.svg`
+				}")`,
 			}}
 		>
 			<div className="px-10 my-auto overflow-hidden py-44">

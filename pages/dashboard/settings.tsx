@@ -18,6 +18,7 @@ import {getThemesOptionsContent} from "@/functions/Frontend/graphql/Queries/GetA
 
 // Components
 import Layout from "@/components/Backend/Dashboard/Layout/Layout";
+import PersonalInformation from "@/components/Backend/Dashboard/components/PersonalInformation";
 
 const settings: NextPage<IDashboard> = ({
 	stripePlans,
@@ -67,7 +68,8 @@ const settings: NextPage<IDashboard> = ({
 				animate="animate"
 			>
 				<Layout>
-					<h1>Settings</h1>
+					<h1 className="text-2xl font-bold text-left">Settings</h1>
+					<PersonalInformation />
 				</Layout>
 			</motion.section>
 		</DashboardContext.Provider>
