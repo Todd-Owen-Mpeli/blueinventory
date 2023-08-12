@@ -1,10 +1,12 @@
 // Imports
+import admin from "firebase-admin";
 import {Auth, getAuth} from "firebase/auth";
 import {getAnalytics} from "firebase/analytics";
 import {getPerformance} from "firebase/performance";
 import {Firestore, getFirestore} from "firebase/firestore";
 import {FirebaseApp, getApps, initializeApp} from "firebase/app";
 import {IFirebaseConfig, IFirebaseUser} from "@/types/firebase";
+import {cert} from "firebase-admin/app";
 /* TODO: Add SDKs for Firebase products that you want to use
  https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -45,6 +47,14 @@ export const initializeFirebase = () => {
 
 			// Initialize Cloud Firestore and get a reference to the service
 			const db: Firestore = getFirestore(app);
+
+			// Firebase Admin SDK
+			const serviceAccount: any = "../firebase/service-account-key.json";
+			// const admin = cert(serviceAccount);
+			// const serviceAccount = require("../firebase/service-account-key.json");
+			// admin.initializeApp({
+			// 	credential: admin.credential.cert(serviceAccount),
+			// });
 
 			// Firebase User Details
 			const firebaseUser: IFirebaseUser = {
