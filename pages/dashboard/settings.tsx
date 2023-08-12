@@ -24,20 +24,20 @@ const settings: NextPage<IDashboard> = ({
 	themesOptionsContent,
 }) => {
 	const auth = getAuth();
+	const authUserUid: any = auth.currentUser?.uid;
 	// eslint-disable-next-line react-hooks/rules-of-hooks
 	const [userData, setUserData] = useState(null);
 
 	/* Gets Current Signed-in user's document
 	data from cloud firestore database */
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	const getCurrentUserData = async () => {
+		const userData: any = await getUserDocument(authUserUid);
+		return userData;
+	};
+
 	// eslint-disable-next-line react-hooks/rules-of-hooks
 	useEffect(() => {
-		const authUserUid: any = auth.currentUser?.uid;
-
-		const getCurrentUserData = async () => {
-			const userData: any = await getUserDocument(authUserUid);
-			return userData;
-		};
-
 		const fetchData = async () => {
 			try {
 				const data = await getCurrentUserData();
@@ -48,7 +48,7 @@ const settings: NextPage<IDashboard> = ({
 			}
 		};
 		fetchData();
-	}, []);
+	}, [getCurrentUserData]);
 
 	return (
 		<DashboardContext.Provider
@@ -75,9 +75,6 @@ const settings: NextPage<IDashboard> = ({
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
-	const authUserUid = "R7nvJVB3QwPpKKDoDPzBi0yRwHh2";
-	const authUserData: any = await getUserDocument(authUserUid);
-
 	const [stripePlans, themesOptionsContent] = await Promise.all([
 		getAllStripePaymentPlans(),
 		getThemesOptionsContent(),
