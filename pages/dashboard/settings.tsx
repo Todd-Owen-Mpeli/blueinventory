@@ -19,6 +19,9 @@ import {getThemesOptionsContent} from "@/functions/Frontend/graphql/Queries/GetA
 // Components
 import Layout from "@/components/Backend/Dashboard/Layout/Layout";
 import PersonalInformation from "@/components/Backend/Dashboard/components/PersonalInformation";
+import Test from "@/components/Backend/Dashboard/components/Test";
+import SubscriptionInfo from "@/components/Backend/Dashboard/components/SubscriptionInfo";
+import PaymentInfo from "@/components/Backend/Dashboard/components/PaymentInfo";
 
 const settings: NextPage<IDashboard> = ({
 	stripePlans,
@@ -70,6 +73,11 @@ const settings: NextPage<IDashboard> = ({
 				<Layout>
 					<h1 className="text-2xl font-bold text-left">Settings</h1>
 					<PersonalInformation />
+					<div className="grid grid-cols-3 gap-8">
+						<Test />
+						<PaymentInfo />
+						<SubscriptionInfo />
+					</div>
 				</Layout>
 			</motion.section>
 		</DashboardContext.Provider>
