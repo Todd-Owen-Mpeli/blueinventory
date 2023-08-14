@@ -1,14 +1,12 @@
 // Imports
 import {FC} from "react";
-import Link from "next/link";
 import {motion} from "framer-motion";
-import {useDashboardContext} from "@/context/dashboard";
 import {initial, stagger, fadeInUp} from "@/animations/animations";
 
 // Components
 import Paragraph from "@/components/Frontend/Elements/Paragraph";
 
-const test = () => {
+const test: FC = () => {
 	return (
 		<>
 			<div className="container px-4 mx-auto">
