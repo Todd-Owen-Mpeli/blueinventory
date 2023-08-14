@@ -1,66 +1,21 @@
-"use client";
-
 // Imports
 import {motion} from "framer-motion";
-import {useState, useEffect} from "react";
+import {NextPage, GetStaticProps} from "next";
 import {IDashboard} from "@/types/context/dashboard";
 import {DashboardContext} from "@/context/dashboard";
-import {NextPage, GetServerSideProps} from "next";
-
-import {getAllStripePaymentPlans} from "@/functions/Backend/stripe/GetStripePaymentPlans";
-
-// Firebase
-import {getAuth} from "firebase/auth";
-import {getUserDocument} from "@/functions/Backend/firebase/getUserDocument";
-
-// Queries Functions
-import {getThemesOptionsContent} from "@/functions/Frontend/graphql/Queries/GetAllThemesOptions";
 
 // Components
 import Layout from "@/components/Backend/Dashboard/Layout/Layout";
-import PersonalInformation from "@/components/Backend/Dashboard/components/PersonalInformation";
 import Test from "@/components/Backend/Dashboard/components/Test";
-import SubscriptionInfo from "@/components/Backend/Dashboard/components/SubscriptionInfo";
 import PaymentInfo from "@/components/Backend/Dashboard/components/PaymentInfo";
+import SubscriptionInfo from "@/components/Backend/Dashboard/components/SubscriptionInfo";
+import PersonalInformation from "@/components/Backend/Dashboard/components/PersonalInformation";
 
-const settings: NextPage<IDashboard> = ({
-	stripePlans,
-	themesOptionsContent,
-}) => {
-	const auth = getAuth();
-	const authUserUid: any = auth.currentUser?.uid;
-	// eslint-disable-next-line react-hooks/rules-of-hooks
-	const [userData, setUserData] = useState(null);
-
-	/* Gets Current Signed-in user's document
-	data from cloud firestore database */
-	// eslint-disable-next-line react-hooks/exhaustive-deps
-	const getCurrentUserData = async () => {
-		const userData: any = await getUserDocument(authUserUid);
-		return userData;
-	};
-
-	// eslint-disable-next-line react-hooks/rules-of-hooks
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const data = await getCurrentUserData();
-				setUserData(data);
-			} catch (error) {
-				console.error("Error occurred:", error);
-				setUserData(null);
-			}
-		};
-		fetchData();
-	}, [getCurrentUserData]);
-
+const settings: NextPage<IDashboard> = () => {
 	return (
 		<DashboardContext.Provider
 			value={{
-				userData: userData,
 				pageTitle: "Settings",
-				stripePlans: stripePlans,
-				themesOptionsContent: themesOptionsContent,
 			}}
 		>
 			<motion.section
@@ -70,8 +25,11 @@ const settings: NextPage<IDashboard> = ({
 				initial="initial"
 				animate="animate"
 			>
-				<Layout>
-					<h1 className="text-2xl font-bold text-left">Settings</h1>
+				<Layout
+					tailwindStyling={
+						"flex flex-col w-full border-[5px] p-0 border-pureBlack rounded-xl bg-lightGrey"
+					}
+				>
 					<PersonalInformation />
 					<div className="grid grid-cols-3 gap-8">
 						<Test />
@@ -84,14 +42,9 @@ const settings: NextPage<IDashboard> = ({
 	);
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
-	const [stripePlans, themesOptionsContent] = await Promise.all([
-		getAllStripePaymentPlans(),
-		getThemesOptionsContent(),
-	]);
-
+export const getStaticProps: GetStaticProps = async () => {
 	return {
-		props: {stripePlans, themesOptionsContent},
+		props: {},
 	};
 };
 

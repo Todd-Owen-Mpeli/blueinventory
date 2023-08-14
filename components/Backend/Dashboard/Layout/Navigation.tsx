@@ -12,7 +12,7 @@ import {FC, useState} from "react";
 import {motion} from "framer-motion";
 import {useRouter} from "next/router";
 import {useDashboardContext} from "@/context/dashboard";
-import {ITailwindStyling} from "@/types/Dashboard/components";
+import {ITailwindStyling} from "@/types/dashboard/components";
 import {dashboardMainMenuLinks} from "@/dashboard/content/menuLinks";
 
 // Firebase
@@ -105,16 +105,16 @@ const MainNavigation: FC = () => {
 											width={500}
 											height={500}
 											className={
-												context.userData?.uid
+												auth.currentUser?.uid
 													? tailwindStyling.ringStyling + ` ring-darkBlue`
 													: tailwindStyling.ringStyling + ` ring-pinkRed`
 											}
 											src={
-												context.userData?.photoURL
-													? context.userData?.photoURL
+												auth.currentUser?.photoURL
+													? auth.currentUser?.photoURL
 													: `/img/Logos/default-avatar-profile.jpg`
 											}
-											alt={`${context.userData?.displayName} profile image`}
+											alt={`${auth.currentUser?.displayName} profile image`}
 										/>
 									</motion.div>
 									<motion.h3
@@ -127,7 +127,7 @@ const MainNavigation: FC = () => {
 												: `hidden`
 										}
 									>
-										{context.userData?.displayName}
+										{auth.currentUser?.displayName}
 									</motion.h3>
 								</div>
 							</div>

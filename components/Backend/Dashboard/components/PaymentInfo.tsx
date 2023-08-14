@@ -1,12 +1,9 @@
 // Imports
 import {FC} from "react";
 import {motion} from "framer-motion";
-import {useDashboardContext} from "@/context/dashboard";
 import {initial, stagger, fadeInUp} from "@/animations/animations";
 
 const PaymentInfo: FC = () => {
-	const context = useDashboardContext();
-
 	return (
 		<div>
 			<div className="w-full px-10 pt-6 pb-10 mb-6 bg-white shadow-lg lg:min-w-[35rem] rounded-xl">
@@ -35,7 +32,7 @@ const PaymentInfo: FC = () => {
 							viewport={{once: true}}
 							className="w-full px-4 mb-5 sm:w-auto"
 						>
-							<div className="flex flex-col items-center items-baseline gap-y-2">
+							<div className="flex flex-col items-baseline gap-y-2">
 								<h5 className="text-base font-semibold leading-5 text-black">
 									Visa ending in 3456
 								</h5>

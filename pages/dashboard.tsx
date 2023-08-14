@@ -1,63 +1,20 @@
-"use client";
-
 // Imports
+import React from "react";
 import {motion} from "framer-motion";
-import React, {useState, useEffect} from "react";
-import {NextPage, GetServerSideProps} from "next";
+import {NextPage, GetStaticProps} from "next";
 import {IDashboard} from "@/types/context/dashboard";
-import {DashboardContext} from "@/context/dashboard";
-import {getAllStripePaymentPlans} from "@/functions/Backend/stripe/GetStripePaymentPlans";
-
-// Firebase
-import {getAuth} from "firebase/auth";
-import {getUserDocument} from "@/functions/Backend/firebase/getUserDocument";
-
-// Queries Functions
-import {getThemesOptionsContent} from "@/functions/Frontend/graphql/Queries/GetAllThemesOptions";
+import {DashboardContext, layoutTailwindStyling} from "@/context/dashboard";
 
 // Components
 import Layout from "@/components/Backend/Dashboard/Layout/Layout";
 import Tables from "@/components/Backend/Dashboard/components/Tables";
 import CardGrid from "@/components/Backend/Dashboard/components/CardGrid";
 
-const dashboard: NextPage<IDashboard> = ({
-	stripePlans,
-	themesOptionsContent,
-}) => {
-	const auth = getAuth();
-	const authUserUid: any = auth.currentUser?.uid;
-	// eslint-disable-next-line react-hooks/rules-of-hooks
-	const [userData, setUserData] = useState(null);
-
-	/* Gets Current Signed-in user's document
-	data from cloud firestore database */
-	// eslint-disable-next-line react-hooks/exhaustive-deps
-	const getCurrentUserData = async () => {
-		const userData: any = await getUserDocument(authUserUid);
-		return userData;
-	};
-
-	// eslint-disable-next-line react-hooks/rules-of-hooks
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const data = await getCurrentUserData();
-				setUserData(data);
-			} catch (error) {
-				console.error("Error occurred:", error);
-				setUserData(null);
-			}
-		};
-		fetchData();
-	}, [getCurrentUserData]);
-
+const dashboard: NextPage<IDashboard> = () => {
 	return (
 		<DashboardContext.Provider
 			value={{
-				userData: userData,
 				pageTitle: "Dashboard",
-				stripePlans: stripePlans,
-				themesOptionsContent: themesOptionsContent,
 			}}
 		>
 			<motion.section
@@ -67,7 +24,7 @@ const dashboard: NextPage<IDashboard> = ({
 				initial="initial"
 				animate="animate"
 			>
-				<Layout>
+				<Layout tailwindStyling={layoutTailwindStyling}>
 					<div className="flex justify-between gap-4">
 						<CardGrid />
 					</div>
@@ -78,14 +35,9 @@ const dashboard: NextPage<IDashboard> = ({
 	);
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
-	const [stripePlans, themesOptionsContent] = await Promise.all([
-		getAllStripePaymentPlans(),
-		getThemesOptionsContent(),
-	]);
-
+export const getStaticProps: GetStaticProps = async () => {
 	return {
-		props: {stripePlans, themesOptionsContent},
+		props: {},
 	};
 };
 

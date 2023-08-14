@@ -151,7 +151,7 @@ const SignIn: FC<ISignIn> = ({title, paragraph, paragraphTwo}) => {
 						viewport={{once: true}}
 						whileInView={fadeIn}
 						onClick={handleSignInWithGoogle}
-						aria-label="Login with Google"
+						aria-label="Sign in with Google"
 						role="button"
 						type="button"
 						className="relative flex items-center justify-center w-full px-4 py-2 space-x-4 overflow-hidden text-white transition duration-200 bg-center bg-no-repeat bg-cover rounded-md border-darkBlue group focus:ring-2 focus:ring-offset-1 hover:text-white hover:border-white focus:ring-white"
