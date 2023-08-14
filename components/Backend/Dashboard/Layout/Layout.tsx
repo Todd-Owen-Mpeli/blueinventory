@@ -1,6 +1,6 @@
 // Imports
 import {FC} from "react";
-import {IDashBoardLayout} from "@/types/dashboard/layout/index";
+import {IDashBoardLayout} from "@/types/dashboard/layout";
 
 // Components
 import Meta from "../Meta/Meta";

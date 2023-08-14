@@ -131,7 +131,7 @@ const PersonalInformation: FC = () => {
 								initial={initial}
 								whileInView={fadeInUp}
 								viewport={{once: true}}
-								className="text-base font-medium text-center text-darkGrey"
+								className="text-base font-medium text-left text-darkGrey"
 							>
 								Display Name
 							</motion.h3>
@@ -139,7 +139,7 @@ const PersonalInformation: FC = () => {
 								initial={initial}
 								whileInView={fadeInUp}
 								viewport={{once: true}}
-								className="text-base font-medium text-center text-black"
+								className="text-base font-medium text-left text-black"
 							>
 								{auth.currentUser?.displayName}
 							</motion.h3>
@@ -149,7 +149,7 @@ const PersonalInformation: FC = () => {
 								initial={initial}
 								whileInView={fadeInUp}
 								viewport={{once: true}}
-								className="text-base font-medium text-center text-darkGrey"
+								className="text-base font-medium text-left text-darkGrey"
 							>
 								Email Address
 							</motion.h3>
@@ -157,7 +157,7 @@ const PersonalInformation: FC = () => {
 								initial={initial}
 								whileInView={fadeInUp}
 								viewport={{once: true}}
-								className="text-base font-medium text-center text-black"
+								className="text-base font-medium text-left text-black"
 							>
 								{auth.currentUser?.email}
 							</motion.h3>
@@ -167,7 +167,7 @@ const PersonalInformation: FC = () => {
 								initial={initial}
 								whileInView={fadeInUp}
 								viewport={{once: true}}
-								className="text-base font-medium text-center text-darkGrey"
+								className="text-base font-medium text-left text-darkGrey"
 							>
 								Member Role
 							</motion.h3>
@@ -175,7 +175,7 @@ const PersonalInformation: FC = () => {
 								initial={initial}
 								whileInView={fadeInUp}
 								viewport={{once: true}}
-								className="text-base font-medium text-center text-black"
+								className="text-base font-medium text-left text-black"
 							>
 								Owner
 							</motion.h3>
@@ -187,7 +187,7 @@ const PersonalInformation: FC = () => {
 								initial={initial}
 								whileInView={fadeInUp}
 								viewport={{once: true}}
-								className="text-base font-medium text-center text-darkGrey"
+								className="text-base font-medium text-left text-darkGrey"
 							>
 								Joined
 							</motion.h3>
@@ -195,7 +195,7 @@ const PersonalInformation: FC = () => {
 								initial={initial}
 								whileInView={fadeInUp}
 								viewport={{once: true}}
-								className="text-base font-medium text-center text-black"
+								className="text-base font-medium text-left text-black"
 							>
 								{auth.currentUser?.metadata.creationTime}
 							</motion.h3>
@@ -205,7 +205,7 @@ const PersonalInformation: FC = () => {
 								initial={initial}
 								whileInView={fadeInUp}
 								viewport={{once: true}}
-								className="text-base font-medium text-center text-darkGrey"
+								className="text-base font-medium text-left text-darkGrey"
 							>
 								Phone Number
 							</motion.h3>
@@ -213,7 +213,7 @@ const PersonalInformation: FC = () => {
 								initial={initial}
 								whileInView={fadeInUp}
 								viewport={{once: true}}
-								className="text-base font-medium text-center text-black"
+								className="text-base font-medium text-left text-black"
 							>
 								{auth.currentUser?.phoneNumber === null
 									? auth.currentUser?.phoneNumber
