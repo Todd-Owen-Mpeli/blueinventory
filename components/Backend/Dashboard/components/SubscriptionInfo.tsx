@@ -64,7 +64,10 @@ const SubscriptionInfo: FC = () => {
 						</motion.h4>
 						<Paragraph
 							content={`You will lose access to all premium features in your current
-										subscription plan. All content in your database will also be deleted from our google cloud database.`}
+										subscription plan. Once you delete your account, there is no going back. Please be certain.
+										<br/>
+										<br/>
+										All content in your database will also be deleted from our google cloud database.`}
 							tailwindStyling="my-5 text-sm font-medium leading-5 text-white text-left"
 						/>
 						<motion.button

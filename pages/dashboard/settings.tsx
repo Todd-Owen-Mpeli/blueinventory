@@ -27,7 +27,7 @@ const settings: NextPage<IDashboard> = () => {
 			>
 				<Layout
 					tailwindStyling={
-						"flex flex-col w-full border-[5px] p-0 border-pureBlack rounded-xl bg-lightGrey"
+						"flex flex-col w-full border-[5px] p-0 border-pureBlack rounded-xl bg-white"
 					}
 				>
 					<PersonalInformation />

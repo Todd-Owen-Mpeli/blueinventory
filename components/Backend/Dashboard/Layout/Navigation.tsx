@@ -12,7 +12,7 @@ import {FC, useState} from "react";
 import {motion} from "framer-motion";
 import {useRouter} from "next/router";
 import {useDashboardContext} from "@/context/dashboard";
-import {ITailwindStyling} from "@/types/dashboard/components";
+import {ITailwindStyling} from "@/types/Dashboard/components";
 import {dashboardMainMenuLinks} from "@/dashboard/content/menuLinks";
 
 // Firebase

@@ -1,5 +1,5 @@
 // Imports
-import {IMenuLinks} from "@/types/dashboard/content/menuLinks";
+import {IMenuLinks} from "@/types/Dashboard/content/menuLinks";
 
 export const dashboardMainMenuLinks: IMenuLinks[] = [
 	{

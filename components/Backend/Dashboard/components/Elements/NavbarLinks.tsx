@@ -6,7 +6,7 @@ import {motion} from "framer-motion";
 import {initialTwo, fadeIn} from "@/animations/animations";
 
 // Components
-import {INavbarLinks} from "@/types/dashboard/components/elements/NavbarLinks";
+import {INavbarLinks} from "@/types/Dashboard/components/elements/NavbarLinks";
 
 const NavbarLinks: FC<INavbarLinks> = ({
 	path,

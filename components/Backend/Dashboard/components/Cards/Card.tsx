@@ -1,7 +1,7 @@
 // Imports
 import {FC} from "react";
 import {motion} from "framer-motion";
-import {ICard} from "@/types/dashboard/components/Cards";
+import {ICard} from "@/types/Dashboard/components/Cards";
 import {initial, stagger, fadeInUp} from "@/animations/animations";
 
 const Card: FC<ICard> = ({
