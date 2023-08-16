@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 // Imports
 import Image from "next/image";
+import {FC, useState} from "react";
 import {motion} from "framer-motion";
-import {FC, useState, useEffect} from "react";
 import {initial, stagger, fadeInUp} from "@/animations/animations";
 
 // Firebase
@@ -24,24 +24,17 @@ const PersonalInformation: FC = () => {
 		return userData;
 	};
 
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const data = await getCurrentUserData();
-				setUserData(data);
-			} catch (error) {
-				console.error("Error occurred:", error);
-				setUserData(null);
-			}
-		};
-		fetchData();
-	}, [getCurrentUserData]);
+	const fetchData = async () => {
+		try {
+			const data = await getCurrentUserData();
+			setUserData(data);
+		} catch (error) {
+			console.error("Error occurred:", error);
+			setUserData(null);
+		}
+	};
 
 	console.log(userData);
-
-	// Nav conditional general styling
-	const ringStyling =
-		"object-cover object-center w-[40px] h-[40px] lg:w-[175px] lg:h-[175px] rounded-full ring-4";
 
 	return (
 		<>
@@ -49,8 +42,8 @@ const PersonalInformation: FC = () => {
 				<div>
 					<div>
 						<Image
-							width={100}
-							height={100}
+							width={1000}
+							height={1000}
 							className="object-cover object-center w-full h-full min-h-[250px] max-h-[250px]"
 							src={"/svg/backgroundSVG/stacked-waves-haikei-orange-yellow.svg"}
 							alt="profile hero image"
