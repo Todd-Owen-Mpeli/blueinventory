@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 // Imports
 import {useState} from "react";
 import {motion} from "framer-motion";
@@ -39,7 +40,6 @@ const add: NextPage<IDashboard> = () => {
 	return (
 		<DashboardContext.Provider
 			value={{
-				userData: userData,
 				pageTitle: "Add",
 			}}
 		>

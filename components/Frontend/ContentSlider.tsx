@@ -180,7 +180,7 @@ const ContentSlider = () => {
 
 		let currentIndex: number = 0;
 
-		const intervalId: NodeJS.Timer = setInterval(() => {
+		const intervalId: NodeJS.Timer | any = setInterval(() => {
 			if (mainChildElements && postChildElements) {
 				const currentMainPostChild = mainChildElements[currentIndex];
 				const nextMainPostIndex =
