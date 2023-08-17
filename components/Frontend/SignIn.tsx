@@ -31,11 +31,13 @@ const SignIn: FC<ISignIn> = ({title, paragraph, paragraphTwo}) => {
 	const providerApple = new OAuthProvider("apple.com");
 
 	// Sign In with Google
-	const handleSignInWithGoogle = async () => {
+	const handleSignInWithGoogle = () => {
 		signInWithPopup(auth, providerGoogle)
 			.then(async (result) => {
 				// The signed-in user info.
 				const user = result.user;
+
+				console.log(user);
 
 				/* New User validation
 				Validates if user already exist */
@@ -44,6 +46,7 @@ const SignIn: FC<ISignIn> = ({title, paragraph, paragraphTwo}) => {
 				);
 
 				if (userAccountAlreadyExist) {
+					console.log(userAccountAlreadyExist);
 					// Redirects the user to the next page
 					router.push("/dashboard");
 				} else {
