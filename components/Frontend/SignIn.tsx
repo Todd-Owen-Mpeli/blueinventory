@@ -47,15 +47,9 @@ const SignIn: FC<ISignIn> = ({title, paragraph, paragraphTwo}) => {
 					// Redirects the user to the next page
 					router.push("/dashboard");
 				} else {
-					/* Collect Users google account Details and 
-					send it ot the cloud Firestore Database */
-					// await addNewFirebaseUserDocument(newUser);
-
 					// Redirects the user to the next page
 					router.push("/payment");
 				}
-				// IdP data available using getAdditionalUserInfo(result)
-				// @.
 			})
 			.catch((error) => {
 				console.log(error);

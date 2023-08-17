@@ -19,8 +19,6 @@ import {
 	signInWithPopup,
 	GoogleAuthProvider,
 } from "firebase/auth";
-import {getUserDocument} from "@/functions/Backend/firebase/getUserDocument";
-import {addNewFirebaseUserDocument} from "@/functions/Backend/firebase/addDocument";
 import {validateAccountAlreadyExist} from "@/functions/Backend/firebase/validateAccountAlreadyExist";
 
 // Components
@@ -49,16 +47,9 @@ const SignUp: FC<ISignUp> = ({title, paragraph, paragraphTwo}) => {
 					// Redirects the user to the next page
 					router.push("/dashboard");
 				} else {
-					/* Collect Users google account Details and 
-					send it ot the cloud Firestore Database */
-					// await addNewFirebaseUserDocument(newUser);
-
 					// Redirects the user to the next page
 					router.push("/payment");
 				}
-
-				// IdP data available using getAdditionalUserInfo(result)
-				// @.
 			})
 			.catch((error) => {
 				console.log(error);
@@ -81,11 +72,7 @@ const SignUp: FC<ISignUp> = ({title, paragraph, paragraphTwo}) => {
 
 				/* Collect Users inserted google Details 
 				and send it ot the Database */
-				// console.log(user);
 				router.push("/pricing#Pricing");
-
-				// IdP data available using getAdditionalUserInfo(result)
-				// @.
 			})
 			.catch((error) => {
 				console.log(error);

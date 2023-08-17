@@ -31,7 +31,7 @@ const settings: NextPage<IDashboard> = () => {
 					}
 				>
 					<PersonalInformation />
-					<div className="grid grid-cols-3 gap-8">
+					<div className="grid grid-cols-1 gap-8 py-4 lg:grid-cols-3">
 						<Test />
 						<PaymentInfo />
 						<SubscriptionInfo />

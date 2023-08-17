@@ -13,8 +13,6 @@ export const addNewFirebaseUserDocument = async (
 	const db: Firestore = getFirestore();
 	const collectionRef = collection(db, "users");
 
-	console.log(`User: `, user, `Session: ${stripeSessionId}`);
-
 	try {
 		const docRef = await addDoc(collectionRef, {
 			uid: `${user.uid}`,

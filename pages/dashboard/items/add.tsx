@@ -35,8 +35,6 @@ const add: NextPage<IDashboard> = () => {
 		}
 	};
 
-	console.log(userData);
-
 	return (
 		<DashboardContext.Provider
 			value={{

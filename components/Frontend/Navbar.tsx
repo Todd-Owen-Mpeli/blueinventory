@@ -82,7 +82,6 @@ const Navbar: FC = () => {
 		);
 
 		if (userAccountAlreadyExist) {
-			console.log(`User Account Already Exist: ${userAccountAlreadyExist}`);
 			// Redirects the user to the next page
 			router.push("/dashboard");
 		} else {
