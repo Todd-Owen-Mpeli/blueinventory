@@ -28,13 +28,13 @@ const TestimonialCard: FC<ITestimonialCard> = ({
 			initial={initial}
 			whileInView={fadeInUp}
 			viewport={{once: true}}
-			className="w-full px-4 mb-8 lg:w-1/3 lg:mb-0"
+			className="flex flex-col justify-between w-full h-full min-h-[300px] lg:w-1/3 p-10 pb-6 rounded-md bg-lightGrey"
 		>
 			<motion.div
 				initial={initial}
 				viewport={{once: true}}
 				whileInView={stagger}
-				className="max-w-sm p-10 pb-6 mx-auto rounded-md bg-lightGrey"
+				className="flex flex-col justify-between"
 			>
 				<svg
 					width="24"
@@ -52,36 +52,36 @@ const TestimonialCard: FC<ITestimonialCard> = ({
 					initial={initial}
 					viewport={{once: true}}
 					whileInView={fadeInUp}
-					className={paragraph ? `mt-2 mb-6 text-base text-darkBlue` : `hidden`}
+					className={paragraph ? `mt-2 mb-8 text-base text-darkBlue` : `hidden`}
 					dangerouslySetInnerHTML={createTrimmedParagraphMarkup(paragraph)}
 				/>
+			</motion.div>
+			<motion.div
+				initial={initial}
+				whileInView={stagger}
+				viewport={{once: true}}
+				className="flex items-center"
+			>
 				<motion.div
 					initial={initial}
-					whileInView={stagger}
+					whileInView={fadeInUp}
 					viewport={{once: true}}
-					className="flex items-center"
 				>
-					<motion.div
-						initial={initial}
-						whileInView={fadeInUp}
-						viewport={{once: true}}
-					>
-						<Image
-							alt={image?.altText}
-							src={image?.sourceUrl}
-							width={image?.mediaDetails?.width}
-							height={image?.mediaDetails?.height}
-							className="object-cover object-top w-8 h-8 mr-4 rounded-full"
-						/>
-					</motion.div>
-					<motion.div
-						initial={initial}
-						whileInView={fadeInUp}
-						viewport={{once: true}}
-					>
-						<h4 className="text-sm font-medium">{title}</h4>
-						<span className="text-sm text-black">{jobPosition}</span>
-					</motion.div>
+					<Image
+						alt={image?.altText}
+						src={image?.sourceUrl}
+						width={image?.mediaDetails?.width}
+						height={image?.mediaDetails?.height}
+						className="object-cover object-top w-8 h-8 mr-4 rounded-full"
+					/>
+				</motion.div>
+				<motion.div
+					initial={initial}
+					whileInView={fadeInUp}
+					viewport={{once: true}}
+				>
+					<h4 className="text-sm font-medium">{title}</h4>
+					<span className="text-sm text-black">{jobPosition}</span>
 				</motion.div>
 			</motion.div>
 		</motion.div>

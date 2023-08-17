@@ -33,7 +33,7 @@ const Testimonial: FC<ITestimonial> = ({title, paragraph, contentGrid}) => {
 					initial={initial}
 					whileInView={stagger}
 					viewport={{once: true}}
-					className="flex flex-col items-center justify-center mx-4 mt-8 lg:mx-10 lg:flex-row"
+					className="flex flex-col items-center justify-center gap-6 mx-4 my-8 lg:mx-10 lg:flex-row"
 				>
 					{contentGrid?.length > 0 ? (
 						contentGrid?.map((item, keys) => (
