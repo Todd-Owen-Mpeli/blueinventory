@@ -2,7 +2,7 @@
 import {FC} from "react";
 import Link from "next/link";
 import {motion} from "framer-motion";
-import {useContentContext} from "@/context/context";
+import {useGlobalContext} from "@/context/Global";
 import {IContactInfo} from "@/types/components/public";
 import {initial, fadeInUp, stagger} from "@/animations/animations";
 
@@ -10,7 +10,7 @@ import {initial, fadeInUp, stagger} from "@/animations/animations";
 import Paragraph from "@/components/Frontend/Elements/Paragraph";
 
 const ContactInfo: FC<IContactInfo> = ({title, paragraph}) => {
-	const context = useContentContext();
+	const globalContext = useGlobalContext();
 
 	return (
 		<div className="py-20 bg-white lg:px-4">
@@ -52,7 +52,7 @@ const ContactInfo: FC<IContactInfo> = ({title, paragraph}) => {
 								Address
 							</motion.h3>
 							<Paragraph
-								content={context.themesOptionsContent.address}
+								content={globalContext?.themesOptionsContent?.address}
 								tailwindStyling="w-full lg:max-w-3xl text-center lg:text-left text-black"
 							/>
 						</motion.div>
@@ -82,9 +82,9 @@ const ContactInfo: FC<IContactInfo> = ({title, paragraph}) => {
 								>
 									<Link
 										className="font-medium tracking-wide text-black hover:text-goldPrime"
-										href={`mailto:${context.themesOptionsContent.email}`}
+										href={`mailto:${globalContext?.themesOptionsContent?.email}`}
 									>
-										{context.themesOptionsContent.email}
+										{globalContext?.themesOptionsContent?.email}
 									</Link>
 								</motion.div>
 								<motion.div
@@ -94,9 +94,9 @@ const ContactInfo: FC<IContactInfo> = ({title, paragraph}) => {
 								>
 									<Link
 										className="font-medium tracking-wide text-black hover:text-goldPrime"
-										href={`mailto:${context.themesOptionsContent.emailTwo}`}
+										href={`mailto:${globalContext?.themesOptionsContent?.emailTwo}`}
 									>
-										{context.themesOptionsContent.emailTwo}
+										{globalContext?.themesOptionsContent?.emailTwo}
 									</Link>
 								</motion.div>
 							</motion.div>

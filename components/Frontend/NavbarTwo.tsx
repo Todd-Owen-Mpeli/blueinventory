@@ -10,15 +10,15 @@ import {
 } from "@/animations/animations";
 import Link from "next/link";
 import Image from "next/image";
+import {useState, FC} from "react";
 import {motion} from "framer-motion";
 import {useRouter} from "next/router";
-import {useState, useEffect, FC} from "react";
-import {useContentContext} from "@/context/context";
+import {useGlobalContext} from "@/context/Global";
 import styles from "@/styles/components/Hero.module.scss";
 
 // Firebase
-import {IFirebaseUser} from "@/types/firebase";
-import {getAuth, signOut} from "firebase/auth";
+import {User, getAuth, signOut} from "firebase/auth";
+import {useFirebaseContext} from "@/context/Firebase";
 
 // Components
 import MobileNavbarTwo from "@/components/Frontend/MobileNavbarTwo";
@@ -27,9 +27,8 @@ import NavbarMenuLinks from "@/components/Frontend/Elements/NavbarMenuLinks";
 const NavbarTwo: FC = () => {
 	const auth = getAuth();
 	const router = useRouter();
-	const context = useContentContext();
-	const [signedInUser, setSignedInUser] = useState(false);
-	const [user, setUser] = useState<IFirebaseUser | null>(null);
+	const globalContext = useGlobalContext();
+	const signedInUser: User | null = auth.currentUser;
 	const [revealMobileMenu, setRevealMobileMenu] = useState(false);
 	const [revealUserDropdown, setRevealUserDropdown] = useState(false);
 
@@ -43,32 +42,6 @@ const NavbarTwo: FC = () => {
 		setRevealUserDropdown(!revealUserDropdown);
 	};
 
-	/* Check if user is SIGNED IN if 
-  	True Displays Signed In Navbar */
-	useEffect(() => {
-		const unsubscribe = auth?.onAuthStateChanged((currentUser) => {
-			currentUser ? setSignedInUser(true) : setSignedInUser(false);
-
-			// Firebase User Details
-			const userDetails: IFirebaseUser = {
-				uid: `${currentUser?.uid}`,
-				email: `${currentUser?.email}`,
-				photoURL: `${currentUser?.photoURL}`,
-				providerId: `${currentUser?.providerId}`,
-				phoneNumber: `${currentUser?.phoneNumber}`,
-				displayName: `${currentUser?.displayName}`,
-				creationTime: `${currentUser?.metadata.creationTime}`,
-				lastSignInTime: `${currentUser?.metadata.lastSignInTime}`,
-			};
-
-			setUser(userDetails);
-		});
-
-		return () => {
-			unsubscribe();
-		};
-	}, [signedInUser, auth]);
-
 	// Handles User Logout
 	const handleLogout = () => {
 		signOut(auth)
@@ -79,6 +52,7 @@ const NavbarTwo: FC = () => {
 			})
 			.catch((error) => {
 				// An error happened.
+				router.push("/");
 			});
 	};
 
@@ -109,8 +83,9 @@ const NavbarTwo: FC = () => {
 									whileInView={stagger}
 									className="flex items-center justify-center gap-6"
 								>
-									{context.navbarMenuLinks.navbarMenuLinks?.length > 0 ? (
-										context.navbarMenuLinks.navbarMenuLinks?.map(
+									{globalContext?.navbarMenuLinks?.navbarMenuLinks?.length >
+									0 ? (
+										globalContext?.navbarMenuLinks?.navbarMenuLinks?.map(
 											(item, keys) => (
 												<NavbarMenuLinks
 													key={keys}
@@ -150,11 +125,11 @@ const NavbarTwo: FC = () => {
 													data-dropdown-placement="bottom-start"
 													className="object-cover object-top w-10 h-10 transition-all duration-200 ease-in-out rounded-full cursor-pointer ring-4 ring-darkBlue hover:ring-lightBlue"
 													src={
-														user?.photoURL
-															? user?.photoURL
+														auth.currentUser?.photoURL
+															? auth.currentUser?.photoURL
 															: `/img/Logos/BlueInventory favicon Two.png`
 													}
-													alt={`${user?.displayName} profile image`}
+													alt={`${auth.currentUser?.displayName} profile image`}
 												/>
 												<span className="bottom-[-6px] left-7 absolute w-3.5 h-3.5 bg-brightGreenDash border-2 border-white rounded-full "></span>
 											</button>
@@ -166,9 +141,9 @@ const NavbarTwo: FC = () => {
 													className="absolute left-[-100px] z-10 flex flex-col mt-1 bg-white divide-y rounded-lg shadow divide-blue w-44"
 												>
 													<div className="flex flex-col gap-2 px-4 py-3 text-sm text-black">
-														<h2 className="text-medium">{`${user?.displayName}`}</h2>
+														<h2 className="text-medium">{`${auth.currentUser?.displayName}`}</h2>
 														<h2 className="font-medium text-black truncate">
-															{user?.email}
+															{auth.currentUser?.email}
 														</h2>
 													</div>
 													<div className="mt-1">
@@ -245,11 +220,7 @@ const NavbarTwo: FC = () => {
 				</div>
 
 				{/* Mobile Navbar */}
-				<MobileNavbarTwo
-					user={user}
-					signedInUser={signedInUser}
-					revealMobileMenu={revealMobileMenu}
-				/>
+				<MobileNavbarTwo revealMobileMenu={revealMobileMenu} />
 			</div>
 		</nav>
 	);

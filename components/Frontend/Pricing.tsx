@@ -3,7 +3,7 @@ import {FC} from "react";
 import Link from "next/link";
 import {motion} from "framer-motion";
 import {IPricing} from "@/types/components/public";
-import {useContentContext} from "@/context/context";
+import {useGlobalContext} from "@/context/Global";
 import {initial, fadeInUp, stagger} from "@/animations/animations";
 
 // Components
@@ -20,7 +20,7 @@ const Pricing: FC<IPricing> = ({
 	paragraph,
 	paymentProviders,
 }) => {
-	const context = useContentContext();
+	const globalContext = useGlobalContext();
 
 	return (
 		<div id="Pricing" className="relative pb-24 overflow-hidden bg-lightGrey">
@@ -135,11 +135,12 @@ const Pricing: FC<IPricing> = ({
 										viewport={{once: true}}
 										className="block mb-2 text-2xl font-semibold text-darkBlue"
 									>
-										{context.stripePlans.stripeStandardPlan?.name}
+										{globalContext?.stripePlans?.stripeStandardPlan?.name}
 									</motion.span>
 									<Paragraph
 										content={
-											context.stripePlans.stripeStandardPlan?.description
+											globalContext?.stripePlans?.stripeStandardPlan
+												?.description
 										}
 										tailwindStyling="mb-6 mt-3 text-black"
 									/>
@@ -150,12 +151,12 @@ const Pricing: FC<IPricing> = ({
 										className="flex items-end"
 									>
 										<span className="text-5xl font-extrabold leading-none text-darkBlue">
-											£{context.stripePlans.stripeStandardPlan?.price}
+											£{globalContext?.stripePlans?.stripeStandardPlan?.price}
 										</span>
 										<span className="text-darkBlue">
 											/
 											{
-												context.stripePlans.stripeStandardPlan
+												globalContext?.stripePlans?.stripeStandardPlan
 													?.paymentRecurringInterval
 											}
 										</span>
@@ -346,10 +347,12 @@ const Pricing: FC<IPricing> = ({
 										viewport={{once: true}}
 										className="block mb-2 text-2xl font-semibold text-white"
 									>
-										{context.stripePlans.stripePremiumPlan?.name}
+										{globalContext?.stripePlans?.stripePremiumPlan?.name}
 									</motion.span>
 									<Paragraph
-										content={context.stripePlans.stripePremiumPlan?.description}
+										content={
+											globalContext?.stripePlans?.stripePremiumPlan?.description
+										}
 										tailwindStyling="mb-6 mt-3 text-white"
 									/>
 									<motion.span
@@ -359,12 +362,12 @@ const Pricing: FC<IPricing> = ({
 										className="flex items-end"
 									>
 										<span className="text-5xl font-extrabold leading-none text-white">
-											£{context.stripePlans.stripePremiumPlan?.price}
+											£{globalContext?.stripePlans?.stripePremiumPlan?.price}
 										</span>
 										<span className="text-white">
 											/
 											{
-												context.stripePlans.stripePremiumPlan
+												globalContext?.stripePlans?.stripePremiumPlan
 													?.paymentRecurringInterval
 											}
 										</span>

@@ -8,19 +8,10 @@ import {
 import {motion} from "framer-motion";
 import {IContentContext} from "@/types/context/public/index";
 import type {NextPage, GetStaticProps} from "next";
-import {getAllStripePaymentPlans} from "@/functions/Backend/stripe/GetStripePaymentPlans";
+
 // Queries Functions
-import {
-	getMainMenuLinks,
-	getNavbarMenuLinks,
-	getFooterMenuLinks,
-	getIndustriesMenuLinks,
-} from "@/functions/Frontend/graphql/Queries/GetAllMenuLinks";
 import {getAllSeoContent} from "@/functions/Frontend/graphql/Queries/GetAllSeoPagesContent";
-import {getThemesOptionsContent} from "@/functions/Frontend/graphql/Queries/GetAllThemesOptions";
-import {getContentSliderBlogPostsPostsContent} from "@/functions/Frontend/graphql/Queries/GetAllContentSliderPosts";
 import {getAllFlexibleContentComponents} from "@/functions/Frontend/graphql/Queries/GetAllFlexibleContentComponents";
-import {getAllOperationalInsightsContent} from "@/functions/Frontend/graphql/Queries/GetAllOperationalInsightsPostsSlugs";
 
 // Components
 import Layout from "@/components/Frontend/Layout/Layout";
@@ -29,28 +20,14 @@ import RenderFlexibleContent from "@/components/Frontend/FlexibleContent/RenderF
 const HomePage: NextPage<IContentContext> = ({
 	seo,
 	content,
-	stripePlans,
-	footerMenuLinks,
-	navbarMenuLinks,
-	industriesMenuLinks,
-	operationalInsights,
-	themesOptionsContent,
 	postTypeFlexibleContent,
-	contentSliderPostsContent,
 }) => {
 	return (
 		<ContentContext.Provider
 			value={{
 				seo: seo,
 				content: content,
-				stripePlans: stripePlans,
-				navbarMenuLinks: navbarMenuLinks,
-				footerMenuLinks: footerMenuLinks,
-				industriesMenuLinks: industriesMenuLinks,
-				operationalInsights: operationalInsights,
-				themesOptionsContent: themesOptionsContent,
 				postTypeFlexibleContent: postTypeFlexibleContent,
-				contentSliderPostsContent: contentSliderPostsContent,
 			}}
 		>
 			<motion.div
@@ -78,38 +55,9 @@ export const getStaticProps: GetStaticProps = async () => {
 		flexibleContentType?.pages
 	);
 
-	// Fetch remaining content simultaneously
-	const [
-		stripePlans,
-		mainMenuLinks,
-		navbarMenuLinks,
-		footerMenuLinks,
-		industriesMenuLinks,
-		themesOptionsContent,
-		operationalInsights,
-		contentSliderPostsContent,
-	] = await Promise.all([
-		getAllStripePaymentPlans(),
-		getMainMenuLinks(),
-		getNavbarMenuLinks(),
-		getFooterMenuLinks(),
-		getIndustriesMenuLinks(),
-		getThemesOptionsContent(),
-		getAllOperationalInsightsContent(),
-		getContentSliderBlogPostsPostsContent(),
-	]);
-
 	return {
 		props: {
-			stripePlans,
-			mainMenuLinks,
-			navbarMenuLinks,
-			footerMenuLinks,
 			seo: seoContent,
-			operationalInsights,
-			industriesMenuLinks,
-			themesOptionsContent,
-			contentSliderPostsContent,
 			content: flexibleContentComponents?.content,
 			postTypeFlexibleContent: flexibleContentType?.pages,
 		},

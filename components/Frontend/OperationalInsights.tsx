@@ -1,7 +1,7 @@
 // Imports
 import {FC} from "react";
 import {motion} from "framer-motion";
-import {useContentContext} from "@/context/context";
+import {useGlobalContext} from "@/context/Global";
 import {IOperationalInsights} from "@/types/components/public";
 import {initial, fadeInUp, stagger} from "@/animations/animations";
 
@@ -15,7 +15,7 @@ const operationalInsights: FC<IOperationalInsights> = ({
 	paragraph,
 }) => {
 	// eslint-disable-next-line react-hooks/rules-of-hooks
-	const context = useContentContext();
+	const globalContext = useGlobalContext();
 	return (
 		<div className="py-24 bg-white">
 			<div className="container px-4 mx-auto">
@@ -59,8 +59,8 @@ const operationalInsights: FC<IOperationalInsights> = ({
 					viewport={{once: true}}
 					className="grid gap-4 mb-16 -m-4 sm:gap-y-2 sm:gap-x-0 lg:gap-4 grid-col md:grid-cols-2 lg:grid-cols-3"
 				>
-					{context.operationalInsights?.length > 0 ? (
-						context.operationalInsights.map((item, keys) => (
+					{globalContext?.operationalInsights?.length > 0 ? (
+						globalContext?.operationalInsights?.map((item, keys) => (
 							<OperationalInsightsCard
 								key={keys}
 								uri={item?.node?.uri}

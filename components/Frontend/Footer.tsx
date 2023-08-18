@@ -2,14 +2,17 @@
 import Link from "next/link";
 import Image from "next/image";
 import {motion} from "framer-motion";
-import {useContentContext} from "@/context/context";
+import {useGlobalContext} from "@/context/Global";
 import {initial, initialTwo, fadeIn, stagger} from "@/animations/animations";
 
 // Components
 import FooterMenuLinks from "@/components/Frontend/Elements/FooterMenuLinks";
 
 const Footer = () => {
-	const context = useContentContext();
+	const globalContext = useGlobalContext();
+
+	// console.log(globalContext?.themesOptionsContent);
+
 	return (
 		<section className="relative px-0 overflow-hidden bg-darkerBlueTwo">
 			<div className="absolute top-[15px] md:top-[-140px] right-[-220px] md:right-[-145px] opacity-10">
@@ -13540,9 +13543,9 @@ const Footer = () => {
 								</div>
 								<Link
 									className="font-medium tracking-wide text-white hover:text-goldPrime"
-									href={`mailto:${context.themesOptionsContent.email}`}
+									href={`mailto:${globalContext?.themesOptionsContent?.email}`}
 								>
-									{context.themesOptionsContent.email}
+									{globalContext?.themesOptionsContent?.email}
 								</Link>
 							</motion.div>
 							<motion.div
@@ -13570,9 +13573,9 @@ const Footer = () => {
 								</div>
 								<Link
 									className="font-medium tracking-wide text-white hover:text-goldPrime"
-									href={`mailto:${context.themesOptionsContent.emailTwo}`}
+									href={`mailto:${globalContext?.themesOptionsContent?.emailTwo}`}
 								>
-									{context.themesOptionsContent.emailTwo}
+									{globalContext?.themesOptionsContent?.emailTwo}
 								</Link>
 							</motion.div>
 						</div>
@@ -13589,7 +13592,7 @@ const Footer = () => {
 							>
 								<Link
 									className="inline-block text-green"
-									href={context.themesOptionsContent.facebookLink}
+									href={globalContext?.themesOptionsContent?.facebookLink}
 								>
 									<svg
 										height="100%"
@@ -13619,7 +13622,7 @@ const Footer = () => {
 							>
 								<Link
 									className="inline-block text-green"
-									href={context.themesOptionsContent.twitterLink}
+									href={globalContext?.themesOptionsContent?.twitterLink}
 								>
 									<svg
 										height="100%"
@@ -13649,7 +13652,7 @@ const Footer = () => {
 							>
 								<Link
 									className="inline-block text-green"
-									href={context.themesOptionsContent.linkedinLink}
+									href={globalContext?.themesOptionsContent?.linkedinLink}
 								>
 									<svg
 										height="100%"
@@ -13685,15 +13688,17 @@ const Footer = () => {
 								viewport={{once: true}}
 								className="flex flex-col gap-2 py-6"
 							>
-								{context.footerMenuLinks.footerMenuLinks?.length > 0 ? (
-									context.footerMenuLinks.footerMenuLinks?.map((item, keys) => (
-										<FooterMenuLinks
-											key={keys}
-											url={item?.node?.url}
-											label={item?.node?.label}
-											tailwindStyling="text-white text-left hover:text-goldPrime"
-										/>
-									))
+								{globalContext?.footerMenuLinks?.footerMenuLinks?.length > 0 ? (
+									globalContext?.footerMenuLinks?.footerMenuLinks?.map(
+										(item, keys) => (
+											<FooterMenuLinks
+												key={keys}
+												url={item?.node?.url}
+												label={item?.node?.label}
+												tailwindStyling="text-white text-left hover:text-goldPrime"
+											/>
+										)
+									)
 								) : (
 									<></>
 								)}
@@ -13709,8 +13714,9 @@ const Footer = () => {
 								viewport={{once: true}}
 								className="flex flex-col gap-2 py-6"
 							>
-								{context.industriesMenuLinks.industriesMenuLinks?.length > 0 ? (
-									context.industriesMenuLinks.industriesMenuLinks?.map(
+								{globalContext?.industriesMenuLinks?.industriesMenuLinks
+									?.length > 0 ? (
+									globalContext?.industriesMenuLinks?.industriesMenuLinks?.map(
 										(item, keys) => (
 											<FooterMenuLinks
 												key={keys}
@@ -13738,7 +13744,7 @@ const Footer = () => {
 							whileInView={fadeIn}
 							className="text-sm text-white"
 						>
-							{context.themesOptionsContent.copyrightText}
+							{globalContext?.themesOptionsContent?.copyrightText}
 						</motion.p>
 					</div>
 					<div className="w-auto p-6">

@@ -3,14 +3,14 @@
 // Imports
 import {FC} from "react";
 import {motion} from "framer-motion";
-import {useContentContext} from "@/context/context";
+import {useGlobalContext} from "@/context/Global";
 import {initial, stagger, fadeInUp} from "@/animations/animations";
 
 // Components
 import Paragraph from "@/components/Frontend/Elements/Paragraph";
 
 const Standard: FC = () => {
-	const context = useContentContext();
+	const globalContext = useGlobalContext();
 
 	// Stripe
 	const path: string = "/api/stripe/checkoutSession";
@@ -26,10 +26,12 @@ const Standard: FC = () => {
 			>
 				<div className="self-center px-3">
 					<h3 className="mb-4 text-3xl font-bold text-center">
-						{context.stripePlans.stripeStandardPlan?.name}
+						{globalContext?.stripePlans?.stripeStandardPlan?.name}
 					</h3>
 					<Paragraph
-						content={context.stripePlans.stripeStandardPlan?.description}
+						content={
+							globalContext?.stripePlans?.stripeStandardPlan?.description
+						}
 						tailwindStyling="text-base my-4 text-darkBlue max-w-sm text-center"
 					/>
 				</div>
@@ -89,11 +91,14 @@ const Standard: FC = () => {
 						viewport={{once: true}}
 					>
 						<span className="text-5xl font-extrabold leading-none text-darkBlue">
-							£{context.stripePlans.stripeStandardPlan?.price}
+							£{globalContext?.stripePlans?.stripeStandardPlan?.price}
 						</span>
 						<span className="text-darkBlue">
 							/
-							{context.stripePlans.stripeStandardPlan?.paymentRecurringInterval}
+							{
+								globalContext?.stripePlans?.stripeStandardPlan
+									?.paymentRecurringInterval
+							}
 						</span>
 					</motion.span>
 					<form className="w-full" action={path} method={method}>
@@ -101,7 +106,7 @@ const Standard: FC = () => {
 							className="hidden"
 							type="hidden"
 							name="plan"
-							value={`${context.stripePlans.stripeStandardPlan?.name}`}
+							value={`${globalContext?.stripePlans?.stripeStandardPlan?.name}`}
 						/>
 						<button
 							type="submit"

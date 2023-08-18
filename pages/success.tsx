@@ -7,24 +7,10 @@ import type {NextPage, GetStaticProps} from "next";
 import {IContentContext} from "@/types/context/public/index";
 import {ContentContext, flexibleContentType} from "@/context/context";
 
-// Stripe
-import {getAllStripePaymentPlans} from "@/functions/Backend/stripe/GetStripePaymentPlans";
-
 // Firebase
 import {getAuth} from "firebase/auth";
 import {IFirebaseUser} from "@/types/firebase";
 import {addNewFirebaseUserDocument} from "@/functions/Backend/firebase/addDocument";
-
-// Queries Functions
-import {
-	getMainMenuLinks,
-	getNavbarMenuLinks,
-	getFooterMenuLinks,
-	getIndustriesMenuLinks,
-} from "@/functions/Frontend/graphql/Queries/GetAllMenuLinks";
-import {getThemesOptionsContent} from "@/functions/Frontend/graphql/Queries/GetAllThemesOptions";
-import {getContentSliderBlogPostsPostsContent} from "@/functions/Frontend/graphql/Queries/GetAllContentSliderPosts";
-import {getAllOperationalInsightsContent} from "@/functions/Frontend/graphql/Queries/GetAllOperationalInsightsPostsSlugs";
 
 // Components
 import LayoutTwo from "@/components/Frontend/Layout/LayoutTwo";
@@ -33,14 +19,7 @@ import CheckoutWelcome from "@/components/Frontend/CheckoutWelcome";
 const success: NextPage<IContentContext> = ({
 	seo,
 	content,
-	stripePlans,
-	footerMenuLinks,
-	navbarMenuLinks,
-	industriesMenuLinks,
-	operationalInsights,
-	themesOptionsContent,
 	postTypeFlexibleContent,
-	contentSliderPostsContent,
 }) => {
 	const auth = getAuth();
 	const router = useRouter();
@@ -112,14 +91,7 @@ const success: NextPage<IContentContext> = ({
 			value={{
 				seo: seo,
 				content: content,
-				stripePlans: stripePlans,
-				navbarMenuLinks: navbarMenuLinks,
-				footerMenuLinks: footerMenuLinks,
-				industriesMenuLinks: industriesMenuLinks,
-				operationalInsights: operationalInsights,
-				themesOptionsContent: themesOptionsContent,
 				postTypeFlexibleContent: postTypeFlexibleContent,
-				contentSliderPostsContent: contentSliderPostsContent,
 			}}
 		>
 			<motion.div
@@ -151,40 +123,11 @@ const success: NextPage<IContentContext> = ({
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-	// Fetch remaining content simultaneously
-	const [
-		stripePlans,
-		mainMenuLinks,
-		navbarMenuLinks,
-		footerMenuLinks,
-		industriesMenuLinks,
-		themesOptionsContent,
-		operationalInsights,
-		contentSliderPostsContent,
-	] = await Promise.all([
-		getAllStripePaymentPlans(),
-		getMainMenuLinks(),
-		getNavbarMenuLinks(),
-		getFooterMenuLinks(),
-		getIndustriesMenuLinks(),
-		getThemesOptionsContent(),
-		getAllOperationalInsightsContent(),
-		getContentSliderBlogPostsPostsContent(),
-	]);
-
 	return {
 		props: {
 			seo: null,
-			stripePlans,
 			content: null,
-			mainMenuLinks,
-			navbarMenuLinks,
 			pageTitle: null,
-			footerMenuLinks,
-			operationalInsights,
-			industriesMenuLinks,
-			themesOptionsContent,
-			contentSliderPostsContent,
 			postTypeFlexibleContent: flexibleContentType?.pages,
 		},
 		revalidate: 60,

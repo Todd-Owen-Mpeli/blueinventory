@@ -1,25 +1,25 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 // Imports
 import {FC} from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {motion} from "framer-motion";
-import {getAuth, signOut} from "firebase/auth";
-import {useContentContext} from "@/context/context";
+import {useGlobalContext} from "@/context/Global";
 import {IMobileNavbar} from "@/types/components/public";
 import styles from "@/styles/components/Hero.module.scss";
 import {initial, fadeInUp, stagger} from "@/animations/animations";
 
+// Firebase
+import {User, getAuth, signOut} from "firebase/auth";
+
 // Components
 import NavbarMenuLinks from "@/components/Frontend/Elements/NavbarMenuLinks";
 
-const mobileNavbarTwo: FC<IMobileNavbar> = ({
-	user,
-	signedInUser,
-	revealMobileMenu,
-}) => {
+const mobileNavbarTwo: FC<IMobileNavbar> = ({revealMobileMenu}) => {
 	const auth = getAuth();
 	// eslint-disable-next-line react-hooks/rules-of-hooks
-	const context = useContentContext();
+	const globalContext = useGlobalContext();
+	const signedInUser: User | null = auth.currentUser;
 
 	// Handles User Logout
 	const handleLogout = () => {
@@ -63,11 +63,11 @@ const mobileNavbarTwo: FC<IMobileNavbar> = ({
 										data-dropdown-placement="bottom-start"
 										className="object-cover object-top w-10 h-10 transition-all duration-200 ease-in-out rounded-full cursor-pointer ring-4 ring-lightBlue hover:ring-goldPrime"
 										src={
-											user?.photoURL
-												? user?.photoURL
+											auth.currentUser?.photoURL
+												? auth.currentUser?.photoURL
 												: `/img/Logos/BlueInventory favicon Two.png`
 										}
-										alt={`${user?.displayName} profile image`}
+										alt={`${auth.currentUser?.displayName} profile image`}
 									/>
 									<span className="bottom-[-6px] left-7 absolute w-3.5 h-3.5 bg-brightGreenDash border-2 border-white rounded-full " />
 								</button>
@@ -111,22 +111,24 @@ const mobileNavbarTwo: FC<IMobileNavbar> = ({
 								</Link>
 							</motion.li>
 
-							{context.navbarMenuLinks.navbarMenuLinks?.length > 0 ? (
-								context.navbarMenuLinks.navbarMenuLinks?.map((item, keys) => (
-									<motion.li
-										key={keys}
-										initial={initial}
-										whileInView={fadeInUp}
-										viewport={{once: true}}
-										className="mb-1 border-b-[1px] border-goldPrime border-opacity-50"
-									>
-										<NavbarMenuLinks
-											url={item?.node?.url}
-											label={item?.node?.label}
-											tailwindStyling="block py-4 text-base text-white hover:text-goldPrime"
-										/>
-									</motion.li>
-								))
+							{globalContext?.navbarMenuLinks?.navbarMenuLinks?.length > 0 ? (
+								globalContext?.navbarMenuLinks?.navbarMenuLinks?.map(
+									(item, keys) => (
+										<motion.li
+											key={keys}
+											initial={initial}
+											whileInView={fadeInUp}
+											viewport={{once: true}}
+											className="mb-1 border-b-[1px] border-goldPrime border-opacity-50"
+										>
+											<NavbarMenuLinks
+												url={item?.node?.url}
+												label={item?.node?.label}
+												tailwindStyling="block py-4 text-base text-white hover:text-goldPrime"
+											/>
+										</motion.li>
+									)
+								)
 							) : (
 								<></>
 							)}
@@ -150,9 +152,9 @@ const mobileNavbarTwo: FC<IMobileNavbar> = ({
 								Tel:
 								<Link
 									className="leading-none text-white transition-all duration-500 ease-in-out text-tiny hover:text-goldPrime"
-									href={`tel:${context.themesOptionsContent.phoneNumber}`}
+									href={`tel:${globalContext?.themesOptionsContent?.phoneNumber}`}
 								>
-									{context.themesOptionsContent.phoneNumber}
+									{globalContext?.themesOptionsContent?.phoneNumber}
 								</Link>
 							</motion.span>
 							<motion.span
@@ -164,9 +166,9 @@ const mobileNavbarTwo: FC<IMobileNavbar> = ({
 								Email:
 								<Link
 									className="leading-none text-white transition-all duration-500 ease-in-out text-tiny hover:text-goldPrime"
-									href={`mailto:${context.themesOptionsContent.email}`}
+									href={`mailto:${globalContext?.themesOptionsContent?.email}`}
 								>
-									{context.themesOptionsContent.email}
+									{globalContext?.themesOptionsContent?.email}
 								</Link>
 							</motion.span>
 						</motion.div>
@@ -182,7 +184,7 @@ const mobileNavbarTwo: FC<IMobileNavbar> = ({
 								viewport={{once: true}}
 								className="inline-block px-1"
 							>
-								<Link href={context.themesOptionsContent.facebookLink}>
+								<Link href={globalContext?.themesOptionsContent?.facebookLink}>
 									<svg
 										height="100%"
 										className="w-5 h-5"
@@ -210,7 +212,7 @@ const mobileNavbarTwo: FC<IMobileNavbar> = ({
 								viewport={{once: true}}
 								className="inline-block px-1"
 							>
-								<Link href={context.themesOptionsContent.twitterLink}>
+								<Link href={globalContext?.themesOptionsContent?.twitterLink}>
 									<svg
 										height="100%"
 										className="w-5 h-5"
@@ -238,7 +240,7 @@ const mobileNavbarTwo: FC<IMobileNavbar> = ({
 								viewport={{once: true}}
 								className="inline-block px-1"
 							>
-								<Link href={context.themesOptionsContent.linkedinLink}>
+								<Link href={globalContext?.themesOptionsContent?.linkedinLink}>
 									<svg
 										height="100%"
 										style={{

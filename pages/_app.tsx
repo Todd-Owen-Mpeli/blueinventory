@@ -3,12 +3,29 @@ import postHog from "posthog-js";
 import type {AppProps} from "next/app";
 import {client} from "@/config/apollo";
 import {useState, useEffect} from "react";
-import {Auth, getAuth} from "firebase/auth";
+import {GlobalContext} from "@/context/Global";
 import {PostHogProvider} from "posthog-js/react";
 import {NextRouter, useRouter} from "next/router";
 import {ApolloProvider} from "@apollo/client/react";
+import {IErrorPageContent, IGlobalContext} from "@/types/context/public";
+
+// Firebase
+import {Auth, getAuth} from "firebase/auth";
+import {FirebaseContext} from "@/context/Firebase";
 import initializeFirebase from "@/firebase/firebase";
-import {IErrorPageContent} from "@/types/context/public";
+import {getUserDocument} from "@/functions/Backend/firebase/getUserDocument";
+
+// Queries Functions
+import {
+	getMainMenuLinks,
+	getNavbarMenuLinks,
+	getFooterMenuLinks,
+	getIndustriesMenuLinks,
+} from "@/functions/Frontend/graphql/Queries/GetAllMenuLinks";
+import {getAllStripePaymentPlans} from "@/functions/Backend/stripe/GetStripePaymentPlans";
+import {getContentSliderBlogPostsPostsContent} from "@/functions/Frontend/graphql/Queries/GetAllContentSliderPosts";
+import {getAllOperationalInsightsContent} from "@/functions/Frontend/graphql/Queries/GetAllOperationalInsightsPostsSlugs";
+import {getThemesOptionsContent} from "@/functions/Frontend/graphql/Queries/GetAllThemesOptions";
 
 // Styling
 import "../styles/globals.scss";
@@ -59,7 +76,7 @@ const protectedPages: Array<string> = [
 	"/dashboard/categories",
 ];
 
-export default function App({Component, pageProps}: AppProps) {
+export const App = ({Component, pageProps, globalProps}: any) => {
 	const router: NextRouter = useRouter();
 	// FIREBASE //
 	// Initializing Firebase
@@ -68,18 +85,31 @@ export default function App({Component, pageProps}: AppProps) {
 	// Retrieving Firebase User Details
 	const auth: Auth = getAuth();
 	const [signedInUser, setSignedInUser] = useState(false);
+	const [userData, setUserData] = useState<any | null>(null);
 
 	/* Check if user is SIGNED IN if 
-	True Displays Signed In Navbar */
+	True Displays Signed In Navbar. 
+	______________________________________
+
+	Also Gets Current Signed-in user's document
+	data from cloud firestore database. */
 	useEffect(() => {
-		auth?.onAuthStateChanged((currentUser) => {
-			currentUser ? setSignedInUser(true) : setSignedInUser(false);
-		});
+		const unsubscribe = auth?.onAuthStateChanged(
+			async (currentUser: any | null) => {
+				if (currentUser) {
+					setSignedInUser(true);
+					const userData = await getUserDocument(currentUser?.uid);
+					setUserData(userData);
+				} else {
+					setSignedInUser(false);
+				}
+			}
+		);
 
 		return () => {
-			signedInUser;
+			unsubscribe();
 		};
-	}, [signedInUser, auth]);
+	}, [auth]);
 
 	// PROTECTED PAGES //
 	// Public Pages: Get the pathname
@@ -184,19 +214,49 @@ export default function App({Component, pageProps}: AppProps) {
 		);
 	}
 
+	// Ensure userData is not null before using it in JSX
+	if (!userData) {
+		return (
+			<>
+				<Loading />
+			</>
+		); // or some other loading indicator
+	}
+
 	return (
 		<ApolloProvider client={client}>
 			<PostHogProvider client={postHog}>
 				{isProtectedPage && signedInUser ? (
 					<>
-						<Loading />
-						<Component {...pageProps} />
+						<FirebaseContext.Provider
+							value={{
+								userData: userData,
+								signedInUser: signedInUser,
+							}}
+						>
+							<Loading />
+							<Component {...pageProps} />
+						</FirebaseContext.Provider>
 					</>
 				) : isPublicPage ? (
-					<div>
-						<Loading />
-						<Component {...pageProps} />
-					</div>
+					<>
+						<GlobalContext.Provider
+							value={{
+								stripePlans: globalProps?.stripePlans,
+								mainMenuLinks: globalProps?.mainMenuLinks,
+								navbarMenuLinks: globalProps?.navbarMenuLinks,
+								footerMenuLinks: globalProps?.footerMenuLinks,
+								industriesMenuLinks: globalProps?.industriesMenuLinks,
+								themesOptionsContent: globalProps?.themesOptionsContent,
+								operationalInsights: globalProps?.operationalInsights,
+								contentSliderPostsContent:
+									globalProps?.contentSliderPostsContent,
+							}}
+						>
+							<Loading />
+							<Component {...pageProps} />
+						</GlobalContext.Provider>
+					</>
 				) : (
 					<>
 						<Loading />
@@ -212,4 +272,53 @@ export default function App({Component, pageProps}: AppProps) {
 			</PostHogProvider>
 		</ApolloProvider>
 	);
-}
+};
+
+App.getInitialProps = async ({Component, ctx}: any) => {
+	let pageProps = {};
+
+	if (Component.getInitialProps) {
+		pageProps = await Component.getInitialProps(ctx);
+	}
+
+	// PUBLIC PAGES //
+	/* Fetch all global content
+	remaining content simultaneously */
+	const [
+		stripePlans,
+		mainMenuLinks,
+		navbarMenuLinks,
+		footerMenuLinks,
+		industriesMenuLinks,
+		themesOptionsContent,
+		operationalInsights,
+		contentSliderPostsContent,
+	] = await Promise.all([
+		getAllStripePaymentPlans(),
+		getMainMenuLinks(),
+		getNavbarMenuLinks(),
+		getFooterMenuLinks(),
+		getIndustriesMenuLinks(),
+		getThemesOptionsContent(),
+		getAllOperationalInsightsContent(),
+		getContentSliderBlogPostsPostsContent(),
+	]);
+
+	const globalProps: IGlobalContext = {
+		stripePlans: stripePlans,
+		mainMenuLinks: mainMenuLinks,
+		navbarMenuLinks: navbarMenuLinks,
+		footerMenuLinks: footerMenuLinks,
+		industriesMenuLinks: industriesMenuLinks,
+		themesOptionsContent: themesOptionsContent,
+		operationalInsights: operationalInsights,
+		contentSliderPostsContent: contentSliderPostsContent,
+	};
+
+	return {
+		pageProps,
+		globalProps,
+	};
+};
+
+export default App;

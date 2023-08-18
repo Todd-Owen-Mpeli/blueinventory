@@ -58,6 +58,18 @@ export type IFooterMenuLinks = {
 	];
 };
 
+export type IMainMenuLinks = {
+	navbarMenuLinks: [
+		{
+			node: {
+				id: string;
+				url: string;
+				label: string;
+			};
+		}
+	];
+};
+
 export type INavbarMenuLinks = {
 	navbarMenuLinks: [
 		{
@@ -89,13 +101,16 @@ export type IErrorPageContent = {
 export interface IContentContext {
 	seo: ISeo;
 	content: IContent;
+	postTypeFlexibleContent: IPostTypeFlexibleContent;
+}
+export interface IGlobalContext {
 	stripePlans: IStripePlans;
+	mainMenuLinks: IMainMenuLinks | any;
 	navbarMenuLinks: INavbarMenuLinks;
 	footerMenuLinks: IFooterMenuLinks;
 	industriesMenuLinks: IIndustriesMenuLinks;
 	operationalInsights: IOperationalInsights;
 	themesOptionsContent: IThemesOptionsContent;
-	postTypeFlexibleContent: IpostTypeFlexibleContent;
 	contentSliderPostsContent: IContentSliderPostsContent;
 }
 
@@ -154,7 +169,7 @@ export type IThemesOptionsContent = {
 	copyrightText: string;
 };
 
-export type IpostTypeFlexibleContent = {
+export type IPostTypeFlexibleContent = {
 	postTypeFlexibleContent: string;
 };
 

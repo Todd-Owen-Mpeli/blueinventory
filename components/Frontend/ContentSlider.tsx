@@ -15,44 +15,44 @@ import dateFormat from "dateformat";
 import DOMPurify from "isomorphic-dompurify";
 import {motion} from "framer-motion";
 import React, {useEffect, useRef} from "react";
-import {useContentContext} from "@/context/context";
+import {useGlobalContext} from "@/context/Global";
 import styles from "@/styles/components/ContentSlider.module.scss";
 
 const ContentSlider = () => {
-	const context = useContentContext();
+	const globalContext = useGlobalContext();
 
 	// Content Slide One
 	const contentOne = {
-		uri: context.contentSliderPostsContent?.content[0]?.uri,
-		date: context.contentSliderPostsContent?.content[0]?.date,
-		title: context.contentSliderPostsContent?.content[0]?.title,
+		uri: globalContext?.contentSliderPostsContent?.content[0]?.uri,
+		date: globalContext?.contentSliderPostsContent?.content[0]?.date,
+		title: globalContext?.contentSliderPostsContent?.content[0]?.title,
 		paragraph:
-			context.contentSliderPostsContent?.content[0].template.flexibleContent
-				.flexibleContent[1].paragraph,
+			globalContext?.contentSliderPostsContent?.content[0].template
+				.flexibleContent.flexibleContent[1].paragraph,
 		titleTwo:
-			context.contentSliderPostsContent?.content[0].template.flexibleContent
-				.flexibleContent[1].title,
+			globalContext?.contentSliderPostsContent?.content[0].template
+				.flexibleContent.flexibleContent[1].title,
 
 		backgroundVideoUrl:
-			context.contentSliderPostsContent?.content[0]?.template.flexibleContent
-				.flexibleContent[0].backgroundVideoUrl,
+			globalContext?.contentSliderPostsContent?.content[0]?.template
+				.flexibleContent.flexibleContent[0].backgroundVideoUrl,
 		backgroundImageOrVideo:
-			context.contentSliderPostsContent?.content[0]?.template.flexibleContent
-				.flexibleContent[0].backgroundImageOrVideo,
+			globalContext?.contentSliderPostsContent?.content[0]?.template
+				.flexibleContent.flexibleContent[0].backgroundImageOrVideo,
 		backgroundImage: {
 			altText:
-				context.contentSliderPostsContent?.content[0]?.template.flexibleContent
-					.flexibleContent[0].backgroundImage.altText,
+				globalContext?.contentSliderPostsContent?.content[0]?.template
+					.flexibleContent.flexibleContent[0].backgroundImage.altText,
 			sourceUrl:
-				context.contentSliderPostsContent?.content[0]?.template.flexibleContent
-					.flexibleContent[0].backgroundImage.sourceUrl,
+				globalContext?.contentSliderPostsContent?.content[0]?.template
+					.flexibleContent.flexibleContent[0].backgroundImage.sourceUrl,
 			mediaDetails: {
 				height:
-					context.contentSliderPostsContent?.content[0]?.template
+					globalContext?.contentSliderPostsContent?.content[0]?.template
 						.flexibleContent.flexibleContent[0].backgroundImage.mediaDetails
 						.height,
 				width:
-					context.contentSliderPostsContent?.content[0]?.template
+					globalContext?.contentSliderPostsContent?.content[0]?.template
 						.flexibleContent.flexibleContent[0].backgroundImage.mediaDetails
 						.width,
 			},
@@ -61,36 +61,36 @@ const ContentSlider = () => {
 
 	// Content Slide Two
 	const contentTwo = {
-		uri: context.contentSliderPostsContent?.content[1]?.uri,
-		date: context.contentSliderPostsContent?.content[1]?.date,
-		title: context.contentSliderPostsContent?.content[1]?.title,
+		uri: globalContext?.contentSliderPostsContent?.content[1]?.uri,
+		date: globalContext?.contentSliderPostsContent?.content[1]?.date,
+		title: globalContext?.contentSliderPostsContent?.content[1]?.title,
 		paragraph:
-			context.contentSliderPostsContent?.content[1].template.flexibleContent
-				.flexibleContent[1].paragraph,
+			globalContext?.contentSliderPostsContent?.content[1].template
+				.flexibleContent.flexibleContent[1].paragraph,
 		titleTwo:
-			context.contentSliderPostsContent?.content[1].template.flexibleContent
-				.flexibleContent[1].title,
+			globalContext?.contentSliderPostsContent?.content[1].template
+				.flexibleContent.flexibleContent[1].title,
 
 		backgroundVideoUrl:
-			context.contentSliderPostsContent?.content[1]?.template.flexibleContent
-				.flexibleContent[0]?.backgroundVideoUrl,
+			globalContext?.contentSliderPostsContent?.content[1]?.template
+				.flexibleContent.flexibleContent[0]?.backgroundVideoUrl,
 		backgroundImageOrVideo:
-			context.contentSliderPostsContent?.content[1]?.template.flexibleContent
-				.flexibleContent[0].backgroundImageOrVideo,
+			globalContext?.contentSliderPostsContent?.content[1]?.template
+				.flexibleContent.flexibleContent[0].backgroundImageOrVideo,
 		backgroundImage: {
 			altText:
-				context.contentSliderPostsContent?.content[1]?.template.flexibleContent
-					.flexibleContent[0].backgroundImage.altText,
+				globalContext?.contentSliderPostsContent?.content[1]?.template
+					.flexibleContent.flexibleContent[0].backgroundImage.altText,
 			sourceUrl:
-				context.contentSliderPostsContent?.content[1]?.template.flexibleContent
-					.flexibleContent[0].backgroundImage.sourceUrl,
+				globalContext?.contentSliderPostsContent?.content[1]?.template
+					.flexibleContent.flexibleContent[0].backgroundImage.sourceUrl,
 			mediaDetails: {
 				height:
-					context.contentSliderPostsContent?.content[1]?.template
+					globalContext?.contentSliderPostsContent?.content[1]?.template
 						.flexibleContent.flexibleContent[0].backgroundImage.mediaDetails
 						.height,
 				width:
-					context.contentSliderPostsContent?.content[1]?.template
+					globalContext?.contentSliderPostsContent?.content[1]?.template
 						.flexibleContent.flexibleContent[0].backgroundImage.mediaDetails
 						.width,
 			},
@@ -99,36 +99,36 @@ const ContentSlider = () => {
 
 	// Content Slide Three
 	const contentThree = {
-		uri: context.contentSliderPostsContent?.content[2]?.uri,
-		date: context.contentSliderPostsContent?.content[2]?.date,
-		title: context.contentSliderPostsContent?.content[2]?.title,
+		uri: globalContext?.contentSliderPostsContent?.content[2]?.uri,
+		date: globalContext?.contentSliderPostsContent?.content[2]?.date,
+		title: globalContext?.contentSliderPostsContent?.content[2]?.title,
 		paragraph:
-			context.contentSliderPostsContent?.content[2].template.flexibleContent
-				.flexibleContent[1].paragraph,
+			globalContext?.contentSliderPostsContent?.content[2].template
+				.flexibleContent.flexibleContent[1].paragraph,
 		titleTwo:
-			context.contentSliderPostsContent?.content[2].template.flexibleContent
-				.flexibleContent[1].title,
+			globalContext?.contentSliderPostsContent?.content[2].template
+				.flexibleContent.flexibleContent[1].title,
 
 		backgroundVideoUrl:
-			context.contentSliderPostsContent?.content[2]?.template.flexibleContent
-				.flexibleContent[0]?.backgroundVideoUrl,
+			globalContext?.contentSliderPostsContent?.content[2]?.template
+				.flexibleContent.flexibleContent[0]?.backgroundVideoUrl,
 		backgroundImageOrVideo:
-			context.contentSliderPostsContent?.content[2]?.template.flexibleContent
-				.flexibleContent[0].backgroundImageOrVideo,
+			globalContext?.contentSliderPostsContent?.content[2]?.template
+				.flexibleContent.flexibleContent[0].backgroundImageOrVideo,
 		backgroundImage: {
 			altText:
-				context.contentSliderPostsContent?.content[2]?.template.flexibleContent
-					.flexibleContent[0].backgroundImage.altText,
+				globalContext?.contentSliderPostsContent?.content[2]?.template
+					.flexibleContent.flexibleContent[0].backgroundImage.altText,
 			sourceUrl:
-				context.contentSliderPostsContent?.content[2]?.template.flexibleContent
-					.flexibleContent[0].backgroundImage.sourceUrl,
+				globalContext?.contentSliderPostsContent?.content[2]?.template
+					.flexibleContent.flexibleContent[0].backgroundImage.sourceUrl,
 			mediaDetails: {
 				height:
-					context.contentSliderPostsContent?.content[2]?.template
+					globalContext?.contentSliderPostsContent?.content[2]?.template
 						.flexibleContent.flexibleContent[0].backgroundImage.mediaDetails
 						.height,
 				width:
-					context.contentSliderPostsContent?.content[2]?.template
+					globalContext?.contentSliderPostsContent?.content[2]?.template
 						.flexibleContent.flexibleContent[0].backgroundImage.mediaDetails
 						.width,
 			},

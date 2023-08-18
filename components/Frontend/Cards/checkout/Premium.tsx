@@ -1,16 +1,16 @@
 "use client";
 
 // Imports
-import {motion} from "framer-motion";
 import {FC} from "react";
-import {useContentContext} from "@/context/context";
+import {motion} from "framer-motion";
+import {useGlobalContext} from "@/context/Global";
 import {initial, stagger, fadeInUp} from "@/animations/animations";
 
 // Components
 import Paragraph from "@/components/Frontend/Elements/Paragraph";
 
 const Premium: FC = () => {
-	const context = useContentContext();
+	const globalContext = useGlobalContext();
 
 	// Stripe
 	const path: string = "/api/stripe/checkoutSession";
@@ -26,10 +26,10 @@ const Premium: FC = () => {
 			>
 				<div className="self-center px-3">
 					<h3 className="mb-4 text-3xl font-bold text-center">
-						{context.stripePlans.stripePremiumPlan?.name}
+						{globalContext?.stripePlans?.stripePremiumPlan?.name}
 					</h3>
 					<Paragraph
-						content={context.stripePlans.stripePremiumPlan?.description}
+						content={globalContext?.stripePlans?.stripePremiumPlan?.description}
 						tailwindStyling="text-base my-4 text-darkBlue max-w-sm text-center"
 					/>
 				</div>
@@ -89,10 +89,14 @@ const Premium: FC = () => {
 						viewport={{once: true}}
 					>
 						<span className="text-5xl font-extrabold leading-none text-darkBlue">
-							£{context.stripePlans.stripePremiumPlan?.price}
+							£{globalContext?.stripePlans?.stripePremiumPlan?.price}
 						</span>
 						<span className="text-darkBlue">
-							/{context.stripePlans.stripePremiumPlan?.paymentRecurringInterval}
+							/
+							{
+								globalContext?.stripePlans?.stripePremiumPlan
+									?.paymentRecurringInterval
+							}
 						</span>
 					</motion.span>
 					<form className="w-full" action={path} method={method}>
@@ -100,7 +104,7 @@ const Premium: FC = () => {
 							className="hidden"
 							type="hidden"
 							name="plan"
-							value={`${context.stripePlans.stripePremiumPlan?.name}`}
+							value={`${globalContext?.stripePlans?.stripePremiumPlan?.name}`}
 						/>
 						<button
 							type="submit"

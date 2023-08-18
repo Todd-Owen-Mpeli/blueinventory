@@ -1,7 +1,7 @@
 // Imports
 import {motion} from "framer-motion";
 import {IDashboard} from "@/types/context/dashboard";
-import {NextPage, GetStaticProps} from "next";
+import {NextPage} from "next";
 import {DashboardContext, layoutTailwindStyling} from "@/context/dashboard";
 
 // Components
@@ -27,12 +27,6 @@ const documents: NextPage<IDashboard> = () => {
 			</motion.section>
 		</DashboardContext.Provider>
 	);
-};
-
-export const getStaticProps: GetStaticProps = async () => {
-	return {
-		props: {},
-	};
 };
 
 export default documents;
