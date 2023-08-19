@@ -1,38 +1,22 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 // Imports
+import {FC} from "react";
 import Image from "next/image";
 import {motion} from "framer-motion";
-import {FC, useEffect, useState} from "react";
 import {initial, stagger, fadeInUp} from "@/animations/animations";
 
 // Firebase
 import {getAuth} from "firebase/auth";
-import {getUserDocument} from "@/functions/Backend/firebase/getUserDocument";
+import {useFirebaseContext} from "@/context/Firebase";
 
 // Components
 import Paragraph from "@/components/Frontend/Elements/Paragraph";
 
 const PersonalInformation: FC = () => {
-	const auth = getAuth();
-	const [userData, setUserData] = useState<any | null>(null);
-
-	/* Gets Current Signed-in user's document
-	data from cloud firestore database */
-	useEffect(() => {
-		const unsubscribe = auth?.onAuthStateChanged(
-			async (currentUser: any | null) => {
-				const userData: any = await getUserDocument(currentUser?.uid);
-				setUserData(userData);
-			}
-		);
-
-		return () => {
-			unsubscribe();
-		};
-	}, [auth]);
+	const firebaseContext = useFirebaseContext();
 
 	// Ensure userData is not null before using it in JSX
-	if (!userData) {
+	if (!firebaseContext?.userData) {
 		return <div>Loading...</div>; // or some other loading indicator
 	}
 
@@ -65,11 +49,11 @@ const PersonalInformation: FC = () => {
 									data-dropdown-placement="bottom-start"
 									className="object-cover object-top w-[40px] h-[40px] lg:w-[175px] lg:h-[175px] transition-all duration-200 ease-in-out rounded-full ring-4 ring-white max-w-none"
 									src={
-										userData?.photoURL
-											? userData?.photoURL
+										firebaseContext?.userData?.photoURL
+											? firebaseContext?.userData?.photoURL
 											: `/img/Logos/BlueInventory favicon Two.png`
 									}
-									alt={`${userData?.displayName} profile image`}
+									alt={`${firebaseContext?.userData?.displayName} profile image`}
 								/>
 								<span className="bottom-[-2px] left-[7.75rem] absolute w-6 h-6 bg-brightGreenDash border-2 border-white rounded-full" />
 							</div>
@@ -138,7 +122,7 @@ const PersonalInformation: FC = () => {
 									viewport={{once: true}}
 									className="text-base font-medium text-left text-darkGrey"
 								>
-									{userData?.displayName}
+									{firebaseContext?.userData?.displayName}
 								</motion.h3>
 							</div>
 							<div className="flex flex-col gap-2">
@@ -156,7 +140,7 @@ const PersonalInformation: FC = () => {
 									viewport={{once: true}}
 									className="text-base font-medium text-left text-darkGrey"
 								>
-									{userData?.email}
+									{firebaseContext?.userData?.email}
 								</motion.h3>
 							</div>
 							<div className="flex flex-col gap-2">
@@ -194,7 +178,7 @@ const PersonalInformation: FC = () => {
 									viewport={{once: true}}
 									className="text-base font-medium text-left text-darkGrey"
 								>
-									{userData?.creationTime}
+									{firebaseContext?.userData?.creationTime}
 								</motion.h3>
 							</div>
 							<div className="flex flex-col gap-2">
@@ -212,8 +196,8 @@ const PersonalInformation: FC = () => {
 									viewport={{once: true}}
 									className="text-base font-medium text-left text-darkGrey"
 								>
-									{userData?.phoneNumber === null
-										? userData?.phoneNumber
+									{firebaseContext?.userData?.phoneNumber === null
+										? firebaseContext?.userData?.phoneNumber
 										: "none"}
 								</motion.h3>
 							</div>

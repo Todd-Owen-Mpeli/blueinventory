@@ -15,6 +15,8 @@ import {IErrorPageContent, IGlobalContext} from "@/types/context/public";
 
 // Firebase
 import {Auth, getAuth} from "firebase/auth";
+import {IFirebaseUser} from "@/types/firebase";
+import {FirebaseContext} from "@/context/Firebase";
 import initializeFirebase from "@/firebase/firebase";
 
 // Stripe Functions
@@ -93,18 +95,24 @@ export default function App({
 	// Retrieving Firebase User Details
 	const auth: Auth = getAuth();
 	const [signedInUser, setSignedInUser] = useState(false);
+	const [userData, setUserData] = useState<IFirebaseUser | null>(null);
 
 	/* Check if user is SIGNED IN if 
 	True Displays Signed In Navbar */
 	useEffect(() => {
-		auth?.onAuthStateChanged((currentUser: any) => {
-			currentUser ? setSignedInUser(true) : setSignedInUser(false);
+		const unsubscribe = auth?.onAuthStateChanged((currentUser: any) => {
+			if (currentUser) {
+				setSignedInUser(true);
+				setUserData(currentUser);
+			} else {
+				setSignedInUser(false);
+			}
 		});
 
 		return () => {
-			signedInUser;
+			unsubscribe();
 		};
-	}, [signedInUser, auth]);
+	}, [auth]);
 
 	// PROTECTED PAGES //
 	// Public Pages: Get the pathname
@@ -212,41 +220,49 @@ export default function App({
 	return (
 		<ApolloProvider client={client}>
 			<PostHogProvider client={postHog}>
-				{isProtectedPage && signedInUser ? (
-					<>
-						<Loading />
-						<Component {...pageProps} />
-					</>
-				) : isPublicPage ? (
-					<GlobalContext.Provider
-						value={{
-							stripePlans: globalProps?.stripePlans,
-							mainMenuLinks: globalProps?.mainMenuLinks,
-							navbarMenuLinks: globalProps?.navbarMenuLinks,
-							footerMenuLinks: globalProps?.footerMenuLinks,
-							industriesMenuLinks: globalProps?.industriesMenuLinks,
-							themesOptionsContent: globalProps?.themesOptionsContent,
-							operationalInsights: globalProps?.operationalInsights,
-							contentSliderPostsContent: globalProps?.contentSliderPostsContent,
-						}}
-					>
+				<FirebaseContext.Provider
+					value={{
+						userData: userData,
+						signedInUser: signedInUser,
+					}}
+				>
+					{isProtectedPage && signedInUser ? (
 						<>
 							<Loading />
 							<Component {...pageProps} />
 						</>
-					</GlobalContext.Provider>
-				) : (
-					<>
-						<Loading />
-						<ErrorPage
-							title={errorPageContent?.title}
-							paragraph={errorPageContent?.paragraph}
-							buttonLink={errorPageContent?.buttonLink}
-							buttonLinkTwo={errorPageContent?.buttonLinkTwo}
-							backgroundImage={errorPageContent?.backgroundImage}
-						/>
-					</>
-				)}
+					) : isPublicPage ? (
+						<GlobalContext.Provider
+							value={{
+								stripePlans: globalProps?.stripePlans,
+								mainMenuLinks: globalProps?.mainMenuLinks,
+								navbarMenuLinks: globalProps?.navbarMenuLinks,
+								footerMenuLinks: globalProps?.footerMenuLinks,
+								industriesMenuLinks: globalProps?.industriesMenuLinks,
+								themesOptionsContent: globalProps?.themesOptionsContent,
+								operationalInsights: globalProps?.operationalInsights,
+								contentSliderPostsContent:
+									globalProps?.contentSliderPostsContent,
+							}}
+						>
+							<>
+								<Loading />
+								<Component {...pageProps} />
+							</>
+						</GlobalContext.Provider>
+					) : (
+						<>
+							<Loading />
+							<ErrorPage
+								title={errorPageContent?.title}
+								paragraph={errorPageContent?.paragraph}
+								buttonLink={errorPageContent?.buttonLink}
+								buttonLinkTwo={errorPageContent?.buttonLinkTwo}
+								backgroundImage={errorPageContent?.backgroundImage}
+							/>
+						</>
+					)}
+				</FirebaseContext.Provider>
 			</PostHogProvider>
 		</ApolloProvider>
 	);

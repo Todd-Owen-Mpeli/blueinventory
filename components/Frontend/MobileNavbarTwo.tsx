@@ -3,23 +3,24 @@ import {FC} from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {motion} from "framer-motion";
-import {getAuth, signOut} from "firebase/auth";
 import {useGlobalContext} from "@/context/Global";
 import {IMobileNavbar} from "@/types/components/public";
 import styles from "@/styles/components/Hero.module.scss";
 import {initial, fadeInUp, stagger} from "@/animations/animations";
 
+// Firebase
+import {getAuth, signOut} from "firebase/auth";
+import {useFirebaseContext} from "@/context/Firebase";
+
 // Components
 import NavbarMenuLinks from "@/components/Frontend/Elements/NavbarMenuLinks";
 
-const mobileNavbarTwo: FC<IMobileNavbar> = ({
-	user,
-	signedInUser,
-	revealMobileMenu,
-}) => {
+const mobileNavbarTwo: FC<IMobileNavbar> = ({revealMobileMenu}) => {
 	const auth = getAuth();
 	// eslint-disable-next-line react-hooks/rules-of-hooks
 	const globalContext = useGlobalContext();
+	// eslint-disable-next-line react-hooks/rules-of-hooks
+	const firebaseContext = useFirebaseContext();
 
 	// Handles User Logout
 	const handleLogout = () => {
@@ -47,7 +48,7 @@ const mobileNavbarTwo: FC<IMobileNavbar> = ({
 			<nav className="relative flex flex-col justify-between w-full h-full px-6 py-6 overflow-x-hidden overflow-y-auto bg-darkBlue">
 				<div>
 					<div className="flex flex-col items-baseline justify-center mb-16">
-						{signedInUser ? (
+						{firebaseContext?.signedInUser ? (
 							<motion.div
 								initial={initial}
 								whileInView={fadeInUp}
@@ -63,11 +64,11 @@ const mobileNavbarTwo: FC<IMobileNavbar> = ({
 										data-dropdown-placement="bottom-start"
 										className="object-cover object-top w-10 h-10 transition-all duration-200 ease-in-out rounded-full cursor-pointer ring-4 ring-lightBlue hover:ring-goldPrime"
 										src={
-											user?.photoURL
-												? user?.photoURL
+											firebaseContext?.userData?.photoURL
+												? firebaseContext?.userData?.photoURL
 												: `/img/Logos/BlueInventory favicon Two.png`
 										}
-										alt={`${user?.displayName} profile image`}
+										alt={`${firebaseContext?.userData?.displayName} profile image`}
 									/>
 									<span className="bottom-[-6px] left-7 absolute w-3.5 h-3.5 bg-brightGreenDash border-2 border-white rounded-full " />
 								</button>
@@ -266,7 +267,7 @@ const mobileNavbarTwo: FC<IMobileNavbar> = ({
 					</div>
 					<div className="flex flex-col justify-end gap-4 mb-4">
 						<div>
-							{signedInUser ? (
+							{firebaseContext?.signedInUser ? (
 								<div className="flex flex-col items-baseline justify-between gap-x-4 gap-y-8">
 									<motion.div
 										initial={initial}

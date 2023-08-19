@@ -453,8 +453,6 @@ export interface ILogos {
 }
 
 export interface IMobileNavbar {
-	user: IFirebaseUser | null;
-	signedInUser: boolean;
 	revealMobileMenu: boolean;
 }
 

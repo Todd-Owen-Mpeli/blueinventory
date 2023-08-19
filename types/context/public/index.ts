@@ -103,7 +103,6 @@ export interface IContentContext {
 	content: IContent;
 	postTypeFlexibleContent: IPostTypeFlexibleContent;
 }
-
 export interface IGlobalContext {
 	stripePlans: IStripePlans;
 	mainMenuLinks: IMainMenuLinks;
@@ -113,6 +112,10 @@ export interface IGlobalContext {
 	operationalInsights: IOperationalInsights;
 	themesOptionsContent: IThemesOptionsContent;
 	contentSliderPostsContent: IContentSliderPostsContent;
+}
+export interface IFirebaseContext {
+	userData: any | null;
+	signedInUser: boolean;
 }
 
 export type IIndustriesMenuLinks = {

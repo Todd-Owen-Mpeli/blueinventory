@@ -11,12 +11,12 @@ import Image from "next/image";
 import {FC, useState} from "react";
 import {motion} from "framer-motion";
 import {useRouter} from "next/router";
-import {useDashboardContext} from "@/context/dashboard";
 import {ITailwindStyling} from "@/types/Dashboard/components";
 import {dashboardMainMenuLinks} from "@/dashboard/content/menuLinks";
 
 // Firebase
 import {getAuth, signOut} from "firebase/auth";
+import {useFirebaseContext} from "@/context/Firebase";
 
 // Components
 import NavbarLinks from "../components/Elements/NavbarLinks";
@@ -27,7 +27,7 @@ import styles from "@/styles/pages/Dashboard.module.scss";
 const MainNavigation: FC = () => {
 	const auth = getAuth();
 	const router = useRouter();
-	const context = useDashboardContext();
+	const firebaseContext = useFirebaseContext();
 	const [displayMenuText, setDisplayMenuText] = useState(false);
 
 	// Handles User Logout
@@ -62,6 +62,11 @@ const MainNavigation: FC = () => {
 		mainLinksStyling:
 			"flex flex-col items-center gap-4 text-sm px-2 py-3 text-white transition-all duration-200 ease-in-out rounded hover:text-white",
 	};
+
+	// Ensure userData is not null before using it in JSX
+	if (!firebaseContext?.userData) {
+		return <div>Loading...</div>; // or some other loading indicator
+	}
 
 	return (
 		<>
@@ -105,16 +110,16 @@ const MainNavigation: FC = () => {
 											width={500}
 											height={500}
 											className={
-												auth.currentUser?.uid
+												firebaseContext?.userData?.uid
 													? tailwindStyling.ringStyling + ` ring-darkBlue`
 													: tailwindStyling.ringStyling + ` ring-pinkRed`
 											}
 											src={
-												auth.currentUser?.photoURL
-													? auth.currentUser?.photoURL
+												firebaseContext?.userData?.photoURL
+													? firebaseContext?.userData?.photoURL
 													: `/img/Logos/default-avatar-profile.jpg`
 											}
-											alt={`${auth.currentUser?.displayName} profile image`}
+											alt={`${firebaseContext?.userData?.displayName} profile image`}
 										/>
 									</motion.div>
 									<motion.h3
@@ -127,7 +132,7 @@ const MainNavigation: FC = () => {
 												: `hidden`
 										}
 									>
-										{auth.currentUser?.displayName}
+										{firebaseContext?.userData?.displayName}
 									</motion.h3>
 								</div>
 							</div>

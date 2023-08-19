@@ -1,6 +1,6 @@
 // Imports
-import {IGlobalContext} from "@/types/context/public";
 import {createContext, useContext} from "react";
+import {IGlobalContext} from "@/types/context/public";
 
 export const GlobalContext = createContext<IGlobalContext | undefined>(
 	undefined
