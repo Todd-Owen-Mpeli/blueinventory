@@ -1,19 +1,24 @@
 // Imports
-import postHog from "posthog-js";
 import type {AppProps} from "next/app";
 import {client} from "@/config/apollo";
 import {useState, useEffect} from "react";
-import {GlobalContext} from "@/context/Global";
-import {PostHogProvider} from "posthog-js/react";
 import {NextRouter, useRouter} from "next/router";
 import {ApolloProvider} from "@apollo/client/react";
+
+// PostHog Cookies Policy
+import postHog from "posthog-js";
+import {PostHogProvider} from "posthog-js/react";
+
+// Global Context Provider
+import {GlobalContext} from "@/context/Global";
 import {IErrorPageContent, IGlobalContext} from "@/types/context/public";
 
 // Firebase
 import {Auth, getAuth} from "firebase/auth";
-import {FirebaseContext} from "@/context/Firebase";
 import initializeFirebase from "@/firebase/firebase";
-import {getUserDocument} from "@/functions/Backend/firebase/getUserDocument";
+
+// Stripe Functions
+import {getAllStripePaymentPlans} from "@/functions/Backend/stripe/GetStripePaymentPlans";
 
 // Queries Functions
 import {
@@ -22,10 +27,9 @@ import {
 	getFooterMenuLinks,
 	getIndustriesMenuLinks,
 } from "@/functions/Frontend/graphql/Queries/GetAllMenuLinks";
-import {getAllStripePaymentPlans} from "@/functions/Backend/stripe/GetStripePaymentPlans";
+import {getThemesOptionsContent} from "@/functions/Frontend/graphql/Queries/GetAllThemesOptions";
 import {getContentSliderBlogPostsPostsContent} from "@/functions/Frontend/graphql/Queries/GetAllContentSliderPosts";
 import {getAllOperationalInsightsContent} from "@/functions/Frontend/graphql/Queries/GetAllOperationalInsightsPostsSlugs";
-import {getThemesOptionsContent} from "@/functions/Frontend/graphql/Queries/GetAllThemesOptions";
 
 // Styling
 import "../styles/globals.scss";
@@ -76,7 +80,11 @@ const protectedPages: Array<string> = [
 	"/dashboard/categories",
 ];
 
-export const App = ({Component, pageProps, globalProps}: any) => {
+export default function App({
+	Component,
+	pageProps,
+	globalProps,
+}: AppProps | any) {
 	const router: NextRouter = useRouter();
 	// FIREBASE //
 	// Initializing Firebase
@@ -85,31 +93,18 @@ export const App = ({Component, pageProps, globalProps}: any) => {
 	// Retrieving Firebase User Details
 	const auth: Auth = getAuth();
 	const [signedInUser, setSignedInUser] = useState(false);
-	const [userData, setUserData] = useState<any | null>(null);
 
 	/* Check if user is SIGNED IN if 
-	True Displays Signed In Navbar. 
-	______________________________________
-
-	Also Gets Current Signed-in user's document
-	data from cloud firestore database. */
+	True Displays Signed In Navbar */
 	useEffect(() => {
-		const unsubscribe = auth?.onAuthStateChanged(
-			async (currentUser: any | null) => {
-				if (currentUser) {
-					setSignedInUser(true);
-					const userData = await getUserDocument(currentUser?.uid);
-					setUserData(userData);
-				} else {
-					setSignedInUser(false);
-				}
-			}
-		);
+		auth?.onAuthStateChanged((currentUser: any) => {
+			currentUser ? setSignedInUser(true) : setSignedInUser(false);
+		});
 
 		return () => {
-			unsubscribe();
+			signedInUser;
 		};
-	}, [auth]);
+	}, [signedInUser, auth]);
 
 	// PROTECTED PAGES //
 	// Public Pages: Get the pathname
@@ -214,49 +209,32 @@ export const App = ({Component, pageProps, globalProps}: any) => {
 		);
 	}
 
-	// Ensure userData is not null before using it in JSX
-	if (!userData) {
-		return (
-			<>
-				<Loading />
-			</>
-		); // or some other loading indicator
-	}
-
 	return (
 		<ApolloProvider client={client}>
 			<PostHogProvider client={postHog}>
 				{isProtectedPage && signedInUser ? (
 					<>
-						<FirebaseContext.Provider
-							value={{
-								userData: userData,
-								signedInUser: signedInUser,
-							}}
-						>
-							<Loading />
-							<Component {...pageProps} />
-						</FirebaseContext.Provider>
+						<Loading />
+						<Component {...pageProps} />
 					</>
 				) : isPublicPage ? (
-					<>
-						<GlobalContext.Provider
-							value={{
-								stripePlans: globalProps?.stripePlans,
-								mainMenuLinks: globalProps?.mainMenuLinks,
-								navbarMenuLinks: globalProps?.navbarMenuLinks,
-								footerMenuLinks: globalProps?.footerMenuLinks,
-								industriesMenuLinks: globalProps?.industriesMenuLinks,
-								themesOptionsContent: globalProps?.themesOptionsContent,
-								operationalInsights: globalProps?.operationalInsights,
-								contentSliderPostsContent:
-									globalProps?.contentSliderPostsContent,
-							}}
-						>
+					<GlobalContext.Provider
+						value={{
+							stripePlans: globalProps?.stripePlans,
+							mainMenuLinks: globalProps?.mainMenuLinks,
+							navbarMenuLinks: globalProps?.navbarMenuLinks,
+							footerMenuLinks: globalProps?.footerMenuLinks,
+							industriesMenuLinks: globalProps?.industriesMenuLinks,
+							themesOptionsContent: globalProps?.themesOptionsContent,
+							operationalInsights: globalProps?.operationalInsights,
+							contentSliderPostsContent: globalProps?.contentSliderPostsContent,
+						}}
+					>
+						<>
 							<Loading />
 							<Component {...pageProps} />
-						</GlobalContext.Provider>
-					</>
+						</>
+					</GlobalContext.Provider>
 				) : (
 					<>
 						<Loading />
@@ -272,7 +250,7 @@ export const App = ({Component, pageProps, globalProps}: any) => {
 			</PostHogProvider>
 		</ApolloProvider>
 	);
-};
+}
 
 App.getInitialProps = async ({Component, ctx}: any) => {
 	let pageProps = {};
@@ -320,5 +298,3 @@ App.getInitialProps = async ({Component, ctx}: any) => {
 		globalProps,
 	};
 };
-
-export default App;

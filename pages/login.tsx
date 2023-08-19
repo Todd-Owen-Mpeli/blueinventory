@@ -16,6 +16,7 @@ import {getAllFlexibleContentComponents} from "@/functions/Frontend/graphql/Quer
 
 // Components
 import Login from "@/components/Frontend/Login";
+import {useGlobalContext} from "@/context/Global";
 
 const login: NextPage<IContentContext> = ({
 	seo,

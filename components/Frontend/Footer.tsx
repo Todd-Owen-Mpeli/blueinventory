@@ -11,8 +11,6 @@ import FooterMenuLinks from "@/components/Frontend/Elements/FooterMenuLinks";
 const Footer = () => {
 	const globalContext = useGlobalContext();
 
-	// console.log(globalContext?.themesOptionsContent);
-
 	return (
 		<section className="relative px-0 overflow-hidden bg-darkerBlueTwo">
 			<div className="absolute top-[15px] md:top-[-140px] right-[-220px] md:right-[-145px] opacity-10">
@@ -13543,9 +13541,9 @@ const Footer = () => {
 								</div>
 								<Link
 									className="font-medium tracking-wide text-white hover:text-goldPrime"
-									href={`mailto:${globalContext?.themesOptionsContent?.email}`}
+									href={`mailto:${globalContext.themesOptionsContent.email}`}
 								>
-									{globalContext?.themesOptionsContent?.email}
+									{globalContext.themesOptionsContent.email}
 								</Link>
 							</motion.div>
 							<motion.div
@@ -13573,9 +13571,9 @@ const Footer = () => {
 								</div>
 								<Link
 									className="font-medium tracking-wide text-white hover:text-goldPrime"
-									href={`mailto:${globalContext?.themesOptionsContent?.emailTwo}`}
+									href={`mailto:${globalContext.themesOptionsContent.emailTwo}`}
 								>
-									{globalContext?.themesOptionsContent?.emailTwo}
+									{globalContext.themesOptionsContent.emailTwo}
 								</Link>
 							</motion.div>
 						</div>
@@ -13592,7 +13590,7 @@ const Footer = () => {
 							>
 								<Link
 									className="inline-block text-green"
-									href={globalContext?.themesOptionsContent?.facebookLink}
+									href={globalContext.themesOptionsContent.facebookLink}
 								>
 									<svg
 										height="100%"
@@ -13622,7 +13620,7 @@ const Footer = () => {
 							>
 								<Link
 									className="inline-block text-green"
-									href={globalContext?.themesOptionsContent?.twitterLink}
+									href={globalContext.themesOptionsContent.twitterLink}
 								>
 									<svg
 										height="100%"
@@ -13652,7 +13650,7 @@ const Footer = () => {
 							>
 								<Link
 									className="inline-block text-green"
-									href={globalContext?.themesOptionsContent?.linkedinLink}
+									href={globalContext.themesOptionsContent.linkedinLink}
 								>
 									<svg
 										height="100%"
@@ -13688,8 +13686,8 @@ const Footer = () => {
 								viewport={{once: true}}
 								className="flex flex-col gap-2 py-6"
 							>
-								{globalContext?.footerMenuLinks?.footerMenuLinks?.length > 0 ? (
-									globalContext?.footerMenuLinks?.footerMenuLinks?.map(
+								{globalContext.footerMenuLinks.footerMenuLinks?.length > 0 ? (
+									globalContext.footerMenuLinks.footerMenuLinks?.map(
 										(item, keys) => (
 											<FooterMenuLinks
 												key={keys}
@@ -13714,9 +13712,9 @@ const Footer = () => {
 								viewport={{once: true}}
 								className="flex flex-col gap-2 py-6"
 							>
-								{globalContext?.industriesMenuLinks?.industriesMenuLinks
-									?.length > 0 ? (
-									globalContext?.industriesMenuLinks?.industriesMenuLinks?.map(
+								{globalContext.industriesMenuLinks.industriesMenuLinks?.length >
+								0 ? (
+									globalContext.industriesMenuLinks.industriesMenuLinks?.map(
 										(item, keys) => (
 											<FooterMenuLinks
 												key={keys}
@@ -13744,7 +13742,7 @@ const Footer = () => {
 							whileInView={fadeIn}
 							className="text-sm text-white"
 						>
-							{globalContext?.themesOptionsContent?.copyrightText}
+							{globalContext.themesOptionsContent.copyrightText}
 						</motion.p>
 					</div>
 					<div className="w-auto p-6">

@@ -1,8 +1,4 @@
 // Firebase
-export interface IFirebaseUserProvider {
-	userData: IFirebaseUser | undefined;
-	signedInUser: boolean | undefined;
-}
 export interface IFirebaseUser {
 	uid: string;
 	email: string;

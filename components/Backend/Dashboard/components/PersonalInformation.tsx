@@ -1,25 +1,44 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react-hooks/exhaustive-deps */
 // Imports
-import {FC} from "react";
 import Image from "next/image";
 import {motion} from "framer-motion";
+import {FC, useEffect, useState} from "react";
 import {initial, stagger, fadeInUp} from "@/animations/animations";
 
 // Firebase
-import {useFirebaseContext} from "@/context/Firebase";
+import {getAuth} from "firebase/auth";
+import {getUserDocument} from "@/functions/Backend/firebase/getUserDocument";
 
 // Components
 import Paragraph from "@/components/Frontend/Elements/Paragraph";
 
 const PersonalInformation: FC = () => {
+	const auth = getAuth();
+	const [userData, setUserData] = useState<any | null>(null);
+
 	/* Gets Current Signed-in user's document
 	data from cloud firestore database */
-	const firebaseUserContext = useFirebaseContext();
+	useEffect(() => {
+		const unsubscribe = auth?.onAuthStateChanged(
+			async (currentUser: any | null) => {
+				const userData: any = await getUserDocument(currentUser?.uid);
+				setUserData(userData);
+			}
+		);
+
+		return () => {
+			unsubscribe();
+		};
+	}, [auth]);
+
+	// Ensure userData is not null before using it in JSX
+	if (!userData) {
+		return <div>Loading...</div>; // or some other loading indicator
+	}
 
 	return (
 		<>
-			<div className="flex flex-col justify-between gap-4">
+			<div className="flex flex-col justify-between gap-4=">
 				<div>
 					<div>
 						<Image
@@ -34,31 +53,31 @@ const PersonalInformation: FC = () => {
 						initial={initial}
 						whileInView={stagger}
 						viewport={{once: true}}
-						className="flex items-center justify-between gap-4 px-6 py-4"
+						className="flex items-center justify-between gap-4 p-6"
 					>
 						<div className="relative flex flex-row items-center justify-between gap-4">
-							<div className="hidden lg:block absolute top-[-85px] left-[5px]">
+							<div className="hidden lg:block absolute top-[-110px] left-[20px] ">
 								<Image
 									width="100"
 									height="100"
 									id="avatarButton"
 									data-dropdown-toggle="userDropdown"
 									data-dropdown-placement="bottom-start"
-									className="object-contain object-top w-[40px] h-[40px] lg:w-[125px] lg:h-[125px] transition-all duration-200 ease-in-out rounded-full ring-4 ring-white max-w-none"
+									className="object-cover object-top w-[40px] h-[40px] lg:w-[175px] lg:h-[175px] transition-all duration-200 ease-in-out rounded-full ring-4 ring-white max-w-none"
 									src={
-										firebaseUserContext.userData?.photoURL
-											? firebaseUserContext.userData?.photoURL
+										userData?.photoURL
+											? userData?.photoURL
 											: `/img/Logos/BlueInventory favicon Two.png`
 									}
-									alt={`${firebaseUserContext.userData?.displayName} profile image`}
+									alt={`${userData?.displayName} profile image`}
 								/>
-								<span className="bottom-[-2px] left-[5.5rem] absolute w-5 h-5 bg-brightGreenDash border-2 border-white rounded-full" />
+								<span className="bottom-[-2px] left-[7.75rem] absolute w-6 h-6 bg-brightGreenDash border-2 border-white rounded-full" />
 							</div>
 							<motion.div
 								initial={initial}
 								whileInView={stagger}
 								viewport={{once: true}}
-								className="flex flex-col items-baseline justify-between ml-0 lg:ml-[10rem]"
+								className="flex flex-col items-baseline justify-between ml-0 lg:ml-[13rem]"
 							>
 								<motion.h1
 									initial={initial}
@@ -119,7 +138,7 @@ const PersonalInformation: FC = () => {
 									viewport={{once: true}}
 									className="text-base font-medium text-left text-darkGrey"
 								>
-									{firebaseUserContext.userData?.displayName}
+									{userData?.displayName}
 								</motion.h3>
 							</div>
 							<div className="flex flex-col gap-2">
@@ -137,7 +156,7 @@ const PersonalInformation: FC = () => {
 									viewport={{once: true}}
 									className="text-base font-medium text-left text-darkGrey"
 								>
-									{firebaseUserContext.userData?.email}
+									{userData?.email}
 								</motion.h3>
 							</div>
 							<div className="flex flex-col gap-2">
@@ -175,7 +194,7 @@ const PersonalInformation: FC = () => {
 									viewport={{once: true}}
 									className="text-base font-medium text-left text-darkGrey"
 								>
-									{firebaseUserContext.userData?.creationTime}
+									{userData?.creationTime}
 								</motion.h3>
 							</div>
 							<div className="flex flex-col gap-2">
@@ -193,8 +212,8 @@ const PersonalInformation: FC = () => {
 									viewport={{once: true}}
 									className="text-base font-medium text-left text-darkGrey"
 								>
-									{firebaseUserContext.userData?.phoneNumber === null
-										? firebaseUserContext.userData?.phoneNumber
+									{userData?.phoneNumber === null
+										? userData?.phoneNumber
 										: "none"}
 								</motion.h3>
 							</div>

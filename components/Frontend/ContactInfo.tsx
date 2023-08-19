@@ -52,7 +52,7 @@ const ContactInfo: FC<IContactInfo> = ({title, paragraph}) => {
 								Address
 							</motion.h3>
 							<Paragraph
-								content={globalContext?.themesOptionsContent?.address}
+								content={globalContext.themesOptionsContent.address}
 								tailwindStyling="w-full lg:max-w-3xl text-center lg:text-left text-black"
 							/>
 						</motion.div>
@@ -82,9 +82,9 @@ const ContactInfo: FC<IContactInfo> = ({title, paragraph}) => {
 								>
 									<Link
 										className="font-medium tracking-wide text-black hover:text-goldPrime"
-										href={`mailto:${globalContext?.themesOptionsContent?.email}`}
+										href={`mailto:${globalContext.themesOptionsContent.email}`}
 									>
-										{globalContext?.themesOptionsContent?.email}
+										{globalContext.themesOptionsContent.email}
 									</Link>
 								</motion.div>
 								<motion.div
@@ -94,9 +94,9 @@ const ContactInfo: FC<IContactInfo> = ({title, paragraph}) => {
 								>
 									<Link
 										className="font-medium tracking-wide text-black hover:text-goldPrime"
-										href={`mailto:${globalContext?.themesOptionsContent?.emailTwo}`}
+										href={`mailto:${globalContext.themesOptionsContent.emailTwo}`}
 									>
-										{globalContext?.themesOptionsContent?.emailTwo}
+										{globalContext.themesOptionsContent.emailTwo}
 									</Link>
 								</motion.div>
 							</motion.div>

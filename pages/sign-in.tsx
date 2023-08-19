@@ -7,6 +7,7 @@ import {ContentContext, flexibleContentType} from "@/context/context";
 // Components
 import SignIn from "@/components/Frontend/SignIn";
 import LayoutTwo from "@/components/Frontend/Layout/LayoutTwo";
+import {useGlobalContext} from "@/context/Global";
 
 const signInPage: NextPage<IContentContext> = ({
 	seo,

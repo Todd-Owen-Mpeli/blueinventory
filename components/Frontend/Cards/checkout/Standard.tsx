@@ -26,12 +26,10 @@ const Standard: FC = () => {
 			>
 				<div className="self-center px-3">
 					<h3 className="mb-4 text-3xl font-bold text-center">
-						{globalContext?.stripePlans?.stripeStandardPlan?.name}
+						{globalContext.stripePlans.stripeStandardPlan?.name}
 					</h3>
 					<Paragraph
-						content={
-							globalContext?.stripePlans?.stripeStandardPlan?.description
-						}
+						content={globalContext.stripePlans.stripeStandardPlan?.description}
 						tailwindStyling="text-base my-4 text-darkBlue max-w-sm text-center"
 					/>
 				</div>
@@ -91,12 +89,12 @@ const Standard: FC = () => {
 						viewport={{once: true}}
 					>
 						<span className="text-5xl font-extrabold leading-none text-darkBlue">
-							£{globalContext?.stripePlans?.stripeStandardPlan?.price}
+							£{globalContext.stripePlans.stripeStandardPlan?.price}
 						</span>
 						<span className="text-darkBlue">
 							/
 							{
-								globalContext?.stripePlans?.stripeStandardPlan
+								globalContext.stripePlans.stripeStandardPlan
 									?.paymentRecurringInterval
 							}
 						</span>
@@ -106,7 +104,7 @@ const Standard: FC = () => {
 							className="hidden"
 							type="hidden"
 							name="plan"
-							value={`${globalContext?.stripePlans?.stripeStandardPlan?.name}`}
+							value={`${globalContext.stripePlans.stripeStandardPlan?.name}`}
 						/>
 						<button
 							type="submit"

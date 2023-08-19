@@ -1,7 +1,7 @@
 // Imports
 import React from "react";
 import {motion} from "framer-motion";
-import {NextPage} from "next";
+import {NextPage, GetStaticProps} from "next";
 import {IDashboard} from "@/types/context/dashboard";
 import {DashboardContext, layoutTailwindStyling} from "@/context/dashboard";
 
@@ -33,6 +33,12 @@ const dashboard: NextPage<IDashboard> = () => {
 			</motion.section>
 		</DashboardContext.Provider>
 	);
+};
+
+export const getStaticProps: GetStaticProps = async () => {
+	return {
+		props: {},
+	};
 };
 
 export default dashboard;

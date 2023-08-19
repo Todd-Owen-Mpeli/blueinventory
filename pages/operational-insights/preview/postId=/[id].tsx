@@ -4,12 +4,24 @@ import {motion} from "framer-motion";
 import type {GetServerSideProps, NextPage} from "next";
 import {IContentContext} from "@/types/context/public";
 import {getAuthToken} from "@/functions/Frontend/cookies/cookies";
-import {postType, ContentContext, flexibleContentType} from "@/context/context";
 import {getLoginPreviewRedirectUrl} from "@/functions/Frontend/redirects/redirects";
+import {postType, ContentContext, flexibleContentType} from "@/context/context";
+import {getAllStripePaymentPlans} from "@/functions/Backend/stripe/GetStripePaymentPlans";
 
 // Mutations Functions
 import {getAllPreviewSeoContent} from "@/functions/Frontend/graphql/Mutations/GetAllPreviewSeoContent";
 import {getAllPreviewFlexibleContentComponents} from "@/functions/Frontend/graphql/Mutations/GetAllPreviewFlexibleContentComponents";
+
+// Queries Functions
+import {
+	getMainMenuLinks,
+	getNavbarMenuLinks,
+	getFooterMenuLinks,
+	getIndustriesMenuLinks,
+} from "@/functions/Frontend/graphql/Queries/GetAllMenuLinks";
+import {getThemesOptionsContent} from "@/functions/Frontend/graphql/Queries/GetAllThemesOptions";
+import {getContentSliderBlogPostsPostsContent} from "@/functions/Frontend/graphql/Queries/GetAllContentSliderPosts";
+import {getAllOperationalInsightsContent} from "@/functions/Frontend/graphql/Queries/GetAllOperationalInsightsPostsSlugs";
 
 // Components
 import Layout from "@/components/Frontend/Layout/Layout";
@@ -79,9 +91,38 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 				flexibleContentType?.previewPost
 			);
 
+		// Fetch remaining content simultaneously
+		const [
+			stripePlans,
+			mainMenuLinks,
+			navbarMenuLinks,
+			footerMenuLinks,
+			industriesMenuLinks,
+			themesOptionsContent,
+			operationalInsights,
+			contentSliderPostsContent,
+		] = await Promise.all([
+			getAllStripePaymentPlans(),
+			getMainMenuLinks(),
+			getNavbarMenuLinks(),
+			getFooterMenuLinks(),
+			getIndustriesMenuLinks(),
+			getThemesOptionsContent(),
+			getAllOperationalInsightsContent(),
+			getContentSliderBlogPostsPostsContent(),
+		]);
+
 		return {
 			props: {
+				stripePlans,
+				mainMenuLinks,
+				navbarMenuLinks,
+				footerMenuLinks,
 				seo: seoContent,
+				operationalInsights,
+				industriesMenuLinks,
+				themesOptionsContent,
+				contentSliderPostsContent,
 				content: flexibleContentComponents?.content,
 				postTypeFlexibleContent: flexibleContentType?.previewPost,
 			},

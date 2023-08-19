@@ -2,8 +2,8 @@
 import {FC} from "react";
 import Link from "next/link";
 import {motion} from "framer-motion";
-import {IPricing} from "@/types/components/public";
 import {useGlobalContext} from "@/context/Global";
+import {IPricing} from "@/types/components/public";
 import {initial, fadeInUp, stagger} from "@/animations/animations";
 
 // Components
@@ -135,12 +135,11 @@ const Pricing: FC<IPricing> = ({
 										viewport={{once: true}}
 										className="block mb-2 text-2xl font-semibold text-darkBlue"
 									>
-										{globalContext?.stripePlans?.stripeStandardPlan?.name}
+										{globalContext.stripePlans.stripeStandardPlan?.name}
 									</motion.span>
 									<Paragraph
 										content={
-											globalContext?.stripePlans?.stripeStandardPlan
-												?.description
+											globalContext.stripePlans.stripeStandardPlan?.description
 										}
 										tailwindStyling="mb-6 mt-3 text-black"
 									/>
@@ -151,12 +150,12 @@ const Pricing: FC<IPricing> = ({
 										className="flex items-end"
 									>
 										<span className="text-5xl font-extrabold leading-none text-darkBlue">
-											£{globalContext?.stripePlans?.stripeStandardPlan?.price}
+											£{globalContext.stripePlans.stripeStandardPlan?.price}
 										</span>
 										<span className="text-darkBlue">
 											/
 											{
-												globalContext?.stripePlans?.stripeStandardPlan
+												globalContext.stripePlans.stripeStandardPlan
 													?.paymentRecurringInterval
 											}
 										</span>
@@ -347,11 +346,11 @@ const Pricing: FC<IPricing> = ({
 										viewport={{once: true}}
 										className="block mb-2 text-2xl font-semibold text-white"
 									>
-										{globalContext?.stripePlans?.stripePremiumPlan?.name}
+										{globalContext.stripePlans.stripePremiumPlan?.name}
 									</motion.span>
 									<Paragraph
 										content={
-											globalContext?.stripePlans?.stripePremiumPlan?.description
+											globalContext.stripePlans.stripePremiumPlan?.description
 										}
 										tailwindStyling="mb-6 mt-3 text-white"
 									/>
@@ -362,12 +361,12 @@ const Pricing: FC<IPricing> = ({
 										className="flex items-end"
 									>
 										<span className="text-5xl font-extrabold leading-none text-white">
-											£{globalContext?.stripePlans?.stripePremiumPlan?.price}
+											£{globalContext.stripePlans.stripePremiumPlan?.price}
 										</span>
 										<span className="text-white">
 											/
 											{
-												globalContext?.stripePlans?.stripePremiumPlan
+												globalContext.stripePlans.stripePremiumPlan
 													?.paymentRecurringInterval
 											}
 										</span>

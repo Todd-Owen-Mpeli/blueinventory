@@ -15,6 +15,7 @@ import {addNewFirebaseUserDocument} from "@/functions/Backend/firebase/addDocume
 // Components
 import LayoutTwo from "@/components/Frontend/Layout/LayoutTwo";
 import CheckoutWelcome from "@/components/Frontend/CheckoutWelcome";
+import {useGlobalContext} from "@/context/Global";
 
 const success: NextPage<IContentContext> = ({
 	seo,
@@ -32,7 +33,7 @@ const success: NextPage<IContentContext> = ({
 	useEffect(() => {
 		/* Check if user is signed in
 		and sets the Signed In details */
-		const unsubscribe = auth?.onAuthStateChanged((currentUser) => {
+		const unsubscribe = auth?.onAuthStateChanged((currentUser: any) => {
 			currentUser ? setSignedInUser(true) : setSignedInUser(false);
 
 			// Firebase User Details

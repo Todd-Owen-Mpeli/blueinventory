@@ -59,7 +59,7 @@ export type IFooterMenuLinks = {
 };
 
 export type IMainMenuLinks = {
-	navbarMenuLinks: [
+	mainMenuLinks: [
 		{
 			node: {
 				id: string;
@@ -103,9 +103,10 @@ export interface IContentContext {
 	content: IContent;
 	postTypeFlexibleContent: IPostTypeFlexibleContent;
 }
+
 export interface IGlobalContext {
 	stripePlans: IStripePlans;
-	mainMenuLinks: IMainMenuLinks | any;
+	mainMenuLinks: IMainMenuLinks;
 	navbarMenuLinks: INavbarMenuLinks;
 	footerMenuLinks: IFooterMenuLinks;
 	industriesMenuLinks: IIndustriesMenuLinks;

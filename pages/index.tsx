@@ -16,12 +16,15 @@ import {getAllFlexibleContentComponents} from "@/functions/Frontend/graphql/Quer
 // Components
 import Layout from "@/components/Frontend/Layout/Layout";
 import RenderFlexibleContent from "@/components/Frontend/FlexibleContent/RenderFlexibleContent";
+import {useGlobalContext} from "@/context/Global";
 
 const HomePage: NextPage<IContentContext> = ({
 	seo,
 	content,
 	postTypeFlexibleContent,
 }) => {
+	const globalContext = useGlobalContext();
+
 	return (
 		<ContentContext.Provider
 			value={{

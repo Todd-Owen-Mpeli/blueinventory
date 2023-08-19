@@ -7,6 +7,7 @@ import {postType, ContentContext, flexibleContentType} from "@/context/context";
 // Queries Functions
 import {getAllSeoContent} from "@/functions/Frontend/graphql/Queries/GetAllSeoPagesContent";
 import {getAllIndustriesPageSlugs} from "@/functions/Frontend/graphql/Queries/GetAllIndustriesPageSlugs";
+
 import {getAllFlexibleContentComponents} from "@/functions/Frontend/graphql/Queries/GetAllFlexibleContentComponents";
 
 // Components

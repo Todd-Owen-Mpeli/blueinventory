@@ -1,8 +1,8 @@
 "use client";
 
 // Imports
-import {FC} from "react";
 import {motion} from "framer-motion";
+import {FC} from "react";
 import {useGlobalContext} from "@/context/Global";
 import {initial, stagger, fadeInUp} from "@/animations/animations";
 
@@ -26,10 +26,10 @@ const Premium: FC = () => {
 			>
 				<div className="self-center px-3">
 					<h3 className="mb-4 text-3xl font-bold text-center">
-						{globalContext?.stripePlans?.stripePremiumPlan?.name}
+						{globalContext.stripePlans.stripePremiumPlan?.name}
 					</h3>
 					<Paragraph
-						content={globalContext?.stripePlans?.stripePremiumPlan?.description}
+						content={globalContext.stripePlans.stripePremiumPlan?.description}
 						tailwindStyling="text-base my-4 text-darkBlue max-w-sm text-center"
 					/>
 				</div>
@@ -89,12 +89,12 @@ const Premium: FC = () => {
 						viewport={{once: true}}
 					>
 						<span className="text-5xl font-extrabold leading-none text-darkBlue">
-							£{globalContext?.stripePlans?.stripePremiumPlan?.price}
+							£{globalContext.stripePlans.stripePremiumPlan?.price}
 						</span>
 						<span className="text-darkBlue">
 							/
 							{
-								globalContext?.stripePlans?.stripePremiumPlan
+								globalContext.stripePlans.stripePremiumPlan
 									?.paymentRecurringInterval
 							}
 						</span>
@@ -104,7 +104,7 @@ const Premium: FC = () => {
 							className="hidden"
 							type="hidden"
 							name="plan"
-							value={`${globalContext?.stripePlans?.stripePremiumPlan?.name}`}
+							value={`${globalContext.stripePlans.stripePremiumPlan?.name}`}
 						/>
 						<button
 							type="submit"

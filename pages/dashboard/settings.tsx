@@ -1,6 +1,6 @@
 // Imports
-import {NextPage} from "next";
 import {motion} from "framer-motion";
+import {NextPage, GetStaticProps} from "next";
 import {IDashboard} from "@/types/context/dashboard";
 import {DashboardContext} from "@/context/dashboard";
 
@@ -40,6 +40,12 @@ const settings: NextPage<IDashboard> = () => {
 			</motion.section>
 		</DashboardContext.Provider>
 	);
+};
+
+export const getStaticProps: GetStaticProps = async () => {
+	return {
+		props: {},
+	};
 };
 
 export default settings;
