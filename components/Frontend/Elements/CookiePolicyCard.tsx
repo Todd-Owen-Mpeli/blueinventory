@@ -45,9 +45,7 @@ const CookiePolicyCard = () => {
 					Cookie Policy
 				</motion.h3>
 				<Paragraph
-					content={`<p>We use cookies to personalize content, to provide social media
-						features and to analyze our traffic. We also share information about
-						your use of our site with our partners.</p>`}
+					content={`<p>To provide the best experiences, we use technologies like cookies to store and/or access device information. Consenting to these technologies will allow us to process data such as browsing behaviour or unique IDs on this site. Not consenting or withdrawing consent, may adversely affect certain features and functions.</p>`}
 					tailwindStyling="mt-3 mb-6 text-xs text-left"
 				/>
 				<motion.div
