@@ -4,7 +4,6 @@ import Head from "next/head";
 import {ILayoutTwo} from "@/types/components/public";
 
 // Components
-import Footer from "@/components/Frontend/Footer";
 import NavbarTwo from "@/components/Frontend/NavbarTwo";
 
 const Layout: FC<ILayoutTwo> = ({children, pageTitle}) => {
@@ -19,8 +18,6 @@ const Layout: FC<ILayoutTwo> = ({children, pageTitle}) => {
 			<NavbarTwo />
 
 			<div className="pt-16">{children}</div>
-
-			<Footer />
 		</>
 	);
 };

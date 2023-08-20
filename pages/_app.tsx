@@ -37,7 +37,9 @@ import {getAllOperationalInsightsContent} from "@/functions/Frontend/graphql/Que
 import "../styles/globals.scss";
 
 // Components
+import Footer from "@/components/Frontend/Footer";
 import ErrorPage from "@/components/Frontend/Elements/ErrorPage";
+import CookiePolicyCard from "@/components/Frontend/Elements/CookiePolicyCard";
 
 // Check that PostHog is client-side (used to handle Next.js SSR)
 if (typeof window !== "undefined") {
@@ -246,8 +248,14 @@ export default function App({
 							}}
 						>
 							<>
+								{/* Cookie Policy Pop Up */}
+								{postHog.has_opted_in_capturing() ||
+								postHog.has_opted_out_capturing() ? null : (
+									<CookiePolicyCard />
+								)}
 								<Loading />
 								<Component {...pageProps} />
+								<Footer />
 							</>
 						</GlobalContext.Provider>
 					) : (

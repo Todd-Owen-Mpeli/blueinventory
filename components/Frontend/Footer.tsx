@@ -12,7 +12,7 @@ const Footer = () => {
 	const globalContext = useGlobalContext();
 
 	return (
-		<section className="relative px-0 overflow-hidden bg-darkerBlueTwo">
+		<section className="relative px-0 overflow-hidden border-t-4 bg-darkerBlueTwo border-goldPrime">
 			<div className="absolute top-[15px] md:top-[-140px] right-[-220px] md:right-[-145px] opacity-10">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -13788,13 +13788,6 @@ const Footer = () => {
 				alt={`Background blue wave Divider`}
 				src={`/svg/backgroundSVG/darkblue.svg`}
 				className={`block lg:hidden w-full mt-[-175px] sm:mt-[-285px] md:mt-[-340px]`}
-			/>
-			<Image
-				width={500}
-				height={500}
-				alt={`Background blue wave Divider`}
-				src={`/svg/backgroundSVG/darkblue-two.svg`}
-				className={`hidden lg:block w-full mt-0 lg:mt-[-145px] xl:mt-[-145px] 2xl:mt-[-185px]`}
 			/>
 		</section>
 	);
