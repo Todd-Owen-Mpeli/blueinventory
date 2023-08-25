@@ -13,6 +13,193 @@ const Tables: FC = () => {
 	const maxCount: number = 20;
 	const totalResults: number = 157;
 
+	const collection: {
+		Value: number;
+		ItemName: string;
+		Quantity: number;
+		Description: string;
+		Category: string;
+		Image: {
+			altText: string;
+			sourceUrl: string;
+			mediaDetails: {
+				height: number;
+				width: number;
+			};
+		};
+	}[] = [
+		{
+			ItemName: "Cozy Sofa",
+			Quantity: 1,
+			Description:
+				"A plush sofa upholstered in soft fabric, perfect for lounging and relaxation.",
+			Value: 800,
+			Category: "Living Room Furniture",
+			Image: {
+				altText: "",
+				sourceUrl:
+					"https://cmsblueinventory.com/wp-content/uploads/2023/04/pexels-linkedin-sales-navigator-2182970-scaled.jpg",
+				mediaDetails: {
+					height: 500,
+					width: 500,
+				},
+			},
+		},
+		{
+			ItemName: "Sleek Dining Table",
+			Quantity: 1,
+			Description:
+				"A modern dining table with a glass top and metal legs, suitable for both casual meals and formal gatherings.",
+			Value: 450,
+			Category: "Dining Room Furniture",
+			Image: {
+				altText: "",
+				sourceUrl:
+					"https://cmsblueinventory.com/wp-content/uploads/2023/04/pexels-linkedin-sales-navigator-2182970-scaled.jpg",
+				mediaDetails: {
+					height: 500,
+					width: 500,
+				},
+			},
+		},
+		{
+			ItemName: "Comfy Bed",
+			Quantity: 1,
+			Description:
+				"A queen-sized bed with a memory foam mattress for a restful night's sleep.",
+			Value: 700,
+			Category: "Bedroom Furniture",
+			Image: {
+				altText: "",
+				sourceUrl:
+					"https://cmsblueinventory.com/wp-content/uploads/2023/04/pexels-linkedin-sales-navigator-2182970-scaled.jpg",
+				mediaDetails: {
+					height: 500,
+					width: 500,
+				},
+			},
+		},
+		{
+			ItemName: "Bookworm Bookshelf",
+			Quantity: 2,
+			Description:
+				"A tall bookshelf with adjustable shelves, perfect for storing and displaying your favorite reads.",
+			Value: 150,
+			Category: "Study Room Furniture",
+			Image: {
+				altText: "",
+				sourceUrl:
+					"https://cmsblueinventory.com/wp-content/uploads/2023/04/pexels-linkedin-sales-navigator-2182970-scaled.jpg",
+				mediaDetails: {
+					height: 500,
+					width: 500,
+				},
+			},
+		},
+		{
+			ItemName: "Compact Writing Desk",
+			Quantity: 1,
+			Description:
+				"A small writing desk with drawers, ideal for a cozy corner where you can work or study.",
+			Value: 250,
+			Category: "Home Office Furniture",
+			Image: {
+				altText: "",
+				sourceUrl:
+					"https://cmsblueinventory.com/wp-content/uploads/2023/02/pexels-polina-zimmerman-3747446-min-scaled.jpg",
+				mediaDetails: {
+					height: 500,
+					width: 500,
+				},
+			},
+		},
+		{
+			ItemName: "Vintage Dresser",
+			Quantity: 1,
+			Description:
+				"An antique dresser with intricate woodwork and multiple drawers for organizing your belongings.",
+			Value: 550,
+			Category: "Bedroom Furniture",
+			Image: {
+				altText: "",
+				sourceUrl:
+					"https://cmsblueinventory.com/wp-content/uploads/2023/05/6Y8A4504-scaled.jpg",
+				mediaDetails: {
+					height: 500,
+					width: 500,
+				},
+			},
+		},
+		{
+			ItemName: "Rustic Coffee Table",
+			Quantity: 1,
+			Description:
+				"A wooden coffee table with a distressed finish, adding a touch of rustic charm to your living space.",
+			Value: 300,
+			Category: "Living Room Furniture",
+			Image: {
+				altText: "",
+				sourceUrl:
+					"https://cmsblueinventory.com/wp-content/uploads/2023/05/pexels-shazard-r-14197704-min-scaled-e1683834127519.jpg",
+				mediaDetails: {
+					height: 500,
+					width: 500,
+				},
+			},
+		},
+		{
+			ItemName: "Stylish Bar Stools",
+			Quantity: 4,
+			Description:
+				"Modern bar stools with cushioned seats and adjustable height, perfect for your kitchen counter or bar area.",
+			Value: 120,
+			Category: "Kitchen Furniture",
+			Image: {
+				altText: "",
+				sourceUrl:
+					"https://cmsblueinventory.com/wp-content/uploads/2023/04/pexels-edmond-dantes-4347368-min-scaled.jpg",
+				mediaDetails: {
+					height: 500,
+					width: 500,
+				},
+			},
+		},
+		{
+			ItemName: "Multi-Functional Futon",
+			Quantity: 1,
+			Description:
+				"A futon that can be transformed into a sofa, lounger, or bed, making it versatile for various needs.",
+			Value: 350,
+			Category: "Living Room Furniture",
+			Image: {
+				altText: "Multi-Functional Futon",
+				sourceUrl:
+					"https://cmsblueinventory.com/wp-content/uploads/2023/05/pexels-kampus-production-8353841-scaled-e1683833484486.jpg",
+				mediaDetails: {
+					height: 500,
+					width: 500,
+				},
+			},
+		},
+		{
+			ItemName: "Contemporary TV Stand",
+			Quantity: 1,
+			Description:
+				"A sleek TV stand with shelves and cabinets for media storage, designed to complement modern electronics.",
+			Value: 280,
+			Category: "Entertainment Room Furniture",
+			Image: {
+				altText: "Contemporary TV Stand",
+				sourceUrl:
+					"https://cmsblueinventory.com/wp-content/uploads/2023/04/pexels-rodnae-productions-9064378-scaled.jpg",
+				mediaDetails: {
+					height: 500,
+					width: 500,
+				},
+			},
+		},
+	];
+
 	return (
 		<>
 			<section className="w-full h-full p-6 overflow-hidden bg-white rounded-2xl">
@@ -27,328 +214,103 @@ const Tables: FC = () => {
 				<div className="w-full mb-5 overflow-x-auto">
 					<table className="w-full min-w-max">
 						<thead>
-							<motion.tr
-								initial={initial}
-								whileInView={stagger}
-								viewport={{once: true}}
-								className="text-left"
-							>
-								<th className="pb-3.5 border-b border-black">
-									<div className="inline-flex items-center text-sm font-medium uppercase text-darkGrey">
-										<span className="mr-1.5 capitalize">Id</span>
+							<tr className="text-left text-black">
+								<th className="pb-5 border-b border-black">
+									<div className="inline-flex items-center">
+										<span className="mr-1.5 text-base font-semibold capitalize">
+											Id
+										</span>
 									</div>
 								</th>
-								<th className="pb-3.5 border-b border-black">
-									<div className="inline-flex items-center text-sm font-medium text-darkGrey">
-										<span className="mr-1.5 capitalize">Name</span>
+								<th className="pb-5 border-b border-black">
+									<div className="inline-flex items-center">
+										<span className="mr-1.5 text-base font-semibold capitalize">
+											Name
+										</span>
 									</div>
 								</th>
-								<th className="pb-3.5 border-b border-black">
-									<div className="inline-flex items-center text-sm font-medium text-darkGrey">
-										<span className="mr-1.5 capitalize">Quantity</span>
+								<th className="pb-5 border-b border-black">
+									<div className="inline-flex items-center">
+										<span className="mr-1.5 text-base font-semibold capitalize">
+											Description
+										</span>
 									</div>
 								</th>
-								<th className="pb-3.5 border-b border-black">
-									<div className="inline-flex items-center text-sm font-medium text-darkGrey">
-										<span className="mr-1.5 capitalize">Description</span>
+								<th className="pb-5 border-b border-black">
+									<div className="inline-flex items-center">
+										<span className="mr-1.5 text-base font-semibold capitalize">
+											Quantity
+										</span>
 									</div>
 								</th>
-								<th className="pb-3.5 border-b border-black">
-									<div className="inline-flex items-center text-sm font-medium text-darkGrey">
-										<span className="mr-1.5 capitalize">Date Created</span>
+								<th className="pb-5 border-b border-black">
+									<div className="inline-flex items-center">
+										<span className="mr-1.5 text-base font-semibold capitalize">
+											Category
+										</span>
 									</div>
 								</th>
-								<th className="pb-3.5 border-b border-black">
-									<span className="inline-flex items-center text-sm font-medium text-darkGrey">
-										<span className="mr-1.5 capitalize">Status</span>
+								<th className="pb-5 border-b border-black">
+									<div className="inline-flex items-center">
+										<span className="mr-1.5 text-base font-semibold capitalize">
+											Value
+										</span>
+									</div>
+								</th>
+								<th className="pb-5 border-b border-black">
+									<span className="mr-1.5 text-base font-semibold capitalize">
+										Edit
 									</span>
 								</th>
-								<th className="pb-3.5 border-b border-black"></th>
-							</motion.tr>
+							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td className="py-2.5 pr-4 border-b border-black">
-									<span className="font-medium">29506</span>
-								</td>
-								<td className="py-2.5 pr-4 border-b border-black">
-									<div className="flex flex-wrap items-center">
-										<Image
-											className="object-cover object-center mr-3 rounded-full w-9 h-9"
-											src="https://cmsblueinventory.com/wp-content/uploads/2023/04/pexels-linkedin-sales-navigator-2182970-scaled.jpg"
-											alt=""
-											width={500}
-											height={500}
-										/>
-										<span className="font-semibold">Darrell Steward</span>
-									</div>
-								</td>
-								<td className="py-2.5 pr-4 border-b border-black">
-									<span className="font-medium">$17.84</span>
-								</td>
-								<td className="py-2.5 pr-4 border-b border-black">
-									<span className="font-medium">
-										Playstation 4 Limited Edition
-									</span>
-								</td>
-								<td className="py-2.5 pr-4 border-b border-black">
-									<span className="font-medium text-black">
-										15 May 2020 9:00 pm
-									</span>
-								</td>
-								<td className="py-2.5 pr-4 border-b border-black">
-									<span className="px-2.5 py-1 text-sm font-medium text-green-500 bg-green-500 bg-opacity-10 rounded-full">
-										Confirmed
-									</span>
-								</td>
-								<td className="py-2.5 border-b border-black">
-									<Link className="inline-flex py-2.5 pr-0" href={``}>
-										<span className="w-1 h-1 bg-black rounded-full"></span>
-										<span className="mx-0.5 w-1 h-1 bg-black rounded-full"></span>
-										<span className="w-1 h-1 bg-black rounded-full"></span>
-									</Link>
-								</td>
-							</tr>
-							<tr>
-								<td className="py-2.5 pr-4 border-b border-black">
-									<span className="font-medium">29506</span>
-								</td>
-								<td className="py-2.5 pr-4 border-b border-black">
-									<div className="flex flex-wrap items-center">
-										<Image
-											className="object-cover object-center mr-3 rounded-full w-9 h-9"
-											src="https://cmsblueinventory.com/wp-content/uploads/2023/02/pexels-polina-zimmerman-3747446-min-scaled.jpg"
-											alt=""
-											width={500}
-											height={500}
-										/>
-										<span className="font-semibold">Bessie Cooper</span>
-									</div>
-								</td>
-								<td className="py-2.5 pr-4 border-b border-black">
-									<span className="font-medium">$17.84</span>
-								</td>
-								<td className="py-2.5 pr-4 border-b border-black">
-									<span className="font-medium">Gopro Hero 7</span>
-								</td>
-								<td className="py-2.5 pr-4 border-b border-black">
-									<span className="font-medium text-black">
-										15 May 2020 8:00 pm
-									</span>
-								</td>
-								<td className="py-2.5 pr-4 border-b border-black">
-									<span className="px-2.5 py-1 text-sm font-medium text-red-500 bg-red-500 bg-opacity-10 rounded-full">
-										Canceled
-									</span>
-								</td>
-								<td className="py-2.5 border-b border-black">
-									<Link className="inline-flex py-2.5 pr-0" href={``}>
-										<span className="w-1 h-1 bg-black rounded-full"></span>
-										<span className="mx-0.5 w-1 h-1 bg-black rounded-full"></span>
-										<span className="w-1 h-1 bg-black rounded-full"></span>
-									</Link>
-								</td>
-							</tr>
-							<tr>
-								<td className="py-2.5 pr-4 border-b border-black">
-									<span className="font-medium">29506</span>
-								</td>
-								<td className="py-2.5 pr-4 border-b border-black">
-									<div className="flex flex-wrap items-center">
-										<Image
-											className="object-cover object-center mr-3 rounded-full w-9 h-9"
-											src="https://cmsblueinventory.com/wp-content/uploads/2023/05/6Y8A4504-scaled.jpg"
-											alt=""
-											width={500}
-											height={500}
-										/>
-										<span className="font-semibold">Annette Black</span>
-									</div>
-								</td>
-								<td className="py-2.5 pr-4 border-b border-black">
-									<span className="font-medium">$6.48</span>
-								</td>
-								<td className="py-2.5 pr-4 border-b border-black">
-									<span className="font-medium">DJI Mavic Pro 2</span>
-								</td>
-								<td className="py-2.5 pr-4 border-b border-black">
-									<span className="font-medium text-black">
-										15 May 2020 7:00 pm
-									</span>
-								</td>
-								<td className="py-2.5 pr-4 border-b border-black">
-									<span className="px-2.5 py-1 text-sm font-medium text-green-500 bg-green-500 bg-opacity-10 rounded-full">
-										Confirmed
-									</span>
-								</td>
-								<td className="py-2.5 border-b border-black">
-									<Link className="inline-flex py-2.5 pr-0" href={``}>
-										<span className="w-1 h-1 bg-black rounded-full"></span>
-										<span className="mx-0.5 w-1 h-1 bg-black rounded-full"></span>
-										<span className="w-1 h-1 bg-black rounded-full"></span>
-									</Link>
-								</td>
-							</tr>
-							<tr>
-								<td className="py-2.5 pr-4 border-b border-black">
-									<span className="font-medium">29506</span>
-								</td>
-								<td className="py-2.5 pr-4 border-b border-black">
-									<div className="flex flex-wrap items-center">
-										<Image
-											className="object-cover object-center mr-3 rounded-full w-9 h-9"
-											src="https://cmsblueinventory.com/wp-content/uploads/2023/05/pexels-shazard-r-14197704-min-scaled-e1683834127519.jpg"
-											alt=""
-											width={500}
-											height={500}
-										/>
-										<span className="font-semibold">Darlene Robertson</span>
-									</div>
-								</td>
-								<td className="py-2.5 pr-4 border-b border-black">
-									<span className="font-medium">$14.81</span>
-								</td>
-								<td className="py-2.5 pr-4 border-b border-black">
-									<span className="font-medium">Brand New Bike</span>
-								</td>
-								<td className="py-2.5 pr-4 border-b border-black">
-									<span className="font-medium text-black">
-										15 May 2020 6:00 pm
-									</span>
-								</td>
-								<td className="py-2.5 pr-4 border-b border-black">
-									<span className="px-2.5 py-1 text-sm font-medium text-green-500 bg-green-500 bg-opacity-10 rounded-full">
-										Confirmed
-									</span>
-								</td>
-								<td className="py-2.5 border-b border-black">
-									<Link className="inline-flex py-2.5 pr-0" href={``}>
-										<span className="w-1 h-1 bg-black rounded-full"></span>
-										<span className="mx-0.5 w-1 h-1 bg-black rounded-full"></span>
-										<span className="w-1 h-1 bg-black rounded-full"></span>
-									</Link>
-								</td>
-							</tr>
-							<tr>
-								<td className="py-2.5 pr-4 border-b border-black">
-									<span className="font-medium">29506</span>
-								</td>
-								<td className="py-2.5 pr-4 border-b border-black">
-									<div className="flex flex-wrap items-center">
-										<Image
-											className="object-cover object-center mr-3 rounded-full w-9 h-9"
-											src="https://cmsblueinventory.com/wp-content/uploads/2023/04/pexels-edmond-dantes-4347368-min-scaled.jpg"
-											alt=""
-											width={500}
-											height={500}
-										/>
-										<span className="font-semibold">Jane Cooper</span>
-									</div>
-								</td>
-								<td className="py-2.5 pr-4 border-b border-black">
-									<span className="font-medium">$8.99</span>
-								</td>
-								<td className="py-2.5 pr-4 border-b border-black">
-									<span className="font-medium">Coach Tabby 26</span>
-								</td>
-								<td className="py-2.5 pr-4 border-b border-black">
-									<span className="font-medium text-black">
-										15 May 2020 11:00 pm
-									</span>
-								</td>
-								<td className="py-2.5 pr-4 border-b border-black">
-									<span className="px-2.5 py-1 text-sm font-medium text-yellow-500 bg-yellow-500 bg-opacity-10 rounded-full">
-										Pending
-									</span>
-								</td>
-								<td className="py-2.5 border-b border-black">
-									<Link className="inline-flex py-2.5 pr-0" href={``}>
-										<span className="w-1 h-1 bg-black rounded-full"></span>
-										<span className="mx-0.5 w-1 h-1 bg-black rounded-full"></span>
-										<span className="w-1 h-1 bg-black rounded-full"></span>
-									</Link>
-								</td>
-							</tr>
-							<tr>
-								<td className="py-2.5 pr-4 border-b border-black">
-									<span className="font-medium">29506</span>
-								</td>
-								<td className="py-2.5 pr-4 border-b border-black">
-									<div className="flex flex-wrap items-center">
-										<Image
-											className="object-cover object-center mr-3 rounded-full w-9 h-9"
-											src="https://cmsblueinventory.com/wp-content/uploads/2023/05/pexels-kampus-production-8353841-scaled-e1683833484486.jpg"
-											alt=""
-											width={500}
-											height={500}
-										/>
-										<span className="font-semibold">Cameron Williamson</span>
-									</div>
-								</td>
-								<td className="py-2.5 pr-4 border-b border-black">
-									<span className="font-medium">$17.84</span>
-								</td>
-								<td className="py-2.5 pr-4 border-b border-black">
-									<span className="font-medium">Dell Computer Monitor</span>
-								</td>
-								<td className="py-2.5 pr-4 border-b border-black">
-									<span className="font-medium text-black">
-										15 May 2020 5:00 pm
-									</span>
-								</td>
-								<td className="py-2.5 pr-4 border-b border-black">
-									<span className="px-2.5 py-1 text-sm font-medium text-green-500 bg-green-500 bg-opacity-10 rounded-full">
-										Confirmed
-									</span>
-								</td>
-								<td className="py-2.5 border-b border-black">
-									<Link className="inline-flex py-2.5 pr-0" href={``}>
-										<span className="w-1 h-1 bg-black rounded-full"></span>
-										<span className="mx-0.5 w-1 h-1 bg-black rounded-full"></span>
-										<span className="w-1 h-1 bg-black rounded-full"></span>
-									</Link>
-								</td>
-							</tr>
-							<tr>
-								<td className="py-2.5 pr-4">
-									<span className="font-medium">29506</span>
-								</td>
-								<td className="py-2.5 pr-4">
-									<div className="flex flex-wrap items-center">
-										<Image
-											className="object-cover object-center mr-3 rounded-full w-9 h-9"
-											src="https://cmsblueinventory.com/wp-content/uploads/2023/04/pexels-rodnae-productions-9064378-scaled.jpg"
-											alt=""
-											width={500}
-											height={500}
-										/>
-										<span className="font-semibold">Esther Howard</span>
-									</div>
-								</td>
-								<td className="py-2.5 pr-4">
-									<span className="font-medium">$5.22</span>
-								</td>
-								<td className="py-2.5 pr-4">
-									<span className="font-medium">iPad Pro 2017 Model</span>
-								</td>
-								<td className="py-2.5 pr-4">
-									<span className="font-medium text-black">
-										15 May 2020 10:00 pm
-									</span>
-								</td>
-								<td className="py-2.5 pr-4">
-									<span className="px-2.5 py-1 text-sm font-medium text-green-500 bg-green-500 bg-opacity-10 rounded-full">
-										Confirmed
-									</span>
-								</td>
-								<td className="py-2.5">
-									<Link className="inline-flex py-2.5 pr-0" href={``}>
-										<span className="w-1 h-1 bg-black rounded-full"></span>
-										<span className="mx-0.5 w-1 h-1 bg-black rounded-full"></span>
-										<span className="w-1 h-1 bg-black rounded-full"></span>
-									</Link>
-								</td>
-							</tr>
+							{collection?.length > 0 ? (
+								collection.map((item, keys) => (
+									<tr key={keys}>
+										<td className="pt-6 py-2.5 pr-4">
+											<span className="font-semibold">{keys}</span>
+										</td>
+										<td className="py-2.5 pr-4">
+											<div className="flex flex-wrap items-center">
+												<Image
+													className="object-cover object-center mr-3 rounded-full w-9 h-9"
+													src={item.Image.sourceUrl}
+													alt={item.Image.altText}
+													width={item.Image.mediaDetails.width}
+													height={item.Image.mediaDetails.height}
+												/>
+												<span className="font-semibold">{item.ItemName}</span>
+											</div>
+										</td>
+										<td className="py-2.5 pr-4 max-w-xs">
+											<div className="font-normal">{item.Description}</div>
+										</td>
+										<td className="py-2.5 pr-4">
+											<div className="font-semibold">{item.Quantity}</div>
+										</td>
+										<td className="py-2.5 pr-4 max-w-xs">
+											<div className="font-semibold text-black">
+												{item.Category}
+											</div>
+										</td>
+										<td className="py-2.5 pr-4">
+											<div className="px-2.5 py-1 text-sm font-normal text-white bg-darkBlue w-fit rounded-full">
+												£{item.Value}
+											</div>
+										</td>
+										<td className="py-2.5">
+											<Link className="inline-flex py-2.5 pr-0" href={``}>
+												<span className="w-1 h-1 bg-black rounded-full"></span>
+												<span className="mx-0.5 w-1 h-1 bg-black rounded-full"></span>
+												<span className="w-1 h-1 bg-black rounded-full"></span>
+											</Link>
+										</td>
+									</tr>
+								))
+							) : (
+								<></>
+							)}
 						</tbody>
 					</table>
 				</div>
@@ -382,7 +344,7 @@ const Tables: FC = () => {
 									className="flex items-center justify-center border rounded-sm w-9 h-9 hover:border-darkGrey"
 									href={``}
 								>
-									<span className="text-sm font-semibold text-darkGrey">1</span>
+									<span className="text-sm font-semibold">1</span>
 								</Link>
 							</div>
 							<div className="w-auto p-0.5">
@@ -398,7 +360,7 @@ const Tables: FC = () => {
 									className="flex items-center justify-center border rounded-sm w-9 h-9 hover:border-darkGrey"
 									href={``}
 								>
-									<span className="text-sm font-semibold text-darkGrey">3</span>
+									<span className="text-sm font-semibold">3</span>
 								</Link>
 							</div>
 							<div className="w-auto p-0.5">
@@ -406,7 +368,7 @@ const Tables: FC = () => {
 									className="flex items-center justify-center border rounded-sm w-9 h-9 hover:border-darkGrey"
 									href={``}
 								>
-									<span className="text-sm font-semibold text-darkGrey">4</span>
+									<span className="text-sm font-semibold">4</span>
 								</Link>
 							</div>
 							<div className="w-auto p-0.5">

@@ -25,7 +25,7 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-track {
-	background: $baseColor_white;
+	background: $white;
 }
 
 body::-webkit-scrollbar-thumb {
@@ -59,7 +59,7 @@ h4,
 h5,
 h6,
 button {
-	@apply text-darkBlue;
+	@apply tracking-tight text-darkBlue;
 	font-family: $fontStyle_main;
 
 	a,

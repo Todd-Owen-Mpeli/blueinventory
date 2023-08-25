@@ -72,13 +72,13 @@
 	/* SVG animations */
 	@keyframes submit_button_color_anim {
 		0% {
-			fill: $baseColor_white;
+			fill: $white;
 		}
 		50% {
 			fill: $blue;
 		}
 		100% {
-			fill: $baseColor_white;
+			fill: $white;
 		}
 	}
 }
@@ -88,7 +88,7 @@
 	transition: 0.5s;
 	padding: 10px 20px;
 	align-items: center;
-	background: $yellowDash;
+	background: $yellow;
 	text-decoration: none;
 	justify-content: center;
 	transform: skewX(-15deg);
@@ -130,13 +130,13 @@
 	/* SVG animations */
 	@keyframes message_sent_color_anim {
 		0% {
-			fill: $baseColor_white;
+			fill: $white;
 		}
 		50% {
-			fill: $yellowDash;
+			fill: $yellow;
 		}
 		100% {
-			fill: $baseColor_white;
+			fill: $white;
 		}
 	}
 }
@@ -213,13 +213,13 @@
 	/* SVG animations */
 	@keyframes login_submit_button_color_anim {
 		0% {
-			fill: $baseColor_white;
+			fill: $white;
 		}
 		50% {
 			fill: $blue;
 		}
 		100% {
-			fill: $baseColor_white;
+			fill: $white;
 		}
 	}
 }
@@ -229,7 +229,7 @@
 	transition: 0.5s;
 	padding: 10px 20px;
 	align-items: center;
-	background: $yellowDash;
+	background: $yellow;
 	text-decoration: none;
 	justify-content: center;
 	transform: skewX(-15deg);
@@ -271,13 +271,13 @@
 	/* SVG animations */
 	@keyframes login_successful_button_color_anim {
 		0% {
-			fill: $baseColor_white;
+			fill: $white;
 		}
 		50% {
 			fill: $pinkRed;
 		}
 		100% {
-			fill: $baseColor_white;
+			fill: $white;
 		}
 	}
 }
@@ -329,13 +329,13 @@
 	/* SVG animations */
 	@keyframes login_error_button_color_anim {
 		0% {
-			fill: $baseColor_white;
+			fill: $white;
 		}
 		50% {
 			fill: $pinkRed;
 		}
 		100% {
-			fill: $baseColor_white;
+			fill: $white;
 		}
 	}
 }

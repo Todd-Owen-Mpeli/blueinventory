@@ -70,7 +70,7 @@ const mobileNavbarTwo: FC<IMobileNavbar> = ({revealMobileMenu}) => {
 										}
 										alt={`${firebaseContext?.userData?.displayName} profile image`}
 									/>
-									<span className="bottom-[-6px] left-7 absolute w-3.5 h-3.5 bg-brightGreenDash border-2 border-white rounded-full " />
+									<span className="bottom-[-6px] left-7 absolute w-3.5 h-3.5 bg-brightGreen border-2 border-white rounded-full " />
 								</button>
 							</motion.div>
 						) : (

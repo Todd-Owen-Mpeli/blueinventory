@@ -14,7 +14,7 @@ const SubscriptionInfo: FC = () => {
 				initial={initial}
 				whileInView={stagger}
 				viewport={{once: true}}
-				className="flex flex-col items-center gap-8 px-4 bg-lightGrey"
+				className="flex flex-col items-center gap-8 px-4 bg-white"
 			>
 				<div className="p-6 bg-white shadow-lg rounded-xl">
 					<div className="max-w-xs mx-auto">
@@ -77,7 +77,7 @@ const SubscriptionInfo: FC = () => {
 						>
 							<Link
 								href={`/pricing/#Pricing`}
-								className="inline-block text-sm font-medium text-white hover:underline hover:text-yellowDash"
+								className="inline-block text-sm font-medium text-white hover:underline hover:text-yellow"
 							>
 								Cancel Subscription
 							</Link>

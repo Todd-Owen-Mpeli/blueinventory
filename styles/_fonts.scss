@@ -5,6 +5,16 @@
 }
 
 @font-face {
+	font-family: BTBeauSans;
+	src: url("./fonts/BT-BeauSans-Regular.ttf");
+}
+
+@font-face {
+	font-family: Dropkicker;
+	src: url("./fonts/Dropkicker-Regular.ttf");
+}
+
+@font-face {
 	font-family: EvolventaRegular;
 	src: url("./fonts/Evolventa-Regular-VariableFont_wght.ttf");
 }
@@ -21,8 +31,7 @@
 
 // Font Stack Properties
 $fontStyle_dashboard: "Inter", sans-serif;
-$fontStyle_main: "EvolventaBold", "SFTSchriftedSansTRIALMedium", "Inter",
-	sans-serif;
+$fontStyle_main: "BTBeauSans", "Inter", sans-serif;
 $fontStyle_body: "SFTSchriftedSansTRIALMedium", "Inter", sans-serif;
 
 // Font Sizes

@@ -16,7 +16,7 @@ const logos: FC<ILogos> = ({title, paragraph, logoGrid}) => {
 					initial={initialTwo}
 					viewport={{once: true}}
 					whileInView={fadeIn}
-					className="mb-10 text-center tracking-wider leading-[2.75rem] text-3xl md:text-4xl"
+					className="mb-10 text-center tracking-wider leading-[2.75rem] font-semibold text-3xl md:text-4xl"
 				>
 					{title}
 				</motion.h2>

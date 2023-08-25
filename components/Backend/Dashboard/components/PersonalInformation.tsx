@@ -42,12 +42,12 @@ const PersonalInformation: FC = () => {
 						<div className="relative flex flex-row items-center justify-between gap-4">
 							<div className="hidden lg:block absolute top-[-110px] left-[20px] ">
 								<Image
-									width="100"
-									height="100"
+									width={1000}
+									height={1000}
 									id="avatarButton"
 									data-dropdown-toggle="userDropdown"
 									data-dropdown-placement="bottom-start"
-									className="object-cover object-top w-[40px] h-[40px] lg:w-[175px] lg:h-[175px] transition-all duration-200 ease-in-out rounded-full ring-4 ring-white max-w-none"
+									className="object-cover object-center h-[40px] w-full lg:h-[175px] transition-all duration-200 ease-in-out rounded-full ring-4 ring-white max-w-none"
 									src={
 										firebaseContext?.userData?.photoURL
 											? firebaseContext?.userData?.photoURL
@@ -55,7 +55,7 @@ const PersonalInformation: FC = () => {
 									}
 									alt={`${firebaseContext?.userData?.displayName} profile image`}
 								/>
-								<span className="bottom-[-2px] left-[7.75rem] absolute w-6 h-6 bg-brightGreenDash border-2 border-white rounded-full" />
+								<span className="bottom-[-2px] left-[7.75rem] absolute w-6 h-6 bg-brightGreen border-2 border-white rounded-full" />
 							</div>
 							<motion.div
 								initial={initial}
@@ -81,32 +81,11 @@ const PersonalInformation: FC = () => {
 								</motion.h3>
 							</motion.div>
 						</div>
-
-						<motion.button
-							initial={initial}
-							viewport={{once: true}}
-							whileInView={fadeInUp}
-							aria-label="Edit Profile"
-							role="button"
-							type="button"
-							className="relative flex items-center justify-center px-10 py-2 overflow-hidden text-white transition duration-200 bg-center bg-no-repeat bg-cover rounded-md w-fit h-fit border-darkBlue group focus:ring-2 focus:ring-offset-1"
-							style={{
-								backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue.svg")`,
-							}}
-						>
-							<div
-								className="absolute top-0 w-full h-full transition duration-200 transform bg-bottom bg-no-repeat bg-cover bg-darkBlue right-full group-hover:translate-x-full group-hover:scale-102"
-								style={{
-									backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue-darkblue.svg")`,
-								}}
-							/>
-							<p className="relative">Edit</p>
-						</motion.button>
 					</motion.div>
 				</div>
 				<div className="flex flex-col gap-4 px-4 py-10 lg:flex-row">
-					<div className="flex flex-col w-full gap-12 px-8 py-10 bg-white shadow-xl lg:w-2/3 rounded-2xl lg:flex-row">
-						<div className="flex flex-col justify-between gap-6">
+					<div className="flex flex-col w-full gap-24 px-8 py-10 bg-white shadow-xl lg:w-2/3 rounded-2xl lg:flex-row">
+						<div className="flex flex-col justify-between gap-8">
 							<div className="flex flex-col gap-2">
 								<motion.h3
 									initial={initial}
@@ -130,9 +109,22 @@ const PersonalInformation: FC = () => {
 									initial={initial}
 									whileInView={fadeInUp}
 									viewport={{once: true}}
-									className="font-bold text-left text-medium text-darkBlue"
+									className="flex items-center gap-2"
 								>
-									Email Address
+									<h3 className="font-bold text-left text-medium text-darkBlue">
+										Email Address
+									</h3>
+									<span
+										className={
+											firebaseContext?.userData?.emailVerified
+												? "px-2 py-1 text-xs text-white rounded-full bg-brightGreen"
+												: "px-2 py-1 text-xs text-white rounded-full bg-pinkRed"
+										}
+									>
+										{firebaseContext?.userData?.emailVerified
+											? "Verified"
+											: "Not Verified"}
+									</span>
 								</motion.h3>
 								<motion.h3
 									initial={initial}
@@ -162,7 +154,7 @@ const PersonalInformation: FC = () => {
 								</motion.h3>
 							</div>
 						</div>
-						<div className="flex flex-col gap-6">
+						<div className="flex flex-col gap-8">
 							<div className="flex flex-col gap-2">
 								<motion.h3
 									initial={initial}
@@ -178,7 +170,25 @@ const PersonalInformation: FC = () => {
 									viewport={{once: true}}
 									className="text-base font-medium text-left text-darkGrey"
 								>
-									{firebaseContext?.userData?.creationTime}
+									{firebaseContext?.userData?.metadata?.creationTime}
+								</motion.h3>
+							</div>
+							<div className="flex flex-col gap-2">
+								<motion.h3
+									initial={initial}
+									whileInView={fadeInUp}
+									viewport={{once: true}}
+									className="font-bold text-left text-medium text-darkBlue"
+								>
+									Last Sign In
+								</motion.h3>
+								<motion.h3
+									initial={initial}
+									whileInView={fadeInUp}
+									viewport={{once: true}}
+									className="text-base font-medium text-left text-darkGrey"
+								>
+									{firebaseContext?.userData?.metadata?.lastSignInTime}
 								</motion.h3>
 							</div>
 							<div className="flex flex-col gap-2">
@@ -196,7 +206,7 @@ const PersonalInformation: FC = () => {
 									viewport={{once: true}}
 									className="text-base font-medium text-left text-darkGrey"
 								>
-									{firebaseContext?.userData?.phoneNumber === null
+									{firebaseContext?.userData?.phoneNumber != null
 										? firebaseContext?.userData?.phoneNumber
 										: "none"}
 								</motion.h3>
@@ -208,7 +218,7 @@ const PersonalInformation: FC = () => {
 							initial={initial}
 							whileInView={fadeInUp}
 							viewport={{once: true}}
-							className="text-2xl font-bold text-left"
+							className="text-lg lg:text-2xl font-bold text-left"
 						>
 							Business App Development
 						</motion.h3>

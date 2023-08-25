@@ -99,7 +99,7 @@ const GoogleIntegration: FC = () => {
 									<div className="w-full px-4 mb-8 md:w-1/2 md:mb-0">
 										<div className="flex flex-col h-full">
 											<Link
-												className="relative block h-full px-8 pt-8 pb-5 transition duration-200 mb-7 rounded-3xl bg-darkBlue hover:bg-yellowDash"
+												className="relative block h-full px-8 pt-8 pb-5 transition duration-200 mb-7 rounded-3xl bg-darkBlue hover:bg-yellow"
 												href="#"
 											>
 												<div className="flex flex-col justify-between h-full max-w-sm pr-16">

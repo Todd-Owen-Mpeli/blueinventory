@@ -44,12 +44,13 @@ const Pricing: FC<IPricing> = ({
 							initial={initial}
 							viewport={{once: true}}
 							whileInView={stagger}
-							className="mb-6 text-4xl font-bold text-darkBlue sm:text-6xl lg:text-7xl"
+							className="mb-6 text-4xl text-darkBlue sm:text-6xl lg:text-7xl"
 						>
 							<motion.span
 								initial={initial}
 								whileInView={fadeInUp}
 								viewport={{once: true}}
+								className="font-bold"
 							>
 								{title}
 							</motion.span>

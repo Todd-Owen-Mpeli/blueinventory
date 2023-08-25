@@ -153,7 +153,7 @@ const MainNavigation: FC = () => {
 									<Link
 										className={
 											tailwindStyling.mainLinksStyling +
-											` hover:bg-yellowDash hover:text-white`
+											` hover:bg-yellow hover:text-white`
 										}
 										href={`/dashboard`}
 									>
