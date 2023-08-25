@@ -49,7 +49,7 @@ const add: NextPage<IDashboard> = () => {
 				animate="animate"
 			>
 				<Layout tailwindStyling={layoutTailwindStyling}>
-					<h1>Add</h1>
+					<h1 className="text-lg font-bold text-left lg:text-2xl">Add</h1>
 				</Layout>
 			</motion.section>
 		</DashboardContext.Provider>

@@ -6,7 +6,6 @@ import {motion} from "framer-motion";
 import {initial, stagger, fadeInUp} from "@/animations/animations";
 
 // Firebase
-import {getAuth} from "firebase/auth";
 import {useFirebaseContext} from "@/context/Firebase";
 
 // Components
@@ -218,7 +217,7 @@ const PersonalInformation: FC = () => {
 							initial={initial}
 							whileInView={fadeInUp}
 							viewport={{once: true}}
-							className="text-lg lg:text-2xl font-bold text-left"
+							className="text-lg font-bold text-left lg:text-2xl"
 						>
 							Business App Development
 						</motion.h3>

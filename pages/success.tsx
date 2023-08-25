@@ -1,56 +1,33 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 // Imports
+import {useEffect} from "react";
 import {motion} from "framer-motion";
 import {useRouter} from "next/router";
-import {useEffect, useState} from "react";
 import type {NextPage, GetStaticProps} from "next";
 import {IContentContext} from "@/types/context/public/index";
 import {ContentContext, flexibleContentType} from "@/context/context";
 
 // Firebase
 import {getAuth} from "firebase/auth";
-import {IFirebaseUser} from "@/types/firebase";
+import {useFirebaseContext} from "@/context/Firebase";
 import {addNewFirebaseUserDocument} from "@/functions/Backend/firebase/addDocument";
 
 // Components
 import LayoutTwo from "@/components/Frontend/Layout/LayoutTwo";
 import CheckoutWelcome from "@/components/Frontend/CheckoutWelcome";
-import {useGlobalContext} from "@/context/Global";
 
 const success: NextPage<IContentContext> = ({
 	seo,
 	content,
 	postTypeFlexibleContent,
 }) => {
+	const firebaseContext = useFirebaseContext();
+
 	const auth = getAuth();
 	const router = useRouter();
 	const {session_id} = router.query;
-	const [signedInUser, setSignedInUser] = useState(false);
-	const [user, setUser] = useState<IFirebaseUser | null | any>(null);
-
-	const [customerInfo, setCustomerInfo] = useState(null);
 
 	useEffect(() => {
-		/* Check if user is signed in
-		and sets the Signed In details */
-		const unsubscribe = auth?.onAuthStateChanged((currentUser: any) => {
-			currentUser ? setSignedInUser(true) : setSignedInUser(false);
-
-			// Firebase User Details
-			const userDetails: IFirebaseUser = {
-				uid: `${currentUser?.uid}`,
-				email: `${currentUser?.email}`,
-				photoURL: `${currentUser?.photoURL}`,
-				providerId: `${currentUser?.providerId}`,
-				phoneNumber: `${currentUser?.phoneNumber}`,
-				displayName: `${currentUser?.displayName}`,
-				creationTime: `${currentUser?.metadata.creationTime}`,
-				lastSignInTime: `${currentUser?.metadata.lastSignInTime}`,
-			};
-
-			setUser(userDetails);
-		});
-
 		/* Collects Users google account & Stripe Checkout 
 		Details and send it to the cloud Firestore Database */
 		async function addUserData() {
@@ -83,9 +60,9 @@ const success: NextPage<IContentContext> = ({
 		});
 
 		return () => {
-			unsubscribe();
+			auth;
 		};
-	}, [session_id, signedInUser, auth, router]);
+	}, [session_id, auth, router]);
 
 	return (
 		<ContentContext.Provider

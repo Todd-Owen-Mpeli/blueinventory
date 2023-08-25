@@ -13,8 +13,7 @@ import {FC, useState, useEffect} from "react";
 import {ICheckoutWelcome} from "@/types/components/public";
 
 // Firebase
-import {getAuth} from "firebase/auth";
-import {IFirebaseUser} from "@/types/firebase";
+import {useFirebaseContext} from "@/context/Firebase";
 
 // Components
 import Paragraph from "@/components/Frontend/Elements/Paragraph";
@@ -24,38 +23,11 @@ const CheckoutWelcome: FC<ICheckoutWelcome> = ({
 	paragraph,
 	stripeSuccess,
 }) => {
-	const auth = getAuth();
-	const [signedInUser, setSignedInUser] = useState(false);
-	const [user, setUser] = useState<IFirebaseUser | null>(null);
+	const firebaseContext = useFirebaseContext();
+
 	// User sign in styling
 	const ringStyling =
 		"object-cover object-top w-[75px] h-[75px] mb-8 transition-all duration-200 ease-in-out rounded-full ring-4";
-
-	/* Check if user is SIGNED IN if 
-  	True Displays Signed In Navbar */
-	useEffect(() => {
-		const unsubscribe = auth?.onAuthStateChanged((currentUser) => {
-			currentUser ? setSignedInUser(true) : setSignedInUser(false);
-
-			// Firebase User Details
-			const userDetails: IFirebaseUser = {
-				uid: `${currentUser?.uid}`,
-				email: `${currentUser?.email}`,
-				photoURL: `${currentUser?.photoURL}`,
-				providerId: `${currentUser?.providerId}`,
-				phoneNumber: `${currentUser?.phoneNumber}`,
-				displayName: `${currentUser?.displayName}`,
-				creationTime: `${currentUser?.metadata.creationTime}`,
-				lastSignInTime: `${currentUser?.metadata.lastSignInTime}`,
-			};
-
-			setUser(userDetails);
-		});
-
-		return () => {
-			unsubscribe();
-		};
-	}, [signedInUser, auth]);
 
 	return (
 		<>
@@ -82,16 +54,16 @@ const CheckoutWelcome: FC<ICheckoutWelcome> = ({
 								width={500}
 								height={500}
 								className={
-									user?.uid
+									firebaseContext?.userData?.uid
 										? `${ringStyling} ring-darkBlue`
 										: `${ringStyling} ring-pinkRed`
 								}
 								src={
-									user?.photoURL
-										? user?.photoURL
+									firebaseContext?.userData?.photoURL
+										? firebaseContext?.userData?.photoURL
 										: `/img/Logos/default-avatar-profile.jpg`
 								}
-								alt={`${user?.displayName} profile image`}
+								alt={`${firebaseContext?.userData?.displayName} profile image`}
 							/>
 						</motion.div>
 						<motion.h3
@@ -101,7 +73,7 @@ const CheckoutWelcome: FC<ICheckoutWelcome> = ({
 							className="flex flex-col mb-3 text-3xl font-black tracking-tight text-white"
 						>
 							<span>{title}</span>
-							<span>{user?.displayName}</span>
+							<span>{firebaseContext?.userData?.displayName}</span>
 						</motion.h3>
 						<Paragraph
 							content={paragraph}

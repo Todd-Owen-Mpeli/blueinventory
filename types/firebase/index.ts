@@ -6,8 +6,12 @@ export interface IFirebaseUser {
 	providerId: string;
 	phoneNumber: string;
 	displayName: string;
-	creationTime: string | undefined;
-	lastSignInTime: string;
+	accessToken: string;
+	emailVerified: boolean;
+	metadata: {
+		creationTime: string;
+		lastSignInTime: string;
+	};
 }
 
 export interface IFirebaseConfig {
@@ -18,16 +22,4 @@ export interface IFirebaseConfig {
 	messagingSenderId: string;
 	appId: string;
 	measurementId: string;
-}
-
-export interface ICurrentUserData {
-	email: string;
-	uid: string;
-	phoneNumber: string;
-	lastSignInTime: string;
-	photoURL: string;
-	emailVerified: string;
-	displayName: string;
-	providerId: string;
-	creationTime: string;
 }

@@ -9,6 +9,7 @@ export const getUserDocument = async (uid: string) => {
 	const usersSnapshot = await getDocs(collectionRef);
 
 	let userDocData: any;
+	let docUid: any | null;
 	let found: boolean = false; // Variable to track if the value is found
 
 	/* Loop through each document and 
@@ -23,9 +24,13 @@ export const getUserDocument = async (uid: string) => {
 
 		if (currentDocUid == uid) {
 			userDocData = doc.data();
+			docUid = doc.id;
 			found = true; // Set the found variable to true
 		}
 	});
 
-	return userDocData;
+	return {
+		docUid,
+		userDocData,
+	};
 };

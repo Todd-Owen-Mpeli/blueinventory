@@ -18,6 +18,7 @@ import {Auth, getAuth} from "firebase/auth";
 import {IFirebaseUser} from "@/types/firebase";
 import {FirebaseContext} from "@/context/Firebase";
 import initializeFirebase from "@/firebase/firebase";
+import {getUserDocument} from "@/functions/Backend/firebase/getUserDocument";
 
 // Stripe Functions
 import {getAllStripePaymentPlans} from "@/functions/Backend/stripe/GetStripePaymentPlans";
@@ -98,14 +99,20 @@ export default function App({
 	const auth: Auth = getAuth();
 	const [signedInUser, setSignedInUser] = useState(false);
 	const [userData, setUserData] = useState<IFirebaseUser | null>(null);
+	const [userDocId, setUserDocId] = useState<string | null>(null);
 
 	/* Check if user is SIGNED IN if 
 	True Displays Signed In Navbar */
 	useEffect(() => {
-		const unsubscribe = auth?.onAuthStateChanged((currentUser: any) => {
+		const unsubscribe = auth?.onAuthStateChanged(async (currentUser: any) => {
 			if (currentUser) {
 				setSignedInUser(true);
 				setUserData(currentUser);
+
+				/* Retrieves the current users Document Data 
+				& Document Unique Identification */
+				const userDoc = await getUserDocument(currentUser?.uid);
+				setUserDocId(userDoc.docUid);
 			} else {
 				setSignedInUser(false);
 			}
@@ -225,6 +232,7 @@ export default function App({
 				<FirebaseContext.Provider
 					value={{
 						userData: userData,
+						userDocId: userDocId,
 						signedInUser: signedInUser,
 					}}
 				>

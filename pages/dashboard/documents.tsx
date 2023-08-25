@@ -22,7 +22,7 @@ const documents: NextPage<IDashboard> = () => {
 				animate="animate"
 			>
 				<Layout tailwindStyling={layoutTailwindStyling}>
-					<h1>Documents</h1>
+					<h1 className="text-lg font-bold text-left lg:text-2xl">Documents</h1>
 				</Layout>
 			</motion.section>
 		</DashboardContext.Provider>

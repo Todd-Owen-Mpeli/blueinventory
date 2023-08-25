@@ -22,7 +22,9 @@ const categories: NextPage<IDashboard> = () => {
 				animate="animate"
 			>
 				<Layout tailwindStyling={layoutTailwindStyling}>
-					<h1>Categories</h1>
+					<h1 className="text-lg font-bold text-left lg:text-2xl">
+						Categories
+					</h1>
 				</Layout>
 			</motion.section>
 		</DashboardContext.Provider>

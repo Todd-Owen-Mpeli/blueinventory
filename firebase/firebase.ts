@@ -25,15 +25,17 @@ export const firebaseConfig: IFirebaseConfig = {
 };
 
 // Firebase User Details
-export const firebaseUser: IFirebaseUser = {
+export const firebaseUser = {
 	uid: ``,
 	email: ``,
 	providerId: ``,
 	phoneNumber: ``,
 	displayName: ``,
-	creationTime: ``,
-	lastSignInTime: ``,
 	photoURL: ``,
+	metadata: {
+		creationTime: ``,
+		lastSignInTime: ``,
+	},
 };
 
 export const initializeFirebase = () => {
@@ -57,15 +59,17 @@ export const initializeFirebase = () => {
 			// });
 
 			// Firebase User Details
-			const firebaseUser: IFirebaseUser = {
+			const firebaseUser = {
 				uid: `${auth?.currentUser?.uid}`,
 				email: `${auth?.currentUser?.email}`,
 				photoURL: `${auth?.currentUser?.photoURL}`,
 				providerId: `${auth?.currentUser?.providerId}`,
 				phoneNumber: `${auth?.currentUser?.phoneNumber}`,
 				displayName: `${auth?.currentUser?.displayName}`,
-				creationTime: `${auth?.currentUser?.metadata.creationTime}`,
-				lastSignInTime: `${auth?.currentUser?.metadata.lastSignInTime}`,
+				metadata: {
+					creationTime: `${auth?.currentUser?.metadata.creationTime}`,
+					lastSignInTime: `${auth?.currentUser?.metadata.lastSignInTime}`,
+				},
 			};
 
 			// Initializing Firebase Analytics & Performance

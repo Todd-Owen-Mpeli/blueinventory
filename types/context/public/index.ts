@@ -1,5 +1,6 @@
 // Imports
 import {IStripePlans} from "@/types/stripe";
+import {IFirebaseUser} from "@/types/firebase";
 
 export type ISeo = {
 	canonical: string;
@@ -103,6 +104,7 @@ export interface IContentContext {
 	content: IContent;
 	postTypeFlexibleContent: IPostTypeFlexibleContent;
 }
+
 export interface IGlobalContext {
 	stripePlans: IStripePlans;
 	mainMenuLinks: IMainMenuLinks;
@@ -113,9 +115,11 @@ export interface IGlobalContext {
 	themesOptionsContent: IThemesOptionsContent;
 	contentSliderPostsContent: IContentSliderPostsContent;
 }
+
 export interface IFirebaseContext {
-	userData: any | null;
 	signedInUser: boolean;
+	userDocId: string | null;
+	userData: IFirebaseUser | null;
 }
 
 export type IIndustriesMenuLinks = {
