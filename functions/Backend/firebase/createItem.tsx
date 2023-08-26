@@ -1,6 +1,7 @@
 // Imports
 import {
 	doc,
+	addDoc,
 	setDoc,
 	Firestore,
 	collection,
@@ -24,13 +25,8 @@ export const createUserItem = async (
 		subCollection
 	);
 
-	console.log(`userDocID: ${userDocID}`);
-	console.log(`subCollection: ${subCollection}`);
-	console.log(`userDisplayName: ${userDisplayName}`);
-	console.log(`userCollectionRef: ${userCollectionRef}`);
-
 	try {
-		const docRef = await setDoc(doc(userCollectionRef), {
+		const docRef = await addDoc(userCollectionRef, {
 			value: `${newCreatedItem?.value}`,
 			itemName: `${newCreatedItem?.itemName}`,
 			quantity: `${newCreatedItem?.quantity}`,
