@@ -24,6 +24,11 @@ export const createUserItem = async (
 		subCollection
 	);
 
+	console.log(`userCollectionRef: ${userDocID}`);
+	console.log(`userCollectionRef: ${subCollection}`);
+	console.log(`userCollectionRef: ${userDisplayName}`);
+	console.log(`userCollectionRef: ${userCollectionRef}`);
+
 	try {
 		const docRef = await setDoc(doc(userCollectionRef), {
 			value: `${newCreatedItem?.value}`,
