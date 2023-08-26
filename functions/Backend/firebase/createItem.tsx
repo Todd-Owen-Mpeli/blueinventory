@@ -24,9 +24,9 @@ export const createUserItem = async (
 		subCollection
 	);
 
-	console.log(`userCollectionRef: ${userDocID}`);
-	console.log(`userCollectionRef: ${subCollection}`);
-	console.log(`userCollectionRef: ${userDisplayName}`);
+	console.log(`userDocID: ${userDocID}`);
+	console.log(`subCollection: ${subCollection}`);
+	console.log(`userDisplayName: ${userDisplayName}`);
 	console.log(`userCollectionRef: ${userCollectionRef}`);
 
 	try {
@@ -42,7 +42,7 @@ export const createUserItem = async (
 				docRef
 			);
 		});
-	} catch (e) {
-		console.error("Error adding document: ", e);
+	} catch (error: any | undefined) {
+		console.error("Error adding document: ", error);
 	}
 };
