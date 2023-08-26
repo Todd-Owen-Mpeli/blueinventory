@@ -23,3 +23,12 @@ export interface IFirebaseConfig {
 	appId: string;
 	measurementId: string;
 }
+
+// Create Item Functions
+export interface INewCreatedItem {
+	value: string;
+	quantity: string;
+	itemName: string;
+	category: string;
+	description: string;
+}

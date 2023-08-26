@@ -12,11 +12,21 @@ import React, {useState} from "react";
 import {useRouter} from "next/router";
 import {useFormik, Formik, Field, Form} from "formik";
 
+// Firebase
+import {INewCreatedItem} from "@/types/firebase";
+import {useFirebaseContext} from "@/context/Firebase";
+import {createUserItem} from "@/functions/Backend/firebase/createItem";
+
 // Styling
 import styles from "@/styles/components/ContactForm.module.scss";
 
 const CreateItem: FC = () => {
 	const router = useRouter();
+	const firebaseContext = useFirebaseContext();
+
+	const userDocID: string | null = firebaseContext?.userDocId;
+	const userDisplayName: string | undefined =
+		firebaseContext?.userData?.displayName;
 
 	// Loading, Send & Error Message States
 	const [loading, setLoading] = useState(false);
@@ -47,10 +57,9 @@ const CreateItem: FC = () => {
 			category: "",
 		},
 		validate,
-		onSubmit: async (values: any) => {
+		onSubmit: async (values: INewCreatedItem) => {
 			try {
-				console.log(values);
-				// await sendContactForm(values);
+				await createUserItem(userDocID, userDisplayName, values);
 			} catch (error) {
 				setErrorMessage(true);
 				throw new Error(
@@ -70,9 +79,9 @@ const CreateItem: FC = () => {
 			formik.handleSubmit();
 			setLoading(false);
 			setMessageSent(true);
-			// setTimeout(() => {
-			// 	router.reload();
-			// }, 3000);
+			setTimeout(() => {
+				router.reload();
+			}, 3000);
 		} catch (error) {
 			setErrorMessage(true);
 			throw new Error(

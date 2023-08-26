@@ -1,9 +1,6 @@
 // Imports
 import {collection, addDoc, getFirestore, Firestore} from "firebase/firestore";
 
-// Firebase
-import {IFirebaseUser} from "@/types/firebase";
-
 /* Collect Users google account Details 
 and send it to the cloud Firestore Database */
 export const addNewFirebaseUserDocument = async (
