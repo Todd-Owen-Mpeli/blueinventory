@@ -11,6 +11,7 @@ import {PostHogProvider} from "posthog-js/react";
 
 // Global Context Provider
 import {GlobalContext} from "@/context/Global";
+import {DashboardContext} from "@/context/dashboard";
 import {IErrorPageContent, IGlobalContext} from "@/types/context/public";
 
 // Firebase
@@ -41,6 +42,7 @@ import "../styles/globals.scss";
 import Footer from "@/components/Frontend/Footer";
 import ErrorPage from "@/components/Frontend/Elements/ErrorPage";
 import CookiePolicyCard from "@/components/Frontend/Elements/CookiePolicyCard";
+import {getUserItemsDocument} from "@/functions/Backend/firebase/getUserItemsDocument";
 
 // Check that PostHog is client-side (used to handle Next.js SSR)
 if (typeof window !== "undefined") {
@@ -237,10 +239,16 @@ export default function App({
 					}}
 				>
 					{isProtectedPage && signedInUser ? (
-						<>
-							<Loading />
-							<Component {...pageProps} />
-						</>
+						<DashboardContext.Provider
+							value={{
+								pageTitle: "Dashboard",
+							}}
+						>
+							<>
+								<Loading />
+								<Component {...pageProps} />
+							</>
+						</DashboardContext.Provider>
 					) : isPublicPage ? (
 						<GlobalContext.Provider
 							value={{

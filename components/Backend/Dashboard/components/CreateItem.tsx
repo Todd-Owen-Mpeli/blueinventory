@@ -74,14 +74,16 @@ const CreateItem: FC = () => {
 		event.preventDefault();
 		setErrorMessage(false);
 		try {
-			setLoading(true);
-			/* Send Form Content */
-			formik.handleSubmit();
-			setLoading(false);
-			setMessageSent(true);
-			// setTimeout(() => {
-			// 	router.reload();
-			// }, 3000);
+			if (userDocID) {
+				setLoading(true);
+				/* Create Item */
+				formik.handleSubmit();
+				setLoading(false);
+				setMessageSent(true);
+				setTimeout(() => {
+					router.reload();
+				}, 3000);
+			}
 		} catch (error) {
 			setErrorMessage(true);
 			throw new Error(

@@ -1,10 +1,10 @@
 // Imports
 import {FC} from "react";
 import Head from "next/head";
-import {useDashboardContext} from "@/context/dashboard";
+import {useDashboardMetaContext} from "@/context/dashboard";
 
 const Meta: FC = () => {
-	const context = useDashboardContext();
+	const context = useDashboardMetaContext();
 
 	return (
 		<>

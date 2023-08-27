@@ -2,7 +2,7 @@
 import {motion} from "framer-motion";
 import {NextPage, GetStaticProps} from "next";
 import {IDashboard} from "@/types/context/dashboard";
-import {DashboardContext, layoutTailwindStyling} from "@/context/dashboard";
+import {DashboardMetaContent, layoutTailwindStyling} from "@/context/dashboard";
 
 // Components
 import Layout from "@/components/Backend/Dashboard/Layout/Layout";
@@ -10,7 +10,7 @@ import CreateItem from "@/components/Backend/Dashboard/components/CreateItem";
 
 const items: NextPage<IDashboard> = () => {
 	return (
-		<DashboardContext.Provider
+		<DashboardMetaContent.Provider
 			value={{
 				pageTitle: "Items",
 			}}
@@ -29,7 +29,7 @@ const items: NextPage<IDashboard> = () => {
 					</div>
 				</Layout>
 			</motion.section>
-		</DashboardContext.Provider>
+		</DashboardMetaContent.Provider>
 	);
 };
 

@@ -2,7 +2,7 @@
 import {motion} from "framer-motion";
 import {NextPage, GetStaticProps} from "next";
 import {IDashboard} from "@/types/context/dashboard";
-import {DashboardContext} from "@/context/dashboard";
+import {DashboardMetaContent} from "@/context/dashboard";
 
 // Components
 import Layout from "@/components/Backend/Dashboard/Layout/Layout";
@@ -13,7 +13,7 @@ import PersonalInformation from "@/components/Backend/Dashboard/components/Perso
 
 const settings: NextPage<IDashboard> = () => {
 	return (
-		<DashboardContext.Provider
+		<DashboardMetaContent.Provider
 			value={{
 				pageTitle: "Settings",
 			}}
@@ -38,7 +38,7 @@ const settings: NextPage<IDashboard> = () => {
 					</div>
 				</Layout>
 			</motion.section>
-		</DashboardContext.Provider>
+		</DashboardMetaContent.Provider>
 	);
 };
 

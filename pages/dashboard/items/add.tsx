@@ -4,7 +4,7 @@ import {useState} from "react";
 import {motion} from "framer-motion";
 import {NextPage, GetStaticProps} from "next";
 import {IDashboard} from "@/types/context/dashboard";
-import {DashboardContext, layoutTailwindStyling} from "@/context/dashboard";
+import {DashboardMetaContent, layoutTailwindStyling} from "@/context/dashboard";
 
 // Firebase
 import {getAuth} from "firebase/auth";
@@ -36,7 +36,7 @@ const add: NextPage<IDashboard> = () => {
 	};
 
 	return (
-		<DashboardContext.Provider
+		<DashboardMetaContent.Provider
 			value={{
 				pageTitle: "Add",
 			}}
@@ -52,7 +52,7 @@ const add: NextPage<IDashboard> = () => {
 					<h1 className="text-lg font-bold text-left lg:text-2xl">Add</h1>
 				</Layout>
 			</motion.section>
-		</DashboardContext.Provider>
+		</DashboardMetaContent.Provider>
 	);
 };
 

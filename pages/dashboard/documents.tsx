@@ -2,14 +2,14 @@
 import {motion} from "framer-motion";
 import {IDashboard} from "@/types/context/dashboard";
 import {NextPage, GetStaticProps} from "next";
-import {DashboardContext, layoutTailwindStyling} from "@/context/dashboard";
+import {DashboardMetaContent, layoutTailwindStyling} from "@/context/dashboard";
 
 // Components
 import Layout from "@/components/Backend/Dashboard/Layout/Layout";
 
 const documents: NextPage<IDashboard> = () => {
 	return (
-		<DashboardContext.Provider
+		<DashboardMetaContent.Provider
 			value={{
 				pageTitle: "Documents",
 			}}
@@ -25,7 +25,7 @@ const documents: NextPage<IDashboard> = () => {
 					<h1 className="text-lg font-bold text-left lg:text-2xl">Documents</h1>
 				</Layout>
 			</motion.section>
-		</DashboardContext.Provider>
+		</DashboardMetaContent.Provider>
 	);
 };
 

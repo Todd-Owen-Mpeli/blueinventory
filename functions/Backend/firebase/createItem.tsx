@@ -1,11 +1,10 @@
 // Imports
 import {
-	doc,
 	addDoc,
-	setDoc,
 	Firestore,
 	collection,
 	getFirestore,
+	CollectionReference,
 } from "firebase/firestore";
 import {INewCreatedItem} from "@/types/firebase";
 
@@ -18,27 +17,24 @@ export const createUserItem = async (
 ) => {
 	const db: Firestore = getFirestore();
 	const subCollection: string = "Items";
-	const userCollectionRef = collection(
+	const userCollectionRef: CollectionReference<any> = collection(
 		db,
-		"users",
-		`${userDocID}`,
-		subCollection
+		`users/${userDocID}/${subCollection}`
 	);
 
 	try {
-		const docRef = await addDoc(userCollectionRef, {
-			value: `${newCreatedItem?.value}`,
-			itemName: `${newCreatedItem?.itemName}`,
-			quantity: `${newCreatedItem?.quantity}`,
-			category: `${newCreatedItem?.category}`,
-			description: `${newCreatedItem?.description}`,
-		}).then(() => {
-			console.log(
-				`${userDisplayName}: Created a new item in ${subCollection} sub collection`,
-				docRef
-			);
+		await addDoc(userCollectionRef, {
+			value: newCreatedItem.value,
+			itemName: newCreatedItem.itemName,
+			quantity: newCreatedItem.quantity,
+			category: newCreatedItem.category,
+			description: newCreatedItem.description,
 		});
-	} catch (error: any | undefined) {
+
+		console.log(
+			`${userDisplayName}: Created a new item in ${subCollection} sub collection`
+		);
+	} catch (error: any) {
 		console.error("Error adding document: ", error);
 	}
 };
