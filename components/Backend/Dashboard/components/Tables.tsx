@@ -37,7 +37,7 @@ const Tables: FC = () => {
 	}, [userDocID]);
 
 	// Ensure userData is not null before using it in JSX
-	if (!firebaseContext?.userData) {
+	if (!itemsCollection) {
 		return <div>Loading...</div>; // or some other loading indicator
 	}
 
