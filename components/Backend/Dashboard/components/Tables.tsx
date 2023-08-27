@@ -102,14 +102,14 @@ const Tables: FC = () => {
 							</tr>
 						</thead>
 						<tbody>
-							{false ? (
+							{itemsCollection ? (
 								itemsCollection?.length > 0 ? (
 									itemsCollection.map((item: any, keys: any) => (
-										<tr key={keys}>
+										<tr className="px-4 bg-white odd:bg-darkGrey" key={keys}>
 											<td className="pt-6 py-2.5 pr-4">
 												<span className="font-semibold">00{keys}</span>
 											</td>
-											<td className="py-2.5 pr-4">
+											<td className="py-2.5 p-4">
 												<div className="flex flex-wrap items-center">
 													{/* <Image
 													className="object-cover object-center mr-3 rounded-full w-9 h-9"
@@ -151,9 +151,8 @@ const Tables: FC = () => {
 								)
 							) : (
 								// Ensure userData is not null before using it in JSX
-								<div className="relative">
-									Loading...
-									{/* <Loading /> */}
+								<div className="relative flex flex-col items-center justify-center">
+									<h3>Loading...</h3>
 								</div>
 							)}
 						</tbody>
