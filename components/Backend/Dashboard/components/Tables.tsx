@@ -36,6 +36,8 @@ const Tables: FC = () => {
 		};
 	}, [userDocID]);
 
+	// console.log(itemsCollection);
+
 	return (
 		<>
 			<section className="w-full h-full p-6 overflow-hidden bg-white rounded-2xl">
