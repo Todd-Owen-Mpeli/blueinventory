@@ -34,7 +34,7 @@ const Tables: FC = () => {
 		return () => {
 			unsubscribe();
 		};
-	}, [itemsCollection, userDocID]);
+	}, [userDocID]);
 
 	// Ensure userData is not null before using it in JSX
 	if (!itemsCollection) {
