@@ -11,6 +11,7 @@ import {getUserItemsDocument} from "@/functions/Backend/firebase/getUserItemsDoc
 
 // Components;
 import Paragraph from "@/components/Frontend/Elements/Paragraph";
+import Loading from "@/components/Frontend/Elements/Loading";
 
 const Tables: FC = () => {
 	const initialNumber: number = 1;
@@ -35,8 +36,6 @@ const Tables: FC = () => {
 			unsubscribe();
 		};
 	}, [userDocID]);
-
-	// console.log(itemsCollection);
 
 	return (
 		<>
@@ -103,7 +102,7 @@ const Tables: FC = () => {
 							</tr>
 						</thead>
 						<tbody>
-							{itemsCollection ? (
+							{false ? (
 								itemsCollection?.length > 0 ? (
 									itemsCollection.map((item: any, keys: any) => (
 										<tr key={keys}>
@@ -152,7 +151,10 @@ const Tables: FC = () => {
 								)
 							) : (
 								// Ensure userData is not null before using it in JSX
-								<div>Loading...</div>
+								<div className="relative">
+									Loading...
+									{/* <Loading /> */}
+								</div>
 							)}
 						</tbody>
 					</table>
