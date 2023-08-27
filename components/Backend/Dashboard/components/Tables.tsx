@@ -110,7 +110,7 @@ const Tables: FC = () => {
 								itemsCollection.map((item: any, keys: any) => (
 									<tr key={keys}>
 										<td className="pt-6 py-2.5 pr-4">
-											<span className="font-semibold">{keys}</span>
+											<span className="font-semibold">00{keys}</span>
 										</td>
 										<td className="py-2.5 pr-4">
 											<div className="flex flex-wrap items-center">
@@ -150,7 +150,7 @@ const Tables: FC = () => {
 									</tr>
 								))
 							) : (
-								<></>
+								<>Hello</>
 							)}
 						</tbody>
 					</table>
