@@ -36,11 +36,6 @@ const Tables: FC = () => {
 		};
 	}, [userDocID]);
 
-	// Ensure userData is not null before using it in JSX
-	if (!itemsCollection) {
-		return <div>Loading...</div>; // or some other loading indicator
-	}
-
 	return (
 		<>
 			<section className="w-full h-full p-6 overflow-hidden bg-white rounded-2xl">
@@ -106,51 +101,56 @@ const Tables: FC = () => {
 							</tr>
 						</thead>
 						<tbody>
-							{itemsCollection?.length > 0 ? (
-								itemsCollection.map((item: any, keys: any) => (
-									<tr key={keys}>
-										<td className="pt-6 py-2.5 pr-4">
-											<span className="font-semibold">00{keys}</span>
-										</td>
-										<td className="py-2.5 pr-4">
-											<div className="flex flex-wrap items-center">
-												{/* <Image
+							{itemsCollection ? (
+								itemsCollection?.length > 0 ? (
+									itemsCollection.map((item: any, keys: any) => (
+										<tr key={keys}>
+											<td className="pt-6 py-2.5 pr-4">
+												<span className="font-semibold">00{keys}</span>
+											</td>
+											<td className="py-2.5 pr-4">
+												<div className="flex flex-wrap items-center">
+													{/* <Image
 													className="object-cover object-center mr-3 rounded-full w-9 h-9"
 													src={item.Image.sourceUrl}
 													alt={item.Image.altText}
 													width={item.Image.mediaDetails.width}
 													height={item.Image.mediaDetails.height}
 												/> */}
-												<span className="font-semibold">{item.itemName}</span>
-											</div>
-										</td>
-										<td className="py-2.5 pr-4 max-w-xs">
-											<div className="font-normal">{item.description}</div>
-										</td>
-										<td className="py-2.5 pr-4">
-											<div className="font-semibold">{item.quantity}</div>
-										</td>
-										<td className="py-2.5 pr-4 max-w-xs">
-											<div className="font-semibold text-black">
-												{item.category}
-											</div>
-										</td>
-										<td className="py-2.5 pr-4">
-											<div className="px-2.5 py-1 text-sm font-normal text-white bg-darkBlue w-fit rounded-full">
-												£{item.value}
-											</div>
-										</td>
-										<td className="py-2.5">
-											<Link className="inline-flex py-2.5 pr-0" href={``}>
-												<span className="w-1 h-1 bg-black rounded-full"></span>
-												<span className="mx-0.5 w-1 h-1 bg-black rounded-full"></span>
-												<span className="w-1 h-1 bg-black rounded-full"></span>
-											</Link>
-										</td>
-									</tr>
-								))
+													<span className="font-semibold">{item.itemName}</span>
+												</div>
+											</td>
+											<td className="py-2.5 pr-4 max-w-xs">
+												<div className="font-normal">{item.description}</div>
+											</td>
+											<td className="py-2.5 pr-4">
+												<div className="font-semibold">{item.quantity}</div>
+											</td>
+											<td className="py-2.5 pr-4 max-w-xs">
+												<div className="font-semibold text-black">
+													{item.category}
+												</div>
+											</td>
+											<td className="py-2.5 pr-4">
+												<div className="px-2.5 py-1 text-sm font-normal text-white bg-darkBlue w-fit rounded-full">
+													£{item.value}
+												</div>
+											</td>
+											<td className="py-2.5">
+												<Link className="inline-flex py-2.5 pr-0" href={``}>
+													<span className="w-1 h-1 bg-black rounded-full"></span>
+													<span className="mx-0.5 w-1 h-1 bg-black rounded-full"></span>
+													<span className="w-1 h-1 bg-black rounded-full"></span>
+												</Link>
+											</td>
+										</tr>
+									))
+								) : (
+									<></>
+								)
 							) : (
-								<>Hello</>
+								// Ensure userData is not null before using it in JSX
+								<div>Loading...</div>
 							)}
 						</tbody>
 					</table>
