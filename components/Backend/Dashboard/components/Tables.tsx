@@ -46,7 +46,7 @@ const Tables: FC = () => {
 					whileInView={fadeIn}
 					className="pb-8 text-lg font-semibold text-darkBlue"
 				>
-					Transaction History
+					Items Created
 				</motion.h3>
 				<div className="w-full mb-5 overflow-x-auto">
 					<table className="w-full min-w-max">
@@ -105,8 +105,8 @@ const Tables: FC = () => {
 							{itemsCollection ? (
 								itemsCollection?.length > 0 ? (
 									itemsCollection.map((item: any, keys: any) => (
-										<tr className="px-4 bg-white odd:bg-darkGrey" key={keys}>
-											<td className="pt-6 py-2.5 pr-4">
+										<tr className="px-4 bg-white odd:bg-lightGrey" key={keys}>
+											<td className="pt-6 py-2.5 px-4">
 												<span className="font-semibold">00{keys}</span>
 											</td>
 											<td className="py-2.5 p-4">
@@ -121,18 +121,18 @@ const Tables: FC = () => {
 													<span className="font-semibold">{item.itemName}</span>
 												</div>
 											</td>
-											<td className="py-2.5 pr-4 max-w-xs">
+											<td className="py-2.5 px-4 max-w-xs">
 												<div className="font-normal">{item.description}</div>
 											</td>
-											<td className="py-2.5 pr-4">
+											<td className="py-2.5 px-4">
 												<div className="font-semibold">{item.quantity}</div>
 											</td>
-											<td className="py-2.5 pr-4 max-w-xs">
+											<td className="py-2.5 px-4 max-w-xs">
 												<div className="font-semibold text-black">
 													{item.category}
 												</div>
 											</td>
-											<td className="py-2.5 pr-4">
+											<td className="py-2.5 px-4">
 												<div className="px-2.5 py-1 text-sm font-normal text-white bg-darkBlue w-fit rounded-full">
 													£{item.value}
 												</div>

@@ -5,3 +5,9 @@ export interface ITailwindStyling {
 	profileImageStyling: string;
 	mainLinksStyling: string;
 }
+export interface ITablesProps {
+	itemsCollection: any;
+}
+export interface ICardGridProps {
+	itemsCollection: any;
+}

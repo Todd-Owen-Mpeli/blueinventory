@@ -780,7 +780,7 @@ const Pricing: FC<IPricing> = ({
 						initial={initial}
 						whileInView={stagger}
 						viewport={{once: true}}
-						className="flex flex-wrap justify-center gap-6 mt-20 sm:flex-row lg:flex-row"
+						className="flex flex-row flex-wrap justify-center gap-6 mt-20"
 					>
 						{paymentProviders?.length > 0 ? (
 							paymentProviders.map((item, keys) => (

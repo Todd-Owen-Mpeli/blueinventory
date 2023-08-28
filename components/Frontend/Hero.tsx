@@ -17,7 +17,7 @@ const Hero: FC<IHero> = ({
 }) => {
 	return (
 		<div
-			className="p-0 overflow-hidden bg-white bg-center bg-no-repeat bg-cover lg:px-4 lg:py-4 lg:pt-12"
+			className="p-0 overflow-hidden bg-white bg-center bg-no-repeat bg-cover lg:px-4 lg:py-4 lg:pt-11"
 			style={{
 				backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-orange-yellow.svg")`,
 			}}
