@@ -5,8 +5,7 @@ import {
 } from "@/types/context/dashboard";
 import {createContext, useContext} from "react";
 
-export const layoutTailwindStyling: string =
-	"flex flex-col w-full border-[5px] p-4 border-pureBlack rounded-xl bg-white";
+export const layoutTailwindStyling: string = "flex flex-col p-4";
 
 // Global Dashboard Context
 export const DashboardContext = createContext<IDashboardContent | undefined>(

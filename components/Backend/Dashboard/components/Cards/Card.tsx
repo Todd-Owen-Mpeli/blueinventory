@@ -75,7 +75,19 @@ const Card: FC<ICard> = ({
 							: tailwindStyling.h4 + "text-blue"
 					}
 				>
-					{value}
+					{value ? (
+						value
+					) : (
+						<h4
+							className={
+								displayBackgroundImage
+									? tailwindStyling.h4 + "text-white"
+									: tailwindStyling.h4 + "text-blue"
+							}
+						>
+							Loading...
+						</h4>
+					)}
 				</motion.h4>
 				<motion.p
 					initial={initial}
@@ -87,7 +99,19 @@ const Card: FC<ICard> = ({
 							: tailwindStyling.paragraph + "text-darkBlue"
 					}
 				>
-					{paragraph}
+					{paragraph ? (
+						paragraph
+					) : (
+						<p
+							className={
+								displayBackgroundImage
+									? tailwindStyling.paragraph + "text-white"
+									: tailwindStyling.paragraph + "text-darkBlue"
+							}
+						>
+							Loading...
+						</p>
+					)}
 				</motion.p>
 			</motion.div>
 		</>

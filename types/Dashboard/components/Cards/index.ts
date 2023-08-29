@@ -1,7 +1,7 @@
 export interface ICard {
 	text: string;
-	value: string;
 	paragraph: string;
+	value: number | undefined;
 	backgroundImageOption: string;
 	displayBackgroundImage: boolean;
 }

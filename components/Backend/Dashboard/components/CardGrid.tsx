@@ -1,35 +1,15 @@
 // Imports
+import {FC} from "react";
 import {motion} from "framer-motion";
-import {FC, useEffect, useState} from "react";
+import {useDashboardContext} from "@/context/dashboard";
 import {initial, stagger} from "@/animations/animations";
-import {ICardGridProps} from "@/types/Dashboard/components";
-
-// Firebase
-import {useFirebaseContext} from "@/context/Firebase";
-import {getUserItemsDocument} from "@/functions/Backend/firebase/getUserItemsDocument";
 
 // Components
 import Card from "./Cards/Card";
 
 const CardGrid: FC = () => {
-	const firebaseContext = useFirebaseContext();
-	const userDocID: string | null = firebaseContext?.userDocId;
-	const [itemsCollection, setItemsCollection] = useState<any | null>(null);
-
-	useEffect(() => {
-		const unsubscribe = async () => {
-			if (userDocID) {
-				const itemsArray = await getUserItemsDocument(userDocID);
-				setItemsCollection(itemsArray);
-			} else {
-				setItemsCollection(null);
-			}
-		};
-
-		return () => {
-			unsubscribe();
-		};
-	}, [userDocID]);
+	const DashboardContext = useDashboardContext();
+	const totalItems = DashboardContext?.itemsCollection?.length;
 
 	return (
 		<>
@@ -43,15 +23,15 @@ const CardGrid: FC = () => {
 					text={"Total Items"}
 					backgroundImageOption={"One"}
 					displayBackgroundImage={true}
-					value={itemsCollection?.length}
-					paragraph={"+18% Since last week"}
+					value={totalItems}
+					paragraph={"Total created items"}
 				/>
 				<Card
-					value={"2"}
+					value={2}
 					text={"Total Categories"}
 					displayBackgroundImage={true}
 					backgroundImageOption={"Three"}
-					paragraph={"+18% Since last week"}
+					paragraph={"Total created categories"}
 				/>
 			</motion.section>
 		</>

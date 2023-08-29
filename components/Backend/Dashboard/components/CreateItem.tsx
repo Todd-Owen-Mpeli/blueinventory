@@ -98,6 +98,7 @@ const CreateItem: FC = () => {
 				<Formik
 					onSubmit={formik?.onSubmit}
 					initialValues={formik?.initialValues}
+					onReset={formik?.initialValues}
 				>
 					<Form className="container mx-auto transition-all ease-in-out duration-[0.5s] md:max-w-xl shadow-12xl">
 						{loading ? (

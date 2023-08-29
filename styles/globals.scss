@@ -50,6 +50,14 @@ a {
 
 svg:hover {
 	fill: $goldPrime;
+
+	g,
+	path {
+		fill: $goldPrime;
+	}
+	line {
+		fill: $goldPrime;
+	}
 }
 
 h1,

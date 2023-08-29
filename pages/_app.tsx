@@ -102,6 +102,7 @@ export default function App({
 	const [signedInUser, setSignedInUser] = useState(false);
 	const [userData, setUserData] = useState<IFirebaseUser | null>(null);
 	const [userDocId, setUserDocId] = useState<string | null>(null);
+	const [itemsCollection, setItemsCollection] = useState<any[] | null>(null);
 
 	/* Check if user is SIGNED IN if 
 	True Displays Signed In Navbar */
@@ -115,8 +116,14 @@ export default function App({
 				& Document Unique Identification */
 				const userDoc = await getUserDocument(currentUser?.uid);
 				setUserDocId(userDoc.docUid);
+
+				/* Retrieves the current users 
+				Items List Document Data */
+				const itemsArray = await getUserItemsDocument(userDoc.docUid);
+				setItemsCollection(itemsArray);
 			} else {
 				setSignedInUser(false);
+				setItemsCollection(null);
 			}
 		});
 
@@ -242,6 +249,7 @@ export default function App({
 						<DashboardContext.Provider
 							value={{
 								pageTitle: "Dashboard",
+								itemsCollection: itemsCollection,
 							}}
 						>
 							<>
