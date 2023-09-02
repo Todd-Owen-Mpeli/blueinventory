@@ -1,11 +1,12 @@
 // Imports
 import {isEmpty} from "lodash";
 import {motion} from "framer-motion";
-import {IContentContext} from "@/types/context/public";
+import {IPageContext} from "@/types/context/public";
 import type {GetServerSideProps, NextPage} from "next";
+import {postType, flexibleContentType} from "@/context/context";
 import {getAuthToken} from "@/functions/Frontend/cookies/cookies";
-import {postType, ContentContext, flexibleContentType} from "@/context/context";
 import {getLoginPreviewRedirectUrl} from "@/functions/Frontend/redirects/redirects";
+import PageContextProvider from "@/components/Frontend/context/PageContextProvider";
 import {getAllStripePaymentPlans} from "@/functions/Backend/stripe/GetStripePaymentPlans";
 
 // Mutations Functions
@@ -25,21 +26,18 @@ import {getAllOperationalInsightsContent} from "@/functions/Frontend/graphql/Que
 
 // Components
 import Layout from "@/components/Frontend/Layout/Layout";
-
 import RenderFlexibleContent from "@/components/Frontend/FlexibleContent/RenderFlexibleContent";
 
-const dynamicPreviewPosts: NextPage<IContentContext> = ({
+const dynamicPreviewPosts: NextPage<IPageContext> = ({
 	seo,
 	content,
 	postTypeFlexibleContent,
 }) => {
 	return (
-		<ContentContext.Provider
-			value={{
-				seo: seo,
-				content: content,
-				postTypeFlexibleContent: postTypeFlexibleContent,
-			}}
+		<PageContextProvider
+			seo={seo}
+			content={content}
+			postTypeFlexibleContent={postTypeFlexibleContent}
 		>
 			<motion.div
 				exit={{
@@ -52,7 +50,7 @@ const dynamicPreviewPosts: NextPage<IContentContext> = ({
 					<RenderFlexibleContent />
 				</Layout>
 			</motion.div>
-		</ContentContext.Provider>
+		</PageContextProvider>
 	);
 };
 

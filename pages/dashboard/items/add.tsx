@@ -4,7 +4,7 @@ import {useState} from "react";
 import {motion} from "framer-motion";
 import {NextPage, GetStaticProps} from "next";
 import {IDashboard} from "@/types/context/dashboard";
-import {DashboardMetaContent, layoutTailwindStyling} from "@/context/dashboard";
+import {layoutTailwindStyling} from "@/context/dashboard";
 
 // Firebase
 import {getAuth} from "firebase/auth";
@@ -12,6 +12,7 @@ import {getUserDocument} from "@/functions/Backend/firebase/getUserDocument";
 
 // Components
 import Layout from "@/components/Backend/Dashboard/Layout/Layout";
+import DashboardMetaContentProvider from "@/components/Frontend/context/DashboardMetaContentProvider";
 
 const add: NextPage<IDashboard> = () => {
 	const auth = getAuth();
@@ -36,11 +37,7 @@ const add: NextPage<IDashboard> = () => {
 	};
 
 	return (
-		<DashboardMetaContent.Provider
-			value={{
-				pageTitle: "Add",
-			}}
-		>
+		<DashboardMetaContentProvider pageTitle={"Add"}>
 			<motion.section
 				exit={{
 					opacity: 0,
@@ -52,7 +49,7 @@ const add: NextPage<IDashboard> = () => {
 					<h1 className="text-lg font-bold text-left lg:text-2xl">Add</h1>
 				</Layout>
 			</motion.section>
-		</DashboardMetaContent.Provider>
+		</DashboardMetaContentProvider>
 	);
 };
 

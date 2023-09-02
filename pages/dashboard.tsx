@@ -3,20 +3,17 @@ import React from "react";
 import {motion} from "framer-motion";
 import {NextPage, GetStaticProps} from "next";
 import {IDashboard} from "@/types/context/dashboard";
-import {DashboardMetaContent, layoutTailwindStyling} from "@/context/dashboard";
+import {layoutTailwindStyling} from "@/context/dashboard";
 
 // Components
 import Layout from "@/components/Backend/Dashboard/Layout/Layout";
 import Tables from "@/components/Backend/Dashboard/components/Tables";
 import CardGrid from "@/components/Backend/Dashboard/components/CardGrid";
+import DashboardMetaContentProvider from "@/components/Frontend/context/DashboardMetaContentProvider";
 
 const dashboard: NextPage<IDashboard> = () => {
 	return (
-		<DashboardMetaContent.Provider
-			value={{
-				pageTitle: "Dashboard",
-			}}
-		>
+		<DashboardMetaContentProvider pageTitle={"Dashboard"}>
 			<motion.section
 				exit={{
 					opacity: 0,
@@ -34,7 +31,7 @@ const dashboard: NextPage<IDashboard> = () => {
 					</div>
 				</Layout>
 			</motion.section>
-		</DashboardMetaContent.Provider>
+		</DashboardMetaContentProvider>
 	);
 };
 

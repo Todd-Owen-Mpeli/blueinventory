@@ -1,14 +1,10 @@
 // Imports
-import {
-	homePage,
-	postType,
-	ContentContext,
-	flexibleContentType,
-} from "@/context/context";
 import {motion} from "framer-motion";
 import {NextPage, GetServerSideProps} from "next";
+import {IPageContext} from "@/types/context/public";
 import Layout from "@/components/Frontend/Layout/Layout";
-import {IContentContext} from "@/types/context/public/index";
+import {homePage, postType, flexibleContentType} from "@/context/context";
+import PageContextProvider from "@/components/Frontend/context/PageContextProvider";
 
 // Queries Functions
 import {getAllSeoContent} from "@/functions/Frontend/graphql/Queries/GetAllSeoPagesContent";
@@ -16,20 +12,17 @@ import {getAllFlexibleContentComponents} from "@/functions/Frontend/graphql/Quer
 
 // Components
 import Login from "@/components/Frontend/Login";
-import {useGlobalContext} from "@/context/Global";
 
-const login: NextPage<IContentContext> = ({
+const login: NextPage<IPageContext> = ({
 	seo,
 	content,
 	postTypeFlexibleContent,
 }) => {
 	return (
-		<ContentContext.Provider
-			value={{
-				seo: seo,
-				content: content,
-				postTypeFlexibleContent: postTypeFlexibleContent,
-			}}
+		<PageContextProvider
+			seo={seo}
+			content={content}
+			postTypeFlexibleContent={postTypeFlexibleContent}
 		>
 			<motion.div
 				exit={{
@@ -46,7 +39,7 @@ const login: NextPage<IContentContext> = ({
 					<Login />
 				</Layout>
 			</motion.div>
-		</ContentContext.Provider>
+		</PageContextProvider>
 	);
 };
 

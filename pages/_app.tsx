@@ -10,16 +10,18 @@ import postHog from "posthog-js";
 import {PostHogProvider} from "posthog-js/react";
 
 // Global Context Provider
-import {GlobalContext} from "@/context/Global";
-import {DashboardContext} from "@/context/dashboard";
-import {IErrorPageContent, IGlobalContext} from "@/types/context/public";
+import {
+	IErrorPageContent,
+	IFirebaseContext,
+	IGlobalContext,
+} from "@/types/context/public";
 
 // Firebase
 import {Auth, getAuth} from "firebase/auth";
 import {IFirebaseUser} from "@/types/firebase";
-import {FirebaseContext} from "@/context/Firebase";
 import initializeFirebase from "@/firebase/firebase";
 import {getUserDocument} from "@/functions/Backend/firebase/getUserDocument";
+import {getUserItemsDocument} from "@/functions/Backend/firebase/getUserItemsDocument";
 
 // Stripe Functions
 import {getAllStripePaymentPlans} from "@/functions/Backend/stripe/GetStripePaymentPlans";
@@ -42,7 +44,9 @@ import "../styles/globals.scss";
 import Footer from "@/components/Frontend/Footer";
 import ErrorPage from "@/components/Frontend/Elements/ErrorPage";
 import CookiePolicyCard from "@/components/Frontend/Elements/CookiePolicyCard";
-import {getUserItemsDocument} from "@/functions/Backend/firebase/getUserItemsDocument";
+import GlobalContextProvider from "@/components/Frontend/context/GlobalContextProvider";
+import FirebaseContextProvider from "@/components/Frontend/context/FirebaseContextProvider";
+import DashboardContextProvider from "@/components/Frontend/context/DashboardContextProvider";
 
 // Check that PostHog is client-side (used to handle Next.js SSR)
 if (typeof window !== "undefined") {
@@ -103,6 +107,11 @@ export default function App({
 	const [userData, setUserData] = useState<IFirebaseUser | null>(null);
 	const [userDocId, setUserDocId] = useState<string | null>(null);
 	const [itemsCollection, setItemsCollection] = useState<any[] | null>(null);
+	const firebaseUser: IFirebaseContext = {
+		userData: userData,
+		userDocId: userDocId,
+		signedInUser: signedInUser,
+	};
 
 	/* Check if user is SIGNED IN if 
 	True Displays Signed In Navbar */
@@ -238,39 +247,19 @@ export default function App({
 	return (
 		<ApolloProvider client={client}>
 			<PostHogProvider client={postHog}>
-				<FirebaseContext.Provider
-					value={{
-						userData: userData,
-						userDocId: userDocId,
-						signedInUser: signedInUser,
-					}}
-				>
+				<FirebaseContextProvider firebaseUserUser={firebaseUser}>
 					{isProtectedPage && signedInUser ? (
-						<DashboardContext.Provider
-							value={{
-								pageTitle: "Dashboard",
-								itemsCollection: itemsCollection,
-							}}
+						<DashboardContextProvider
+							pageTitle={`Dashboard`}
+							itemsCollection={itemsCollection}
 						>
 							<>
 								<Loading />
 								<Component {...pageProps} />
 							</>
-						</DashboardContext.Provider>
+						</DashboardContextProvider>
 					) : isPublicPage ? (
-						<GlobalContext.Provider
-							value={{
-								stripePlans: globalProps?.stripePlans,
-								mainMenuLinks: globalProps?.mainMenuLinks,
-								navbarMenuLinks: globalProps?.navbarMenuLinks,
-								footerMenuLinks: globalProps?.footerMenuLinks,
-								industriesMenuLinks: globalProps?.industriesMenuLinks,
-								themesOptionsContent: globalProps?.themesOptionsContent,
-								operationalInsights: globalProps?.operationalInsights,
-								contentSliderPostsContent:
-									globalProps?.contentSliderPostsContent,
-							}}
-						>
+						<GlobalContextProvider globalProps={globalProps}>
 							<>
 								{/* Cookie Policy Pop Up */}
 								{postHog.has_opted_in_capturing() ||
@@ -281,7 +270,7 @@ export default function App({
 								<Component {...pageProps} />
 								<Footer />
 							</>
-						</GlobalContext.Provider>
+						</GlobalContextProvider>
 					) : (
 						<>
 							<Loading />
@@ -294,7 +283,7 @@ export default function App({
 							/>
 						</>
 					)}
-				</FirebaseContext.Provider>
+				</FirebaseContextProvider>
 			</PostHogProvider>
 		</ApolloProvider>
 	);

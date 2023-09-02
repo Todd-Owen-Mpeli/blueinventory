@@ -1,31 +1,29 @@
 // Imports
 import {motion} from "framer-motion";
 import type {NextPage, GetStaticProps} from "next";
-import {IContentContext} from "@/types/context/public/index";
-import {postType, ContentContext, flexibleContentType} from "@/context/context";
+import {IPageContext} from "@/types/context/public";
+import {postType, flexibleContentType} from "@/context/context";
+import PageContextProvider from "@/components/Frontend/context/PageContextProvider";
 
 // Queries Functions
 import {getAllSeoContent} from "@/functions/Frontend/graphql/Queries/GetAllSeoPagesContent";
 import {getAllIndustriesPageSlugs} from "@/functions/Frontend/graphql/Queries/GetAllIndustriesPageSlugs";
-
 import {getAllFlexibleContentComponents} from "@/functions/Frontend/graphql/Queries/GetAllFlexibleContentComponents";
 
 // Components
 import Layout from "@/components/Frontend/Layout/Layout";
 import RenderFlexibleContent from "@/components/Frontend/FlexibleContent/RenderFlexibleContent";
 
-const dynamicIndustriesPages: NextPage<IContentContext> = ({
+const dynamicIndustriesPages: NextPage<IPageContext> = ({
 	seo,
 	content,
 	postTypeFlexibleContent,
 }) => {
 	return (
-		<ContentContext.Provider
-			value={{
-				seo: seo,
-				content: content,
-				postTypeFlexibleContent: postTypeFlexibleContent,
-			}}
+		<PageContextProvider
+			seo={seo}
+			content={content}
+			postTypeFlexibleContent={postTypeFlexibleContent}
 		>
 			<motion.div
 				exit={{
@@ -38,7 +36,7 @@ const dynamicIndustriesPages: NextPage<IContentContext> = ({
 					<RenderFlexibleContent />
 				</Layout>
 			</motion.div>
-		</ContentContext.Provider>
+		</PageContextProvider>
 	);
 };
 

@@ -1,26 +1,24 @@
 // Imports
 import {motion} from "framer-motion";
 import {NextPage, GetStaticProps} from "next";
-import {IContentContext} from "@/types/context/public";
-import {ContentContext, flexibleContentType} from "@/context/context";
+import {IPageContext} from "@/types/context/public";
+import {flexibleContentType} from "@/context/context";
+import PageContextProvider from "@/components/Frontend/context/PageContextProvider";
 
 // Components
 import LayoutTwo from "@/components/Frontend/Layout/LayoutTwo";
 import Payments from "@/components/Frontend/Payments";
-import {useGlobalContext} from "@/context/Global";
 
-const payment: NextPage<IContentContext> = ({
+const payment: NextPage<IPageContext> = ({
 	seo,
 	content,
 	postTypeFlexibleContent,
 }) => {
 	return (
-		<ContentContext.Provider
-			value={{
-				seo: seo,
-				content: content,
-				postTypeFlexibleContent: postTypeFlexibleContent,
-			}}
+		<PageContextProvider
+			seo={seo}
+			content={content}
+			postTypeFlexibleContent={postTypeFlexibleContent}
 		>
 			<motion.section
 				exit={{
@@ -36,7 +34,7 @@ const payment: NextPage<IContentContext> = ({
 					</div>
 				</LayoutTwo>
 			</motion.section>
-		</ContentContext.Provider>
+		</PageContextProvider>
 	);
 };
 

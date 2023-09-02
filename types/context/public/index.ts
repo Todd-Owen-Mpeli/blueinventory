@@ -99,7 +99,7 @@ export type IErrorPageContent = {
 	backgroundImage: string;
 };
 
-export interface IContentContext {
+export interface IPageContext {
 	seo: ISeo;
 	content: IContent;
 	postTypeFlexibleContent: IPostTypeFlexibleContent;
@@ -115,6 +115,34 @@ export interface IGlobalContext {
 	themesOptionsContent: IThemesOptionsContent;
 	contentSliderPostsContent: IContentSliderPostsContent;
 }
+
+export type IGlobalContextProvider = {
+	globalProps: IGlobalContext;
+	children: React.ReactNode;
+};
+
+export type IFirebaseContextProvider = {
+	children: React.ReactNode;
+	firebaseUserUser: IFirebaseContext;
+};
+
+export type IPageContextProvider = {
+	seo: ISeo;
+	content: IContent;
+	children: React.ReactNode;
+	postTypeFlexibleContent: IPostTypeFlexibleContent;
+};
+
+export type IDashboardContextProvider = {
+	pageTitle: string;
+	children: React.ReactNode;
+	itemsCollection: any[] | null;
+};
+
+export type IDashboardMetaContentProvider = {
+	pageTitle: string;
+	children: React.ReactNode;
+};
 
 export interface IFirebaseContext {
 	signedInUser: boolean;

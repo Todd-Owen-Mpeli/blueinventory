@@ -1,26 +1,24 @@
 // Imports
 import {motion} from "framer-motion";
 import type {GetStaticProps, NextPage} from "next";
-import {IContentContext} from "@/types/context/public/index";
-import {ContentContext, flexibleContentType} from "@/context/context";
+import {IPageContext} from "@/types/context/public";
+import {flexibleContentType} from "@/context/context";
+import PageContextProvider from "@/components/Frontend/context/PageContextProvider";
 
 // Components
 import SignUp from "@/components/Frontend/SignUp";
 import LayoutTwo from "@/components/Frontend/Layout/LayoutTwo";
-import {useGlobalContext} from "@/context/Global";
 
-const signUpPage: NextPage<IContentContext> = ({
+const signUpPage: NextPage<IPageContext> = ({
 	seo,
 	content,
 	postTypeFlexibleContent,
 }) => {
 	return (
-		<ContentContext.Provider
-			value={{
-				seo: seo,
-				content: content,
-				postTypeFlexibleContent: postTypeFlexibleContent,
-			}}
+		<PageContextProvider
+			seo={seo}
+			content={content}
+			postTypeFlexibleContent={postTypeFlexibleContent}
 		>
 			<motion.div
 				exit={{
@@ -47,7 +45,7 @@ const signUpPage: NextPage<IContentContext> = ({
 					</section>
 				</LayoutTwo>
 			</motion.div>
-		</ContentContext.Provider>
+		</PageContextProvider>
 	);
 };
 

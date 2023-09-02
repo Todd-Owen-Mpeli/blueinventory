@@ -1,13 +1,9 @@
 // Imports
-import {
-	postType,
-	errorPage,
-	ContentContext,
-	flexibleContentType,
-} from "@/context/context";
 import {motion} from "framer-motion";
 import type {NextPage, GetStaticProps} from "next";
-import {IContentContext} from "@/types/context/public/index";
+import {IPageContext} from "@/types/context/public";
+import {postType, errorPage, flexibleContentType} from "@/context/context";
+import PageContextProvider from "@/components/Frontend/context/PageContextProvider";
 
 // Queries Functions
 import {getAllSeoContent} from "@/functions/Frontend/graphql/Queries/GetAllSeoPagesContent";
@@ -16,20 +12,17 @@ import {getAllFlexibleContentComponents} from "@/functions/Frontend/graphql/Quer
 // Components
 import Layout from "@/components/Frontend/Layout/Layout";
 import RenderFlexibleContent from "@/components/Frontend/FlexibleContent/RenderFlexibleContent";
-import {useGlobalContext} from "@/context/Global";
 
-const noPageExits: NextPage<IContentContext> = ({
+const noPageExits: NextPage<IPageContext> = ({
 	seo,
 	content,
 	postTypeFlexibleContent,
 }) => {
 	return (
-		<ContentContext.Provider
-			value={{
-				seo: seo,
-				content: content,
-				postTypeFlexibleContent: postTypeFlexibleContent,
-			}}
+		<PageContextProvider
+			seo={seo}
+			content={content}
+			postTypeFlexibleContent={postTypeFlexibleContent}
 		>
 			<motion.div
 				exit={{
@@ -46,7 +39,7 @@ const noPageExits: NextPage<IContentContext> = ({
 					<RenderFlexibleContent />
 				</Layout>
 			</motion.div>
-		</ContentContext.Provider>
+		</PageContextProvider>
 	);
 };
 

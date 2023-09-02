@@ -2,19 +2,16 @@
 import {motion} from "framer-motion";
 import {NextPage, GetStaticProps} from "next";
 import {IDashboard} from "@/types/context/dashboard";
-import {DashboardMetaContent, layoutTailwindStyling} from "@/context/dashboard";
+import {layoutTailwindStyling} from "@/context/dashboard";
 
 // Components
 import Layout from "@/components/Backend/Dashboard/Layout/Layout";
 import CreateItem from "@/components/Backend/Dashboard/components/CreateItem";
+import DashboardMetaContentProvider from "@/components/Frontend/context/DashboardMetaContentProvider";
 
 const items: NextPage<IDashboard> = () => {
 	return (
-		<DashboardMetaContent.Provider
-			value={{
-				pageTitle: "Items",
-			}}
-		>
+		<DashboardMetaContentProvider pageTitle={"Items"}>
 			<motion.section
 				exit={{
 					opacity: 0,
@@ -29,7 +26,7 @@ const items: NextPage<IDashboard> = () => {
 					</div>
 				</Layout>
 			</motion.section>
-		</DashboardMetaContent.Provider>
+		</DashboardMetaContentProvider>
 	);
 };
 

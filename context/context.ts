@@ -1,7 +1,7 @@
 // Imports
 import {
 	IPostTypes,
-	IContentContext,
+	IPageContext,
 	IPostTypesFlexiblecontent,
 } from "@/types/context/public";
 import {createContext, useContext} from "react";
@@ -29,12 +29,10 @@ export const flexibleContentType: IPostTypesFlexiblecontent = {
 	previewIndustry: "Industry_Flexiblecontent_FlexibleContent",
 };
 
-export const ContentContext = createContext<IContentContext | undefined>(
-	undefined
-);
+export const PageContext = createContext<IPageContext | undefined>(undefined);
 
 export const useContentContext = () => {
-	const content = useContext(ContentContext);
+	const content = useContext(PageContext);
 
 	if (content === undefined) {
 		throw new Error(`useDynamicPagesContext must be used to render content.`);
