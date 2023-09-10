@@ -1,5 +1,5 @@
 // Imports
-import {FC} from "react";
+import {FC, Fragment} from "react";
 import {motion} from "framer-motion";
 import {ITestimonial} from "@/types/components/public";
 import {initial, fadeInUp, stagger} from "@/animations/animations";
@@ -37,13 +37,15 @@ const Testimonial: FC<ITestimonial> = ({title, paragraph, contentGrid}) => {
 				>
 					{contentGrid?.length > 0 ? (
 						contentGrid?.map((item, keys) => (
-							<TestimonialCard
-								key={keys}
-								title={item?.card?.name}
-								image={item?.card?.image}
-								paragraph={item?.card?.paragraph}
-								jobPosition={item?.card?.position}
-							/>
+							<Fragment key={keys}>
+								<TestimonialCard
+									key={keys}
+									title={item?.card?.name}
+									image={item?.card?.image}
+									paragraph={item?.card?.paragraph}
+									jobPosition={item?.card?.position}
+								/>
+							</Fragment>
 						))
 					) : (
 						<></>

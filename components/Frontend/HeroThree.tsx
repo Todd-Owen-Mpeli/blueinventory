@@ -1,5 +1,5 @@
 // Imports
-import {FC} from "react";
+import {FC, Fragment} from "react";
 import {motion} from "framer-motion";
 import {IHeroThreeProps} from "@/types/components/public";
 import {initial, fadeInUp, stagger} from "@/animations/animations";
@@ -34,11 +34,13 @@ const HeroThree: FC<IHeroThreeProps> = ({title, paragraph, imageGrid}) => {
 				>
 					{imageGrid?.length > 0 ? (
 						imageGrid.map((item, keys) => (
-							<HeroThreeCard
-								key={keys}
-								link={item?.card?.link}
-								image={item?.card?.image}
-							/>
+							<Fragment key={keys}>
+								<HeroThreeCard
+									key={keys}
+									link={item?.card?.link}
+									image={item?.card?.image}
+								/>
+							</Fragment>
 						))
 					) : (
 						<></>

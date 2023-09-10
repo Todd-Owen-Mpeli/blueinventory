@@ -10,7 +10,7 @@ import {
 } from "@/animations/animations";
 import Link from "next/link";
 import Image from "next/image";
-import {useState, FC} from "react";
+import {useState, FC, Fragment} from "react";
 import {motion} from "framer-motion";
 import {useRouter} from "next/router";
 import {useGlobalContext} from "@/context/Global";
@@ -107,12 +107,14 @@ const Navbar: FC = () => {
 									{globalContext.navbarMenuLinks.navbarMenuLinks?.length > 0 ? (
 										globalContext.navbarMenuLinks.navbarMenuLinks?.map(
 											(item, keys) => (
-												<NavbarMenuLinks
-													key={keys}
-													url={item?.node?.url}
-													label={item?.node?.label}
-													tailwindStyling="text-sm uppercase font-bold tracking-[.15rem] text-darkBlue hover:text-goldPrime transition-all ease-in-out duration-500"
-												/>
+												<Fragment key={keys}>
+													<NavbarMenuLinks
+														key={keys}
+														url={item?.node?.url}
+														label={item?.node?.label}
+														tailwindStyling="text-sm uppercase font-bold tracking-[.15rem] text-darkBlue hover:text-goldPrime transition-all ease-in-out duration-500"
+													/>
+												</Fragment>
 											)
 										)
 									) : (

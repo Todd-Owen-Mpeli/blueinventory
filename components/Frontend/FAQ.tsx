@@ -1,6 +1,6 @@
 // Imports
-import {FC} from "react";
 import Image from "next/image";
+import {FC, Fragment} from "react";
 import {motion} from "framer-motion";
 import {IFaq} from "@/types/components/public";
 import {initial, fadeInUp, stagger} from "@/animations/animations";
@@ -60,11 +60,9 @@ const FAQ: FC<IFaq> = ({icon, title, paragraph, qagrid}) => {
 				>
 					{qagrid?.length > 0 ? (
 						qagrid?.map((item, keys) => (
-							<FAQCard
-								key={keys}
-								title={item?.title}
-								paragraph={item?.paragraph}
-							/>
+							<Fragment key={keys}>
+								<FAQCard title={item?.title} paragraph={item?.paragraph} />
+							</Fragment>
 						))
 					) : (
 						<></>

@@ -1,5 +1,5 @@
 // Imports
-import {FC} from "react";
+import {FC, Fragment} from "react";
 import {motion} from "framer-motion";
 import {ILogos} from "@/types/components/public";
 import {initial, initialTwo, fadeIn, stagger} from "@/animations/animations";
@@ -33,7 +33,9 @@ const logos: FC<ILogos> = ({title, paragraph, logoGrid}) => {
 					>
 						{logoGrid?.length > 0 ? (
 							logoGrid.map((item, keys) => (
-								<LogoCard key={keys} image={item?.image} />
+								<Fragment key={keys}>
+									<LogoCard key={keys} image={item?.image} />
+								</Fragment>
 							))
 						) : (
 							<></>

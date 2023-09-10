@@ -17,14 +17,15 @@ const Hero: FC<IHero> = ({
 }) => {
 	return (
 		<div
-			className="p-0 overflow-hidden bg-white bg-center bg-no-repeat bg-cover lg:px-4 lg:py-4 lg:pt-11"
+			className="p-0 overflow-hidden bg-white bg-center bg-no-repeat bg-cover 2xl:pt-6"
 			style={{
-				backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-orange-yellow.svg")`,
+				backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue-darkblue.svg")`,
 			}}
 		>
 			<div
-				className="relative w-full h-[600px] overflow-hidden bg-center bg-no-repeat bg-cover rounded-sm"
+				className="relative w-full h-[600px] overflow-hidden bg-center bg-no-repeat bg-cover rounded-sm border-l-[10px] lg:border-l-[20px] border-t-[20px] lg:border-t-[40px] border-b-[60px] border-r-none 2xl:border-r-[107px] border-r-darkBlue border-yellow"
 				style={{
+					clipPath: `polygon(0% 0%, 100% 0%, 94.5% 86.3%, 0% 92.3%)`,
 					backgroundImage: `url("${
 						backgroundImage
 							? backgroundImage
@@ -33,7 +34,7 @@ const Hero: FC<IHero> = ({
 				}}
 			>
 				{/* Background Video */}
-				<div className="hidden xl:block relative top-[-75px] pb-[56.25%] overflow-hidden w-full h-full bg-center bg-no-repeat bg-cover">
+				<div className="hidden xl:block relative top-[-250px] pb-[56.25%] overflow-hidden w-full h-full bg-center bg-no-repeat bg-cover">
 					<iframe
 						allowFullScreen
 						allow="autoplay; fullscreen; picture-in-picture"

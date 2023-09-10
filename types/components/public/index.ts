@@ -57,6 +57,7 @@ export interface IOperationalInsightsCard {
 	uri: string;
 	title: string;
 	paragraph: string;
+	getRandomColor: string;
 	featuredImage: {
 		node: {
 			altText: string;

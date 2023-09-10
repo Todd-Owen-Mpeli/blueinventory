@@ -30,11 +30,21 @@ const HeroTwo: FC<IHeroTwo> = ({
 	const mainImageVideoTailwindcss: string = `object-cover object-center w-full h-full`;
 
 	return (
-		<div className={styles.hero}>
-			<div className="flex flex-col bg-cover bg-center bg-no-repeat relative h-full min-h-[40vh] sm:min-h-[65vh]">
+		<div className={styles.heroTwo}>
+			<div
+				className="flex flex-col relative h-full min-h-[50vh] bg-white bg-center bg-no-repeat bg-cover "
+				style={{
+					backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-orange-yellow.svg")`,
+				}}
+			>
 				<div
-					className="absolute top-0 bottom-0 left-0 w-full h-full max-h-[40vh] sm:max-h-[65vh] z-[995] bg-center bg-no-repeat bg-cover"
-					style={{backgroundImage: `url("${backgroundImage?.sourceUrl}")`}}
+					className={
+						styles.clipPath +
+						" absolute border-r-[10px] lg:border-r-[20px] border-t-[20px] lg:border-t-[40px] border-b-[10px] lg:border-b-[20px] border-blueDash top-0 bottom-0 left-0 w-full h-full z-[995] bg-center bg-no-repeat bg-cover"
+					}
+					style={{
+						backgroundImage: `url("${backgroundImage?.sourceUrl}")`,
+					}}
 				>
 					{/* Background Video */}
 					<div

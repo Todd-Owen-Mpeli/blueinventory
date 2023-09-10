@@ -1,5 +1,5 @@
 // Imports
-import {FC} from "react";
+import {FC, Fragment} from "react";
 import {motion} from "framer-motion";
 import {useGlobalContext} from "@/context/Global";
 import {IOperationalInsights} from "@/types/components/public";
@@ -16,6 +16,19 @@ const operationalInsights: FC<IOperationalInsights> = ({
 }) => {
 	// eslint-disable-next-line react-hooks/rules-of-hooks
 	const globalContext = useGlobalContext();
+
+	const getRandomColor = () => {
+		const colors = [
+			"blue",
+			"darkPinkRed",
+			"yellow",
+			"pinkRed",
+			"darkBlue",
+			"brightGreen",
+		];
+		const randomIndex = Math.floor(Math.random() * colors.length);
+		return colors[randomIndex];
+	};
 
 	return (
 		<div className="py-24 bg-white">
@@ -63,19 +76,22 @@ const operationalInsights: FC<IOperationalInsights> = ({
 				>
 					{globalContext.operationalInsights?.length > 0 ? (
 						globalContext.operationalInsights.map((item, keys) => (
-							<OperationalInsightsCard
-								key={keys}
-								uri={item?.node?.uri}
-								featuredImage={item?.node?.featuredImage}
-								title={
-									item?.node?.template?.flexibleContent?.flexibleContent[0]
-										?.title
-								}
-								paragraph={
-									item?.node?.template?.flexibleContent?.flexibleContent[0]
-										?.paragraph
-								}
-							/>
+							<Fragment key={keys}>
+								<OperationalInsightsCard
+									key={keys}
+									uri={item?.node?.uri}
+									getRandomColor={getRandomColor()}
+									featuredImage={item?.node?.featuredImage}
+									title={
+										item?.node?.template?.flexibleContent?.flexibleContent[0]
+											?.title
+									}
+									paragraph={
+										item?.node?.template?.flexibleContent?.flexibleContent[0]
+											?.paragraph
+									}
+								/>
+							</Fragment>
 						))
 					) : (
 						<></>

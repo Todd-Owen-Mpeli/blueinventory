@@ -1,6 +1,7 @@
 // Imports
 import Link from "next/link";
 import Image from "next/image";
+import {FC, Fragment} from "react";
 import {motion} from "framer-motion";
 import {useGlobalContext} from "@/context/Global";
 import {initial, initialTwo, fadeIn, stagger} from "@/animations/animations";
@@ -8,7 +9,7 @@ import {initial, initialTwo, fadeIn, stagger} from "@/animations/animations";
 // Components
 import FooterMenuLinks from "@/components/Frontend/Elements/FooterMenuLinks";
 
-const Footer = () => {
+const Footer: FC = () => {
 	const globalContext = useGlobalContext();
 
 	return (
@@ -13689,12 +13690,13 @@ const Footer = () => {
 								{globalContext.footerMenuLinks.footerMenuLinks?.length > 0 ? (
 									globalContext.footerMenuLinks.footerMenuLinks?.map(
 										(item, keys) => (
-											<FooterMenuLinks
-												key={keys}
-												url={item?.node?.url}
-												label={item?.node?.label}
-												tailwindStyling="text-white text-left hover:text-goldPrime"
-											/>
+											<Fragment key={keys}>
+												<FooterMenuLinks
+													url={item?.node?.url}
+													label={item?.node?.label}
+													tailwindStyling="text-white text-left hover:text-goldPrime"
+												/>
+											</Fragment>
 										)
 									)
 								) : (
@@ -13716,12 +13718,13 @@ const Footer = () => {
 								0 ? (
 									globalContext.industriesMenuLinks.industriesMenuLinks?.map(
 										(item, keys) => (
-											<FooterMenuLinks
-												key={keys}
-												label={item?.node?.label}
-												url={`/industries${item?.node?.url}`}
-												tailwindStyling="text-white text-left hover:text-goldPrime"
-											/>
+											<Fragment key={keys}>
+												<FooterMenuLinks
+													label={item?.node?.label}
+													url={`/industries${item?.node?.url}`}
+													tailwindStyling="text-white text-left hover:text-goldPrime"
+												/>
+											</Fragment>
 										)
 									)
 								) : (

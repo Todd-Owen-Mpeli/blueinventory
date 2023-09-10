@@ -1,5 +1,5 @@
 // Imports
-import {FC} from "react";
+import {FC, Fragment} from "react";
 import Link from "next/link";
 import {motion} from "framer-motion";
 import {useGlobalContext} from "@/context/Global";
@@ -188,12 +188,14 @@ const Pricing: FC<IPricing> = ({
 											>
 												{card?.bulletList?.length > 0 ? (
 													card?.bulletList?.map((item, keys) => (
-														<BulletListCard
-															key={keys}
-															iconFillColor={`#6BBE66`}
-															bulletPoint={item?.bulletPoint}
-															tailwindStyling="ml-2 text-sm text-black"
-														/>
+														<Fragment key={keys}>
+															<BulletListCard
+																key={keys}
+																iconFillColor={`#6BBE66`}
+																bulletPoint={item?.bulletPoint}
+																tailwindStyling="ml-2 text-sm text-black"
+															/>
+														</Fragment>
 													))
 												) : (
 													<></>
@@ -399,12 +401,14 @@ const Pricing: FC<IPricing> = ({
 											>
 												{card?.bulletList?.length > 0 ? (
 													card?.bulletList?.map((item, keys) => (
-														<BulletListCard
-															key={keys}
-															iconFillColor={`#5ac3ff`}
-															bulletPoint={item?.bulletPoint}
-															tailwindStyling="ml-2 text-sm text-white"
-														/>
+														<Fragment key={keys}>
+															<BulletListCard
+																key={keys}
+																iconFillColor={`#5ac3ff`}
+																bulletPoint={item?.bulletPoint}
+																tailwindStyling="ml-2 text-sm text-white"
+															/>
+														</Fragment>
 													))
 												) : (
 													<></>
@@ -597,12 +601,14 @@ const Pricing: FC<IPricing> = ({
 											>
 												{card?.bulletList?.length > 0 ? (
 													card?.bulletList?.map((item, keys) => (
-														<BulletListCard
-															key={keys}
-															iconFillColor={`#6BBE66`}
-															bulletPoint={item?.bulletPoint}
-															tailwindStyling="ml-2 text-sm text-black"
-														/>
+														<Fragment key={keys}>
+															<BulletListCard
+																key={keys}
+																iconFillColor={`#6BBE66`}
+																bulletPoint={item?.bulletPoint}
+																tailwindStyling="ml-2 text-sm text-black"
+															/>
+														</Fragment>
 													))
 												) : (
 													<></>
@@ -784,7 +790,9 @@ const Pricing: FC<IPricing> = ({
 					>
 						{paymentProviders?.length > 0 ? (
 							paymentProviders.map((item, keys) => (
-								<PaymentProvidersCard key={keys} image={item?.logo} />
+								<Fragment key={keys}>
+									<PaymentProvidersCard key={keys} image={item?.logo} />
+								</Fragment>
 							))
 						) : (
 							<></>

@@ -11,6 +11,7 @@ import Logos from "@/components/Frontend/Logos";
 import CTATwo from "@/components/Frontend/CTATwo";
 import Pricing from "@/components/Frontend/Pricing";
 import HeroTwo from "@/components/Frontend/HeroTwo";
+import GoogleIntegration from "../GoogleIntegration";
 import ImageGrid from "@/components/Frontend/ImageGrid";
 import Testimonial from "@/components/Frontend/Testimonial";
 import ContactInfo from "@/components/Frontend/ContactInfo";
@@ -24,7 +25,6 @@ import JumboContentTwo from "@/components/Frontend/JumboContentTwo";
 import OperationalInsights from "@/components/Frontend/OperationalInsights";
 import TitleThreeContentGrid from "@/components/Frontend/TitleThreeContentGrid";
 import ContentBackgroundImage from "@/components/Frontend/ContentBackgroundImage";
-import GoogleIntegration from "../GoogleIntegration";
 
 const RenderFlexibleContent: FC = () => {
 	const context = useContentContext();

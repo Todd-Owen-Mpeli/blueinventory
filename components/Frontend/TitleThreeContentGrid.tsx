@@ -1,6 +1,6 @@
 // Imports
-import {FC} from "react";
 import Image from "next/image";
+import {FC, Fragment} from "react";
 import {motion} from "framer-motion";
 import {ITitleThreeContentGrid} from "@/types/components/public";
 import {initial, fadeInUp, stagger} from "@/animations/animations";
@@ -14,12 +14,7 @@ const TitleThreeContentGrid: FC<ITitleThreeContentGrid> = ({
 	contentGrid,
 }) => {
 	return (
-		<div
-			className="py-12 overflow-hidden bg-white bg-center bg-no-repeat bg-cover lg:px-4 sm:py-28"
-			style={{
-				backgroundImage: `url("${`/svg/backgroundSVG/blob-scene-haikei.svg`}")`,
-			}}
-		>
+		<div className="py-12 bg-white lg:px-4 sm:py-28">
 			<div className="container px-4 mx-auto">
 				<motion.div
 					initial={initial}
@@ -61,13 +56,15 @@ const TitleThreeContentGrid: FC<ITitleThreeContentGrid> = ({
 				>
 					{contentGrid?.length > 0 ? (
 						contentGrid?.map((item, keys) => (
-							<TitleThreeContentGridCard
-								key={keys}
-								icon={item?.card?.icon}
-								title={item?.card?.title}
-								paragraph={item?.card?.paragraph}
-								buttonLink={item?.card?.buttonLink}
-							/>
+							<Fragment key={keys}>
+								<TitleThreeContentGridCard
+									key={keys}
+									icon={item?.card?.icon}
+									title={item?.card?.title}
+									paragraph={item?.card?.paragraph}
+									buttonLink={item?.card?.buttonLink}
+								/>
+							</Fragment>
 						))
 					) : (
 						<></>

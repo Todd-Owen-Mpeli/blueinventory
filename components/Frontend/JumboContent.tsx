@@ -6,8 +6,8 @@ import {
 	fadeInTwo,
 	initialTwo,
 } from "@/animations/animations";
-import {FC} from "react";
 import Image from "next/image";
+import {FC, Fragment} from "react";
 import {motion} from "framer-motion";
 import {IJumboContent} from "@/types/components/public";
 
@@ -120,6 +120,7 @@ const JumboContent: FC<IJumboContent> = ({
 							<div
 								className="h-full p-8 bg-center bg-no-repeat bg-cover rounded-sm bg-lightGrey"
 								style={{
+									clipPath: `polygon(0% 0%, 100% 0%, 94.9% 88.5%, 0% 97.8%)`,
 									backgroundImage: `url("${cardTwo?.backgroundImage?.sourceUrl}")`,
 								}}
 							/>
@@ -204,12 +205,13 @@ const JumboContent: FC<IJumboContent> = ({
 						{/* Remaining Cards */}
 						{gridContent?.length > 0 ? (
 							gridContent?.map((item, keys) => (
-								<JumboCard
-									key={keys}
-									title={item?.card?.title}
-									subtitle={item?.card?.subtitle}
-									paragraph={item?.card?.paragraph}
-								/>
+								<Fragment key={keys}>
+									<JumboCard
+										title={item?.card?.title}
+										subtitle={item?.card?.subtitle}
+										paragraph={item?.card?.paragraph}
+									/>
+								</Fragment>
 							))
 						) : (
 							<></>
@@ -228,6 +230,7 @@ const JumboContent: FC<IJumboContent> = ({
 							<div
 								className="h-full p-8 bg-center bg-no-repeat bg-cover rounded-sm bg-lightGrey"
 								style={{
+									clipPath: `polygon(0% 0%, 100% 0%, 94.9% 88.5%, 0% 97.8%)`,
 									backgroundImage: `url("${lastCard?.backgroundImage?.sourceUrl}")`,
 								}}
 							/>

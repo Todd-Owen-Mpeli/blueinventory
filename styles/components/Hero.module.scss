@@ -2,7 +2,8 @@
 @import "../fonts";
 @import "../colors";
 
-.hero {
+.hero,
+.heroTwo {
 	@apply bg-blue bg-gradient-to-t from-darkBlue;
 
 	nav {
@@ -13,6 +14,16 @@
 					@apply uppercase tracking-wide font-bold;
 				}
 			}
+		}
+	}
+}
+
+.heroTwo {
+	.clipPath {
+		clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 6.5% 90.5%);
+
+		@screen lg {
+			clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 13.2% 87.3%);
 		}
 	}
 }
