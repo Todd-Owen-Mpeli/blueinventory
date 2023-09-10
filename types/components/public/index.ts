@@ -90,6 +90,7 @@ export interface ITestimonialCard {
 	title: string;
 	paragraph: string;
 	jobPosition: string;
+	getRandomColor: string;
 	image: {
 		altText: string;
 		sourceUrl: string;

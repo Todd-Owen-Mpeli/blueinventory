@@ -32,7 +32,7 @@ const HeroTwo: FC<IHeroTwo> = ({
 	return (
 		<div className={styles.heroTwo}>
 			<div
-				className="flex flex-col relative h-full min-h-[50vh] bg-white bg-center bg-no-repeat bg-cover "
+				className="flex flex-col relative h-full min-h-[50vh] bg-white bg-center bg-no-repeat bg-cover"
 				style={{
 					backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-orange-yellow.svg")`,
 				}}

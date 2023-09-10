@@ -34,6 +34,7 @@ module.exports = {
 
 			// Main colors
 			blue: "#2563eb",
+			purple: "#2d2378",
 			blueTwo: "#3978ff",
 			darkBlue: "#09275e",
 			lightBlue: "#3d77f3",

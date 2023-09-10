@@ -20,11 +20,12 @@ const operationalInsights: FC<IOperationalInsights> = ({
 	const getRandomColor = () => {
 		const colors = [
 			"blue",
-			"darkPinkRed",
+			"purple",
 			"yellow",
 			"pinkRed",
 			"darkBlue",
 			"brightGreen",
+			"darkPinkRed",
 		];
 		const randomIndex = Math.floor(Math.random() * colors.length);
 		return colors[randomIndex];
