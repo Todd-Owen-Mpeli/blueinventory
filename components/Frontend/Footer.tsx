@@ -13521,7 +13521,10 @@ const Footer: FC = () => {
 				<div className="flex flex-col items-center justify-between gap-6 px-6 -m-6 md:items-start lg:px-4 md:flex-row">
 					<div className="flex flex-col items-center justify-between w-full py-6 md:py-0 md:items-start md:w-auto">
 						<div className="mb-10">
-							<Link href="/" className="text-2xl font-extrabold text-lightBlue">
+							<Link
+								href="/"
+								className="text-lg font-extrabold tracking-tight uppercase transition-all duration-500 ease-in-out lg:text-xl text-lightBlue hover:text-goldPrime"
+							>
 								BlueInventory
 							</Link>
 						</div>

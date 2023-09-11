@@ -90,7 +90,7 @@ const NavbarTwo: FC = () => {
 													key={keys}
 													url={item?.node?.url}
 													label={item?.node?.label}
-													tailwindStyling="text-sm uppercase font-bold tracking-[.15rem] text-darkBlue hover:text-goldPrime transition-all ease-in-out duration-500"
+													tailwindStyling="text-sm uppercase font-extrabold tracking-[.15rem] text-darkBlue hover:text-goldPrime transition-all ease-in-out duration-500"
 												/>
 											)
 										)

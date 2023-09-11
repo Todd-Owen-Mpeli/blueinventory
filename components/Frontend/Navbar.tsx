@@ -148,7 +148,9 @@ const Navbar: FC = () => {
 													backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue.svg")`,
 												}}
 											/>
-											<p className="relative mx-auto">Dashboard</p>
+											<span className="relative mx-auto text-base">
+												Dashboard
+											</span>
 										</motion.button>
 										<motion.div
 											initial={initialTwo}
