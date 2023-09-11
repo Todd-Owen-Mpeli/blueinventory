@@ -13,7 +13,7 @@ const Layout: FC<ILayout> = ({children}) => {
 
 			<Navbar />
 
-			<div className="pt-14">{children}</div>
+			<div className="pt-[4.5rem] 2xl:pt-14">{children}</div>
 		</>
 	);
 };
