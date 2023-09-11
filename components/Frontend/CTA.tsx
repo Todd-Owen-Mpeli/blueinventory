@@ -105,15 +105,15 @@ const CTATwo: FC<ICTA> = ({
 								>
 									<div className="mb-5">
 										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											shapeRendering="geometricPrecision"
-											textRendering="geometricPrecision"
-											imageRendering="optimizeQuality"
+											fill="#ffffff"
 											fillRule="evenodd"
 											clipRule="evenodd"
 											viewBox="0 0 512 459.422"
-											fill="#ffffff"
-											className="object-cover object-center mx-auto sm:mx-0 w-14 h-14"
+											imageRendering="optimizeQuality"
+											textRendering="geometricPrecision"
+											shapeRendering="geometricPrecision"
+											xmlns="http://www.w3.org/2000/svg"
+											className="object-cover object-center mx-auto lg:mx-0 w-14 h-14"
 										>
 											<path
 												fillRule="nonzero"
