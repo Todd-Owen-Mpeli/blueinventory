@@ -10,6 +10,20 @@
 	background-color: $white;
 }
 
+.footer {
+	.backgroundSVG:hover {
+		fill: $darkBlue;
+
+		g,
+		path {
+			fill: $darkBlue;
+		}
+		line {
+			fill: $darkBlue;
+		}
+	}
+}
+
 .starAnimation {
 	cursor: pointer;
 	position: absolute;

@@ -103,7 +103,7 @@ const CheckoutWelcome: FC<ICheckoutWelcome> = ({
 										backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-orange-yellow-pinkRed.svg")`,
 									}}
 								/>
-								<p className="relative text-medium">Dashboard</p>
+								<span className="relative text-base">Dashboard</span>
 							</Link>
 						</motion.button>
 					</motion.div>

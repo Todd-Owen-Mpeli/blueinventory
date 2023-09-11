@@ -11,7 +11,7 @@ const StatsBulletPointCard: FC<IStatsBulletPointCard> = ({
 	tailwindStyling,
 }) => {
 	return (
-		<span className="flex items-start">
+		<span className="flex items-center">
 			<Image
 				alt=""
 				width={500}

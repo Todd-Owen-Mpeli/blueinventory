@@ -163,7 +163,7 @@ const SignUp: FC<ISignUp> = ({title, paragraph, paragraphTwo}) => {
 								backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-orange-yellow.svg")`,
 							}}
 						/>
-						<p className="relative">Sign up with Google</p>
+						<span className="relative text-base">Sign up with Google</span>
 					</motion.button>
 					{/* Facebook */}
 					{/* <motion.button
@@ -350,7 +350,7 @@ const SignUp: FC<ISignUp> = ({title, paragraph, paragraphTwo}) => {
 									backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-orange-yellow.svg")`,
 								}}
 							/>
-							<p className="relative">Sign up</p>
+							<span className="relative text-base">Sign up</span>
 						</motion.button>
 					</form>
 				</motion.div> */}

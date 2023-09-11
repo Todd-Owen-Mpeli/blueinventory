@@ -115,6 +115,7 @@ const RenderFlexibleContent: FC = () => {
 									subtitle={item?.subtitle}
 									paragraph={item?.paragraph}
 									columnTwo={item?.columnTwo}
+									paragraphTwo={item?.paragraphTwo}
 									bulletPoints={item?.bulletPoints}
 								/>
 							</>

@@ -27,9 +27,9 @@ const JumboContentTwo: FC<IJumboContentTwo> = ({
 						{/* Card One */}
 						<div className="w-full p-3 md:w-1/2">
 							<div className="h-full p-10 rounded-sm bg-lightGrey">
-								<div className="flex flex-wrap items-center mb-10">
+								<div className="flex flex-wrap items-center mb-5">
 									<div className="w-auto p-2">
-										<h4 className="text-lg font-semibold text-goldPrimeDark">
+										<h4 className="text-lg font-semibold tracking-wide text-goldPrime">
 											{cardOne?.subtitle}
 										</h4>
 									</div>
@@ -39,7 +39,7 @@ const JumboContentTwo: FC<IJumboContentTwo> = ({
 								</h3>
 								<Paragraph
 									content={cardOne?.paragraph}
-									tailwindStyling="mb-10 text-base text-black"
+									tailwindStyling="mb-10  text-black"
 								/>
 							</div>
 						</div>

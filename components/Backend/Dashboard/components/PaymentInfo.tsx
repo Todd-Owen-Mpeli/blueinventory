@@ -33,7 +33,7 @@ const PaymentInfo: FC = () => {
 							className="w-full px-4 mb-5 sm:w-auto"
 						>
 							<div className="flex flex-col items-baseline gap-y-2">
-								<h5 className="text-base font-semibold leading-5 text-black">
+								<h5 className=" font-semibold leading-5 text-black">
 									Visa ending in 3456
 								</h5>
 								<span className="text-sm font-medium text-black">
@@ -47,7 +47,7 @@ const PaymentInfo: FC = () => {
 							viewport={{once: true}}
 							className="w-full px-4 mb-5 sm:w-auto"
 						>
-							<span className="inline-block px-2 py-1 ml-auto text-base font-bold leading-6 text-black transition bg-white rounded-lg duration">
+							<span className="inline-block px-2 py-1 ml-auto  font-bold leading-6 text-black transition bg-white rounded-lg duration">
 								Default
 							</span>
 						</motion.div>

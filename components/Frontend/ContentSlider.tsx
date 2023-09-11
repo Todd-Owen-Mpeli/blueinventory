@@ -594,7 +594,7 @@ const ContentSlider = () => {
 									viewport={{once: true}}
 									className={
 										contentOne.paragraph
-											? `block paragraph mt-2 text-white text-base text-left leading-[1.5rem]`
+											? `block paragraph mt-2 text-white  text-left leading-[1.5rem]`
 											: `hidden`
 									}
 									dangerouslySetInnerHTML={createTrimmedParagraphMarkup(
@@ -666,7 +666,7 @@ const ContentSlider = () => {
 									viewport={{once: true}}
 									className={
 										contentTwo.paragraph
-											? `block paragraph mt-2 text-white text-base text-left leading-[1.5rem]`
+											? `block paragraph mt-2 text-white  text-left leading-[1.5rem]`
 											: `hidden`
 									}
 									dangerouslySetInnerHTML={createTrimmedParagraphMarkup(
@@ -741,7 +741,7 @@ const ContentSlider = () => {
 									viewport={{once: true}}
 									className={
 										contentThree.paragraph
-											? `block paragraph mt-2 text-white text-base text-left leading-[1.5rem]`
+											? `block paragraph mt-2 text-white  text-left leading-[1.5rem]`
 											: `hidden`
 									}
 									dangerouslySetInnerHTML={createTrimmedParagraphMarkup(

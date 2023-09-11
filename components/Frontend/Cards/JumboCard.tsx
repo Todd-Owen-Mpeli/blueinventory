@@ -14,15 +14,15 @@ const JumboCard: FC<IJumboCard> = ({title, subtitle, paragraph}) => {
 				initial={initial}
 				viewport={{once: true}}
 				whileInView={stagger}
-				className="h-full p-10 rounded-sm bg-lightGrey"
+				className="h-full p-10 rounded-sm bg-purple"
 			>
 				<motion.div
 					initial={initial}
 					viewport={{once: true}}
 					whileInView={fadeInUp}
-					className="flex flex-wrap items-center mb-10"
+					className="flex flex-wrap items-center mb-5"
 				>
-					<h4 className="text-lg font-semibold text-goldPrimeDark">
+					<h4 className="text-lg font-semibold tracking-wide text-goldPrime">
 						{subtitle}
 					</h4>
 				</motion.div>
@@ -30,14 +30,11 @@ const JumboCard: FC<IJumboCard> = ({title, subtitle, paragraph}) => {
 					initial={initial}
 					viewport={{once: true}}
 					whileInView={fadeInUp}
-					className="mb-4 text-3xl font-semibold"
+					className="mb-4 text-3xl font-semibold text-white"
 				>
 					{title}
 				</motion.h3>
-				<Paragraph
-					content={paragraph}
-					tailwindStyling="mb-10 text-base text-black"
-				/>
+				<Paragraph content={paragraph} tailwindStyling="mb-10 text-white" />
 			</motion.div>
 		</div>
 	);

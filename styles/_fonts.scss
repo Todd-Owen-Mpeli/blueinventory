@@ -5,18 +5,8 @@
 }
 
 @font-face {
-	font-family: BTBeauSans;
-	src: url("./fonts/BT-BeauSans-Regular.ttf");
-}
-
-@font-face {
-	font-family: Dropkicker;
-	src: url("./fonts/Dropkicker-Regular.ttf");
-}
-
-@font-face {
-	font-family: EvolventaRegular;
-	src: url("./fonts/Evolventa-Regular-VariableFont_wght.ttf");
+	font-family: PlusJakartaSans;
+	src: url("./fonts/PlusJakartaSans-VariableFont_wght.ttf");
 }
 
 @font-face {
@@ -30,9 +20,9 @@
 }
 
 // Font Stack Properties
-$fontStyle_dashboard: "Inter", sans-serif;
-$fontStyle_main: "EvolventaBold", "Inter", sans-serif;
-$fontStyle_body: "SFTSchriftedSansTRIALMedium", "Inter", sans-serif;
+$fontStyle_dashboard: "Inter", "EvolventaBold" sans-serif;
+$fontStyle_main: "EvolventaBold", sans-serif;
+$fontStyle_body: "PlusJakartaSans", "SFTSchriftedSansTRIALMedium", sans-serif;
 
 // Font Sizes
 $fontSize_xSmall: 0.75rem;

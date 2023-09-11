@@ -20,9 +20,9 @@ const TitleThreeContentGridCard: FC<ITitleThreeContentGridCard> = ({
 			initial={initial}
 			whileInView={fadeInUp}
 			viewport={{once: true}}
-			className="w-full p-8 md:w-1/3"
+			className="w-full p-8 lg:w-1/3"
 		>
-			<div className="md:max-w-md">
+			<div className="lg:max-w-md">
 				<motion.div
 					initial={initial}
 					whileInView={stagger}
@@ -53,7 +53,7 @@ const TitleThreeContentGridCard: FC<ITitleThreeContentGridCard> = ({
 							viewport={{once: true}}
 							className="mt-2 mb-7"
 						>
-							<h3 className="text-xl font-semibold leading-snug text-center lg:text-left mb-7">
+							<h3 className="text-3xl font-semibold leading-snug text-center lg:text-left mb-7">
 								{title}
 							</h3>
 							<Paragraph
@@ -66,7 +66,7 @@ const TitleThreeContentGridCard: FC<ITitleThreeContentGridCard> = ({
 						initial={initial}
 						whileInView={fadeInUp}
 						viewport={{once: true}}
-						className={buttonLink?.url ? `block` : `hidden`}
+						className={buttonLink?.url ? `block mx-auto lg:mx-0` : `hidden`}
 					>
 						<Link
 							href={buttonLink?.url ? buttonLink?.url : `/`}

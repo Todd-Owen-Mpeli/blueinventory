@@ -29,7 +29,7 @@ const SubscriptionInfo: FC = () => {
 						<Paragraph
 							content={`All subscriptions are set to automatically renew, unless you
 										cancel before the next renewal date.`}
-							tailwindStyling="my-5 text-base font-medium leading-5 text-black text-left"
+							tailwindStyling="my-5  font-medium leading-5 text-black text-left"
 						/>
 						<motion.div
 							initial={initial}

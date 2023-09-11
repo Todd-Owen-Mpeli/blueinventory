@@ -55,7 +55,7 @@ const MainNavigation: FC = () => {
 			"object-cover object-center w-[40px] h-[40px] rounded-full ring-4",
 
 		// Nav styling
-		UlStyling: "flex flex-col items-center gap-2 text-base font-medium",
+		UlStyling: "flex flex-col items-center gap-2  font-medium",
 		profileImageStyling:
 			"flex flex-col items-center justify-center gap-4 mx-auto",
 		revealMenuText: "w-[16px] h-[16px] text-white",
@@ -128,7 +128,7 @@ const MainNavigation: FC = () => {
 										viewport={{once: true}}
 										className={
 											displayMenuText
-												? `block font-medium text-center text-white text-base`
+												? `block font-medium text-center text-white `
 												: `hidden`
 										}
 									>
@@ -322,7 +322,7 @@ const MainNavigation: FC = () => {
 							whileInView={fadeIn}
 							viewport={{once: true}}
 							onClick={handleRevealMenuText}
-							className="flex items-center px-4 py-3 mx-auto text-base text-white transition-all duration-200 ease-in-out rounded w-fit hover:opacity-60"
+							className="flex items-center px-4 py-3 mx-auto  text-white transition-all duration-200 ease-in-out rounded w-fit hover:opacity-60"
 						>
 							<span className="inline-block">
 								<svg
@@ -349,7 +349,7 @@ const MainNavigation: FC = () => {
 							whileInView={fadeIn}
 							viewport={{once: true}}
 							onClick={handleLogout}
-							className="flex items-center px-4 py-3 mx-auto text-base text-white transition-all duration-200 ease-in-out rounded w-fit hover:opacity-60"
+							className="flex items-center px-4 py-3 mx-auto  text-white transition-all duration-200 ease-in-out rounded w-fit hover:opacity-60"
 						>
 							<span className="inline-block">
 								<svg

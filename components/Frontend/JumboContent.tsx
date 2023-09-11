@@ -39,13 +39,13 @@ const JumboContent: FC<IJumboContent> = ({
 							initial={initial}
 							viewport={{once: true}}
 							whileInView={fadeInUp}
-							className="relative z-50 max-w-md mb-6 text-3xl font-bold text-center md:text-4xl lg:text-left"
+							className="relative z-50 max-w-md mx-auto mb-6 text-3xl font-bold text-center lg:mx-0 md:text-4xl lg:text-left"
 						>
 							{title}
 						</motion.h2>
 						<Paragraph
 							content={paragraph}
-							tailwindStyling="max-w-2xl px-0 mb-10 text-base text-black relative z-50"
+							tailwindStyling="max-w-2xl mx-auto lg:mx-0 px-0 mb-10  text-center lg:text-left text-black relative z-50"
 						/>
 						<motion.div
 							initial={initial}
@@ -80,13 +80,13 @@ const JumboContent: FC<IJumboContent> = ({
 								viewport={{once: true}}
 								className="h-full p-10 rounded-sm bg-lightGrey"
 							>
-								<div className="flex flex-wrap items-center mb-10">
+								<div className="flex flex-wrap items-center mb-5">
 									<div className="w-auto p-2">
 										<motion.h4
 											initial={initial}
 											whileInView={fadeInUp}
 											viewport={{once: true}}
-											className="text-lg font-semibold text-goldPrimeDark"
+											className="text-lg font-semibold tracking-wide text-goldPrime"
 										>
 											{cardOne?.subtitle}
 										</motion.h4>
@@ -102,7 +102,7 @@ const JumboContent: FC<IJumboContent> = ({
 								</motion.h3>
 								<Paragraph
 									content={cardOne?.paragraph}
-									tailwindStyling="mb-10 text-base text-black"
+									tailwindStyling="mb-10  text-black"
 								/>
 							</motion.div>
 						</div>
@@ -159,7 +159,7 @@ const JumboContent: FC<IJumboContent> = ({
 													initial={initialTwo}
 													whileInView={fadeInTwo}
 													viewport={{once: true}}
-													className="mb-3 text-base font-bold text-black"
+													className="mb-3 font-bold text-black"
 												>
 													{cardThree?.foreground?.title}
 												</motion.h4>
@@ -188,7 +188,7 @@ const JumboContent: FC<IJumboContent> = ({
 													initial={initialTwo}
 													whileInView={fadeInTwo}
 													viewport={{once: true}}
-													className="mb-3 text-base font-bold text-black"
+													className="mb-3 font-bold text-black"
 												>
 													{cardThree?.background?.title}
 												</motion.h4>

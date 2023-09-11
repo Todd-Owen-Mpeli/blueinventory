@@ -22,7 +22,7 @@ const logos: FC<ILogos> = ({title, paragraph, logoGrid}) => {
 				</motion.h2>
 				<Paragraph
 					content={paragraph}
-					tailwindStyling="my-5 w-full lg:max-w-3xl mx-auto text-left"
+					tailwindStyling="my-5 w-full lg:max-w-3xl px-4 mx-auto text-center lg:text-left"
 				/>
 				<div className="max-w-6xl mx-auto mt-20">
 					<motion.div

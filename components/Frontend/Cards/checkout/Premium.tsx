@@ -30,7 +30,7 @@ const Premium: FC = () => {
 					</h3>
 					<Paragraph
 						content={globalContext.stripePlans.stripePremiumPlan?.description}
-						tailwindStyling="text-base my-4 text-darkBlue max-w-sm text-center"
+						tailwindStyling=" my-4 text-darkBlue max-w-sm text-center"
 					/>
 				</div>
 				<div className="px-3">

@@ -205,9 +205,10 @@ export async function getAllFlexibleContentComponents(
                       }
                       ... on ${postTypeFlexibleContent}_ContentStats {
                         fieldGroupName
-                        paragraph
                         title
                         subtitle
+                        paragraph
+                        paragraphTwo
                         column {
                           title
                           values

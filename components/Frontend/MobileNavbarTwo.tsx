@@ -148,7 +148,7 @@ const mobileNavbarTwo: FC<IMobileNavbar> = ({revealMobileMenu}) => {
 								initial={initial}
 								whileInView={fadeInUp}
 								viewport={{once: true}}
-								className="flex items-center gap-2 text-white"
+								className="flex items-center gap-2 text-base text-white"
 							>
 								Tel:
 								<Link
@@ -162,7 +162,7 @@ const mobileNavbarTwo: FC<IMobileNavbar> = ({revealMobileMenu}) => {
 								initial={initial}
 								whileInView={fadeInUp}
 								viewport={{once: true}}
-								className="flex items-center gap-2 text-white"
+								className="flex items-center gap-2 text-base text-white"
 							>
 								Email:
 								<Link
@@ -288,7 +288,7 @@ const mobileNavbarTwo: FC<IMobileNavbar> = ({revealMobileMenu}) => {
 												type="button"
 												onClick={handleLogout}
 												aria-label="Mobile User Sign out button"
-												className="w-full px-8 py-2 text-base text-center text-white bg-transparent rounded-sm hover:bg-pinkRed focus:ring-none focus:ring-red"
+												className="w-full px-8 py-2 text-center text-white bg-transparent rounded-sm hover:bg-pinkRed focus:ring-none focus:ring-red"
 											>
 												Sign out
 											</button>

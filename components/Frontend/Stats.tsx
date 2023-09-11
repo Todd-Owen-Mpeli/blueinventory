@@ -15,6 +15,7 @@ const Stats: FC<IStats> = ({
 	subtitle,
 	columnTwo,
 	paragraph,
+	paragraphTwo,
 	bulletPoints,
 }) => {
 	return (
@@ -33,10 +34,14 @@ const Stats: FC<IStats> = ({
 									initial={initial}
 									whileInView={fadeInUp}
 									viewport={{once: true}}
-									className="mb-10 text-3xl font-bold text-center text-white lg:text-5xl lg:text-left"
+									className="text-3xl font-bold text-center text-white lg:text-5xl lg:text-left"
 								>
 									{title}
 								</motion.h2>
+								<Paragraph
+									content={paragraph}
+									tailwindStyling="mb-10 text-base text-white text-center lg:text-left"
+								/>
 								<motion.ul
 									initial={initial}
 									viewport={{once: true}}
@@ -75,8 +80,8 @@ const Stats: FC<IStats> = ({
 										{subtitle}
 									</motion.h4>
 									<Paragraph
-										content={paragraph}
-										tailwindStyling="mb-10 text-base text-black"
+										content={paragraphTwo}
+										tailwindStyling="mb-10  text-black"
 									/>
 									<div className="max-w-md mx-auto">
 										<div className="flex flex-col items-center justify-center gap-4 -mx-4 lg:flex-row">

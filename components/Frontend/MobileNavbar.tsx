@@ -177,7 +177,7 @@ const mobileNavbar: FC<IMobileNavbar> = ({revealMobileMenu}) => {
 								initial={initial}
 								whileInView={fadeInUp}
 								viewport={{once: true}}
-								className="flex items-center gap-2 text-white"
+								className="flex items-center gap-2 text-base text-white"
 							>
 								Tel:
 								<Link
@@ -191,7 +191,7 @@ const mobileNavbar: FC<IMobileNavbar> = ({revealMobileMenu}) => {
 								initial={initial}
 								whileInView={fadeInUp}
 								viewport={{once: true}}
-								className="flex items-center gap-2 text-white"
+								className="flex items-center gap-2 text-base text-white"
 							>
 								Email:
 								<Link
@@ -318,7 +318,9 @@ const mobileNavbar: FC<IMobileNavbar> = ({revealMobileMenu}) => {
 											}}
 										>
 											<div className="absolute top-0 w-full h-full transition duration-200 transform bg-top bg-no-repeat bg-cover bg-blue right-full group-hover:translate-x-full group-hover:scale-102" />
-											<p className="relative mx-auto">Dashboard</p>
+											<span className="relative mx-auto text-base">
+												Dashboard
+											</span>
 										</motion.button>
 										<motion.button
 											initial={initialTwo}
@@ -334,7 +336,9 @@ const mobileNavbar: FC<IMobileNavbar> = ({revealMobileMenu}) => {
 											}}
 										>
 											<div className="absolute top-0 w-full h-full transition duration-200 transform bg-top bg-no-repeat bg-cover bg-darkPinkRed right-full group-hover:translate-x-full group-hover:scale-102" />
-											<p className="relative mx-auto">Sign out</p>
+											<span className="relative mx-auto text-base">
+												Sign out
+											</span>
 										</motion.button>
 									</motion.div>
 								</div>
@@ -359,7 +363,9 @@ const mobileNavbar: FC<IMobileNavbar> = ({revealMobileMenu}) => {
 									>
 										<Link href={`/sign-in`}>
 											<div className="absolute top-0 w-full h-full transition duration-200 transform bg-top bg-no-repeat bg-cover bg-goldPrime right-full group-hover:translate-x-full group-hover:scale-102" />
-											<p className="relative mx-auto">Sign In</p>
+											<span className="relative mx-auto text-base">
+												Sign In
+											</span>
 										</Link>
 									</motion.button>
 									<motion.button
@@ -376,7 +382,9 @@ const mobileNavbar: FC<IMobileNavbar> = ({revealMobileMenu}) => {
 									>
 										<Link href={`/sign-up`}>
 											<div className="absolute top-0 w-full h-full transition duration-200 transform bg-top bg-no-repeat bg-cover bg-blue right-full group-hover:translate-x-full group-hover:scale-102" />
-											<p className="relative mx-auto">Sign up</p>
+											<span className="relative mx-auto text-base">
+												Sign up
+											</span>
 										</Link>
 									</motion.button>
 								</motion.div>

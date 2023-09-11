@@ -60,7 +60,7 @@ const GoogleIntegration: FC = () => {
 									>
 										<div className="flex flex-col items-start justify-between h-full max-w-sm">
 											<div>
-												<span className="block mb-3 text-base font-medium uppercase text-goldPrime">
+												<span className="block mb-3  font-medium uppercase text-goldPrime">
 													Ready for future
 												</span>
 												<h3 className="text-3xl font-semibold text-white md:text-4xl">

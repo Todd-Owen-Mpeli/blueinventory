@@ -509,6 +509,7 @@ export interface IStats {
 	title: string;
 	subtitle: string;
 	paragraph: string;
+	paragraphTwo: string;
 	bulletPoints: [
 		{
 			id: string;

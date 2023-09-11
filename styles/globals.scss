@@ -92,6 +92,8 @@ textarea {
 }
 
 p {
+	@apply py-2 text-[1.110rem];
+
 	strong {
 		font-family: $fontStyle_main;
 		@apply tracking-tight font-extrabold;

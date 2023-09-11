@@ -110,7 +110,7 @@ const contentImageCard: FC<IContentImageCard> = ({
 						</motion.h2>
 						<Paragraph
 							content={paragraph}
-							tailwindStyling="w-full lg:max-w-2xl mx-auto mt-6 text-black text-left text-base"
+							tailwindStyling="w-full lg:max-w-2xl mx-auto mt-6 text-black text-left "
 						/>
 					</motion.div>
 				</motion.div>

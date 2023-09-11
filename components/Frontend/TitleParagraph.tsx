@@ -9,8 +9,22 @@ import {initial, fadeInUp} from "@/animations/animations";
 import Paragraph from "@/components/Frontend/Elements/Paragraph";
 
 const TitleParagraph = styled.div`
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		padding: 0.5rem 0;
+	}
+
+	div {
+		@apply text-[1.110rem];
+	}
+
 	ol,
 	ul {
+		padding: 0.5rem 0;
 		padding-left: 30px;
 
 		li {
@@ -42,7 +56,7 @@ const titleParagraph: FC<ITitleParagraph> = ({title, paragraph}) => {
 						</h2>
 						<Paragraph
 							content={paragraph}
-							tailwindStyling="mt-4 py-8 text-black text-left"
+							tailwindStyling="mt-4 py-8 text-black text-center lg:text-left"
 						/>
 					</motion.div>
 				</div>

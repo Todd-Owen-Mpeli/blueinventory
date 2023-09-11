@@ -23,7 +23,6 @@ const operationalInsights: FC<IOperationalInsights> = ({
 			"purple",
 			"yellow",
 			"pinkRed",
-			"darkBlue",
 			"brightGreen",
 			"darkPinkRed",
 		];
@@ -65,7 +64,7 @@ const operationalInsights: FC<IOperationalInsights> = ({
 					</motion.h1>
 					<Paragraph
 						content={paragraph}
-						tailwindStyling="max-w-xl mx-auto text-base mt-10 text-black"
+						tailwindStyling="max-w-xl mx-auto  mt-10 text-black"
 					/>
 				</motion.div>
 

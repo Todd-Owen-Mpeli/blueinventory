@@ -65,7 +65,7 @@ const Pricing: FC<IPricing> = ({
 						</motion.h1>
 						<Paragraph
 							content={paragraph}
-							tailwindStyling="max-w-xl mx-auto text-base mt-10 text-black"
+							tailwindStyling="max-w-xl mx-auto  mt-10 text-black"
 						/>
 					</motion.div>
 				</div>
@@ -171,7 +171,7 @@ const Pricing: FC<IPricing> = ({
 											initial={initial}
 											whileInView={fadeInUp}
 											viewport={{once: true}}
-											className="block mb-4 text-base text-black"
+											className="block mb-4  text-black"
 										>
 											What&apos;s included:
 										</motion.span>
@@ -384,7 +384,7 @@ const Pricing: FC<IPricing> = ({
 											initial={initial}
 											whileInView={fadeInUp}
 											viewport={{once: true}}
-											className="block mb-4 text-base text-white"
+											className="block mb-4  text-white"
 										>
 											What&apos;s included:
 										</motion.span>
@@ -584,7 +584,7 @@ const Pricing: FC<IPricing> = ({
 											initial={initial}
 											whileInView={fadeInUp}
 											viewport={{once: true}}
-											className="block mb-4 text-base text-black"
+											className="block mb-4  text-black"
 										>
 											What&apos;s included:
 										</motion.span>

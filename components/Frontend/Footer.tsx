@@ -6,6 +6,9 @@ import {motion} from "framer-motion";
 import {useGlobalContext} from "@/context/Global";
 import {initial, initialTwo, fadeIn, stagger} from "@/animations/animations";
 
+// Styling
+import styles from "@/styles/Home.module.scss";
+
 // Components
 import FooterMenuLinks from "@/components/Frontend/Elements/FooterMenuLinks";
 
@@ -13,13 +16,19 @@ const Footer: FC = () => {
 	const globalContext = useGlobalContext();
 
 	return (
-		<section className="relative px-0 overflow-hidden border-t-4 bg-darkerBlueTwo border-goldPrime">
+		<section
+			className={
+				styles.footer +
+				" relative px-0 overflow-hidden border-t-4 bg-darkerBlueTwo border-goldPrime"
+			}
+		>
 			<div className="absolute top-[15px] md:top-[-140px] right-[-220px] md:right-[-145px] opacity-10">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					width="954.39"
 					height="954.391"
 					viewBox="0 0 954.39 954.391"
+					className={styles.backgroundSVG}
 				>
 					<g
 						id="Group_19406"
@@ -13509,14 +13518,14 @@ const Footer: FC = () => {
 				</svg>
 			</div>
 			<div className="container relative z-50 px-4 py-20 mx-auto ">
-				<div className="flex flex-col items-baseline justify-between gap-6 px-6 -m-6 lg:px-4 md:flex-row lg:items-center">
-					<div className="w-full py-6 md:w-auto">
+				<div className="flex flex-col items-center justify-between gap-6 px-6 -m-6 md:items-start lg:px-4 md:flex-row">
+					<div className="flex flex-col items-center justify-between w-full py-6 md:py-0 md:items-start md:w-auto">
 						<div className="mb-10">
 							<Link href="/" className="text-2xl font-extrabold text-lightBlue">
 								BlueInventory
 							</Link>
 						</div>
-						<div className="flex flex-col items-baseline justify-between w-auto gap-2 py-6 mb-10">
+						<div className="flex flex-col items-center justify-between w-auto gap-2 py-6 mb-10 md:items-baseline">
 							<motion.div
 								initial={initialTwo}
 								whileInView={fadeIn}
@@ -13676,16 +13685,16 @@ const Footer: FC = () => {
 							</motion.div>
 						</motion.div>
 					</div>
-					<div className="flex flex-col items-start justify-start w-full gap-6 sm:flex-row lg:justify-end md:w-1/2">
+					<div className="flex flex-col items-center justify-center w-full gap-6 md:items-start md:flex-row lg:justify-end lg:w-1/2">
 						<div className="flex flex-col px-2 sm:px-6">
-							<h4 className="mb-5 font-extrabold tracking-normal text-left text-white uppercase">
+							<h4 className="mb-5 font-extrabold tracking-normal text-center text-white uppercase md:text-left">
 								Company
 							</h4>
 							<motion.ul
 								initial={initial}
 								whileInView={stagger}
 								viewport={{once: true}}
-								className="flex flex-col gap-2 py-6"
+								className="flex flex-col items-center justify-center gap-2 py-6 md:items-baseline"
 							>
 								{globalContext.footerMenuLinks.footerMenuLinks?.length > 0 ? (
 									globalContext.footerMenuLinks.footerMenuLinks?.map(
@@ -13694,7 +13703,7 @@ const Footer: FC = () => {
 												<FooterMenuLinks
 													url={item?.node?.url}
 													label={item?.node?.label}
-													tailwindStyling="text-white text-left hover:text-goldPrime"
+													tailwindStyling="text-white text-base text-left hover:text-goldPrime"
 												/>
 											</Fragment>
 										)
@@ -13705,14 +13714,14 @@ const Footer: FC = () => {
 							</motion.ul>
 						</div>
 						<div className="flex flex-col px-2 sm:px-6">
-							<h4 className="mb-5 font-extrabold tracking-normal text-left text-white uppercase">
+							<h4 className="mb-5 font-extrabold tracking-normal text-center text-white uppercase md:text-left">
 								Industries
 							</h4>
 							<motion.ul
 								initial={initial}
 								whileInView={stagger}
 								viewport={{once: true}}
-								className="flex flex-col gap-2 py-6"
+								className="flex flex-col items-center justify-center gap-2 py-6 md:items-baseline"
 							>
 								{globalContext.industriesMenuLinks.industriesMenuLinks?.length >
 								0 ? (
@@ -13722,7 +13731,7 @@ const Footer: FC = () => {
 												<FooterMenuLinks
 													label={item?.node?.label}
 													url={`/industries${item?.node?.url}`}
-													tailwindStyling="text-white text-left hover:text-goldPrime"
+													tailwindStyling="text-white text-base text-left hover:text-goldPrime"
 												/>
 											</Fragment>
 										)
@@ -13743,7 +13752,7 @@ const Footer: FC = () => {
 							initial={initialTwo}
 							viewport={{once: true}}
 							whileInView={fadeIn}
-							className="text-sm text-white"
+							className="text-white text-tiny"
 						>
 							{globalContext.themesOptionsContent.copyrightText}
 						</motion.p>
@@ -13762,7 +13771,7 @@ const Footer: FC = () => {
 								className="w-auto p-6"
 							>
 								<Link
-									className="text-sm text-white transition-all duration-200 ease-in-out hover:text-goldPrime"
+									className="text-white transition-all duration-200 ease-in-out text-tiny hover:text-goldPrime"
 									href="/privacy-policy"
 								>
 									Privacy Policy
@@ -13776,7 +13785,7 @@ const Footer: FC = () => {
 							>
 								<Link
 									href="/terms-conditions"
-									className="text-sm text-white transition-all duration-200 ease-in-out hover:text-goldPrime"
+									className="text-white transition-all duration-200 ease-in-out text-tiny hover:text-goldPrime"
 								>
 									Terms &amp; Conditions
 								</Link>

@@ -26,9 +26,6 @@ const dashboard: NextPage<IDashboard> = () => {
 						<CardGrid />
 					</div>
 					<Tables />
-					<div className="flex justify-between gap-4">
-						<CardGrid />
-					</div>
 				</Layout>
 			</motion.section>
 		</DashboardMetaContentProvider>

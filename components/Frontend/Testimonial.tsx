@@ -15,7 +15,6 @@ const Testimonial: FC<ITestimonial> = ({title, paragraph, contentGrid}) => {
 			"purple",
 			"yellow",
 			"pinkRed",
-			"darkBlue",
 			"brightGreen",
 			"darkPinkRed",
 		];
@@ -48,13 +47,13 @@ const Testimonial: FC<ITestimonial> = ({title, paragraph, contentGrid}) => {
 						</motion.h2>
 						<Paragraph
 							content={paragraph}
-							tailwindStyling="my-5 text-base text-black text-center"
+							tailwindStyling="my-5  text-black text-center"
 						/>
 						<motion.div
 							initial={initial}
 							whileInView={stagger}
 							viewport={{once: true}}
-							className="flex flex-col items-center justify-center gap-6 mx-4 my-8 lg:mx-10 lg:flex-row"
+							className="flex flex-col items-center justify-center gap-6 mx-4 my-8 lg:items-start lg:mx-10 lg:flex-row"
 						>
 							{contentGrid?.length > 0 ? (
 								contentGrid?.map((item, keys) => (

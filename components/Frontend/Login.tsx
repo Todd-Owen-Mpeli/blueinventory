@@ -194,7 +194,7 @@ const Login: FC = () => {
 								onBlur={formik?.handleBlur}
 								onChange={formik?.handleChange}
 								value={formik?.values?.username}
-								className="w-full px-3 py-1 text-base leading-8 transition-colors duration-200 ease-in-out bg-white border rounded outline-none text-grey border-darkRed focus:border-darkRed focus:ring-2 focus:ring-darkRed"
+								className="w-full px-3 py-1  leading-8 transition-colors duration-200 ease-in-out bg-white border rounded outline-none text-grey border-darkRed focus:border-darkRed focus:ring-2 focus:ring-darkRed"
 							/>
 						</motion.label>
 						<br />
@@ -221,7 +221,7 @@ const Login: FC = () => {
 								onBlur={formik?.handleBlur}
 								onChange={formik?.handleChange}
 								value={formik?.values?.password}
-								className="w-full px-3 py-1 mb-8 text-base leading-8 transition-colors duration-200 ease-in-out bg-white border rounded outline-none text-grey border-darkRed focus:border-darkRed focus:ring-2 focus:ring-darkRed"
+								className="w-full px-3 py-1 mb-8  leading-8 transition-colors duration-200 ease-in-out bg-white border rounded outline-none text-grey border-darkRed focus:border-darkRed focus:ring-2 focus:ring-darkRed"
 							/>
 						</motion.label>
 						<motion.div
@@ -289,7 +289,7 @@ const Login: FC = () => {
 										</g>
 									</svg>
 								</span>
-								<h3 className="text-base tracking-widest text-white uppercase sm:tracking-wider sm:text-medium">
+								<h3 className=" tracking-widest text-white uppercase sm:tracking-wider sm:text-medium">
 									{loading
 										? "Logging In..."
 										: loginSuccessful

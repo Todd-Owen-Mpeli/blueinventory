@@ -25,7 +25,7 @@ const FAQCard: FC<IFaqCard> = ({title, paragraph}) => {
 			</motion.h3>
 			<Paragraph
 				content={paragraph}
-				tailwindStyling="text-base tracking-tight font-medium text-black mb-16"
+				tailwindStyling=" tracking-tight font-medium text-black mb-16"
 			/>
 		</motion.div>
 	);

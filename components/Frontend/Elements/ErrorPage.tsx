@@ -16,13 +16,17 @@ const ErrorPage: FC<IErrorPage> = ({
 }) => {
 	return (
 		<section
-			className="h-[100vh] bg-cover bg-center bg-[no-repeat] flex flex-col justify-center items-center"
+			className="h-screen bg-cover bg-center bg-[no-repeat] flex flex-col justify-center items-center"
 			style={{
-				backgroundImage: `url("${
-					backgroundImage
-						? backgroundImage
-						: `/svg/backgroundSVG/stacked-waves-haikei-orange-yellow.svg`
-				}")`,
+				backgroundImage: `linear-gradient(
+							0deg,
+							rgba(9, 39, 94, 0.65),
+							rgba(9, 39, 94, 0.65)
+						),url("${
+							backgroundImage
+								? backgroundImage
+								: `/svg/backgroundSVG/stacked-waves-haikei-orange-yellow.svg`
+						}")`,
 			}}
 		>
 			<div className="px-10 my-auto overflow-hidden py-44">
@@ -71,7 +75,7 @@ const ErrorPage: FC<IErrorPage> = ({
 										strokeLinejoin="round"
 									></path>
 								</svg>
-								<span className="text-base tracking-wider text-white font-[500]">
+								<span className=" tracking-wider text-white font-[500]">
 									{buttonLink?.title}
 								</span>
 							</Link>
@@ -91,7 +95,7 @@ const ErrorPage: FC<IErrorPage> = ({
 								target={buttonLinkTwo?.target}
 								className="flex flex-row px-6 py-3 leading-4 text-white transition-all duration-500 ease-in-out bg-transparent lg:py-6 lg:px-20 hover:bg-goldPrime"
 							>
-								<span className="text-base tracking-wider text-white font-[500]">
+								<span className=" tracking-wider text-white font-[500]">
 									{buttonLinkTwo?.title}
 								</span>
 							</Link>

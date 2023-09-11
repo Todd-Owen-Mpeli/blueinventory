@@ -52,7 +52,7 @@ const TableCard: FC = () => {
 											/>
 										</div>
 										<div className="flex flex-col">
-											<span className="text-base font-semibold text-darkerBlue">
+											<span className=" font-semibold text-darkerBlue">
 												{item.itemName}
 											</span>
 											<span className="font-normal text-tiny text-darkGrey">
@@ -63,10 +63,10 @@ const TableCard: FC = () => {
 								</div>
 							</td>
 							<td className="px-4 py-3">
-								<div className="text-base font-normal">{item.description}</div>
+								<div className=" font-normal">{item.description}</div>
 							</td>
 							<td className="px-4 py-3">
-								<div className="text-base font-semibold">{item.quantity}</div>
+								<div className=" font-semibold">{item.quantity}</div>
 							</td>
 							<td className="px-4 py-3">
 								<div className="px-2.5 py-1 text-sm font-normal text-white bg-darkBlue w-fit rounded-full">

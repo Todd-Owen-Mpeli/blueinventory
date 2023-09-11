@@ -98,7 +98,7 @@ const PersonalInformation: FC = () => {
 									initial={initial}
 									whileInView={fadeInUp}
 									viewport={{once: true}}
-									className="text-base font-medium text-left text-darkGrey"
+									className=" font-medium text-left text-darkGrey"
 								>
 									{firebaseContext?.userData?.displayName}
 								</motion.h3>
@@ -129,7 +129,7 @@ const PersonalInformation: FC = () => {
 									initial={initial}
 									whileInView={fadeInUp}
 									viewport={{once: true}}
-									className="text-base font-medium text-left text-darkGrey"
+									className=" font-medium text-left text-darkGrey"
 								>
 									{firebaseContext?.userData?.email}
 								</motion.h3>
@@ -147,7 +147,7 @@ const PersonalInformation: FC = () => {
 									initial={initial}
 									whileInView={fadeInUp}
 									viewport={{once: true}}
-									className="text-base font-medium text-left text-darkGrey"
+									className=" font-medium text-left text-darkGrey"
 								>
 									Owner
 								</motion.h3>
@@ -167,7 +167,7 @@ const PersonalInformation: FC = () => {
 									initial={initial}
 									whileInView={fadeInUp}
 									viewport={{once: true}}
-									className="text-base font-medium text-left text-darkGrey"
+									className=" font-medium text-left text-darkGrey"
 								>
 									{firebaseContext?.userData?.metadata?.creationTime}
 								</motion.h3>
@@ -185,7 +185,7 @@ const PersonalInformation: FC = () => {
 									initial={initial}
 									whileInView={fadeInUp}
 									viewport={{once: true}}
-									className="text-base font-medium text-left text-darkGrey"
+									className=" font-medium text-left text-darkGrey"
 								>
 									{firebaseContext?.userData?.metadata?.lastSignInTime}
 								</motion.h3>
@@ -203,7 +203,7 @@ const PersonalInformation: FC = () => {
 									initial={initial}
 									whileInView={fadeInUp}
 									viewport={{once: true}}
-									className="text-base font-medium text-left text-darkGrey"
+									className=" font-medium text-left text-darkGrey"
 								>
 									{firebaseContext?.userData?.phoneNumber != null
 										? firebaseContext?.userData?.phoneNumber
@@ -226,7 +226,7 @@ const PersonalInformation: FC = () => {
 							<br/>
 							<br/>
 							Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.`}
-							tailwindStyling="my-5 text-base font-medium leading-5 text-black text-left"
+							tailwindStyling="my-5  font-medium leading-5 text-black text-left"
 						/>
 					</div>
 				</div>

@@ -82,7 +82,7 @@ const CTATwo: FC<ICTA> = ({
 										<Link
 											href={`${buttonLinkTwo?.url}`}
 											target={`${buttonLinkTwo?.target}`}
-											className="relative inline-block w-full h-12 px-8 py-3 mb-3 overflow-hidden text-center text-white transition duration-200 group sm:w-auto sm:mb-0 sm:mr-4 bg-goldPrime hover:bg-darkerBlue"
+											className="relative inline-block w-full h-12 px-8 py-3 mb-3 overflow-hidden text-center text-white transition duration-200 group sm:w-auto sm:mb-0 sm:mr-4 bg-goldPrime hover:bg-purple"
 										>
 											{buttonLinkTwo?.title}
 										</Link>
@@ -121,12 +121,12 @@ const CTATwo: FC<ICTA> = ({
 											/>
 										</svg>
 									</div>
-									<h5 className="mb-3 text-lg font-bold text-white">
+									<h5 className="mb-3 text-xl font-bold text-center text-white lg:text-left">
 										{content?.title}
 									</h5>
 									<Paragraph
 										content={content?.paragraph}
-										tailwindStyling="w-full lg:max-w-3xl mt-4 text-left text-white"
+										tailwindStyling="w-full lg:max-w-3xl mt-4 text-center lg:text-left text-white"
 									/>
 								</motion.div>
 							</motion.div>

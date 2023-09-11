@@ -89,7 +89,7 @@ const Navbar: FC = () => {
 						>
 							<Link
 								href="/"
-								className="text-lg font-extrabold lg:text-2xl text-darkBlue"
+								className="text-lg font-extrabold tracking-tight uppercase transition-all duration-500 ease-in-out lg:text-xl text-darkBlue hover:text-blue"
 							>
 								BlueInventory
 							</Link>
@@ -112,7 +112,7 @@ const Navbar: FC = () => {
 														key={keys}
 														url={item?.node?.url}
 														label={item?.node?.label}
-														tailwindStyling="text-sm uppercase font-bold tracking-[.15rem] text-darkBlue hover:text-goldPrime transition-all ease-in-out duration-500"
+														tailwindStyling="text-sm uppercase font-extrabold tracking-[.15rem] text-darkBlue hover:text-goldPrime transition-all ease-in-out duration-500"
 													/>
 												</Fragment>
 											)
@@ -243,7 +243,9 @@ const Navbar: FC = () => {
 										>
 											<Link href={`/sign-in`}>
 												<div className="absolute top-0 w-full h-full transition duration-200 transform bg-top bg-no-repeat bg-cover bg-goldPrime right-full group-hover:translate-x-full group-hover:scale-102" />
-												<p className="relative mx-auto">Sign In</p>
+												<span className="relative mx-auto text-base">
+													Sign In
+												</span>
 											</Link>
 										</motion.button>
 										<motion.button
@@ -260,7 +262,9 @@ const Navbar: FC = () => {
 										>
 											<Link href={`/sign-up`}>
 												<div className="absolute top-0 w-full h-full transition duration-200 transform bg-top bg-no-repeat bg-cover bg-darkBlue right-full group-hover:translate-x-full group-hover:scale-102" />
-												<p className="relative mx-auto">Sign up</p>
+												<span className="relative mx-auto text-base">
+													Sign up
+												</span>
 											</Link>
 										</motion.button>
 									</motion.div>

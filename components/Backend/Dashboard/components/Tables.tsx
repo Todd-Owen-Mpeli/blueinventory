@@ -32,29 +32,25 @@ const Tables: FC = () => {
 						<thead>
 							<tr className="text-left text-black">
 								<th className="pb-5 border-b border-black">
-									<span className="mx-1.5 text-base font-semibold capitalize">
-										Name
-									</span>
+									<span className="mx-1.5  font-semibold capitalize">Name</span>
 								</th>
 								<th className="pb-5 border-b border-black">
-									<span className="mx-1.5 text-base font-semibold capitalize">
+									<span className="mx-1.5  font-semibold capitalize">
 										Description
 									</span>
 								</th>
 								<th className="pb-5 border-b border-black">
-									<span className="mx-1.5 text-base font-semibold capitalize">
+									<span className="mx-1.5  font-semibold capitalize">
 										Quantity
 									</span>
 								</th>
 								<th className="pb-5 border-b border-black">
-									<span className="mx-1.5 text-base font-semibold capitalize">
+									<span className="mx-1.5  font-semibold capitalize">
 										Value
 									</span>
 								</th>
 								<th className="pb-5 border-b border-black">
-									<span className="mx-1.5 text-base font-semibold capitalize">
-										Edit
-									</span>
+									<span className="mx-1.5  font-semibold capitalize">Edit</span>
 								</th>
 							</tr>
 						</thead>

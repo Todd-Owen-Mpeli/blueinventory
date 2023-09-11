@@ -68,7 +68,7 @@ const CookiePolicyCard = () => {
 						whileInView={fadeInUp}
 						onClick={refuseCookies}
 						viewport={{once: true}}
-						className="px-6 py-3 text-xs leading-none tracking-wider text-white rounded bg-darkBlue hover:bg-darkerBlue"
+						className="px-6 py-3 text-xs leading-none tracking-wider text-white rounded bg-darkBlue hover:bg-purple"
 					>
 						Refuse Cookies
 					</motion.button>

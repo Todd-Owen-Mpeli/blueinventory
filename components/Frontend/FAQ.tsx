@@ -45,10 +45,10 @@ const FAQ: FC<IFaq> = ({icon, title, paragraph, qagrid}) => {
 					<div className="mb-2 lg:w-1/3 lg:pr-16 lg:mb-8">
 						<h2 className="text-3xl font-extrabold md:text-4xl">{title}</h2>
 					</div>
-					<div className="text-sm lg:text-base lg:w-1/3">
+					<div className="text-sm lg: lg:w-1/3">
 						<Paragraph
 							content={paragraph}
-							tailwindStyling="text-base tracking-tight font-medium text-black mb-16"
+							tailwindStyling=" tracking-tight font-medium text-black mb-16"
 						/>
 					</div>
 				</motion.div>

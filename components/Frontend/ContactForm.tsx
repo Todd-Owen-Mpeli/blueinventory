@@ -385,7 +385,7 @@ const ContactForm: FC<IContactForm> = ({title, backgroundImage}) => {
 												</g>
 											</svg>
 										</span>
-										<h3 className="text-base tracking-widest text-white uppercase sm:tracking-wider sm:text-medium">
+										<h3 className=" tracking-widest text-white uppercase sm:tracking-wider sm:text-medium">
 											{loading
 												? "Sending Message..."
 												: messageSent

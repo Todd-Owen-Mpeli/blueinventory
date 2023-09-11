@@ -61,7 +61,7 @@ const Hero: FC<IHero> = ({
 						</motion.h1>
 						<Paragraph
 							content={subtitle}
-							tailwindStyling="w-full lg:max-w-2xl mx-auto mt-6 text-black text-left text-base"
+							tailwindStyling="w-full lg:max-w-2xl mx-auto mt-6 text-black text-center lg:text-left text-[1.110rem]"
 						/>
 						<motion.div
 							initial={initial}

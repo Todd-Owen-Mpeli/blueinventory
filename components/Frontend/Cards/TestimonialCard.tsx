@@ -56,7 +56,7 @@ const TestimonialCard: FC<ITestimonialCard> = ({
 					initial={initial}
 					viewport={{once: true}}
 					whileInView={fadeInUp}
-					className={paragraph ? `mt-2 mb-8 text-base text-darkBlue` : `hidden`}
+					className={paragraph ? `mt-2 mb-8  text-darkBlue` : `hidden`}
 					dangerouslySetInnerHTML={createTrimmedParagraphMarkup(paragraph)}
 				/>
 			</motion.div>

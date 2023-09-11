@@ -49,7 +49,7 @@ const TitleThreeContentGrid: FC<ITitleThreeContentGrid> = ({
 							initial={initial}
 							whileInView={fadeInUp}
 							viewport={{once: true}}
-							className="text-xl font-bold leading-normal xl:leading-[2.75rem] xl:text-6xl tracking-px-n md:max-w-3xl"
+							className="text-3xl font-bold text-center lg:text-left leading-normal xl:leading-[2.75rem] xl:text-6xl md:max-w-3xl"
 						>
 							{title}
 						</motion.h2>
@@ -58,7 +58,7 @@ const TitleThreeContentGrid: FC<ITitleThreeContentGrid> = ({
 						initial={initial}
 						whileInView={stagger}
 						viewport={{once: true}}
-						className="flex flex-wrap m-8"
+						className="flex flex-col flex-wrap m-0 lg:m-8 lg:flex-row"
 					>
 						{contentGrid?.length > 0 ? (
 							contentGrid?.map((item, keys) => (
