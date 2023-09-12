@@ -6,6 +6,9 @@ import postHog from "posthog-js";
 import {motion} from "framer-motion";
 import {initial, fadeInUp, stagger} from "@/animations/animations";
 
+// Styling
+import styles from "@/styles/Home.module.scss";
+
 // Components
 import Paragraph from "@/components/Frontend/Elements/Paragraph";
 
@@ -26,7 +29,8 @@ const CookiePolicyCard = () => {
 		<div
 			className={
 				showCookiePolicyCard
-					? `fixed bottom-0 right-0 max-w-6xl px-4 md:max-w-md z-[999]`
+					? styles.cookiePolicyCard +
+					  ` fixed bottom-0 right-0 max-w-6xl px-4 md:max-w-md z-[999]`
 					: `hidden`
 			}
 		>
@@ -46,7 +50,7 @@ const CookiePolicyCard = () => {
 				</motion.h3>
 				<Paragraph
 					content={`<p>To provide the best experiences, we use technologies like cookies to store and/or access device information. Consenting to these technologies will allow us to process data such as browsing behaviour or unique IDs on this site. Not consenting or withdrawing consent, may adversely affect certain features and functions.</p>`}
-					tailwindStyling="mt-3 mb-6 text-xs text-left"
+					tailwindStyling="mt-3 mb-6 text-left"
 				/>
 				<motion.div
 					initial={initial}

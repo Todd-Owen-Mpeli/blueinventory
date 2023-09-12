@@ -29,7 +29,7 @@ const Stats: FC<IStats> = ({
 				<div className="mx-auto max-w-7xl">
 					<div className="flex flex-wrap items-center -mx-4">
 						<div className="w-full px-4 mb-16 lg:w-1/2 lg:mb-0">
-							<div className="mx-auto text-center lg:max-w-lg lg:mx-0">
+							<div className="mx-auto lg:max-w-lg lg:mx-0">
 								<motion.h2
 									initial={initial}
 									whileInView={fadeInUp}
@@ -54,7 +54,7 @@ const Stats: FC<IStats> = ({
 												initial={initial}
 												whileInView={fadeInUp}
 												viewport={{once: true}}
-												className="flex flex-col items-center justify-between mb-4 lg:items-start"
+												className="flex flex-col items-center justify-between mb-1 lg:items-start"
 											>
 												<StatsBulletPointCard
 													bulletPointText={item?.bulletPoint}

@@ -8,6 +8,9 @@ import DOMPurify from "isomorphic-dompurify";
 import {ITestimonialCard} from "@/types/components/public";
 import {initial, fadeInUp, stagger} from "@/animations/animations";
 
+// Styling
+import styles from "@/styles/Home.module.scss";
+
 const TestimonialCard: FC<ITestimonialCard> = ({
 	title,
 	image,
@@ -29,7 +32,10 @@ const TestimonialCard: FC<ITestimonialCard> = ({
 			initial={initial}
 			whileInView={fadeInUp}
 			viewport={{once: true}}
-			className={`flex flex-col justify-between w-full h-full min-h-[300px] lg:w-1/3 p-10 pb-10 rounded-md bg-lightGrey border-l-[5px] border-r-[5px] lg:border-r-[10px] border-t-[5px] border-b-0 border-${getRandomColor}`}
+			className={
+				styles.testimonialCard +
+				` flex flex-col justify-between w-full h-full min-h-[300px] lg:w-1/3 p-10 pb-10 rounded-md bg-lightGrey border-l-[5px] border-r-[5px] lg:border-r-[10px] border-t-[5px] border-b-0 border-${getRandomColor}`
+			}
 			style={{
 				clipPath: `polygon(0% 0%, 100% 0%, 94.9% 88.5%, 0% 97.8%)`,
 			}}
@@ -56,7 +62,7 @@ const TestimonialCard: FC<ITestimonialCard> = ({
 					initial={initial}
 					viewport={{once: true}}
 					whileInView={fadeInUp}
-					className={paragraph ? `mt-2 mb-8  text-darkBlue` : `hidden`}
+					className={paragraph ? `mt-2 mb-8 text-base text-darkBlue` : `hidden`}
 					dangerouslySetInnerHTML={createTrimmedParagraphMarkup(paragraph)}
 				/>
 			</motion.div>

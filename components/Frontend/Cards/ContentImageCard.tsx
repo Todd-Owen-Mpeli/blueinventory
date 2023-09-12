@@ -40,27 +40,32 @@ const contentImageCard: FC<IContentImageCard> = ({
 	backgroundImage,
 }) => {
 	let svgPath: string;
+	let clipPath: string;
 	let svgStyling: string;
 
 	switch (contentLocation) {
 		case "Left":
 			svgPath = "stacked-waves-haikei-blue-darkblue";
-			svgStyling =
-				"border-l-[10px] border-r-[10px] lg:border-r-[20px] border-t-[10px] border-b-0 border-yellow";
-			break;
-		case "Right":
-			svgPath = "stacked-waves-haikei-orange-yellow";
+			clipPath = "polygon(0% 0%, 100% 0%, 96.2% 91.8%, 0% 97.8%)";
 			svgStyling =
 				"border-l-[10px] border-r-[10px] lg:border-r-[20px] border-t-[10px] border-b-0 border-pinkRed";
 			break;
+		case "Right":
+			svgPath = "stacked-waves-haikei-orange-yellow";
+			clipPath = "polygon(0% 0%, 100% 0%, 100% 97.3%, 4.4% 90.3%)";
+			svgStyling =
+				"border-l-[10px] border-r-[10px] lg:border-r-[20px] border-t-[10px] border-b-0 border-purple";
+			break;
 		default:
 			svgPath = "stacked-waves-haikei-blue-darkblue";
+			clipPath = "polygon(0% 0%, 100% 0%, 96.2% 91.8%, 0% 97.8%)";
 			svgStyling =
-				"border-l-[10px] border-r-[10px] lg:border-r-[20px] border-t-[10px] border-b-0 border-yellow";
+				"border-l-[10px] border-r-[10px] lg:border-r-[20px] border-t-[10px] border-b-0 border-pinkRed";
 	}
 
 	return (
 		<div
+			className="bg-center bg-no-repeat bg-cover"
 			style={{
 				backgroundImage: `url("/svg/backgroundSVG/${svgPath}.svg")`,
 			}}
@@ -68,7 +73,7 @@ const contentImageCard: FC<IContentImageCard> = ({
 			<ContentImageCard
 				className={`relative min-h-[450PX] px-8 py-20 bg-center bg-no-repeat bg-cover ${svgStyling}`}
 				style={{
-					clipPath: `polygon(0% 0%, 100% 0%, 96.2% 91.8%, 0% 97.8%)`,
+					clipPath: clipPath,
 					backgroundImage: `linear-gradient(
 							0deg,
 							rgba(9, 39, 94, 0),

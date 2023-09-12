@@ -148,7 +148,7 @@ const ContentSlider = () => {
 	const postRef = useRef<HTMLDivElement>(null);
 	const mainImageVideoTailwindcss: string = `object-cover object-center w-full h-full`;
 	const mainContentTailwindcss: string = `absolute top-[100%] right-0 left-0 bottom-0 w-full h-full overflow-hidden`;
-	const postContentTailwindcss: string = `relative px-8  py-4 text-white transition-all duration-75 ease-in-out opacity-30`;
+	const postContentTailwindcss: string = `relative px-8 py-4 text-white transition-all duration-75 ease-in-out opacity-30`;
 
 	// Full Screen Nav Revealed Styling
 	const mainPost: string = styles.mainPost;
@@ -274,6 +274,7 @@ const ContentSlider = () => {
 									}
 								/>
 							</div>
+							<div className="absolute top-0 h-screen bottom-0 left-0 w-full opacity-90 bg-gradient-to-b from-darkerBlueTwo from-5% via-darkerBlueTwo via-10% to-transparent to-100%" />
 							<div className="absolute top-[35%] sm:top-[50%] lg:top-[20%] xl:top-[25%] :top-[35%] left-[4%] transform translate-y-[-40%] text-white w-[90%]">
 								<div className="inline-flex m-0 overflow-hidden tag">
 									<span className="py-[6px] px-6 bg-goldPrime">
@@ -315,7 +316,7 @@ const ContentSlider = () => {
 										/>
 										<path d="M14 10L8 6V14L14 10Z" fill="white" />
 									</svg>
-									<span className="font-semibold text-medium hover:text-blue">
+									<span className="font-semibold text-medium hover:text-goldPrime">
 										{contentOne.title}
 									</span>
 									<svg
@@ -371,6 +372,7 @@ const ContentSlider = () => {
 									alt={`${contentTwo.backgroundImage?.altText} image`}
 								/>
 							</div>
+							<div className="absolute top-0 h-screen bottom-0 left-0 w-full opacity-90 bg-gradient-to-b from-darkerBlueTwo from-5% via-darkerBlueTwo via-10% to-transparent to-100%" />
 							<div className="absolute top-[35%] sm:top-[50%] lg:top-[20%] xl:top-[25%] :top-[35%] left-[4%] transform translate-y-[-40%] text-white w-[90%]">
 								<div className="inline-flex m-0 overflow-hidden tag">
 									<span className="py-[6px] px-6 bg-goldPrime">
@@ -412,7 +414,7 @@ const ContentSlider = () => {
 										/>
 										<path d="M14 10L8 6V14L14 10Z" fill="white" />
 									</svg>
-									<span className="font-semibold text-medium hover:text-blue">
+									<span className="font-semibold text-medium hover:text-goldPrime">
 										{contentTwo?.title}
 									</span>
 									<svg
@@ -468,6 +470,7 @@ const ContentSlider = () => {
 									alt={`${contentThree.backgroundImage?.altText} image`}
 								/>
 							</div>
+							<div className="absolute top-0 h-screen bottom-0 left-0 w-full opacity-90 bg-gradient-to-b from-darkerBlueTwo from-5% via-darkerBlueTwo via-10% to-transparent to-100%" />
 							<div className="absolute top-[35%] sm:top-[50%] lg:top-[20%] xl:top-[25%] :top-[35%] left-[4%] transform translate-y-[-40%] text-white w-[90%]">
 								<div className="inline-flex m-0 overflow-hidden tag">
 									<span className="py-[6px] px-6 bg-goldPrime">
@@ -509,7 +512,7 @@ const ContentSlider = () => {
 										/>
 										<path d="M14 10L8 6V14L14 10Z" fill="white" />
 									</svg>
-									<span className="font-semibold text-medium hover:text-blue">
+									<span className="font-semibold text-medium hover:text-goldPrime">
 										{contentThree?.title}
 									</span>
 									<svg
