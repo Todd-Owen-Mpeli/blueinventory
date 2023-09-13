@@ -22,10 +22,7 @@ const dashboard: NextPage<IDashboard> = () => {
 				animate="animate"
 			>
 				<Layout tailwindStyling={layoutTailwindStyling}>
-					<div className="flex justify-between gap-4">
-						<CardGrid />
-					</div>
-					<Tables />
+					<h1 className="text-lg font-bold text-left lg:text-2xl">Dashboard</h1>
 				</Layout>
 			</motion.section>
 		</DashboardMetaContentProvider>

@@ -17,7 +17,7 @@ const Layout: FC<IDashBoardLayout> = ({children, tailwindStyling}) => {
 
 			<div className={styles.dashboard}>
 				<Navigation />
-				<div className="flex flex-col w-full border-[5px] border-pureBlack rounded-xl bg-white">
+				<div className="flex flex-col w-full bg-white">
 					<TopNavbar />
 					<div className={tailwindStyling}>{children}</div>
 				</div>

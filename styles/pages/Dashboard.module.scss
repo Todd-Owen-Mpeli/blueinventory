@@ -3,40 +3,15 @@
 @import "../_colors";
 
 .dashboard {
-	@apply flex flex-row min-h-screen bg-pureBlack;
+	@apply flex flex-row min-h-screen bg-white;
 
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6,
-	a,
-	p,
-	ul,
-	li,
-	div,
-	span,
-	input,
-	label,
-	strong,
-	button,
-	textarea {
+	* {
 		font-family: $fontStyle_body;
 	}
 }
 
 .mainNavigation {
-	@apply bg-pureBlack bg-no-repeat bg-cover bg-center rounded-lg my-1 ml-1 mr-0;
-
-	button {
-		font-family: $fontStyle_body;
-
-		a,
-		span {
-			font-family: $fontStyle_body;
-		}
-	}
+	@apply w-1/6 border-2 border-blue;
 }
 
 .tables {
