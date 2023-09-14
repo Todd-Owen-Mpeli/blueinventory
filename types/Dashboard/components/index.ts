@@ -8,6 +8,12 @@ export interface ITailwindStyling {
 export interface ITablesProps {
 	itemsCollection: any;
 }
+
 export interface ICardGridProps {
 	itemsCollection: any;
+}
+
+export interface ISignOutModal {
+	isOpen: boolean;
+	onClose: any;
 }

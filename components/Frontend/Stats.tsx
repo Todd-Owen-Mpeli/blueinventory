@@ -34,7 +34,7 @@ const Stats: FC<IStats> = ({
 									initial={initial}
 									whileInView={fadeInUp}
 									viewport={{once: true}}
-									className="text-3xl font-bold text-center text-white lg:text-5xl lg:text-left"
+									className="text-3xl font-bold leading-10 text-center text-white lg:text-5xl lg:text-left"
 								>
 									{title}
 								</motion.h2>
