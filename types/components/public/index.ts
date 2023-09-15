@@ -2,25 +2,26 @@
 import {IFirebaseUser} from "@/types/firebase";
 
 // Components Card
-export interface IBulletListCard {
-	bulletPoint: string;
-	iconFillColor: string;
-	tailwindStyling: string;
-}
-
-export interface IContentImageCard {
+export type IFaqCard = {
 	title: string;
 	paragraph: string;
-	contentLocation: string;
-	backgroundImage: string;
-}
-
-export interface IFaqCard {
+};
+export type ILogoCard = {
+	image: {
+		altText: string;
+		sourceUrl: string;
+		mediaDetails: {
+			height: number;
+			width: number;
+		};
+	};
+};
+export type IJumboCard = {
 	title: string;
+	subtitle: string;
 	paragraph: string;
-}
-
-export interface IHeroThreeCard {
+};
+export type IHeroThreeCard = {
 	link: {
 		url: string;
 		title: string;
@@ -34,15 +35,17 @@ export interface IHeroThreeCard {
 			width: number;
 		};
 	};
-}
-
-export interface IJumboCard {
+};
+export type IBulletListCard = {
+	bulletPoint: string;
+	iconFillColor: string;
+	tailwindStyling: string;
+};
+export type ITestimonialCard = {
 	title: string;
-	subtitle: string;
 	paragraph: string;
-}
-
-export interface ILogoCard {
+	jobPosition: string;
+	getRandomColor: string;
 	image: {
 		altText: string;
 		sourceUrl: string;
@@ -51,9 +54,28 @@ export interface ILogoCard {
 			width: number;
 		};
 	};
-}
-
-export interface IOperationalInsightsCard {
+};
+export type IContentImageCard = {
+	title: string;
+	paragraph: string;
+	contentLocation: string;
+	backgroundImage: string;
+};
+export type IPaymentProvidersCard = {
+	image: {
+		altText: string;
+		sourceUrl: string;
+		mediaDetails: {
+			height: number;
+			width: number;
+		};
+	};
+};
+export type IStatsBulletPointCard = {
+	bulletPointText: string;
+	tailwindStyling: string;
+};
+export type IOperationalInsightsCard = {
 	uri: string;
 	title: string;
 	paragraph: string;
@@ -68,40 +90,8 @@ export interface IOperationalInsightsCard {
 			};
 		};
 	};
-}
-
-export interface IPaymentProvidersCard {
-	image: {
-		altText: string;
-		sourceUrl: string;
-		mediaDetails: {
-			height: number;
-			width: number;
-		};
-	};
-}
-
-export interface IStatsBulletPointCard {
-	bulletPointText: string;
-	tailwindStyling: string;
-}
-
-export interface ITestimonialCard {
-	title: string;
-	paragraph: string;
-	jobPosition: string;
-	getRandomColor: string;
-	image: {
-		altText: string;
-		sourceUrl: string;
-		mediaDetails: {
-			height: number;
-			width: number;
-		};
-	};
-}
-
-export interface ITitleThreeContentGridCard {
+};
+export type ITitleThreeContentGridCard = {
 	title: string;
 	paragraph: string;
 	icon: {
@@ -117,10 +107,10 @@ export interface ITitleThreeContentGridCard {
 		title: string;
 		target: string;
 	};
-}
+};
 
 // Elements
-export interface IErrorPage {
+export type IErrorPage = {
 	title: string;
 	paragraph: string;
 	backgroundImage: string;
@@ -134,74 +124,33 @@ export interface IErrorPage {
 		title: string;
 		target: string;
 	};
-}
-
-export interface IFooterMenuLinks {
-	url: string;
-	label: string;
-	tailwindStyling: string;
-}
-
-export interface INavbarMenuLinks {
-	url: string;
-	label: string;
-	tailwindStyling: string;
-}
-
-export interface IParagraphProps {
+};
+export type IParagraphProps = {
 	content: string;
 	tailwindStyling: string;
-}
+};
+export type IFooterMenuLinks = {
+	url: string;
+	label: string;
+	tailwindStyling: string;
+};
+export type INavbarMenuLinks = {
+	url: string;
+	label: string;
+	tailwindStyling: string;
+};
 
 // layout
-export interface ILayout {
+export type ILayout = {
 	children: React.ReactNode;
-}
-
-export interface ILayoutTwo {
+};
+export type ILayoutTwo = {
 	pageTitle: any;
 	children: React.ReactNode;
-}
+};
 
 // Components
-export interface ICheckoutWelcome {
-	title: string;
-	paragraph: string;
-	stripeSuccess: boolean;
-}
-
-export interface IContactForm {
-	title: string;
-	backgroundImage: string;
-}
-
-export interface ILoadingState {
-	error: boolean;
-	isLoading: boolean;
-}
-
-export interface IContactInfo {
-	title: string;
-	paragraph: string;
-}
-
-export interface IContentBackgroundImage {
-	gridContent: [
-		{
-			card: {
-				id: string;
-				title: string;
-				paragraph: string;
-				contentLocation: string;
-				backgroundImage: {
-					sourceUrl: string;
-				};
-			};
-		}
-	];
-}
-
-export interface ICTA {
+export type ICTA = {
 	title: string;
 	paragraph: string;
 	backgroundImage: string;
@@ -219,20 +168,8 @@ export interface ICTA {
 		title: string;
 		paragraph: string;
 	};
-}
-
-export interface ICTATwo {
-	title: string;
-	paragraph: string;
-	backgroundImage: string;
-	buttonLink: {
-		url: string;
-		title: string;
-		target: string;
-	};
-}
-
-export interface IFaq {
+};
+export type IFaq = {
 	title: string;
 	paragraph: string;
 	icon: {
@@ -249,9 +186,8 @@ export interface IFaq {
 			paragraph: string;
 		}
 	];
-}
-
-export interface IHero {
+};
+export type IHero = {
 	title: string;
 	subtitle: string;
 	backgroundImage: string;
@@ -266,9 +202,67 @@ export interface IHero {
 		title: string;
 		target: string;
 	};
-}
-
-export interface IHeroTwo {
+};
+export type ILogos = {
+	title: string;
+	paragraph: string;
+	logoGrid: [
+		{
+			id: string;
+			image: {
+				altText: string;
+				sourceUrl: string;
+				mediaDetails: {
+					height: number;
+					width: number;
+				};
+			};
+		}
+	];
+};
+export type IStats = {
+	title: string;
+	subtitle: string;
+	paragraph: string;
+	paragraphTwo: string;
+	bulletPoints: [
+		{
+			id: string;
+			bulletPoint: string;
+		}
+	];
+	column: {
+		title: string;
+		values: string;
+		percentage: string;
+	};
+	columnTwo: {
+		title: string;
+		values: string;
+		percentage: string;
+	};
+};
+export type ICTATwo = {
+	title: string;
+	paragraph: string;
+	backgroundImage: string;
+	buttonLink: {
+		url: string;
+		title: string;
+		target: string;
+	};
+};
+export type ISignIn = {
+	title: string;
+	paragraph: string;
+	paragraphTwo: string;
+};
+export type ISignUp = {
+	title: string;
+	paragraph: string;
+	paragraphTwo: string;
+};
+export type IHeroTwo = {
 	title: string;
 	paragraph: string;
 	backgroundVideoUrl: string;
@@ -281,33 +275,36 @@ export interface IHeroTwo {
 			height: number;
 		};
 	};
-}
-
-export interface IHeroThreeProps {
+};
+export type IPricing = {
 	title: string;
+	italic: string;
+	pointOne: string;
+	pointTwo: string;
 	paragraph: string;
-	imageGrid: [
+	card: {
+		bulletList: [
+			{
+				id: string;
+				bulletPoint: string;
+			}
+		];
+	};
+	paymentProviders: [
 		{
-			card: {
-				link: {
-					url: string;
-					title: string;
-					target: string;
-				};
-				image: {
-					altText: string;
-					sourceUrl: string;
-					mediaDetails: {
-						height: number;
-						width: number;
-					};
+			id: string;
+			logo: {
+				altText: string;
+				sourceUrl: string;
+				mediaDetails: {
+					height: number;
+					width: number;
 				};
 			};
 		}
 	];
-}
-
-export interface IImageGrid {
+};
+export type IImageGrid = {
 	image: {
 		altText: string;
 		sourceUrl: string;
@@ -356,9 +353,45 @@ export interface IImageGrid {
 			width: number;
 		};
 	};
-}
-
-export interface IJumboContent {
+};
+export type ITestimonial = {
+	title: string;
+	paragraph: string;
+	contentGrid: [
+		{
+			card: {
+				id: string;
+				name: string;
+				position: string;
+				paragraph: string;
+				image: {
+					altText: string;
+					sourceUrl: string;
+					mediaDetails: {
+						height: number;
+						width: number;
+					};
+				};
+			};
+		}
+	];
+};
+export type IContactForm = {
+	title: string;
+	backgroundImage: string;
+};
+export type IContactInfo = {
+	title: string;
+	paragraph: string;
+};
+export type IMobileNavbar = {
+	revealMobileMenu: boolean;
+};
+export type ILoadingState = {
+	error: boolean;
+	isLoading: boolean;
+};
+export type IJumboContent = {
 	title: string;
 	paragraph: string;
 	icon: {
@@ -406,9 +439,55 @@ export interface IJumboContent {
 			sourceUrl: string;
 		};
 	};
-}
-
-export interface IJumboContentTwo {
+};
+export type IHeroThreeProps = {
+	title: string;
+	paragraph: string;
+	imageGrid: [
+		{
+			card: {
+				link: {
+					url: string;
+					title: string;
+					target: string;
+				};
+				image: {
+					altText: string;
+					sourceUrl: string;
+					mediaDetails: {
+						height: number;
+						width: number;
+					};
+				};
+			};
+		}
+	];
+};
+export type ISustainability = {
+	title: string;
+	subtitle: string;
+	paragraph: string;
+	percentage: string;
+	imageText: string;
+	image: {
+		altText: string;
+		sourceUrl: string;
+		mediaDetails: {
+			height: number;
+			width: number;
+		};
+	};
+};
+export type ITitleParagraph = {
+	title: string;
+	paragraph: string;
+};
+export type ICheckoutWelcome = {
+	title: string;
+	paragraph: string;
+	stripeSuccess: boolean;
+};
+export type IJumboContentTwo = {
 	cardOne: {
 		title: string;
 		subtitle: string;
@@ -434,145 +513,13 @@ export interface IJumboContentTwo {
 			sourceUrl: string;
 		};
 	};
-}
-
-export interface ILogos {
-	title: string;
-	paragraph: string;
-	logoGrid: [
-		{
-			id: string;
-			image: {
-				altText: string;
-				sourceUrl: string;
-				mediaDetails: {
-					height: number;
-					width: number;
-				};
-			};
-		}
-	];
-}
-
-export interface IMobileNavbar {
-	revealMobileMenu: boolean;
-}
-
-export interface IOperationalInsights {
+};
+export type IOperationalInsights = {
 	title: string;
 	italic: string;
 	paragraph: string;
-}
-
-export interface IPricing {
-	title: string;
-	italic: string;
-	pointOne: string;
-	pointTwo: string;
-	paragraph: string;
-	card: {
-		bulletList: [
-			{
-				id: string;
-				bulletPoint: string;
-			}
-		];
-	};
-	paymentProviders: [
-		{
-			id: string;
-			logo: {
-				altText: string;
-				sourceUrl: string;
-				mediaDetails: {
-					height: number;
-					width: number;
-				};
-			};
-		}
-	];
-}
-
-export interface ISignIn {
-	title: string;
-	paragraph: string;
-	paragraphTwo: string;
-}
-
-export interface ISignUp {
-	title: string;
-	paragraph: string;
-	paragraphTwo: string;
-}
-
-export interface IStats {
-	title: string;
-	subtitle: string;
-	paragraph: string;
-	paragraphTwo: string;
-	bulletPoints: [
-		{
-			id: string;
-			bulletPoint: string;
-		}
-	];
-	column: {
-		title: string;
-		values: string;
-		percentage: string;
-	};
-	columnTwo: {
-		title: string;
-		values: string;
-		percentage: string;
-	};
-}
-
-export interface ISustainability {
-	title: string;
-	subtitle: string;
-	paragraph: string;
-	percentage: string;
-	imageText: string;
-	image: {
-		altText: string;
-		sourceUrl: string;
-		mediaDetails: {
-			height: number;
-			width: number;
-		};
-	};
-}
-
-export interface ITestimonial {
-	title: string;
-	paragraph: string;
-	contentGrid: [
-		{
-			card: {
-				id: string;
-				name: string;
-				position: string;
-				paragraph: string;
-				image: {
-					altText: string;
-					sourceUrl: string;
-					mediaDetails: {
-						height: number;
-						width: number;
-					};
-				};
-			};
-		}
-	];
-}
-
-export interface ITitleParagraph {
-	title: string;
-	paragraph: string;
-}
-
-export interface ITitleThreeContentGrid {
+};
+export type ITitleThreeContentGrid = {
 	title: string;
 	icon: {
 		altText: string;
@@ -604,4 +551,19 @@ export interface ITitleThreeContentGrid {
 			};
 		}
 	];
-}
+};
+export type IContentBackgroundImage = {
+	gridContent: [
+		{
+			card: {
+				id: string;
+				title: string;
+				paragraph: string;
+				contentLocation: string;
+				backgroundImage: {
+					sourceUrl: string;
+				};
+			};
+		}
+	];
+};

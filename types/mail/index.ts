@@ -1,17 +1,15 @@
-export interface IMailOptions {
+export type IMailOptions = {
 	from: string;
 	to: string;
-}
-
-export interface IContactMessageFields {
+};
+export type IContactMessageFields = {
 	firstName: string;
 	lastName: string;
 	email: string;
 	subject: string;
 	message: string;
-}
-
-export interface IGenerateEmailContent {
+};
+export type IGenerateEmailContent = {
 	text: string;
 	html: string;
-}
+};

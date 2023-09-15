@@ -7,8 +7,7 @@ import {layoutTailwindStyling} from "@/context/dashboard";
 
 // Components
 import Layout from "@/components/Backend/Dashboard/Layout/Layout";
-import Tables from "@/components/Backend/Dashboard/components/Tables";
-import CardGrid from "@/components/Backend/Dashboard/components/CardGrid";
+import CreateItem from "@/components/Backend/Dashboard/components/CreateItem";
 import DashboardMetaContentProvider from "@/components/Frontend/context/DashboardMetaContentProvider";
 
 const dashboard: NextPage<IDashboard> = () => {
@@ -22,7 +21,7 @@ const dashboard: NextPage<IDashboard> = () => {
 				animate="animate"
 			>
 				<Layout tailwindStyling={layoutTailwindStyling}>
-					<h1 className="text-lg font-bold text-left lg:text-2xl">Dashboard</h1>
+					<CreateItem />
 				</Layout>
 			</motion.section>
 		</DashboardMetaContentProvider>

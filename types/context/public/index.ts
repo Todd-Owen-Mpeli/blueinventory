@@ -99,13 +99,13 @@ export type IErrorPageContent = {
 	backgroundImage: string;
 };
 
-export interface IPageContext {
+export type IPageContext = {
 	seo: ISeo;
 	content: IContent;
 	postTypeFlexibleContent: IPostTypeFlexibleContent;
-}
+};
 
-export interface IGlobalContext {
+export type IGlobalContext = {
 	stripePlans: IStripePlans;
 	mainMenuLinks: IMainMenuLinks;
 	navbarMenuLinks: INavbarMenuLinks;
@@ -114,7 +114,7 @@ export interface IGlobalContext {
 	operationalInsights: IOperationalInsights;
 	themesOptionsContent: IThemesOptionsContent;
 	contentSliderPostsContent: IContentSliderPostsContent;
-}
+};
 
 export type IGlobalContextProvider = {
 	globalProps: IGlobalContext;
@@ -144,11 +144,11 @@ export type IDashboardMetaContentProvider = {
 	children: React.ReactNode;
 };
 
-export interface IFirebaseContext {
+export type IFirebaseContext = {
 	signedInUser: boolean;
 	userDocId: string | null;
 	userData: IFirebaseUser | null;
-}
+};
 
 export type IIndustriesMenuLinks = {
 	industriesMenuLinks: [

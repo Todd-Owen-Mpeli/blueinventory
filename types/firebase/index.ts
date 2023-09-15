@@ -1,5 +1,5 @@
 // Firebase
-export interface IFirebaseUser {
+export type IFirebaseUser = {
 	uid: string;
 	email: string;
 	photoURL: string;
@@ -12,9 +12,8 @@ export interface IFirebaseUser {
 		creationTime: string;
 		lastSignInTime: string;
 	};
-}
-
-export interface IFirebaseConfig {
+};
+export type IFirebaseConfig = {
 	apiKey: string;
 	authDomain: string;
 	projectId: string;
@@ -22,13 +21,12 @@ export interface IFirebaseConfig {
 	messagingSenderId: string;
 	appId: string;
 	measurementId: string;
-}
-
+};
 // Create Item Functions
-export interface INewCreatedItem {
+export type INewCreatedItem = {
 	value: string;
 	quantity: string;
 	itemName: string;
 	category: string;
 	description: string;
-}
+};

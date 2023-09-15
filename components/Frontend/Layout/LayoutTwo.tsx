@@ -4,7 +4,7 @@ import Head from "next/head";
 import {ILayoutTwo} from "@/types/components/public";
 
 // Components
-import NavbarTwo from "@/components/Frontend/NavbarTwo";
+import NavbarTwo from "../Global/NavbarTwo";
 
 const Layout: FC<ILayoutTwo> = ({children, pageTitle}) => {
 	return (
@@ -17,7 +17,7 @@ const Layout: FC<ILayoutTwo> = ({children, pageTitle}) => {
 
 			<NavbarTwo />
 
-			<div className="pt-16">{children}</div>
+			<div className="pt-14">{children}</div>
 		</>
 	);
 };

@@ -1,11 +1,11 @@
 /* DASHBOARD CONTEXT PAGES */
-export interface IDashboardContent {
+export type IDashboardContent = {
 	pageTitle: string;
 	itemsCollection: any[] | null;
-}
-export interface IDashboardMetaContent {
+};
+export type IDashboardMetaContent = {
 	pageTitle: string;
-}
+};
 
 /* PUBLIC PAGES */
-export interface IDashboard {}
+export type IDashboard = {};

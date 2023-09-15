@@ -1,30 +1,27 @@
 "use client";
 
 // Imports
-import {
-	initial,
-	fadeIn,
-	stagger,
-	fadeInUp,
-	initialTwo,
-} from "@/animations/animations";
 import Link from "next/link";
 import Image from "next/image";
-import {useState, FC} from "react";
+import {useState, FC, Fragment} from "react";
 import {motion} from "framer-motion";
 import {useRouter} from "next/router";
 import {useGlobalContext} from "@/context/Global";
+import {initial, fadeIn, stagger, initialTwo} from "@/animations/animations";
+
+// Styling
 import styles from "@/styles/components/Hero.module.scss";
 
 // Firebase
 import {getAuth, signOut} from "firebase/auth";
 import {useFirebaseContext} from "@/context/Firebase";
+import {validateAccountAlreadyExist} from "@/functions/Backend/firebase/validateAccountAlreadyExist";
 
 // Components
-import MobileNavbarTwo from "@/components/Frontend/MobileNavbarTwo";
+import MobileNavbar from "./MobileNavbar";
 import NavbarMenuLinks from "@/components/Frontend/Elements/NavbarMenuLinks";
 
-const NavbarTwo: FC = () => {
+const Navbar: FC = () => {
 	const auth = getAuth();
 	const router = useRouter();
 	// eslint-disable-next-line react-hooks/rules-of-hooks
@@ -41,6 +38,26 @@ const NavbarTwo: FC = () => {
 	// Hides or Displays User dropdown
 	const handleRevealUserDropdown = () => {
 		setRevealUserDropdown(!revealUserDropdown);
+	};
+
+	// Handles User Dashboard Login
+	const dashboardLogin = async () => {
+		// The signed-in user info.
+		const user: any | null = auth.currentUser;
+
+		/* New User validation
+				Validates if user already exist */
+		const userAccountAlreadyExist = await validateAccountAlreadyExist(
+			user?.uid
+		);
+
+		if (userAccountAlreadyExist) {
+			// Redirects the user to the next page
+			router.push("/dashboard");
+		} else {
+			// Redirects the user to the next page
+			router.push("/payment");
+		}
 	};
 
 	// Handles User Logout
@@ -62,9 +79,9 @@ const NavbarTwo: FC = () => {
 				<div className="flex flex-row items-center justify-between px-6 py-2 bg-white">
 					<div className="flex items-center justify-start w-full gap-4 px-0 sm:px-4 lg:w-1/3">
 						<motion.div
-							initial={initial}
+							initial={initialTwo}
 							viewport={{once: true}}
-							whileInView={fadeInUp}
+							whileInView={fadeIn}
 						>
 							<Link
 								href="/"
@@ -86,12 +103,14 @@ const NavbarTwo: FC = () => {
 									{globalContext.navbarMenuLinks.navbarMenuLinks?.length > 0 ? (
 										globalContext.navbarMenuLinks.navbarMenuLinks?.map(
 											(item, keys) => (
-												<NavbarMenuLinks
-													key={keys}
-													url={item?.node?.url}
-													label={item?.node?.label}
-													tailwindStyling="text-sm uppercase font-extrabold tracking-[.15rem] text-darkBlue hover:text-goldPrime transition-all ease-in-out duration-500"
-												/>
+												<Fragment key={keys}>
+													<NavbarMenuLinks
+														key={keys}
+														url={item?.node?.url}
+														label={item?.node?.label}
+														tailwindStyling="text-sm uppercase font-extrabold tracking-[.15rem] text-darkBlue hover:text-goldPrime transition-all ease-in-out duration-500"
+													/>
+												</Fragment>
 											)
 										)
 									) : (
@@ -102,10 +121,33 @@ const NavbarTwo: FC = () => {
 						</div>
 					</div>
 					<div className="w-full lg:w-1/3">
-						<div className="flex flex-wrap items-center justify-end gap-2">
-							<div className="hidden w-auto xl:block">
+						<div className="flex flex-wrap items-center justify-end w-full gap-2">
+							<div className="hidden w-full xl:block">
 								{firebaseContext?.signedInUser ? (
-									<div className="flex flex-wrap items-center justify-end gap-8">
+									<div className="flex flex-row items-center justify-end gap-8 -m-2">
+										<motion.button
+											initial={initialTwo}
+											whileInView={fadeIn}
+											viewport={{once: true}}
+											onClick={dashboardLogin}
+											aria-label="Dashboard Login Button"
+											role="button"
+											type="button"
+											className="relative flex items-center justify-center px-10 py-2 overflow-hidden text-white transition duration-200 bg-center bg-no-repeat bg-cover rounded-sm border-darkBlue group focus:ring-2 focus:ring-offset-1 hover:text-white hover:border-white focus:ring-white"
+											style={{
+												backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue-darkblue.svg")`,
+											}}
+										>
+											<div
+												className="absolute top-0 w-full h-full transition duration-200 transform bg-top bg-no-repeat bg-cover bg-darkBlue right-full group-hover:translate-x-full group-hover:scale-102"
+												style={{
+													backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue.svg")`,
+												}}
+											/>
+											<span className="relative mx-auto text-base">
+												Dashboard
+											</span>
+										</motion.button>
 										<motion.div
 											initial={initialTwo}
 											viewport={{once: true}}
@@ -145,6 +187,27 @@ const NavbarTwo: FC = () => {
 															{firebaseContext?.userData?.email}
 														</h2>
 													</div>
+													<ul
+														className="py-2 text-sm text-black"
+														aria-labelledby="avatarButton"
+													>
+														<li className="p-0">
+															<Link
+																href={`/dashboard`}
+																className="block px-4 py-2 text-black hover:bg-blue hover:text-white"
+															>
+																Dashboard
+															</Link>
+														</li>
+														<li className="p-0">
+															<Link
+																href={`/dashboard/settings`}
+																className="block px-4 py-2 text-black hover:bg-blue hover:text-white"
+															>
+																Settings
+															</Link>
+														</li>
+													</ul>
 													<div className="mt-1">
 														<button
 															onClick={handleLogout}
@@ -162,40 +225,46 @@ const NavbarTwo: FC = () => {
 										initial={initial}
 										viewport={{once: true}}
 										whileInView={stagger}
-										className="flex flex-wrap gap-2 -m-2"
+										className="flex flex-row items-center justify-end gap-2 -m-2"
 									>
-										<motion.div
-											initial={initial}
-											whileInView={fadeInUp}
+										<motion.button
+											initial={initialTwo}
+											whileInView={fadeIn}
 											viewport={{once: true}}
-											className="py-2 m-auto bg-center bg-no-repeat bg-cover rounded-sm"
+											aria-label="Sign-in Button"
+											role="button"
+											type="button"
+											className="relative flex items-center justify-center px-10 py-2 overflow-hidden text-white transition duration-200 bg-center bg-no-repeat bg-cover rounded-sm border-darkBlue group focus:ring-2 focus:ring-offset-1 hover:text-white hover:border-white focus:ring-white"
 											style={{
 												backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-orange-yellow.svg")`,
 											}}
 										>
-											<Link
-												className="w-full px-8 py-3 text-sm tracking-widest text-center text-white uppercase bg-transparent hover:bg-goldPrime focus:ring-none focus:ring-blue"
-												href={`/sign-in`}
-											>
-												Sign In
+											<Link href={`/sign-in`}>
+												<div className="absolute top-0 w-full h-full transition duration-200 transform bg-top bg-no-repeat bg-cover bg-goldPrime right-full group-hover:translate-x-full group-hover:scale-102" />
+												<span className="relative mx-auto text-base">
+													Sign In
+												</span>
 											</Link>
-										</motion.div>
-										<motion.div
-											initial={initial}
-											whileInView={fadeInUp}
+										</motion.button>
+										<motion.button
+											initial={initialTwo}
+											whileInView={fadeIn}
 											viewport={{once: true}}
-											className="py-2 m-auto bg-center bg-no-repeat bg-cover rounded-sm"
+											aria-label="Sign-up Button"
+											role="button"
+											type="button"
+											className="relative flex items-center justify-center px-10 py-2 overflow-hidden text-white transition duration-200 bg-center bg-no-repeat bg-cover rounded-sm border-darkBlue group focus:ring-2 focus:ring-offset-1 hover:text-white hover:border-white focus:ring-white"
 											style={{
 												backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue-pink-red-yellow.svg")`,
 											}}
 										>
-											<Link
-												className="w-full px-8 py-3 text-sm tracking-widest text-center text-white uppercase bg-transparent rounded-sm hover:bg-darkBlue focus:ring-none focus:ring-blue"
-												href={`/sign-up`}
-											>
-												Get Started
+											<Link href={`/sign-up`}>
+												<div className="absolute top-0 w-full h-full transition duration-200 transform bg-top bg-no-repeat bg-cover bg-darkBlue right-full group-hover:translate-x-full group-hover:scale-102" />
+												<span className="relative mx-auto text-base">
+													Sign up
+												</span>
 											</Link>
-										</motion.div>
+										</motion.button>
 									</motion.div>
 								)}
 							</div>
@@ -219,10 +288,10 @@ const NavbarTwo: FC = () => {
 				</div>
 
 				{/* Mobile Navbar */}
-				<MobileNavbarTwo revealMobileMenu={revealMobileMenu} />
+				<MobileNavbar revealMobileMenu={revealMobileMenu} />
 			</div>
 		</nav>
 	);
 };
 
-export default NavbarTwo;
+export default Navbar;

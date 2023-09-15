@@ -41,7 +41,7 @@ import {getAllOperationalInsightsContent} from "@/functions/Frontend/graphql/Que
 import "../styles/globals.scss";
 
 // Components
-import Footer from "@/components/Frontend/Footer";
+import Footer from "@/components/Frontend/Global/Footer";
 import ErrorPage from "@/components/Frontend/Elements/ErrorPage";
 import CookiePolicyCard from "@/components/Frontend/Elements/CookiePolicyCard";
 import GlobalContextProvider from "@/components/Frontend/context/GlobalContextProvider";

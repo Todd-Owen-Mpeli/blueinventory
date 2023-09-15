@@ -1,19 +1,17 @@
-export interface ITailwindStyling {
+export type ITablesProps = {
+	itemsCollection: any;
+};
+export type ISignOutModal = {
+	isOpen: boolean;
+	onClose: any;
+};
+export type ICardGridProps = {
+	itemsCollection: any;
+};
+export type ITailwindStyling = {
 	ringStyling: string;
 	UlStyling: string;
 	revealMenuText: string;
 	profileImageStyling: string;
 	mainLinksStyling: string;
-}
-export interface ITablesProps {
-	itemsCollection: any;
-}
-
-export interface ICardGridProps {
-	itemsCollection: any;
-}
-
-export interface ISignOutModal {
-	isOpen: boolean;
-	onClose: any;
-}
+};

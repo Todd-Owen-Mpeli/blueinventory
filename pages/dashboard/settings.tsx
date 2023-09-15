@@ -5,8 +5,6 @@ import {IDashboard} from "@/types/context/dashboard";
 
 // Components
 import Layout from "@/components/Backend/Dashboard/Layout/Layout";
-import Test from "@/components/Backend/Dashboard/components/Test";
-import PaymentInfo from "@/components/Backend/Dashboard/components/PaymentInfo";
 import SubscriptionInfo from "@/components/Backend/Dashboard/components/SubscriptionInfo";
 import PersonalInformation from "@/components/Backend/Dashboard/components/PersonalInformation";
 import DashboardMetaContentProvider from "@/components/Frontend/context/DashboardMetaContentProvider";
@@ -26,8 +24,6 @@ const settings: NextPage<IDashboard> = () => {
 				>
 					<PersonalInformation />
 					<div className="grid grid-cols-1 gap-8 py-4 lg:grid-cols-3">
-						<Test />
-						<PaymentInfo />
 						<SubscriptionInfo />
 					</div>
 				</Layout>

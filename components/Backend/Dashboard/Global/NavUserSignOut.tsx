@@ -8,7 +8,7 @@ import SignOutModal from "./SignOutModal";
 
 const NavUserSignOut: FC = () => {
 	const styling: string =
-		"flex flex-col items-center justify-center gap-0 2xl:gap-2 2xl:gap-x-4 2xl:flex-row";
+		"flex flex-col items-center justify-center gap-0 2xl:gap-2 2xl:gap-x-4 3xl:flex-row";
 	const firebaseContext = useFirebaseContext();
 
 	// Handles User Sign Out Modal
@@ -52,10 +52,10 @@ const NavUserSignOut: FC = () => {
 					</div>
 					<div
 						className={
-							revealSignOut ? "hidden" : "mt-4 2xl:mt-0 flex gap-1 flex-col"
+							revealSignOut ? "hidden" : "mt-4 3xl:mt-0 flex gap-1 flex-col"
 						}
 					>
-						<h3 className="font-bold text-center text-white text-tiny 2xl:text-left">
+						<h3 className="font-bold text-center text-white text-tiny 3xl:text-left">
 							{firebaseContext?.userData?.displayName}
 						</h3>
 						<span className="hidden text-xs text-center text-white xl:block 2xl:text-left">

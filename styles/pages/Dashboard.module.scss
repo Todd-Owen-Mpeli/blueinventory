@@ -10,8 +10,54 @@
 	}
 }
 
+.topNavbar {
+	li {
+		@apply cursor-pointer px-0;
+	}
+
+	.logoutButton {
+		svg:hover {
+			fill: $pinkRed;
+
+			g,
+			path {
+				fill: $pinkRed;
+			}
+			line {
+				fill: $pinkRed;
+			}
+		}
+	}
+}
+
 .mainNavigation {
-	@apply w-[20%] px-4 py-6 bg-cover bg-no-repeat bg-center overflow-x-hidden overflow-y-auto;
+	@apply w-1/6 px-4 py-3 xl:py-6 bg-cover bg-no-repeat bg-center overflow-x-hidden overflow-y-auto;
+
+	svg:hover {
+		fill: $white;
+
+		g,
+		path {
+			fill: $white;
+		}
+		line {
+			fill: $white;
+		}
+	}
+
+	.navLinks {
+		li {
+			@apply cursor-pointer rounded-sm py-2;
+
+			span {
+				@apply text-tiny;
+			}
+		}
+
+		li:hover {
+			@apply transition-all duration-200 ease-in-out;
+		}
+	}
 }
 
 .tables {

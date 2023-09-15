@@ -3,7 +3,7 @@ import {FC} from "react";
 import {ILayout} from "@/types/components/public";
 
 // Components
-import Navbar from "@/components/Frontend/Navbar";
+import Navbar from "../Global/Navbar";
 import MetaTag from "@/components/Frontend/Meta/MetaTag";
 
 const Layout: FC<ILayout> = ({children}) => {

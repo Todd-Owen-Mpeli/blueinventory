@@ -1,59 +1,6 @@
 // Imports
 import Stripe from "stripe";
 
-export type IStripeCustomer = {
-	id: string;
-	name: string | null | undefined;
-	email: string | null;
-	phone: string | null | undefined;
-	address: Stripe.Address | null | undefined;
-	description: string | null;
-};
-
-export interface IStripeCustomers {
-	data: [
-		{
-			id: string;
-			object: string;
-			address: {
-				city: string;
-				country: string;
-				line1: string;
-				line2: string;
-				postal_code: string;
-				state: string;
-			};
-			balance: number;
-			created: number;
-			currency: any;
-			default_source: any;
-			delinquent: boolean;
-			description: any;
-			discount: any;
-			email: string;
-			invoice_prefix: string;
-			invoice_settings: {
-				custom_fields: any;
-				default_payment_method: any;
-				footer: any;
-				rendering_options: any;
-			};
-			livemode: boolean;
-			metadata: any;
-			name: string;
-			phone: string;
-			preferred_locales: any;
-			shipping: {
-				address: any;
-				name: string;
-				phone: string;
-			};
-			tax_exempt: string;
-			test_clock: any;
-		}
-	];
-}
-
 export type IStripePlans = {
 	stripePrices:
 		| [
@@ -118,8 +65,58 @@ export type IStripePlans = {
 		paymentRecurringInterval: string;
 	};
 };
-
-export interface IStripePaymentPlans {
+export type IStripeCustomer = {
+	id: string;
+	name: string | null | undefined;
+	email: string | null;
+	phone: string | null | undefined;
+	address: Stripe.Address | null | undefined;
+	description: string | null;
+};
+export type IStripeCustomers = {
+	data: [
+		{
+			id: string;
+			object: string;
+			address: {
+				city: string;
+				country: string;
+				line1: string;
+				line2: string;
+				postal_code: string;
+				state: string;
+			};
+			balance: number;
+			created: number;
+			currency: any;
+			default_source: any;
+			delinquent: boolean;
+			description: any;
+			discount: any;
+			email: string;
+			invoice_prefix: string;
+			invoice_settings: {
+				custom_fields: any;
+				default_payment_method: any;
+				footer: any;
+				rendering_options: any;
+			};
+			livemode: boolean;
+			metadata: any;
+			name: string;
+			phone: string;
+			preferred_locales: any;
+			shipping: {
+				address: any;
+				name: string;
+				phone: string;
+			};
+			tax_exempt: string;
+			test_clock: any;
+		}
+	];
+};
+export type IStripePaymentPlans = {
 	stripePrices:
 		| [
 				{
@@ -170,18 +167,16 @@ export interface IStripePaymentPlans {
 					unit_amount_decimal: string;
 				}
 		  ];
-}
-
-export interface IStripeStandardPlan {
+};
+export type IStripeStandardPlan = {
 	name: string;
 	description: string;
 	price: number;
 	paymentRecurringInterval: string;
-}
-
-export interface IStripePremiumPlan {
+};
+export type IStripePremiumPlan = {
 	name: string;
 	description: string;
 	price: number;
 	paymentRecurringInterval: string;
-}
+};
