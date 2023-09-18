@@ -2,8 +2,8 @@
 
 1. All images are in 4K resolution, click to enlarge for better viewing.
 
-<img src="public/img/screenshots/BlueInventory-Inventory-Management-Software.jpg" width="1080px" height="450px">
-<img src="public/img/screenshots/BlueInventory-Inventory-Management-Software (2).jpg" width="1080px" height="450px">
+<img src="public/img/screenshots/BlueInventory-Inventory-Management-Software (6).jpg" width="1080px" height="800px">
+<img src="public/img/screenshots/BlueInventory-Inventory-Management-Software (8).jpg" width="1080px" height="1080px">
 
 # Project Context
 This is a Next.js 13 project Inventory Management SAAS (Software as a Service) Web App. A Typescript based project using nextjs 13 static-side & server-side rendering. This projects is developed with Next.js 13, Firebase, Stripe & Headless Wordpress API - featuring, Typescript, Javascript, React 18, Tailwind, and a Framer Motion Animation Library.
