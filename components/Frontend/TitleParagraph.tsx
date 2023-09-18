@@ -33,7 +33,7 @@ const TitleParagraph = styled.div`
 			list-style-type: decimal;
 
 			strong {
-				font-family: $fontStyle_main;
+				font-family: $main;
 				@apply text-darkBlue font-bold tracking-wider uppercase text-medium py-4;
 			}
 		}

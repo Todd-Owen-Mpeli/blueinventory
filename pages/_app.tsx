@@ -115,30 +115,33 @@ export default function App({
 
 	/* Check if user is SIGNED IN if 
 	True Displays Signed In Navbar */
+
 	useEffect(() => {
-		const unsubscribe = auth?.onAuthStateChanged(async (currentUser: any) => {
-			if (currentUser) {
-				setSignedInUser(true);
-				setUserData(currentUser);
+		if (!userData) {
+			const unsubscribe = auth?.onAuthStateChanged(async (currentUser: any) => {
+				if (currentUser) {
+					setSignedInUser(true);
+					setUserData(currentUser);
 
-				/* Retrieves the current users Document Data 
+					/* Retrieves the current users Document Data 
 				& Document Unique Identification */
-				const userDoc = await getUserDocument(currentUser?.uid);
-				setUserDocId(userDoc.docUid);
+					const userDoc = await getUserDocument(currentUser?.uid);
+					setUserDocId(userDoc.docUid);
 
-				/* Retrieves the current users 
+					/* Retrieves the current users 
 				Items List Document Data */
-				const itemsArray = await getUserItemsDocument(userDoc.docUid);
-				setItemsCollection(itemsArray);
-			} else {
-				setSignedInUser(false);
-				setItemsCollection(null);
-			}
-		});
+					const itemsArray = await getUserItemsDocument(userDoc.docUid);
+					setItemsCollection(itemsArray);
+				} else if (!currentUser) {
+					setSignedInUser(false);
+					setItemsCollection(null);
+				}
+			});
 
-		return () => {
-			unsubscribe();
-		};
+			return () => {
+				unsubscribe();
+			};
+		}
 	}, [auth]);
 
 	// PROTECTED PAGES //

@@ -6,7 +6,7 @@
 	@apply flex flex-row min-h-screen bg-white;
 
 	* {
-		font-family: $fontStyle_body;
+		font-family: $body;
 	}
 }
 
@@ -31,7 +31,7 @@
 }
 
 .mainNavigation {
-	@apply w-1/6 px-4 py-3 xl:py-6 bg-cover bg-no-repeat bg-center overflow-x-hidden overflow-y-auto;
+	@apply w-1/6 px-4 py-3 xl:py-5 bg-cover bg-no-repeat bg-center overflow-x-hidden overflow-y-auto;
 
 	svg:hover {
 		fill: $white;

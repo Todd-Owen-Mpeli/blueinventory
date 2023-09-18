@@ -20,6 +20,9 @@ import {createUserItem} from "@/functions/Backend/firebase/createItem";
 // Styling
 import styles from "@/styles/components/ContactForm.module.scss";
 
+// Components
+import Paragraph from "@/components/Frontend/Elements/Paragraph";
+
 const CreateItem: FC = () => {
 	const router = useRouter();
 	const firebaseContext = useFirebaseContext();
@@ -94,13 +97,13 @@ const CreateItem: FC = () => {
 
 	return (
 		<>
-			<div className="w-full px-4 py-20">
+			<div className={styles.createItem + " w-full px-4 py-20"}>
 				<Formik
 					onSubmit={formik?.onSubmit}
 					initialValues={formik?.initialValues}
 					onReset={formik?.initialValues}
 				>
-					<Form className="container mx-auto transition-all ease-in-out duration-[0.5s] md:max-w-xl shadow-12xl">
+					<Form className="container mx-auto transition-all ease-in-out duration-[0.5s] md:max-w-10xl">
 						{loading ? (
 							<motion.div
 								initial={initialTwo}
@@ -152,126 +155,385 @@ const CreateItem: FC = () => {
 							viewport={{once: true}}
 							className="flex flex-col gap-4"
 						>
-							<motion.div
-								initial={initial}
-								whileInView={fadeInUp}
-								viewport={{once: true}}
-							>
-								{formik?.touched?.itemName && formik?.errors?.itemName ? (
-									<div>
-										<p className="py-1 text-left text-tiny text-darkBlue font-[400]">
-											{formik?.errors?.itemName}
-										</p>
-									</div>
-								) : null}
-								<Field
-									id="itemName"
-									name="itemName"
-									placeholder="Item Name"
-									onBlur={formik?.handleBlur}
-									onChange={formik?.handleChange}
-									value={formik?.values?.itemName}
-									className="px-4 py-3 w-full text-darkGrey font-[400] placeholder-darkGrey bg-white bg-opacity-50 outline-none border-[1px] border-darkGrey active:border-darkBlue focus:border-darkBlue focus:ring-[1px] focus:ring-darkBlue"
-								/>
-							</motion.div>
-							<motion.div
-								initial={initial}
-								whileInView={fadeInUp}
-								viewport={{once: true}}
-							>
-								{formik?.touched?.value && formik?.errors?.value ? (
-									<div>
-										<p className="py-1 text-left text-tiny text-darkBlue font-[400]">
-											{formik?.errors?.value}
-										</p>
-									</div>
-								) : null}
-								<Field
-									id="value"
-									name="value"
-									placeholder="Item Value"
-									onBlur={formik?.handleBlur}
-									onChange={formik?.handleChange}
-									value={formik?.values?.value}
-									className="px-4 py-3 w-full text-darkGrey font-[400] placeholder-darkGrey bg-white bg-opacity-50 outline-none border-[1px] border-darkGrey active:border-darkBlue focus:border-darkBlue focus:ring-[1px] focus:ring-darkBlue"
-								/>
-							</motion.div>
-							<motion.div
-								initial={initial}
-								whileInView={fadeInUp}
-								viewport={{once: true}}
-							>
-								{formik?.errors?.quantity ? (
-									<div>
-										<p className="py-1 text-left text-tiny text-darkBlue font-[400]">
-											{formik?.errors?.quantity}
-										</p>
-									</div>
-								) : null}
-								<Field
-									id="quantity"
-									name="quantity"
-									type="quantity"
-									placeholder="Quantity"
-									onBlur={formik?.handleBlur}
-									onChange={formik?.handleChange}
-									value={formik?.values?.quantity}
-									className="px-4 py-3 w-full text-darkGrey font-[400] placeholder-darkGrey bg-white bg-opacity-50 outline-none border-[1px] border-darkGrey active:border-darkBlue focus:border-darkBlue focus:ring-[1px] focus:ring-darkBlue"
-								/>
-							</motion.div>
-							<motion.div
-								initial={initial}
-								whileInView={fadeInUp}
-								viewport={{once: true}}
-							>
-								{formik?.touched?.category && formik?.errors?.category ? (
-									<div>
-										<p className="py-1 text-left text-tiny text-darkBlue font-[400]">
-											{formik?.errors?.category}
-										</p>
-									</div>
-								) : null}
-								<Field
-									id="category"
-									name="category"
-									type="text"
-									placeholder="Category"
-									onBlur={formik?.handleBlur}
-									onChange={formik?.handleChange}
-									value={formik?.values?.category}
-									className="px-4 py-3 w-full text-darkGrey font-[400] placeholder-darkGrey bg-white bg-opacity-50 outline-none border-[1px] border-darkGrey active:border-darkBlue focus:border-darkBlue focus:ring-[1px] focus:ring-darkBlue"
-								/>
-							</motion.div>
-							<motion.div
-								initial={initial}
-								whileInView={fadeInUp}
-								viewport={{once: true}}
-							>
-								{formik?.touched?.description && formik?.errors?.description ? (
-									<div>
-										<p className="py-1 text-left text-tiny text-darkBlue font-[400]">
-											{formik?.errors?.description}
-										</p>
-									</div>
-								) : null}
-								<textarea
-									rows={5}
-									id="description"
-									name="description"
-									placeholder="Description"
-									onBlur={formik?.handleBlur}
-									onChange={formik?.handleChange}
-									value={formik?.values?.description}
-									className="p-4 w-full h-48 font-[400] text-darkGrey placeholder-darkGrey bg-white bg-opacity-50 outline-none border-[1px] border-darkGrey active:border-darkBlue focus:border-darkBlue resize-none focus:ring-[1px] focus:ring-darkBlue"
-								/>
-							</motion.div>
+							<div className="grid grid-cols-2 gap-y-8">
+								{/* General Information */}
+								<div>
+									<motion.h3
+										initial={initialTwo}
+										whileInView={fadeIn}
+										viewport={{once: true}}
+										className="font-semibold text-medium text-darkBlue"
+									>
+										General Information
+									</motion.h3>
+									<Paragraph
+										content={`<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium et quas molestias excepturi sint occaecati cupiditate non provident.</p>`}
+										tailwindStyling="mt-2 text-black text-center lg:text-left max-w-sm"
+									/>
+								</div>
+								<div className="flex flex-col flex-wrap gap-4 lg:flex-row">
+									<motion.div
+										initial={initial}
+										whileInView={fadeInUp}
+										viewport={{once: true}}
+										className="flex flex-col gap-2 w-fit"
+									>
+										{formik?.touched?.itemName && formik?.errors?.itemName ? (
+											<span className="py-1 text-left text-tiny text-darkBlue">
+												{formik?.errors?.itemName}
+											</span>
+										) : null}
+										<label>Item Name</label>
+										<Field
+											id="itemName"
+											name="itemName"
+											placeholder="Item Name"
+											onBlur={formik?.handleBlur}
+											onChange={formik?.handleChange}
+											value={formik?.values?.itemName}
+										/>
+									</motion.div>
+									<motion.div
+										initial={initial}
+										whileInView={fadeInUp}
+										viewport={{once: true}}
+										className="flex flex-col gap-2 w-fit"
+									>
+										{formik?.touched?.value && formik?.errors?.value ? (
+											<span className="py-1 text-left text-tiny text-darkBlue font-[400]">
+												{formik?.errors?.value}
+											</span>
+										) : null}
+										<label>Value</label>
+										<Field
+											id="value"
+											name="value"
+											placeholder="Item Value"
+											onBlur={formik?.handleBlur}
+											onChange={formik?.handleChange}
+											value={formik?.values?.value}
+										/>
+									</motion.div>
+									<motion.div
+										initial={initial}
+										whileInView={fadeInUp}
+										viewport={{once: true}}
+										className="flex flex-col gap-2 w-fit"
+									>
+										{formik?.errors?.quantity ? (
+											<span className="py-1 text-left text-tiny text-darkBlue font-[400]">
+												{formik?.errors?.quantity}
+											</span>
+										) : null}
+										<label>Quantity</label>
+										<Field
+											id="quantity"
+											name="quantity"
+											type="quantity"
+											placeholder="Quantity"
+											onBlur={formik?.handleBlur}
+											onChange={formik?.handleChange}
+											value={formik?.values?.quantity}
+										/>
+									</motion.div>
+									<motion.div
+										initial={initial}
+										whileInView={fadeInUp}
+										viewport={{once: true}}
+										className="flex flex-col gap-2 w-fit"
+									>
+										{formik?.touched?.category && formik?.errors?.category ? (
+											<span className="py-1 text-left text-tiny text-darkBlue font-[400]">
+												{formik?.errors?.category}
+											</span>
+										) : null}
+										<label>Category</label>
+										<Field
+											id="category"
+											name="category"
+											type="text"
+											placeholder="Category"
+											onBlur={formik?.handleBlur}
+											onChange={formik?.handleChange}
+											value={formik?.values?.category}
+										/>
+									</motion.div>
+									<motion.div
+										initial={initial}
+										whileInView={fadeInUp}
+										viewport={{once: true}}
+										className="flex flex-col w-full gap-2"
+									>
+										{formik?.touched?.description &&
+										formik?.errors?.description ? (
+											<span className="py-1 text-left text-tiny text-darkBlue font-[400]">
+												{formik?.errors?.description}
+											</span>
+										) : null}
+										<label>Description</label>
+										<textarea
+											rows={5}
+											id="description"
+											name="description"
+											placeholder="Description"
+											onBlur={formik?.handleBlur}
+											onChange={formik?.handleChange}
+											value={formik?.values?.description}
+										/>
+									</motion.div>
+								</div>
+								{/* Location Information */}
+								<div>
+									<motion.h3
+										initial={initialTwo}
+										whileInView={fadeIn}
+										viewport={{once: true}}
+										className="font-semibold text-medium text-darkBlue"
+									>
+										Location Information
+									</motion.h3>
+									<Paragraph
+										content={`<p>At vero quas molestias excepturi sint occaecati cupiditate.</p>`}
+										tailwindStyling="mt-2 text-black text-center lg:text-left max-w-sm"
+									/>
+								</div>
+								<div className="flex flex-col flex-wrap gap-4 lg:flex-row">
+									<motion.div
+										initial={initial}
+										whileInView={fadeInUp}
+										viewport={{once: true}}
+										className="flex flex-col gap-2 w-fit"
+									>
+										{formik?.touched?.itemName && formik?.errors?.itemName ? (
+											<span className="py-1 text-left text-tiny text-darkBlue">
+												{formik?.errors?.itemName}
+											</span>
+										) : null}
+										<label>Item Name</label>
+										<Field
+											id="itemName"
+											name="itemName"
+											placeholder="Item Name"
+											onBlur={formik?.handleBlur}
+											onChange={formik?.handleChange}
+											value={formik?.values?.itemName}
+										/>
+									</motion.div>
+									<motion.div
+										initial={initial}
+										whileInView={fadeInUp}
+										viewport={{once: true}}
+										className="flex flex-col gap-2 w-fit"
+									>
+										{formik?.touched?.value && formik?.errors?.value ? (
+											<span className="py-1 text-left text-tiny text-darkBlue font-[400]">
+												{formik?.errors?.value}
+											</span>
+										) : null}
+										<label>Value</label>
+										<Field
+											id="value"
+											name="value"
+											placeholder="Item Value"
+											onBlur={formik?.handleBlur}
+											onChange={formik?.handleChange}
+											value={formik?.values?.value}
+										/>
+									</motion.div>
+									<motion.div
+										initial={initial}
+										whileInView={fadeInUp}
+										viewport={{once: true}}
+										className="flex flex-col gap-2 w-fit"
+									>
+										{formik?.errors?.quantity ? (
+											<span className="py-1 text-left text-tiny text-darkBlue font-[400]">
+												{formik?.errors?.quantity}
+											</span>
+										) : null}
+										<label>Quantity</label>
+										<Field
+											id="quantity"
+											name="quantity"
+											type="quantity"
+											placeholder="Quantity"
+											onBlur={formik?.handleBlur}
+											onChange={formik?.handleChange}
+											value={formik?.values?.quantity}
+										/>
+									</motion.div>
+									<motion.div
+										initial={initial}
+										whileInView={fadeInUp}
+										viewport={{once: true}}
+										className="flex flex-col gap-2 w-fit"
+									>
+										{formik?.touched?.category && formik?.errors?.category ? (
+											<span className="py-1 text-left text-tiny text-darkBlue font-[400]">
+												{formik?.errors?.category}
+											</span>
+										) : null}
+										<label>Category</label>
+										<Field
+											id="category"
+											name="category"
+											type="text"
+											placeholder="Category"
+											onBlur={formik?.handleBlur}
+											onChange={formik?.handleChange}
+											value={formik?.values?.category}
+										/>
+									</motion.div>
+								</div>
+								{/* Image Information */}
+								<div>
+									<motion.h3
+										initial={initialTwo}
+										whileInView={fadeIn}
+										viewport={{once: true}}
+										className="font-semibold text-medium text-darkBlue"
+									>
+										Image Information
+									</motion.h3>
+									<Paragraph
+										content={`<p>At vero quas molestias excepturi sint occaecati cupiditate. when our power of choice is untrammelled.</p>`}
+										tailwindStyling="mt-2 text-black text-center lg:text-left max-w-sm"
+									/>
+								</div>
+								<div className="flex flex-col flex-wrap gap-4 lg:flex-row">
+									<motion.div
+										initial={initial}
+										whileInView={fadeInUp}
+										viewport={{once: true}}
+										className="flex flex-col gap-2 w-fit"
+									>
+										{formik?.touched?.itemName && formik?.errors?.itemName ? (
+											<span className="py-1 text-left text-tiny text-darkBlue">
+												{formik?.errors?.itemName}
+											</span>
+										) : null}
+										<label>Item Name</label>
+										<Field
+											id="itemName"
+											name="itemName"
+											placeholder="Item Name"
+											onBlur={formik?.handleBlur}
+											onChange={formik?.handleChange}
+											value={formik?.values?.itemName}
+										/>
+									</motion.div>
+									<motion.div
+										initial={initial}
+										whileInView={fadeInUp}
+										viewport={{once: true}}
+										className="flex flex-col gap-2 w-fit"
+									>
+										{formik?.touched?.value && formik?.errors?.value ? (
+											<span className="py-1 text-left text-tiny text-darkBlue font-[400]">
+												{formik?.errors?.value}
+											</span>
+										) : null}
+										<label>Value</label>
+										<Field
+											id="value"
+											name="value"
+											placeholder="Item Value"
+											onBlur={formik?.handleBlur}
+											onChange={formik?.handleChange}
+											value={formik?.values?.value}
+										/>
+									</motion.div>
+								</div>
+								{/* Dimensions Information */}
+								<div>
+									<motion.h3
+										initial={initialTwo}
+										whileInView={fadeIn}
+										viewport={{once: true}}
+										className="font-semibold text-medium text-darkBlue"
+									>
+										Dimensions Information
+									</motion.h3>
+									<Paragraph
+										content={`<p>At vero quas molestias excepturi sint occaecati cupiditate. when our power of what we like best, every pleasure is to be welcomed and every pain avoided.</p>`}
+										tailwindStyling="mt-2 text-black text-center lg:text-left max-w-sm"
+									/>
+								</div>
+								<div className="flex flex-col flex-wrap gap-4 lg:flex-row">
+									<motion.div
+										initial={initial}
+										whileInView={fadeInUp}
+										viewport={{once: true}}
+										className="flex flex-col gap-2 w-fit"
+									>
+										{formik?.touched?.itemName && formik?.errors?.itemName ? (
+											<span className="py-1 text-left text-tiny text-darkBlue">
+												{formik?.errors?.itemName}
+											</span>
+										) : null}
+										<label>Item Name</label>
+										<Field
+											id="itemName"
+											name="itemName"
+											placeholder="Item Name"
+											onBlur={formik?.handleBlur}
+											onChange={formik?.handleChange}
+											value={formik?.values?.itemName}
+										/>
+									</motion.div>
+									<motion.div
+										initial={initial}
+										whileInView={fadeInUp}
+										viewport={{once: true}}
+										className="flex flex-col gap-2 w-fit"
+									>
+										{formik?.touched?.value && formik?.errors?.value ? (
+											<span className="py-1 text-left text-tiny text-darkBlue font-[400]">
+												{formik?.errors?.value}
+											</span>
+										) : null}
+										<label>Value</label>
+										<Field
+											id="value"
+											name="value"
+											placeholder="Item Value"
+											onBlur={formik?.handleBlur}
+											onChange={formik?.handleChange}
+											value={formik?.values?.value}
+										/>
+									</motion.div>
+									<motion.div
+										initial={initial}
+										whileInView={fadeInUp}
+										viewport={{once: true}}
+										className="flex flex-col gap-2 w-fit"
+									>
+										{formik?.errors?.quantity ? (
+											<span className="py-1 text-left text-tiny text-darkBlue font-[400]">
+												{formik?.errors?.quantity}
+											</span>
+										) : null}
+										<label>Quantity</label>
+										<Field
+											id="quantity"
+											name="quantity"
+											type="quantity"
+											placeholder="Quantity"
+											onBlur={formik?.handleBlur}
+											onChange={formik?.handleChange}
+											value={formik?.values?.quantity}
+										/>
+									</motion.div>
+								</div>
+							</div>
+
 							<motion.button
 								initial={initial}
 								whileInView={fadeInUp}
 								viewport={{once: true}}
 								onClick={onFormSubmit}
 								disabled={!formik?.values?.itemName}
-								className="w-full text-white disabled:bg-opacity-20 disabled:cursor-not-allowed"
+								className="w-full max-w-xs text-white disabled:bg-opacity-20 disabled:cursor-not-allowed"
 								type="submit"
 							>
 								<span
@@ -314,7 +576,7 @@ const CreateItem: FC = () => {
 											</g>
 										</svg>
 									</span>
-									<h3 className=" tracking-widest text-white uppercase sm:tracking-wider sm:text-medium">
+									<h3 className="tracking-widest text-white uppercase sm:tracking-wider sm:text-medium">
 										{loading
 											? "Creating Item..."
 											: messageSent

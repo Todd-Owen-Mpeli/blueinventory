@@ -13,9 +13,9 @@ body {
 	overflow-x: hidden;
 	background-color: $blue;
 	scroll-behavior: smooth;
-	font-family: -apple-system, $fontStyle_dashboard, $fontStyle_main,
-		$fontStyle_body, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
-		Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+	font-family: -apple-system, $dashboard, $main, $body, BlinkMacSystemFont,
+		Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+		Helvetica Neue, sans-serif;
 }
 
 body::-webkit-scrollbar {
@@ -45,7 +45,7 @@ a {
 
 * {
 	box-sizing: border-box;
-	font-family: $fontStyle_main;
+	font-family: $main;
 }
 
 svg:hover {
@@ -68,11 +68,11 @@ h5,
 h6,
 button {
 	@apply tracking-tight text-darkBlue;
-	font-family: $fontStyle_main;
+	font-family: $main;
 
 	a,
 	span {
-		font-family: $fontStyle_main;
+		font-family: $main;
 	}
 }
 
@@ -83,19 +83,18 @@ li,
 div,
 span,
 input,
-label,
 strong,
 textarea {
 	@apply tracking-wide font-[500];
 
-	font-family: $fontStyle_body;
+	font-family: $body;
 }
 
 p {
 	@apply py-2 text-[1.110rem];
 
 	strong {
-		font-family: $fontStyle_main;
+		font-family: $main;
 		@apply tracking-tight font-extrabold;
 	}
 
@@ -106,7 +105,7 @@ p {
 
 h3 {
 	strong {
-		font-family: $fontStyle_main;
+		font-family: $main;
 		@apply text-darkBlue tracking-tight text-lg font-extrabold;
 	}
 }

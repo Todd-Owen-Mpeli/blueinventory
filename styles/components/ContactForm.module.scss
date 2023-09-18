@@ -1,4 +1,6 @@
 // Imports
+
+@import "../fonts";
 @import "../colors";
 
 .submitButton {
@@ -337,5 +339,34 @@
 		100% {
 			fill: $white;
 		}
+	}
+}
+
+// Dashboard
+.createItem {
+	@apply placeholder-blue;
+
+	p {
+		@apply text-tiny;
+	}
+
+	form {
+		label {
+			font-family: $body;
+			@apply text-base font-semibold text-darkBlue;
+		}
+
+		input,
+		textarea {
+			@apply px-4 py-2 text-tiny w-fit lg:min-w-[13rem] text-darkBlue bg-white bg-opacity-50 outline-none rounded-lg border-[1px] border-darkGrey active:border-darkBlue focus:border-darkBlue focus:ring-[1px] focus:ring-darkBlue;
+		}
+
+		textarea {
+			@apply w-full;
+		}
+
+		// ::placeholder {
+		// 	@apply text-tiny font-normal;
+		// }
 	}
 }
