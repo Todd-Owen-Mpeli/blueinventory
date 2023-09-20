@@ -17,19 +17,6 @@ const operationalInsights: FC<IOperationalInsights> = ({
 	// eslint-disable-next-line react-hooks/rules-of-hooks
 	const globalContext = useGlobalContext();
 
-	const getRandomColor = () => {
-		const colors = [
-			"blue",
-			"purple",
-			"yellow",
-			"pinkRed",
-			"brightGreen",
-			"darkPinkRed",
-		];
-		const randomIndex = Math.floor(Math.random() * colors.length);
-		return colors[randomIndex];
-	};
-
 	return (
 		<div className="py-24 bg-white">
 			<div className="container px-4 mx-auto">
@@ -80,7 +67,6 @@ const operationalInsights: FC<IOperationalInsights> = ({
 								<OperationalInsightsCard
 									key={keys}
 									uri={item?.node?.uri}
-									getRandomColor={getRandomColor()}
 									featuredImage={item?.node?.featuredImage}
 									title={
 										item?.node?.template?.flexibleContent?.flexibleContent[0]

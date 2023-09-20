@@ -9,19 +9,6 @@ import Paragraph from "@/components/Frontend/Elements/Paragraph";
 import TestimonialCard from "@/components/Frontend/Cards/TestimonialCard";
 
 const Testimonial: FC<ITestimonial> = ({title, paragraph, contentGrid}) => {
-	const getRandomColor = () => {
-		const colors = [
-			"blue",
-			"purple",
-			"yellow",
-			"pinkRed",
-			"brightGreen",
-			"darkPinkRed",
-		];
-		const randomIndex = Math.floor(Math.random() * colors.length);
-		return colors[randomIndex];
-	};
-
 	return (
 		<>
 			<div className="bg-purple">
@@ -62,7 +49,6 @@ const Testimonial: FC<ITestimonial> = ({title, paragraph, contentGrid}) => {
 											key={keys}
 											title={item?.card?.name}
 											image={item?.card?.image}
-											getRandomColor={getRandomColor()}
 											paragraph={item?.card?.paragraph}
 											jobPosition={item?.card?.position}
 										/>

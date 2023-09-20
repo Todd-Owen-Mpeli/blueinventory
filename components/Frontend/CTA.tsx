@@ -57,7 +57,7 @@ const CTATwo: FC<ICTA> = ({
 									initial={initial}
 									viewport={{once: true}}
 									whileInView={stagger}
-									className="flex flex-col flex-wrap sm:flex-row sm:items-center"
+									className="flex flex-col flex-wrap items-center justify-center sm:flex-row lg:justify-start"
 								>
 									<motion.div
 										initial={initial}

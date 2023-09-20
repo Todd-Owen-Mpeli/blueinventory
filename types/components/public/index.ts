@@ -45,7 +45,6 @@ export type ITestimonialCard = {
 	title: string;
 	paragraph: string;
 	jobPosition: string;
-	getRandomColor: string;
 	image: {
 		altText: string;
 		sourceUrl: string;
@@ -79,7 +78,6 @@ export type IOperationalInsightsCard = {
 	uri: string;
 	title: string;
 	paragraph: string;
-	getRandomColor: string;
 	featuredImage: {
 		node: {
 			altText: string;

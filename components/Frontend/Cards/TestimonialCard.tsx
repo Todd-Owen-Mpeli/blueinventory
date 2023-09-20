@@ -7,6 +7,7 @@ import {motion} from "framer-motion";
 import DOMPurify from "isomorphic-dompurify";
 import {ITestimonialCard} from "@/types/components/public";
 import {initial, fadeInUp, stagger} from "@/animations/animations";
+import {getRandomColor} from "@/functions/Frontend/GenerateRandomColor";
 
 // Styling
 import styles from "@/styles/Home.module.scss";
@@ -16,8 +17,8 @@ const TestimonialCard: FC<ITestimonialCard> = ({
 	image,
 	paragraph,
 	jobPosition,
-	getRandomColor,
 }) => {
+	const borderColor = getRandomColor();
 	/* Sanitize the WYSIWYG paragraph content */
 	function createTrimmedParagraphMarkup(paragraphContent: string) {
 		const sanitizedContent: string = DOMPurify.sanitize(paragraphContent);
@@ -34,7 +35,7 @@ const TestimonialCard: FC<ITestimonialCard> = ({
 			viewport={{once: true}}
 			className={
 				styles.testimonialCard +
-				` flex flex-col justify-between w-full h-full min-h-[300px] lg:w-1/3 p-10 pb-10 rounded-md bg-lightGrey border-l-[5px] border-r-[5px] lg:border-r-[10px] border-t-[5px] border-b-0 border-${getRandomColor}`
+				` flex flex-col justify-between w-full h-full min-h-[300px] lg:w-1/3 p-10 pb-10 rounded-md bg-lightGrey border-l-[5px] border-r-[5px] lg:border-r-[10px] border-t-[5px] border-b-0 border-${borderColor}`
 			}
 			style={{
 				clipPath: `polygon(0% 0%, 100% 0%, 94.9% 88.5%, 0% 97.8%)`,
