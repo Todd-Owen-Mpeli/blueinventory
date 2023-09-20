@@ -75,13 +75,13 @@ const Stats: FC<IStats> = ({
 										initial={initial}
 										whileInView={fadeInUp}
 										viewport={{once: true}}
-										className="block mb-2 text-3xl font-semibold"
+										className="block mb-2 text-3xl font-semibold text-center lg:text-left"
 									>
 										{subtitle}
 									</motion.h4>
 									<Paragraph
 										content={paragraphTwo}
-										tailwindStyling="mb-10  text-black"
+										tailwindStyling="mb-10 text-center lg:text-left text-black"
 									/>
 									<div className="max-w-md mx-auto">
 										<div className="flex flex-col items-center justify-center gap-4 -mx-4 lg:flex-row">
@@ -96,7 +96,7 @@ const Stats: FC<IStats> = ({
 														initial={initial}
 														whileInView={fadeInUp}
 														viewport={{once: true}}
-														className="mb-2 text-black"
+														className="mb-2 text-center text-black lg:text-left"
 													>
 														{column?.title}
 													</motion.span>
@@ -140,7 +140,7 @@ const Stats: FC<IStats> = ({
 														initial={initial}
 														whileInView={fadeInUp}
 														viewport={{once: true}}
-														className="mb-2 text-black"
+														className="mb-2 text-center text-black lg:text-left"
 													>
 														{columnTwo?.title}
 													</motion.span>

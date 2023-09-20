@@ -68,7 +68,7 @@ const NavbarTwo: FC = () => {
 						>
 							<Link
 								href="/"
-								className="text-lg font-extrabold tracking-tight uppercase transition-all duration-500 ease-in-out lg:text-xl text-darkBlue hover:text-blue"
+								className="text-lg font-extrabold tracking-tight transition-all duration-500 ease-in-out lg:text-xl text-darkBlue hover:text-blue"
 							>
 								BlueInventory
 							</Link>

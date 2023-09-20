@@ -80,13 +80,13 @@ const JumboContent: FC<IJumboContent> = ({
 								viewport={{once: true}}
 								className="h-full p-10 rounded-sm bg-lightGrey"
 							>
-								<div className="flex flex-wrap items-center mb-5">
+								<div className="flex flex-wrap items-center justify-center mb-5 lg:justify-start">
 									<div className="w-auto p-2">
 										<motion.h4
 											initial={initial}
 											whileInView={fadeInUp}
 											viewport={{once: true}}
-											className="text-lg font-semibold tracking-wide text-goldPrime"
+											className="text-lg font-semibold tracking-wide text-center text-goldPrime lg:text-left"
 										>
 											{cardOne?.subtitle}
 										</motion.h4>
@@ -96,13 +96,13 @@ const JumboContent: FC<IJumboContent> = ({
 									initial={initial}
 									whileInView={fadeInUp}
 									viewport={{once: true}}
-									className="mb-4 text-3xl font-semibold"
+									className="mb-4 text-3xl font-semibold text-center lg:text-left"
 								>
 									{cardOne?.title}
 								</motion.h3>
 								<Paragraph
 									content={cardOne?.paragraph}
-									tailwindStyling="mb-10  text-black"
+									tailwindStyling="mb-10  text-black text-center lg:text-left"
 								/>
 							</motion.div>
 						</div>
@@ -128,7 +128,7 @@ const JumboContent: FC<IJumboContent> = ({
 						{/* Card Three */}
 						<div className="w-full p-3 md:w-1/2">
 							<div
-								className="h-full p-16 bg-center bg-no-repeat bg-cover rounded-sm bg-darkBlue"
+								className="h-full px-8 py-8 bg-center bg-no-repeat bg-cover rounded-sm lg:p-16 bg-darkBlue"
 								style={{
 									backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-orange-yellow.svg")`,
 								}}

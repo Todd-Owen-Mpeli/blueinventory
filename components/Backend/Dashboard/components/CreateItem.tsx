@@ -304,40 +304,42 @@ const CreateItem: FC = () => {
 										viewport={{once: true}}
 										className="flex flex-col gap-2 w-fit"
 									>
-										{formik?.touched?.itemName && formik?.errors?.itemName ? (
-											<span className="py-1 text-left text-tiny text-darkBlue">
-												{formik?.errors?.itemName}
+										{formik?.touched?.value && formik?.errors?.value ? (
+											<span className="py-1 text-left text-tiny text-darkBlue font-[400]">
+												{formik?.errors?.value}
 											</span>
 										) : null}
-										<label>Item Name</label>
+										<label>Location</label>
 										<Field
-											id="itemName"
-											name="itemName"
-											placeholder="Item Name"
+											id="value"
+											name="value"
+											placeholder="Location"
 											onBlur={formik?.handleBlur}
 											onChange={formik?.handleChange}
-											value={formik?.values?.itemName}
+											value={formik?.values?.value}
 										/>
 									</motion.div>
 									<motion.div
 										initial={initial}
 										whileInView={fadeInUp}
 										viewport={{once: true}}
-										className="flex flex-col gap-2 w-fit"
+										className="flex flex-col w-full gap-2"
 									>
-										{formik?.touched?.value && formik?.errors?.value ? (
+										{formik?.touched?.description &&
+										formik?.errors?.description ? (
 											<span className="py-1 text-left text-tiny text-darkBlue font-[400]">
-												{formik?.errors?.value}
+												{formik?.errors?.description}
 											</span>
 										) : null}
-										<label>Value</label>
-										<Field
-											id="value"
-											name="value"
-											placeholder="Item Value"
+										<label>Location Description</label>
+										<textarea
+											rows={5}
+											id="description"
+											name="description"
+											placeholder="Example: Behind the blue container."
 											onBlur={formik?.handleBlur}
 											onChange={formik?.handleChange}
-											value={formik?.values?.value}
+											value={formik?.values?.description}
 										/>
 									</motion.div>
 									<motion.div
@@ -351,12 +353,12 @@ const CreateItem: FC = () => {
 												{formik?.errors?.quantity}
 											</span>
 										) : null}
-										<label>Quantity</label>
+										<label>Address Line 1</label>
 										<Field
 											id="quantity"
 											name="quantity"
 											type="quantity"
-											placeholder="Quantity"
+											placeholder="Address Line 1"
 											onBlur={formik?.handleBlur}
 											onChange={formik?.handleChange}
 											value={formik?.values?.quantity}
@@ -373,12 +375,78 @@ const CreateItem: FC = () => {
 												{formik?.errors?.category}
 											</span>
 										) : null}
-										<label>Category</label>
+										<label>Address Line 2</label>
 										<Field
 											id="category"
 											name="category"
 											type="text"
-											placeholder="Category"
+											placeholder="Address Line 2"
+											onBlur={formik?.handleBlur}
+											onChange={formik?.handleChange}
+											value={formik?.values?.category}
+										/>
+									</motion.div>
+									<motion.div
+										initial={initial}
+										whileInView={fadeInUp}
+										viewport={{once: true}}
+										className="flex flex-col gap-2 w-fit"
+									>
+										{formik?.touched?.category && formik?.errors?.category ? (
+											<span className="py-1 text-left text-tiny text-darkBlue font-[400]">
+												{formik?.errors?.category}
+											</span>
+										) : null}
+										<label>Postcode</label>
+										<Field
+											id="category"
+											name="category"
+											type="text"
+											placeholder="Postcode"
+											onBlur={formik?.handleBlur}
+											onChange={formik?.handleChange}
+											value={formik?.values?.category}
+										/>
+									</motion.div>
+									<motion.div
+										initial={initial}
+										whileInView={fadeInUp}
+										viewport={{once: true}}
+										className="flex flex-col gap-2 w-fit"
+									>
+										{formik?.touched?.category && formik?.errors?.category ? (
+											<span className="py-1 text-left text-tiny text-darkBlue font-[400]">
+												{formik?.errors?.category}
+											</span>
+										) : null}
+										<label>City</label>
+										<Field
+											id="category"
+											name="category"
+											type="text"
+											placeholder="City"
+											onBlur={formik?.handleBlur}
+											onChange={formik?.handleChange}
+											value={formik?.values?.category}
+										/>
+									</motion.div>
+									<motion.div
+										initial={initial}
+										whileInView={fadeInUp}
+										viewport={{once: true}}
+										className="flex flex-col gap-2 w-fit"
+									>
+										{formik?.touched?.category && formik?.errors?.category ? (
+											<span className="py-1 text-left text-tiny text-darkBlue font-[400]">
+												{formik?.errors?.category}
+											</span>
+										) : null}
+										<label>Country</label>
+										<Field
+											id="category"
+											name="category"
+											type="text"
+											placeholder="Country"
 											onBlur={formik?.handleBlur}
 											onChange={formik?.handleChange}
 											value={formik?.values?.category}
@@ -471,7 +539,7 @@ const CreateItem: FC = () => {
 												{formik?.errors?.itemName}
 											</span>
 										) : null}
-										<label>Item Name</label>
+										<label>General Sizes</label>
 										<Field
 											id="itemName"
 											name="itemName"
@@ -492,11 +560,11 @@ const CreateItem: FC = () => {
 												{formik?.errors?.value}
 											</span>
 										) : null}
-										<label>Value</label>
+										<label>Width</label>
 										<Field
 											id="value"
 											name="value"
-											placeholder="Item Value"
+											placeholder="Width"
 											onBlur={formik?.handleBlur}
 											onChange={formik?.handleChange}
 											value={formik?.values?.value}
@@ -513,12 +581,12 @@ const CreateItem: FC = () => {
 												{formik?.errors?.quantity}
 											</span>
 										) : null}
-										<label>Quantity</label>
+										<label>Height</label>
 										<Field
 											id="quantity"
 											name="quantity"
 											type="quantity"
-											placeholder="Quantity"
+											placeholder="Height"
 											onBlur={formik?.handleBlur}
 											onChange={formik?.handleChange}
 											value={formik?.values?.quantity}
