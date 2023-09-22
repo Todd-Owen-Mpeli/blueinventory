@@ -1,0 +1,18 @@
+// Imports
+@import "../fonts";
+@import "../colors";
+
+.signInSignUp {
+	svg:hover {
+		fill: $blue;
+
+		g,
+		path {
+			fill: $blue;
+		}
+
+		line {
+			fill: $blue;
+		}
+	}
+}

@@ -108,6 +108,10 @@ export type ITitleThreeContentGridCard = {
 };
 
 // Elements
+export type IFormIntro = {
+	title: string;
+	paragraph: string;
+};
 export type IErrorPage = {
 	title: string;
 	paragraph: string;

@@ -28,7 +28,7 @@ const signUpPage: NextPage<IPageContext> = ({
 				animate="animate"
 				className="min-h-screen bg-white bg-center bg-no-repeat bg-cover"
 				style={{
-					backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue-pink-red-yellow.svg")`,
+					backgroundImage: `url("/svg/backgroundSVG/stacked-peaks-haikei-blue-darkBlue-two.svg")`,
 				}}
 			>
 				<LayoutTwo pageTitle={`Sign Up`}>

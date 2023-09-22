@@ -11,11 +11,11 @@ import TestimonialCard from "@/components/Frontend/Cards/TestimonialCard";
 const Testimonial: FC<ITestimonial> = ({title, paragraph, contentGrid}) => {
 	return (
 		<>
-			<div className="bg-purple">
+			<div className="bg-darkBlue">
 				<div
 					className="pt-24 overflow-hidden bg-white pb-36"
 					style={{
-						clipPath: `polygon(0.8% 0%, 100% 0%, 100% 99%, 2.8% 97%)`,
+						clipPath: `polygon(0.9% 1.8%, 100% 1%, 100% 99%, 2% 97.5%)`,
 					}}
 				>
 					<motion.div

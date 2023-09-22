@@ -186,7 +186,7 @@ const NavbarTwo: FC = () => {
 											viewport={{once: true}}
 											className="py-2 m-auto bg-center bg-no-repeat bg-cover rounded-sm"
 											style={{
-												backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue-pink-red-yellow.svg")`,
+												backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue-darkblue.svg")`,
 											}}
 										>
 											<Link
