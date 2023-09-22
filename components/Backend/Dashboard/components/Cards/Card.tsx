@@ -59,8 +59,8 @@ const Card: FC<ICard> = ({
 					whileInView={fadeInUp}
 					className={
 						displayBackgroundImage
-							? tailwindStyling.h3 + "text-white"
-							: tailwindStyling.h3 + "text-darkGrey"
+							? tailwindStyling.h3 + " text-white"
+							: tailwindStyling.h3 + " text-darkGrey"
 					}
 				>
 					{text}
@@ -71,8 +71,8 @@ const Card: FC<ICard> = ({
 					whileInView={fadeInUp}
 					className={
 						displayBackgroundImage
-							? tailwindStyling.h4 + "text-white"
-							: tailwindStyling.h4 + "text-blue"
+							? tailwindStyling.h4 + " text-white"
+							: tailwindStyling.h4 + " text-blue"
 					}
 				>
 					{value ? (
@@ -81,8 +81,8 @@ const Card: FC<ICard> = ({
 						<h4
 							className={
 								displayBackgroundImage
-									? tailwindStyling.h4 + "text-white"
-									: tailwindStyling.h4 + "text-blue"
+									? tailwindStyling.h4 + " text-white"
+									: tailwindStyling.h4 + " text-blue"
 							}
 						>
 							Loading...
@@ -95,8 +95,8 @@ const Card: FC<ICard> = ({
 					whileInView={fadeInUp}
 					className={
 						displayBackgroundImage
-							? tailwindStyling.paragraph + "text-white"
-							: tailwindStyling.paragraph + "text-darkBlue"
+							? tailwindStyling.paragraph + " text-white"
+							: tailwindStyling.paragraph + " text-darkBlue"
 					}
 				>
 					{paragraph ? (
@@ -105,8 +105,8 @@ const Card: FC<ICard> = ({
 						<p
 							className={
 								displayBackgroundImage
-									? tailwindStyling.paragraph + "text-white"
-									: tailwindStyling.paragraph + "text-darkBlue"
+									? tailwindStyling.paragraph + " text-white"
+									: tailwindStyling.paragraph + " text-darkBlue"
 							}
 						>
 							Loading...

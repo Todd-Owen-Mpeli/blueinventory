@@ -210,6 +210,7 @@ const JumboContent: FC<IJumboContent> = ({
 										title={item?.card?.title}
 										subtitle={item?.card?.subtitle}
 										paragraph={item?.card?.paragraph}
+										backgroundColor={item?.card?.backgroundColor}
 									/>
 								</Fragment>
 							))

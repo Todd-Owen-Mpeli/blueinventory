@@ -20,7 +20,9 @@ export type IJumboCard = {
 	title: string;
 	subtitle: string;
 	paragraph: string;
+	backgroundColor: string;
 };
+
 export type IHeroThreeCard = {
 	link: {
 		url: string;
@@ -433,6 +435,7 @@ export type IJumboContent = {
 				title: string;
 				subtitle: string;
 				paragraph: string;
+				backgroundColor: string;
 			};
 		}
 	];
@@ -507,6 +510,7 @@ export type IJumboContentTwo = {
 				title: string;
 				subtitle: string;
 				paragraph: string;
+				backgroundColor: string;
 			};
 		}
 	];

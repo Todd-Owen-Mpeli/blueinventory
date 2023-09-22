@@ -142,6 +142,7 @@ export const getAllPreviewFlexibleContentComponents = async (
 								title
 								subtitle
 								paragraph
+								backgroundColor
 								}
 							}
 							}
@@ -177,6 +178,7 @@ export const getAllPreviewFlexibleContentComponents = async (
 								title
 								subtitle
 								paragraph
+								backgroundColor
 								}
 							}
 							}

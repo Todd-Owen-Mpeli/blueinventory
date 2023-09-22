@@ -142,6 +142,7 @@ export async function getAllFlexibleContentComponents(
                             title
                             subtitle
                             paragraph
+                            backgroundColor
                           }
                         }
                       }
@@ -177,6 +178,7 @@ export async function getAllFlexibleContentComponents(
                             title
                             subtitle
                             paragraph
+                            backgroundColor
                           }
                         }
                       }
