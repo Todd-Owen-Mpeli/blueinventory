@@ -12,16 +12,16 @@ export const addNewFirebaseUserDocument = async (
 
 	try {
 		const docRef = await addDoc(collectionRef, {
-			uid: `${user.uid}`,
-			email: `${user.email}`,
-			photoURL: `${user.photoURL}`,
-			providerId: `${user.providerId}`,
-			displayName: `${user.displayName}`,
-			phoneNumber: `${user.phoneNumber}`,
+			uid: `${user?.uid}`,
+			email: `${user?.email}`,
+			photoURL: `${user?.photoURL}`,
+			providerId: `${user?.providerId}`,
+			displayName: `${user?.displayName}`,
+			phoneNumber: `${user?.phoneNumber}`,
 			stripeSessionId: `${stripeSessionId}`,
-			emailVerified: `${user.emailVerified}`,
+			emailVerified: `${user?.emailVerified}`,
 			creationTime: `${user.metadata?.creationTime}`,
-			lastSignInTime: `${user.metadata.lastSignInTime}`,
+			lastSignInTime: `${user.metadata?.lastSignInTime}`,
 		});
 		console.log("Document written with ID: ", docRef.id);
 	} catch (e) {

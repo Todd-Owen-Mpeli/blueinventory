@@ -49,7 +49,7 @@ const success: NextPage<IPageContext> = ({
 				const currentUser = auth.currentUser;
 
 				// Save the Google & Stripe information to Cloud Firestore
-				await addNewFirebaseUserDocument(currentUser, session_id);
+				addNewFirebaseUserDocument(currentUser, session_id);
 			}
 		}
 

@@ -58,11 +58,11 @@ const TopNavbar: FC = () => {
 								className="w-[26px] h-[26px]"
 								xmlns="http://www.w3.org/2000/svg"
 							>
-								<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+								<g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
 								<g
 									id="SVGRepo_tracerCarrier"
-									stroke-linecap="round"
-									stroke-linejoin="round"
+									strokeLinecap="round"
+									strokeLinejoin="round"
 								></g>
 								<g id="SVGRepo_iconCarrier">
 									<g id="Complete">
@@ -71,9 +71,9 @@ const TopNavbar: FC = () => {
 												<line
 													fill="15171e"
 													stroke="#15171e"
-													stroke-linecap="round"
-													stroke-linejoin="round"
-													stroke-width="2"
+													strokeLinecap="round"
+													strokeLinejoin="round"
+													strokeWidth="2"
 													x1="12"
 													x2="12"
 													y1="19"
@@ -82,9 +82,9 @@ const TopNavbar: FC = () => {
 												<line
 													fill="15171e"
 													stroke="#15171e"
-													stroke-linecap="round"
-													stroke-linejoin="round"
-													stroke-width="2"
+													strokeLinecap="round"
+													strokeLinejoin="round"
+													strokeWidth="2"
 													x1="5"
 													x2="19"
 													y1="12"
@@ -124,11 +124,11 @@ const TopNavbar: FC = () => {
 								xmlns="http://www.w3.org/2000/svg"
 								className="opacity-100 cursor-pointer hover:opacity-60"
 							>
-								<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+								<g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
 								<g
 									id="SVGRepo_tracerCarrier"
-									stroke-linecap="round"
-									stroke-linejoin="round"
+									strokeLinecap="round"
+									strokeLinejoin="round"
 								></g>
 								<g id="SVGRepo_iconCarrier">
 									<g id="Complete">
@@ -137,9 +137,9 @@ const TopNavbar: FC = () => {
 												<line
 													fill="none"
 													stroke="#f6ad37"
-													stroke-linecap="round"
-													stroke-linejoin="round"
-													stroke-width="2"
+													strokeLinecap="round"
+													strokeLinejoin="round"
+													strokeWidth="2"
 													x1="12"
 													x2="12"
 													y1="8"
@@ -148,9 +148,9 @@ const TopNavbar: FC = () => {
 												<line
 													fill="none"
 													stroke="#f6ad37"
-													stroke-linecap="round"
-													stroke-linejoin="round"
-													stroke-width="2"
+													strokeLinecap="round"
+													strokeLinejoin="round"
+													strokeWidth="2"
 													x1="12"
 													x2="12"
 													y1="16"
@@ -164,9 +164,9 @@ const TopNavbar: FC = () => {
 													id="_--Circle"
 													r="10"
 													stroke="#f6ad37"
-													stroke-linecap="round"
-													stroke-linejoin="round"
-													stroke-width="2"
+													strokeLinecap="round"
+													strokeLinejoin="round"
+													strokeWidth="2"
 												></circle>
 											</g>
 										</g>

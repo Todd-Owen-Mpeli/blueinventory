@@ -2,11 +2,19 @@
 import Link from "next/link";
 import {FC, useState} from "react";
 import {motion} from "framer-motion";
+import {useRouter} from "next/router";
 import ReCAPTCHA from "react-google-recaptcha";
 import {Field, Form, Formik, useFormik} from "formik";
 import {initial, stagger, fadeInUp} from "@/animations/animations";
 
+// Firebase
+import {getAuth} from "firebase/auth";
+import {createNewUserWithEmailAndPassword} from "@/functions/Backend/firebase/createNewUserWithEmailAndPassword";
+
 const SignUpForm: FC = () => {
+	const auth = getAuth();
+	const router = useRouter();
+
 	// Loading, Send & Error Message States
 	const [errorMessage, setErrorMessage] = useState(false);
 
@@ -14,16 +22,10 @@ const SignUpForm: FC = () => {
 	// which keys are symmetrical to our values/initialValues
 	const validate: any = (values: any) => {
 		const errors: any = {};
-		if (!values?.firstName) {
-			errors.firstName = "Required*";
-		} else if (values?.firstName.length >= 16) {
-			errors.firstName = "Must be 15 characters or less";
-		}
-
-		if (!values.lastName) {
-			errors.lastName = "Required*";
-		} else if (values.lastName.length >= 21) {
-			errors.lastName = "Must be 20 characters or less";
+		if (!values?.fullName) {
+			errors.fullName = "Required*";
+		} else if (values?.fullName.length >= 16) {
+			errors.fullName = "Must be 15 characters or less";
 		}
 
 		if (!values?.email) {
@@ -58,8 +60,7 @@ const SignUpForm: FC = () => {
 	And Initial Values */
 	const formik: any = useFormik({
 		initialValues: {
-			firstName: "",
-			lastName: "",
+			fullName: "",
 			email: "",
 			password: "",
 		},
@@ -67,11 +68,16 @@ const SignUpForm: FC = () => {
 		onSubmit: async (values: any) => {
 			if (reCaptchaResult) {
 				try {
-					console.log(values);
+					createNewUserWithEmailAndPassword(auth, values);
+
+					// Send user to the payments
+					setTimeout(() => {
+						router.push(`/payment`).catch(console.error);
+					}, 1000);
 				} catch (error) {
 					setErrorMessage(true);
 					throw new Error(
-						"Error Message: Something went wrong with Sending your Message. Please try again."
+						`Error Message: Sorry ${values?.fullName} Something went wrong creating your account. Please try again.`
 					);
 				}
 			} else {
@@ -125,50 +131,20 @@ const SignUpForm: FC = () => {
 								>
 									First Name
 								</label>
-								{formik?.touched?.firstName && formik?.errors?.firstName ? (
+								{formik?.touched?.fullName && formik?.errors?.fullName ? (
 									<span className="py-0 text-sm font-semibold text-left text-pinkRed">
-										{formik?.errors?.firstName}
+										{formik?.errors?.fullName}
 									</span>
 								) : null}
 							</div>
 							<Field
 								type="text"
-								id="firstName"
-								name="firstName"
-								placeholder="Leroy"
+								id="fullName"
+								name="fullName"
+								placeholder="Leroy Jenkins"
 								onBlur={formik?.handleBlur}
 								onChange={formik?.handleChange}
-								value={formik?.values?.firstName}
-								className="w-full px-3 py-2 border-[1px] rounded-md border-grey text-darkBlue focus:border-darkBlue"
-							/>
-						</motion.div>
-						<motion.div
-							initial={initial}
-							whileInView={fadeInUp}
-							viewport={{once: true}}
-							className="space-y-2"
-						>
-							<div className="flex items-center justify-start gap-2">
-								<label
-									htmlFor="Last Name"
-									className="block text-tiny text-darkBlue"
-								>
-									Last Name
-								</label>
-								{formik?.touched?.lastName && formik?.errors?.lastName ? (
-									<span className="py-0 text-sm font-semibold text-left text-pinkRed">
-										{formik?.errors?.lastName}
-									</span>
-								) : null}
-							</div>
-							<Field
-								type="text"
-								id="lastName"
-								name="lastName"
-								placeholder="Jenkins"
-								onBlur={formik?.handleBlur}
-								onChange={formik?.handleChange}
-								value={formik?.values?.lastName}
+								value={formik?.values?.fullName}
 								className="w-full px-3 py-2 border-[1px] rounded-md border-grey text-darkBlue focus:border-darkBlue"
 							/>
 						</motion.div>
@@ -255,8 +231,7 @@ const SignUpForm: FC = () => {
 						onClick={onFormSubmit}
 						aria-label="Sign Up with Form"
 						disabled={
-							!formik?.values?.firstName ||
-							!formik?.values?.lastName ||
+							!formik?.values?.fullName ||
 							!formik?.values?.email ||
 							!formik?.values?.password ||
 							reCaptchaResult === null ||
