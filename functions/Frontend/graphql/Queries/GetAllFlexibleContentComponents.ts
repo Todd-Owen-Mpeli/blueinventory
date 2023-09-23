@@ -92,6 +92,7 @@ export async function getAllFlexibleContentComponents(
                         fieldGroupName
                         title
                         paragraph
+                        rotateIcon
                         icon {
                           altText
                           sourceUrl

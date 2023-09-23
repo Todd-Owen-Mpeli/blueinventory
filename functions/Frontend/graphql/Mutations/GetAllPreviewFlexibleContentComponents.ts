@@ -92,6 +92,7 @@ export const getAllPreviewFlexibleContentComponents = async (
 							fieldGroupName
 							title
 							paragraph
+							rotateIcon
 							icon {
                         	  altText
                         	  sourceUrl

@@ -23,6 +23,7 @@ const JumboContent: FC<IJumboContent> = ({
 	lastCard,
 	cardThree,
 	paragraph,
+	rotateIcon,
 	gridContent,
 }) => {
 	return (
@@ -60,7 +61,7 @@ const JumboContent: FC<IJumboContent> = ({
 								height={icon?.mediaDetails?.height}
 								className={
 									icon?.sourceUrl
-										? `block rotate-[35deg] w-full max-w-[250px] h-[500px] object-contain object-center`
+										? `block rotate-[${rotateIcon}deg] w-full max-w-[250px] h-[500px] object-contain object-center`
 										: `hidden`
 								}
 							/>

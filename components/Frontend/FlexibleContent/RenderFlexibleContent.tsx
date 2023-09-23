@@ -82,6 +82,7 @@ const RenderFlexibleContent: FC = () => {
 									lastCard={item?.lastCard}
 									cardThree={item?.cardThree}
 									paragraph={item?.paragraph}
+									rotateIcon={item?.rotateIcon}
 									gridContent={item?.gridContent}
 								/>
 							</>

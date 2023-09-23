@@ -398,6 +398,7 @@ export type ILoadingState = {
 export type IJumboContent = {
 	title: string;
 	paragraph: string;
+	rotateIcon: number;
 	icon: {
 		altText: string;
 		sourceUrl: string;
