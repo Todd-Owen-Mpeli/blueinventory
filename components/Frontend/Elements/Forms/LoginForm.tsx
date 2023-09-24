@@ -2,14 +2,19 @@
 import Link from "next/link";
 import {FC, useState} from "react";
 import {motion} from "framer-motion";
+import {useRouter} from "next/router";
 import ReCAPTCHA from "react-google-recaptcha";
 import {Field, Form, Formik, useFormik} from "formik";
 import {initial, stagger, fadeInUp} from "@/animations/animations";
 
 // Firebase
 import {getAuth} from "firebase/auth";
+import {validateAccountAlreadyExist} from "@/functions/Backend/firebase/validateAccountAlreadyExist";
 
 const LoginForm: FC = () => {
+	const auth = getAuth();
+	const router = useRouter();
+
 	// Loading, Send & Error Message States
 	const [errorMessage, setErrorMessage] = useState(false);
 
@@ -58,6 +63,12 @@ const LoginForm: FC = () => {
 			if (reCaptchaResult) {
 				try {
 					console.log(values);
+					validateAccountAlreadyExist(`${auth?.currentUser?.uid}`);
+
+					// Send user to the payments
+					setTimeout(() => {
+						router.push(`/dashboard`).catch(console.error);
+					}, 1000);
 				} catch (error) {
 					setErrorMessage(true);
 					throw new Error(
