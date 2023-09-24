@@ -1,13 +1,23 @@
 // Imports
+import {
+	doc,
+	setDoc,
+	Firestore,
+	collection,
+	getFirestore,
+	serverTimestamp,
+} from "firebase/firestore";
 import {FC} from "react";
-import {createUserWithEmailAndPassword} from "firebase/auth";
-import {addNewFirebaseUserDocument} from "./addDocument";
+import {createUserWithEmailAndPassword, updateProfile} from "firebase/auth";
 
 export const createNewUserWithEmailAndPassword: FC = async (
 	auth: any,
 	values: any
 ) => {
 	let userCreated: boolean = false;
+	const timeStamp = serverTimestamp();
+	const db: Firestore = getFirestore();
+	const collectionRef = collection(db, "users");
 
 	try {
 		const userCredential = await createUserWithEmailAndPassword(
@@ -15,12 +25,19 @@ export const createNewUserWithEmailAndPassword: FC = async (
 			values?.email,
 			values?.password
 		);
-		// console.log(userCredential);
+		const user = userCredential?.user;
 
-		// addNewFirebaseUserDocument(
-		// 	userCredential?.user,
-		// 	"cs_test_a1B80dzRSKXi5M8y9ZghnkO9FE7KPWlbZCem8ctTBBSWnj9YAeHcfj2XoH"
-		// );
+		/* Create & Add New user details 
+		to the cloud Firestore Database */
+		setDoc(doc(collectionRef, user?.uid), user);
+
+		/* Update New user Display name details with 
+		their full name in the cloud Firestore Database */
+		// updateProfile(auth?.currentUser, {
+		// 	displayName: values?.fullName,
+		// });
+
+		console.log(user);
 
 		userCreated = true;
 	} catch (error) {

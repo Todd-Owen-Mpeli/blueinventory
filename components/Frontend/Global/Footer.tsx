@@ -13523,7 +13523,7 @@ const Footer: FC = () => {
 						<div className="mb-10">
 							<Link
 								href="/"
-								className="text-lg font-extrabold tracking-tight uppercase transition-all duration-500 ease-in-out lg:text-xl text-lightBlue hover:text-goldPrime"
+								className="text-lg font-extrabold tracking-tight transition-all duration-500 ease-in-out lg:text-xl text-lightBlue hover:text-goldPrime"
 							>
 								BlueInventory
 							</Link>
