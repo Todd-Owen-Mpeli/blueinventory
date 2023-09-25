@@ -51,7 +51,7 @@ export const createNewUserWithEmailAndPassword = async (
 			description: `Item One`,
 		});
 
-		/* Update New user Display name details with 
+		/* Update New user Display Name details with 
 		their full name in the cloud Firestore Database */
 		updateProfile(auth?.currentUser, {
 			displayName: values?.fullName,
