@@ -10,7 +10,11 @@ import {createUserWithEmailAndPassword, updateProfile} from "firebase/auth";
 
 export const createNewUserWithEmailAndPassword = async (
 	auth: any,
-	values: any
+	values: {
+		fullName: string;
+		email: string;
+		password: string;
+	}
 ) => {
 	let userCreated: boolean = false;
 	const db: Firestore = getFirestore();

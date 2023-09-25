@@ -9,7 +9,7 @@ export const validateAccountAlreadyExist = async (newUserUID: string) => {
 	const querySnapshot = await getDocs(collectionRef);
 
 	let isUserExist: boolean = false;
-	let found: boolean = false; // Variable to track if the value is found
+	let found: boolean = false;
 	let userDocID;
 
 	/* Loop through each document and retrieve the uid */

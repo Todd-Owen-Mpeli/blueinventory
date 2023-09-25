@@ -13,9 +13,8 @@ import {initial, fadeIn, stagger, initialTwo} from "@/animations/animations";
 import styles from "@/styles/components/Hero.module.scss";
 
 // Firebase
-import {getAuth, signOut} from "firebase/auth";
+import {User, getAuth, signOut} from "firebase/auth";
 import {useFirebaseContext} from "@/context/Firebase";
-import {validateAccountAlreadyExist} from "@/functions/Backend/firebase/validateAccountAlreadyExist";
 
 // Components
 import MobileNavbar from "./MobileNavbar";
@@ -43,20 +42,11 @@ const Navbar: FC = () => {
 	// Handles User Dashboard Login
 	const dashboardLogin = async () => {
 		// The signed-in user info.
-		const user: any | null = auth.currentUser;
+		const user: User | null = auth.currentUser;
 
-		/* New User validation
-				Validates if user already exist */
-		const userAccountAlreadyExist = await validateAccountAlreadyExist(
-			user?.uid
-		);
-
-		if (userAccountAlreadyExist) {
+		if (user?.uid) {
 			// Redirects the user to the next page
 			router.push("/dashboard");
-		} else {
-			// Redirects the user to the next page
-			router.push("/payment");
 		}
 	};
 

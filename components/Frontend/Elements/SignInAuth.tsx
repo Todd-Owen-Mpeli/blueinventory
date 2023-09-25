@@ -35,12 +35,12 @@ const SignInAuth: FC = () => {
 					user.uid
 				);
 
-				if (userAccountAlreadyExist) {
-					// Redirects the user to the next page
-					router.push("/dashboard");
-				} else {
+				if (!userAccountAlreadyExist) {
 					// Redirects the user to the next page
 					router.push("/payment");
+				} else {
+					// Redirects the user to the next page
+					router.push("/dashboard");
 				}
 			})
 			.catch((error) => {

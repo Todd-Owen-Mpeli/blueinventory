@@ -9,7 +9,8 @@ import {initial, stagger, fadeInUp} from "@/animations/animations";
 
 // Firebase
 import {getAuth} from "firebase/auth";
-import {validateAccountAlreadyExist} from "@/functions/Backend/firebase/validateAccountAlreadyExist";
+import {createNewUserWithEmailAndPassword} from "@/functions/Backend/firebase/createNewUserWithEmailAndPassword";
+import {signInUserWithEmailAndPassword} from "@/functions/Backend/firebase/signInWithEmailAndPassword";
 
 const LoginForm: FC = () => {
 	const auth = getAuth();
@@ -17,6 +18,8 @@ const LoginForm: FC = () => {
 
 	// Loading, Send & Error Message States
 	const [errorMessage, setErrorMessage] = useState(false);
+	const [errorEmailMessage, setErrorEmailMessage] = useState(false);
+	const [errorPasswordMessage, setErrorPasswordMessage] = useState(false);
 
 	// A custom validation function. This must return an object
 	// which keys are symmetrical to our values/initialValues
@@ -62,17 +65,33 @@ const LoginForm: FC = () => {
 		onSubmit: async (values: any) => {
 			if (reCaptchaResult) {
 				try {
-					console.log(values);
-					validateAccountAlreadyExist(`${auth?.currentUser?.uid}`);
+					const signInStatus = await signInUserWithEmailAndPassword(
+						auth,
+						values
+					);
 
-					// Send user to the payments
-					setTimeout(() => {
-						router.push(`/dashboard`).catch(console.error);
-					}, 1000);
+					if (signInStatus) {
+						if (signInStatus.wrongEmail) {
+							setErrorEmailMessage(true);
+						} else if (signInStatus.wrongPassword) {
+							setErrorPasswordMessage(true);
+						} else if (signInStatus.userNotFound) {
+							console.log(`Created new user ${values?.fullName}`);
+							createNewUserWithEmailAndPassword(auth, values);
+							setTimeout(() => {
+								router.push(`/payment`).catch(console.error);
+							}, 1000);
+						} else if (signInStatus.userDisabled) {
+							setErrorMessage(true);
+						} else {
+							// Send user to the dashboard
+							router.push(`/dashboard`).catch(console.error);
+						}
+					}
 				} catch (error) {
 					setErrorMessage(true);
 					throw new Error(
-						"Error Message: Something went wrong with Sending your Message. Please try again."
+						`Error Message: Something went wrong signing you in. Please try again.`
 					);
 				}
 			} else {
@@ -127,11 +146,22 @@ const LoginForm: FC = () => {
 								>
 									Email address
 								</label>
-								{formik?.touched?.email && formik?.errors?.email ? (
-									<span className="py-0 text-sm font-semibold text-left text-pinkRed">
-										{formik?.errors?.email}
+								<div className="flex items-center">
+									{formik?.touched?.email && formik?.errors?.email ? (
+										<span className="py-0 text-sm font-semibold text-left text-pinkRed">
+											{formik?.errors?.email}
+										</span>
+									) : null}
+									<span
+										className={
+											errorEmailMessage
+												? "py-0 text-sm font-semibold text-left text-pinkRed"
+												: "hidden"
+										}
+									>
+										Invalid email address
 									</span>
-								) : null}
+								</div>
 							</div>
 							<Field
 								id="email"
@@ -153,16 +183,27 @@ const LoginForm: FC = () => {
 							<div className="flex items-center justify-between">
 								<span className="flex items-center justify-start gap-2">
 									<label
-										htmlFor="Last Name"
+										htmlFor="Password"
 										className="block text-tiny text-darkBlue"
 									>
-										Last Name
+										Password
 									</label>
-									{formik?.touched?.password && formik?.errors?.password ? (
-										<span className="py-0 text-sm font-semibold text-left text-pinkRed">
-											{formik?.errors?.password}
+									<div className="flex items-center">
+										{formik?.touched?.password && formik?.errors?.password ? (
+											<span className="py-0 text-sm font-semibold text-left text-pinkRed">
+												{formik?.errors?.password}
+											</span>
+										) : null}
+										<span
+											className={
+												errorPasswordMessage
+													? "py-0 text-sm font-semibold text-left text-pinkRed"
+													: "hidden"
+											}
+										>
+											Invalid Password
 										</span>
-									) : null}
+									</div>
 								</span>
 								<Link
 									rel="noopener noreferrer"

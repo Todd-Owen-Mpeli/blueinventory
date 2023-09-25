@@ -104,7 +104,7 @@ const Standard: FC = () => {
 							className="hidden"
 							type="hidden"
 							name="plan"
-							value={`${globalContext.stripePlans.stripeStandardPlan?.name}`}
+							value="standard"
 						/>
 						<button
 							type="submit"

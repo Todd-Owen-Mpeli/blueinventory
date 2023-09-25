@@ -104,7 +104,7 @@ const Premium: FC = () => {
 							className="hidden"
 							type="hidden"
 							name="plan"
-							value={`${globalContext.stripePlans.stripePremiumPlan?.name}`}
+							value="premium"
 						/>
 						<button
 							type="submit"
