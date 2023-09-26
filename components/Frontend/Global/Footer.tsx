@@ -19,7 +19,7 @@ const Footer: FC = () => {
 		<section
 			className={
 				styles.footer +
-				" relative px-0 overflow-hidden border-t-4 bg-darkerBlueTwo border-goldPrime"
+				" relative px-0 overflow-hidden border-t-4 bg-darkerBlueTwo border-blue"
 			}
 		>
 			<div className="absolute top-[15px] md:top-[-140px] right-[-220px] md:right-[-145px] opacity-10">
