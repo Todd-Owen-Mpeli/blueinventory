@@ -9,8 +9,8 @@ import {initial, stagger, fadeInUp} from "@/animations/animations";
 
 // Firebase
 import {getAuth} from "firebase/auth";
-import {createNewUserWithEmailAndPassword} from "@/functions/Backend/firebase/createNewUserWithEmailAndPassword";
 import {signInUserWithEmailAndPassword} from "@/functions/Backend/firebase/signInWithEmailAndPassword";
+import {createNewUserWithEmailAndPassword} from "@/functions/Backend/firebase/createNewUserWithEmailAndPassword";
 
 const SignUpForm: FC = () => {
 	const auth = getAuth();
@@ -20,6 +20,7 @@ const SignUpForm: FC = () => {
 	const [errorMessage, setErrorMessage] = useState(false);
 	const [errorEmailMessage, setErrorEmailMessage] = useState(false);
 	const [errorPasswordMessage, setErrorPasswordMessage] = useState(false);
+	const [errorEmailExistsMessage, setErrorEmailExistsMessage] = useState(false);
 
 	// A custom validation function. This must return an object
 	// which keys are symmetrical to our values/initialValues
@@ -85,6 +86,7 @@ const SignUpForm: FC = () => {
 							setErrorEmailMessage(true);
 						} else if (signInStatus.wrongPassword) {
 							setErrorPasswordMessage(true);
+							setErrorEmailExistsMessage(true);
 						} else if (signInStatus.userNotFound) {
 							console.log(`Created new user ${values?.fullName}`);
 							createNewUserWithEmailAndPassword(auth, values);
@@ -199,6 +201,15 @@ const SignUpForm: FC = () => {
 										}
 									>
 										Invalid email address
+									</span>
+									<span
+										className={
+											errorEmailExistsMessage
+												? "py-0 text-sm font-semibold text-left text-brightGreen"
+												: "hidden"
+										}
+									>
+										Valid email address
 									</span>
 								</div>
 							</div>
