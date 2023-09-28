@@ -78,7 +78,8 @@ const Pricing: FC<IPricing> = ({
 					className="mx-auto max-w-8xl"
 				>
 					{/* Payment Options Cards */}
-					<motion.div
+					{/* Old Memberships */}
+					{/* <motion.div
 						initial={initial}
 						whileInView={fadeInUp}
 						viewport={{once: true}}
@@ -90,6 +91,7 @@ const Pricing: FC<IPricing> = ({
 							whileInView={stagger}
 							className="flex flex-wrap -mx-4"
 						>
+							Standard
 							<motion.div
 								initial={initial}
 								whileInView={fadeInUp}
@@ -100,7 +102,7 @@ const Pricing: FC<IPricing> = ({
 									initial={initial}
 									whileInView={stagger}
 									viewport={{once: true}}
-									className="max-w-lg p-10 mx-auto bg-white border border-grey rounded-3xl"
+									className="max-w-lg p-10 mx-auto bg-white border border-darkBlue rounded-3xl"
 								>
 									<motion.div
 										initial={initial}
@@ -171,7 +173,7 @@ const Pricing: FC<IPricing> = ({
 											initial={initial}
 											whileInView={fadeInUp}
 											viewport={{once: true}}
-											className="block mb-4  text-black"
+											className="block mb-4 text-black"
 										>
 											What&apos;s included:
 										</motion.span>
@@ -294,7 +296,7 @@ const Pricing: FC<IPricing> = ({
 											<button
 												type="submit"
 												role="link"
-												className="relative inline-block py-4 overflow-hidden text-sm font-semibold text-center transition duration-200 border rounded-full border-grey-200 text-goldPrime hover:text-white group px-7 hover:text-orange"
+												className="relative inline-block py-4 overflow-hidden text-sm font-semibold text-center transition duration-200 border rounded-full border-darkBlue-200 text-goldPrime hover:text-white group px-7 hover:text-orange"
 											>
 												<div className="absolute top-0 w-full h-full transition duration-200 transform bg-goldPrime right-full group-hover:translate-x-full group-hover:scale-102"></div>
 												<span className="relative">Get Started</span>
@@ -303,6 +305,7 @@ const Pricing: FC<IPricing> = ({
 									</motion.div>
 								</motion.div>
 							</motion.div>
+							Premium
 							<motion.div
 								initial={initial}
 								whileInView={fadeInUp}
@@ -384,7 +387,7 @@ const Pricing: FC<IPricing> = ({
 											initial={initial}
 											whileInView={fadeInUp}
 											viewport={{once: true}}
-											className="block mb-4  text-white"
+											className="block mb-4 text-white"
 										>
 											What&apos;s included:
 										</motion.span>
@@ -516,6 +519,7 @@ const Pricing: FC<IPricing> = ({
 									</motion.div>
 								</motion.div>
 							</motion.div>
+							Enterprise
 							<motion.div
 								initial={initial}
 								whileInView={fadeInUp}
@@ -577,14 +581,14 @@ const Pricing: FC<IPricing> = ({
 										<span className="text-5xl font-extrabold leading-none text-darkBlue">
 											Contact Us
 										</span>
-										{/* <span className="text-darkBlue">/month</span> */}
+										<span className="text-darkBlue">/month</span>
 									</motion.span>
 									<motion.div className="mt-6">
 										<motion.span
 											initial={initial}
 											whileInView={fadeInUp}
 											viewport={{once: true}}
-											className="block mb-4  text-black"
+											className="block mb-4 text-black"
 										>
 											What&apos;s included:
 										</motion.span>
@@ -704,7 +708,7 @@ const Pricing: FC<IPricing> = ({
 											</motion.li>
 										</motion.div>
 										<Link
-											className="relative inline-block py-4 overflow-hidden text-sm font-semibold text-center transition duration-200 border rounded-full border-grey-200 text-goldPrime hover:text-white group px-7 hover:text-orange"
+											className="relative inline-block py-4 overflow-hidden text-sm font-semibold text-center transition duration-200 border rounded-full border-darkBlue-200 text-goldPrime hover:text-white group px-7 hover:text-orange"
 											href={`/checkout`}
 										>
 											<div className="absolute top-0 w-full h-full transition duration-200 transform bg-goldPrime right-full group-hover:translate-x-full group-hover:scale-102"></div>
@@ -714,6 +718,83 @@ const Pricing: FC<IPricing> = ({
 								</motion.div>
 							</motion.div>
 						</motion.div>
+					</motion.div> */}
+					<motion.div
+						initial={initial}
+						whileInView={fadeInUp}
+						viewport={{once: true}}
+						className="mx-auto shadow-2xl rounded-2xl w-fit"
+					>
+						<div className="p-12 text-center bg-white border rounded-2xl border-darkBlue">
+							<motion.div
+								initial={initial}
+								whileInView={fadeInUp}
+								viewport={{once: true}}
+								className="flex items-center justify-center w-10 h-10 mb-4 border rounded-full border-darkBlue"
+							>
+								<svg
+									version="1.1"
+									id="Layer_1"
+									xmlns="http://www.w3.org/2000/svg"
+									x="0px"
+									y="0px"
+									width="96px"
+									height="96px"
+									viewBox="0 0 96 96"
+									className="w-5 h-5"
+									enableBackground="new 0 0 96 96"
+								>
+									<g>
+										<path
+											fillRule="evenodd"
+											clipRule="evenodd"
+											fill="#09275e"
+											d="M48,0c26.51,0,48,21.49,48,48S74.51,96,48,96S0,74.51,0,48 S21.49,0,48,0L48,0z M26.764,49.277c0.644-3.734,4.906-5.813,8.269-3.79c0.305,0.182,0.596,0.398,0.867,0.646l0.026,0.025 c1.509,1.446,3.2,2.951,4.876,4.443l1.438,1.291l17.063-17.898c1.019-1.067,1.764-1.757,3.293-2.101 c5.235-1.155,8.916,5.244,5.206,9.155L46.536,63.366c-2.003,2.137-5.583,2.332-7.736,0.291c-1.234-1.146-2.576-2.312-3.933-3.489 c-2.35-2.042-4.747-4.125-6.701-6.187C26.993,52.809,26.487,50.89,26.764,49.277L26.764,49.277z"
+										/>
+									</g>
+								</svg>
+							</motion.div>
+							<motion.span
+								initial={initial}
+								whileInView={fadeInUp}
+								viewport={{once: true}}
+								className="block mb-2 text-2xl font-semibold text-darkBlue"
+							>
+								{globalContext.stripePlans?.stripeBasicPlan?.name}
+							</motion.span>
+							<motion.h3
+								initial={initial}
+								whileInView={fadeInUp}
+								viewport={{once: true}}
+								className="flex items-center justify-center my-4"
+							>
+								<span className="text-xl font-semibold leading-none text-darkBlue">
+									£{globalContext.stripePlans.stripeBasicPlan?.price}
+								</span>
+								<span className="text-xl text-darkBlue">
+									/
+									{
+										globalContext.stripePlans.stripeBasicPlan
+											?.paymentRecurringInterval
+									}
+								</span>
+							</motion.h3>
+							<Paragraph
+								content={globalContext.stripePlans.stripeBasicPlan?.description}
+								tailwindStyling="mb-10 text-base text-black"
+							/>
+							<motion.button
+								initial={initial}
+								whileInView={fadeInUp}
+								viewport={{once: true}}
+								className="group relative mb-6 px-16 py-3.5 bg-gray text-base bg-darkBlue font-bold text-white overflow-hidden rounded-md"
+							>
+								<div className="absolute top-0 left-0 w-full h-full transition duration-500 ease-in-out transform -translate-x-full group-hover:-translate-x-0 bg-blue"></div>
+								<Link className="relative z-10" href={"/sign-up"}>
+									Create Your First Project
+								</Link>
+							</motion.button>
+						</div>
 					</motion.div>
 					{/* Billing Information */}
 					<motion.div

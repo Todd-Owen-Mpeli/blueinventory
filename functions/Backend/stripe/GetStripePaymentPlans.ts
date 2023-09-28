@@ -1,5 +1,6 @@
 // Imports
 import {
+	IStripeBasicPlan,
 	IStripePremiumPlan,
 	IStripePaymentPlans,
 	IStripeStandardPlan,
@@ -22,31 +23,48 @@ export const getAllStripePaymentPlans = async (): Promise<
 			expand: ["data.product"],
 		});
 
+		// Stripe Basic Plan
+		const stripeBasicPlan: IStripeBasicPlan | any = {
+			name: getProductProperty(stripePrices[0]?.product, "name") || "Basic",
+			description:
+				getProductProperty(stripePrices[0]?.product, "description") ||
+				"Basic Inventory Management Software subscription",
+			price: stripePrices[0]?.unit_amount
+				? stripePrices[0]?.unit_amount / 100
+				: 999 / 100,
+			paymentRecurringInterval: stripePrices[0]?.recurring?.interval,
+		};
+
 		// Stripe Standard Plan
 		const stripeStandardPlan: IStripeStandardPlan | any = {
-			name: getProductProperty(stripePrices[1]?.product, "name") || "Standard",
+			name: getProductProperty(stripePrices[2]?.product, "name") || "Standard",
 			description:
-				getProductProperty(stripePrices[1]?.product, "description") ||
+				getProductProperty(stripePrices[2]?.product, "description") ||
 				"Standard Inventory Management Software subscription",
-			price: stripePrices[1]?.unit_amount
-				? stripePrices[1]?.unit_amount / 100
-				: 3999 / 100,
-			paymentRecurringInterval: stripePrices[1]?.recurring?.interval,
+			price: stripePrices[2]?.unit_amount
+				? stripePrices[2]?.unit_amount / 100
+				: 2999 / 100,
+			paymentRecurringInterval: stripePrices[2]?.recurring?.interval,
 		};
 
 		// Stripe Premium Plan
 		const stripePremiumPlan: IStripePremiumPlan | any = {
-			name: getProductProperty(stripePrices[0]?.product, "name") || "Premium",
+			name: getProductProperty(stripePrices[1]?.product, "name") || "Premium",
 			description:
-				getProductProperty(stripePrices[0]?.product, "description") ||
+				getProductProperty(stripePrices[1]?.product, "description") ||
 				"Premium Inventory Management Software subscription",
-			price: stripePrices[0]?.unit_amount
-				? stripePrices[0]?.unit_amount / 100
-				: 8999 / 100,
-			paymentRecurringInterval: stripePrices[0]?.recurring?.interval,
+			price: stripePrices[1]?.unit_amount
+				? stripePrices[1]?.unit_amount / 100
+				: 7999 / 100,
+			paymentRecurringInterval: stripePrices[1]?.recurring?.interval,
 		};
 
-		return {stripePrices, stripeStandardPlan, stripePremiumPlan};
+		return {
+			stripePrices,
+			stripeBasicPlan,
+			stripeStandardPlan,
+			stripePremiumPlan,
+		};
 	} catch (error) {
 		console.log(error);
 		throw new Error(

@@ -90,7 +90,7 @@ const SignInAuth: FC = () => {
 							viewBox="0 0 48 48"
 							width="96px"
 							height="96px"
-							className="relative fill-current w-7 h-7"
+							className={styles.google + " relative fill-current w-7 h-7"}
 						>
 							<path
 								fill="#FFC107"
@@ -126,7 +126,7 @@ const SignInAuth: FC = () => {
 						viewBox="0 0 48 48"
 						width="96px"
 						height="96px"
-						className="relative w-8 h-8 fill-current"
+						className={styles.facebook + " relative w-8 h-8 fill-current"}
 					>
 						<path
 							fill="#2563eb"
@@ -138,7 +138,7 @@ const SignInAuth: FC = () => {
 						/>
 					</svg>
 				</motion.button>
-				{/* // Apple sign-up */}
+				{/* Apple */}
 				<motion.button
 					role="button"
 					type="button"
@@ -155,7 +155,7 @@ const SignInAuth: FC = () => {
 							width="128px"
 							height="128px"
 							fill="#000"
-							className="relative mt-1 fill-current w-9 h-9"
+							className={styles.apple + " relative mt-1 fill-current w-9 h-9"}
 						>
 							<path
 								d="M46.955 1.353c.246 3.559-.915 6.425-2.628 8.527-2.519 3.092-6.232 4.533-8.422 4.105-.412-2.47.61-5.623 2.686-8.164C40.549 3.428 43.441 1.578 46.955 1.353zM36.378 17.159c2.498 0 5.203-2.532 9.658-2.532 2.007 0 7.762.607 10.934 5.486-1.26.913-5.917 3.843-5.917 10.514 0 7.859 6.366 10.579 7.33 11.077-.348 1.299-2.026 5.802-4.856 9.329-.876 1.091-3.507 5.281-7.436 5.281-3.568 0-4.926-2.208-9.043-2.208-4.69 0-4.914 2.248-9.476 2.248-.958 0-2.363-.433-3.477-1.413-3.955-3.482-10.478-12.483-10.478-23.71 0-11.093 7.357-16.418 13.809-16.418C31.482 14.812 33.796 17.159 36.378 17.159z"

@@ -24,9 +24,13 @@ export default async function newCheckoutSessionHandler(
 						/* Provide the exact Price ID (for example, pr_1234)
 							of the product you want to sell*/
 						price:
-							planType === `${process.env.STRIPE_STANDARD_PLAN_NAME}`
+							planType === `${process.env.STRIPE_BASIC_PLAN_NAME}`
+								? `${process.env.STRIPE_BASIC_PLAN_VALUE}`
+								: `${process.env.STRIPE_STANDARD_PLAN_NAME}`
 								? `${process.env.STRIPE_STANDARD_PLAN_VALUE}`
-								: `${process.env.STRIPE_PREMIUM_PLAN_VALUE}`,
+								: `${process.env.STRIPE_PREMIUM_PLAN_NAME}`
+								? `${process.env.STRIPE_PREMIUM_PLAN_VALUE}`
+								: `${process.env.STRIPE_BASIC_PLAN_VALUE}`,
 						quantity: 1,
 					},
 				],

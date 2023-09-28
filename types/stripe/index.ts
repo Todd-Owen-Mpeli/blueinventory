@@ -52,13 +52,19 @@ export type IStripePlans = {
 					unit_amount_decimal: string;
 				}
 		  ];
-	stripePremiumPlan: {
+	stripeBasicPlan: {
 		name: string;
 		description: string;
 		price: number;
 		paymentRecurringInterval: string;
 	};
 	stripeStandardPlan: {
+		name: string;
+		description: string;
+		price: number;
+		paymentRecurringInterval: string;
+	};
+	stripePremiumPlan: {
 		name: string;
 		description: string;
 		price: number;
@@ -167,6 +173,12 @@ export type IStripePaymentPlans = {
 					unit_amount_decimal: string;
 				}
 		  ];
+};
+export type IStripeBasicPlan = {
+	name: string;
+	description: string;
+	price: number;
+	paymentRecurringInterval: string;
 };
 export type IStripeStandardPlan = {
 	name: string;

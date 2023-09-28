@@ -11,9 +11,9 @@ import {PostHogProvider} from "posthog-js/react";
 
 // Global Context Provider
 import {
-	IErrorPageContent,
-	IFirebaseContext,
 	IGlobalContext,
+	IFirebaseContext,
+	IErrorPageContent,
 } from "@/types/context/public";
 
 // Firebase

@@ -3,6 +3,7 @@ import {motion} from "framer-motion";
 import {initial, stagger} from "@/animations/animations";
 
 // Components
+import Basic from "./Cards/checkout/Basic";
 import Premium from "./Cards/checkout/Premium";
 import CheckoutWelcome from "./CheckoutWelcome";
 import Standard from "./Cards/checkout/Standard";
@@ -22,8 +23,9 @@ const Payments = () => {
 					paragraph={`Unlock your ambitions & true potential. An accurate inventory management system can improve an organization’s efficiency and productivity.`}
 				/>
 				<div className="flex flex-col items-center justify-center w-full py-16 gap-y-12">
-					<Standard />
-					<Premium />
+					<Basic />
+					{/* <Standard /> */}
+					{/* <Premium /> */}
 				</div>
 			</motion.div>
 		</>

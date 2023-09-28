@@ -3,16 +3,33 @@
 @import "../colors";
 
 .signInSignUp {
-	svg:hover {
-		fill: $blue;
-
-		g,
-		path {
-			fill: $blue;
+	.google:hover {
+		path:nth-child(1) {
+			fill: $yellow;
 		}
+		path:nth-child(2) {
+			fill: $yellow;
+		}
+		path:nth-child(3) {
+			fill: $yellow;
+		}
+		path:nth-child(4) {
+			fill: $yellow;
+		}
+	}
 
-		line {
-			fill: $blue;
+	.facebook:hover {
+		path:nth-child(1) {
+			fill: $yellow;
+		}
+		path:nth-child(2) {
+			fill: $white;
+		}
+	}
+
+	.apple:hover {
+		path {
+			fill: $yellow;
 		}
 	}
 }
