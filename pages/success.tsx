@@ -11,7 +11,7 @@ import PageContextProvider from "@/components/Frontend/context/PageContextProvid
 // Firebase
 import {getAuth} from "firebase/auth";
 import {useFirebaseContext} from "@/context/Firebase";
-import {addNewFirebaseUserDocument} from "@/functions/Backend/firebase/addDocument";
+import {createNewUserWithAuthProviders} from "@/functions/Backend/firebase/createNewUserWithAuthProviders";
 
 // Components
 import LayoutTwo from "@/components/Frontend/Layout/LayoutTwo";
@@ -49,7 +49,7 @@ const success: NextPage<IPageContext> = ({
 				const currentUser = auth.currentUser;
 
 				// Save the Google & Stripe information to Cloud Firestore
-				addNewFirebaseUserDocument(currentUser, session_id);
+				createNewUserWithAuthProviders(currentUser, session_id);
 			}
 		}
 

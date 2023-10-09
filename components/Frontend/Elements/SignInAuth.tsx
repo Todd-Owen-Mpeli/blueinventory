@@ -28,19 +28,23 @@ const SignInAuth: FC = () => {
 			.then(async (result) => {
 				// The signed-in user info.
 				const user = result.user;
+				try {
+					/* Validates if new user already exist */
+					const userAccountAlreadyExist = await validateAccountAlreadyExist(
+						user.uid
+					);
 
-				/* New User validation
-				Validates if user already exist */
-				const userAccountAlreadyExist = await validateAccountAlreadyExist(
-					user.uid
-				);
-
-				if (!userAccountAlreadyExist) {
-					// Redirects the user to the next page
-					router.push("/payment");
-				} else {
-					// Redirects the user to the next page
-					router.push("/dashboard");
+					if (!userAccountAlreadyExist) {
+						// Redirects the user to the next page
+						router.push("/payment");
+					} else {
+						// Redirects the user to the next page
+						router.push("/dashboard");
+					}
+				} catch (error) {
+					throw new Error(
+						`Error Message: Sorry ${user?.displayName} Something went wrong processing your account credential. Please try again.`
+					);
 				}
 			})
 			.catch((error) => {

@@ -12,20 +12,27 @@ export const validateAccountAlreadyExist = async (newUserUID: string) => {
 	let found: boolean = false;
 	let userDocID;
 
-	/* Loop through each document and retrieve the uid */
-	querySnapshot.forEach((doc) => {
-		if (found) {
-			return; // Exit the loop early if the value is found
-		}
+	try {
+		/* Loop through each document and retrieve the uid */
+		querySnapshot.forEach((doc) => {
+			if (found) {
+				return isUserExist; // Exit the loop early if the value is found
+			}
 
-		// The current document uid
-		const currentDocUid = doc.data().uid;
+			// The current document uid
+			const currentDocUid = doc.data().uid;
 
-		if (currentDocUid.includes(newUserUID)) {
-			isUserExist = true;
-			userDocID = doc.id;
-			found = true; // Set the found variable to true
-		}
-	});
+			if (currentDocUid.includes(newUserUID)) {
+				isUserExist = true;
+				userDocID = doc.id;
+				found = true; // Set the found variable to true
+			}
+		});
+	} catch (error) {
+		throw new Error(
+			`Error Message: Something went wrong validating your account credential. Please try again.`
+		);
+	}
+
 	return isUserExist;
 };

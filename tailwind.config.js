@@ -31,6 +31,7 @@ module.exports = {
 			pureBlack: "#000",
 			darkGrey: "#8f8f8f",
 			lightGrey: "#f7f7f7",
+			lightGreyTwo: "#c8c8c8",
 
 			// Main colors
 			blue: "#2563eb",

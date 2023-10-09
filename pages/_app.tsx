@@ -113,9 +113,11 @@ export default function App({
 		signedInUser: signedInUser,
 	};
 
+	// const providerId = currentUser?.providerData[0]?.providerId;
+	// setUserDocId(providerId === "password" ? currentUser?.uid : userDoc.docUid);
+
 	/* Check if user is SIGNED IN if 
 	True Displays Signed In Navbar */
-
 	useEffect(() => {
 		if (!userData) {
 			const unsubscribe = auth?.onAuthStateChanged(async (currentUser: any) => {
@@ -124,13 +126,18 @@ export default function App({
 					setUserData(currentUser);
 
 					/* Retrieves the current users Document Data 
-				& Document Unique Identification */
+					& Document Unique Identification */
 					const userDoc = await getUserDocument(currentUser?.uid);
-					setUserDocId(userDoc.docUid);
+					const docID =
+						currentUser?.providerData[0]?.providerId === "password"
+							? currentUser?.uid
+							: userDoc.docUid;
+
+					setUserDocId(docID);
 
 					/* Retrieves the current users 
-				Items List Document Data */
-					const itemsArray = await getUserItemsDocument(userDoc.docUid);
+					Items List Document Data */
+					const itemsArray = await getUserItemsDocument(docID);
 					setItemsCollection(itemsArray);
 				} else if (!currentUser) {
 					setSignedInUser(false);

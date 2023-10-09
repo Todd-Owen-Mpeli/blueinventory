@@ -58,6 +58,7 @@ export const createNewUserWithEmailAndPassword = async (
 		});
 
 		userCreated = true;
+		console.log("Document written with ID: ", auth?.currentUser.id);
 	} catch (error) {
 		throw new Error(
 			`Error Message: Sorry ${values?.fullName} Something went wrong creating your account. Please try again.`

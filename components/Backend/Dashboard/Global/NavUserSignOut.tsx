@@ -38,7 +38,7 @@ const NavUserSignOut: FC = () => {
 						src={
 							firebaseContext?.userData?.photoURL
 								? firebaseContext?.userData?.photoURL
-								: `/img/Logos/BlueInventory favicon Two.png`
+								: `/img/Logos/default-avatar-profile.jpg`
 						}
 						alt={`${firebaseContext?.userData?.displayName} profile image`}
 					/>

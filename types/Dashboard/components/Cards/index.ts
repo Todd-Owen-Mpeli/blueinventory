@@ -5,3 +5,9 @@ export type ICard = {
 	backgroundImageOption: string;
 	displayBackgroundImage: boolean;
 };
+
+export type ILatestItemsCard = {
+	value: number;
+	itemName: string;
+	sourceUrl: string;
+};

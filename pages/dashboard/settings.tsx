@@ -5,7 +5,6 @@ import {IDashboard} from "@/types/context/dashboard";
 
 // Components
 import Layout from "@/components/Backend/Dashboard/Layout/Layout";
-import SubscriptionInfo from "@/components/Backend/Dashboard/components/SubscriptionInfo";
 import PersonalInformation from "@/components/Backend/Dashboard/components/PersonalInformation";
 import DashboardMetaContentProvider from "@/components/Frontend/context/DashboardMetaContentProvider";
 
@@ -23,9 +22,6 @@ const settings: NextPage<IDashboard> = () => {
 					tailwindStyling={"flex flex-col w-full p-0 rounded-xl bg-white"}
 				>
 					<PersonalInformation />
-					<div className="grid grid-cols-1 gap-8 py-4 lg:grid-cols-3">
-						<SubscriptionInfo />
-					</div>
 				</Layout>
 			</motion.section>
 		</DashboardMetaContentProvider>
