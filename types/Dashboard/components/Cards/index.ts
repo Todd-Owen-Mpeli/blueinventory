@@ -8,6 +8,7 @@ export type ICard = {
 
 export type ILatestItemsCard = {
 	value: number;
+	category: string;
 	itemName: string;
 	sourceUrl: string;
 };

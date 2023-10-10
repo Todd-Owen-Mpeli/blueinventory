@@ -126,7 +126,7 @@ const NavbarTwo: FC = () => {
 													src={
 														firebaseContext?.userData?.photoURL
 															? firebaseContext?.userData?.photoURL
-															: `/img/Logos/BlueInventory favicon Two.png`
+															: `/img/Logos/default-avatar-profile.jpg`
 													}
 													alt={`${firebaseContext?.userData?.displayName} profile image`}
 												/>
@@ -137,22 +137,37 @@ const NavbarTwo: FC = () => {
 											{revealUserDropdown ? (
 												<div
 													id="userDropdown"
-													className="absolute left-[-100px] z-10 flex flex-col mt-1 bg-white divide-y rounded-lg shadow divide-blue w-44"
+													className="absolute left-[-100px] z-10 flex flex-col mt-1 bg-white divide-y shadow divide-lightGreyTwo w-[17.5rem]"
 												>
-													<div className="flex flex-col gap-2 px-4 py-3 text-sm text-black">
-														<h2 className="text-medium">{`${firebaseContext?.userData?.displayName}`}</h2>
-														<h2 className="font-medium text-black truncate">
-															{firebaseContext?.userData?.email}
+													<div className="flex flex-col gap-1 px-8 py-5 text-sm text-black">
+														<h2 className="text-medium">
+															{firebaseContext?.userData?.displayName
+																? firebaseContext?.userData?.displayName
+																		.length > 25
+																	? firebaseContext?.userData?.displayName.substring(
+																			0,
+																			25
+																	  ) + "..."
+																	: firebaseContext?.userData?.displayName
+																: ""}
+														</h2>
+														<h2 className="tracking-wide text-darkGrey">
+															{firebaseContext?.userData?.email
+																? firebaseContext?.userData?.email.length > 25
+																	? firebaseContext?.userData?.email.substring(
+																			0,
+																			25
+																	  ) + "..."
+																	: firebaseContext?.userData?.email
+																: ""}
 														</h2>
 													</div>
-													<div className="mt-1">
-														<button
-															onClick={handleLogout}
-															className="block w-full px-4 py-3 text-sm text-left text-black rounded-b-lg hover:bg-pinkRed hover:text-white"
-														>
-															Sign out
-														</button>
-													</div>
+													<button
+														onClick={handleLogout}
+														className="block w-full px-8 py-3 text-sm text-left text-black uppercase hover:bg-pinkRed hover:text-white"
+													>
+														Log out
+													</button>
 												</div>
 											) : null}
 										</motion.div>

@@ -13,9 +13,11 @@ const Card: FC<ICard> = ({
 }) => {
 	let backgroundImage: string;
 	const tailwindStyling = {
-		h3: "text-sm md:text-medium ",
-		h4: "text-3xl font-bold lg:text-6xl ",
-		paragraph: "text-sm md:text-medium ",
+		h3: "text-medium mb-2 ",
+		h4: "text-3xl font-bold ",
+		paragraph: "text-base ",
+		cardWrapper:
+			"p-6 bg-white bg-center bg-no-repeat bg-cover shadow-lg rounded-2xl ",
 	};
 
 	switch (backgroundImageOption) {
@@ -44,7 +46,11 @@ const Card: FC<ICard> = ({
 				initial={initial}
 				whileInView={stagger}
 				viewport={{once: true}}
-				className="p-6 bg-white bg-center bg-no-repeat bg-cover shadow-lg rounded-2xl"
+				className={
+					displayBackgroundImage
+						? tailwindStyling?.cardWrapper
+						: tailwindStyling?.cardWrapper + `border-2 border-lightGreyTwo`
+				}
 				style={{
 					backgroundImage: `url(${
 						displayBackgroundImage
@@ -65,18 +71,21 @@ const Card: FC<ICard> = ({
 				>
 					{text}
 				</motion.h3>
-				<motion.h4
+				<motion.div
 					initial={initial}
 					viewport={{once: true}}
 					whileInView={fadeInUp}
-					className={
-						displayBackgroundImage
-							? tailwindStyling.h4 + " text-white"
-							: tailwindStyling.h4 + " text-blue"
-					}
 				>
 					{value ? (
-						value
+						<h4
+							className={
+								displayBackgroundImage
+									? tailwindStyling.h4 + " text-white"
+									: tailwindStyling.h4 + " text-blue"
+							}
+						>
+							{value}
+						</h4>
 					) : (
 						<h4
 							className={
@@ -88,7 +97,7 @@ const Card: FC<ICard> = ({
 							Loading...
 						</h4>
 					)}
-				</motion.h4>
+				</motion.div>
 				<motion.p
 					initial={initial}
 					viewport={{once: true}}

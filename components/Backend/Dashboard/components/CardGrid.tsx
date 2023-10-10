@@ -17,7 +17,7 @@ const CardGrid: FC = () => {
 				initial={initial}
 				whileInView={stagger}
 				viewport={{once: true}}
-				className="grid items-center w-full max-w-3xl grid-cols-1 gap-4 p-4 md:grid-cols-2"
+				className="grid items-center w-full max-w-3xl grid-cols-1 gap-4 py-4 md:grid-cols-2"
 			>
 				<Card
 					text={"Total Items"}
@@ -32,6 +32,13 @@ const CardGrid: FC = () => {
 					displayBackgroundImage={true}
 					backgroundImageOption={"Three"}
 					paragraph={"Total created categories"}
+				/>
+				<Card
+					value={6503.56}
+					text={"Total Value"}
+					displayBackgroundImage={true}
+					backgroundImageOption={"Four"}
+					paragraph={"Total items value"}
 				/>
 			</motion.section>
 		</>

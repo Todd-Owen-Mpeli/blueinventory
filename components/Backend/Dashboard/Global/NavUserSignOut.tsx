@@ -8,7 +8,7 @@ import SignOutModal from "./SignOutModal";
 
 const NavUserSignOut: FC = () => {
 	const styling: string =
-		"flex flex-col items-center justify-center gap-0 2xl:gap-2 2xl:gap-x-4 3xl:flex-row";
+		"flex flex-col items-center justify-center gap-0 2xl:gap-2 2xl:gap-x-4 2xl:flex-row";
 	const firebaseContext = useFirebaseContext();
 
 	// Handles User Sign Out Modal
@@ -34,7 +34,7 @@ const NavUserSignOut: FC = () => {
 						id="avatarButton"
 						data-dropdown-toggle="userDropdown"
 						data-dropdown-placement="bottom-start"
-						className="object-cover object-top min-w-10 min-h-10 w-10 h-10 transition-all duration-200 ease-in-out rounded-full cursor-pointer ring-[3px] ring-blue"
+						className="object-cover object-center min-w-10 min-h-10 w-10 h-10 transition-all duration-200 ease-in-out rounded-full cursor-pointer ring-[3px] ring-blue"
 						src={
 							firebaseContext?.userData?.photoURL
 								? firebaseContext?.userData?.photoURL
@@ -52,14 +52,23 @@ const NavUserSignOut: FC = () => {
 					</div>
 					<div
 						className={
-							revealSignOut ? "hidden" : "mt-4 3xl:mt-0 flex gap-1 flex-col"
+							revealSignOut ? "hidden" : "mt-4 2xl:mt-0 flex gap-1 flex-col"
 						}
 					>
-						<h3 className="font-bold text-center text-white text-tiny 3xl:text-left">
-							{firebaseContext?.userData?.displayName}
+						<h3 className="font-bold text-center text-white text-tiny lg:text-left">
+							{firebaseContext?.userData?.displayName
+								? firebaseContext?.userData?.displayName.length > 25
+									? firebaseContext?.userData?.displayName.substring(0, 25) +
+									  "..."
+									: firebaseContext?.userData?.displayName
+								: ""}
 						</h3>
 						<span className="hidden text-xs text-center text-white xl:block 2xl:text-left">
-							{firebaseContext?.userData?.email}
+							{firebaseContext?.userData?.email
+								? firebaseContext?.userData?.email.length > 25
+									? firebaseContext?.userData?.email.substring(0, 25) + "..."
+									: firebaseContext?.userData?.email
+								: ""}
 						</span>
 					</div>
 				</div>
