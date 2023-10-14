@@ -10,7 +10,7 @@ import Paragraph from "@/components/Frontend/Elements/Paragraph";
 
 const logos: FC<ILogos> = ({title, paragraph, logoGrid}) => {
 	return (
-		<div className="px-4 py-10 bg-white lg:px-0">
+		<div className="px-4 py-16 bg-white lg:px-0 lg:py-20">
 			<div className="container px-0 mx-auto">
 				<motion.h2
 					initial={initialTwo}

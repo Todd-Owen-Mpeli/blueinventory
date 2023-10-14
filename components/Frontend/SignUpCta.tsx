@@ -42,7 +42,7 @@ const SignUpCta: FC<ISignUpCta> = ({
 							className="object-cover w-full h-full"
 						/>
 					</div>
-					<div className="absolute inset-0 bg-gradient-to-t from-blue to-transparent"></div>
+					<div className="absolute inset-0 bg-gradient-to-t from-purple to-transparent"></div>
 					<div className="relative">
 						<motion.div
 							initial={initial}
