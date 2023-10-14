@@ -3,6 +3,7 @@ import {FC} from "react";
 import {useContentContext} from "@/context/context";
 
 // Components
+import SignUpCta from "../SignUpCta";
 import CTA from "@/components/Frontend/CTA";
 import FAQ from "@/components/Frontend/FAQ";
 import Hero from "@/components/Frontend/Hero";
@@ -215,6 +216,16 @@ const RenderFlexibleContent: FC = () => {
 									paragraph={item?.paragraph}
 									buttonLink={item?.buttonLink}
 									backgroundImage={item?.backgroundImage?.sourceUrl}
+								/>
+							</>
+						) : item?.fieldGroupName === `${Flexiblecontent}_SignUpCta` ? (
+							<>
+								<SignUpCta
+									title={item?.title}
+									titleTwo={item?.titleTwo}
+									paragraph={item?.paragraph}
+									bulletPoints={item?.bulletPoints}
+									backgroundImage={item?.backgroundImage}
 								/>
 							</>
 						) : item?.fieldGroupName ===

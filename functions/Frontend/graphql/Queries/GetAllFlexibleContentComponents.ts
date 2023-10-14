@@ -419,6 +419,23 @@ export async function getAllFlexibleContentComponents(
                           sourceUrl
                         }
                       }
+                      ... on ${postTypeFlexibleContent}_SignUpCta {
+                        fieldGroupName
+                        title
+                        titleTwo
+                        paragraph
+                        backgroundImage {
+                          altText
+                          sourceUrl
+                          mediaDetails {
+                            height
+                            width
+                          }
+                        }
+                        bulletPoints {
+                          point
+                        }
+                      }
                       ... on ${postTypeFlexibleContent}_ErrorPageContent {
                         fieldGroupName
                         paragraph

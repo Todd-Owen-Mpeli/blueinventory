@@ -256,6 +256,24 @@ export type ICTATwo = {
 		target: string;
 	};
 };
+export type ISignUpCta = {
+	title: string;
+	titleTwo: string;
+	paragraph: string;
+	backgroundImage: {
+		altText: string;
+		sourceUrl: string;
+		mediaDetails: {
+			width: number;
+			height: number;
+		};
+	};
+	bulletPoints: [
+		{
+			point: string;
+		}
+	];
+};
 export type ISignIn = {
 	title: string;
 	paragraph: string;
