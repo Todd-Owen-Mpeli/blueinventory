@@ -147,7 +147,7 @@ const CreateItem: FC = () => {
 												initial={initialTwo}
 												whileInView={fadeIn}
 												viewport={{once: true}}
-												className="mb-8 font-semibold text-medium text-darkBlue"
+												className="mb-8 text-xl font-semibold text-center text-darkBlue"
 											>
 												Create a Item
 											</motion.h3>
