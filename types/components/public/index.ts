@@ -1,6 +1,3 @@
-// Imports
-import {IFirebaseUser} from "@/types/firebase";
-
 // Components Card
 export type IFaqCard = {
 	title: string;

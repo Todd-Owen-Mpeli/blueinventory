@@ -357,7 +357,7 @@
 
 		input,
 		textarea {
-			@apply px-4 py-2 text-tiny w-fit lg:min-w-[13rem] text-darkBlue bg-white bg-opacity-50 outline-none rounded-lg border-[1px] border-darkGrey active:border-darkBlue focus:border-darkBlue focus:ring-[1px] focus:ring-darkBlue;
+			@apply px-4 py-2 text-tiny w-full lg:w-fit lg:min-w-[13rem] text-darkBlue bg-white bg-opacity-50 outline-none rounded-lg border-[1px] border-darkGrey active:border-darkBlue focus:border-darkBlue focus:ring-[1px] focus:ring-darkBlue;
 		}
 
 		textarea {

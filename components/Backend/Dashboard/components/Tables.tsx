@@ -16,7 +16,7 @@ const Tables: FC = () => {
 			<section
 				className={
 					styles.tables +
-					` w-full h-full p-6 overflow-hidden bg-white rounded-2xl`
+					` hidden lg:block w-full h-full p-6 border-darkBlue border-2 overflow-hidden shadow-2xl bg-white rounded-2xl`
 				}
 			>
 				<motion.h3

@@ -167,7 +167,7 @@ const SignUpForm: FC = () => {
 								type="text"
 								id="fullName"
 								name="fullName"
-								placeholder="Leroy Jenkins"
+								placeholder="Olivia Anderson"
 								onBlur={formik?.handleBlur}
 								onChange={formik?.handleChange}
 								value={formik?.values?.fullName}
@@ -220,7 +220,7 @@ const SignUpForm: FC = () => {
 								onBlur={formik?.handleBlur}
 								onChange={formik?.handleChange}
 								value={formik?.values?.email}
-								placeholder="leroyjenkins@gmail.com"
+								placeholder="oliviaanderson@gmail.com"
 								className="w-full px-3 py-2 border-[1px] rounded-md border-grey text-darkBlue focus:border-darkBlue"
 							/>
 						</motion.div>
