@@ -1,10 +1,10 @@
 // Imports
 import {FC} from "react";
-import Link from "next/link";
 import Image from "next/image";
 import {AnimatePresence, motion} from "framer-motion";
 import {useDashboardLayoutContext} from "@/context/dashboard";
 import MediaFilesGridCards from "../Cards/MediaFilesGridCards";
+import {fadeIn, initial, initialTwo, stagger} from "@/animations/animations";
 
 const MediaFiles: FC = () => {
 	const dashboardLayoutContext = useDashboardLayoutContext();
@@ -41,10 +41,23 @@ const MediaFiles: FC = () => {
 									/>
 								</motion.button>
 
-								<div className="w-full px-12 py-10 overflow-hidden rounded-lg">
+								<motion.div
+									initial={initial}
+									whileInView={stagger}
+									viewport={{once: true}}
+									className="w-full px-12 py-10 overflow-hidden rounded-lg"
+								>
 									<div className="flex flex-row items-center justify-between ">
-										<div className="flex flex-col gap-2">
-											<button
+										<motion.div
+											initial={initial}
+											whileInView={stagger}
+											viewport={{once: true}}
+											className="flex flex-col gap-2"
+										>
+											<motion.button
+												initial={initialTwo}
+												whileInView={fadeIn}
+												viewport={{once: true}}
 												onClick={
 													dashboardLayoutContext?.handleCloseMediaFilesModalHandler
 												}
@@ -66,23 +79,36 @@ const MediaFiles: FC = () => {
 												<span className="font-semibold text-tiny text-darkGrey group-hover:text-goldPrime">
 													Close
 												</span>
-											</button>
-											<h2 className="text-xl font-semibold mb-11">
-												Media Files
-											</h2>
-										</div>
-										<div className="flex flex-row items-center justify-center gap-2">
-											<button
+											</motion.button>
+											<motion.h3
+												initial={initialTwo}
+												whileInView={fadeIn}
+												viewport={{once: true}}
+												className="text-xl font-semibold mb-11"
+											>
+												Media Library
+											</motion.h3>
+										</motion.div>
+										<motion.div
+											initial={initial}
+											whileInView={stagger}
+											viewport={{once: true}}
+										>
+											<motion.button
+												initial={initialTwo}
+												whileInView={fadeIn}
+												viewport={{once: true}}
+												className="flex flex-row items-center justify-center gap-2"
 												onClick={
 													dashboardLayoutContext?.handleRevealUserCreateItemModal
 												}
 											>
 												<svg
-													width="28"
-													height="28"
+													width="24"
+													height="24"
 													fill="#15171e"
 													viewBox="0 0 24 24"
-													className={`w-[26px] h-[26px] transition-all duration-200 ease-in-out`}
+													className={`w-[24px] h-[24px] transition-all duration-200 ease-in-out`}
 													xmlns="http://www.w3.org/2000/svg"
 												>
 													<g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
@@ -122,12 +148,14 @@ const MediaFiles: FC = () => {
 														</g>
 													</g>
 												</svg>
-											</button>
-											<h2 className="font-semibold text-tiny">Add New Files</h2>
-										</div>
+												<span className="font-semibold text-tiny">
+													Add Media
+												</span>
+											</motion.button>
+										</motion.div>
 									</div>
 									<MediaFilesGridCards />
-								</div>
+								</motion.div>
 							</div>
 						</div>
 					</>

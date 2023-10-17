@@ -214,8 +214,8 @@ const CreateItem: FC = () => {
 																		className="flex flex-col flex-wrap items-center justify-center w-full gap-4 lg:justify-start lg:flex-row"
 																	>
 																		<motion.div
-																			initial={initial}
-																			whileInView={fadeInUp}
+																			initial={initialTwo}
+																			whileInView={fadeIn}
 																			viewport={{once: true}}
 																			className="flex flex-col w-full gap-2 lg:w-fit"
 																		>
@@ -236,8 +236,8 @@ const CreateItem: FC = () => {
 																			/>
 																		</motion.div>
 																		<motion.div
-																			initial={initial}
-																			whileInView={fadeInUp}
+																			initial={initialTwo}
+																			whileInView={fadeIn}
 																			viewport={{once: true}}
 																			className="flex flex-col w-full gap-2 lg:w-fit"
 																		>
@@ -258,8 +258,8 @@ const CreateItem: FC = () => {
 																			/>
 																		</motion.div>
 																		<motion.div
-																			initial={initial}
-																			whileInView={fadeInUp}
+																			initial={initialTwo}
+																			whileInView={fadeIn}
 																			viewport={{once: true}}
 																			className="flex flex-col w-full gap-2 lg:w-fit"
 																		>
@@ -280,8 +280,8 @@ const CreateItem: FC = () => {
 																			/>
 																		</motion.div>
 																		<motion.div
-																			initial={initial}
-																			whileInView={fadeInUp}
+																			initial={initialTwo}
+																			whileInView={fadeIn}
 																			viewport={{once: true}}
 																			className="flex flex-col w-full gap-2 lg:w-fit"
 																		>
@@ -303,8 +303,8 @@ const CreateItem: FC = () => {
 																			/>
 																		</motion.div>
 																		<motion.div
-																			initial={initial}
-																			whileInView={fadeInUp}
+																			initial={initialTwo}
+																			whileInView={fadeIn}
 																			viewport={{once: true}}
 																			className="flex flex-col w-full gap-2"
 																		>
@@ -329,8 +329,8 @@ const CreateItem: FC = () => {
 																</div>
 
 																<motion.button
-																	initial={initial}
-																	whileInView={fadeInUp}
+																	initial={initialTwo}
+																	whileInView={fadeIn}
 																	viewport={{once: true}}
 																	onClick={onFormSubmit}
 																	disabled={!formik?.values?.itemName}

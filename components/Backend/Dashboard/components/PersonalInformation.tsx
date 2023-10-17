@@ -18,12 +18,7 @@ const PersonalInformation: FC = () => {
 
 	return (
 		<>
-			<motion.div
-				initial={initial}
-				whileInView={stagger}
-				viewport={{once: true}}
-				className="flex flex-col justify-between gap-4"
-			>
+			<div className="flex flex-col justify-between gap-4">
 				<Image
 					width={1000}
 					height={1000}
@@ -31,7 +26,12 @@ const PersonalInformation: FC = () => {
 					src={"/svg/backgroundSVG/stacked-waves-haikei-orange-yellow.svg"}
 					alt="profile hero image"
 				/>
-				<div className="flex flex-col gap-4 px-4 py-10 lg:flex-row">
+				<motion.div
+					initial={initial}
+					whileInView={stagger}
+					viewport={{once: true}}
+					className="flex flex-col gap-4 px-4 py-10 lg:flex-row"
+				>
 					<motion.div
 						initial={initial}
 						whileInView={stagger}
@@ -183,8 +183,8 @@ const PersonalInformation: FC = () => {
 							</motion.h3>
 						</div>
 					</motion.div>
-				</div>
-			</motion.div>
+				</motion.div>
+			</div>
 		</>
 	);
 };
