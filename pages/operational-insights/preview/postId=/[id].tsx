@@ -1,6 +1,5 @@
 // Imports
 import {isEmpty} from "lodash";
-import {motion} from "framer-motion";
 import type {GetServerSideProps, NextPage} from "next";
 
 import {IPageContext} from "@/types/context/public";
@@ -35,23 +34,17 @@ const dynamicPreviewPosts: NextPage<IPageContext> = ({
 	postTypeFlexibleContent,
 }) => {
 	return (
-		<PageContextProvider
-			seo={seo}
-			content={content}
-			postTypeFlexibleContent={postTypeFlexibleContent}
-		>
-			<motion.div
-				exit={{
-					opacity: 0,
-				}}
-				initial="initial"
-				animate="animate"
+		<>
+			<PageContextProvider
+				seo={seo}
+				content={content}
+				postTypeFlexibleContent={postTypeFlexibleContent}
 			>
 				<Layout>
 					<RenderFlexibleContent />
 				</Layout>
-			</motion.div>
-		</PageContextProvider>
+			</PageContextProvider>
+		</>
 	);
 };
 

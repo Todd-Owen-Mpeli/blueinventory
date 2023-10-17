@@ -1,7 +1,7 @@
 // Imports
 import {FC} from "react";
 import {motion} from "framer-motion";
-import {useDashboardContext} from "@/context/dashboard";
+import {useDashboardGlobalContext} from "@/context/dashboard";
 import {fadeIn, initialTwo} from "@/animations/animations";
 import styles from "@/styles/pages/Dashboard.module.scss";
 
@@ -9,7 +9,7 @@ import styles from "@/styles/pages/Dashboard.module.scss";
 import TableCard from "./Cards/TableCard";
 
 const Tables: FC = () => {
-	const DashboardContext = useDashboardContext();
+	const DashboardContext = useDashboardGlobalContext();
 
 	return (
 		<>

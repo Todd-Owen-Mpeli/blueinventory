@@ -1,5 +1,4 @@
 // Imports
-import {motion} from "framer-motion";
 import type {NextPage, GetStaticProps} from "next";
 import {IPageContext} from "@/types/context/public";
 import {homePage, postType, flexibleContentType} from "@/context/context";
@@ -19,23 +18,17 @@ const HomePage: NextPage<IPageContext> = ({
 	postTypeFlexibleContent,
 }) => {
 	return (
-		<PageContextProvider
-			seo={seo}
-			content={content}
-			postTypeFlexibleContent={postTypeFlexibleContent}
-		>
-			<motion.div
-				exit={{
-					opacity: 0,
-				}}
-				initial="initial"
-				animate="animate"
+		<>
+			<PageContextProvider
+				seo={seo}
+				content={content}
+				postTypeFlexibleContent={postTypeFlexibleContent}
 			>
 				<Layout>
 					<RenderFlexibleContent />
 				</Layout>
-			</motion.div>
-		</PageContextProvider>
+			</PageContextProvider>
+		</>
 	);
 };
 

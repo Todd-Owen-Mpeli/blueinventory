@@ -1,17 +1,12 @@
 // Imports
 import Link from "next/link";
-import Image from "next/image";
 import {FC, useState} from "react";
 import {useRouter} from "next/router";
 import {getAuth, signOut} from "firebase/auth";
-import {AnimatePresence, motion} from "framer-motion";
-import {useDashboardMetaContext} from "@/context/dashboard";
+import {useDashboardLayoutContext} from "@/context/dashboard";
 
 // Styling
 import styles from "@/styles/pages/Dashboard.module.scss";
-
-// Firebase
-import {useFirebaseContext} from "@/context/Firebase";
 
 // Components
 import CreateItem from "../components/CreateItem";
@@ -19,14 +14,16 @@ import CreateItem from "../components/CreateItem";
 const TopNavbar: FC = () => {
 	const auth = getAuth();
 	const router = useRouter();
-	const dashboardContext = useDashboardMetaContext();
+	const dashboardLayoutContext = useDashboardLayoutContext();
 	const [revealCreateItem, setRevealCreateItem] = useState(false);
 
-	// Hides or Displays User dropdown
+	/* Hides or Displays 
+	Create Item Modal */
 	const handleRevealUserCreateItem = () => {
 		setRevealCreateItem(!revealCreateItem);
 	};
 
+	/* Hides Create Item Modal */
 	const closeHandler = () => {
 		setRevealCreateItem(false);
 	};
@@ -57,13 +54,15 @@ const TopNavbar: FC = () => {
 				<ul className="flex flex-row items-center">
 					<li>
 						<h1 className="text-base font-bold text-left cursor-default lg:text-medium">
-							{dashboardContext.pageTitle}
+							Dashboard
 						</h1>
 					</li>
 				</ul>
 				<ul className="flex flex-row items-center gap-6">
 					<li>
-						<button onClick={handleRevealUserCreateItem}>
+						<button
+							onClick={dashboardLayoutContext?.handleRevealUserCreateItemModal}
+						>
 							<svg
 								width="28"
 								height="28"
@@ -213,42 +212,6 @@ const TopNavbar: FC = () => {
 					</li>
 				</ul>
 			</section>
-			<>
-				{/* Create Item */}
-				<AnimatePresence>
-					{revealCreateItem && (
-						<>
-							<motion.div
-								initial={{opacity: 0}}
-								animate={{opacity: 1}}
-								exit={{opacity: 0}}
-								className="fixed top-0 left-0 z-50 w-full h-full bg-darkerBlueTwo bg-opacity-90"
-							/>
-							<div className="fixed top-0 left-0 z-50 flex w-full h-full px-4 py-24 overflow-y-scroll">
-								<div className="relative m-auto bg-white rounded-lg">
-									{/* Close Modal */}
-									<motion.button
-										initial={{opacity: 0}}
-										animate={{opacity: 1}}
-										exit={{opacity: 0}}
-										onClick={closeHandler}
-										className="absolute right-0 w-8 cursor-pointer text-green-default -top-12 hover:text-yellow"
-									>
-										<Image
-											width={500}
-											height={500}
-											src="/svg/cross.svg"
-											alt="White arrow in a gold circle"
-											className="transition-opacity duration-200 ease-in-out hover:opacity-70"
-										/>
-									</motion.button>
-									<CreateItem />
-								</div>
-							</div>
-						</>
-					)}
-				</AnimatePresence>
-			</>
 		</>
 	);
 };

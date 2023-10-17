@@ -8,9 +8,6 @@ import {initial, stagger, fadeInUp} from "@/animations/animations";
 // Firebase
 import {useFirebaseContext} from "@/context/Firebase";
 
-// Components
-import Paragraph from "@/components/Frontend/Elements/Paragraph";
-
 const PersonalInformation: FC = () => {
 	const firebaseContext = useFirebaseContext();
 
@@ -21,21 +18,27 @@ const PersonalInformation: FC = () => {
 
 	return (
 		<>
-			<div className="flex flex-col justify-between gap-4">
-				<div>
-					<div>
-						<Image
-							width={1000}
-							height={1000}
-							className="object-cover object-center w-full h-full min-h-[175px] max-h-[175px] lg:min-h-[250px] lg:max-h-[250px]"
-							src={"/svg/backgroundSVG/stacked-waves-haikei-orange-yellow.svg"}
-							alt="profile hero image"
-						/>
-					</div>
-				</div>
+			<motion.div
+				initial={initial}
+				whileInView={stagger}
+				viewport={{once: true}}
+				className="flex flex-col justify-between gap-4"
+			>
+				<Image
+					width={1000}
+					height={1000}
+					className="object-cover object-center w-full h-full min-h-[175px] max-h-[175px] lg:min-h-[250px] lg:max-h-[250px]"
+					src={"/svg/backgroundSVG/stacked-waves-haikei-orange-yellow.svg"}
+					alt="profile hero image"
+				/>
 				<div className="flex flex-col gap-4 px-4 py-10 lg:flex-row">
-					<div className="flex flex-col w-full max-w-5xl gap-4 px-8 py-10 mx-auto bg-white rounded-2xl">
-						<div className="flex flex-col py-2 justify-between gap-2 sm:flex-row border-b-lightGreyTwo border-b-[1px]">
+					<motion.div
+						initial={initial}
+						whileInView={stagger}
+						viewport={{once: true}}
+						className="flex flex-col w-full max-w-5xl gap-4 px-8 py-10 mx-auto bg-white rounded-2xl"
+					>
+						<div className="flex flex-col py-2 items-center justify-between gap-2 sm:flex-row border-b-lightGreyTwo border-b-[1px]">
 							<motion.h3
 								initial={initial}
 								whileInView={fadeInUp}
@@ -53,7 +56,28 @@ const PersonalInformation: FC = () => {
 								{firebaseContext?.userData?.displayName}
 							</motion.h3>
 						</div>
-						<div className="flex flex-col py-2 justify-between gap-2 sm:flex-row border-b-lightGreyTwo border-b-[1px]">
+						<div className="flex flex-col pb-3 items-center justify-between gap-2 sm:flex-row border-b-lightGreyTwo border-b-[1px]">
+							<motion.h3
+								initial={initial}
+								whileInView={fadeInUp}
+								viewport={{once: true}}
+								className="font-bold text-left text-medium text-darkBlue"
+							>
+								Profile Picture
+							</motion.h3>
+							<Image
+								width={500}
+								height={500}
+								src={
+									firebaseContext?.userData?.photoURL
+										? firebaseContext?.userData?.photoURL
+										: `/img/Logos/default-avatar-profile.jpg`
+								}
+								alt={`${firebaseContext?.userData?.displayName} profile image`}
+								className="object-cover object-center w-10 h-10 rounded-full"
+							/>
+						</div>
+						<div className="flex flex-col py-2 items-center justify-between gap-2 sm:flex-row border-b-lightGreyTwo border-b-[1px]">
 							<motion.h3
 								initial={initial}
 								whileInView={fadeInUp}
@@ -84,7 +108,7 @@ const PersonalInformation: FC = () => {
 								{firebaseContext?.userData?.email}
 							</motion.h3>
 						</div>
-						<div className="flex flex-col py-2 justify-between gap-2 sm:flex-row border-b-lightGreyTwo border-b-[1px]">
+						<div className="flex flex-col py-2 items-center justify-between gap-2 sm:flex-row border-b-lightGreyTwo border-b-[1px]">
 							<motion.h3
 								initial={initial}
 								whileInView={fadeInUp}
@@ -102,7 +126,7 @@ const PersonalInformation: FC = () => {
 								Owner
 							</motion.h3>
 						</div>
-						<div className="flex flex-col py-2 justify-between gap-2 sm:flex-row border-b-lightGreyTwo border-b-[1px]">
+						<div className="flex flex-col py-2 items-center justify-between gap-2 sm:flex-row border-b-lightGreyTwo border-b-[1px]">
 							<motion.h3
 								initial={initial}
 								whileInView={fadeInUp}
@@ -120,7 +144,7 @@ const PersonalInformation: FC = () => {
 								{firebaseContext?.userData?.metadata?.creationTime}
 							</motion.h3>
 						</div>
-						<div className="flex flex-col py-2 justify-between gap-2 sm:flex-row border-b-lightGreyTwo border-b-[1px]">
+						<div className="flex flex-col py-2 items-center justify-between gap-2 sm:flex-row border-b-lightGreyTwo border-b-[1px]">
 							<motion.h3
 								initial={initial}
 								whileInView={fadeInUp}
@@ -138,7 +162,7 @@ const PersonalInformation: FC = () => {
 								{firebaseContext?.userData?.metadata?.lastSignInTime}
 							</motion.h3>
 						</div>
-						<div className="flex flex-col py-2 justify-between gap-2 sm:flex-row border-b-lightGreyTwo border-b-[1px]">
+						<div className="flex flex-col py-2 items-center justify-between gap-2 sm:flex-row border-b-lightGreyTwo border-b-[1px]">
 							<motion.h3
 								initial={initial}
 								whileInView={fadeInUp}
@@ -158,9 +182,9 @@ const PersonalInformation: FC = () => {
 									: "none"}
 							</motion.h3>
 						</div>
-					</div>
+					</motion.div>
 				</div>
-			</div>
+			</motion.div>
 		</>
 	);
 };

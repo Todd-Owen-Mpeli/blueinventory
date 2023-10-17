@@ -1,9 +1,8 @@
 // Imports
-import Link from "next/link";
 import Image from "next/image";
 import {motion} from "framer-motion";
 import {FC, Fragment, useState} from "react";
-import {useDashboardContext} from "@/context/dashboard";
+import {useDashboardGlobalContext} from "@/context/dashboard";
 import {fadeIn, initial, stagger, initialTwo} from "@/animations/animations";
 
 // Firebase
@@ -16,8 +15,9 @@ const itemsPerPage = 10;
 
 const TableCard: FC = () => {
 	const firebaseContext = useFirebaseContext();
-	const DashboardContext = useDashboardContext();
+	const DashboardContext = useDashboardGlobalContext();
 	const [currentPage, setCurrentPage] = useState(1);
+	const [editFields, setEditFields] = useState(false);
 
 	const startIndex: number = (currentPage - 1) * itemsPerPage;
 	const endIndex: number = startIndex + itemsPerPage;
@@ -26,6 +26,11 @@ const TableCard: FC = () => {
 		DashboardContext?.itemsCollection?.length;
 	const itemsToRender: any[] | undefined =
 		DashboardContext?.itemsCollection?.slice(startIndex, endIndex);
+
+	// Hides or Displays User dropdown
+	const handleEditFields = () => {
+		setEditFields(!editFields);
+	};
 
 	return (
 		<>
@@ -81,7 +86,9 @@ const TableCard: FC = () => {
 								</div>
 							</td>
 							<td className="px-4 py-3">
-								<div className="font-semibold ">{item?.quantity}</div>
+								<div className="font-semibold ">
+									{editFields ? <></> : item?.quantity}
+								</div>
 							</td>
 							<td className="px-4 py-3">
 								<div className="px-2.5 py-1 text-sm font-normal text-white bg-darkBlue w-fit rounded-full">
@@ -89,11 +96,24 @@ const TableCard: FC = () => {
 								</div>
 							</td>
 							<td className="px-4 py-3">
-								<Link className="inline-flex py-2.5 pr-0" href={`/`}>
-									<span className="w-1 h-1 bg-black rounded-full"></span>
-									<span className="mx-0.5 w-1 h-1 bg-black rounded-full"></span>
-									<span className="w-1 h-1 bg-black rounded-full"></span>
-								</Link>
+								<div className="flex flex-row gap-2">
+									<button
+										onClick={handleEditFields}
+										className="inline-flex py-2.5 pr-0"
+									>
+										<span className="w-1 h-1 bg-black rounded-full"></span>
+										<span className="mx-0.5 w-1 h-1 bg-black rounded-full"></span>
+										<span className="w-1 h-1 bg-black rounded-full"></span>
+									</button>
+									<button
+										onClick={handleEditFields}
+										className="inline-flex py-2.5 pr-0"
+									>
+										<span className="w-1 h-1 bg-black rounded-full"></span>
+										<span className="mx-0.5 w-1 h-1 bg-black rounded-full"></span>
+										<span className="w-1 h-1 bg-black rounded-full"></span>
+									</button>
+								</div>
 							</td>
 						</motion.tr>
 					</Fragment>

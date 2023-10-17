@@ -31,13 +31,11 @@ export type ISeo = {
 		mediaItemUrl: string;
 	};
 };
-
 export type IContent = [
 	{
 		content: any;
 	}
 ];
-
 export type IPostTypes = {
 	pages: string;
 	posts: string;
@@ -46,7 +44,6 @@ export type IPostTypes = {
 	previewPost: string;
 	previewIndustry: string;
 };
-
 export type IFooterMenuLinks = {
 	footerMenuLinks: [
 		{
@@ -58,7 +55,6 @@ export type IFooterMenuLinks = {
 		}
 	];
 };
-
 export type IMainMenuLinks = {
 	mainMenuLinks: [
 		{
@@ -70,7 +66,6 @@ export type IMainMenuLinks = {
 		}
 	];
 };
-
 export type INavbarMenuLinks = {
 	navbarMenuLinks: [
 		{
@@ -82,7 +77,6 @@ export type INavbarMenuLinks = {
 		}
 	];
 };
-
 export type IErrorPageContent = {
 	title: string;
 	buttonLink: {
@@ -98,13 +92,11 @@ export type IErrorPageContent = {
 	paragraph: string;
 	backgroundImage: string;
 };
-
 export type IPageContext = {
 	seo: ISeo;
 	content: IContent;
 	postTypeFlexibleContent: IPostTypeFlexibleContent;
 };
-
 export type IGlobalContext = {
 	stripePlans: IStripePlans;
 	mainMenuLinks: IMainMenuLinks;
@@ -115,41 +107,11 @@ export type IGlobalContext = {
 	themesOptionsContent: IThemesOptionsContent;
 	contentSliderPostsContent: IContentSliderPostsContent;
 };
-
-export type IGlobalContextProvider = {
-	globalProps: IGlobalContext;
-	children: React.ReactNode;
-};
-
-export type IFirebaseContextProvider = {
-	children: React.ReactNode;
-	firebaseUserUser: IFirebaseContext;
-};
-
-export type IPageContextProvider = {
-	seo: ISeo;
-	content: IContent;
-	children: React.ReactNode;
-	postTypeFlexibleContent: IPostTypeFlexibleContent;
-};
-
-export type IDashboardContextProvider = {
-	pageTitle: string;
-	children: React.ReactNode;
-	itemsCollection: any[] | null;
-};
-
-export type IDashboardMetaContentProvider = {
-	pageTitle: string;
-	children: React.ReactNode;
-};
-
 export type IFirebaseContext = {
 	signedInUser: boolean;
 	userDocId: string | null;
 	userData: IFirebaseUser | null;
 };
-
 export type IIndustriesMenuLinks = {
 	industriesMenuLinks: [
 		{
@@ -161,7 +123,6 @@ export type IIndustriesMenuLinks = {
 		}
 	];
 };
-
 export type IOperationalInsights = [
 	{
 		node: {
@@ -192,7 +153,16 @@ export type IOperationalInsights = [
 		};
 	}
 ];
-
+export type IPageContextProvider = {
+	seo: ISeo;
+	content: IContent;
+	children: React.ReactNode;
+	postTypeFlexibleContent: IPostTypeFlexibleContent;
+};
+export type IGlobalContextProvider = {
+	globalProps: IGlobalContext;
+	children: React.ReactNode;
+};
 export type IThemesOptionsContent = {
 	email: string;
 	address: string;
@@ -204,18 +174,19 @@ export type IThemesOptionsContent = {
 	linkedinLink: string;
 	copyrightText: string;
 };
-
 export type IPostTypeFlexibleContent = {
 	postTypeFlexibleContent: string;
 };
-
+export type IFirebaseContextProvider = {
+	children: React.ReactNode;
+	firebaseUserUser: IFirebaseContext;
+};
 export type IPostTypesFlexiblecontent = {
 	pages: string;
 	previewPage: string;
 	previewPost: string;
 	previewIndustry: string;
 };
-
 export type IContentSliderPostsContent = {
 	content: [
 		{
@@ -306,4 +277,13 @@ export type IContentSliderPostsContent = {
 			};
 		}
 	];
+};
+export type IDashboardMetaContextProvider = {
+	pageTitle: string;
+	children: React.ReactNode;
+};
+export type IDashboardGlobalContextProvider = {
+	pageTitle: string;
+	children: React.ReactNode;
+	itemsCollection: any[] | null;
 };

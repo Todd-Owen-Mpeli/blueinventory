@@ -42,8 +42,18 @@ export const createNewUserWithEmailAndPassword = async (
 
 		/* Creating a Items Sub Collection in
 		the users cloud Firestore Database */
-		const subCollectionRef = collection(db, `users/${user?.uid}/Items`);
-		await setDoc(doc(subCollectionRef), {
+		const itemsSubCollectionRef = collection(db, `users/${user?.uid}/Items`);
+		await setDoc(doc(itemsSubCollectionRef), {
+			value: `100`,
+			itemName: `Item One`,
+			quantity: `1`,
+			category: ``,
+			description: `Item One`,
+		});
+		/* Creating a Media Sub Collection in
+		the users cloud Firestore Database */
+		const mediaSubCollectionRef = collection(db, `users/${user?.uid}/Media`);
+		await setDoc(doc(mediaSubCollectionRef), {
 			value: `100`,
 			itemName: `Item One`,
 			quantity: `1`,

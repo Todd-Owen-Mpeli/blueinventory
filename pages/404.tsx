@@ -1,5 +1,4 @@
 // Imports
-import {motion} from "framer-motion";
 import type {NextPage, GetStaticProps} from "next";
 import {IPageContext} from "@/types/context/public";
 import {postType, errorPage, flexibleContentType} from "@/context/context";
@@ -19,27 +18,24 @@ const noPageExits: NextPage<IPageContext> = ({
 	postTypeFlexibleContent,
 }) => {
 	return (
-		<PageContextProvider
-			seo={seo}
-			content={content}
-			postTypeFlexibleContent={postTypeFlexibleContent}
-		>
-			<motion.div
-				exit={{
-					opacity: 0,
-				}}
-				initial="initial"
-				animate="animate"
-				className="min-h-screen bg-white bg-center bg-no-repeat bg-cover"
-				style={{
-					backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue-pink-red-yellow.svg")`,
-				}}
+		<>
+			<PageContextProvider
+				seo={seo}
+				content={content}
+				postTypeFlexibleContent={postTypeFlexibleContent}
 			>
-				<Layout>
-					<RenderFlexibleContent />
-				</Layout>
-			</motion.div>
-		</PageContextProvider>
+				<div
+					className="min-h-screen bg-white bg-center bg-no-repeat bg-cover"
+					style={{
+						backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue-pink-red-yellow.svg")`,
+					}}
+				>
+					<Layout>
+						<RenderFlexibleContent />
+					</Layout>
+				</div>
+			</PageContextProvider>
+		</>
 	);
 };
 

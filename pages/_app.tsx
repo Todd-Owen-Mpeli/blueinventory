@@ -1,4 +1,5 @@
 // Imports
+import {motion} from "framer-motion";
 import type {AppProps} from "next/app";
 import {client} from "@/config/apollo";
 import {useState, useEffect} from "react";
@@ -46,7 +47,8 @@ import ErrorPage from "@/components/Frontend/Elements/ErrorPage";
 import CookiePolicyCard from "@/components/Frontend/Elements/CookiePolicyCard";
 import GlobalContextProvider from "@/components/Frontend/context/GlobalContextProvider";
 import FirebaseContextProvider from "@/components/Frontend/context/FirebaseContextProvider";
-import DashboardContextProvider from "@/components/Frontend/context/DashboardContextProvider";
+import DashboardGlobalContextProvider from "@/components/Frontend/context/DashboardGlobalContextProvider";
+import Layout from "@/components/Backend/Dashboard/Layout/Layout";
 
 // Check that PostHog is client-side (used to handle Next.js SSR)
 if (typeof window !== "undefined") {
@@ -258,41 +260,51 @@ export default function App({
 		<ApolloProvider client={client}>
 			<PostHogProvider client={postHog}>
 				<FirebaseContextProvider firebaseUserUser={firebaseUser}>
-					{isProtectedPage && signedInUser ? (
-						<DashboardContextProvider
-							pageTitle={`Dashboard`}
-							itemsCollection={itemsCollection}
-						>
+					<motion.section
+						exit={{
+							opacity: 0,
+						}}
+						initial="initial"
+						animate="animate"
+					>
+						{isProtectedPage && signedInUser ? (
+							<DashboardGlobalContextProvider
+								pageTitle={`Dashboard`}
+								itemsCollection={itemsCollection}
+							>
+								<>
+									<Layout>
+										<Loading />
+										<Component {...pageProps} />
+									</Layout>
+								</>
+							</DashboardGlobalContextProvider>
+						) : isPublicPage ? (
+							<GlobalContextProvider globalProps={globalProps}>
+								<>
+									{/* Cookie Policy Pop Up */}
+									{postHog.has_opted_in_capturing() ||
+									postHog.has_opted_out_capturing() ? null : (
+										<CookiePolicyCard />
+									)}
+									<Loading />
+									<Component {...pageProps} />
+									<Footer />
+								</>
+							</GlobalContextProvider>
+						) : (
 							<>
 								<Loading />
-								<Component {...pageProps} />
+								<ErrorPage
+									title={errorPageContent?.title}
+									paragraph={errorPageContent?.paragraph}
+									buttonLink={errorPageContent?.buttonLink}
+									buttonLinkTwo={errorPageContent?.buttonLinkTwo}
+									backgroundImage={errorPageContent?.backgroundImage}
+								/>
 							</>
-						</DashboardContextProvider>
-					) : isPublicPage ? (
-						<GlobalContextProvider globalProps={globalProps}>
-							<>
-								{/* Cookie Policy Pop Up */}
-								{postHog.has_opted_in_capturing() ||
-								postHog.has_opted_out_capturing() ? null : (
-									<CookiePolicyCard />
-								)}
-								<Loading />
-								<Component {...pageProps} />
-								<Footer />
-							</>
-						</GlobalContextProvider>
-					) : (
-						<>
-							<Loading />
-							<ErrorPage
-								title={errorPageContent?.title}
-								paragraph={errorPageContent?.paragraph}
-								buttonLink={errorPageContent?.buttonLink}
-								buttonLinkTwo={errorPageContent?.buttonLinkTwo}
-								backgroundImage={errorPageContent?.backgroundImage}
-							/>
-						</>
-					)}
+						)}
+					</motion.section>
 				</FirebaseContextProvider>
 			</PostHogProvider>
 		</ApolloProvider>

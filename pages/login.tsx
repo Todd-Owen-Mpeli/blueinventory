@@ -1,5 +1,4 @@
 // Imports
-import {motion} from "framer-motion";
 import {NextPage, GetServerSideProps} from "next";
 import {IPageContext} from "@/types/context/public";
 import Layout from "@/components/Frontend/Layout/Layout";
@@ -19,27 +18,24 @@ const login: NextPage<IPageContext> = ({
 	postTypeFlexibleContent,
 }) => {
 	return (
-		<PageContextProvider
-			seo={seo}
-			content={content}
-			postTypeFlexibleContent={postTypeFlexibleContent}
-		>
-			<motion.div
-				exit={{
-					opacity: 0,
-				}}
-				initial="initial"
-				animate="animate"
-				className="bg-center bg-no-repeat bg-cover "
-				style={{
-					backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-orange-yellow-pinkRed.svg")`,
-				}}
+		<>
+			<PageContextProvider
+				seo={seo}
+				content={content}
+				postTypeFlexibleContent={postTypeFlexibleContent}
 			>
-				<Layout>
-					<Login />
-				</Layout>
-			</motion.div>
-		</PageContextProvider>
+				<div
+					className="bg-center bg-no-repeat bg-cover "
+					style={{
+						backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-orange-yellow-pinkRed.svg")`,
+					}}
+				>
+					<Layout>
+						<Login />
+					</Layout>
+				</div>
+			</PageContextProvider>
+		</>
 	);
 };
 

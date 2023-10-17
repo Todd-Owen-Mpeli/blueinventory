@@ -1,32 +1,23 @@
 // Imports
 import React from "react";
-import {motion} from "framer-motion";
 import {NextPage, GetStaticProps} from "next";
-import {IDashboard} from "@/types/context/dashboard";
-import {layoutTailwindStyling} from "@/context/dashboard";
 
 // Components
-import Layout from "@/components/Backend/Dashboard/Layout/Layout";
+import Meta from "@/components/Backend/Dashboard/Meta/Meta";
 import Tables from "@/components/Backend/Dashboard/components/Tables";
-import CreateItem from "@/components/Backend/Dashboard/components/CreateItem";
-import DashboardMetaContentProvider from "@/components/Frontend/context/DashboardMetaContentProvider";
+import MediaFiles from "@/components/Backend/Dashboard/components/Modals/MediaFiles";
+import DashboardMetaContextProvider from "@/components/Frontend/context/DashboardMetaContextProvider";
 
-const dashboard: NextPage<IDashboard> = () => {
+const dashboard: NextPage = () => {
 	return (
-		<DashboardMetaContentProvider pageTitle={"Dashboard"}>
-			<motion.section
-				exit={{
-					opacity: 0,
-				}}
-				initial="initial"
-				animate="animate"
-			>
-				<Layout tailwindStyling={layoutTailwindStyling}>
-					{/* <CreateItem /> */}
+		<>
+			<DashboardMetaContextProvider pageTitle={"Dashboard"}>
+				<div className="p-4">
+					<Meta />
 					<Tables />
-				</Layout>
-			</motion.section>
-		</DashboardMetaContentProvider>
+				</div>
+			</DashboardMetaContextProvider>
+		</>
 	);
 };
 

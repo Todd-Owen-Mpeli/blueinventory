@@ -16,7 +16,6 @@ const Layout: FC<ILayoutTwo> = ({children, pageTitle}) => {
 			</Head>
 
 			<NavbarTwo />
-
 			<div className="pt-14">{children}</div>
 		</>
 	);

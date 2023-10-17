@@ -1,24 +1,28 @@
 // Imports
 import {
-	IDashboardContent,
-	IDashboardMetaContent,
+	IDashboardMetaContext,
+	IDashboardGlobalContent,
+	IDashboardLayoutContent,
 } from "@/types/context/dashboard";
 import {createContext, useContext} from "react";
 
-export const layoutTailwindStyling: string = "flex flex-col p-4";
-
 // Global Dashboard Context
-export const DashboardContext = createContext<IDashboardContent | undefined>(
-	undefined
-);
-
-// Dashboard Meta Context
-export const DashboardMetaContent = createContext<
-	IDashboardMetaContent | undefined
+export const DashboardGlobalContext = createContext<
+	IDashboardGlobalContent | undefined
 >(undefined);
 
-export const useDashboardContext = () => {
-	const content = useContext(DashboardContext);
+// Dashboard Layout Context
+export const DashboardLayoutContext = createContext<
+	IDashboardLayoutContent | undefined
+>(undefined);
+
+// Dashboard Meta Context
+export const DashboardMetaContext = createContext<
+	IDashboardMetaContext | undefined
+>(undefined);
+
+export const useDashboardGlobalContext = () => {
+	const content = useContext(DashboardGlobalContext);
 
 	if (content === undefined) {
 		throw new Error(`useDashboardContext must be used to render content.`);
@@ -27,11 +31,23 @@ export const useDashboardContext = () => {
 	return content;
 };
 
-export const useDashboardMetaContext = () => {
-	const content = useContext(DashboardMetaContent);
+export const useDashboardLayoutContext = () => {
+	const content = useContext(DashboardLayoutContext);
 
 	if (content === undefined) {
-		throw new Error(`useDashboardContext must be used to render content.`);
+		throw new Error(
+			`useDashboardLayoutContext must be used to render content.`
+		);
+	}
+
+	return content;
+};
+
+export const useDashboardMetaContext = () => {
+	const content = useContext(DashboardMetaContext);
+
+	if (content === undefined) {
+		throw new Error(`useDashboardMetaContext must be used to render content.`);
 	}
 
 	return content;

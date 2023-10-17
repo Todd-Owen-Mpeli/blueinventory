@@ -1,30 +1,21 @@
 // Imports
-import {motion} from "framer-motion";
 import {NextPage, GetStaticProps} from "next";
-import {IDashboard} from "@/types/context/dashboard";
 
 // Components
-import Layout from "@/components/Backend/Dashboard/Layout/Layout";
+import Meta from "@/components/Backend/Dashboard/Meta/Meta";
 import PersonalInformation from "@/components/Backend/Dashboard/components/PersonalInformation";
-import DashboardMetaContentProvider from "@/components/Frontend/context/DashboardMetaContentProvider";
+import DashboardMetaContextProvider from "@/components/Frontend/context/DashboardMetaContextProvider";
 
-const settings: NextPage<IDashboard> = () => {
+const settings: NextPage = () => {
 	return (
-		<DashboardMetaContentProvider pageTitle={"Settings"}>
-			<motion.section
-				exit={{
-					opacity: 0,
-				}}
-				initial="initial"
-				animate="animate"
-			>
-				<Layout
-					tailwindStyling={"flex flex-col w-full p-0 rounded-xl bg-white"}
-				>
+		<>
+			<DashboardMetaContextProvider pageTitle={"Settings"}>
+				<div className="w-full p-0 bg-white rounded-xl">
+					<Meta />
 					<PersonalInformation />
-				</Layout>
-			</motion.section>
-		</DashboardMetaContentProvider>
+				</div>
+			</DashboardMetaContextProvider>
+		</>
 	);
 };
 
