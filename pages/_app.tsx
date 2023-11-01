@@ -83,15 +83,7 @@ const publicPages: Array<string> = [
 	"/operational-insights/preview/postId=/[id]",
 ];
 
-const protectedPages: Array<string> = [
-	"/dashboard",
-	"/dashboard/items",
-	"/dashboard/settings",
-	"/dashboard/documents",
-	"/dashboard/items/add",
-	"/dashboard/items/[id]",
-	"/dashboard/categories",
-];
+const protectedPages: Array<string> = ["/dashboard", "/dashboard/settings"];
 
 export default function App({
 	Component,
