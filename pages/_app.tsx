@@ -72,10 +72,8 @@ const publicPages: Array<string> = [
 const protectedPages: Array<string> = [
 	"/dashboard",
 	"/dashboard/items",
+	"/dashboard/Media",
 	"/dashboard/settings",
-	"/dashboard/documents",
-	"/dashboard/items/add",
-	"/dashboard/items/[id]",
 	"/dashboard/categories",
 ];
 
