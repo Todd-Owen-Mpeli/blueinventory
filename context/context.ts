@@ -2,7 +2,7 @@
 import {
 	IPostTypes,
 	IPageContext,
-	IPostTypesFlexiblecontent,
+	IPostTypesFlexibleContent,
 } from "@/types/context/public";
 import {createContext, useContext} from "react";
 
@@ -20,7 +20,7 @@ export const postType: IPostTypes = {
 };
 export const homePage: string = "Home";
 export const errorPage: string = "error-page";
-export const flexibleContentType: IPostTypesFlexiblecontent = {
+export const flexibleContentType: IPostTypesFlexibleContent = {
 	// Public pages
 	pages: "DefaultTemplate_Flexiblecontent_FlexibleContent",
 	// Preview pages

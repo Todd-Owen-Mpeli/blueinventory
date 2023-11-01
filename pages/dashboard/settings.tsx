@@ -1,4 +1,5 @@
 // Imports
+import {Suspense} from "react";
 import {NextPage, GetStaticProps} from "next";
 
 // Components

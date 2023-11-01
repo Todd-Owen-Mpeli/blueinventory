@@ -5,6 +5,7 @@ export type IDashboardMetaContext = {
 export type IDashboardGlobalContent = {
 	pageTitle: string;
 	itemsCollection: any[] | null;
+	mediaFilesCollection: any[] | null;
 };
 export type IDashboardLayoutContent = {
 	revealMediaFilesModal: boolean;

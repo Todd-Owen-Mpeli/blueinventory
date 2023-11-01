@@ -38,6 +38,7 @@ export async function getStaticPaths() {
 	const paths = data.map((item) => ({
 		params: {
 			slug: item?.slug as String,
+			locale: "en-US",
 		},
 	}));
 

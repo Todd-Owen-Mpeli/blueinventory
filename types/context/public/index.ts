@@ -181,7 +181,7 @@ export type IFirebaseContextProvider = {
 	children: React.ReactNode;
 	firebaseUserUser: IFirebaseContext;
 };
-export type IPostTypesFlexiblecontent = {
+export type IPostTypesFlexibleContent = {
 	pages: string;
 	previewPage: string;
 	previewPost: string;
@@ -286,4 +286,8 @@ export type IDashboardGlobalContextProvider = {
 	pageTitle: string;
 	children: React.ReactNode;
 	itemsCollection: any[] | null;
+	mediaFilesCollection: any[] | null;
+};
+export type IGoogleTranslateContextProvider = {
+	children: React.ReactNode;
 };

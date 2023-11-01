@@ -1,11 +1,5 @@
 // Imports
-import {
-	fadeIn,
-	initial,
-	stagger,
-	fadeInUp,
-	initialTwo,
-} from "@/animations/animations";
+import {fadeIn, initial, stagger, initialTwo} from "@/animations/animations";
 import {FC} from "react";
 import Image from "next/image";
 import React, {useState} from "react";

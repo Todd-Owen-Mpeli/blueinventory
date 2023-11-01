@@ -6,12 +6,14 @@ const DashboardGlobalContextProvider: FC<IDashboardGlobalContextProvider> = ({
 	children,
 	pageTitle,
 	itemsCollection,
+	mediaFilesCollection,
 }) => {
 	return (
 		<DashboardGlobalContext.Provider
 			value={{
 				pageTitle: pageTitle,
 				itemsCollection: itemsCollection,
+				mediaFilesCollection: mediaFilesCollection,
 			}}
 		>
 			{children}

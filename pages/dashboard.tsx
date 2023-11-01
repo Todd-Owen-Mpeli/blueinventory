@@ -5,7 +5,6 @@ import {NextPage, GetStaticProps} from "next";
 // Components
 import Meta from "@/components/Backend/Dashboard/Meta/Meta";
 import Tables from "@/components/Backend/Dashboard/components/Tables";
-import MediaFiles from "@/components/Backend/Dashboard/components/Modals/MediaFiles";
 import DashboardMetaContextProvider from "@/components/Frontend/context/DashboardMetaContextProvider";
 
 const dashboard: NextPage = () => {

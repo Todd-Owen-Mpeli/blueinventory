@@ -1,59 +1,26 @@
 "use client";
 
 // Imports
-import {
-	initial,
-	fadeIn,
-	stagger,
-	fadeInUp,
-	initialTwo,
-} from "@/animations/animations";
 import Link from "next/link";
-import Image from "next/image";
 import {useState, FC} from "react";
 import {motion} from "framer-motion";
-import {useRouter} from "next/router";
 import {useGlobalContext} from "@/context/Global";
 import styles from "@/styles/components/Hero.module.scss";
-
-// Firebase
-import {getAuth, signOut} from "firebase/auth";
-import {useFirebaseContext} from "@/context/Firebase";
+import {initial, stagger, fadeInUp} from "@/animations/animations";
 
 // Components
 import MobileNavbarTwo from "./MobileNavbarTwo";
 import NavbarMenuLinks from "@/components/Frontend/Elements/NavbarMenuLinks";
+import NavbarSignIn from "../Elements/NavbarSignIn";
 
 const NavbarTwo: FC = () => {
-	const auth = getAuth();
-	const router = useRouter();
 	// eslint-disable-next-line react-hooks/rules-of-hooks
 	const globalContext = useGlobalContext();
-	const firebaseContext = useFirebaseContext();
 	const [revealMobileMenu, setRevealMobileMenu] = useState(false);
-	const [revealUserDropdown, setRevealUserDropdown] = useState(false);
 
 	// Hides or Displays Mobile Menu
 	const handleRevealMobileMenu = () => {
 		setRevealMobileMenu(!revealMobileMenu);
-	};
-
-	// Hides or Displays User dropdown
-	const handleRevealUserDropdown = () => {
-		setRevealUserDropdown(!revealUserDropdown);
-	};
-
-	// Handles User Logout
-	const handleLogout = () => {
-		signOut(auth)
-			.then(() => {
-				// Sign-out successful.
-				console.log("User Sign out Successful");
-				router.push("/");
-			})
-			.catch((error) => {
-				// An error happened.
-			});
 	};
 
 	return (
@@ -104,115 +71,7 @@ const NavbarTwo: FC = () => {
 					<div className="w-full lg:w-1/3">
 						<div className="flex flex-wrap items-center justify-end gap-2">
 							<div className="hidden w-auto xl:block">
-								{firebaseContext?.signedInUser ? (
-									<div className="flex flex-wrap items-center justify-end gap-8">
-										<motion.div
-											initial={initialTwo}
-											viewport={{once: true}}
-											whileInView={fadeIn}
-											className="relative"
-										>
-											<button
-												onClick={handleRevealUserDropdown}
-												className="relative"
-											>
-												<Image
-													width={500}
-													height={500}
-													id="avatarButton"
-													data-dropdown-toggle="userDropdown"
-													data-dropdown-placement="bottom-start"
-													className="object-cover object-top w-10 h-10 transition-all duration-200 ease-in-out rounded-full cursor-pointer ring-4 ring-darkBlue hover:ring-lightBlue"
-													src={
-														firebaseContext?.userData?.photoURL
-															? firebaseContext?.userData?.photoURL
-															: `/img/Logos/default-avatar-profile.jpg`
-													}
-													alt={`${firebaseContext?.userData?.displayName} profile image`}
-												/>
-												<span className="bottom-[-6px] left-7 absolute w-3.5 h-3.5 bg-brightGreen border-2 border-white rounded-full "></span>
-											</button>
-
-											{/* <!-- Dropdown menu --> */}
-											{revealUserDropdown ? (
-												<div
-													id="userDropdown"
-													className="absolute left-[-100px] z-10 flex flex-col mt-1 bg-white divide-y shadow divide-lightGreyTwo w-[17.5rem]"
-												>
-													<div className="flex flex-col gap-1 px-8 py-5 text-sm text-black">
-														<h2 className="text-medium">
-															{firebaseContext?.userData?.displayName
-																? firebaseContext?.userData?.displayName
-																		.length > 25
-																	? firebaseContext?.userData?.displayName.substring(
-																			0,
-																			25
-																	  ) + "..."
-																	: firebaseContext?.userData?.displayName
-																: ""}
-														</h2>
-														<h2 className="tracking-wide text-darkGrey">
-															{firebaseContext?.userData?.email
-																? firebaseContext?.userData?.email.length > 25
-																	? firebaseContext?.userData?.email.substring(
-																			0,
-																			25
-																	  ) + "..."
-																	: firebaseContext?.userData?.email
-																: ""}
-														</h2>
-													</div>
-													<button
-														onClick={handleLogout}
-														className="block w-full px-8 py-3 text-sm text-left text-black uppercase hover:bg-pinkRed hover:text-white"
-													>
-														Log out
-													</button>
-												</div>
-											) : null}
-										</motion.div>
-									</div>
-								) : (
-									<motion.div
-										initial={initial}
-										viewport={{once: true}}
-										whileInView={stagger}
-										className="flex flex-wrap gap-2 -m-2"
-									>
-										<motion.div
-											initial={initial}
-											whileInView={fadeInUp}
-											viewport={{once: true}}
-											className="py-2 m-auto bg-center bg-no-repeat bg-cover rounded-sm"
-											style={{
-												backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-orange-yellow.svg")`,
-											}}
-										>
-											<Link
-												className="w-full px-8 py-3 text-sm tracking-widest text-center text-white uppercase bg-transparent hover:bg-goldPrime focus:ring-none focus:ring-blue"
-												href={`/sign-in`}
-											>
-												Sign In
-											</Link>
-										</motion.div>
-										<motion.div
-											initial={initial}
-											whileInView={fadeInUp}
-											viewport={{once: true}}
-											className="py-2 m-auto bg-center bg-no-repeat bg-cover rounded-sm"
-											style={{
-												backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue-darkblue.svg")`,
-											}}
-										>
-											<Link
-												className="w-full px-8 py-3 text-sm tracking-widest text-center text-white uppercase bg-transparent rounded-sm hover:bg-darkBlue focus:ring-none focus:ring-blue"
-												href={`/sign-up`}
-											>
-												Get Started
-											</Link>
-										</motion.div>
-									</motion.div>
-								)}
+								<NavbarSignIn />
 							</div>
 							{/* Mobile Menu Reveal */}
 							<div className="w-auto xl:hidden">

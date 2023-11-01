@@ -9,6 +9,8 @@ import {useDashboardGlobalContext} from "@/context/dashboard";
 const MediaFilesGridCards: FC = () => {
 	const DashboardContext = useDashboardGlobalContext();
 
+	console.log(DashboardContext?.mediaFilesCollection?.length);
+
 	return (
 		<>
 			<motion.div
@@ -17,9 +19,9 @@ const MediaFilesGridCards: FC = () => {
 				viewport={{once: true}}
 				className="flex flex-wrap gap-4 -m-3"
 			>
-				{DashboardContext?.itemsCollection ? (
-					DashboardContext?.itemsCollection.length > 0 ? (
-						DashboardContext?.itemsCollection.map(
+				{DashboardContext?.mediaFilesCollection ? (
+					DashboardContext?.mediaFilesCollection.length > 0 ? (
+						DashboardContext?.mediaFilesCollection.map(
 							(item: any, index: number) => (
 								<>
 									<div className="w-1/4 sm:w-1/2 md:w-1/3 lg:w-1/6">

@@ -6,10 +6,6 @@ import {useState, useEffect} from "react";
 import {NextRouter, useRouter} from "next/router";
 import {ApolloProvider} from "@apollo/client/react";
 
-// PostHog Cookies Policy
-import postHog from "posthog-js";
-import {PostHogProvider} from "posthog-js/react";
-
 // Global Context Provider
 import {
 	IGlobalContext,
@@ -44,22 +40,12 @@ import "../styles/globals.scss";
 // Components
 import Footer from "@/components/Frontend/Global/Footer";
 import ErrorPage from "@/components/Frontend/Elements/ErrorPage";
-import CookiePolicyCard from "@/components/Frontend/Elements/CookiePolicyCard";
+import Layout from "@/components/Backend/Dashboard/Layout/Layout";
 import GlobalContextProvider from "@/components/Frontend/context/GlobalContextProvider";
+import PostHogContextProvider from "@/components/Frontend/context/PostHogProviderContext";
 import FirebaseContextProvider from "@/components/Frontend/context/FirebaseContextProvider";
 import DashboardGlobalContextProvider from "@/components/Frontend/context/DashboardGlobalContextProvider";
-import Layout from "@/components/Backend/Dashboard/Layout/Layout";
-
-// Check that PostHog is client-side (used to handle Next.js SSR)
-if (typeof window !== "undefined") {
-	postHog.init(`${process.env.POSTHOG_KEY}`, {
-		api_host: `${process.env.POSTHOG_HOST}` || "https://app.posthog.com",
-		// Disable in development
-		loaded: (postHog) => {
-			if (process.env.NODE_ENV === "development") postHog.opt_out_capturing();
-		},
-	});
-}
+import GoogleTranslateContextProvider from "@/components/Frontend/context/GoogleTranslateContextProvider";
 
 /* Public Pages Authentication: Pages that don't require 
 users to sign-in to view them */
@@ -83,7 +69,15 @@ const publicPages: Array<string> = [
 	"/operational-insights/preview/postId=/[id]",
 ];
 
-const protectedPages: Array<string> = ["/dashboard", "/dashboard/settings"];
+const protectedPages: Array<string> = [
+	"/dashboard",
+	"/dashboard/items",
+	"/dashboard/settings",
+	"/dashboard/documents",
+	"/dashboard/items/add",
+	"/dashboard/items/[id]",
+	"/dashboard/categories",
+];
 
 export default function App({
 	Component,
@@ -91,6 +85,7 @@ export default function App({
 	globalProps,
 }: AppProps | any) {
 	const router: NextRouter = useRouter();
+
 	// FIREBASE //
 	// Initializing Firebase
 	initializeFirebase();
@@ -101,6 +96,9 @@ export default function App({
 	const [userData, setUserData] = useState<IFirebaseUser | null>(null);
 	const [userDocId, setUserDocId] = useState<string | null>(null);
 	const [itemsCollection, setItemsCollection] = useState<any[] | null>(null);
+	const [mediaFilesCollection, setMediaFilesCollection] = useState<
+		any[] | null
+	>(null);
 	const firebaseUser: IFirebaseContext = {
 		userData: userData,
 		userDocId: userDocId,
@@ -133,9 +131,15 @@ export default function App({
 					Items List Document Data */
 					const itemsArray = await getUserItemsDocument(docID);
 					setItemsCollection(itemsArray);
+
+					/* Retrieves the current users 
+					Media Files List Document Data */
+					const mediaFilesArray = await getUserItemsDocument(docID);
+					setMediaFilesCollection(mediaFilesArray);
 				} else if (!currentUser) {
 					setSignedInUser(false);
 					setItemsCollection(null);
+					setMediaFilesCollection(null);
 				}
 			});
 
@@ -172,18 +176,6 @@ export default function App({
 		backgroundImage:
 			"/svg/backgroundSVG/stacked-waves-haikei-blue-darkblue.svg",
 	};
-
-	// COOKIES POLICY //
-	// PostHog Cookies Policy
-	useEffect(() => {
-		// Track page views
-		const handleRouteChange = () => postHog?.capture("$pageview");
-		router.events.on("routeChangeComplete", handleRouteChange);
-
-		return () => {
-			router.events.off("routeChangeComplete", handleRouteChange);
-		};
-	});
 
 	// PAGE LOADING ANIMATION //
 	// Page Animation Loader
@@ -249,8 +241,8 @@ export default function App({
 	}
 
 	return (
-		<ApolloProvider client={client}>
-			<PostHogProvider client={postHog}>
+		<>
+			<ApolloProvider client={client}>
 				<FirebaseContextProvider firebaseUserUser={firebaseUser}>
 					<motion.section
 						exit={{
@@ -260,30 +252,30 @@ export default function App({
 						animate="animate"
 					>
 						{isProtectedPage && signedInUser ? (
-							<DashboardGlobalContextProvider
-								pageTitle={`Dashboard`}
-								itemsCollection={itemsCollection}
-							>
-								<>
+							<>
+								<DashboardGlobalContextProvider
+									pageTitle={`Dashboard`}
+									itemsCollection={itemsCollection}
+									mediaFilesCollection={mediaFilesCollection}
+								>
 									<Layout>
 										<Loading />
 										<Component {...pageProps} />
 									</Layout>
-								</>
-							</DashboardGlobalContextProvider>
+								</DashboardGlobalContextProvider>
+							</>
 						) : isPublicPage ? (
-							<GlobalContextProvider globalProps={globalProps}>
-								<>
-									{/* Cookie Policy Pop Up */}
-									{postHog.has_opted_in_capturing() ||
-									postHog.has_opted_out_capturing() ? null : (
-										<CookiePolicyCard />
-									)}
-									<Loading />
-									<Component {...pageProps} />
-									<Footer />
-								</>
-							</GlobalContextProvider>
+							<>
+								<GlobalContextProvider globalProps={globalProps}>
+									<GoogleTranslateContextProvider>
+										{/* Cookie Policy Pop Up */}
+										<PostHogContextProvider />
+										<Loading />
+										<Component {...pageProps} />
+										<Footer />
+									</GoogleTranslateContextProvider>
+								</GlobalContextProvider>
+							</>
 						) : (
 							<>
 								<Loading />
@@ -298,8 +290,8 @@ export default function App({
 						)}
 					</motion.section>
 				</FirebaseContextProvider>
-			</PostHogProvider>
-		</ApolloProvider>
+			</ApolloProvider>
+		</>
 	);
 }
 
