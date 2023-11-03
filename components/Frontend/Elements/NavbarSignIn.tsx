@@ -3,9 +3,9 @@
 // Imports
 import Link from "next/link";
 import Image from "next/image";
+import {useState, FC} from "react";
 import {motion} from "framer-motion";
 import {useRouter} from "next/router";
-import {useState, FC, Fragment} from "react";
 import {initial, fadeIn, stagger, initialTwo} from "@/animations/animations";
 
 // Styling

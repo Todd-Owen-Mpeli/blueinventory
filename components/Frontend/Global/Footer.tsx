@@ -13517,7 +13517,7 @@ const Footer: FC = () => {
 					</g>
 				</svg>
 			</div>
-			<div className="container relative z-50 px-4 py-20 mx-auto ">
+			<div className="container relative z-50 px-4 py-20 mx-auto">
 				<div className="flex flex-col items-center justify-between gap-6 px-6 -m-6 md:items-start lg:px-4 md:flex-row">
 					<div className="flex flex-col items-center justify-between w-full py-6 md:py-0 md:items-start md:w-auto">
 						<div className="mb-10">
