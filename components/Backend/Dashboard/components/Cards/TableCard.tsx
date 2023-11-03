@@ -105,14 +105,6 @@ const TableCard: FC = () => {
 										<span className="mx-0.5 w-1 h-1 bg-black rounded-full"></span>
 										<span className="w-1 h-1 bg-black rounded-full"></span>
 									</button>
-									<button
-										onClick={handleEditFields}
-										className="inline-flex py-2.5 pr-0"
-									>
-										<span className="w-1 h-1 bg-black rounded-full"></span>
-										<span className="mx-0.5 w-1 h-1 bg-black rounded-full"></span>
-										<span className="w-1 h-1 bg-black rounded-full"></span>
-									</button>
 								</div>
 							</td>
 						</motion.tr>

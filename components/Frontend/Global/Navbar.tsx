@@ -8,7 +8,7 @@ import {useGlobalContext} from "@/context/Global";
 import {initial, fadeIn, stagger, initialTwo} from "@/animations/animations";
 
 // Styling
-import styles from "@/styles/components/Hero.module.scss";
+import styles from "@/styles/components/Navbar.module.scss";
 
 // Components
 import MobileNavbar from "./MobileNavbar";

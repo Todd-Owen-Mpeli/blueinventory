@@ -9,7 +9,7 @@ import {useState, FC, Fragment} from "react";
 import {initial, fadeIn, stagger, initialTwo} from "@/animations/animations";
 
 // Styling
-import styles from "@/styles/components/Hero.module.scss";
+import styles from "@/styles/components/Navbar.module.scss";
 
 // Firebase
 import {User, getAuth, signOut} from "firebase/auth";

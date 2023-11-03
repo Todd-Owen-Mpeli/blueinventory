@@ -5,13 +5,15 @@ import Link from "next/link";
 import {useState, FC} from "react";
 import {motion} from "framer-motion";
 import {useGlobalContext} from "@/context/Global";
-import styles from "@/styles/components/Hero.module.scss";
 import {initial, stagger, fadeInUp} from "@/animations/animations";
+
+// Styling
+import styles from "@/styles/components/Navbar.module.scss";
 
 // Components
 import MobileNavbarTwo from "./MobileNavbarTwo";
-import NavbarMenuLinks from "@/components/Frontend/Elements/NavbarMenuLinks";
 import NavbarSignIn from "../Elements/NavbarSignIn";
+import NavbarMenuLinks from "@/components/Frontend/Elements/NavbarMenuLinks";
 
 const NavbarTwo: FC = () => {
 	// eslint-disable-next-line react-hooks/rules-of-hooks

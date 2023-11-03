@@ -14,7 +14,7 @@ import {motion} from "framer-motion";
 import {useRouter} from "next/router";
 import {useGlobalContext} from "@/context/Global";
 import {IMobileNavbar} from "@/types/components/public";
-import styles from "@/styles/components/Hero.module.scss";
+import styles from "@/styles/components/Navbar.module.scss";
 
 // Firebase
 import {getAuth, signOut} from "firebase/auth";

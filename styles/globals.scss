@@ -6,6 +6,17 @@
 @import "./_fonts";
 @import "./_colors";
 
+// Pages
+@import "./pages/Dashboard.module.scss";
+
+// Components
+@import "./components/Hero.module.scss";
+@import "./components/Navbar.module.scss";
+@import "./components/Loading.module.scss";
+@import "./components/ContactForm.module.scss";
+@import "./components/SignInSignUp.module.scss";
+@import "./components/ContentSlider.module.scss";
+
 html,
 body {
 	padding: 0;
@@ -117,39 +128,6 @@ li {
 
 	a {
 		@apply text-darkBlue transition-all ease-in-out duration-[0.5s] hover:text-goldPrime focus:text-goldPrime;
-	}
-}
-
-#google_translate_element {
-	select {
-		border: none;
-		@apply py-[10px] px-[8px] border-none bg-[#e1e5e7] rounded-sm text-darkBlue;
-
-		option {
-			@apply text-darkBlue py-1;
-		}
-	}
-
-	.goog-te-gadget {
-		@apply relative;
-	}
-
-	.goog-te-gadget .goog-te-combo {
-		border: none;
-		color: $darkBlue !important;
-		@apply my-0 absolute 2xl:top-[-8px] 2xl:left-0 xl:top-[40px] xl:left-[-125px];
-
-		p {
-			@apply hidden;
-		}
-	}
-
-	.goog-te-gadget {
-		color: $white !important;
-	}
-
-	.VIpgJd-ZVi9od-l4eHX-hSRGPd {
-		display: none !important;
 	}
 }
 

@@ -1,6 +1,5 @@
 // Imports
 import Link from "next/link";
-import Image from "next/image";
 import {FC, useState} from "react";
 import {motion} from "framer-motion";
 import {useRouter} from "next/router";
@@ -10,9 +9,6 @@ import {fadeIn, initialTwo} from "@/animations/animations";
 
 // Styling
 import styles from "@/styles/pages/Dashboard.module.scss";
-
-// Components
-import CreateItem from "../components/CreateItem";
 
 const TopNavbar: FC = () => {
 	const auth = getAuth();
@@ -58,7 +54,11 @@ const TopNavbar: FC = () => {
 					</li>
 				</ul>
 				<ul className="flex flex-row items-center gap-6">
-					<li>
+					<motion.li
+						initial={initialTwo}
+						whileInView={fadeIn}
+						viewport={{once: true}}
+					>
 						<button
 							onClick={dashboardLayoutContext?.handleRevealUserCreateItemModal}
 						>
@@ -110,8 +110,12 @@ const TopNavbar: FC = () => {
 								</g>
 							</svg>
 						</button>
-					</li>
-					<li>
+					</motion.li>
+					<motion.li
+						initial={initialTwo}
+						whileInView={fadeIn}
+						viewport={{once: true}}
+					>
 						<Link href="/dashboard/settings">
 							<svg
 								width="20"
@@ -127,8 +131,12 @@ const TopNavbar: FC = () => {
 								></path>
 							</svg>
 						</Link>
-					</li>
-					<li>
+					</motion.li>
+					<motion.li
+						initial={initialTwo}
+						whileInView={fadeIn}
+						viewport={{once: true}}
+					>
 						<Link href="#">
 							<svg
 								width="26"
@@ -188,8 +196,13 @@ const TopNavbar: FC = () => {
 								</g>
 							</svg>
 						</Link>
-					</li>
-					<li>
+					</motion.li>
+					<motion.li
+						initial={initialTwo}
+						whileInView={fadeIn}
+						viewport={{once: true}}
+						className="relative p-0"
+					>
 						<motion.button
 							role="button"
 							type="button"
@@ -201,7 +214,7 @@ const TopNavbar: FC = () => {
 							className={
 								revealGoogleTranslateOptions
 									? "hidden"
-									: "p-0 text-white transition duration-200 rounded-sm flex flex-row items-center justify-center gap-3"
+									: "p-0 text-white  transition duration-200 rounded-sm flex flex-row items-center justify-center gap-3"
 							}
 						>
 							<svg
@@ -223,7 +236,7 @@ const TopNavbar: FC = () => {
 							viewport={{once: true}}
 							onClick={handleRevealGoogleTranslateOptions}
 							aria-label="Google Translate Options Button"
-							className={revealGoogleTranslateOptions ? "block ml-2" : "hidden"}
+							className={revealGoogleTranslateOptions ? "block" : "hidden"}
 						>
 							<svg
 								width="28"
@@ -258,10 +271,18 @@ const TopNavbar: FC = () => {
 							viewport={{once: true}}
 							id="google_translate_element"
 							aria-label="Google Translate Options Button"
-							className={revealGoogleTranslateOptions ? "block" : "hidden"}
+							className={
+								revealGoogleTranslateOptions
+									? styles.googleTranslateElement + " block"
+									: "hidden"
+							}
 						/>
-					</li>
-					<li>
+					</motion.li>
+					<motion.li
+						initial={initialTwo}
+						whileInView={fadeIn}
+						viewport={{once: true}}
+					>
 						<button
 							onClick={handleLogout}
 							className={styles.logoutButton + " py-2"}
@@ -280,7 +301,7 @@ const TopNavbar: FC = () => {
 								></path>
 							</svg>
 						</button>
-					</li>
+					</motion.li>
 				</ul>
 			</section>
 		</>
