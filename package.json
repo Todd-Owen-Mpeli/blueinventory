@@ -28,7 +28,7 @@
 		"formik": "^2.2.9",
 		"framer-motion": "^10.12.18",
 		"graphql": "^16.6.0",
-		"isomorphic-dompurify": "^1.6.0",
+		"isomorphic-dompurify": "^1.13.0",
 		"lodash": "^4.17.21",
 		"micro": "^10.0.1",
 		"next": "^14.0.0",
@@ -51,7 +51,7 @@
 	},
 	"devDependencies": {
 		"@stripe/react-stripe-js": "^2.1.0",
-		"@types/cookie": "^0.5.1",
+		"@types/cookie": "^0.5.4",
 		"@types/cors": "^2.8.13",
 		"@types/dateformat": "^5.0.0",
 		"@types/lodash": "^4.14.195",
